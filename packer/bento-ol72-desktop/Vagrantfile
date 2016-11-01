@@ -24,7 +24,7 @@ Vagrant.configure(2) do |config|
       v.customize ["modifyvm", :id, "--draganddrop", "bidirectional"]
       v.customize ["modifyvm", :id, "--description", "Oracle Linux 7.2 (UEKR4) Base VM image for DevOps 2.0 'Developer' role."]
       v.customize ["storageattach", :id, "--storagectl", "IDE Controller", "--port", "1", "--device", "0", "--type", "dvddrive", "--medium", "emptydrive"]
-      v.customize ["sharedfolder", "add", :id, "--name", "shared", "--hostpath", "/Volumes/g-drive/shared", "--automount"]
+      #v.customize ["sharedfolder", "add", :id, "--name", "shared", "--hostpath", "/Volumes/g-drive/shared", "--automount"]
     end
   end
   if Vagrant.has_plugin?("vagrant-cachier")
