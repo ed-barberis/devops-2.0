@@ -1,0 +1,1 @@
+{"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"/Volumes/g-drive/projects/devops-2.0/packer/bento-ol72-desktop","disabled":false,"__vagrantfile":true},"vagrant-cache":{"id":"vagrant-cache","guestpath":"/tmp/vagrant-cache","hostpath":"/Users/edwardbarberis/.vagrant.d/cache/bento-ol72-desktop","disabled":false,"__vagrantfile":true}}}
