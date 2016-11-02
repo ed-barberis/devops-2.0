@@ -1,0 +1,5 @@
+/.idea
+/*.iml
+.vagrant
+/registry
+/registry-mirror
