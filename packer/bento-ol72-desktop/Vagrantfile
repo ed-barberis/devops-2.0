@@ -11,9 +11,9 @@ Vagrant.configure(2) do |config|
     d.vm.box = "bento-ol72-desktop"
     d.vm.hostname = "bento-ol72-desktop"
     d.vm.network "private_network", ip: "10.100.198.224"
-    #d.vm.provision :shell, inline: "usermod -aG docker vagrant"
     d.vm.provision :shell, path: "scripts/enable_ol7_docker.sh"
-    d.vm.provision :shell, path: "scripts/bootstrap_devops_users_env.sh"
+    d.vm.provision :shell, path: "scripts/bootstrap_ol7_atom_editor.sh"
+    d.vm.provision :shell, path: "scripts/bootstrap_ol7_devops_users_env.sh"
     d.vm.provider "virtualbox" do |v|
       v.name = "bento-ol72-desktop"
       v.gui = true
@@ -24,6 +24,9 @@ Vagrant.configure(2) do |config|
       v.customize ["modifyvm", :id, "--draganddrop", "bidirectional"]
       v.customize ["modifyvm", :id, "--description", "Oracle Linux 7.2 (UEKR4) Base VM image for DevOps 2.0 'Developer' role."]
       v.customize ["storageattach", :id, "--storagectl", "IDE Controller", "--port", "1", "--device", "0", "--type", "dvddrive", "--medium", "emptydrive"]
+      # mount windows shared folder.
+      #v.customize ["sharedfolder", "add", :id, "--name", "shared", "--hostpath", "I:/shared", "--automount"]
+      # mount macosx shared folder.
       #v.customize ["sharedfolder", "add", :id, "--name", "shared", "--hostpath", "/Volumes/g-drive/shared", "--automount"]
     end
   end

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Postman
+Comment=Modern software is built on APIs.
+GenericName=REST Client
+Exec=/usr/local/google/Postman/Postman
+Icon=/usr/local/google/Postman/logo-postman-78x78.png
+Type=Application
+Terminal=false

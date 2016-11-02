@@ -53,8 +53,10 @@ git --version
 yum -y install vim-X11
 gvim --version
 
-# install 'alacarte' to enable system menu edits. ------------------------------
+# install useful system configuration edit tools. ------------------------------
 yum -y install alacarte
+yum -y install dconf-editor
+yum -y install gnome-shell-browser-plugin
 
 # install oracle java se development kit 8u111. --------------------------------
 jdkbuild="8u111-b14"
