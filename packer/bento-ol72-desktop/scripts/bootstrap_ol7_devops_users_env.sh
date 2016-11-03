@@ -50,3 +50,17 @@ chown -R vagrant:vagrant .
 chmod 644 .bash_profile .bashrc
 echo "-----------------------------------------------------------"
 echo ""
+
+# modify default terminal column and row size. (future) ------------------------
+#echo ""
+#echo "-----------------------------------------------------------"
+#echo "Modifying default terminal column and row size..."
+#echo "-----------------------------------------------------------"
+#cols=162
+#rows=34
+
+#defprofileid=$(gsettings get org.gnome.Terminal.ProfilesList default)
+#gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:${defprofileid:1:-1}/ default-size-columns $cols
+#gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:${defprofileid:1:-1}/ default-size-rows $rows
+#echo "-----------------------------------------------------------"
+#echo ""

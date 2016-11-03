@@ -41,6 +41,26 @@ rm -f ${postmanbinary}
 # verify installation.  (currently not available.)
 #Postman --version
 
+cd /tmp/scripts/oracle
+
+# install postman as gnome desktop app.
+imgname="postman-logo"
+imgsizearray=( "16x16" "22x22" "24x24" "32x32" "48x48" "64x64" "128x128" "256x256" )
+imgfolder="/usr/share/icons/hicolor"
+
+# install postman icon image files.
+for imgsize in "${imgsizearray[@]}"; do
+  if [ -d "${imgfolder}/${imgsize}/apps" ]; then
+    echo "Processing ${imgname}-${imgsize}.png..."
+    install -o root -g root -m 0644 ./images/${imgname}-${imgsize}.png ${imgfolder}/${imgsize}/apps/${imgname}.png
+  fi
+done
+
+# install postman desktop.
+echo "Installing postman.desktop..."
+desktop-file-install --dir=/usr/share/applications/ ./desktops/postman.desktop
+update-desktop-database /usr/share/applications/
+
 # install software collections library. (needed later for python 3.x.) ---------
 yum -y install scl-utils
 

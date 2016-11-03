@@ -17,3 +17,10 @@ yum -y install atom
 
 # verify installation.
 #atom --version
+
+# install atom markdown plugins.
+runuser -c "apm install tool-bar" - vagrant
+runuser -c "apm install markdown-writer" - vagrant
+runuser -c "apm install tool-bar-markdown-writer" - vagrant
+runuser -c "apm install markdown-scroll-sync" - vagrant
+runuser -c "apm install markdown-format" - vagrant
