@@ -27,3 +27,6 @@ yum -y update
 # install kernel development tools and headers for building guest additions. ---
 yum -y install kernel-uek-devel
 yum -y install kernel-uek
+
+# remove package kit utility to turn-off auto-update of packages. --------------
+yum -y remove PackageKit
