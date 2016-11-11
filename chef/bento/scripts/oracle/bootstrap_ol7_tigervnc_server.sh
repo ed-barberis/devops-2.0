@@ -1,5 +1,8 @@
 #!/bin/sh -eux
 # install tigervnc-server on oracle linux 7.x.
+# ==============================================================================
+# NOTE: This script file is currently a work-in-progress. DO NOT USE.
+# ==============================================================================
 
 # update the repository list. --------------------------------------------------
 yum repolist

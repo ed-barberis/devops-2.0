@@ -156,7 +156,8 @@
         "scripts/common/virtualbox.sh",
         "scripts/common/vmware.sh",
         "scripts/common/parallels.sh",
-        "scripts/oracle/bootstrap_ol7_devops_tools.sh",
+        "scripts/oracle/bootstrap_ol7_desktop_devops_tools.sh",
+        "scripts/oracle/bootstrap_ol7_console_devops_tools.sh",
         "scripts/oracle/bootstrap_ol7_docker.sh",
         "scripts/oracle/bootstrap_ol7_ansible.sh",
         "scripts/oracle/cleanup.sh",
@@ -172,7 +173,6 @@
   ],
   "variables": {
     "arch": "64",
-    "awkscript": "enable_ol7_uekr4.awk",
     "box_basename": "oracle-7.2-desktop",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
     "cpus": "2",

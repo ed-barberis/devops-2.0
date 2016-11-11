@@ -5,9 +5,9 @@
 mkdir -p /tmp/scripts/oracle
 cd /tmp/scripts/oracle
 
-# install atom editor 1.11.2. --------------------------------------------------
-atomrelease="v1.11.2"
-#atomrelease="v1.12.0-beta5"
+# install atom editor 1.12.1. --------------------------------------------------
+atomrelease="v1.12.1"
+#atomrelease="v1.13.0-beta1"
 
 # download atom repository from github.com.
 wget --no-verbose https://github.com/atom/atom/releases/download/${atomrelease}/atom.x86_64.rpm

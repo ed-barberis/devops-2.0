@@ -28,5 +28,8 @@ yum -y update
 yum -y install kernel-uek-devel
 yum -y install kernel-uek
 
+# install yum utilities to enable the yum configuration manager. ---------------
+#yum -y install yum-utils
+
 # remove package kit utility to turn-off auto-update of packages. --------------
 yum -y remove PackageKit

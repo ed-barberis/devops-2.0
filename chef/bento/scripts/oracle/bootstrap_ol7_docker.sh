@@ -45,3 +45,14 @@ usermod -aG docker vagrant
 #docker info
 #docker version
 docker --version
+
+# install docker-compose utility. ----------------------------------------------
+dcdir="/usr/local/bin"
+dcbin="docker-compose"
+dcrel="1.8.1"
+
+if [ -d "$dcdir" ]; then
+  cd ${dcdir}
+  curl -L "https://github.com/docker/compose/releases/download/${dcrel}/docker-compose-$(uname -s)-$(uname -m)" > ${dcbin}
+  chmod 755 ./${dcbin}
+fi
