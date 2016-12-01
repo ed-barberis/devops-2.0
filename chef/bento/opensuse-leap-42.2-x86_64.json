@@ -1,14 +1,17 @@
-
 {
   "builders": [
     {
       "boot_command": [
-        "<tab> linux ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `ks_path`}}<enter><wait>"
+        "<esc><enter><wait>",
+        "linux netsetup=dhcp install=cd:/<wait>",
+        " lang=en_US autoyast=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `autoinst_cfg`}}<wait>",
+        " textmode=1<wait>",
+        "<enter><wait>"
       ],
       "boot_wait": "10s",
       "disk_size": "{{user `disk_size`}}",
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
-      "guest_os_type": "Fedora",
+      "guest_os_type": "OpenSUSE_64",
       "hard_drive_interface": "sata",
       "headless": "{{ user `headless` }}",
       "http_directory": "http",
@@ -16,7 +19,7 @@
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
       "iso_url": "{{user `mirror`}}/{{user `mirror_directory`}}/{{user `iso_name`}}",
       "output_directory": "packer-{{user `template`}}-virtualbox",
-      "shutdown_command": "echo 'vagrant'|sudo -S shutdown -P now",
+      "shutdown_command": "echo 'vagrant'|sudo -S /sbin/halt -h -p",
       "ssh_password": "vagrant",
       "ssh_port": 22,
       "ssh_username": "vagrant",
@@ -41,18 +44,22 @@
     },
     {
       "boot_command": [
-        "<tab> linux ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `ks_path`}}<enter><wait>"
+        "<esc><enter><wait>",
+        "linux netsetup=dhcp install=cd:/<wait>",
+        " lang=en_US autoyast=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `autoinst_cfg`}}<wait>",
+        " textmode=1<wait>",
+        "<enter><wait>"
       ],
       "boot_wait": "10s",
       "disk_size": "{{user `disk_size`}}",
-      "guest_os_type": "fedora",
+      "guest_os_type": "opensuse-64",
       "headless": "{{ user `headless` }}",
       "http_directory": "http",
       "iso_checksum": "{{user `iso_checksum`}}",
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
       "iso_url": "{{user `mirror`}}/{{user `mirror_directory`}}/{{user `iso_name`}}",
       "output_directory": "packer-{{user `template`}}-vmware",
-      "shutdown_command": "echo 'vagrant'|sudo -S shutdown -P now",
+      "shutdown_command": "echo 'vagrant'|sudo -S /sbin/shutdown -h 1",
       "ssh_password": "vagrant",
       "ssh_port": 22,
       "ssh_username": "vagrant",
@@ -68,11 +75,15 @@
     },
     {
       "boot_command": [
-        "<tab> linux ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `ks_path`}}<enter><wait>"
+        "<esc><enter><wait>",
+        "linux netsetup=dhcp netdevice=eth0 install=cd:/<wait>",
+        " lang=en_US autoyast=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `autoinst_cfg`}}<wait>",
+        " textmode=1<wait>",
+        "<enter><wait>"
       ],
       "boot_wait": "10s",
       "disk_size": "{{user `disk_size`}}",
-      "guest_os_type": "fedora-core",
+      "guest_os_type": "opensuse",
       "http_directory": "http",
       "iso_checksum": "{{user `iso_checksum`}}",
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
@@ -94,7 +105,7 @@
         ]
       ],
       "prlctl_version_file": ".prlctl_version",
-      "shutdown_command": "echo 'vagrant'|sudo -S shutdown -P now",
+      "shutdown_command": "echo 'vagrant'|sudo -S /sbin/halt -h -p",
       "ssh_password": "vagrant",
       "ssh_port": 22,
       "ssh_username": "vagrant",
@@ -104,7 +115,11 @@
     },
     {
       "boot_command": [
-        "<tab> linux ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `ks_path`}}<enter><wait>"
+        "<esc><enter><wait>",
+        "linux netsetup=dhcp netdevice=eth0 install=cd:/<wait>",
+        " lang=en_US autoyast=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `autoinst_cfg`}}<wait>",
+        " textmode=1<wait>",
+        "<enter><wait>"
       ],
       "boot_wait": "10s",
       "disk_size": "{{user `disk_size`}}",
@@ -114,7 +129,7 @@
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
       "iso_url": "{{user `mirror`}}/{{user `mirror_directory`}}/{{user `iso_name`}}",
       "output_directory": "packer-{{user `template`}}-qemu",
-      "shutdown_command": "echo 'vagrant'|sudo -S shutdown -P now",
+      "shutdown_command": "echo 'vagrant'|sudo -S /sbin/halt -h -p",
       "ssh_password": "vagrant",
       "ssh_port": 22,
       "ssh_username": "vagrant",
@@ -136,44 +151,50 @@
       "type": "file"
     },
     {
-      "environment_vars": [],
-      "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
+      "environment_vars": [
+        "HOME_DIR=/home/vagrant",
+        "http_proxy={{user `http_proxy`}}",
+        "https_proxy={{user `https_proxy`}}",
+        "no_proxy={{user `no_proxy`}}"
+      ],
+      "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E sh '{{.Path}}'",
       "scripts": [
         "scripts/common/metadata.sh",
-        "scripts/fedora/fix-slow-dns.sh",
         "scripts/common/sshd.sh",
-        "scripts/fedora/build-tools.sh",
+        "scripts/common/vagrant.sh",
         "scripts/common/virtualbox.sh",
         "scripts/common/vmware.sh",
         "scripts/common/parallels.sh",
-        "scripts/common/vagrant.sh",
-        "scripts/fedora/cleanup.sh",
+        "scripts/opensuse/sudoers.sh",
+        "scripts/opensuse/zypper-locks.sh",
+        "scripts/opensuse/remove-dvd-source.sh",
+        "scripts/opensuse/cleanup.sh",
         "scripts/common/minimize.sh"
       ],
       "type": "shell"
     }
   ],
   "variables": {
-    "arch": "32",
-    "box_basename": "fedora-23-i386",
+    "arch": "64",
+    "autoinst_cfg": "opensuse-leap-42.2/autoinst.xml",
+    "box_basename": "opensuse-leap-42.2",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
     "cpus": "1",
-    "disk_size": "40960",
+    "disk_size": "20480",
     "git_revision": "__unknown_git_revision__",
     "headless": "",
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
-    "iso_checksum": "aa2125b6351480ce82ace619925d897d0588195a3287ef74fb203b6eb34cbccf",
+    "iso_checksum": "ba5af6b0ac4d42d801de642304eb88ca9fd65a61b6c3ff25724182494f288f00",
     "iso_checksum_type": "sha256",
-    "iso_name": "Fedora-Server-DVD-i386-23.iso",
-    "ks_path": "fedora-latest/ks.cfg",
-    "memory": "512",
+    "iso_name": "openSUSE-Leap-42.2-DVD-x86_64.iso",
+    "memory": "768",
     "metadata": "floppy/dummy_metadata.json",
-    "mirror": "http://download.fedoraproject.org/pub/fedora/linux",
-    "mirror_directory": "releases/23/Server/i386/iso",
-    "name": "fedora-23-i386",
+    "mirror": "http://suse.mobile-central.org/distribution",
+    "mirror_directory": "leap/42.2/iso",
+    "name": "opensuse-leap-42.2",
     "no_proxy": "{{env `no_proxy`}}",
-    "template": "fedora-23-i386",
+    "template": "opensuse-leap-42.2-x86_64",
     "version": "2.0.TIMESTAMP"
   }
 }
