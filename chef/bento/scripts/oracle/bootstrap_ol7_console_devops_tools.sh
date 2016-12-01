@@ -1,6 +1,9 @@
 #!/bin/sh -eux
 # install useful command-line developer tools.
 
+# update the repository list. --------------------------------------------------
+yum repolist
+
 # install software collections library. (needed later for python 3.x.) ---------
 yum -y install scl-utils
 
