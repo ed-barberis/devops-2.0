@@ -177,7 +177,7 @@
     "cpus": "2",
     "disk_size": "65536",
     "git_revision": "__unknown_git_revision__",
-    "headless": "true",
+    "headless": "false",
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
     "iso_checksum": "130EE6CDA827AA092B6EB66A145420F9801AA321",

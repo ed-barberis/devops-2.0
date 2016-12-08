@@ -18,7 +18,7 @@ yum -y install python33
 scl enable python33 -- python --version
 
 # install python 3.3 pip. ------------------------------------------------------
-wget https://bootstrap.pypa.io/get-pip.py
+wget --no-verbose https://bootstrap.pypa.io/get-pip.py
 scl enable python33 -- python /tmp/scripts/oracle/get-pip.py
 scl enable python33 -- pip --version
 scl enable python33 -- pip3 --version
@@ -40,3 +40,7 @@ runuser -c "scl enable python33 -- eval ${psm_setup_cmd}" - vagrant
 # verify the psm-cli configuration. --------------------------------------------
 runuser -c "scl enable python33 -- psm dbcs services" - vagrant
 runuser -c "scl enable python33 -- psm jcs services" - vagrant
+
+# change ownership for the entire temporary directory structure.
+cd /tmp/scripts
+chown -R vagrant:vagrant .

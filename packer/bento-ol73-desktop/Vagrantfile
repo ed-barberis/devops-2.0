@@ -14,6 +14,7 @@ Vagrant.configure(2) do |config|
     #d.vm.provision :shell, path: "scripts/enable_ol7_docker.sh", env: {"http_proxy" => "#{ENV['http_proxy']}", "https_proxy" => "#{ENV['https_proxy']}"}
     d.vm.provision :shell, path: "scripts/bootstrap_ol7_atom_editor.sh", env: {"http_proxy" => "#{ENV['http_proxy']}", "https_proxy" => "#{ENV['https_proxy']}"}
     d.vm.provision :shell, path: "scripts/bootstrap_ol7_desktop_users_env.sh", env: {"http_proxy" => "#{ENV['http_proxy']}", "https_proxy" => "#{ENV['https_proxy']}"}
+    d.vm.provision :shell, path: "scripts/bootstrap_ol7_opc_cli.sh", env: {"http_proxy" => "#{ENV['http_proxy']}", "https_proxy" => "#{ENV['https_proxy']}"}
     d.vm.provision :shell, path: "scripts/bootstrap_ol7_psm_cli.sh", env: {"http_proxy" => "#{ENV['http_proxy']}", "https_proxy" => "#{ENV['https_proxy']}"}
     d.vm.provider "virtualbox" do |v|
       v.name = "bento-ol73-desktop"

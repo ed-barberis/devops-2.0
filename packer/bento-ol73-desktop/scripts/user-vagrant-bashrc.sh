@@ -35,12 +35,6 @@ export M2
 POSTMAN_HOME=/usr/local/google/Postman
 export POSTMAN_HOME
 
-# set oracle public cloud (opc) environment variables.
-#OPC_API=https://api-z17.compute.em2.oraclecloud.com
-#export OPC_API
-#OPC_USER=/Compute-gse00001969/cloud.admin
-#export OPC_USER
-
 # define prompt code and colors.
 reset='\[\e]0;\w\a\]'
 
