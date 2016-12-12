@@ -5,15 +5,19 @@
 mkdir -p /tmp/scripts/oracle
 cd /tmp/scripts/oracle
 
-# install atom editor 1.12.6. --------------------------------------------------
-atomrelease="v1.12.6"
-#atomrelease="v1.13.0-beta6"
+# set current date for temporary filename. -------------------------------------
+curdate=$(date +"%Y-%m-%d")
+
+# install atom editor. ---------------------------------------------------------
+# retrieve version number of latest release.
+wget --no-verbose --server-response https://github.com/atom/atom/releases/latest >| wget-atom.${curdate}.out 2>&1
+atomrelease=$(awk '/Location/ {print $2}' wget-atom.${curdate}.out | awk -F "/" '{print $8}')
+rm -f wget-atom.${curdate}.out
 
 # download atom repository from github.com.
 wget --no-verbose https://github.com/atom/atom/releases/download/${atomrelease}/atom.x86_64.rpm
-rpm -Uvh atom.x86_64.rpm
 yum repolist
-yum -y install atom
+yum -y install atom.x86_64.rpm
 
 # verify installation.
 #atom --version
