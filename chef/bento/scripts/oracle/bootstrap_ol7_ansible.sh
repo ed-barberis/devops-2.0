@@ -7,8 +7,8 @@ cd /tmp/scripts/oracle
 
 # install the epel repository. -------------------------------------------------
 wget --no-verbose https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-rpm -ivh epel-release-latest-7.noarch.rpm
 yum repolist
+yum -y install epel-release-latest-7.noarch.rpm
 
 # install ansible. -------------------------------------------------------------
 yum -y install ansible

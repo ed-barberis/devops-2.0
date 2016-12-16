@@ -41,12 +41,12 @@ rm -f ${postmanbinary}
 # verify installation.  (currently not available.)
 #Postman --version
 
-cd /tmp/scripts/oracle
-
 # install postman as gnome desktop app.
 imgname="postman-logo"
 imgsizearray=( "16x16" "22x22" "24x24" "32x32" "48x48" "64x64" "128x128" "256x256" )
 imgfolder="/usr/share/icons/hicolor"
+
+cd /tmp/scripts/oracle
 
 # install postman icon image files.
 for imgsize in "${imgsizearray[@]}"; do
