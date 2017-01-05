@@ -165,7 +165,7 @@
         "scripts/common/minimize.sh"
       ],
       "type": "shell",
-      "pause_before": "10s"
+      "pause_before": "60s"
     },
     {
       "inline": ["sudo usermod -aG vboxsf vagrant"],
