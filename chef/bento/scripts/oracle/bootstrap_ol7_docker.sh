@@ -46,13 +46,25 @@ usermod -aG docker vagrant
 #docker version
 docker --version
 
-# install docker-compose utility. ----------------------------------------------
-dcdir="/usr/local/bin"
-dcbin="docker-compose"
-dcrel="1.8.1"
+# create local bin directory (if needed). --------------------------------------
+mkdir -p /usr/local/bin
+cd /usr/local/bin
 
-if [ -d "$dcdir" ]; then
-  cd ${dcdir}
-  curl -L "https://github.com/docker/compose/releases/download/${dcrel}/docker-compose-$(uname -s)-$(uname -m)" > ${dcbin}
-  chmod 755 ./${dcbin}
-fi
+# set current date for temporary filename. -------------------------------------
+curdate=$(date +"%Y-%m-%d")
+
+# install docker-compose utility. ----------------------------------------------
+dcbin="docker-compose"
+
+# retrieve version number of latest release.
+wget --no-verbose --server-response https://github.com/docker/compose/releases/latest >| wget-docker-compose.${curdate}.out 2>&1
+dcrelease=$(awk '/Location/ {print $2}' wget-docker-compose.${curdate}.out | awk -F "/" '{print $8}')
+rm -f wget-docker-compose.${curdate}.out
+
+# download docker compose utility from github.com.
+curl --silent --location "https://github.com/docker/compose/releases/download/${dcrelease}/docker-compose-$(uname -s)-$(uname -m)" --output ${dcbin}
+chmod 755 ./${dcbin}
+
+# verify installation.
+#docker-compose --version
+
