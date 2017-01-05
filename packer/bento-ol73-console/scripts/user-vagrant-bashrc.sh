@@ -16,8 +16,8 @@ JAVA_HOME=/usr/local/java/jdk180
 export JAVA_HOME
 
 # set ant home path.
-ANT_HOME=/usr/local/apache/apache-ant-1.9.7
-#ANT_HOME=/usr/local/apache/apache-ant-1.9.2
+ANT_HOME=/usr/local/apache/apache-ant-1.10.0
+#ANT_HOME=/usr/local/apache/apache-ant-1.9.7
 export ANT_HOME
 
 # set maven home environment variables.
@@ -90,6 +90,11 @@ alias vim='vim -u $HOME/.vim/vimrc.vim'
 
 # fix issue with bash shell tab completion.
 complete -r
+
+# source git completion file.
+if [ -f $HOME/.git-completion.bash ]; then
+  . $HOME/.git-completion.bash
+fi
 
 function lsf {
   echo ""

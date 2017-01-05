@@ -11,6 +11,35 @@ yum -y install scl-utils
 yum -y install git
 git --version
 
+# install git flow. ------------------------------------------------------------
+# download and install epel repository if needed.
+epel_repo="/etc/yum.repos.d/epel.repo"
+if [ ! -f "$epel_repo" ]; then
+  # create temporary scripts directory.
+  mkdir -p /tmp/scripts/oracle
+  cd /tmp/scripts/oracle
+
+  # install the epel repository.
+  wget --no-verbose https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+  yum repolist
+  yum -y install epel-release-latest-7.noarch.rpm
+fi
+
+# install git flow.
+yum -y install gitflow
+
+# verify git flow installation.
+#git flow version
+
+# install git completion for bash. ---------------------------------------------
+gcbin=".git-completion.bash"
+gcfolder="/home/vagrant"
+
+# download git completion for bash from github.com.
+curl --silent --location "https://github.com/git/git/raw/master/contrib/completion/git-completion.bash" --output ${gcfolder}/${gcbin}
+chown -R vagrant:vagrant ${gcfolder}/${gcbin}
+chmod 644 ${gcfolder}/${gcbin}
+
 # install oracle java se development kit 8u111. --------------------------------
 jdkbuild="8u111-b14"
 jdkbinary="jdk-8u111-linux-x64.tar.gz"
@@ -39,11 +68,11 @@ export PATH
 # verify installation.
 java -version
 
-# install apache ant 1.9.7. ----------------------------------------------------
-antbinary="apache-ant-1.9.7-bin.tar.gz"
-antfolder="apache-ant-1.9.7"
-#antbinary="apache-ant-1.9.2-bin.tar.gz"
-#antfolder="apache-ant-1.9.2"
+# install apache ant 1.10.0. ---------------------------------------------------
+antbinary="apache-ant-1.10.0-bin.tar.gz"
+antfolder="apache-ant-1.10.0"
+#antbinary="apache-ant-1.9.7-bin.tar.gz"
+#antfolder="apache-ant-1.9.7"
 
 # create apache parent folder.
 mkdir -p /usr/local/apache
