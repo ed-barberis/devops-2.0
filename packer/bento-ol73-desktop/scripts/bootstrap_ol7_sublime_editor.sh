@@ -32,10 +32,19 @@ for imgsize in "${imgsizearray[@]}"; do
   fi
 done
 
-# update home folder references in sublime desktop file.
-sed -i "s/\/opt\/sublime_text/\/usr\/local\/sublime_text\/${sublimefolder}/g" ./sublime_text.desktop
+# update home folder and icon references in sublime desktop file.
+sed -i "s/\/opt\/sublime_text/\/usr\/local\/sublime_text\/${sublimefolder}/g;s/sublime-text/\/usr\/share\/icons\/hicolor\/128x128\/apps\/sublime-text.png/g" ./sublime_text.desktop
 
-# install sublime desktop.
-echo "Installing sublime_text.desktop..."
+# install sublime desktop in applications menu.
+echo "Installing sublime_text.desktop in applications menu..."
 desktop-file-install --dir=/usr/share/applications/ ./sublime_text.desktop
 update-desktop-database /usr/share/applications/
+
+# install sublime launcher on user desktop.
+echo "Installing sublime_text.desktop on user desktop..."
+mkdir -p /home/vagrant/Desktop
+cd /home/vagrant/Desktop
+cp -f /usr/share/applications/sublime_text.desktop .
+
+chown -R vagrant:vagrant .
+chmod 755 ./sublime_text.desktop

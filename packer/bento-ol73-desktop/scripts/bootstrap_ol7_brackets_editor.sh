@@ -5,7 +5,7 @@
 mkdir -p /tmp/scripts/oracle
 cd /tmp/scripts/oracle
 
-# install adobe brackets text editor. -------------------------------------------------
+# install adobe brackets text editor. ------------------------------------------
 bracketsbinary="brackets-1.7.0-1.el7.nux.x86_64.rpm"
 bracketsfolder="/usr/share/brackets"
 
@@ -29,10 +29,19 @@ for imgsize in "${imgsizearray[@]}"; do
   fi
 done
 
-# update home folder references in brackets desktop file.
+# update home folder and category references in brackets desktop file.
 sed -i "s/\/opt\/brackets/\/usr\/share\/brackets/g;s/Categories=Development/Categories=TextEditor;Development;/g" ./brackets.desktop
 
-# install brackets desktop.
-echo "Installing brackets.desktop..."
+# install brackets desktop in applications menu.
+echo "Installing brackets.desktop in applications menu..."
 desktop-file-install --dir=/usr/share/applications/ ./brackets.desktop
 update-desktop-database /usr/share/applications/
+
+# install brackets launcher on user desktop.
+echo "Installing brackets.desktop on user desktop..."
+mkdir -p /home/vagrant/Desktop
+cd /home/vagrant/Desktop
+cp -f /usr/share/applications/brackets.desktop .
+
+chown -R vagrant:vagrant .
+chmod 755 ./brackets.desktop
