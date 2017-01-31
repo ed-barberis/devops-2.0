@@ -8,9 +8,9 @@ cd /tmp/scripts/oracle/opc-cli
 # update the repository list. --------------------------------------------------
 yum repolist
 
-# install python 2.x setup tools. ----------------------------------------------
-yum -y install python-setuptools
+# verify python 2.x setup tools. -----------------------------------------------
 python --version
+pip --version
 easy_install --version
 
 # install oracle public cloud (opc) cli client. --------------------------------
@@ -52,22 +52,24 @@ chmod 600 ${identity_domain}-passwd.txt
 oracle-compute --print_cli_version
 
 # create script to list oracle compute instances in json format.
+opccli_script="opc-cli-list-instances.sh"
+
 cd /tmp/scripts/oracle/opc-cli
-touch opc-cli-list-instances.sh
-echo "#!/bin/sh" >> opc-cli-list-instances.sh
-echo "" >> opc-cli-list-instances.sh
-echo "OPC_API=https://api-${opc_compute_zone}.compute.${opc_datacenter}.oraclecloud.com" >> opc-cli-list-instances.sh
-echo "export OPC_API" >> opc-cli-list-instances.sh
-echo "OPC_USER=/Compute-${identity_domain}/${username}" >> opc-cli-list-instances.sh
-echo "export OPC_USER" >> opc-cli-list-instances.sh
-echo "" >> opc-cli-list-instances.sh
-echo "oracle-compute -p /home/vagrant/${identity_domain}-passwd.txt list instance /Compute-${identity_domain}/${username} -f json" >> opc-cli-list-instances.sh
+touch ${opccli_script}
+echo "#!/bin/sh" >> ${opccli_script}
+echo "" >> ${opccli_script}
+echo "OPC_API=https://api-${opc_compute_zone}.compute.${opc_datacenter}.oraclecloud.com" >> ${opccli_script}
+echo "export OPC_API" >> ${opccli_script}
+echo "OPC_USER=/Compute-${identity_domain}/${username}" >> ${opccli_script}
+echo "export OPC_USER" >> ${opccli_script}
+echo "" >> ${opccli_script}
+echo "oracle-compute --pass=/home/vagrant/${identity_domain}-passwd.txt list instance /Compute-${identity_domain}/${username} --format=json" >> ${opccli_script}
 
 chown -R vagrant:vagrant .
-chmod 755 opc-cli-list-instances.sh
+chmod 755 ${opccli_script}
 
 # run the script.
-runuser -c "/tmp/scripts/oracle/opc-cli/opc-cli-list-instances.sh" - vagrant
+runuser -c "/tmp/scripts/oracle/opc-cli/${opccli_script}" - vagrant
 
 # change ownership for the entire temporary directory structure.
 cd /tmp/scripts

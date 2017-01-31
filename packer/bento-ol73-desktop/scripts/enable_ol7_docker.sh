@@ -8,9 +8,6 @@ systemctl enable docker
 # check that the docker service is running. ------------------------------------
 systemctl status docker
 
-# add user 'vagrant' to 'docker' group.
-#usermod -aG docker vagrant
-
 # display configuration info and version. --------------------------------------
 docker info
 docker version

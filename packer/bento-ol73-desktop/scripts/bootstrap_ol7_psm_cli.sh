@@ -8,11 +8,6 @@ cd /tmp/scripts/oracle
 # update the repository list. --------------------------------------------------
 yum repolist
 
-# install python 2.x pip. ------------------------------------------------------
-yum -y install python-pip
-python --version
-pip --version
-
 # install python 3.3. ----------------------------------------------------------
 yum -y install python33
 scl enable python33 -- python --version
@@ -29,8 +24,8 @@ password="Shining@2YouTH"
 identity_domain="gse00001969"
 
 # retrieve and install the psm-cli from the oracle cloud.
-curl --silent -X GET -u ${username}:${password} -H X-ID-TENANT-NAME:${identity_domain} https://psm.europe.oraclecloud.com/paas/core/api/v1.1/cli/${identity_domain}/client -o psmcli.zip
-scl enable python33 -- pip3 install -U psmcli.zip
+curl --silent --request GET --user ${username}:${password} --header X-ID-TENANT-NAME:${identity_domain} https://psm.europe.oraclecloud.com/paas/core/api/v1.1/cli/${identity_domain}/client --output psmcli.zip
+scl enable python33 -- pip3 install --upgrade psmcli.zip
 runuser -c "scl enable python33 -- psm --version" - vagrant
 
 # configure the psm-cli client. ------------------------------------------------
