@@ -1,4 +1,5 @@
 # .bashrc
+# desktop environment bash resource configuration for devops users.
 
 # source global definitions.
 if [ -f /etc/bashrc ]; then
@@ -16,13 +17,11 @@ JAVA_HOME=/usr/local/java/jdk180
 export JAVA_HOME
 
 # set ant home path.
-ANT_HOME=/usr/local/apache/apache-ant-1.10.0
-#ANT_HOME=/usr/local/apache/apache-ant-1.9.7
+ANT_HOME=/usr/local/apache/apache-ant
 export ANT_HOME
 
 # set maven home environment variables.
-M2_HOME=/usr/local/apache/apache-maven-3.3.9
-#M2_HOME=/usr/local/apache/apache-maven-3.2.5
+M2_HOME=/usr/local/apache/apache-maven
 export M2_HOME
 M2_REPO=$HOME/.m2
 export M2_REPO
@@ -30,6 +29,12 @@ MAVEN_OPTS=-Dfile.encoding="UTF-8"
 export MAVEN_OPTS
 M2=$M2_HOME/bin
 export M2
+
+# set git home paths.
+GIT_HOME=/usr/local/git/git
+export GIT_HOME
+GIT_FLOW_HOME=/usr/local/git/gitflow
+export GIT_FLOW_HOME
 
 # set postman home path.
 POSTMAN_HOME=/usr/local/google/Postman
@@ -55,8 +60,8 @@ PS1="${reset}${cyan}\h${blue}[${green}\u${blue}]${white}\$ "
 export PS1
 
 # add local applications to main PATH.
-PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$M2:$POSTMAN_HOME:$PATH
-#PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$M2:$PATH
+PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$M2:$GIT_HOME/bin:$GIT_FLOW_HOME/bin:$POSTMAN_HOME:$PATH
+#PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$M2:$GIT_HOME/bin:$GIT_FLOW_HOME/bin:$PATH
 export PATH
 
 # set oracle proxy.
@@ -91,10 +96,15 @@ alias vim='vim -u $HOME/.vim/vimrc.vim'
 # fix issue with bash shell tab completion.
 complete -r
 
-# source git completion file.
-if [ -f $HOME/.git-completion.bash ]; then
-  . $HOME/.git-completion.bash
-fi
+# process bash completion files.
+bcfiles=( .git-completion.bash .docker-completion.sh .docker-compose-completion.sh )
+
+for bcfile in ${bcfiles[@]}; do
+  # source bash completion file.
+  if [ -f $HOME/${bcfile} ]; then
+    . $HOME/${bcfile}
+  fi
+done
 
 function lsf {
   echo ""
