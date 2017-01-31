@@ -17,7 +17,7 @@ if [ -n "${http_proxy}" ]; then
 fi
 
 cp -f /vagrant/scripts/vim-files.tar.gz .
-tar -zxvf /vagrant/scripts/vim-files.tar.gz
+tar -zxvf /vagrant/scripts/vim-files.tar.gz --no-same-owner --no-overwrite-dir
 rm -f vim-files.tar.gz
 
 chown -R root:root .
@@ -39,7 +39,7 @@ if [ -n "${http_proxy}" ]; then
 fi
 
 cp -f /vagrant/scripts/vim-files.tar.gz .
-tar -zxvf /vagrant/scripts/vim-files.tar.gz
+tar -zxvf /vagrant/scripts/vim-files.tar.gz --no-same-owner --no-overwrite-dir
 rm -f vim-files.tar.gz
 
 chown -R vagrant:vagrant .
