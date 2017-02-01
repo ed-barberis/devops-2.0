@@ -146,6 +146,15 @@
       "type": "shell"
     },
     {
+      "inline": [
+        "sudo plymouth-set-default-theme details",
+        "sudo dracut -f",
+        "sudo systemctl reboot"
+      ],
+      "pause_before": "60s",
+      "type": "shell"
+    },
+    {
       "environment_vars": [
         "HOME_DIR=/home/vagrant",
         "http_proxy={{user `http_proxy`}}",
@@ -153,19 +162,19 @@
         "no_proxy={{user `no_proxy`}}"
       ],
       "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
+      "pause_before": "60s",
       "scripts": [
         "scripts/common/virtualbox.sh",
         "scripts/common/vmware.sh",
         "scripts/common/parallels.sh",
-        "scripts/oracle/bootstrap_ol7_desktop_devops_tools.sh",
         "scripts/oracle/bootstrap_ol7_console_devops_tools.sh",
+        "scripts/oracle/bootstrap_ol7_desktop_devops_tools.sh",
         "scripts/oracle/bootstrap_ol7_docker.sh",
         "scripts/oracle/bootstrap_ol7_ansible.sh",
         "scripts/oracle/cleanup.sh",
         "scripts/common/minimize.sh"
       ],
-      "type": "shell",
-      "pause_before": "60s"
+      "type": "shell"
     },
     {
       "inline": ["sudo usermod -aG vboxsf vagrant"],
