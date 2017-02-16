@@ -67,7 +67,7 @@ export PATH
 java -version
 
 # install apache ant. ----------------------------------------------------------
-antfolder="apache-ant-1.10.0"
+antfolder="apache-ant-1.10.1"
 antbinary="${antfolder}-bin.tar.gz"
 
 # create apache parent folder.

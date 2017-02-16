@@ -6,8 +6,8 @@ cd /root
 cp -p .bash_profile .bash_profile.orig
 cp -p .bashrc .bashrc.orig
 
-cp -f /vagrant/scripts/user-root-bash_profile.sh ./.bash_profile
-cp -f /vagrant/scripts/user-root-bashrc.sh ./.bashrc
+cp -f /tmp/scripts/oracle/users/user-root-bash_profile.sh ./.bash_profile
+cp -f /tmp/scripts/oracle/users/user-root-bashrc.sh ./.bashrc
 
 if [ -n "${http_proxy}" ]; then
   sed -i 's/#http_proxy/http_proxy/g' .bashrc
@@ -16,8 +16,8 @@ if [ -n "${http_proxy}" ]; then
   sed -i 's/#export https_proxy/export https_proxy/g' .bashrc
 fi
 
-cp -f /vagrant/scripts/vim-files.tar.gz .
-tar -zxvf /vagrant/scripts/vim-files.tar.gz --no-same-owner --no-overwrite-dir
+cp -f /tmp/scripts/oracle/tools/vim-files.tar.gz .
+tar -zxvf vim-files.tar.gz --no-same-owner --no-overwrite-dir
 rm -f vim-files.tar.gz
 
 chown -R root:root .
@@ -28,8 +28,8 @@ cd /home/vagrant
 cp -p .bash_profile .bash_profile.orig
 cp -p .bashrc .bashrc.orig
 
-cp -f /vagrant/scripts/user-vagrant-bash_profile.sh ./.bash_profile
-cp -f /vagrant/scripts/user-vagrant-bashrc.sh ./.bashrc
+cp -f /tmp/scripts/oracle/users/user-vagrant-bash_profile.sh ./.bash_profile
+cp -f /tmp/scripts/oracle/users/user-vagrant-bashrc.sh ./.bashrc
 
 if [ -n "${http_proxy}" ]; then
   sed -i 's/#http_proxy/http_proxy/g' .bashrc
@@ -38,12 +38,19 @@ if [ -n "${http_proxy}" ]; then
   sed -i 's/#export https_proxy/export https_proxy/g' .bashrc
 fi
 
-cp -f /vagrant/scripts/vim-files.tar.gz .
-tar -zxvf /vagrant/scripts/vim-files.tar.gz --no-same-owner --no-overwrite-dir
+cp -f /tmp/scripts/oracle/tools/vim-files.tar.gz .
+tar -zxvf vim-files.tar.gz --no-same-owner --no-overwrite-dir
 rm -f vim-files.tar.gz
 
 chown -R vagrant:vagrant .
 chmod 644 .bash_profile .bashrc
 
 # configure gnome-3 desktop properties for devops users. --------------------------
-runuser -c "/vagrant/scripts/config_ol7_gnome_desktop.sh" - vagrant
+echo ""
+cd /tmp/scripts/oracle
+pwd
+echo ""
+ls -alF
+echo ""
+chmod 755 config_ol7_gnome_desktop.sh
+runuser -c "/tmp/scripts/oracle/config_ol7_gnome_desktop.sh" - vagrant

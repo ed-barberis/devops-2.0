@@ -121,7 +121,7 @@
     },
     {
       "destination": "/tmp/scripts/oracle",
-      "source": "scripts/oracle/",
+      "source": "../scripts/oracle/",
       "type": "file"
     },
     {
@@ -137,7 +137,7 @@
         "scripts/centos/networking.sh",
         "scripts/common/sshd.sh",
         "scripts/common/vagrant.sh",
-        "scripts/oracle/bootstrap_ol7_uekr4.sh"
+        "../scripts/oracle/bootstrap_ol7_uekr4.sh"
       ],
       "type": "shell"
     },
@@ -167,11 +167,18 @@
         "scripts/common/virtualbox.sh",
         "scripts/common/vmware.sh",
         "scripts/common/parallels.sh",
-        "scripts/oracle/bootstrap_ol7_console_devops_tools.sh",
-        "scripts/oracle/bootstrap_ol7_desktop_devops_tools.sh",
-        "scripts/oracle/bootstrap_ol7_docker.sh",
-        "scripts/oracle/bootstrap_ol7_ansible.sh",
-        "scripts/oracle/cleanup.sh",
+        "../scripts/oracle/bootstrap_ol7_console_devops_tools.sh",
+        "../scripts/oracle/bootstrap_ol7_desktop_devops_tools.sh",
+        "../scripts/oracle/bootstrap_ol7_docker.sh",
+        "../scripts/oracle/bootstrap_ol7_ansible.sh",
+        "../scripts/oracle/bootstrap_ol7_git.sh",
+        "../scripts/oracle/bootstrap_ol7_atom_editor.sh",
+        "../scripts/oracle/bootstrap_ol7_brackets_editor.sh",
+        "../scripts/oracle/bootstrap_ol7_sublime_editor.sh",
+        "../scripts/oracle/bootstrap_ol7_desktop_users_env.sh",
+        "../scripts/oracle/bootstrap_ol7_opc_cli.sh",
+        "../scripts/oracle/bootstrap_ol7_psm_cli.sh",
+        "../scripts/oracle/cleanup.sh",
         "scripts/common/minimize.sh"
       ],
       "type": "shell"
