@@ -1,13 +1,13 @@
 #!/bin/sh -eux
-# create default console environment profiles for devops users.
+# create default headless (command-line) environment profiles for devops users.
 
 # create default environment profile for user 'root'. --------------------------
 cd /root
 cp -p .bash_profile .bash_profile.orig
 cp -p .bashrc .bashrc.orig
 
-cp -f /vagrant/scripts/users/user-root-bash_profile.sh ./.bash_profile
-cp -f /vagrant/scripts/users/user-root-bashrc.sh ./.bashrc
+cp -f /tmp/scripts/oracle/users/user-root-bash_profile.sh ./.bash_profile
+cp -f /tmp/scripts/oracle/users/user-root-bashrc.sh ./.bashrc
 
 if [ -n "${http_proxy}" ]; then
   sed -i 's/#http_proxy/http_proxy/g' .bashrc
@@ -16,7 +16,7 @@ if [ -n "${http_proxy}" ]; then
   sed -i 's/#export https_proxy/export https_proxy/g' .bashrc
 fi
 
-cp -f /vagrant/scripts/tools/vim-files.tar.gz .
+cp -f /tmp/scripts/oracle/tools/vim-files.tar.gz .
 tar -zxvf vim-files.tar.gz --no-same-owner --no-overwrite-dir
 rm -f vim-files.tar.gz
 
@@ -28,8 +28,8 @@ cd /home/vagrant
 cp -p .bash_profile .bash_profile.orig
 cp -p .bashrc .bashrc.orig
 
-cp -f /vagrant/scripts/users/user-vagrant-bash_profile.sh ./.bash_profile
-cp -f /vagrant/scripts/users/user-vagrant-bashrc.sh ./.bashrc
+cp -f /tmp/scripts/oracle/users/user-vagrant-bash_profile.sh ./.bash_profile
+cp -f /tmp/scripts/oracle/users/user-vagrant-bashrc.sh ./.bashrc
 
 if [ -n "${http_proxy}" ]; then
   sed -i 's/#http_proxy/http_proxy/g' .bashrc
@@ -38,7 +38,7 @@ if [ -n "${http_proxy}" ]; then
   sed -i 's/#export https_proxy/export https_proxy/g' .bashrc
 fi
 
-cp -f /vagrant/scripts/tools/vim-files.tar.gz .
+cp -f /tmp/scripts/oracle/tools/vim-files.tar.gz .
 tar -zxvf vim-files.tar.gz --no-same-owner --no-overwrite-dir
 rm -f vim-files.tar.gz
 

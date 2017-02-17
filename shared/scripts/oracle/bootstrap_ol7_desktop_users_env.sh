@@ -46,11 +46,6 @@ chown -R vagrant:vagrant .
 chmod 644 .bash_profile .bashrc
 
 # configure gnome-3 desktop properties for devops users. --------------------------
-echo ""
 cd /tmp/scripts/oracle
-pwd
-echo ""
-ls -alF
-echo ""
 chmod 755 config_ol7_gnome_desktop.sh
 runuser -c "/tmp/scripts/oracle/config_ol7_gnome_desktop.sh" - vagrant

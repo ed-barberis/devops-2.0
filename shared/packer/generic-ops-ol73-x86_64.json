@@ -151,7 +151,7 @@
         "sudo dracut -f",
         "sudo systemctl reboot"
       ],
-      "pause_before": "60s",
+      "pause_before": "10s",
       "type": "shell"
     },
     {
@@ -162,22 +162,18 @@
         "no_proxy={{user `no_proxy`}}"
       ],
       "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
-      "pause_before": "60s",
+      "pause_before": "10s",
       "scripts": [
         "scripts/common/virtualbox.sh",
         "scripts/common/vmware.sh",
         "scripts/common/parallels.sh",
-        "../scripts/oracle/bootstrap_ol7_console_devops_tools.sh",
-        "../scripts/oracle/bootstrap_ol7_desktop_devops_tools.sh",
+        "../scripts/oracle/bootstrap_ol7_headless_devops_tools.sh",
         "../scripts/oracle/bootstrap_ol7_docker.sh",
         "../scripts/oracle/bootstrap_ol7_ansible.sh",
         "../scripts/oracle/bootstrap_ol7_git.sh",
-        "../scripts/oracle/bootstrap_ol7_atom_editor.sh",
-        "../scripts/oracle/bootstrap_ol7_brackets_editor.sh",
-        "../scripts/oracle/bootstrap_ol7_sublime_editor.sh",
-        "../scripts/oracle/bootstrap_ol7_desktop_users_env.sh",
-        "../scripts/oracle/bootstrap_ol7_opc_cli.sh",
-        "../scripts/oracle/bootstrap_ol7_psm_cli.sh",
+        "../scripts/oracle/bootstrap_ol7_headless_users_env.sh",
+        "../scripts/oracle/bootstrap_ol7_oracle_opc_cli.sh",
+        "../scripts/oracle/bootstrap_ol7_oracle_psm_cli.sh",
         "../scripts/oracle/cleanup.sh",
         "scripts/common/minimize.sh"
       ],
@@ -190,9 +186,9 @@
   ],
   "variables": {
     "arch": "64",
-    "box_basename": "oracle-7.3-desktop",
+    "box_basename": "generic-ops-ol73",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
-    "cpus": "2",
+    "cpus": "1",
     "disk_size": "65536",
     "git_revision": "__unknown_git_revision__",
     "headless": "false",
@@ -201,15 +197,15 @@
     "iso_checksum": "130EE6CDA827AA092B6EB66A145420F9801AA321",
     "iso_checksum_type": "sha1",
     "iso_name": "OracleLinux-R7-U3-Server-x86_64-dvd.iso",
-    "ks_path": "oracle-7.3-desktop/ks.cfg",
-    "memory": "6144",
+    "ks_path": "oracle-linux-7.3/ol73-headless-ks.cfg",
+    "memory": "4096",
     "metadata": "floppy/dummy_metadata.json",
     "mirror": "http://mirrors.dotsrc.org/oracle-linux",
     "mirror_directory": "OL7/u3/x86_64",
-    "name": "oracle-7.3-desktop",
+    "name": "generic-ops-ol73",
     "no_proxy": "{{env `no_proxy`}}",
     "post_shutdown_delay": "10s",
-    "template": "oracle-7.3-desktop-x86_64",
+    "template": "generic-ops-ol73-x86_64",
     "version": "2.2.TIMESTAMP"
   }
 }

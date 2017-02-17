@@ -1,5 +1,5 @@
 #!/bin/sh -eux
-# install useful command-line developer tools.
+# install useful headless (command-line) developer tools.
 
 # create temporary scripts directory. ------------------------------------------
 mkdir -p /tmp/scripts/oracle

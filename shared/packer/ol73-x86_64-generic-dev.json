@@ -151,7 +151,7 @@
         "sudo dracut -f",
         "sudo systemctl reboot"
       ],
-      "pause_before": "10s",
+      "pause_before": "60s",
       "type": "shell"
     },
     {
@@ -162,18 +162,22 @@
         "no_proxy={{user `no_proxy`}}"
       ],
       "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
-      "pause_before": "10s",
+      "pause_before": "60s",
       "scripts": [
         "scripts/common/virtualbox.sh",
         "scripts/common/vmware.sh",
         "scripts/common/parallels.sh",
         "../scripts/oracle/bootstrap_ol7_console_devops_tools.sh",
+        "../scripts/oracle/bootstrap_ol7_desktop_devops_tools.sh",
         "../scripts/oracle/bootstrap_ol7_docker.sh",
         "../scripts/oracle/bootstrap_ol7_ansible.sh",
         "../scripts/oracle/bootstrap_ol7_git.sh",
-        "../scripts/oracle/bootstrap_ol7_console_users_env.sh",
-        "../scripts/oracle/bootstrap_ol7_opc_cli.sh",
-        "../scripts/oracle/bootstrap_ol7_psm_cli.sh",
+        "../scripts/oracle/bootstrap_ol7_atom_editor.sh",
+        "../scripts/oracle/bootstrap_ol7_brackets_editor.sh",
+        "../scripts/oracle/bootstrap_ol7_sublime_editor.sh",
+        "../scripts/oracle/bootstrap_ol7_desktop_users_env.sh",
+        "../scripts/oracle/bootstrap_ol7_oracle_opc_cli.sh",
+        "../scripts/oracle/bootstrap_ol7_oracle_psm_cli.sh",
         "../scripts/oracle/cleanup.sh",
         "scripts/common/minimize.sh"
       ],
@@ -186,7 +190,7 @@
   ],
   "variables": {
     "arch": "64",
-    "box_basename": "oracle-7.3-console",
+    "box_basename": "oracle-7.3-desktop",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
     "cpus": "2",
     "disk_size": "65536",
@@ -197,15 +201,15 @@
     "iso_checksum": "130EE6CDA827AA092B6EB66A145420F9801AA321",
     "iso_checksum_type": "sha1",
     "iso_name": "OracleLinux-R7-U3-Server-x86_64-dvd.iso",
-    "ks_path": "oracle-7.3-console/ks.cfg",
+    "ks_path": "oracle-7.3-desktop/ks.cfg",
     "memory": "6144",
     "metadata": "floppy/dummy_metadata.json",
     "mirror": "http://mirrors.dotsrc.org/oracle-linux",
     "mirror_directory": "OL7/u3/x86_64",
-    "name": "oracle-7.3-console",
+    "name": "oracle-7.3-desktop",
     "no_proxy": "{{env `no_proxy`}}",
     "post_shutdown_delay": "10s",
-    "template": "oracle-7.3-console-x86_64",
+    "template": "oracle-7.3-desktop-x86_64",
     "version": "2.2.TIMESTAMP"
   }
 }
