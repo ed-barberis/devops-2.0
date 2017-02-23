@@ -4,7 +4,7 @@ DevOps 2.0 repository for building and testing containerized microservices.
 
 ## Overview
 
-The DevOps 2.0 project enables the user to build two types of [VirtualBox](https://www.virtualbox.org/) VMs. A console (headless) VM designed for an IT Administrator role, and a full desktop VM designed for a Developer role.
+The DevOps 2.0 project enables the user to build two types of [VirtualBox](https://www.virtualbox.org/) VMs. A console (headless) VM designed for an Operations role, and a full desktop VM designed for a Developer role.
 
 To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the following open source software needs to be installed on the host machine:
 
@@ -127,6 +127,9 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
     ```
     $ git clone https://github.com/ed-barberis/devops-2.0.git devops-2.0
+    $ cd devops-2.0
+    $ git fetch origin
+    $ git checkout -b develop origin/develop
     ```
 
 3.	Fix bug in Vagrant VB-Guest Plugin File '`oracle.rb`':
@@ -134,14 +137,14 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     ```
     $ cd /c/Users/<your-username>/.vagrant.d/gems/2.2.5/gems/vagrant-vbguest-0.13.0/lib/vagrant-vbguest/installers
     $ cp –p oracle.rb oracle.rb.orig
-    $ cp /<drive>/projects/devops-2.0/packer/bento-ol73-desktop/shared/oracle.rb .
+    $ cp /<drive>/projects/devops-2.0/shared/patches/vagrant-vbguest/oracle.rb .
     ```
 
 4.	Fix bug in Vagrant VB-Guest Plugin File ‘`download.rb`’:
     ```
     $ cd /c/Users/<your-username>/.vagrant.d/gems/2.2.5/gems/vagrant-vbguest-0.13.0/lib/vagrant-vbguest
     $ cp –p download.rb download.rb.orig
-    $ cp /<drive>/projects/devops-2.0/packer/bento-ol73-desktop/shared/download.rb .
+    $ cp /<drive>/projects/devops-2.0/shared/patches/vagrant-vbguest/download.rb .
     ```
 
 ## Build and Import the Vagrant Box Images
@@ -149,90 +152,90 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 1.	Start VirtualBox:  
     Start Menu -- > All apps -- > Oracle VM VirtualBox -- > Oracle VM VirtualBox
 
-2.	Build the Oracle Linux 7.3 console box:
+2.	Build the Oracle Linux 7.3 'ops' box (headless):
     ```
-    $ cd /<drive>/projects/devops-2.0/chef/bento
-    $ packer build -only=virtualbox-iso oracle-7.3-console-x86_64.json
+    $ cd /<drive>/projects/devops-2.0/shared/packer
+    $ packer build -only=virtualbox-iso generic-ops-ol73-x86_64.json
     ```
     (NOTE: This will take several minutes to run.)
 
-3.	Build the Oracle Linux 7.3 desktop box:
+3.	Build the Oracle Linux 7.3 'dev' box (desktop):
     ```
-    $ packer build -only=virtualbox-iso oracle-7.3-desktop-x86_64.json
+    $ packer build -only=virtualbox-iso generic-dev-ol73-x86_64.json
     ```
     (NOTE: This will take several minutes to run.  However, this build will be shorter, because the ISO image for Oracle Linux 7.3 has been cached.)
 
-4.	Import the Oracle Linux 7.3 console box image:
+4.	Import the Oracle Linux 7.3 'ops' box image (headless):
     ```
     $ cd builds
-    $ vagrant box add bento-ol73-console oracle-7.3-console.virtualbox.box
+    $ vagrant box add generic-ops-ol73 generic-ops-ol73.virtualbox.box
     ```
 
-5.	Import the Oracle Linux 7.3 desktop box image:
+5.	Import the Oracle Linux 7.3 'dev' box image (desktop):
     ```
-    $ vagrant box add bento-ol73-desktop oracle-7.3-desktop.virtualbox.box
+    $ vagrant box add generic-dev-ol73 generic-dev-ol73.virtualbox.box
     ```
 
 6.	List the Vagrant box images:
     ```
     $ vagrant box list
-    bento-ol73-console (virtualbox, 0)
-    bento-ol73-desktop (virtualbox, 0)
+    generic-dev-ol73 (virtualbox, 0)
+    generic-ops-ol73 (virtualbox, 0)
     …
     ```
 
 ## Provision the VirtualBox Images
 
-1.	Provision the __IT Administrator VM__ with Oracle Linux 7.3 console:
+1.	Provision the __Operations VM__ with Oracle Linux 7.3 (headless):
     ```
-    $ cd /<drive>/projects/devops-2.0/packer/bento-ol73-console
+    $ cd /<drive>/projects/devops-2.0/projects/generic/vms/ops
     $ vagrant up
     ```
     (NOTE: This will take a few minutes to run the provisioning scripts.)
     ```
     $ vagrant ssh
-    bento-ol73-console[vagrant]$ ansible –version
+    generic-ops[vagrant]$ ansible –version
     ansible 2.2.1.0
         config file = /etc/ansible/ansible.cfg
         configured module search path = Default w/o overrides
-    bento-ol73-console[vagrant]$ docker –version
+    generic-ops[vagrant]$ docker –version
     Docker version 1.12.6, build 1512168
-    bento-ol73-console[vagrant]$ <run other commands>
-    bento-ol73-console[vagrant]$ exit
+    generic-ops[vagrant]$ <run other commands>
+    generic-ops[vagrant]$ exit
     $ vagrant halt
     ```
 
-2.	Provision the __Developer VM__ with Oracle Linux 7.3 desktop:
+2.	Provision the __Developer VM__ with Oracle Linux 7.3 (desktop):
     ```
-    $ cd /<drive>/projects/devops-2.0/packer/bento-ol73-desktop
+    $ cd /<drive>/projects/devops-2.0/projects/generic/vms/dev
     $ vagrant up
     ```
     (NOTE: This will take a few more minutes to run the provisioning scripts. The desktop image has added dev tools.)
     ```
     $ vagrant ssh
-    bento-ol73-desktop[vagrant]$ ansible –version
+    generic-dev[vagrant]$ ansible –version
     ansible 2.2.1.0
         config file = /etc/ansible/ansible.cfg
         configured module search path = Default w/o overrides
-    bento-ol73-desktop[vagrant]$ docker –version
+    generic-dev[vagrant]$ docker –version
     Docker version 1.12.6, build 1512168
-    bento-ol73-desktop[vagrant]$ <run other commands>
-    bento-ol73-desktop[vagrant]$ exit
+    generic-dev[vagrant]$ <run other commands>
+    generic-dev[vagrant]$ exit
     $ vagrant halt
     ```
 
-The Developer VM with Oracle Linux 7.3 desktop can also be used directly from VirtualBox.
+The Developer VM with Oracle Linux 7.3 (desktop) can also be used directly from VirtualBox.
 
 ## DevOps 2.0 Bill-of-Materials
 
-The following command-line tools and utilities are pre-installed in both the __IT Administrator VM__ (Oracle Linux 7.3 console) and the __Developer VM__ (Oracle Linux 7.3 desktop):
+The following command-line tools and utilities are pre-installed in both the __Operations VM__ (Oracle Linux 7.3 console) and the __Developer VM__ (Oracle Linux 7.3 desktop):
 
 -	Ansible 2.2.1.0
     -	Ansible Container 0.3.0-pre
--	Ant 1.10.0
+-	Ant 1.10.1
 -	Docker 1.12.6
     -	Docker Bash Completion
-    -	Docker Compose 1.10.0
+    -	Docker Compose 1.11.2
     -	Docker Compose Completion
 -	Git 2.11.1
     -	Git Bash Completion
@@ -248,10 +251,10 @@ The following command-line tools and utilities are pre-installed in both the __I
 
 The following GUI tools are pre-installed in the __Developer VM__ (Oracle Linux 7.3 desktop) only:
 
--	Atom Editor 1.13.1
+-	Atom Editor 1.14.3
 -	Brackets Editor 1.7 Experimental 1.7.0-0
 -	Chrome 56.0.2924.87 (64-bit)
 -	Firefox 45.7.0
 -	GVim 7.4.160-1
--	Postman 4.9.3
+-	Postman 4.10.2
 -	Sublime Text 3 Build 3126
