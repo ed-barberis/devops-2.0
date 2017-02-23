@@ -19,6 +19,10 @@ chown -R root:root ./${mvnfolder}
 ln -s ${mvnfolder} apache-maven
 rm -f ${mvnbinary}
 
+# set jdk home environment variables.
+JAVA_HOME=/usr/local/java/jdk180
+export JAVA_HOME
+
 # set maven home environment variables.
 M2_HOME=/usr/local/apache/apache-maven
 export M2_HOME
@@ -28,7 +32,7 @@ MAVEN_OPTS=-Dfile.encoding="UTF-8"
 export MAVEN_OPTS
 M2=$M2_HOME/bin
 export M2
-PATH=${M2}:$PATH
+PATH=${M2}:${JAVA_HOME}/bin:$PATH
 export PATH
 
 # verify installation.

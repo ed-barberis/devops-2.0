@@ -18,8 +18,8 @@ chmod 755 terraform
 rm -f ${terraform_binary}
 
 # set terraform environment variables.
-PATH=/usr/local/bin:$PATH
-export PATH
+#PATH=/usr/local/bin:$PATH
+#export PATH
 
 # verify installation.
-terraform --version
+#terraform --version

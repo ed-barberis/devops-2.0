@@ -18,10 +18,14 @@ chown -R root:root ./${antfolder}
 ln -s ${antfolder} apache-ant
 rm -f ${antbinary}
 
+# set jdk home environment variables.
+JAVA_HOME=/usr/local/java/jdk180
+export JAVA_HOME
+
 # set ant home environment variables.
 ANT_HOME=/usr/local/apache/apache-ant
 export ANT_HOME
-PATH=${ANT_HOME}/bin:$PATH
+PATH=${ANT_HOME}/bin:${JAVA_HOME}/bin:$PATH
 export PATH
 
 # verify installation.

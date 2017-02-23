@@ -18,8 +18,8 @@ chmod 755 packer
 rm -f ${packer_binary}
 
 # set packer environment variables.
-PATH=/usr/local/bin:$PATH
-export PATH
+#PATH=/usr/local/bin:$PATH
+#export PATH
 
 # verify installation.
-packer --version
+#packer --version

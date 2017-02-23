@@ -25,6 +25,7 @@ yum -y install ${atomrepo}
 
 # verify installation.
 #atom --version
+#runuser -c "atom --version" - vagrant
 
 # install atom markdown plugins.
 runuser -c "apm install tool-bar" - vagrant

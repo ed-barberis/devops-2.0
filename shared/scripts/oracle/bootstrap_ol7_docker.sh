@@ -77,8 +77,12 @@ rm -f curl-docker-compose.${curdate}.out2
 curl --silent --location "https://github.com/docker/compose/releases/download/${dcrelease}/docker-compose-$(uname -s)-$(uname -m)" --output ${dcbin}
 chmod 755 ./${dcbin}
 
+# set docker-compose home environment variables.
+PATH=/usr/local/bin:$PATH
+export PATH
+
 # verify installation.
-#docker-compose --version
+docker-compose --version
 
 # install docker compose completion for bash. ----------------------------------
 dccompletion_binary=".docker-compose-completion.sh"
