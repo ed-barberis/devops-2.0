@@ -36,7 +36,7 @@ curdate=$(date +"%Y-%m-%d")
 cd /home/vagrant
 opc_api_var="https://api-${opc_compute_zone}.compute.${opc_datacenter}.oraclecloud.com"
 opc_user_var="/Compute-${identity_domain}/${username}"
-awk -v opc_api=${opc_api_var} -v opc_user=${opc_user_var} -f /vagrant/scripts/enable_ol7_opc_cli.awk /vagrant/scripts/users/user-vagrant-bashrc.sh > .bashrc.${curdate}.opc-cli
+awk -v opc_api=${opc_api_var} -v opc_user=${opc_user_var} -f /vagrant/scripts/enable_ol7_oracle_opc_cli.awk /vagrant/scripts/users/user-vagrant-bashrc.sh > .bashrc.${curdate}.opc-cli
 mv -f .bashrc.${curdate}.opc-cli .bashrc
 
 chown vagrant:vagrant .bashrc
