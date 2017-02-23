@@ -1,5 +1,5 @@
 # .bashrc
-# desktop environment bash resource configuration for devops users.
+# bash resource configuration for devops users.
 
 # source global definitions.
 if [ -f /etc/bashrc ]; then
@@ -36,9 +36,15 @@ export GIT_HOME
 GIT_FLOW_HOME=/usr/local/git/gitflow
 export GIT_FLOW_HOME
 
+# set go home paths.
+GOROOT=/usr/local/google/go
+export GOROOT
+GOPATH=$HOME/go
+export GOPATH
+
 # set postman home path.
-POSTMAN_HOME=/usr/local/google/Postman
-export POSTMAN_HOME
+#POSTMAN_HOME=/usr/local/google/Postman
+#export POSTMAN_HOME
 
 # define prompt code and colors.
 reset='\[\e]0;\w\a\]'
@@ -60,8 +66,8 @@ PS1="${reset}${cyan}\h${blue}[${green}\u${blue}]${white}\$ "
 export PS1
 
 # add local applications to main PATH.
-PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$M2:$GIT_HOME/bin:$GIT_FLOW_HOME/bin:$POSTMAN_HOME:$PATH
-#PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$M2:$GIT_HOME/bin:$GIT_FLOW_HOME/bin:$PATH
+PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$M2:$GIT_HOME/bin:$GIT_FLOW_HOME/bin:$GOROOT/bin:$PATH
+#PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$M2:$GIT_HOME/bin:$GIT_FLOW_HOME/bin:$GOROOT/bin:$POSTMAN_HOME:$PATH
 export PATH
 
 # set oracle proxy.
@@ -86,7 +92,7 @@ export HISTCONTROL
 # define system alias commands.
 alias back='cd $OLDPWD; pwd'
 alias c=clear
-alias gvim='gvim -u $HOME/.vim/vimrc.vim'
+#alias gvim='gvim -u $HOME/.vim/vimrc.vim'
 alias here='cd $here; pwd'
 alias more='less'
 alias there='cd $there; pwd'

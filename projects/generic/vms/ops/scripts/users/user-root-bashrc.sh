@@ -1,5 +1,5 @@
 # .bashrc
-# desktop environment bash resource configuration for devops administrators.
+# bash resource configuration for devops administrators.
 
 # user 'root' specific aliases and functions.
 alias rm='rm -i'
@@ -63,7 +63,7 @@ export HISTCONTROL
 # define system alias commands.
 alias back='cd $OLDPWD; pwd'
 alias c=clear
-alias gvim='gvim -u $HOME/.vim/vimrc.vim'
+#alias gvim='gvim -u $HOME/.vim/vimrc.vim'
 alias here='cd $here; pwd'
 alias more='less'
 alias there='cd $there; pwd'

@@ -1,5 +1,5 @@
 # .bashrc
-# console environment bash resource configuration for devops administrators.
+# bash resource configuration for devops administrators.
 
 # user 'root' specific aliases and functions.
 alias rm='rm -i'
