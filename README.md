@@ -10,12 +10,12 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
 -	VirtualBox 5.1.14
     -   VirtualBox Extension Pack 5.1.14
--	Vagrant 1.9.1 with Plugins
+-	Vagrant 1.9.2 with Plugins
 	-	vagrant-cachier 1.2.1
-	-	vagrant-share 1.1.6
+	-	vagrant-share 1.1.7
 	-	vagrant-vbguest 0.13.0
--	Packer 0.12.2
--	Git 2.11.1 for Win64
+-	Packer 0.12.3
+-	Git 2.12.0 for Win64
 	-	wget 1.9.1
 	-	tree 1.5.2.2
 
@@ -25,15 +25,15 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
 2.	Install [VirtualBox Extension Pack 5.1.14](http://download.virtualbox.org/virtualbox/5.1.14/Oracle_VM_VirtualBox_Extension_Pack-5.1.14-112924.vbox-extpack).
 
-3.	Install [Vagrant 1.9.1 for Windows 64-bit](https://releases.hashicorp.com/vagrant/1.9.1/vagrant_1.9.1.msi).  
+3.	Install [Vagrant 1.9.2 for Windows 64-bit](https://releases.hashicorp.com/vagrant/1.9.2/vagrant_1.9.2.msi).  
     Suggested install folder:  
     `C:\HashiCorp\Vagrant`
 
-4.	Install [Packer 0.12.2 for Windows 64-bit](https://releases.hashicorp.com/packer/0.12.2/packer_0.12.2_windows_amd64.zip).  
+4.	Install [Packer 0.12.3 for Windows 64-bit](https://releases.hashicorp.com/packer/0.12.3/packer_0.12.3_windows_amd64.zip).  
     Create suggested install folder and extract contents of ZIP file to:  
     `C:\HashiCorp\Packer\bin`
 
-5.	Install [Git 2.11.1 for Windows 64-bit](https://github.com/git-for-windows/git/releases/download/v2.11.1.windows.1/Git-2.11.1-64-bit.exe).
+5.	Install [Git 2.12.0 for Windows 64-bit](https://github.com/git-for-windows/git/releases/download/v2.12.0.windows.1/Git-2.12.0-64-bit.exe).
 
 6.	Install optional add-ons for Git Bash.  
     Install [wget 1.9.1 for Windows](https://sourceforge.net/projects/mingw/files/Other/mingwPORT/Current%20Releases/wget-1.9.1-mingwPORT.tar.bz2/download).  
@@ -68,13 +68,13 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
     ```
     $ git --version
-    git version 2.11.1.windows.1
+    git version 2.12.0.windows.1
 
     $ vagrant --version
-    Vagrant 1.9.1
+    Vagrant 1.9.2
 
     $ packer --version
-    0.12.2
+    0.12.3
     ```
 
 6.	Install or update the following Vagrant Plugins:
@@ -95,7 +95,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     ```
     $ vagrant plugin list
     vagrant-cachier (1.2.1)
-    vagrant-share (1.1.6, system)
+    vagrant-share (1.1.7, system)
     vagrant-vbguest (0.13.0)
     ```
 
@@ -237,24 +237,27 @@ The following command-line tools and utilities are pre-installed in both the __O
     -	Docker Bash Completion
     -	Docker Compose 1.11.2
     -	Docker Compose Completion
--	Git 2.11.1
+-	Git 2.12.0
     -	Git Bash Completion
     -	Git-Flow 0.4.2-pre
+-   Go 1.8
 -	Java JDK 8 Update 121
 -	Maven 3.3.9
 -	Oracle Public Cloud (OPC) CLI 16.3.6.20160912.235155
--	PaaS Service Manager (PSM) CLI 1.1.11
+-	PaaS Service Manager (PSM) CLI 1.1.12
+-   Packer 0.12.3
 -	Python 2.7.5
     -	Pip 9.0.1
 -	Python 3.3.2
     -	Pip3 9.0.1
+-   Terraform 0.8.8
 
 The following GUI tools are pre-installed in the __Developer VM__ (Oracle Linux 7.3 desktop) only:
 
--	Atom Editor 1.14.3
+-	Atom Editor 1.14.4
 -	Brackets Editor 1.7 Experimental 1.7.0-0
 -	Chrome 56.0.2924.87 (64-bit)
 -	Firefox 45.7.0
 -	GVim 7.4.160-1
--	Postman 4.10.2
+-	Postman 4.10.3
 -	Sublime Text 3 Build 3126
