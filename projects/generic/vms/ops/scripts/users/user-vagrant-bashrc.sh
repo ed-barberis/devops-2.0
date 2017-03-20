@@ -30,6 +30,10 @@ export MAVEN_OPTS
 M2=$M2_HOME/bin
 export M2
 
+# set gradle home path.
+GRADLE_HOME=/usr/local/gradle/gradle
+export GRADLE_HOME
+
 # set git home paths.
 GIT_HOME=/usr/local/git/git
 export GIT_HOME
@@ -66,8 +70,8 @@ PS1="${reset}${cyan}\h${blue}[${green}\u${blue}]${white}\$ "
 export PS1
 
 # add local applications to main PATH.
-PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$M2:$GIT_HOME/bin:$GIT_FLOW_HOME/bin:$GOROOT/bin:$PATH
-#PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$M2:$GIT_HOME/bin:$GIT_FLOW_HOME/bin:$GOROOT/bin:$POSTMAN_HOME:$PATH
+PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$M2:$GRADLE_HOME/bin:$GIT_HOME/bin:$GIT_FLOW_HOME/bin:$GOROOT/bin:$PATH
+#PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$M2:$GRADLE_HOME/bin:$GIT_HOME/bin:$GIT_FLOW_HOME/bin:$GOROOT/bin:$POSTMAN_HOME:$PATH
 export PATH
 
 # set oracle proxy.

@@ -171,6 +171,7 @@
         "../scripts/oracle/bootstrap_ol7_oracle_java_jdk.sh",
         "../scripts/oracle/bootstrap_ol7_apache_ant.sh",
         "../scripts/oracle/bootstrap_ol7_apache_maven.sh",
+        "../scripts/oracle/bootstrap_ol7_gradle.sh",
         "../scripts/oracle/bootstrap_ol7_docker.sh",
         "../scripts/oracle/bootstrap_ol7_ansible.sh",
         "../scripts/oracle/bootstrap_ol7_golang.sh",
