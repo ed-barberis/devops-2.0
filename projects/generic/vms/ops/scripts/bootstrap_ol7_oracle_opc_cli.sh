@@ -14,11 +14,11 @@ pip --version
 easy_install --version
 
 # install oracle public cloud (opc) cli client. --------------------------------
-username="cloud.admin"
-password="Shining@2YouTH"
-identity_domain="gse00001969"
-opc_datacenter="em2"
-opc_compute_zone="z17"
+username="<username>"
+password="<password>"
+identity_domain="<identity_domain>"
+opc_datacenter="<opc_datacenter>"
+opc_compute_zone="<opc_compute_zone>"
 opc_cli_binary="opc-cli-1.1.0.zip"
 
 # retrieve and install the opc-cli from the oracle cloud (local if needed).

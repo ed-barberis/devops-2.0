@@ -174,12 +174,11 @@
         "../scripts/oracle/bootstrap_ol7_docker.sh",
         "../scripts/oracle/bootstrap_ol7_ansible.sh",
         "../scripts/oracle/bootstrap_ol7_golang.sh",
+        "../scripts/oracle/bootstrap_ol7_python3.sh",
         "../scripts/oracle/bootstrap_ol7_hashicorp_packer.sh",
         "../scripts/oracle/bootstrap_ol7_hashicorp_terraform.sh",
         "../scripts/oracle/bootstrap_ol7_git.sh",
         "../scripts/oracle/bootstrap_ol7_headless_users_env.sh",
-        "../scripts/oracle/bootstrap_ol7_oracle_opc_cli.sh",
-        "../scripts/oracle/bootstrap_ol7_oracle_psm_cli.sh",
         "../scripts/oracle/cleanup.sh",
         "scripts/common/minimize.sh"
       ],
