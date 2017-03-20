@@ -8,8 +8,8 @@ The DevOps 2.0 project enables the user to build two types of [VirtualBox](https
 
 To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the following open source software needs to be installed on the host machine:
 
--	VirtualBox 5.1.14
-    -   VirtualBox Extension Pack 5.1.14
+-	VirtualBox 5.1.18
+    -   VirtualBox Extension Pack 5.1.18
 -	Vagrant 1.9.2 with Plugins
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 1.1.7
@@ -21,9 +21,9 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
 ## Installation Instructions - Windows 64-Bit
 
-1.	Install [VirtualBox 5.1.14 for Windows 64-bit](http://download.virtualbox.org/virtualbox/5.1.14/VirtualBox-5.1.14-112924-Win.exe).
+1.	Install [VirtualBox 5.1.18 for Windows 64-bit](http://download.virtualbox.org/virtualbox/5.1.18/VirtualBox-5.1.18-114002-Win.exe).
 
-2.	Install [VirtualBox Extension Pack 5.1.14](http://download.virtualbox.org/virtualbox/5.1.14/Oracle_VM_VirtualBox_Extension_Pack-5.1.14-112924.vbox-extpack).
+2.	Install [VirtualBox Extension Pack 5.1.18](http://download.virtualbox.org/virtualbox/5.1.18/Oracle_VM_VirtualBox_Extension_Pack-5.1.18-114002.vbox-extpack).
 
 3.	Install [Vagrant 1.9.2 for Windows 64-bit](https://releases.hashicorp.com/vagrant/1.9.2/vagrant_1.9.2.msi).  
     Suggested install folder:  
@@ -80,13 +80,13 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 6.	Install or update the following Vagrant Plugins:
 
     ```
-    $ vagrant plugin install vagrant-cachier –or–
+    $ vagrant plugin install vagrant-cachier -or-
     $ vagrant plugin update vagrant-cachier
 
-    $ vagrant plugin install vagrant-share –or–
+    $ vagrant plugin install vagrant-share -or-
     $ vagrant plugin update vagrant-share
 
-    $ vagrant plugin install vagrant-vbguest –or–
+    $ vagrant plugin install vagrant-vbguest -or-
     $ vagrant plugin update vagrant-vbguest
     ```
 
@@ -110,8 +110,8 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
     ```
     $ git config --global user.name="<your_name>"
-    $ git config --global user.email=”<your_email>”
-    $ git config --global –list
+    $ git config --global user.email="<your_email>"
+    $ git config --global -list
     ```
 
 ## Get the Code
@@ -119,7 +119,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 1.	Create a folder for your DevOps 2.0 project:
 
     ```
-    $ mkdir –p /<drive>/projects
+    $ mkdir -p /<drive>/projects
     $ cd /<drive>/projects
     ```
 
@@ -136,14 +136,14 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
     ```
     $ cd /c/Users/<your-username>/.vagrant.d/gems/2.2.5/gems/vagrant-vbguest-0.13.0/lib/vagrant-vbguest/installers
-    $ cp –p oracle.rb oracle.rb.orig
+    $ cp -p oracle.rb oracle.rb.orig
     $ cp /<drive>/projects/devops-2.0/shared/patches/vagrant-vbguest/oracle.rb .
     ```
 
-4.	Fix bug in Vagrant VB-Guest Plugin File ‘`download.rb`’:
+4.	Fix bug in Vagrant VB-Guest Plugin File '`download.rb`':
     ```
     $ cd /c/Users/<your-username>/.vagrant.d/gems/2.2.5/gems/vagrant-vbguest-0.13.0/lib/vagrant-vbguest
-    $ cp –p download.rb download.rb.orig
+    $ cp -p download.rb download.rb.orig
     $ cp /<drive>/projects/devops-2.0/shared/patches/vagrant-vbguest/download.rb .
     ```
 
@@ -181,7 +181,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     $ vagrant box list
     generic-dev-ol73 (virtualbox, 0)
     generic-ops-ol73 (virtualbox, 0)
-    …
+    ...
     ```
 
 ## Provision the VirtualBox Images
@@ -194,11 +194,11 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     (NOTE: This will take a few minutes to run the provisioning scripts.)
     ```
     $ vagrant ssh
-    generic-ops[vagrant]$ ansible –version
+    generic-ops[vagrant]$ ansible -version
     ansible 2.2.1.0
         config file = /etc/ansible/ansible.cfg
         configured module search path = Default w/o overrides
-    generic-ops[vagrant]$ docker –version
+    generic-ops[vagrant]$ docker -version
     Docker version 1.12.6, build 1512168
     generic-ops[vagrant]$ <run other commands>
     generic-ops[vagrant]$ exit
@@ -213,11 +213,11 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     (NOTE: This will take a few more minutes to run the provisioning scripts. The desktop image has added dev tools.)
     ```
     $ vagrant ssh
-    generic-dev[vagrant]$ ansible –version
+    generic-dev[vagrant]$ ansible -version
     ansible 2.2.1.0
         config file = /etc/ansible/ansible.cfg
         configured module search path = Default w/o overrides
-    generic-dev[vagrant]$ docker –version
+    generic-dev[vagrant]$ docker -version
     Docker version 1.12.6, build 1512168
     generic-dev[vagrant]$ <run other commands>
     generic-dev[vagrant]$ exit
@@ -233,6 +233,7 @@ The following command-line tools and utilities are pre-installed in both the __O
 -	Ansible 2.2.1.0
     -	Ansible Container 0.3.0-pre
 -	Ant 1.10.1
+-   Consul 0.7.5
 -	Docker 1.12.6
     -	Docker Bash Completion
     -	Docker Compose 1.11.2
@@ -241,23 +242,24 @@ The following command-line tools and utilities are pre-installed in both the __O
     -	Git Bash Completion
     -	Git-Flow 0.4.2-pre
 -   Go 1.8
+-	Gradle 3.4.1
 -	Java JDK 8 Update 121
 -	Maven 3.3.9
--	Oracle Public Cloud (OPC) CLI 16.3.6.20160912.235155
--	PaaS Service Manager (PSM) CLI 1.1.12
 -   Packer 0.12.3
 -	Python 2.7.5
     -	Pip 9.0.1
 -	Python 3.3.2
     -	Pip3 9.0.1
--   Terraform 0.8.8
+-   Terraform 0.9.1
+-   Vault 0.7.0
 
 The following GUI tools are pre-installed in the __Developer VM__ (Oracle Linux 7.3 desktop) only:
 
--	Atom Editor 1.14.4
+-	Atom Editor 1.15.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
 -	Chrome 56.0.2924.87 (64-bit)
 -	Firefox 45.7.0
 -	GVim 7.4.160-1
 -	Postman 4.10.3
+-	Spring Tool Suite 3.8.3 IDE (Eclipse Neon 4.6.2)
 -	Sublime Text 3 Build 3126
