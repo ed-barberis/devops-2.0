@@ -61,19 +61,22 @@ tar -zxvf ${gitmanbinary} --no-same-owner --no-overwrite-dir
 rm -f ${gitmanbinary}
 
 # install git-flow binaries from source. ---------------------------------------
-# create git-flow source parent folder.
-mkdir -p /usr/local/src/git
-cd /usr/local/src/git
+# create temporary scripts directory.
+mkdir -p /tmp/scripts/oracle
+cd /tmp/scripts/oracle
 
-# clone git-flow source from github.com.
-git clone --recursive https://github.com/zyv/gitflow.git gitflow
+# retrieve git-flow installer from github.com.
+curl --silent --remote-name --location https://raw.github.com/nvie/gitflow/develop/contrib/gitflow-installer.sh
+chmod 755 gitflow-installer.sh
 
 # create git-flow binary parent folder.
-mkdir -p /usr/local/git/gitflow
+mkdir -p /usr/local/git/gitflow/bin
 
 # build and install git-flow binaries.
-cd gitflow
-make prefix=/usr/local/git/gitflow install
+INSTALL_PREFIX=/usr/local/git/gitflow/bin
+export INSTALL_PREFIX
+
+./gitflow-installer.sh
 
 # set git-flow home environment variables.
 GIT_FLOW_HOME=/usr/local/git/gitflow
