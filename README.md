@@ -111,7 +111,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     ```
     $ git config --global user.name="<your_name>"
     $ git config --global user.email="<your_email>"
-    $ git config --global -list
+    $ git config --global --list
     ```
 
 ## Get the Code
