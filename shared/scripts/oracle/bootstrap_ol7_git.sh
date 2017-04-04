@@ -9,7 +9,7 @@ yum -y install curl-devel expat-devel gettext-devel openssl-devel zlib-devel
 yum -y install gcc perl-ExtUtils-MakeMaker
 
 # install git binaries from source. --------------------------------------------
-gitrelease="2.12.1"
+gitrelease="2.12.2"
 gitfolder="git-${gitrelease}"
 gitbinary="${gitfolder}.tar.gz"
 

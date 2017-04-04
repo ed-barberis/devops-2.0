@@ -28,11 +28,11 @@ yum -y install ${atomrepo}
 #runuser -c "atom --version" - vagrant
 
 # install atom markdown plugins.
-runuser -c "apm install tool-bar" - vagrant
-runuser -c "apm install markdown-writer" - vagrant
-runuser -c "apm install tool-bar-markdown-writer" - vagrant
-runuser -c "apm install markdown-scroll-sync" - vagrant
-runuser -c "apm install markdown-format" - vagrant
+#runuser -c "apm install tool-bar" - vagrant
+#runuser -c "apm install markdown-writer" - vagrant
+#runuser -c "apm install tool-bar-markdown-writer" - vagrant
+#runuser -c "apm install markdown-scroll-sync" - vagrant
+#runuser -c "apm install markdown-format" - vagrant
 
 # install atom launcher on user desktop.
 echo "Installing atom.desktop on user desktop..."
