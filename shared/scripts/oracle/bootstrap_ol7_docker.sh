@@ -24,10 +24,6 @@ fi
 # install the selinux-policy-targeted package.
 #yum -y install selinux-policy-targeted
 
-# start the docker service and configure it to start at boot time.
-#systemctl start docker
-#systemctl enable docker
-
 # when the 'mlocate' package is installed, it is recommended to modify
 # 'updatedb.conf' to prevent 'updatedb' from indexing directories below
 # '/var/lib/docker'.
@@ -36,15 +32,27 @@ if [ -f "$updatedbfile" ]; then
   sed -i 's/PRUNEPATHS = "/PRUNEPATHS = "\/var\/lib\/docker /g' $updatedbfile
 fi
 
-# check that the docker service is running.
-#systemctl status docker
+# set docker to use btrfs as the storage file system and notify docker
+# that selinux is off.
+dockerfile="docker"
+#dockerfile="/etc/sysconfig/docker"
+if [ -f "$dockerfile" ]; then
+  sed -i "s/OPTIONS='--selinux-enabled'/OPTIONS='--storage-driver btrfs --selinux-enabled=false'/g" $dockerfile
+fi
 
 # add user 'vagrant' to 'docker' group.
 usermod -aG docker vagrant
 
+# start the docker service and configure it to start at boot time.
+systemctl start docker
+systemctl enable docker
+
+# check that the docker service is running.
+systemctl status docker
+
 # display configuration info and verify version.
-#docker info
-#docker version
+docker info
+docker version
 docker --version
 
 # install docker completion for bash. ------------------------------------------
