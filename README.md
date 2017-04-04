@@ -128,8 +128,6 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     ```
     $ git clone https://github.com/ed-barberis/devops-2.0.git devops-2.0
     $ cd devops-2.0
-    $ git fetch origin
-    $ git checkout -b develop origin/develop
     ```
 
 3.	Fix bug in Vagrant VB-Guest Plugin File '`oracle.rb`':
