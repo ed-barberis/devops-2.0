@@ -34,8 +34,7 @@ fi
 
 # set docker to use btrfs as the storage file system and notify docker
 # that selinux is off.
-dockerfile="docker"
-#dockerfile="/etc/sysconfig/docker"
+dockerfile="/etc/sysconfig/docker"
 if [ -f "$dockerfile" ]; then
   sed -i "s/OPTIONS='--selinux-enabled'/OPTIONS='--storage-driver btrfs --selinux-enabled=false'/g" $dockerfile
 fi
