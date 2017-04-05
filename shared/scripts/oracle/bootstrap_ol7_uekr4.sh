@@ -14,9 +14,11 @@ fi
 
 wget --no-verbose http://yum.oracle.com/public-yum-ol7.repo
 
-# modify the default ol7 file to enable uekr4 kernel. --------------------------
-awk -f /tmp/scripts/oracle/enable_ol7_uekr4.awk $repofile > ${repofile}.${curdate}.uekr4
-mv -f ${repofile}.${curdate}.uekr4 $repofile
+# ensure that the uekr4 kernel is enabled by default. --------------------------
+yum-config-manager --enable ol7_UEKR4
+yum-config-manager --disable ol7_UEKR3
+yum-config-manager --enable ol7_addons
+yum-config-manager --enable ol7_software_collections
 
 # update the repository list. --------------------------------------------------
 yum repolist
@@ -27,9 +29,6 @@ yum -y update
 # install kernel development tools and headers for building guest additions. ---
 yum -y install kernel-uek-devel
 yum -y install kernel-uek
-
-# install yum utilities to enable the yum configuration manager. ---------------
-#yum -y install yum-utils
 
 # remove package kit utility to turn-off auto-update of packages. --------------
 yum -y remove PackageKit
