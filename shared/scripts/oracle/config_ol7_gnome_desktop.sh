@@ -56,7 +56,7 @@ done
 echo ""
 
 # modify gnome shell favorites menu. -------------------------------------------
-favapps="['firefox.desktop', 'google-chrome.desktop', 'atom.desktop', 'brackets.desktop', 'postman.desktop', 'spring-tool-suite.desktop', 'sublime_text.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop', 'yelp.desktop', 'gnome-terminal.desktop']"
+favapps="['firefox.desktop', 'google-chrome.desktop', 'atom.desktop', 'brackets.desktop', 'postman.desktop', 'spring-tool-suite.desktop', 'sublime_text.desktop', 'code.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop', 'yelp.desktop', 'gnome-terminal.desktop']"
 
 # display current values.
 echo "Displaying current GNOME shell favorites application menu..."

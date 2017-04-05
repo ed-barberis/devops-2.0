@@ -151,7 +151,7 @@
         "sudo dracut -f",
         "sudo systemctl reboot"
       ],
-      "pause_before": "60s",
+      "pause_before": "120s",
       "type": "shell"
     },
     {
@@ -162,7 +162,7 @@
         "no_proxy={{user `no_proxy`}}"
       ],
       "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
-      "pause_before": "60s",
+      "pause_before": "120s",
       "scripts": [
         "scripts/common/virtualbox.sh",
         "scripts/common/vmware.sh",
@@ -188,6 +188,7 @@
         "../scripts/oracle/bootstrap_ol7_brackets_editor.sh",
         "../scripts/oracle/bootstrap_ol7_spring_tool_suite_eclipse_ide.sh",
         "../scripts/oracle/bootstrap_ol7_sublime_editor.sh",
+        "../scripts/oracle/bootstrap_ol7_microsoft_visual_studio_code_editor.sh",
         "../scripts/oracle/bootstrap_ol7_desktop_users_env.sh",
         "../scripts/oracle/cleanup.sh",
         "scripts/common/minimize.sh"

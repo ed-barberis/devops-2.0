@@ -14,7 +14,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 1.1.7
 	-	vagrant-vbguest 0.13.0
--	Packer 0.12.3
+-	Packer 1.0.0
 -	Git 2.12.2 for Win64
 	-	wget 1.9.1
 	-	tree 1.5.2.2
@@ -29,7 +29,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     Suggested install folder:  
     `C:\HashiCorp\Vagrant`
 
-4.	Install [Packer 0.12.3 for Windows 64-bit](https://releases.hashicorp.com/packer/0.12.3/packer_0.12.3_windows_amd64.zip).  
+4.	Install [Packer 1.0.0 for Windows 64-bit](https://releases.hashicorp.com/packer/1.0.0/packer_1.0.0_windows_amd64.zip).  
     Create suggested install folder and extract contents of ZIP file to:  
     `C:\HashiCorp\Packer\bin`
 
@@ -74,7 +74,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     Vagrant 1.9.3
 
     $ packer --version
-    0.12.3
+    1.0.0
     ```
 
 6.	Install or update the following Vagrant Plugins:
@@ -193,7 +193,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     ```
     $ vagrant ssh
     generic-ops[vagrant]$ ansible -version
-    ansible 2.2.1.0
+    ansible 2.2.2.0
         config file = /etc/ansible/ansible.cfg
         configured module search path = Default w/o overrides
     generic-ops[vagrant]$ docker -version
@@ -212,7 +212,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     ```
     $ vagrant ssh
     generic-dev[vagrant]$ ansible -version
-    ansible 2.2.1.0
+    ansible 2.2.2.0
         config file = /etc/ansible/ansible.cfg
         configured module search path = Default w/o overrides
     generic-dev[vagrant]$ docker -version
@@ -231,7 +231,7 @@ The following command-line tools and utilities are pre-installed in both the __O
 -	Ansible 2.2.2.0
     -	Ansible Container 0.3.1-dev
 -	Ant 1.10.1
--   Consul 0.7.5
+-   Consul 0.8.0
 -	Docker 1.12.6
     -	Docker Bash Completion
     -	Docker Compose 1.11.2
@@ -243,7 +243,7 @@ The following command-line tools and utilities are pre-installed in both the __O
 -	Gradle 3.4.1
 -	Java JDK 8 Update 121
 -	Maven 3.3.9
--   Packer 0.12.3
+-   Packer 1.0.0
 -	Python 2.7.5
     -	Pip 9.0.1
 -	Python 3.3.2
@@ -261,3 +261,4 @@ The following GUI tools are pre-installed in the __Developer VM__ (Oracle Linux 
 -	Postman 4.10.5
 -	Spring Tool Suite 3.8.4 IDE (Eclipse Neon 4.6.3)
 -	Sublime Text 3 Build 3126
+-	Visual Studio Code 1.10.2
