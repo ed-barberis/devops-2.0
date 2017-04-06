@@ -10,13 +10,14 @@ Vagrant.configure(2) do |config|
   config.vm.define "generic-ops" do |d|
     d.vm.box = "generic-ops-ol73"
     d.vm.hostname = "generic-ops"
-    d.vm.network "private_network", ip: "10.100.198.225"
+    d.vm.network "public_network"
+    #d.vm.network "private_network", ip: "10.100.198.225"
     #d.vm.provision :shell, path: "scripts/bootstrap_ol7_headless_users_env.sh", env: {"http_proxy" => "#{ENV['http_proxy']}", "https_proxy" => "#{ENV['https_proxy']}"}
     #d.vm.provision :shell, path: "scripts/bootstrap_ol7_oracle_opc_cli.sh", env: {"http_proxy" => "#{ENV['http_proxy']}", "https_proxy" => "#{ENV['https_proxy']}"}
     #d.vm.provision :shell, path: "scripts/bootstrap_ol7_oracle_psm_cli.sh", env: {"http_proxy" => "#{ENV['http_proxy']}", "https_proxy" => "#{ENV['https_proxy']}"}
     d.vm.provider "virtualbox" do |v|
       v.name = "generic-ops-ol73"
-      v.gui = true
+      v.gui = false
       v.memory = 4096
       v.cpus = 1
       v.customize ["modifyvm", :id, "--vram", "12"]
