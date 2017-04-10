@@ -175,6 +175,7 @@
         "../scripts/oracle/bootstrap_ol7_hashicorp_terraform.sh",
         "../scripts/oracle/bootstrap_ol7_hashicorp_vault.sh",
         "../scripts/oracle/bootstrap_ol7_git.sh",
+        "../scripts/oracle/bootstrap_ol7_cloud_init.sh",
         "../scripts/oracle/bootstrap_ol7_atom_editor.sh",
         "../scripts/oracle/bootstrap_ol7_brackets_editor.sh",
         "../scripts/oracle/bootstrap_ol7_spring_tool_suite_eclipse_ide.sh",

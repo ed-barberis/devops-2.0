@@ -172,6 +172,7 @@
         "../scripts/oracle/bootstrap_ol7_hashicorp_terraform.sh",
         "../scripts/oracle/bootstrap_ol7_hashicorp_vault.sh",
         "../scripts/oracle/bootstrap_ol7_git.sh",
+        "../scripts/oracle/bootstrap_ol7_cloud_init.sh",
         "../scripts/oracle/bootstrap_ol7_headless_users_env.sh",
         "../scripts/oracle/cleanup.sh",
         "scripts/common/minimize.sh"
