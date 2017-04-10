@@ -146,15 +146,6 @@
       "type": "shell"
     },
     {
-      "inline": [
-        "sudo plymouth-set-default-theme details",
-        "sudo dracut -f",
-        "sudo systemctl reboot"
-      ],
-      "pause_before": "120s",
-      "type": "shell"
-    },
-    {
       "environment_vars": [
         "HOME_DIR=/home/vagrant",
         "http_proxy={{user `http_proxy`}}",
@@ -196,7 +187,11 @@
       "type": "shell"
     },
     {
-      "inline": ["sudo usermod -aG vboxsf vagrant"],
+      "inline": [
+        "sudo usermod -aG vboxsf vagrant",
+        "sudo plymouth-set-default-theme details",
+        "sudo dracut -f"
+      ],
       "type": "shell"
     }
   ],
