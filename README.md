@@ -232,17 +232,18 @@ The following command-line tools and utilities are pre-installed in both the __O
     -	Ansible Container 0.3.1-dev
 -	Ant 1.10.1
 -   Consul 0.8.0
+-   Cloud-init 0.7.5
 -	Docker 1.12.6
     -	Docker Bash Completion
-    -	Docker Compose 1.11.2
+    -	Docker Compose 1.12.0
     -	Docker Compose Completion
 -	Git 2.12.2
     -	Git Bash Completion
     -	Git-Flow 0.4.2-pre
--   Go 1.8
+-   Go 1.8.1
 -	Gradle 3.4.1
 -	Java JDK 8 Update 121
--	Maven 3.3.9
+-	Maven 3.5.0
 -   Packer 1.0.0
 -	Python 2.7.5
     -	Pip 9.0.1
@@ -258,7 +259,7 @@ The following GUI tools are pre-installed in the __Developer VM__ (Oracle Linux 
 -	Chrome 57.0.2987.110 (64-bit)
 -	Firefox 52.0
 -	GVim 7.4.160-1
--	Postman 4.10.5
+-	Postman 4.10.7
 -	Spring Tool Suite 3.8.4 IDE (Eclipse Neon 4.6.3)
 -	Sublime Text 3 Build 3126
--	Visual Studio Code 1.10.2
+-	Visual Studio Code 1.11.1

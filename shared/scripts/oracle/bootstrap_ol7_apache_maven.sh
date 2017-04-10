@@ -2,7 +2,7 @@
 # install maven build tool by apache.
 
 # install apache maven. --------------------------------------------------------
-mvnrelease="3.3.9"
+mvnrelease="3.5.0"
 mvnfolder="apache-maven-${mvnrelease}"
 mvnbinary="${mvnfolder}-bin.tar.gz"
 
