@@ -160,19 +160,8 @@
         "scripts/common/parallels.sh",
         "../scripts/oracle/bootstrap_ol7_headless_devops_tools.sh",
         "../scripts/oracle/bootstrap_ol7_oracle_java_jdk.sh",
-        "../scripts/oracle/bootstrap_ol7_apache_ant.sh",
-        "../scripts/oracle/bootstrap_ol7_apache_maven.sh",
-        "../scripts/oracle/bootstrap_ol7_gradle.sh",
         "../scripts/oracle/bootstrap_ol7_docker.sh",
-        "../scripts/oracle/bootstrap_ol7_ansible.sh",
-        "../scripts/oracle/bootstrap_ol7_golang.sh",
         "../scripts/oracle/bootstrap_ol7_python3.sh",
-        "../scripts/oracle/bootstrap_ol7_hashicorp_consul.sh",
-        "../scripts/oracle/bootstrap_ol7_hashicorp_packer.sh",
-        "../scripts/oracle/bootstrap_ol7_hashicorp_terraform.sh",
-        "../scripts/oracle/bootstrap_ol7_hashicorp_vault.sh",
-        "../scripts/oracle/bootstrap_ol7_git.sh",
-        "../scripts/oracle/bootstrap_ol7_cloud_init.sh",
         "../scripts/oracle/bootstrap_ol7_headless_users_env.sh",
         "../scripts/oracle/cleanup.sh",
         "scripts/common/minimize.sh"
@@ -190,7 +179,7 @@
   ],
   "variables": {
     "arch": "64",
-    "box_basename": "generic-ops-ol73",
+    "box_basename": "base-headless-ol73",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
     "cpus": "1",
     "disk_size": "65536",
@@ -206,10 +195,10 @@
     "metadata": "floppy/dummy_metadata.json",
     "mirror": "http://mirrors.dotsrc.org/oracle-linux",
     "mirror_directory": "OL7/u3/x86_64",
-    "name": "generic-ops-ol73",
+    "name": "base-headless-ol73",
     "no_proxy": "{{env `no_proxy`}}",
     "post_shutdown_delay": "10s",
-    "template": "generic-ops-ol73-x86_64",
+    "template": "base-headless-ol73-x86_64",
     "version": "2.2.TIMESTAMP"
   }
 }
