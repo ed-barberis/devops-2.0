@@ -8,12 +8,12 @@ The DevOps 2.0 project enables the user to build two types of [VirtualBox](https
 
 To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the following open source software needs to be installed on the host machine:
 
--	VirtualBox 5.1.18
-    -   VirtualBox Extension Pack 5.1.18
--	Vagrant 1.9.3 with Plugins
+-	VirtualBox 5.1.22
+    -   VirtualBox Extension Pack 5.1.22
+-	Vagrant 1.9.4 with Plugins
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 1.1.7
-	-	vagrant-vbguest 0.13.0
+	-	vagrant-vbguest 0.14.1
 -	Packer 1.0.0
 -	Git 2.12.2 for Win64
 	-	wget 1.9.1
@@ -21,11 +21,11 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
 ## Installation Instructions - Windows 64-Bit
 
-1.	Install [VirtualBox 5.1.18 for Windows 64-bit](http://download.virtualbox.org/virtualbox/5.1.18/VirtualBox-5.1.18-114002-Win.exe).
+1.	Install [VirtualBox 5.1.22 for Windows 64-bit](http://download.virtualbox.org/virtualbox/5.1.22/VirtualBox-5.1.22-115126-Win.exe).
 
-2.	Install [VirtualBox Extension Pack 5.1.18](http://download.virtualbox.org/virtualbox/5.1.18/Oracle_VM_VirtualBox_Extension_Pack-5.1.18-114002.vbox-extpack).
+2.	Install [VirtualBox Extension Pack 5.1.22](http://download.virtualbox.org/virtualbox/5.1.22/Oracle_VM_VirtualBox_Extension_Pack-5.1.22-115126.vbox-extpack).
 
-3.	Install [Vagrant 1.9.3 for Windows 64-bit](https://releases.hashicorp.com/vagrant/1.9.3/vagrant_1.9.3.msi).  
+3.	Install [Vagrant 1.9.4 for Windows 64-bit](https://releases.hashicorp.com/vagrant/1.9.4/vagrant_1.9.4.msi).  
     Suggested install folder:  
     `C:\HashiCorp\Vagrant`
 
@@ -71,7 +71,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     git version 2.12.2.windows.1
 
     $ vagrant --version
-    Vagrant 1.9.3
+    Vagrant 1.9.4
 
     $ packer --version
     1.0.0
@@ -96,7 +96,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     $ vagrant plugin list
     vagrant-cachier (1.2.1)
     vagrant-share (1.1.7, system)
-    vagrant-vbguest (0.13.0)
+    vagrant-vbguest (0.14.1)
     ```
 
 8.	Validate optional add-ons for Git Bash:
@@ -133,14 +133,14 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 3.	Fix bug in Vagrant VB-Guest Plugin File '`oracle.rb`':
 
     ```
-    $ cd /c/Users/<your-username>/.vagrant.d/gems/2.2.5/gems/vagrant-vbguest-0.13.0/lib/vagrant-vbguest/installers
+    $ cd /c/Users/<your-username>/.vagrant.d/gems/2.2.5/gems/vagrant-vbguest-0.14.1/lib/vagrant-vbguest/installers
     $ cp -p oracle.rb oracle.rb.orig
     $ cp /<drive>/projects/devops-2.0/shared/patches/vagrant-vbguest/oracle.rb .
     ```
 
 4.	Fix bug in Vagrant VB-Guest Plugin File '`download.rb`':
     ```
-    $ cd /c/Users/<your-username>/.vagrant.d/gems/2.2.5/gems/vagrant-vbguest-0.13.0/lib/vagrant-vbguest
+    $ cd /c/Users/<your-username>/.vagrant.d/gems/2.2.5/gems/vagrant-vbguest-0.14.1/lib/vagrant-vbguest
     $ cp -p download.rb download.rb.orig
     $ cp /<drive>/projects/devops-2.0/shared/patches/vagrant-vbguest/download.rb .
     ```
@@ -228,38 +228,38 @@ The Developer VM with Oracle Linux 7.3 (desktop) can also be used directly from 
 
 The following command-line tools and utilities are pre-installed in both the __Operations VM__ (Oracle Linux 7.3 console) and the __Developer VM__ (Oracle Linux 7.3 desktop):
 
--	Ansible 2.2.2.0
-    -	Ansible Container 0.3.1-dev
+-	Ansible 2.3.0.0
+    -	Ansible Container 0.9.0.0
 -	Ant 1.10.1
--   Consul 0.8.0
+-   Consul 0.8.2
 -   Cloud-init 0.7.5
 -	Docker 1.12.6
     -	Docker Bash Completion
-    -	Docker Compose 1.12.0
+    -	Docker Compose 1.13.0
     -	Docker Compose Completion
 -	Git 2.12.2
     -	Git Bash Completion
     -	Git-Flow 0.4.2-pre
 -   Go 1.8.1
--	Gradle 3.4.1
--	Java JDK 8 Update 121
+-	Gradle 3.5
+-	Java JDK 8 Update 131
 -	Maven 3.5.0
 -   Packer 1.0.0
 -	Python 2.7.5
     -	Pip 9.0.1
 -	Python 3.3.2
     -	Pip3 9.0.1
--   Terraform 0.9.2
--   Vault 0.7.0
+-   Terraform 0.9.4
+-   Vault 0.7.2
 
 The following GUI tools are pre-installed in the __Developer VM__ (Oracle Linux 7.3 desktop) only:
 
--	Atom Editor 1.15.0
+-	Atom Editor 1.16.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 57.0.2987.110 (64-bit)
--	Firefox 52.0
+-	Chrome 58.0.3029.96 (64-bit)
+-	Firefox 52.1.0 (64-bit)
 -	GVim 7.4.160-1
 -	Postman 4.10.7
 -	Spring Tool Suite 3.8.4 IDE (Eclipse Neon 4.6.3)
 -	Sublime Text 3 Build 3126
--	Visual Studio Code 1.11.1
+-	Visual Studio Code 1.12.1
