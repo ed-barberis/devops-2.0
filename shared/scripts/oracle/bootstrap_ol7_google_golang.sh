@@ -2,7 +2,7 @@
 # install go programming language from google.
 
 # install go programming language. ---------------------------------------------
-gorelease="1.8.1"
+gorelease="1.8.3"
 gobinary="go${gorelease}.linux-amd64.tar.gz"
 gofolder="go-${gorelease}"
 
