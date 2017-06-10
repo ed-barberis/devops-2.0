@@ -12,7 +12,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     -   VirtualBox Extension Pack 5.1.22
 -	Vagrant 1.9.5 with Plugins
 	-	vagrant-cachier 1.2.1
-	-	vagrant-share 1.1.8
+	-	vagrant-share 2.1.8
 	-	vagrant-vbguest 0.14.2
 -	Packer 1.0.0
 -	Git 2.13.1 for Win64
@@ -95,8 +95,8 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     ```
     $ vagrant plugin list
     vagrant-cachier (1.2.1)
-    vagrant-share (1.1.7, system)
-    vagrant-vbguest (0.14.1)
+    vagrant-share (1.1.8, system)
+    vagrant-vbguest (0.14.2)
     ```
 
 8.	Validate optional add-ons for Git Bash:
@@ -133,14 +133,14 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 3.	Fix bug in Vagrant VB-Guest Plugin File '`oracle.rb`':
 
     ```
-    $ cd /c/Users/<your-username>/.vagrant.d/gems/2.2.5/gems/vagrant-vbguest-0.14.1/lib/vagrant-vbguest/installers
+    $ cd /c/Users/<your-username>/.vagrant.d/gems/2.2.5/gems/vagrant-vbguest-0.14.2/lib/vagrant-vbguest/installers
     $ cp -p oracle.rb oracle.rb.orig
     $ cp /<drive>/projects/devops-2.0/shared/patches/vagrant-vbguest/oracle.rb .
     ```
 
 4.	Fix bug in Vagrant VB-Guest Plugin File '`download.rb`':
     ```
-    $ cd /c/Users/<your-username>/.vagrant.d/gems/2.2.5/gems/vagrant-vbguest-0.14.1/lib/vagrant-vbguest
+    $ cd /c/Users/<your-username>/.vagrant.d/gems/2.2.5/gems/vagrant-vbguest-0.14.2/lib/vagrant-vbguest
     $ cp -p download.rb download.rb.orig
     $ cp /<drive>/projects/devops-2.0/shared/patches/vagrant-vbguest/download.rb .
     ```

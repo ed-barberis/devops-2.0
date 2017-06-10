@@ -26,8 +26,8 @@ pip --version
 
 # install python 2.x setup tools.
 yum -y install python-setuptools
-#pip install --upgrade setuptools
-pip install 'setuptools==33.1.1'
+pip install --upgrade setuptools
+#pip install 'setuptools==33.1.1'
 easy_install --version
 
 # install software collections library. (needed later for python 3.x.) ---------
