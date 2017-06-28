@@ -55,11 +55,12 @@ docker version
 docker --version
 
 # install docker completion for bash. ------------------------------------------
+dcompletion_release="17.03.1-ce"
 dcompletion_binary=".docker-completion.sh"
 userfolder="/home/vagrant"
 
 # download docker completion for bash from github.com.
-curl --silent --location "https://github.com/docker/docker/raw/master/contrib/completion/bash/docker" --output ${userfolder}/${dcompletion_binary}
+curl --silent --location "https://github.com/moby/moby/raw/v${dcompletion_release}/contrib/completion/bash/docker" --output ${userfolder}/${dcompletion_binary}
 chown -R vagrant:vagrant ${userfolder}/${dcompletion_binary}
 chmod 644 ${userfolder}/${dcompletion_binary}
 
@@ -96,6 +97,6 @@ dccompletion_binary=".docker-compose-completion.sh"
 userfolder="/home/vagrant"
 
 # download docker completion for bash from github.com.
-curl --silent --location "https://github.com/docker/compose/raw/master/contrib/completion/bash/docker-compose" --output ${userfolder}/${dccompletion_binary}
+curl --silent --location "https://github.com/docker/compose/raw/${dcrelease}/contrib/completion/bash/docker-compose" --output ${userfolder}/${dccompletion_binary}
 chown -R vagrant:vagrant ${userfolder}/${dccompletion_binary}
 chmod 644 ${userfolder}/${dccompletion_binary}
