@@ -107,7 +107,7 @@ alias vim='vim -u $HOME/.vim/vimrc.vim'
 complete -r
 
 # process bash completion files.
-bcfiles=( .git-completion.bash .docker-completion.sh .docker-compose-completion.sh )
+bcfiles=( .docker-completion.sh .docker-compose-completion.sh .git-completion.bash .git-flow-completion.bash )
 
 for bcfile in ${bcfiles[@]}; do
   # source bash completion file.

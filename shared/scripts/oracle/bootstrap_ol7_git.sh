@@ -9,7 +9,7 @@ yum -y install curl-devel expat-devel gettext-devel openssl-devel zlib-devel
 yum -y install gcc perl-ExtUtils-MakeMaker
 
 # install git binaries from source. --------------------------------------------
-gitrelease="2.13.1"
+gitrelease="2.13.2"
 gitfolder="git-${gitrelease}"
 gitbinary="${gitfolder}.tar.gz"
 
@@ -59,33 +59,6 @@ wget --no-verbose https://www.kernel.org/pub/software/scm/git/${gitmanbinary}
 # extract git man pages.
 tar -zxvf ${gitmanbinary} --no-same-owner --no-overwrite-dir
 rm -f ${gitmanbinary}
-
-# install git-flow binaries from source. ---------------------------------------
-# create temporary scripts directory.
-mkdir -p /tmp/scripts/oracle
-cd /tmp/scripts/oracle
-
-# retrieve git-flow installer from github.com.
-curl --silent --remote-name --location https://raw.github.com/nvie/gitflow/develop/contrib/gitflow-installer.sh
-chmod 755 gitflow-installer.sh
-
-# create git-flow binary parent folder.
-mkdir -p /usr/local/git/gitflow/bin
-
-# build and install git-flow binaries.
-INSTALL_PREFIX=/usr/local/git/gitflow/bin
-export INSTALL_PREFIX
-
-./gitflow-installer.sh
-
-# set git-flow home environment variables.
-GIT_FLOW_HOME=/usr/local/git/gitflow
-export GIT_FLOW_HOME
-PATH=${GIT_FLOW_HOME}/bin:$PATH
-export PATH
-
-# verify installation.
-git flow version
 
 # install git completion for bash. ---------------------------------------------
 gcbin=".git-completion.bash"
