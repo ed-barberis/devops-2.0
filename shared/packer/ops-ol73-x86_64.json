@@ -1,19 +1,10 @@
 {
   "builders": [
     {
-      "boot_command": [
-        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `ks_path`}}<enter><wait>"
-      ],
       "boot_wait": "10s",
-      "disk_size": "{{user `disk_size`}}",
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
-      "guest_os_type": "Oracle_64",
-      "hard_drive_interface": "sata",
       "headless": "{{ user `headless` }}",
-      "http_directory": "http",
-      "iso_checksum": "{{user `iso_checksum`}}",
-      "iso_checksum_type": "{{user `iso_checksum_type`}}",
-      "iso_url": "{{user `mirror`}}/{{user `mirror_directory`}}/{{user `iso_name`}}",
+      "source_path": "../../artifacts/base-headless-ol73/base-headless-ol73.ovf",
       "output_directory": "../../artifacts/{{user `box_basename`}}",
       "post_shutdown_delay": "{{user `post_shutdown_delay`}}",
       "shutdown_command": "echo 'vagrant' | sudo -S /sbin/halt -h -p",
@@ -21,7 +12,7 @@
       "ssh_port": 22,
       "ssh_username": "vagrant",
       "ssh_wait_timeout": "10000s",
-      "type": "virtualbox-iso",
+      "type": "virtualbox-ovf",
       "vboxmanage": [
         ["modifyvm", "{{.Name}}", "--memory", "{{ user `memory` }}"],
         ["modifyvm", "{{.Name}}", "--cpus", "{{ user `cpus` }}"]
@@ -42,11 +33,6 @@
   ],
   "provisioners": [
     {
-      "destination": "/tmp/bento-metadata.json",
-      "source": "{{user `metadata`}}",
-      "type": "file"
-    },
-    {
       "inline": ["mkdir -p /tmp/scripts/oracle"],
       "type": "shell"
     },
@@ -63,36 +49,19 @@
         "no_proxy={{user `no_proxy`}}"
       ],
       "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
-      "scripts": [
-        "scripts/common/metadata.sh",
-        "scripts/centos/networking.sh",
-        "scripts/common/sshd.sh",
-        "scripts/common/vagrant.sh",
-        "../scripts/oracle/bootstrap_ol7_uekr4.sh"
-      ],
-      "type": "shell"
-    },
-    {
-      "inline": ["sudo systemctl reboot"],
-      "type": "shell"
-    },
-    {
-      "environment_vars": [
-        "HOME_DIR=/home/vagrant",
-        "http_proxy={{user `http_proxy`}}",
-        "https_proxy={{user `https_proxy`}}",
-        "no_proxy={{user `no_proxy`}}"
-      ],
-      "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "pause_before": "10s",
       "scripts": [
-        "scripts/common/virtualbox.sh",
-        "../scripts/oracle/bootstrap_ol7_headless_devops_tools.sh",
-        "../scripts/oracle/bootstrap_ol7_oracle_java_jdk.sh",
-        "../scripts/oracle/bootstrap_ol7_docker.sh",
-        "../scripts/oracle/bootstrap_ol7_python3.sh",
-        "../scripts/oracle/bootstrap_ol7_headless_users_env.sh",
-        "../scripts/oracle/cleanup.sh",
+        "../scripts/oracle/bootstrap_ol7_apache_ant.sh",
+        "../scripts/oracle/bootstrap_ol7_apache_maven.sh",
+        "../scripts/oracle/bootstrap_ol7_gradle.sh",
+        "../scripts/oracle/bootstrap_ol7_ansible.sh",
+        "../scripts/oracle/bootstrap_ol7_google_golang.sh",
+        "../scripts/oracle/bootstrap_ol7_hashicorp_consul.sh",
+        "../scripts/oracle/bootstrap_ol7_hashicorp_packer.sh",
+        "../scripts/oracle/bootstrap_ol7_hashicorp_terraform.sh",
+        "../scripts/oracle/bootstrap_ol7_hashicorp_vault.sh",
+        "../scripts/oracle/bootstrap_ol7_git.sh",
+        "../scripts/oracle/bootstrap_ol7_cloud_init.sh",
         "scripts/common/minimize.sh"
       ],
       "type": "shell"
@@ -108,23 +77,15 @@
   ],
   "variables": {
     "arch": "64",
-    "box_basename": "base-headless-ol73",
+    "box_basename": "ops-ol73",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
     "cpus": "1",
-    "disk_size": "65536",
     "git_revision": "__unknown_git_revision__",
     "headless": "false",
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
-    "iso_checksum": "130EE6CDA827AA092B6EB66A145420F9801AA321",
-    "iso_checksum_type": "sha1",
-    "iso_name": "OracleLinux-R7-U3-Server-x86_64-dvd.iso",
-    "ks_path": "oracle-linux-7.3/ol73-headless-ks.cfg",
     "memory": "4096",
-    "metadata": "floppy/dummy_metadata.json",
-    "mirror": "http://mirrors.dotsrc.org/oracle-linux",
-    "mirror_directory": "OL7/u3/x86_64",
-    "name": "base-headless-ol73",
+    "name": "ops-ol73",
     "no_proxy": "{{env `no_proxy`}}",
     "post_shutdown_delay": "10s",
     "version": "2.2.TIMESTAMP"
