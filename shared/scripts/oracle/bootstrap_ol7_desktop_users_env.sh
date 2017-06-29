@@ -23,6 +23,11 @@ cp -p .bashrc .bashrc.orig
 cp -f ${rootprofile} .bash_profile
 cp -f ${rootrc} .bashrc
 
+# remove existing vim profile if it exists.
+if [ -d ".vim" ]; then
+  rm -Rf ./.vim
+fi
+
 cp -f /tmp/scripts/oracle/tools/vim-files.tar.gz .
 tar -zxvf vim-files.tar.gz --no-same-owner --no-overwrite-dir
 rm -f vim-files.tar.gz
@@ -55,6 +60,11 @@ cp -p .bashrc .bashrc.orig
 
 cp -f ${vagrantprofile} .bash_profile
 cp -f ${vagrantrc} .bashrc
+
+# remove existing vim profile if it exists.
+if [ -d ".vim" ]; then
+  rm -Rf ./.vim
+fi
 
 cp -f /tmp/scripts/oracle/tools/vim-files.tar.gz .
 tar -zxvf vim-files.tar.gz --no-same-owner --no-overwrite-dir
