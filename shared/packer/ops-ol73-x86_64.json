@@ -62,15 +62,8 @@
         "../scripts/oracle/bootstrap_ol7_hashicorp_vault.sh",
         "../scripts/oracle/bootstrap_ol7_git.sh",
         "../scripts/oracle/bootstrap_ol7_cloud_init.sh",
+        "../scripts/oracle/cleanup.sh",
         "scripts/common/minimize.sh"
-      ],
-      "type": "shell"
-    },
-    {
-      "inline": [
-        "sudo usermod -aG vboxsf vagrant",
-        "sudo plymouth-set-default-theme details",
-        "sudo dracut -f"
       ],
       "type": "shell"
     }

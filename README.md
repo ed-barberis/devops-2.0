@@ -25,9 +25,9 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
 2.	Install [VirtualBox Extension Pack 5.1.22](http://download.virtualbox.org/virtualbox/5.1.22/Oracle_VM_VirtualBox_Extension_Pack-5.1.22-115126.vbox-extpack).
 
-3.	Install [Vagrant 1.9.6 for Windows 64-bit](https://releases.hashicorp.com/vagrant/1.9.6/vagrant_1.9.6.msi).  
-    Suggested install folder:  
-    `C:\HashiCorp\Vagrant`
+3.	Install [Vagrant 1.9.6 for Windows 64-bit](https://releases.hashicorp.com/vagrant/1.9.6/vagrant_1.9.6_x86_64.msi).  
+    auggested install folder:  
+    `C:\HashiCorp\aagrant`
 
 4.	Install [Packer 1.0.2 for Windows 64-bit](https://releases.hashicorp.com/packer/1.0.2/packer_1.0.2_windows_amd64.zip).  
     Create suggested install folder and extract contents of ZIP file to:  
@@ -133,14 +133,14 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 3.	Fix bug in Vagrant VB-Guest Plugin File '`oracle.rb`':
 
     ```
-    $ cd /c/Users/<your-username>/.vagrant.d/gems/2.2.5/gems/vagrant-vbguest-0.14.2/lib/vagrant-vbguest/installers
+    $ cd /c/Users/<your-username>/.vagrant.d/gems/2.3.4/gems/vagrant-vbguest-0.14.2/lib/vagrant-vbguest/installers
     $ cp -p oracle.rb oracle.rb.orig
     $ cp /<drive>/projects/devops-2.0/shared/patches/vagrant-vbguest/oracle.rb .
     ```
 
 4.	Fix bug in Vagrant VB-Guest Plugin File '`download.rb`':
     ```
-    $ cd /c/Users/<your-username>/.vagrant.d/gems/2.2.5/gems/vagrant-vbguest-0.14.2/lib/vagrant-vbguest
+    $ cd /c/Users/<your-username>/.vagrant.d/gems/2.3.4/gems/vagrant-vbguest-0.14.2/lib/vagrant-vbguest
     $ cp -p download.rb download.rb.orig
     $ cp /<drive>/projects/devops-2.0/shared/patches/vagrant-vbguest/download.rb .
     ```
@@ -255,17 +255,17 @@ The following command-line tools and utilities are pre-installed in both the __O
 
 In addition to the above, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (Oracle Linux 7.3 console):
 
--	GitLab Community Edition 9.3.2 254b489
+-	GitLab Community Edition 9.3.3 92cd381
 -	Jenkins 2.60.1
 
 The following GUI tools are pre-installed in the __Developer VM__ (Oracle Linux 7.3 desktop) only:
 
 -	Atom Editor 1.18.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 59.0.3071.86 (64-bit)
--	Firefox 52.1.0 (64-bit)
+-	Chrome 59.0.3071.115 (64-bit)
+-	Firefox 52.2.0 (64-bit)
 -	GVim 7.4.160-1
--	Postman 5.0.0
+-	Postman 5.0.2
 -	Spring Tool Suite 3.8.4 IDE (Eclipse Neon 4.6.3)
 -	Sublime Text 3 Build 3126
 -	Visual Studio Code 1.13.1
