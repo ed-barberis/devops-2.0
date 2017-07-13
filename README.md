@@ -10,12 +10,12 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
 -	VirtualBox 5.1.22
     -   VirtualBox Extension Pack 5.1.22
--	Vagrant 1.9.6 with Plugins
+-	Vagrant 1.9.7 with Plugins
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 1.1.9
 	-	vagrant-vbguest 0.14.2
 -	Packer 1.0.2
--	Git 2.13.2 for Win64
+-	Git 2.13.3 for Win64
 	-	wget 1.9.1
 	-	tree 1.5.2.2
 
@@ -25,7 +25,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
 2.	Install [VirtualBox Extension Pack 5.1.22](http://download.virtualbox.org/virtualbox/5.1.22/Oracle_VM_VirtualBox_Extension_Pack-5.1.22-115126.vbox-extpack).
 
-3.	Install [Vagrant 1.9.6 for Windows 64-bit](https://releases.hashicorp.com/vagrant/1.9.6/vagrant_1.9.6_x86_64.msi).  
+3.	Install [Vagrant 1.9.7 for Windows 64-bit](https://releases.hashicorp.com/vagrant/1.9.7/vagrant_1.9.7_x86_64.msi).  
     auggested install folder:  
     `C:\HashiCorp\aagrant`
 
@@ -33,7 +33,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     Create suggested install folder and extract contents of ZIP file to:  
     `C:\HashiCorp\Packer\bin`
 
-5.	Install [Git 2.13.2 for Windows 64-bit](https://github.com/git-for-windows/git/releases/download/v2.13.2.windows.1/Git-2.13.2-64-bit.exe).
+5.	Install [Git 2.13.3 for Windows 64-bit](https://github.com/git-for-windows/git/releases/download/v2.13.3.windows.1/Git-2.13.3-64-bit.exe).
 
 6.	Install optional add-ons for Git Bash.  
     Install [wget 1.9.1 for Windows](https://sourceforge.net/projects/mingw/files/Other/mingwPORT/Current%20Releases/wget-1.9.1-mingwPORT.tar.bz2/download).  
@@ -68,10 +68,10 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
     ```
     $ git --version
-    git version 2.13.2.windows.1
+    git version 2.13.3.windows.1
 
     $ vagrant --version
-    Vagrant 1.9.6
+    Vagrant 1.9.7
 
     $ packer --version
     1.0.2
@@ -237,12 +237,13 @@ The following command-line tools and utilities are pre-installed in both the __O
     -	Docker Bash Completion
     -	Docker Compose 1.14.0
     -	Docker Compose Bash Completion
--	Git 2.13.2
+-	Git 2.13.3
     -	Git Bash Completion
     -	Git-Flow 1.11.0 (AVH Edition)
     -	Git-Flow Bash Completion
 -   Go 1.8.3
--	Gradle 4.0
+-	Gradle 4.0.1
+-	Groovy 2.4.12
 -	Java JDK 8 Update 131
 -	Maven 3.5.0
 -   Packer 1.0.2
@@ -250,12 +251,12 @@ The following command-line tools and utilities are pre-installed in both the __O
     -	Pip 9.0.1
 -	Python 3.3.2
     -	Pip3 9.0.1
--   Terraform 0.9.10
+-   Terraform 0.9.11
 -   Vault 0.7.3
 
 In addition to the above, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (Oracle Linux 7.3 console):
 
--	GitLab Community Edition 9.3.3 92cd381
+-	GitLab Community Edition 9.3.6 b9ac69c
 -	Jenkins 2.60.1
 
 The following GUI tools are pre-installed in the __Developer VM__ (Oracle Linux 7.3 desktop) only:
@@ -266,6 +267,6 @@ The following GUI tools are pre-installed in the __Developer VM__ (Oracle Linux 
 -	Firefox 52.2.0 (64-bit)
 -	GVim 7.4.160-1
 -	Postman 5.0.2
--	Spring Tool Suite 3.8.4 IDE (Eclipse Neon 4.6.3)
+-	Spring Tool Suite 3.9.0 IDE (Eclipse Oxygen 4.7.0)
 -	Sublime Text 3 Build 3126
--	Visual Studio Code 1.13.1
+-	Visual Studio Code 1.14.0

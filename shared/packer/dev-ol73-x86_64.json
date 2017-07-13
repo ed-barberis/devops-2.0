@@ -53,6 +53,7 @@
       "scripts": [
         "../scripts/oracle/bootstrap_ol7_apache_ant.sh",
         "../scripts/oracle/bootstrap_ol7_apache_maven.sh",
+        "../scripts/oracle/bootstrap_ol7_apache_groovy.sh",
         "../scripts/oracle/bootstrap_ol7_gradle.sh",
         "../scripts/oracle/bootstrap_ol7_google_postman.sh",
         "../scripts/oracle/bootstrap_ol7_ansible.sh",
