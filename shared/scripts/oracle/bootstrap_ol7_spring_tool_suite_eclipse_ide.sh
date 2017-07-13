@@ -2,10 +2,10 @@
 # install spring tool suite text editor with associated gnome desktop app and images.
 
 # install spring tool suite ide. -----------------------------------------------
-stsrelease="3.8.4"
-stsnumber="1644542375"
-eclipseversion="neon"
-eclipserelease="4.6.3"
+stsrelease="3.9.0"
+stsnumber="1212372077"
+eclipseversion="oxygen"
+eclipserelease="4.7.0"
 
 eclipsedist=$(echo "e${eclipserelease}" | awk -F "." '{printf "%s.%s", $1, $2}')
 stsbinary="spring-tool-suite-${stsrelease}.RELEASE-e${eclipserelease}-linux-gtk-x86_64.tar.gz"
