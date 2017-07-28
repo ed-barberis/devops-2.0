@@ -2,10 +2,10 @@
 # install java se development kit by oracle.
 
 # install java se development kit. ---------------------------------------------
-jdkbuild="8u131-b11"
-jdkhash="d54c1d3a095b4ff2b6607d096fa80163"
-jdkbinary="jdk-8u131-linux-x64.tar.gz"
-jdkfolder="jdk1.8.0_131"
+jdkbuild="8u144-b01"
+jdkhash="090f390dda5b47b9b721c7dfaa008135"
+jdkbinary="jdk-8u144-linux-x64.tar.gz"
+jdkfolder="jdk1.8.0_144"
 
 # create java home parent folder.
 mkdir -p /usr/local/java
