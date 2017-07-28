@@ -42,6 +42,13 @@
       "type": "file"
     },
     {
+      "inline": [
+        "sudo yum -y update",
+        "sudo systemctl reboot"
+      ],
+      "type": "shell"
+    },
+    {
       "environment_vars": [
         "HOME_DIR=/home/vagrant",
         "http_proxy={{user `http_proxy`}}",
@@ -72,6 +79,6 @@
     "name": "cicd-ol73",
     "no_proxy": "{{env `no_proxy`}}",
     "post_shutdown_delay": "10s",
-    "version": "2.2.TIMESTAMP"
+    "version": "TIMESTAMP"
   }
 }

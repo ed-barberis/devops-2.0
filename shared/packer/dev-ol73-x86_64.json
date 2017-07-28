@@ -42,6 +42,13 @@
       "type": "file"
     },
     {
+      "inline": [
+        "sudo yum -y update",
+        "sudo systemctl reboot"
+      ],
+      "type": "shell"
+    },
+    {
       "environment_vars": [
         "HOME_DIR=/home/vagrant",
         "http_proxy={{user `http_proxy`}}",
@@ -63,6 +70,7 @@
         "../scripts/oracle/bootstrap_ol7_hashicorp_terraform.sh",
         "../scripts/oracle/bootstrap_ol7_hashicorp_vault.sh",
         "../scripts/oracle/bootstrap_ol7_git.sh",
+        "../scripts/oracle/bootstrap_ol7_git_flow.sh",
         "../scripts/oracle/bootstrap_ol7_cloud_init.sh",
         "../scripts/oracle/bootstrap_ol7_atom_editor.sh",
         "../scripts/oracle/bootstrap_ol7_brackets_editor.sh",
@@ -88,6 +96,6 @@
     "name": "dev-ol73",
     "no_proxy": "{{env `no_proxy`}}",
     "post_shutdown_delay": "10s",
-    "version": "2.2.TIMESTAMP"
+    "version": "TIMESTAMP"
   }
 }

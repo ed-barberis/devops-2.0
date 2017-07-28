@@ -137,7 +137,7 @@
         "scripts/centos/networking.sh",
         "scripts/common/sshd.sh",
         "scripts/common/vagrant.sh",
-        "../scripts/oracle/bootstrap_ol7_uekr4.sh"
+        "../scripts/oracle/bootstrap_ol7_oracle_uekr4.sh"
       ],
       "type": "shell"
     },
@@ -173,6 +173,7 @@
         "../scripts/oracle/bootstrap_ol7_hashicorp_terraform.sh",
         "../scripts/oracle/bootstrap_ol7_hashicorp_vault.sh",
         "../scripts/oracle/bootstrap_ol7_git.sh",
+        "../scripts/oracle/bootstrap_ol7_git_flow.sh",
         "../scripts/oracle/bootstrap_ol7_cloud_init.sh",
         "../scripts/oracle/bootstrap_ol7_headless_users_env.sh",
         "../scripts/oracle/cleanup.sh",
@@ -211,6 +212,6 @@
     "no_proxy": "{{env `no_proxy`}}",
     "post_shutdown_delay": "10s",
     "template": "generic-ops-ol73-x86_64",
-    "version": "2.2.TIMESTAMP"
+    "version": "TIMESTAMP"
   }
 }

@@ -68,12 +68,16 @@
         "scripts/centos/networking.sh",
         "scripts/common/sshd.sh",
         "scripts/common/vagrant.sh",
-        "../scripts/oracle/bootstrap_ol7_uekr4.sh"
+        "../scripts/oracle/bootstrap_ol7_oracle_uekr4.sh"
       ],
       "type": "shell"
     },
     {
-      "inline": ["sudo systemctl reboot"],
+      "inline": [
+        "sudo rpm -qa | grep kernel-3 | sort",
+        "sudo yum -y remove kernel-3*",
+        "sudo systemctl reboot"
+      ],
       "type": "shell"
     },
     {
@@ -127,6 +131,6 @@
     "name": "base-headless-ol73",
     "no_proxy": "{{env `no_proxy`}}",
     "post_shutdown_delay": "10s",
-    "version": "2.2.TIMESTAMP"
+    "version": "TIMESTAMP"
   }
 }
