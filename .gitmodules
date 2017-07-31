@@ -1,0 +1,3 @@
+[submodule "submodules/chef/bento"]
+	path = submodules/chef/bento
+	url = https://github.com/chef/bento.git
