@@ -38,7 +38,7 @@
     },
     {
       "destination": "/tmp/scripts/oracle",
-      "source": "../scripts/oracle/",
+      "source": "../../provisioners/scripts/oracle/",
       "type": "file"
     },
     {
@@ -58,10 +58,10 @@
       "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "pause_before": "10s",
       "scripts": [
-        "../scripts/oracle/bootstrap_ol7_gitlab.sh",
-        "../scripts/oracle/bootstrap_ol7_jenkins.sh",
-        "../scripts/oracle/cleanup.sh",
-        "scripts/common/minimize.sh"
+        "../../provisioners/scripts/oracle/install_ol7_gitlab.sh",
+        "../../provisioners/scripts/oracle/install_ol7_jenkins.sh",
+        "../../provisioners/scripts/oracle/cleanup.sh",
+        "../../submodules/chef/bento/scripts/common/minimize.sh"
       ],
       "type": "shell"
     }

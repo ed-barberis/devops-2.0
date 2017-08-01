@@ -52,7 +52,7 @@
     },
     {
       "destination": "/tmp/scripts/oracle",
-      "source": "../scripts/oracle/",
+      "source": "../../provisioners/scripts/oracle/",
       "type": "file"
     },
     {
@@ -64,11 +64,11 @@
       ],
       "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "scripts": [
-        "scripts/common/metadata.sh",
-        "scripts/centos/networking.sh",
-        "scripts/common/sshd.sh",
-        "scripts/common/vagrant.sh",
-        "../scripts/oracle/bootstrap_ol7_oracle_uekr4.sh"
+        "../../submodules/chef/bento/scripts/common/metadata.sh",
+        "../../submodules/chef/bento/scripts/centos/networking.sh",
+        "../../submodules/chef/bento/scripts/common/sshd.sh",
+        "../../submodules/chef/bento/scripts/common/vagrant.sh",
+        "../../provisioners/scripts/oracle/install_ol7_oracle_uekr4.sh"
       ],
       "type": "shell"
     },
@@ -90,16 +90,16 @@
       "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "pause_before": "120s",
       "scripts": [
-        "scripts/common/virtualbox.sh",
-        "../scripts/oracle/bootstrap_ol7_headless_devops_tools.sh",
-        "../scripts/oracle/bootstrap_ol7_oracle_java_jdk.sh",
-        "../scripts/oracle/bootstrap_ol7_desktop_devops_tools.sh",
-        "../scripts/oracle/bootstrap_ol7_google_chrome.sh",
-        "../scripts/oracle/bootstrap_ol7_docker.sh",
-        "../scripts/oracle/bootstrap_ol7_python3.sh",
-        "../scripts/oracle/bootstrap_ol7_desktop_users_env.sh",
-        "../scripts/oracle/cleanup.sh",
-        "scripts/common/minimize.sh"
+        "../../submodules/chef/bento/scripts/common/virtualbox.sh",
+        "../../provisioners/scripts/oracle/install_ol7_headless_devops_tools.sh",
+        "../../provisioners/scripts/oracle/install_ol7_oracle_java_jdk.sh",
+        "../../provisioners/scripts/oracle/install_ol7_desktop_devops_tools.sh",
+        "../../provisioners/scripts/oracle/install_ol7_google_chrome.sh",
+        "../../provisioners/scripts/oracle/install_ol7_docker.sh",
+        "../../provisioners/scripts/oracle/install_ol7_python3.sh",
+        "../../provisioners/scripts/oracle/install_ol7_desktop_users_env.sh",
+        "../../provisioners/scripts/oracle/cleanup.sh",
+        "../../submodules/chef/bento/scripts/common/minimize.sh"
       ],
       "type": "shell"
     },
@@ -127,7 +127,7 @@
     "iso_name": "OracleLinux-R7-U3-Server-x86_64-dvd.iso",
     "ks_path": "oracle-linux-7.3/ol73-desktop-ks.cfg",
     "memory": "6144",
-    "metadata": "floppy/dummy_metadata.json",
+    "metadata": "../../submodules/chef/bento/floppy/dummy_metadata.json",
     "mirror": "http://mirrors.dotsrc.org/oracle-linux",
     "mirror_directory": "OL7/u3/x86_64",
     "name": "base-desktop-ol73",

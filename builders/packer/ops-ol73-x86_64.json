@@ -38,7 +38,7 @@
     },
     {
       "destination": "/tmp/scripts/oracle",
-      "source": "../scripts/oracle/",
+      "source": "../../provisioners/scripts/oracle/",
       "type": "file"
     },
     {
@@ -58,21 +58,21 @@
       "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "pause_before": "10s",
       "scripts": [
-        "../scripts/oracle/bootstrap_ol7_apache_ant.sh",
-        "../scripts/oracle/bootstrap_ol7_apache_maven.sh",
-        "../scripts/oracle/bootstrap_ol7_apache_groovy.sh",
-        "../scripts/oracle/bootstrap_ol7_gradle.sh",
-        "../scripts/oracle/bootstrap_ol7_ansible.sh",
-        "../scripts/oracle/bootstrap_ol7_google_golang.sh",
-        "../scripts/oracle/bootstrap_ol7_hashicorp_consul.sh",
-        "../scripts/oracle/bootstrap_ol7_hashicorp_packer.sh",
-        "../scripts/oracle/bootstrap_ol7_hashicorp_terraform.sh",
-        "../scripts/oracle/bootstrap_ol7_hashicorp_vault.sh",
-        "../scripts/oracle/bootstrap_ol7_git.sh",
-        "../scripts/oracle/bootstrap_ol7_git_flow.sh",
-        "../scripts/oracle/bootstrap_ol7_cloud_init.sh",
-        "../scripts/oracle/cleanup.sh",
-        "scripts/common/minimize.sh"
+        "../../provisioners/scripts/oracle/install_ol7_apache_ant.sh",
+        "../../provisioners/scripts/oracle/install_ol7_apache_maven.sh",
+        "../../provisioners/scripts/oracle/install_ol7_apache_groovy.sh",
+        "../../provisioners/scripts/oracle/install_ol7_gradle.sh",
+        "../../provisioners/scripts/oracle/install_ol7_ansible.sh",
+        "../../provisioners/scripts/oracle/install_ol7_google_golang.sh",
+        "../../provisioners/scripts/oracle/install_ol7_hashicorp_consul.sh",
+        "../../provisioners/scripts/oracle/install_ol7_hashicorp_packer.sh",
+        "../../provisioners/scripts/oracle/install_ol7_hashicorp_terraform.sh",
+        "../../provisioners/scripts/oracle/install_ol7_hashicorp_vault.sh",
+        "../../provisioners/scripts/oracle/install_ol7_git.sh",
+        "../../provisioners/scripts/oracle/install_ol7_git_flow.sh",
+        "../../provisioners/scripts/oracle/install_ol7_cloud_init.sh",
+        "../../provisioners/scripts/oracle/cleanup.sh",
+        "../../submodules/chef/bento/scripts/common/minimize.sh"
       ],
       "type": "shell"
     }
