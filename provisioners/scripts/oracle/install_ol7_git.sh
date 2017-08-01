@@ -65,6 +65,7 @@ gcbin=".git-completion.bash"
 gcfolder="/home/vagrant"
 
 # download git completion for bash from github.com.
-curl --silent --location "https://github.com/git/git/raw/master/contrib/completion/git-completion.bash" --output ${gcfolder}/${gcbin}
+curl --silent --location "https://raw.githubusercontent.com/git/git/v${gitrelease}/contrib/completion/git-completion.bash" --output ${gcfolder}/${gcbin}
+
 chown -R vagrant:vagrant ${gcfolder}/${gcbin}
 chmod 644 ${gcfolder}/${gcbin}

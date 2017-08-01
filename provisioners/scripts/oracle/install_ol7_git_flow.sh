@@ -29,6 +29,6 @@ gfcbin=".git-flow-completion.bash"
 gfcfolder="/home/vagrant"
 
 # download git-flow completion for bash from github.com.
-curl --silent --location "https://github.com/petervanderdoes/git-flow-completion/raw/develop/git-flow-completion.bash" --output ${gfcfolder}/${gfcbin}
+curl --silent --location "https://raw.githubusercontent.com/petervanderdoes/git-flow-completion/develop/git-flow-completion.bash" --output ${gfcfolder}/${gfcbin}
 chown -R vagrant:vagrant ${gfcfolder}/${gfcbin}
 chmod 644 ${gfcfolder}/${gfcbin}
