@@ -7,24 +7,24 @@ Vagrant.configure(2) do |config|
   else
     config.vm.synced_folder ".", "/vagrant"
   end
-  config.vm.define "demo-dev" do |d|
-    d.vm.box = "dev-ol73"
-    d.vm.hostname = "dev"
+  config.vm.define "demo-ops" do |d|
+    d.vm.box = "ops-ol73"
+    d.vm.hostname = "ops"
     #d.vm.network "public_network"
-    d.vm.network "private_network", ip: "10.100.198.229"
-    #d.vm.provision :shell, path: "../../../../shared/scripts/oracle/bootstrap_ol7_cloud_init.sh", env: {"http_proxy" => "#{ENV['http_proxy']}", "https_proxy" => "#{ENV['https_proxy']}"}
-    #d.vm.provision :shell, path: "scripts/bootstrap_ol7_desktop_users_env.sh", env: {"http_proxy" => "#{ENV['http_proxy']}", "https_proxy" => "#{ENV['https_proxy']}"}
-    #d.vm.provision :shell, path: "scripts/bootstrap_ol7_oracle_opc_cli.sh", env: {"http_proxy" => "#{ENV['http_proxy']}", "https_proxy" => "#{ENV['https_proxy']}"}
-    #d.vm.provision :shell, path: "scripts/bootstrap_ol7_oracle_psm_cli.sh", env: {"http_proxy" => "#{ENV['http_proxy']}", "https_proxy" => "#{ENV['https_proxy']}"}
+    d.vm.network "private_network", ip: "10.100.198.228"
+    #d.vm.provision :shell, path: "../../../../provisioners/scripts/oracle/install_ol7_cloud_init.sh", env: {"http_proxy" => "#{ENV['http_proxy']}", "https_proxy" => "#{ENV['https_proxy']}"}
+    #d.vm.provision :shell, path: "scripts/install_ol7_headless_users_env.sh", env: {"http_proxy" => "#{ENV['http_proxy']}", "https_proxy" => "#{ENV['https_proxy']}"}
+    #d.vm.provision :shell, path: "scripts/install_ol7_oracle_opc_cli.sh", env: {"http_proxy" => "#{ENV['http_proxy']}", "https_proxy" => "#{ENV['https_proxy']}"}
+    #d.vm.provision :shell, path: "scripts/install_ol7_oracle_psm_cli.sh", env: {"http_proxy" => "#{ENV['http_proxy']}", "https_proxy" => "#{ENV['https_proxy']}"}
     d.vm.provider "virtualbox" do |v|
-      v.name = "dev-ol73"
-      v.gui = true
-      v.memory = 6144
-      v.cpus = 2
+      v.name = "ops-ol73"
+      v.gui = false
+      v.memory = 4096
+      v.cpus = 1
       v.customize ["modifyvm", :id, "--vram", "256"]
       v.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
       v.customize ["modifyvm", :id, "--draganddrop", "bidirectional"]
-      v.customize ["modifyvm", :id, "--description", "Oracle Linux 7.3 (UEKR4) VM image for DevOps 2.0 'dev-ol73' desktop box."]
+      v.customize ["modifyvm", :id, "--description", "Oracle Linux 7.3 (UEKR4) VM image for DevOps 2.0 'ops-ol73' headless box."]
       v.customize ["storageattach", :id, "--storagectl", "IDE Controller", "--port", "1", "--device", "0", "--type", "dvddrive", "--medium", "emptydrive"]
       # mount windows shared folder.
       #v.customize ["sharedfolder", "add", :id, "--name", "shared", "--hostpath", "I:/shared", "--automount"]

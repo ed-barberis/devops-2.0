@@ -7,26 +7,24 @@ Vagrant.configure(2) do |config|
   else
     config.vm.synced_folder ".", "/vagrant"
   end
-  config.vm.define "generic-cicd" do |d|
+  config.vm.define "generic-ops" do |d|
     d.vm.box = "generic-ops-ol73"
-    d.vm.hostname = "generic-cicd"
+    d.vm.hostname = "generic-ops"
     #d.vm.network "public_network"
-    d.vm.network "private_network", ip: "10.100.198.227"
-    #d.vm.provision :shell, path: "../../../../shared/scripts/oracle/bootstrap_ol7_cloud_init.sh", env: {"http_proxy" => "#{ENV['http_proxy']}", "https_proxy" => "#{ENV['https_proxy']}"}
-    d.vm.provision :shell, path: "../../../../shared/scripts/oracle/bootstrap_ol7_gitlab.sh", env: {"http_proxy" => "#{ENV['http_proxy']}", "https_proxy" => "#{ENV['https_proxy']}"}
-    d.vm.provision :shell, path: "../../../../shared/scripts/oracle/bootstrap_ol7_jenkins.sh", env: {"http_proxy" => "#{ENV['http_proxy']}", "https_proxy" => "#{ENV['https_proxy']}"}
-    #d.vm.provision :shell, path: "scripts/bootstrap_ol7_headless_users_env.sh", env: {"http_proxy" => "#{ENV['http_proxy']}", "https_proxy" => "#{ENV['https_proxy']}"}
-    #d.vm.provision :shell, path: "scripts/bootstrap_ol7_oracle_opc_cli.sh", env: {"http_proxy" => "#{ENV['http_proxy']}", "https_proxy" => "#{ENV['https_proxy']}"}
-    #d.vm.provision :shell, path: "scripts/bootstrap_ol7_oracle_psm_cli.sh", env: {"http_proxy" => "#{ENV['http_proxy']}", "https_proxy" => "#{ENV['https_proxy']}"}
+    d.vm.network "private_network", ip: "10.100.198.225"
+    #d.vm.provision :shell, path: "../../../../provisioners/scripts/oracle/install_ol7_cloud_init.sh", env: {"http_proxy" => "#{ENV['http_proxy']}", "https_proxy" => "#{ENV['https_proxy']}"}
+    #d.vm.provision :shell, path: "scripts/install_ol7_headless_users_env.sh", env: {"http_proxy" => "#{ENV['http_proxy']}", "https_proxy" => "#{ENV['https_proxy']}"}
+    #d.vm.provision :shell, path: "scripts/install_ol7_oracle_opc_cli.sh", env: {"http_proxy" => "#{ENV['http_proxy']}", "https_proxy" => "#{ENV['https_proxy']}"}
+    #d.vm.provision :shell, path: "scripts/install_ol7_oracle_psm_cli.sh", env: {"http_proxy" => "#{ENV['http_proxy']}", "https_proxy" => "#{ENV['https_proxy']}"}
     d.vm.provider "virtualbox" do |v|
-      v.name = "generic-cicd-ol73"
+      v.name = "generic-ops-ol73"
       v.gui = false
-      v.memory = 6144
-      v.cpus = 2
+      v.memory = 4096
+      v.cpus = 1
       v.customize ["modifyvm", :id, "--vram", "12"]
       v.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
       v.customize ["modifyvm", :id, "--draganddrop", "bidirectional"]
-      v.customize ["modifyvm", :id, "--description", "Oracle Linux 7.3 (UEKR4) VM image for DevOps 2.0 'generic-cicd-ol73' CI/CD box."]
+      v.customize ["modifyvm", :id, "--description", "Oracle Linux 7.3 (UEKR4) VM image for DevOps 2.0 'generic-ops-ol73' headless box."]
       v.customize ["storageattach", :id, "--storagectl", "IDE Controller", "--port", "1", "--device", "0", "--type", "dvddrive", "--medium", "emptydrive"]
       # mount windows shared folder.
       #v.customize ["sharedfolder", "add", :id, "--name", "shared", "--hostpath", "I:/shared", "--automount"]
