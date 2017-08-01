@@ -267,7 +267,7 @@ The following GUI tools are pre-installed in the __Developer VM__ (Oracle Linux 
 
 -	Atom Editor 1.18.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 59.0.3071.115 (64-bit)
+-	Chrome 60.0.3112.78 (64-bit)
 -	Firefox 52.2.0 (64-bit)
 -	GVim 7.4.160-1
 -	Postman 5.1.2
