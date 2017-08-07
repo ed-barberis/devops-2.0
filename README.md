@@ -4,7 +4,18 @@ DevOps 2.0 repository for building and testing containerized microservices.
 
 ## Overview
 
-The DevOps 2.0 project enables the user to build two types of [VirtualBox](https://www.virtualbox.org/) VMs. A console (headless) VM designed for an Operations role, and a full desktop VM designed for a Developer role.
+The DevOps 2.0 project enables an IT Administrator, Software Developer, or DevOps engineer to automate the building of [VirtualBox](https://www.virtualbox.org/) VMs using open source tools from [Hashicorp](https://www.hashicorp.com/).
+
+The first step involves building the base VMs, which consist of two types:
+
+-	__Base-Desktop VM__: A full desktop VM with no project-specific tooling.
+-	__Base-Headless VM__: A console (headless) VM with minimal tooling.
+
+Next, using these base VMs as a foundation, the user can build more advanced VM images provisioned for project-specific tasks. These include:
+
+-	__Developer VM__: Desktop VM designed for a project-specific Developer role,
+-	__Operations VM__: Headless VM designed for a project-specific Operations role.
+-	__CICD VM__: Headless VM designed for continuous integration, continuous delivery (CI/CD) and project-specific DevOps automation.
 
 To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the following open source software needs to be installed on the host machine:
 
@@ -147,71 +158,79 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     $ cp /<drive>/projects/devops-2.0/shared/patches/vagrant-vbguest/download.rb .
     ```
 
-## Build and Import the Vagrant Box Images
+## Build the Vagrant Box Images
 
 1.	Start VirtualBox:  
     Start Menu -- > All apps -- > Oracle VM VirtualBox -- > Oracle VM VirtualBox
 
-2.	Build the Oracle Linux 7.3 'ops' box (headless):
+2.	Build the Oracle Linux 7.3 'base-desktop' box (desktop):
     ```
-    $ cd /<drive>/projects/devops-2.0/shared/packer
-    $ packer build -only=virtualbox-iso generic-ops-ol73-x86_64.json
+    $ cd /<drive>/projects/devops-2.0/builders/packer
+    $ packer build base-desktop-ol73-x86_64.json
     ```
     (NOTE: This will take several minutes to run.)
 
-3.	Build the Oracle Linux 7.3 'dev' box (desktop):
+3.	Build the Oracle Linux 7.3 'base-headless' box (headless):
     ```
-    $ packer build -only=virtualbox-iso generic-dev-ol73-x86_64.json
+    $ packer build base-headless-ol73-x86_64.json
     ```
-    (NOTE: This will take several minutes to run.  However, this build will be shorter, because the ISO image for Oracle Linux 7.3 has been cached.)
+    (NOTE: This will take several minutes to run.  However, this build will be shorter because the ISO image for Oracle Linux 7.3 has been cached.)
 
-4.	Import the Oracle Linux 7.3 'ops' box image (headless):
+4.	Build the Oracle Linux 7.3 'dev' box (desktop):
     ```
-    $ cd builds
-    $ vagrant box add generic-ops-ol73 generic-ops-ol73.virtualbox.box
+    $ packer build dev-ol73-x86_64.json
+    ```
+    (NOTE: This will take several minutes to run.  However, this build will be shorter because it is based on the 'base-desktop-ol73' image.)
+
+5.	Build the Oracle Linux 7.3 'ops' box (headless):
+    ```
+    $ packer build ops-ol73-x86_64.json
+    ```
+    (NOTE: This build is based on the 'base-headless-ol73' image.)
+
+6.	Build the Oracle Linux 7.3 'cicd' box (headless):
+    ```
+    $ packer build cicd-ol73-x86_64.json
+    ```
+    (NOTE: This build is based on the 'ops-ol73' image.)
+
+## Import the Vagrant Box Images
+
+1.	Import the Oracle Linux 7.3 'dev' box image (desktop):
+    ```
+    $ cd /<drive>/projects/devops-2.0/artifacts/dev-ol73
+    $ vagrant box add dev-ol73 dev-ol73.virtualbox.box
     ```
 
-5.	Import the Oracle Linux 7.3 'dev' box image (desktop):
+2.	Import the Oracle Linux 7.3 'ops' box image (headless):
     ```
-    $ vagrant box add generic-dev-ol73 generic-dev-ol73.virtualbox.box
+    $ cd ../ops-ol73
+    $ vagrant box add ops-ol73 ops-ol73.virtualbox.box
     ```
 
-6.	List the Vagrant box images:
+3.	Import the Oracle Linux 7.3 'cicd' box image (headless):
+    ```
+    $ cd ../cicd-ol73
+    $ vagrant box add cicd-ol73 cicd-ol73.virtualbox.box
+    ```
+
+4.	List the Vagrant box images:
     ```
     $ vagrant box list
-    generic-dev-ol73 (virtualbox, 0)
-    generic-ops-ol73 (virtualbox, 0)
+    cicd-ol73 (virtualbox, 0)
+    dev-ol73 (virtualbox, 0)
+    ops-ol73 (virtualbox, 0)
     ...
     ```
 
 ## Provision the VirtualBox Images
 
-1.	Provision the __Operations VM__ with Oracle Linux 7.3 (headless):
+1.	Provision the __Developer VM__ with Oracle Linux 7.3 (desktop):
     ```
-    $ cd /<drive>/projects/devops-2.0/projects/generic/vms/ops
+    $ cd /<drive>/projects/devops-2.0/builders/vagrant/demo/dev
     $ vagrant up
     ```
-    (NOTE: This will take a few minutes to run the provisioning scripts.)
-    ```
-    $ vagrant ssh
-    generic-ops[vagrant]$ ansible -version
-    ansible 2.3.1.0
-      config file = /etc/ansible/ansible.cfg
-      configured module search path = Default w/o overrides
-      python version = 2.7.5 (default, Sep  5 2016, 02:30:38) [GCC 4.8.5 20150623 (Red Hat 4.8.5-9)]
-    generic-ops[vagrant]$ docker -version
-    Docker version 17.03.1-ce, build 276fd32
-    generic-ops[vagrant]$ <run other commands>
-    generic-ops[vagrant]$ exit
-    $ vagrant halt
-    ```
-
-2.	Provision the __Developer VM__ with Oracle Linux 7.3 (desktop):
-    ```
-    $ cd /<drive>/projects/devops-2.0/projects/generic/vms/dev
-    $ vagrant up
-    ```
-    (NOTE: This will take a few more minutes to run the provisioning scripts. The desktop image has added dev tools.)
+    (NOTE: This will take a few minutes to import the Vagrant box.)
     ```
     $ vagrant ssh
     generic-dev[vagrant]$ ansible -version
@@ -226,11 +245,54 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     $ vagrant halt
     ```
 
-The Developer VM with Oracle Linux 7.3 (desktop) can also be used directly from VirtualBox.
+    The Developer VM with Oracle Linux 7.3 (desktop) can also be used directly from VirtualBox.
+
+2.	Provision the __Operations VM__ with Oracle Linux 7.3 (headless):
+    ```
+    $ cd /<drive>/projects/devops-2.0/builders/vagrant/demo/ops
+    $ vagrant up
+    ```
+    (NOTE: This will take a few minutes to import the Vagrant box.)
+    ```
+    $ vagrant ssh
+    generic-ops[vagrant]$ ansible -version
+    ansible 2.3.1.0
+      config file = /etc/ansible/ansible.cfg
+      configured module search path = Default w/o overrides
+      python version = 2.7.5 (default, Sep  5 2016, 02:30:38) [GCC 4.8.5 20150623 (Red Hat 4.8.5-9)]
+    generic-ops[vagrant]$ docker -version
+    Docker version 17.03.1-ce, build 276fd32
+    generic-ops[vagrant]$ <run other commands>
+    generic-ops[vagrant]$ exit
+    $ vagrant halt
+    ```
+
+3.	Provision the __CICD VM__ with Oracle Linux 7.3 (headless):
+    ```
+    $ cd /<drive>/projects/devops-2.0/builders/vagrant/demo/cicd
+    $ vagrant up
+    ```
+    (NOTE: This will take a few minutes to import the Vagrant box.)
+    ```
+    $ vagrant ssh
+    generic-ops[vagrant]$ ansible -version
+    ansible 2.3.1.0
+      config file = /etc/ansible/ansible.cfg
+      configured module search path = Default w/o overrides
+      python version = 2.7.5 (default, Sep  5 2016, 02:30:38) [GCC 4.8.5 20150623 (Red Hat 4.8.5-9)]
+    generic-ops[vagrant]$ docker -version
+    Docker version 17.03.1-ce, build 276fd32
+    generic-ops[vagrant]$ <run other commands>
+    generic-ops[vagrant]$ exit
+    $ vagrant halt
+    ```
+
+    Access [GitLab Community Edition server](http://10.100.198.230) on port 80:
+    Access [Jenkins build server](http://10.100.198.230:9080) on port 9080:
 
 ## DevOps 2.0 Bill-of-Materials
 
-The following command-line tools and utilities are pre-installed in both the __Operations VM__ (Oracle Linux 7.3 console) and the __Developer VM__ (Oracle Linux 7.3 desktop):
+The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
 -	Ansible 2.3.1.0
     -	Ansible Container 0.9.1
@@ -260,12 +322,12 @@ The following command-line tools and utilities are pre-installed in both the __O
 -   Terraform 0.10.0
 -   Vault 0.7.3
 
-In addition to the above, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (Oracle Linux 7.3 console):
+In addition to the above, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
 -	GitLab Community Edition 9.4.3 b125d21
 -	Jenkins 2.60.2
 
-The following GUI tools are pre-installed in the __Developer VM__ (Oracle Linux 7.3 desktop) only:
+The following GUI tools are pre-installed in the __Developer VM__ (desktop) only:
 
 -	Atom Editor 1.18.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
