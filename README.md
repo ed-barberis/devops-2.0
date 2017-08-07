@@ -168,31 +168,31 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     $ cd /<drive>/projects/devops-2.0/builders/packer
     $ packer build base-desktop-ol73-x86_64.json
     ```
-    (NOTE: This will take several minutes to run.)
+    NOTE: This will take several minutes to run.
 
 3.	Build the Oracle Linux 7.3 'base-headless' box (headless):
     ```
     $ packer build base-headless-ol73-x86_64.json
     ```
-    (NOTE: This will take several minutes to run.  However, this build will be shorter because the ISO image for Oracle Linux 7.3 has been cached.)
+    NOTE: This will take several minutes to run.  However, this build will be shorter because the ISO image for Oracle Linux 7.3 has been cached.
 
 4.	Build the Oracle Linux 7.3 'dev' box (desktop):
     ```
     $ packer build dev-ol73-x86_64.json
     ```
-    (NOTE: This will take several minutes to run.  However, this build will be shorter because it is based on the 'base-desktop-ol73' image.)
+    NOTE: This will take several minutes to run.  However, this build will be shorter because it is based on the 'base-desktop-ol73' image.
 
 5.	Build the Oracle Linux 7.3 'ops' box (headless):
     ```
     $ packer build ops-ol73-x86_64.json
     ```
-    (NOTE: This build is based on the 'base-headless-ol73' image.)
+    NOTE: This build is based on the 'base-headless-ol73' image.
 
 6.	Build the Oracle Linux 7.3 'cicd' box (headless):
     ```
     $ packer build cicd-ol73-x86_64.json
     ```
-    (NOTE: This build is based on the 'ops-ol73' image.)
+    NOTE: This build is based on the 'ops-ol73' image.
 
 ## Import the Vagrant Box Images
 
@@ -230,7 +230,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     $ cd /<drive>/projects/devops-2.0/builders/vagrant/demo/dev
     $ vagrant up
     ```
-    (NOTE: This will take a few minutes to import the Vagrant box.)
+    NOTE: This will take a few minutes to import the Vagrant box.
     ```
     $ vagrant ssh
     generic-dev[vagrant]$ ansible -version
@@ -252,7 +252,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     $ cd /<drive>/projects/devops-2.0/builders/vagrant/demo/ops
     $ vagrant up
     ```
-    (NOTE: This will take a few minutes to import the Vagrant box.)
+    NOTE: This will take a few minutes to import the Vagrant box.
     ```
     $ vagrant ssh
     generic-ops[vagrant]$ ansible -version
@@ -272,7 +272,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     $ cd /<drive>/projects/devops-2.0/builders/vagrant/demo/cicd
     $ vagrant up
     ```
-    (NOTE: This will take a few minutes to import the Vagrant box.)
+    NOTE: This will take a few minutes to import the Vagrant box.
     ```
     $ vagrant ssh
     generic-ops[vagrant]$ ansible -version
@@ -287,8 +287,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     $ vagrant halt
     ```
 
-    Access [GitLab Community Edition server](http://10.100.198.230) on port 80:
-    Access [Jenkins build server](http://10.100.198.230:9080) on port 9080:
+    NOTE: You can access the [GitLab Community Edition](https://about.gitlab.com/) server locally on port '80' [here](http://10.100.198.230) and the [Jenkins](https://jenkins.io/) build server locally on port '9080' [here](http://10.100.198.230:9080).
 
 ## DevOps 2.0 Bill-of-Materials
 
@@ -308,7 +307,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
     -	Git-Flow 1.11.0 (AVH Edition)
     -	Git-Flow Bash Completion
 -   Go 1.8.3
--	Gradle 4.0.2
+-	Gradle 4.1
 -	Groovy 2.4.12
 -	Java JDK 8 Update 144
 -	Maven 3.5.0
