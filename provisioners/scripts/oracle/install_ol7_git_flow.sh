@@ -2,6 +2,10 @@
 # install git flow (avh edition) extensions to git.
 
 # install git-flow binaries from source. ---------------------------------------
+# create git-flow source parent folder.
+mkdir -p /usr/local/src/git
+cd /usr/local/src/git
+
 # retrieve git-flow installer from github.com.
 wget --no-verbose --no-check-certificate https://github.com/petervanderdoes/gitflow-avh/raw/develop/contrib/gitflow-installer.sh
 chmod 755 gitflow-installer.sh
