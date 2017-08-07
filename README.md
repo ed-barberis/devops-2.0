@@ -15,7 +15,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 	-	vagrant-share 1.1.9
 	-	vagrant-vbguest 0.14.2
 -	Packer 1.0.3
--	Git 2.13.3 for Win64
+-	Git 2.14.0 for Win64
 	-	wget 1.9.1
 	-	tree 1.5.2.2
 
@@ -33,7 +33,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     Create suggested install folder and extract contents of ZIP file to:  
     `C:\HashiCorp\Packer\bin`
 
-5.	Install [Git 2.13.3 for Windows 64-bit](https://github.com/git-for-windows/git/releases/download/v2.13.3.windows.1/Git-2.13.3-64-bit.exe).
+5.	Install [Git 2.14.0 for Windows 64-bit](https://github.com/git-for-windows/git/releases/download/v2.14.0.windows.1/Git-2.14.0-64-bit.exe).
 
 6.	Install optional add-ons for Git Bash.  
     Install [wget 1.9.1 for Windows](https://sourceforge.net/projects/mingw/files/Other/mingwPORT/Current%20Releases/wget-1.9.1-mingwPORT.tar.bz2/download).  
@@ -68,7 +68,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
     ```
     $ git --version
-    git version 2.13.3.windows.1
+    git version 2.14.0.windows.1
 
     $ vagrant --version
     Vagrant 1.9.7
@@ -241,7 +241,7 @@ The following command-line tools and utilities are pre-installed in both the __O
     -	Docker Bash Completion
     -	Docker Compose 1.15.0
     -	Docker Compose Bash Completion
--	Git 2.13.3
+-	Git 2.14.0
     -	Git Bash Completion
     -	Git-Flow 1.11.0 (AVH Edition)
     -	Git-Flow Bash Completion
@@ -250,27 +250,29 @@ The following command-line tools and utilities are pre-installed in both the __O
 -	Groovy 2.4.12
 -	Java JDK 8 Update 144
 -	Maven 3.5.0
+-	Oracle Compute Cloud Service CLI (opc) 17.2.2 [Optional]
+-	Oracle PaaS Service Manager CLI (psm) 1.1.15 [Optional]
 -   Packer 1.0.3
 -	Python 2.7.5
     -	Pip 9.0.1
 -	Python 3.3.2
     -	Pip3 9.0.1
--   Terraform 0.9.11
+-   Terraform 0.10.0
 -   Vault 0.7.3
 
 In addition to the above, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (Oracle Linux 7.3 console):
 
--	GitLab Community Edition 9.4.2 a2ffceb
+-	GitLab Community Edition 9.4.3 b125d21
 -	Jenkins 2.60.2
 
 The following GUI tools are pre-installed in the __Developer VM__ (Oracle Linux 7.3 desktop) only:
 
 -	Atom Editor 1.18.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 60.0.3112.78 (64-bit)
+-	Chrome 60.0.3112.90 (64-bit)
 -	Firefox 52.2.0 (64-bit)
 -	GVim 7.4.160-1
--	Postman 5.1.2
+-	Postman 5.1.3
 -	Spring Tool Suite 3.9.0 IDE (Eclipse Oxygen 4.7.0)
 -	Sublime Text 3 Build 3126
 -	Visual Studio Code 1.14.2

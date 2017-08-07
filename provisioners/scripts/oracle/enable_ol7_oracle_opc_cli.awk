@@ -1,10 +1,10 @@
 {
   if ($0 ~ /# define prompt code/) {
     print "# set oracle public cloud (opc) cli client environment variables."
-    printf "OPC_API=%s\n", opc_api
-    print "export OPC_API"
-    printf "OPC_USER=%s\n", opc_user
-    print "export OPC_USER"
+    printf "OPC_PROFILE_DIRECTORY=%s\n", opc_profile_directory
+    print "export OPC_PROFILE_DIRECTORY"
+    printf "OPC_PROFILE_FILE=%s\n", opc_profile_file
+    print "export OPC_PROFILE_FILE"
     print ""
     print $0
   }
