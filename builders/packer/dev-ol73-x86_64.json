@@ -71,7 +71,6 @@
         "../../provisioners/scripts/oracle/install_ol7_hashicorp_vault.sh",
         "../../provisioners/scripts/oracle/install_ol7_git.sh",
         "../../provisioners/scripts/oracle/install_ol7_git_flow.sh",
-        "../../provisioners/scripts/oracle/install_ol7_cloud_init.sh",
         "../../provisioners/scripts/oracle/install_ol7_atom_editor.sh",
         "../../provisioners/scripts/oracle/install_ol7_brackets_editor.sh",
         "../../provisioners/scripts/oracle/install_ol7_spring_tool_suite_eclipse_ide.sh",

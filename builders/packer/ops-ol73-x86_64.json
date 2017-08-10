@@ -70,7 +70,6 @@
         "../../provisioners/scripts/oracle/install_ol7_hashicorp_vault.sh",
         "../../provisioners/scripts/oracle/install_ol7_git.sh",
         "../../provisioners/scripts/oracle/install_ol7_git_flow.sh",
-        "../../provisioners/scripts/oracle/install_ol7_cloud_init.sh",
         "../../provisioners/scripts/oracle/cleanup.sh",
         "../../submodules/chef/bento/scripts/common/minimize.sh"
       ],
