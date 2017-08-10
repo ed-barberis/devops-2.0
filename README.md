@@ -295,8 +295,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Ansible 2.3.1.0
     -	Ansible Container 0.9.1
 -	Ant 1.10.1
--   Consul 0.9.0
--   Cloud-init 0.7.5
+-   Consul 0.9.2
 -	Docker 17.03.1-ce
     -	Docker Bash Completion
     -	Docker Compose 1.15.0
@@ -318,7 +317,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Python 3.3.2
     -	Pip3 9.0.1
 -   Terraform 0.10.0
--   Vault 0.7.3
+-   Vault 0.8.0
 
 In addition to the above, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
@@ -327,7 +326,7 @@ In addition to the above, the following continuous integration and continuous de
 
 The following GUI tools are pre-installed in the __Developer VM__ (desktop) only:
 
--	Atom Editor 1.18.0
+-	Atom Editor 1.19.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
 -	Chrome 60.0.3112.90 (64-bit)
 -	Firefox 52.2.0 (64-bit)
