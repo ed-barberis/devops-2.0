@@ -55,6 +55,24 @@ for bgkey in ${bgkeyarray[@]}; do
 done
 echo ""
 
+# modify default desktop icon view default zoom level. -------------------------
+zoomlevel="small"
+
+# display current value.
+echo "Displaying current default desktop icon view default zoom level..."
+zlevel=$(gsettings get org.gnome.nautilus.icon-view default-zoom-level)
+echo "icon-view default-zoom-level: ${zlevel}"
+echo ""
+
+# update the value.
+dbus-launch --exit-with-session gsettings set org.gnome.nautilus.icon-view default-zoom-level "${zoomlevel}"
+
+# display updated value.
+echo "Displaying updated desktop icon view default zoom level..."
+zlevel=$(gsettings get org.gnome.nautilus.icon-view default-zoom-level)
+echo "icon-view default-zoom-level: ${zlevel}"
+echo ""
+
 # modify gnome shell favorites menu. -------------------------------------------
 favapps="['firefox.desktop', 'google-chrome.desktop', 'atom.desktop', 'brackets.desktop', 'postman.desktop', 'spring-tool-suite.desktop', 'sublime_text.desktop', 'code.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop', 'yelp.desktop', 'gnome-terminal.desktop']"
 
