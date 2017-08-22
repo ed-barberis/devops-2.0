@@ -25,8 +25,8 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 1.1.9
 	-	vagrant-vbguest 0.14.2
--	Packer 1.0.3
--	Git 2.14.0 for Win64
+-	Packer 1.0.4
+-	Git 2.14.1 for Win64
 	-	wget 1.9.1
 	-	tree 1.5.2.2
 
@@ -40,11 +40,11 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     auggested install folder:  
     `C:\HashiCorp\aagrant`
 
-4.	Install [Packer 1.0.3 for Windows 64-bit](https://releases.hashicorp.com/packer/1.0.3/packer_1.0.3_windows_amd64.zip).  
+4.	Install [Packer 1.0.4 for Windows 64-bit](https://releases.hashicorp.com/packer/1.0.4/packer_1.0.4_windows_amd64.zip).  
     Create suggested install folder and extract contents of ZIP file to:  
     `C:\HashiCorp\Packer\bin`
 
-5.	Install [Git 2.14.0 for Windows 64-bit](https://github.com/git-for-windows/git/releases/download/v2.14.0.windows.1/Git-2.14.0-64-bit.exe).
+5.	Install [Git 2.14.1 for Windows 64-bit](https://github.com/git-for-windows/git/releases/download/v2.14.1.windows.1/Git-2.14.1-64-bit.exe).
 
 6.	Install optional add-ons for Git Bash.  
     Install [wget 1.9.1 for Windows](https://sourceforge.net/projects/mingw/files/Other/mingwPORT/Current%20Releases/wget-1.9.1-mingwPORT.tar.bz2/download).  
@@ -79,13 +79,13 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
     ```
     $ git --version
-    git version 2.14.0.windows.1
+    git version 2.14.1.windows.1
 
     $ vagrant --version
     Vagrant 1.9.7
 
     $ packer --version
-    1.0.3
+    1.0.4
     ```
 
 6.	Install or update the following Vagrant Plugins:
@@ -232,15 +232,15 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     NOTE: This will take a few minutes to import the Vagrant box.
     ```
     $ vagrant ssh
-    generic-dev[vagrant]$ ansible -version
+    dev[vagrant]$ docker --version
+    Docker version 17.03.1-ce, build 276fd32
+    dev[vagrant]$ ansible --version
     ansible 2.3.1.0
       config file = /etc/ansible/ansible.cfg
       configured module search path = Default w/o overrides
-      python version = 2.7.5 (default, Sep  5 2016, 02:30:38) [GCC 4.8.5 20150623 (Red Hat 4.8.5-9)]
-    generic-dev[vagrant]$ docker -version
-    Docker version 17.03.1-ce, build 276fd32
-    generic-dev[vagrant]$ <run other commands>
-    generic-dev[vagrant]$ exit
+      python version = 2.7.5 (default, May 29 2017, 20:42:36) [GCC 4.8.5 20150623 (Red Hat 4.8.5-11)]
+    dev[vagrant]$ <run other commands>
+    dev[vagrant]$ exit
     $ vagrant halt
     ```
 
@@ -254,15 +254,15 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     NOTE: This will take a few minutes to import the Vagrant box.
     ```
     $ vagrant ssh
-    generic-ops[vagrant]$ ansible -version
+    ops[vagrant]$ docker --version
+    Docker version 17.03.1-ce, build 276fd32
+    ops[vagrant]$ ansible --version
     ansible 2.3.1.0
       config file = /etc/ansible/ansible.cfg
       configured module search path = Default w/o overrides
-      python version = 2.7.5 (default, Sep  5 2016, 02:30:38) [GCC 4.8.5 20150623 (Red Hat 4.8.5-9)]
-    generic-ops[vagrant]$ docker -version
-    Docker version 17.03.1-ce, build 276fd32
-    generic-ops[vagrant]$ <run other commands>
-    generic-ops[vagrant]$ exit
+      python version = 2.7.5 (default, May 29 2017, 20:42:36) [GCC 4.8.5 20150623 (Red Hat 4.8.5-11)]
+    ops[vagrant]$ <run other commands>
+    ops[vagrant]$ exit
     $ vagrant halt
     ```
 
@@ -274,15 +274,15 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     NOTE: This will take a few minutes to import the Vagrant box.
     ```
     $ vagrant ssh
-    generic-ops[vagrant]$ ansible -version
+    cicd[vagrant]$ docker --version
+    Docker version 17.03.1-ce, build 276fd32
+    cicd[vagrant]$ ansible --version
     ansible 2.3.1.0
       config file = /etc/ansible/ansible.cfg
       configured module search path = Default w/o overrides
-      python version = 2.7.5 (default, Sep  5 2016, 02:30:38) [GCC 4.8.5 20150623 (Red Hat 4.8.5-9)]
-    generic-ops[vagrant]$ docker -version
-    Docker version 17.03.1-ce, build 276fd32
-    generic-ops[vagrant]$ <run other commands>
-    generic-ops[vagrant]$ exit
+      python version = 2.7.5 (default, May 29 2017, 20:42:36) [GCC 4.8.5 20150623 (Red Hat 4.8.5-11)]
+    cicd[vagrant]$ <run other commands>
+    cicd[vagrant]$ exit
     $ vagrant halt
     ```
 
@@ -296,11 +296,12 @@ The following command-line tools and utilities are pre-installed in the __Develo
     -	Ansible Container 0.9.1
 -	Ant 1.10.1
 -   Consul 0.9.2
+-   Cloud-Init 0.7.9 [Optional]
 -	Docker 17.03.1-ce
     -	Docker Bash Completion
     -	Docker Compose 1.15.0
     -	Docker Compose Bash Completion
--	Git 2.14.0
+-	Git 2.14.1
     -	Git Bash Completion
     -	Git-Flow 1.11.0 (AVH Edition)
     -	Git-Flow Bash Completion
@@ -311,27 +312,27 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Maven 3.5.0
 -	Oracle Compute Cloud Service CLI (opc) 17.2.2 [Optional]
 -	Oracle PaaS Service Manager CLI (psm) 1.1.15 [Optional]
--   Packer 1.0.3
+-   Packer 1.0.4
 -	Python 2.7.5
     -	Pip 9.0.1
 -	Python 3.3.2
     -	Pip3 9.0.1
--   Terraform 0.10.0
--   Vault 0.8.0
+-   Terraform 0.10.2
+-   Vault 0.8.1
 
 In addition to the above, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 9.4.3 b125d21
--	Jenkins 2.60.2
+-	GitLab Community Edition 9.5.0 77bfdac
+-	Jenkins 2.60.3
 
 The following GUI tools are pre-installed in the __Developer VM__ (desktop) only:
 
--	Atom Editor 1.19.0
+-	Atom Editor 1.19.2
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 60.0.3112.90 (64-bit)
--	Firefox 52.2.0 (64-bit)
+-	Chrome 60.0.3112.101 (64-bit)
+-	Firefox 52.3.0 (64-bit)
 -	GVim 7.4.160-1
 -	Postman 5.1.3
 -	Spring Tool Suite 3.9.0 IDE (Eclipse Oxygen 4.7.0)
 -	Sublime Text 3 Build 3126
--	Visual Studio Code 1.14.2
+-	Visual Studio Code 1.15.1
