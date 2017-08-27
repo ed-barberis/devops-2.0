@@ -21,7 +21,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
 -	VirtualBox 5.1.26
     -   VirtualBox Extension Pack 5.1.26
--	Vagrant 1.9.7 with Plugins
+-	Vagrant 1.9.8 with Plugins
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 1.1.9
 	-	vagrant-vbguest 0.14.2
@@ -36,7 +36,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
 2.	Install [VirtualBox Extension Pack 5.1.26](http://download.virtualbox.org/virtualbox/5.1.26/Oracle_VM_VirtualBox_Extension_Pack-5.1.26-117224.vbox-extpack).
 
-3.	Install [Vagrant 1.9.7 for Windows 64-bit](https://releases.hashicorp.com/vagrant/1.9.7/vagrant_1.9.7_x86_64.msi).  
+3.	Install [Vagrant 1.9.8 for Windows 64-bit](https://releases.hashicorp.com/vagrant/1.9.8/vagrant_1.9.8_x86_64.msi).  
     auggested install folder:  
     `C:\HashiCorp\aagrant`
 
@@ -82,7 +82,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     git version 2.14.1.windows.1
 
     $ vagrant --version
-    Vagrant 1.9.7
+    Vagrant 1.9.8
 
     $ packer --version
     1.0.4
@@ -305,7 +305,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
     -	Git Bash Completion
     -	Git-Flow 1.11.0 (AVH Edition)
     -	Git-Flow Bash Completion
--   Go 1.8.3
+-   Go 1.9
 -	Gradle 4.1
 -	Groovy 2.4.12
 -	Java JDK 8 Update 144
@@ -322,14 +322,14 @@ The following command-line tools and utilities are pre-installed in the __Develo
 
 In addition to the above, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 9.5.0 77bfdac
+-	GitLab Community Edition 9.5.1 c47ae37
 -	Jenkins 2.60.3
 
 The following GUI tools are pre-installed in the __Developer VM__ (desktop) only:
 
--	Atom Editor 1.19.2
+-	Atom Editor 1.19.3
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 60.0.3112.101 (64-bit)
+-	Chrome 60.0.3112.113 (64-bit)
 -	Firefox 52.3.0 (64-bit)
 -	GVim 7.4.160-1
 -	Postman 5.1.3
