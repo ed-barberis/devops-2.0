@@ -64,6 +64,8 @@
         "../../provisioners/scripts/oracle/install_ol7_gradle.sh",
         "../../provisioners/scripts/oracle/install_ol7_ansible.sh",
         "../../provisioners/scripts/oracle/install_ol7_google_golang.sh",
+        "../../provisioners/scripts/oracle/install_ol7_scala_lang.sh",
+        "../../provisioners/scripts/oracle/install_ol7_scala_sbt.sh",
         "../../provisioners/scripts/oracle/install_ol7_hashicorp_consul.sh",
         "../../provisioners/scripts/oracle/install_ol7_hashicorp_packer.sh",
         "../../provisioners/scripts/oracle/install_ol7_hashicorp_terraform.sh",

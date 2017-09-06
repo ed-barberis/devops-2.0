@@ -299,13 +299,13 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -   Cloud-Init 0.7.9 [Optional]
 -	Docker 17.03.1-ce
     -	Docker Bash Completion
-    -	Docker Compose 1.16.0
+    -	Docker Compose 1.16.1
     -	Docker Compose Bash Completion
 -	Git 2.14.1
     -	Git Bash Completion
     -	Git-Flow 1.11.0 (AVH Edition)
     -	Git-Flow Bash Completion
--   Go 1.9
+-   Golang 1.9
 -	Gradle 4.1
 -	Groovy 2.4.12
 -	Java JDK 8 Update 144
@@ -317,22 +317,25 @@ The following command-line tools and utilities are pre-installed in the __Develo
     -	Pip 9.0.1
 -	Python 3.3.2
     -	Pip3 9.0.1
+-   Scala-lang 2.12.3
+    -	Scala Build Tool (SBT) 1.0.1
 -   Terraform 0.10.3
--   Vault 0.8.1
+-   Vault 0.8.2
 
 In addition to the above, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 9.5.2 ab97415
+-	GitLab Community Edition 9.5.3 789cc67
 -	Jenkins 2.60.3
 
 The following GUI tools are pre-installed in the __Developer VM__ (desktop) only:
 
--	Atom Editor 1.19.5
+-	Atom Editor 1.19.6
 -	Brackets Editor 1.7 Experimental 1.7.0-0
 -	Chrome 60.0.3112.113 (64-bit)
 -	Firefox 52.3.0 (64-bit)
 -	GVim 7.4.160-1
 -	Postman 5.2.0
+-	Scala IDE for Eclipse 4.6.1 (Eclipse Neon 4.6.3)
 -	Spring Tool Suite 3.9.0 IDE (Eclipse Oxygen 4.7.0)
 -	Sublime Text 3 Build 3126
 -	Visual Studio Code 1.15.1

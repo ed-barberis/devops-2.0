@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Scala IDE for Eclipse
+Comment=Advanced editing and debugging support for pure Scala and mixed Scala-Java applications.
+GenericName=Scala IDE
+Exec=/usr/local/scala/scala-ide/eclipse
+Icon=/usr/share/icons/hicolor/128x128/apps/scala-ide-for-eclipse-logo.png
+Type=Application
+Categories=TextEditor;Development;
+Terminal=false
