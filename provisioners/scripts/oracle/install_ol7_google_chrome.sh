@@ -12,9 +12,8 @@ yum -y install adobe-release-x86_64-1.0-1.noarch.rpm
 yum -y install flash-plugin
 
 # install google chrome browser. -----------------------------------------------
-wget --no-verbose https://chrome.richardlloyd.org.uk/install_chrome.sh
-chmod 755 install_chrome.sh
-./install_chrome.sh -f
+wget --no-verbose https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+yum -y install google-chrome-stable_current_x86_64.rpm
 
 # install linux chrome launcher on user desktop.
 #echo "Installing google-chrome.desktop on user desktop..."
