@@ -21,7 +21,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
 -	VirtualBox 5.1.26
     -   VirtualBox Extension Pack 5.1.26
--	Vagrant 1.9.8 with Plugins
+-	Vagrant 2.0.0 with Plugins
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 1.1.9
 	-	vagrant-vbguest 0.14.2
@@ -36,9 +36,9 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
 2.	Install [VirtualBox Extension Pack 5.1.26](http://download.virtualbox.org/virtualbox/5.1.26/Oracle_VM_VirtualBox_Extension_Pack-5.1.26-117224.vbox-extpack).
 
-3.	Install [Vagrant 1.9.8 for Windows 64-bit](https://releases.hashicorp.com/vagrant/1.9.8/vagrant_1.9.8_x86_64.msi).  
-    auggested install folder:  
-    `C:\HashiCorp\aagrant`
+3.	Install [Vagrant 2.0.0 for Windows 64-bit](https://releases.hashicorp.com/vagrant/2.0.0/vagrant_2.0.0_x86_64.msi).  
+    Suggested install folder:  
+    `C:\HashiCorp\vagrant`
 
 4.	Install [Packer 1.0.4 for Windows 64-bit](https://releases.hashicorp.com/packer/1.0.4/packer_1.0.4_windows_amd64.zip).  
     Create suggested install folder and extract contents of ZIP file to:  
@@ -82,7 +82,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     git version 2.14.1.windows.1
 
     $ vagrant --version
-    Vagrant 1.9.8
+    Vagrant 2.0.0
 
     $ packer --version
     1.0.4
@@ -319,23 +319,23 @@ The following command-line tools and utilities are pre-installed in the __Develo
     -	Pip3 9.0.1
 -   Scala-lang 2.12.3
     -	Scala Build Tool (SBT) 1.0.1
--   Terraform 0.10.3
+-   Terraform 0.10.4
 -   Vault 0.8.2
 
 In addition to the above, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 9.5.3 789cc67
+-	GitLab Community Edition 9.5.4 fbffc27
 -	Jenkins 2.60.3
 
 The following GUI tools are pre-installed in the __Developer VM__ (desktop) only:
 
--	Atom Editor 1.19.6
+-	Atom Editor 1.19.7
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 60.0.3112.113 (64-bit)
+-	Chrome 61.0.3163.79 (64-bit)
 -	Firefox 52.3.0 (64-bit)
 -	GVim 7.4.160-1
 -	Postman 5.2.0
 -	Scala IDE for Eclipse 4.6.1 (Eclipse Neon 4.6.3)
 -	Spring Tool Suite 3.9.0 IDE (Eclipse Oxygen 4.7.0)
 -	Sublime Text 3 Build 3126
--	Visual Studio Code 1.15.1
+-	Visual Studio Code 1.16.0
