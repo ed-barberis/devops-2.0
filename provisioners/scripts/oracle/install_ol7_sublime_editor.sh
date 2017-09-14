@@ -2,8 +2,9 @@
 # install sublime text editor with associated gnome desktop app and images.
 
 # install sublime text editor. -------------------------------------------------
-sublimebinary="sublime_text_3_build_3126_x64.tar.bz2"
+sublimerelease="3143"
 sublimefolder="sublime_text_3"
+sublimebinary="${sublimefolder}_build_${sublimerelease}_x64.tar.bz2"
 
 # create sublime home parent folder.
 mkdir -p /usr/local/sublime_text
