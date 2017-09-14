@@ -39,6 +39,16 @@ if [ -f "$dockerfile" ]; then
   sed -i "s/OPTIONS='--selinux-enabled'/OPTIONS='--storage-driver btrfs --selinux-enabled=false'/g" $dockerfile
 fi
 
+# enable ip forwarding if not set.
+sysctlfile="/etc/sysctl.conf"
+ipv4cmd="net.ipv4.ip_forward = 1"
+if [ -f "$sysctlfile" ]; then
+  sysctl net.ipv4.ip_forward
+  grep -qF "${ipv4cmd}" ${sysctlfile} || echo "${ipv4cmd}" >> ${sysctlfile}
+  sysctl -p /etc/sysctl.conf
+  sysctl net.ipv4.ip_forward
+fi
+
 # add user 'vagrant' to 'docker' group.
 usermod -aG docker vagrant
 
