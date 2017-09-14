@@ -40,7 +40,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     Suggested install folder:  
     `C:\HashiCorp\vagrant`
 
-4.	Install [Packer 1.0.4 for Windows 64-bit](https://releases.hashicorp.com/packer/1.0.4/packer_1.0.4_windows_amd64.zip).  
+4.	Install [Packer 1.1.0 for Windows 64-bit](https://releases.hashicorp.com/packer/1.1.0/packer_1.1.0_windows_amd64.zip).  
     Create suggested install folder and extract contents of ZIP file to:  
     `C:\HashiCorp\Packer\bin`
 
@@ -85,7 +85,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     Vagrant 2.0.0
 
     $ packer --version
-    1.0.4
+    1.1.0
     ```
 
 6.	Install or update the following Vagrant Plugins:
