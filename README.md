@@ -25,7 +25,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 1.1.9
 	-	vagrant-vbguest 0.14.2
--	Packer 1.0.4
+-	Packer 1.1.0
 -	Git 2.14.1 for Win64
 	-	wget 1.9.1
 	-	tree 1.5.2.2
@@ -162,69 +162,69 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 1.	Start VirtualBox:  
     Start Menu -- > All apps -- > Oracle VM VirtualBox -- > Oracle VM VirtualBox
 
-2.	Build the Oracle Linux 7.3 'base-desktop' box (desktop):
+2.	Build the Oracle Linux 7.4 'base-desktop' box (desktop):
     ```
     $ cd /<drive>/projects/devops-2.0/builders/packer
-    $ packer build base-desktop-ol73-x86_64.json
+    $ packer build base-desktop-ol74-x86_64.json
     ```
     NOTE: This will take several minutes to run.
 
-3.	Build the Oracle Linux 7.3 'base-headless' box (headless):
+3.	Build the Oracle Linux 7.4 'base-headless' box (headless):
     ```
-    $ packer build base-headless-ol73-x86_64.json
+    $ packer build base-headless-ol74-x86_64.json
     ```
-    NOTE: This will take several minutes to run.  However, this build will be shorter because the ISO image for Oracle Linux 7.3 has been cached.
+    NOTE: This will take several minutes to run.  However, this build will be shorter because the ISO image for Oracle Linux 7.4 has been cached.
 
-4.	Build the Oracle Linux 7.3 'dev' box (desktop):
+4.	Build the Oracle Linux 7.4 'dev' box (desktop):
     ```
-    $ packer build dev-ol73-x86_64.json
+    $ packer build dev-ol74-x86_64.json
     ```
-    NOTE: This will take several minutes to run.  However, this build will be shorter because it is based on the 'base-desktop-ol73' image.
+    NOTE: This will take several minutes to run.  However, this build will be shorter because it is based on the 'base-desktop-ol74' image.
 
-5.	Build the Oracle Linux 7.3 'ops' box (headless):
+5.	Build the Oracle Linux 7.4 'ops' box (headless):
     ```
-    $ packer build ops-ol73-x86_64.json
+    $ packer build ops-ol74-x86_64.json
     ```
-    NOTE: This build is based on the 'base-headless-ol73' image.
+    NOTE: This build is based on the 'base-headless-ol74' image.
 
-6.	Build the Oracle Linux 7.3 'cicd' box (headless):
+6.	Build the Oracle Linux 7.4 'cicd' box (headless):
     ```
-    $ packer build cicd-ol73-x86_64.json
+    $ packer build cicd-ol74-x86_64.json
     ```
-    NOTE: This build is based on the 'ops-ol73' image.
+    NOTE: This build is based on the 'ops-ol74' image.
 
 ## Import the Vagrant Box Images
 
-1.	Import the Oracle Linux 7.3 'dev' box image (desktop):
+1.	Import the Oracle Linux 7.4 'dev' box image (desktop):
     ```
-    $ cd /<drive>/projects/devops-2.0/artifacts/dev-ol73
-    $ vagrant box add dev-ol73 dev-ol73.virtualbox.box
-    ```
-
-2.	Import the Oracle Linux 7.3 'ops' box image (headless):
-    ```
-    $ cd ../ops-ol73
-    $ vagrant box add ops-ol73 ops-ol73.virtualbox.box
+    $ cd /<drive>/projects/devops-2.0/artifacts/dev-ol74
+    $ vagrant box add dev-ol74 dev-ol74.virtualbox.box
     ```
 
-3.	Import the Oracle Linux 7.3 'cicd' box image (headless):
+2.	Import the Oracle Linux 7.4 'ops' box image (headless):
     ```
-    $ cd ../cicd-ol73
-    $ vagrant box add cicd-ol73 cicd-ol73.virtualbox.box
+    $ cd ../ops-ol74
+    $ vagrant box add ops-ol74 ops-ol74.virtualbox.box
+    ```
+
+3.	Import the Oracle Linux 7.4 'cicd' box image (headless):
+    ```
+    $ cd ../cicd-ol74
+    $ vagrant box add cicd-ol74 cicd-ol74.virtualbox.box
     ```
 
 4.	List the Vagrant box images:
     ```
     $ vagrant box list
-    cicd-ol73 (virtualbox, 0)
-    dev-ol73 (virtualbox, 0)
-    ops-ol73 (virtualbox, 0)
+    cicd-ol74 (virtualbox, 0)
+    dev-ol74 (virtualbox, 0)
+    ops-ol74 (virtualbox, 0)
     ...
     ```
 
 ## Provision the VirtualBox Images
 
-1.	Provision the __Developer VM__ with Oracle Linux 7.3 (desktop):
+1.	Provision the __Developer VM__ with Oracle Linux 7.4 (desktop):
     ```
     $ cd /<drive>/projects/devops-2.0/builders/vagrant/demo/dev
     $ vagrant up
@@ -244,9 +244,9 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     $ vagrant halt
     ```
 
-    The Developer VM with Oracle Linux 7.3 (desktop) can also be used directly from VirtualBox.
+    The Developer VM with Oracle Linux 7.4 (desktop) can also be used directly from VirtualBox.
 
-2.	Provision the __Operations VM__ with Oracle Linux 7.3 (headless):
+2.	Provision the __Operations VM__ with Oracle Linux 7.4 (headless):
     ```
     $ cd /<drive>/projects/devops-2.0/builders/vagrant/demo/ops
     $ vagrant up
@@ -266,7 +266,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     $ vagrant halt
     ```
 
-3.	Provision the __CICD VM__ with Oracle Linux 7.3 (headless):
+3.	Provision the __CICD VM__ with Oracle Linux 7.4 (headless):
     ```
     $ cd /<drive>/projects/devops-2.0/builders/vagrant/demo/cicd
     $ vagrant up
@@ -295,7 +295,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Ansible 2.3.1.0
     -	Ansible Container 0.9.1
 -	Ant 1.10.1
--   Consul 0.9.2
+-   Consul 0.9.3
 -   Cloud-Init 0.7.9 [Optional]
 -	Docker 17.03.1-ce
     -	Docker Bash Completion
@@ -312,7 +312,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Maven 3.5.0
 -	Oracle Compute Cloud Service CLI (opc) 17.2.2 [Optional]
 -	Oracle PaaS Service Manager CLI (psm) 1.1.15 [Optional]
--   Packer 1.0.4
+-   Packer 1.1.0
 -	Python 2.7.5
     -	Pip 9.0.1
 -	Python 3.3.2
@@ -329,7 +329,7 @@ In addition to the above, the following continuous integration and continuous de
 
 The following GUI tools are pre-installed in the __Developer VM__ (desktop) only:
 
--	Atom Editor 1.19.7
+-	Atom Editor 1.20.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
 -	Chrome 61.0.3163.79 (64-bit)
 -	Firefox 52.3.0 (64-bit)
@@ -337,5 +337,5 @@ The following GUI tools are pre-installed in the __Developer VM__ (desktop) only
 -	Postman 5.2.0
 -	Scala IDE for Eclipse 4.6.1 (Eclipse Neon 4.6.3)
 -	Spring Tool Suite 3.9.0 IDE (Eclipse Oxygen 4.7.0)
--	Sublime Text 3 Build 3126
+-	Sublime Text 3 Build 3143
 -	Visual Studio Code 1.16.0

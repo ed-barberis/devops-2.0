@@ -4,7 +4,7 @@
       "boot_wait": "10s",
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
       "headless": "{{ user `headless` }}",
-      "source_path": "../../artifacts/ops-ol73/ops-ol73.ovf",
+      "source_path": "../../artifacts/ops-ol74/ops-ol74.ovf",
       "output_directory": "../../artifacts/{{user `box_basename`}}",
       "post_shutdown_delay": "{{user `post_shutdown_delay`}}",
       "shutdown_command": "echo 'vagrant' | sudo -S /sbin/halt -h -p",
@@ -68,7 +68,7 @@
   ],
   "variables": {
     "arch": "64",
-    "box_basename": "cicd-ol73",
+    "box_basename": "cicd-ol74",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
     "cpus": "2",
     "git_revision": "__unknown_git_revision__",
@@ -76,7 +76,7 @@
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
     "memory": "6144",
-    "name": "cicd-ol73",
+    "name": "cicd-ol74",
     "no_proxy": "{{env `no_proxy`}}",
     "post_shutdown_delay": "10s",
     "version": "TIMESTAMP"
