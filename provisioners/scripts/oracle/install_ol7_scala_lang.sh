@@ -25,6 +25,7 @@ rm -f curl-${scalahome}.${curdate}.out2
 wget --no-verbose https://downloads.lightbend.com/scala/${scalarelease:1}/${scalabinary}
 
 # extract scala-lang binary.
+rm -f ${scalahome}
 tar -zxvf ${scalabinary} --no-same-owner --no-overwrite-dir
 mv -f ${scaladir} ${scalafolder}
 chown -R root:root ./${scalafolder}
@@ -51,8 +52,13 @@ scala_env_name="SCALA_HOME"
 scala_env_value="/usr/local/scala/${scalahome}"
 
 cd /home/vagrant
-awk -v env_comment=${scala_env_comment} -v env_name=${scala_env_name} -v env_value=${scala_env_value} -f /tmp/scripts/oracle/append_ol7_env_path.awk .bashrc > .bashrc.${curdate}.${scalahome}
-mv -f .bashrc.${curdate}.${scalahome} .bashrc
+
+# if env name exists (grep command), skip awk update.
+grep -qF "${scala_env_name}" .bashrc || awk -v env_comment=${scala_env_comment} -v env_name=${scala_env_name} -v env_value=${scala_env_value} -f /tmp/scripts/oracle/append_ol7_env_path.awk .bashrc > .bashrc.${curdate}.${scalahome}
+
+if [ -f ".bashrc.${curdate}.${scalahome}" ]; then
+  mv -f .bashrc.${curdate}.${scalahome} .bashrc
+fi
 
 chown vagrant:vagrant .bashrc
 chmod 644 .bashrc
