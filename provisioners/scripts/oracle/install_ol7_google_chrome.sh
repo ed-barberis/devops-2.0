@@ -6,9 +6,10 @@ mkdir -p /tmp/scripts/oracle
 cd /tmp/scripts/oracle
 
 # install the adobe flash plug-in. ---------------------------------------------
-wget --no-verbose http://linuxdownload.adobe.com/linux/x86_64/adobe-release-x86_64-1.0-1.noarch.rpm
+#wget --no-verbose http://linuxdownload.adobe.com/linux/x86_64/adobe-release-x86_64-1.0-1.noarch.rpm
 yum repolist
-yum -y install adobe-release-x86_64-1.0-1.noarch.rpm
+#yum -y install adobe-release-x86_64-1.0-1.noarch.rpm
+yum -y install ./tools/adobe-release-x86_64-1.0-1.noarch.rpm
 yum -y install flash-plugin
 
 # install google chrome browser. -----------------------------------------------
