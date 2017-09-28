@@ -42,11 +42,6 @@
   ],
   "provisioners": [
     {
-      "destination": "/tmp/bento-metadata.json",
-      "source": "{{user `metadata`}}",
-      "type": "file"
-    },
-    {
       "inline": ["mkdir -p /tmp/scripts/oracle"],
       "type": "shell"
     },
@@ -63,8 +58,8 @@
         "no_proxy={{user `no_proxy`}}"
       ],
       "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
+      "expect_disconnect": true,
       "scripts": [
-        "../../submodules/chef/bento/scripts/common/metadata.sh",
         "../../submodules/chef/bento/scripts/centos/networking.sh",
         "../../submodules/chef/bento/scripts/common/sshd.sh",
         "../../submodules/chef/bento/scripts/common/vagrant.sh",
@@ -73,6 +68,7 @@
       "type": "shell"
     },
     {
+      "expect_disconnect": true,
       "inline": [
         "sudo rpm -qa | grep kernel-3 | sort",
         "sudo yum -y remove kernel-3*",
@@ -88,6 +84,7 @@
         "no_proxy={{user `no_proxy`}}"
       ],
       "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
+      "expect_disconnect": true,
       "pause_before": "10s",
       "scripts": [
         "../../submodules/chef/bento/scripts/common/virtualbox.sh",
@@ -125,7 +122,6 @@
     "iso_name": "OracleLinux-R7-U4-Server-x86_64-dvd.iso",
     "ks_path": "oracle-linux-7.4/ol74-headless-ks.cfg",
     "memory": "4096",
-    "metadata": "../../submodules/chef/bento/floppy/dummy_metadata.json",
     "mirror": "http://mirrors.dotsrc.org/oracle-linux",
     "mirror_directory": "OL7/u4/x86_64",
     "name": "base-headless-ol74",

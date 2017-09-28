@@ -27,7 +27,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 	-	vagrant-share 1.1.9
 	-	vagrant-vbguest 0.14.2
 -	Packer 1.0.4
--	Git 2.14.1 for Win64
+-	Git 2.14.2 for Win64
 	-	wget 1.9.1
 	-	tree 1.5.2.2
 
@@ -47,7 +47,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
     NOTE: There is an issue currently with Packer 1.1.0. VirtualBox does't boot correctly after initial OS install. For now, it is recommended to use Packer 1.0.4.
 
-5.	Install [Git 2.14.1 for Windows 64-bit](https://github.com/git-for-windows/git/releases/download/v2.14.1.windows.1/Git-2.14.1-64-bit.exe).
+5.	Install [Git 2.14.2 for Windows 64-bit](https://github.com/git-for-windows/git/releases/download/v2.14.2.windows.1/Git-2.14.2-64-bit.exe).
 
 6.	Install optional add-ons for Git Bash.  
     Install [wget 1.9.1 for Windows](https://sourceforge.net/projects/mingw/files/Other/mingwPORT/Current%20Releases/wget-1.9.1-mingwPORT.tar.bz2/download).  
@@ -81,14 +81,17 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 5.	Validate installed command-line tools:
 
     ```
-    $ git --version
-    git version 2.14.1.windows.1
+    $ VBoxManage --version
+    5.1.28r117968
 
     $ vagrant --version
     Vagrant 2.0.0
 
     $ packer --version
     1.0.4
+
+    $ git --version
+    git version 2.14.2.windows.1
     ```
 
 6.	Install or update the following Vagrant Plugins:
@@ -374,7 +377,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
 -	Ansible 2.3.1.0
-    -	Ansible Container 0.9.1
+    -	Ansible Container 0.9.2
 -	Ant 1.10.1
 -   Consul 0.9.3
 -   Cloud-Init 0.7.9 [Optional]
@@ -382,12 +385,12 @@ The following command-line tools and utilities are pre-installed in the __Develo
     -	Docker Bash Completion
     -	Docker Compose 1.16.1
     -	Docker Compose Bash Completion
--	Git 2.14.1
+-	Git 2.14.2
     -	Git Bash Completion
     -	Git-Flow 1.11.0 (AVH Edition)
     -	Git-Flow Bash Completion
 -   Golang 1.9
--	Gradle 4.1
+-	Gradle 4.2
 -	Groovy 2.4.12
 -	Java JDK 8 Update 144
 -	Maven 3.5.0
@@ -405,24 +408,24 @@ The following command-line tools and utilities are pre-installed in the __Develo
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 9.5.5 3cf5eba
+-	GitLab Community Edition 10.0.2 06a5a33
 -	Jenkins 2.73.1
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
--	AppDynamics Controller 4.3.5.9
+-	AppDynamics Controller 4.3.5.10
     -	Controller Repository includes:
-    	-	AppDynamics Universal Agent 4.3.5.9
-    	-	AppDynamics Java Agent 4.3.5.9
+    	-	AppDynamics Universal Agent 4.3.5.10
+    	-	AppDynamics Java Agent 4.3.5.10
 
 The following GUI tools are pre-installed in the __Developer VM__ (desktop) only:
 
 -	Atom Editor 1.20.1
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 61.0.3163.91 (64-bit)
+-	Chrome 61.0.3163.100 (64-bit)
 -	Firefox 52.3.0 (64-bit)
 -	GVim 7.4.160-1
--	Postman 5.2.0
+-	Postman 5.2.1
 -	Scala IDE for Eclipse 4.6.1 (Eclipse Neon 4.6.3)
 -	Spring Tool Suite 3.9.0 IDE (Eclipse Oxygen 4.7.0)
 -	Sublime Text 3 Build 3143

@@ -42,9 +42,9 @@
       "type": "file"
     },
     {
+      "expect_disconnect": true,
       "inline": [
         "sudo yum -y update",
-        "sudo hostnamectl status",
         "sudo hostnamectl set-hostname apm --static",
         "sudo hostnamectl set-hostname apm",
         "sudo hostnamectl status",
@@ -60,6 +60,7 @@
         "no_proxy={{user `no_proxy`}}"
       ],
       "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
+      "expect_disconnect": true,
       "pause_before": "10s",
       "scripts": [
         "../../provisioners/scripts/oracle/install_ol7_appdynamics_controller.sh",
