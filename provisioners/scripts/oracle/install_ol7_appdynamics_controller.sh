@@ -4,7 +4,7 @@
 # set appdynamics installation variables. --------------------------------------
 username="<username>"
 password="<password>"
-controller_release="<controller_release - such as '4.3.5.9'>"
+controller_release="<controller_release - such as '4.3.5.10'>"
 controller_home="/opt/appdynamics/controller"
 
 admin_user="admin"
