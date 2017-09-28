@@ -12,18 +12,17 @@ cd /usr/local/scala
 curdate=$(date +"%Y-%m-%d")
 
 # retrieve version number of latest release.
-sbtrelease="v1.0.2"
-#curl --silent --dump-header curl-${sbthome}.${curdate}.out1 https://github.com/sbt/sbt/releases/latest --output /dev/null
-#tr -d '\r' < curl-${sbthome}.${curdate}.out1 > curl-${sbthome}.${curdate}.out2
-#sbtrelease=$(awk '/Location/ {print $2}' curl-${sbthome}.${curdate}.out2 | awk -F "/" '{print $8}')
+curl --silent --dump-header curl-${sbthome}.${curdate}.out1 https://github.com/sbt/sbt/releases/latest --output /dev/null
+tr -d '\r' < curl-${sbthome}.${curdate}.out1 > curl-${sbthome}.${curdate}.out2
+sbtrelease=$(awk '/Location/ {print $2}' curl-${sbthome}.${curdate}.out2 | awk -F "/" '{print $8}')
 sbtdir="sbt"
 sbtfolder="${sbthome}-${sbtrelease:1}"
 sbtbinary="sbt-${sbtrelease:1}.tgz"
-#rm -f curl-${sbthome}.${curdate}.out1
-#rm -f curl-${sbthome}.${curdate}.out2
+rm -f curl-${sbthome}.${curdate}.out1
+rm -f curl-${sbthome}.${curdate}.out2
 
 # download sbt from cocl.us.
-wget --no-verbose https://cocl.us/${sbtbinary}
+wget --no-verbose https://github.com/sbt/sbt/releases/download/${sbtrelease}/${sbtbinary}
 
 # extract sbt binary.
 rm -f ${sbthome}
