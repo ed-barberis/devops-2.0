@@ -26,7 +26,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 1.1.9
 	-	vagrant-vbguest 0.14.2
--	Packer 1.0.4
+-	Packer 1.1.0
 -	Git 2.14.2 for Win64
 	-	wget 1.9.1
 	-	tree 1.5.2.2
@@ -41,11 +41,9 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     Suggested install folder:  
     `C:\HashiCorp\vagrant`
 
-4.	Install [Packer 1.0.4 for Windows 64-bit](https://releases.hashicorp.com/packer/1.0.4/packer_1.0.4_windows_amd64.zip).  
+4.	Install [Packer 1.1.0 for Windows 64-bit](https://releases.hashicorp.com/packer/1.1.0/packer_1.1.0_windows_amd64.zip).  
     Create suggested install folder and extract contents of ZIP file to:  
     `C:\HashiCorp\Packer\bin`
-
-    NOTE: There is an issue currently with Packer 1.1.0. VirtualBox does't boot correctly after initial OS install. For now, it is recommended to use Packer 1.0.4.
 
 5.	Install [Git 2.14.2 for Windows 64-bit](https://github.com/git-for-windows/git/releases/download/v2.14.2.windows.1/Git-2.14.2-64-bit.exe).
 
@@ -88,7 +86,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     Vagrant 2.0.0
 
     $ packer --version
-    1.0.4
+    1.1.0
 
     $ git --version
     git version 2.14.2.windows.1
@@ -396,7 +394,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Maven 3.5.0
 -	Oracle Compute Cloud Service CLI (opc) 17.2.2 [Optional]
 -	Oracle PaaS Service Manager CLI (psm) 1.1.15 [Optional]
--   Packer 1.0.4
+-   Packer 1.1.0
 -	Python 2.7.5
     -	Pip 9.0.1
 -	Python 3.3.2
