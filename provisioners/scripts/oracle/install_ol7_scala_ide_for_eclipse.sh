@@ -3,12 +3,12 @@
 
 # install scala ide. -----------------------------------------------------------
 idehome="scala-ide"
-iderelease="4.6.1"
-idenumber="212-20170609"
+iderelease="4.7.0"
+idenumber="212-20170929"
 scalarelease="2.12"
-eclipseversion="neon"
-eclipserelease="4.6.3"
-eclipsenumber="1670605982"
+eclipseversion="oxygen"
+eclipserelease="4.7.1"
+eclipsenumber="1670606942"
 
 idebinary="scala-SDK-${iderelease}-vfinal-${scalarelease}-linux.gtk.x86_64.tar.gz"
 idefolder="scala-ide-${iderelease}"
@@ -21,6 +21,7 @@ cd /usr/local/scala
 wget --no-verbose http://downloads.typesafe.com/scalaide-pack/${iderelease}-vfinal-${eclipseversion}-${idenumber}/${idebinary}
 
 # extract scala ide binary.
+rm -f ${idehome}
 tar -zxvf ${idebinary} --no-same-owner --no-overwrite-dir
 mv -f eclipse ${idefolder}
 chown -R root:root ./${idefolder}
@@ -41,7 +42,7 @@ mv -f eclipse.${curdate}.ini eclipse.ini
 # create the default user workspace. -------------------------------------------
 prefsfile="org.eclipse.ui.ide.prefs"
 prefspath="/home/vagrant/.eclipse/org.eclipse.platform_${eclipserelease}_${eclipsenumber}_linux_gtk_x86_64/configuration/.settings"
-wspath="/home/vagrant/workspaces/scala-ide-${iderelease}-${eclipseversion}-${scalarelease}"
+wspath="/home/vagrant/workspaces/scala-ide-${iderelease}-${eclipseversion}-${eclipserelease}"
 
 # create the ide preferences file.
 mkdir -p ${prefspath}
