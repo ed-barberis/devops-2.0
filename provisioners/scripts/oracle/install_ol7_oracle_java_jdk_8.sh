@@ -1,7 +1,8 @@
 #!/bin/sh -eux
-# install java se development kit by oracle.
+# install java se 8 development kit by oracle.
 
-# install java se development kit. ---------------------------------------------
+# install java se 8 development kit. -------------------------------------------
+jdkhome="jdk180"
 jdkbuild="8u144-b01"
 jdkhash="090f390dda5b47b9b721c7dfaa008135"
 jdkbinary="jdk-8u144-linux-x64.tar.gz"
@@ -11,17 +12,18 @@ jdkfolder="jdk1.8.0_144"
 mkdir -p /usr/local/java
 cd /usr/local/java
 
-# download jdk binary from oracle otn.
+# download jdk 8 binary from oracle otn.
 wget --no-verbose --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/${jdkbuild}/${jdkhash}/${jdkbinary}
 #wget --no-verbose --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip
 
-# extract jdk binary and create softlink to 'jdk180'.
+# extract jdk 8 binary and create softlink to 'jdk180'.
+rm -f ${jdkhome}
 tar -zxvf ${jdkbinary} --no-same-owner --no-overwrite-dir
 chown -R root:root ./${jdkfolder}
-ln -s ${jdkfolder} jdk180
+ln -s ${jdkfolder} ${jdkhome}
 rm -f ${jdkbinary}
 
-# set jdk home environment variables.
+# set jdk 8 home environment variables.
 JAVA_HOME=/usr/local/java/jdk180
 export JAVA_HOME
 PATH=${JAVA_HOME}/bin:$PATH

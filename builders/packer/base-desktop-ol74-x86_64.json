@@ -89,7 +89,7 @@
       "scripts": [
         "../../submodules/chef/bento/scripts/common/virtualbox.sh",
         "../../provisioners/scripts/oracle/install_ol7_headless_devops_tools.sh",
-        "../../provisioners/scripts/oracle/install_ol7_oracle_java_jdk.sh",
+        "../../provisioners/scripts/oracle/install_ol7_oracle_java_jdk_8.sh",
         "../../provisioners/scripts/oracle/install_ol7_desktop_devops_tools.sh",
         "../../provisioners/scripts/oracle/install_ol7_google_chrome.sh",
         "../../provisioners/scripts/oracle/install_ol7_docker.sh",
