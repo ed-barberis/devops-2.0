@@ -260,9 +260,11 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     Docker version 17.03.1-ce, build 276fd32
 
     dev[vagrant]$ ansible --version
-    ansible 2.3.1.0
+    ansible 2.4.0.0
       config file = /etc/ansible/ansible.cfg
-      configured module search path = Default w/o overrides
+      configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+      ansible python module location = /usr/lib/python2.7/site-packages/ansible
+      executable location = /usr/bin/ansible
       python version = 2.7.5 (default, May 29 2017, 20:42:36) [GCC 4.8.5 20150623 (Red Hat 4.8.5-11)]
 
     dev[vagrant]$ <run other commands>
@@ -284,9 +286,11 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     Docker version 17.03.1-ce, build 276fd32
 
     ops[vagrant]$ ansible --version
-    ansible 2.3.1.0
+    ansible 2.4.0.0
       config file = /etc/ansible/ansible.cfg
-      configured module search path = Default w/o overrides
+      configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+      ansible python module location = /usr/lib/python2.7/site-packages/ansible
+      executable location = /usr/bin/ansible
       python version = 2.7.5 (default, May 29 2017, 20:42:36) [GCC 4.8.5 20150623 (Red Hat 4.8.5-11)]
 
     ops[vagrant]$ <run other commands>
@@ -374,7 +378,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Ansible 2.3.1.0
+-	Ansible 2.4.0.0
     -	Ansible Container 0.9.2
 -	Ant 1.10.1
 -   Consul 0.9.3
@@ -388,7 +392,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
     -	Git-Flow 1.11.0 (AVH Edition)
     -	Git-Flow Bash Completion
 -   Golang 1.9
--	Gradle 4.2
+-	Gradle 4.2.1
 -	Groovy 2.4.12
 -	Java JDK 8 Update 144
 -	Maven 3.5.0
@@ -401,7 +405,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
     -	Pip3 9.0.1
 -   Scala-lang 2.12.3
     -	Scala Build Tool (SBT) 1.0.2
--   Terraform 0.10.6
+-   Terraform 0.10.7
 -   Vault 0.8.3
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
@@ -421,10 +425,10 @@ The following GUI tools are pre-installed in the __Developer VM__ (desktop) only
 -	Atom Editor 1.20.1
 -	Brackets Editor 1.7 Experimental 1.7.0-0
 -	Chrome 61.0.3163.100 (64-bit)
--	Firefox 52.3.0 (64-bit)
+-	Firefox 52.4.0 (64-bit)
 -	GVim 7.4.160-1
 -	Postman 5.2.1
--	Scala IDE for Eclipse 4.6.1 (Eclipse Neon 4.6.3)
+-	Scala IDE for Eclipse 4.7.0 (Eclipse Oxygen 4.7.1)
 -	Spring Tool Suite 3.9.0 IDE (Eclipse Oxygen 4.7.0)
 -	Sublime Text 3 Build 3143
 -	Visual Studio Code 1.16.1

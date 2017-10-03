@@ -5,25 +5,20 @@
 mkdir -p /tmp/scripts/oracle
 cd /tmp/scripts/oracle
 
-# install epel repository if needed. -------------------------------------------
-if [ ! -f "/etc/yum.repos.d/epel.repo" ]; then
-  wget --no-verbose https://download.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-  yum repolist
-  yum -y install epel-release-latest-7.noarch.rpm
-fi
+# install ansible. -------------------------------------------------------------
+ansible_release="2.4.0.0-1"
+#ansible_release="2.3.2.0-1"
+ansible_binary="ansible-${ansible_release}.el7.ans.noarch.rpm"
+
+# download ansible repository.
+wget --no-verbose http://releases.ansible.com/ansible/rpm/release/epel-7-x86_64/${ansible_binary}
 
 # install ansible. -------------------------------------------------------------
-yum -y install ansible
+yum repolist
+yum -y install ${ansible_binary}
 
 # verify ansible installation.
 ansible --version
-
-# upgrade ansible installation. ------------------------------------------------
-#yum-config-manager --enable epel-testing
-#yum -y upgrade ansible
-
-# verify ansible upgrade installation.
-#ansible --version
 
 # install ansible container. ---------------------------------------------------
 # install latest from repository.
