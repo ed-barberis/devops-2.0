@@ -395,6 +395,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Gradle 4.2.1
 -	Groovy 2.4.12
 -	Java JDK 8 Update 144
+-	Java JDK 9
 -	Maven 3.5.0
 -	Oracle Compute Cloud Service CLI (opc) 17.2.2 [Optional]
 -	Oracle PaaS Service Manager CLI (psm) 1.1.15 [Optional]
