@@ -423,7 +423,7 @@ In addition, the following application performance management applications are p
 
 The following GUI tools are pre-installed in the __Developer VM__ (desktop) only:
 
--	Atom Editor 1.20.1
+-	Atom Editor 1.21.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
 -	Chrome 61.0.3163.100 (64-bit)
 -	Firefox 52.4.0 (64-bit)

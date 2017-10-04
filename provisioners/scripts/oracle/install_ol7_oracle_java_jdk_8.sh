@@ -24,7 +24,7 @@ ln -s ${jdkfolder} ${jdkhome}
 rm -f ${jdkbinary}
 
 # set jdk 8 home environment variables.
-JAVA_HOME=/usr/local/java/jdk180
+JAVA_HOME=/usr/local/java/${jdkhome}
 export JAVA_HOME
 PATH=${JAVA_HOME}/bin:$PATH
 export PATH
