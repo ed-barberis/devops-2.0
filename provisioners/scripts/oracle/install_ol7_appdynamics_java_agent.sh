@@ -4,7 +4,7 @@
 # set appdynamics java agent installation variables. ---------------------------
 username="<username>"
 password="<password>"
-agent_release="<agent_release - such as '4.3.5.10'>"
+agent_release="<agent_release - such as '4.3.7.1'>"
 appd_home="/usr/local/appdynamics"
 agent_folder="appagent-${agent_release}"
 

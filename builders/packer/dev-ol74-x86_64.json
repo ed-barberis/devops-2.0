@@ -79,6 +79,7 @@
         "../../provisioners/scripts/oracle/install_ol7_hashicorp_vault.sh",
         "../../provisioners/scripts/oracle/install_ol7_git.sh",
         "../../provisioners/scripts/oracle/install_ol7_git_flow.sh",
+        "../../provisioners/scripts/oracle/install_ol7_appdynamics_java_agent.sh",
         "../../provisioners/scripts/oracle/install_ol7_atom_editor.sh",
         "../../provisioners/scripts/oracle/install_ol7_brackets_editor.sh",
         "../../provisioners/scripts/oracle/install_ol7_scala_ide_for_eclipse.sh",

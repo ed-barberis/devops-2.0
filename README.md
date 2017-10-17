@@ -26,7 +26,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 1.1.9
 	-	vagrant-vbguest 0.14.2
--	Packer 1.1.0
+-	Packer 1.1.1
 -	Git 2.14.2 for Win64
 	-	wget 1.9.1
 	-	tree 1.5.2.2
@@ -41,7 +41,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     Suggested install folder:  
     `C:\HashiCorp\vagrant`
 
-4.	Install [Packer 1.1.0 for Windows 64-bit](https://releases.hashicorp.com/packer/1.1.0/packer_1.1.0_windows_amd64.zip).  
+4.	Install [Packer 1.1.1 for Windows 64-bit](https://releases.hashicorp.com/packer/1.1.1/packer_1.1.1_windows_amd64.zip).  
     Create suggested install folder and extract contents of ZIP file to:  
     `C:\HashiCorp\Packer\bin`
 
@@ -86,7 +86,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     Vagrant 2.0.0
 
     $ packer --version
-    1.1.0
+    1.1.1
 
     $ git --version
     git version 2.14.2.windows.1
@@ -257,7 +257,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     ```
     $ vagrant ssh
     dev[vagrant]$ docker --version
-    Docker version 17.03.1-ce, build 276fd32
+    Docker version 17.06.2-ol, build d02b7ab
 
     dev[vagrant]$ ansible --version
     ansible 2.4.0.0
@@ -282,8 +282,8 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     NOTE: This will take a few minutes to import the Vagrant box.
     ```
     $ vagrant ssh
-    ops[vagrant]$ docker --version
-    Docker version 17.03.1-ce, build 276fd32
+    dev[vagrant]$ docker --version
+    Docker version 17.06.2-ol, build d02b7ab
 
     ops[vagrant]$ ansible --version
     ansible 2.4.0.0
@@ -381,9 +381,9 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Ansible 2.4.0.0
     -	Ansible Container 0.9.2
 -	Ant 1.10.1
--   Consul 0.9.3
+-   Consul 1.0.0
 -   Cloud-Init 0.7.9 [Optional]
--	Docker 17.03.1-ce
+-	Docker 17.06.2 CE
     -	Docker Bash Completion
     -	Docker Compose 1.16.1
     -	Docker Compose Bash Completion
@@ -391,15 +391,15 @@ The following command-line tools and utilities are pre-installed in the __Develo
     -	Git Bash Completion
     -	Git-Flow 1.11.0 (AVH Edition)
     -	Git-Flow Bash Completion
--   Golang 1.9
+-   Golang 1.9.1
 -	Gradle 4.2.1
 -	Groovy 2.4.12
 -	Java JDK 8 Update 144
 -	Java JDK 9
 -	Maven 3.5.0
 -	Oracle Compute Cloud Service CLI (opc) 17.2.2 [Optional]
--	Oracle PaaS Service Manager CLI (psm) 1.1.15 [Optional]
--   Packer 1.1.0
+-	Oracle PaaS Service Manager CLI (psm) 1.1.16 [Optional]
+-   Packer 1.1.1
 -	Python 2.7.5
     -	Pip 9.0.1
 -	Python 3.3.2
@@ -411,25 +411,25 @@ The following command-line tools and utilities are pre-installed in the __Develo
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 10.0.2 06a5a33
--	Jenkins 2.73.1
+-	GitLab Community Edition 10.0.3 8895150
+-	Jenkins 2.73.2
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
--	AppDynamics Controller 4.3.5.10
+-	AppDynamics Controller 4.3.7.1
     -	Controller Repository includes:
-    	-	AppDynamics Universal Agent 4.3.5.10
-    	-	AppDynamics Java Agent 4.3.5.10
+    	-	AppDynamics Universal Agent 4.3.7.262
+    	-	AppDynamics Java Agent 4.3.7.1
 
 The following GUI tools are pre-installed in the __Developer VM__ (desktop) only:
 
--	Atom Editor 1.21.0
+-	Atom Editor 1.21.1
 -	Brackets Editor 1.7 Experimental 1.7.0-0
 -	Chrome 61.0.3163.100 (64-bit)
 -	Firefox 52.4.0 (64-bit)
 -	GVim 7.4.160-1
--	Postman 5.2.1
+-	Postman 5.3.0
 -	Scala IDE for Eclipse 4.7.0 (Eclipse Oxygen 4.7.1)
--	Spring Tool Suite 3.9.0 IDE (Eclipse Oxygen 4.7.0)
+-	Spring Tool Suite 3.9.1 IDE (Eclipse Oxygen 4.7.1a)
 -	Sublime Text 3 Build 3143
--	Visual Studio Code 1.16.1
+-	Visual Studio Code 1.17.1

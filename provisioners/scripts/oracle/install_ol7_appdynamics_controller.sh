@@ -4,8 +4,11 @@
 # set appdynamics installation variables. --------------------------------------
 username="<username>"
 password="<password>"
-controller_release="<controller_release - such as '4.3.5.10'>"
+controller_release="<controller_release - such as '4.3.7.1'>"
 controller_home="/opt/appdynamics/controller"
+#universal_agent_release="<universal_agent_release - such as '4.3.7.262'>"
+universal_agent_release="${controller_release}"
+java_agent_release="${controller_release}"
 
 admin_user="admin"
 admin_password="<admin_password>"
@@ -159,12 +162,11 @@ eval ${save_mysql_cmd}
 ./install-init.sh
 
 # create the controller respository for the universal agent. -------------------
-agent_release="${controller_release}"
 repo_folder="agent_binaries"
-java_agent_binary="AppServerAgent-${agent_release}.zip"
-java_agent_repo_name="java-${agent_release}.zip"
-universal_agent_binary="universal-agent-x64-linux-${agent_release}.zip"
-universal_agent_repo_name="universalagent-${agent_release}-64bit-linux.zip"
+universal_agent_binary="universal-agent-x64-linux-${universal_agent_release}.zip"
+universal_agent_repo_name="universalagent-${universal_agent_release}-64bit-linux.zip"
+java_agent_binary="AppServerAgent-${java_agent_release}.zip"
+java_agent_repo_name="java-${java_agent_release}.zip"
 
 # create controller repository folder.
 mkdir -p ${controller_home}/${repo_folder}
@@ -174,12 +176,12 @@ cd ${controller_home}/${repo_folder}
 curl --silent --cookie-jar cookies-${curdate}.txt --data "username=${username}&password=${password}" https://login.appdynamics.com/sso/login/
 
 # download the appdynamics universal agent binary.
-curl --silent --location --remote-name --cookie cookies-${curdate}.txt https://download.appdynamics.com/download/prox/download-file/universal-agent/${agent_release}/${universal_agent_binary}
+curl --silent --location --remote-name --cookie cookies-${curdate}.txt https://download.appdynamics.com/download/prox/download-file/universal-agent/${universal_agent_release}/${universal_agent_binary}
 chmod 644 ${universal_agent_binary}
 mv ${universal_agent_binary} ${universal_agent_repo_name}
 
 # download the appdynamics java agent binary.
-curl --silent --location --remote-name --cookie cookies-${curdate}.txt https://download.appdynamics.com/download/prox/download-file/sun-jvm/${agent_release}/${java_agent_binary}
+curl --silent --location --remote-name --cookie cookies-${curdate}.txt https://download.appdynamics.com/download/prox/download-file/sun-jvm/${java_agent_release}/${java_agent_binary}
 chmod 644 ${java_agent_binary}
 mv ${java_agent_binary} ${java_agent_repo_name}
 
