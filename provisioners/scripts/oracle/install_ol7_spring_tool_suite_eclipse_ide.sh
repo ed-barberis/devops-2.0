@@ -2,14 +2,15 @@
 # install spring tool suite text editor with associated gnome desktop app and images.
 
 # install spring tool suite ide. -----------------------------------------------
-stsrelease="3.9.0"
-stsnumber="1212372077"
+stshome="sts-bundle"
+stsrelease="3.9.1"
+stsnumber="430668885"
 eclipseversion="oxygen"
-eclipserelease="4.7.0"
+eclipserelease="4.7.1a"
 
 eclipsedist=$(echo "e${eclipserelease}" | awk -F "." '{printf "%s.%s", $1, $2}')
 stsbinary="spring-tool-suite-${stsrelease}.RELEASE-e${eclipserelease}-linux-gtk-x86_64.tar.gz"
-stsfolder="sts-bundle-${stsrelease}"
+stsfolder="${stshome}-${stsrelease}"
 
 # create spring tool suite home parent folder.
 mkdir -p /usr/local/spring
@@ -19,14 +20,15 @@ cd /usr/local/spring
 wget --no-verbose http://download.springsource.com/release/STS/${stsrelease}.RELEASE/dist/${eclipsedist}/${stsbinary}
 
 # extract spring tool suite binary.
+rm -f ${stshome}
 tar -zxvf ${stsbinary} --no-same-owner --no-overwrite-dir
-chown -R root:root ./sts-bundle
-mv sts-bundle ${stsfolder}
-ln -s ${stsfolder} sts-bundle
+chown -R root:root ./${stshome}
+mv ${stshome} ${stsfolder}
+ln -s ${stsfolder} ${stshome}
 rm -f ${stsbinary}
 
 # modify the sts config file. --------------------------------------------------
-cd sts-bundle/sts-${stsrelease}.RELEASE
+cd ${stshome}/sts-${stsrelease}.RELEASE
 cp -p STS.ini STS.ini.orig
 
 # set current date for temporary filename.
