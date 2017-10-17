@@ -34,6 +34,11 @@ yum -y install ${atomrepo}
 #runuser -c "apm install markdown-scroll-sync" - vagrant
 #runuser -c "apm install markdown-format" - vagrant
 
+# install atom ide plugins.
+#runuser -c "apm install atom-ide-ui" - vagrant
+#runuser -c "apm install ide-java" - vagrant
+#runuser -c "apm install ide-typescript" - vagrant
+
 # install atom launcher on user desktop.
 echo "Installing atom.desktop on user desktop..."
 mkdir -p /home/vagrant/Desktop
