@@ -42,7 +42,7 @@
   ],
   "provisioners": [
     {
-      "inline": ["mkdir -p /tmp/scripts/oracle"],
+      "inline": ["mkdir -p /tmp/scripts"],
       "type": "shell"
     },
     {
@@ -110,8 +110,6 @@
     "headless": "false",
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
-    "hyperv_generation": "1",
-    "hyperv_switch": "{{env `hyperv_switch`}}",
     "iso_checksum": "ec7500d4b006702af6af023b1f8f1b890b6c7ee54400bb98cef968b883cd6546",
     "iso_checksum_type": "sha256",
     "iso_name": "CentOS-7-x86_64-DVD-1708.iso",

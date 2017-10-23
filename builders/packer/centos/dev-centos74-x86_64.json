@@ -79,6 +79,7 @@
         "../../../provisioners/scripts/common/install_hashicorp_vault.sh",
         "../../../provisioners/scripts/common/install_git.sh",
         "../../../provisioners/scripts/common/install_git_flow.sh",
+        "../../../provisioners/scripts/common/install_appdynamics_java_agent.sh",
         "../../../provisioners/scripts/centos/install_centos7_atom_editor.sh",
         "../../../provisioners/scripts/centos/install_centos7_brackets_editor.sh",
         "../../../provisioners/scripts/common/install_scala_ide_for_eclipse.sh",
@@ -92,7 +93,6 @@
     }
   ],
   "variables": {
-    "arch": "64",
     "box_basename": "dev-centos74",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
     "cpus": "2",

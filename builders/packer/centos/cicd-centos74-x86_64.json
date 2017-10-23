@@ -72,7 +72,6 @@
     }
   ],
   "variables": {
-    "arch": "64",
     "box_basename": "cicd-centos74",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
     "cpus": "2",

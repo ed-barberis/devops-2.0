@@ -71,7 +71,6 @@
     }
   ],
   "variables": {
-    "arch": "64",
     "box_basename": "apm-centos74",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
     "cpus": "2",

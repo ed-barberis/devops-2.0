@@ -42,7 +42,7 @@
   ],
   "provisioners": [
     {
-      "inline": ["mkdir -p /tmp/scripts/oracle"],
+      "inline": ["mkdir -p /tmp/scripts"],
       "type": "shell"
     },
     {
@@ -109,7 +109,6 @@
     }
   ],
   "variables": {
-    "arch": "64",
     "box_basename": "base-headless-ol74",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
     "cpus": "1",
