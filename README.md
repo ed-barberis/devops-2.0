@@ -20,8 +20,8 @@ Next, using these base VMs as a foundation, the user can build more advanced VM 
 
 To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the following open source software needs to be installed on the host machine:
 
--	VirtualBox 5.1.28
-    -   VirtualBox Extension Pack 5.1.28
+-	VirtualBox 5.1.30
+    -   VirtualBox Extension Pack 5.1.30
 -	Vagrant 2.0.0 with Plugins
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 1.1.9
@@ -33,9 +33,9 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
 ## Installation Instructions - Windows 64-Bit
 
-1.	Install [VirtualBox 5.1.28 for Windows 64-bit](http://download.virtualbox.org/virtualbox/5.1.28/VirtualBox-5.1.28-117968-Win.exe).
+1.	Install [VirtualBox 5.1.30 for Windows 64-bit](http://download.virtualbox.org/virtualbox/5.1.30/VirtualBox-5.1.30-118389-Win.exe).
 
-2.	Install [VirtualBox Extension Pack 5.1.28](http://download.virtualbox.org/virtualbox/5.1.28/Oracle_VM_VirtualBox_Extension_Pack-5.1.28-117968.vbox-extpack).
+2.	Install [VirtualBox Extension Pack 5.1.30](http://download.virtualbox.org/virtualbox/5.1.30/Oracle_VM_VirtualBox_Extension_Pack-5.1.30-118389.vbox-extpack).
 
 3.	Install [Vagrant 2.0.0 for Windows 64-bit](https://releases.hashicorp.com/vagrant/2.0.0/vagrant_2.0.0_x86_64.msi).  
     Suggested install folder:  
@@ -80,7 +80,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
     ```
     $ VBoxManage --version
-    5.1.28r117968
+    5.1.30r118389
 
     $ vagrant --version
     Vagrant 2.0.0
@@ -396,8 +396,8 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -   Golang 1.9.1
 -	Gradle 4.2.1
 -	Groovy 2.4.12
--	Java JDK 8 Update 144
--	Java JDK 9
+-	Java SE JDK 8 Update 152
+-	Java SE JDK 9.0.1
 -	Maven 3.5.0
 -	Oracle Compute Cloud Service CLI (opc) 17.2.2 [Optional]
 -	Oracle PaaS Service Manager CLI (psm) 1.1.16 [Optional]
@@ -406,14 +406,14 @@ The following command-line tools and utilities are pre-installed in the __Develo
     -	Pip 9.0.1
 -	Python 3.3.2
     -	Pip3 9.0.1
--   Scala-lang 2.12.3
+-   Scala-lang 2.12.4
     -	Scala Build Tool (SBT) 1.0.2
 -   Terraform 0.10.7
 -   Vault 0.8.3
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 10.0.3 8895150
+-	GitLab Community Edition 10.1.0 5a695c4
 -	Jenkins 2.73.2
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
@@ -427,11 +427,11 @@ The following GUI tools are pre-installed in the __Developer VM__ (desktop) only
 
 -	Atom Editor 1.21.1
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 61.0.3163.100 (64-bit)
+-	Chrome 62.0.3202.62 (64-bit)
 -	Firefox 52.4.0 (64-bit)
 -	GVim 7.4.160-1
--	Postman 5.3.0
+-	Postman 5.3.1
 -	Scala IDE for Eclipse 4.7.0 (Eclipse Oxygen 4.7.1)
 -	Spring Tool Suite 3.9.1 IDE (Eclipse Oxygen 4.7.1a)
 -	Sublime Text 3 Build 3143
--	Visual Studio Code 1.17.1
+-	Visual Studio Code 1.17.2

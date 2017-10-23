@@ -1,0 +1,188 @@
+#!/bin/sh -eux
+# install appdynamics controller by appdynamics.
+
+# set appdynamics installation variables. --------------------------------------
+username="<username>"
+password="<password>"
+controller_release="<controller_release - such as '4.3.7.1'>"
+controller_home="/opt/appdynamics/controller"
+#universal_agent_release="<universal_agent_release - such as '4.3.7.262'>"
+universal_agent_release="${controller_release}"
+java_agent_release="${controller_release}"
+
+admin_user="admin"
+admin_password="<admin_password>"
+root_password="<root_password>"
+mysql_root_password="<mysql_root_password>"
+server_hostname="apm"
+server_port="8090"
+
+# install controller prerequisites. --------------------------------------------
+# update the repository list.
+yum repolist
+
+# install the netstat network utility.
+yum -y install net-tools
+
+# install the asynchronous i/o library.
+yum -y install libaio
+
+# configure file and process limits for user 'root'.
+ulimit -S -n
+ulimit -S -u
+
+user_limits_dir="/etc/security/limits.d"
+appd_conf="appdynamics.conf"
+num_file_descriptors="65535"
+num_processes="8192"
+
+if [ -d "$user_limits_dir" ]; then
+  rm -f "${user_limits_dir}/${appd_conf}"
+
+  echo "root hard nofile ${num_file_descriptors}" > "${user_limits_dir}/${appd_conf}"
+  echo "root soft nofile ${num_file_descriptors}" >> "${user_limits_dir}/${appd_conf}"
+  echo "root hard nproc ${num_processes}" >> "${user_limits_dir}/${appd_conf}"
+  echo "root soft nproc ${num_processes}" >> "${user_limits_dir}/${appd_conf}"
+fi
+
+# add user limits to the pluggable authentication modules (pam).
+pam_dir="/etc/pam.d"
+session_conf="common-session"
+session_cmd="session required pam_limits.so"
+if [ -d "$pam_dir" ]; then
+  if [ -f "$session_conf" ]; then
+    grep -qF "${session_cmd}" ${session_conf} || echo "${session_cmd}" >> ${session_conf}
+  else
+    echo "${session_cmd}" > ${session_conf}
+  fi
+fi
+
+# verify new file and process limits.
+runuser -c "ulimit -S -n" -
+runuser -c "ulimit -S -u" -
+
+# create temporary scripts directory. ------------------------------------------
+mkdir -p /tmp/scripts/common/appdynamics
+cd /tmp/scripts/common/appdynamics
+
+# set current date for temporary filename. -------------------------------------
+curdate=$(date +"%Y-%m-%d")
+
+# download the appdynamics controller installer. -------------------------------
+controller_installer="controller_64bit_linux-${controller_release}.sh"
+
+# authenticate to the appdynamics domain and store session id in a file.
+curl --silent --cookie-jar cookies-${curdate}.txt --data "username=${username}&password=${password}" https://login.appdynamics.com/sso/login/
+
+# download the installer.
+curl --silent --location --remote-name --cookie cookies-${curdate}.txt https://download.appdynamics.com/download/prox/download-file/controller/${controller_release}/${controller_installer}
+chmod 755 ${controller_installer}
+
+rm -f cookies-${curdate}.txt
+chown -R vagrant:vagrant .
+
+# create silent response file for installer. -----------------------------------
+response_file="appd-controller-response.varfile"
+
+rm -f "${response_file}"
+
+echo "accountName=customer1" > "${response_file}"
+echo "adminPort=4848" >> "${response_file}"
+echo "asJavaPath=${controller_home}/jre8" >> "${response_file}"
+echo "controllerConfig=demo" >> "${response_file}"
+echo "controllerTenancyMode=single" >> "${response_file}"
+echo "databasePort=3388" >> "${response_file}"
+echo "disableEULA=true" >> "${response_file}"
+echo "elasticSearchDataDir=${controller_home}/events_service" >> "${response_file}"
+echo "elasticSearchPort=9200" >> "${response_file}"
+echo "iiopPort=3700" >> "${response_file}"
+echo "jmsPort=7676" >> "${response_file}"
+echo "mysqlRootUserPassword=${mysql_root_password}" >> "${response_file}"
+echo "password=${admin_password}" >> "${response_file}"
+echo "rePassword=${admin_password}" >> "${response_file}"
+echo "realDataDir=${controller_home}/db/data" >> "${response_file}"
+echo "reportingServiceHTTPPort=8020" >> "${response_file}"
+echo "reportingServiceHTTPSPort=8021" >> "${response_file}"
+echo "restAPIAdminPort=9081" >> "${response_file}"
+echo "restAPIPort=9080" >> "${response_file}"
+echo "rootUserPassword=${root_password}" >> "${response_file}"
+echo "rootUserRePassword=${root_password}" >> "${response_file}"
+echo "serverHostName=${server_hostname}" >> "${response_file}"
+echo "serverPort=${server_port}" >> "${response_file}"
+echo "sslPort=8181" >> "${response_file}"
+echo "sys.adminRights\$Boolean=true" >> "${response_file}"
+echo "sys.installationDir=${controller_home}" >> "${response_file}"
+echo "sys.languageId=en" >> "${response_file}"
+echo "transactionLogDir=${controller_home}/db/data" >> "${response_file}"
+echo "userName=${admin_user}" >> "${response_file}"
+
+# install the appdynamics controller. ------------------------------------------
+# run the silent installer for linux.
+./${controller_installer} -q -varfile ${response_file}
+
+# apply the license.
+license_file="/tmp/scripts/common/tools/appd-controller-license.lic"
+if [ -f "$license_file" ]; then
+  cp ${license_file} ${controller_home}/license.lic
+fi
+
+# stop the appdynamics controller. ---------------------------------------------
+cd ${controller_home}/bin
+./stopController.sh
+
+# install appdynamics controller ha. -------------------------------------------
+ha_home="HA"
+ha_installer="${ha_home}.shar"
+
+# create appdynamics ha parent folder.
+mkdir -p ${controller_home}/${ha_home}
+cd ${controller_home}/${ha_home}
+
+# retrieve version number of latest release.
+curl --silent --dump-header curl-${ha_home}.${curdate}.out1 https://github.com/Appdynamics/HA-toolkit/releases/latest --output /dev/null
+tr -d '\r' < curl-${ha_home}.${curdate}.out1 > curl-${ha_home}.${curdate}.out2
+ha_release=$(awk '/Location/ {print $2}' curl-${ha_home}.${curdate}.out2 | awk -F "/" '{print $8}')
+rm -f curl-${ha_home}.${curdate}.out1
+rm -f curl-${ha_home}.${curdate}.out2
+
+# download ha.shar from github.com.
+curl --silent --location "https://github.com/Appdynamics/HA-toolkit/releases/download/${ha_release}/${ha_installer}" --output ${ha_installer}
+
+# execute the ha installer.
+chmod 755 ${ha_installer}
+./${ha_installer}
+rm -f ${ha_installer}
+
+# configure the appdynamics ha installation. -----------------------------------
+# encrypt the mysql password.
+save_mysql_cmd=$(printf "./save_mysql_passwd.sh <<< \$\'%s\\\\n%s\\\\n\'\n" ${mysql_root_password} ${mysql_root_password})
+eval ${save_mysql_cmd}
+
+# install the appdynamics ha init scripts.
+./install-init.sh
+
+# create the controller respository for the universal agent. -------------------
+repo_folder="agent_binaries"
+universal_agent_binary="universal-agent-x64-linux-${universal_agent_release}.zip"
+universal_agent_repo_name="universalagent-${universal_agent_release}-64bit-linux.zip"
+java_agent_binary="AppServerAgent-${java_agent_release}.zip"
+java_agent_repo_name="java-${java_agent_release}.zip"
+
+# create controller repository folder.
+mkdir -p ${controller_home}/${repo_folder}
+cd ${controller_home}/${repo_folder}
+
+# authenticate to the appdynamics domain and store session id in a file.
+curl --silent --cookie-jar cookies-${curdate}.txt --data "username=${username}&password=${password}" https://login.appdynamics.com/sso/login/
+
+# download the appdynamics universal agent binary.
+curl --silent --location --remote-name --cookie cookies-${curdate}.txt https://download.appdynamics.com/download/prox/download-file/universal-agent/${universal_agent_release}/${universal_agent_binary}
+chmod 644 ${universal_agent_binary}
+mv ${universal_agent_binary} ${universal_agent_repo_name}
+
+# download the appdynamics java agent binary.
+curl --silent --location --remote-name --cookie cookies-${curdate}.txt https://download.appdynamics.com/download/prox/download-file/sun-jvm/${java_agent_release}/${java_agent_binary}
+chmod 644 ${java_agent_binary}
+mv ${java_agent_binary} ${java_agent_repo_name}
+
+rm -f cookies-${curdate}.txt

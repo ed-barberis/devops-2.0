@@ -31,6 +31,7 @@ easy_install --version
 
 # install software collections library. (needed later for python 3.x.) ---------
 yum -y install scl-utils
+yum -y install centos-release-scl
 
 # install git. -----------------------------------------------------------------
 yum -y install git
