@@ -146,6 +146,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     $ git submodule update --init --recursive
     $ git fetch origin
     $ git checkout -b develop origin/develop
+    $ git submodule update --init --recursive
     ```
 
 3.	Fix bug in Vagrant VB-Guest Plugin File '`oracle.rb`':
