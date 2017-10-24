@@ -1,4 +1,4 @@
-# CentOS 7 Build Instructions
+# CentOS 7 VM Build Instructions
 
 Follow these instructions to build the CentOS Linux 7.4 VM images.
 
@@ -42,9 +42,11 @@ Follow these instructions to build the CentOS Linux 7.4 VM images.
 
     NOTE: Prior to building the __APM VM__ image, you will need to perform the following tasks:
 
-	-	Edit 'provisioners/scripts/common/install_appdynamics_controller.sh'
-		-	Replace account username, password, controller release, server passwords, and other variables with your custom values.
-	-	Copy the AppDynamics Controller 'license.lic' to 'provisioners/scripts/common/tools/appd-controller-license.lic'
+	-	Modify the AppDynamics Controller install script template:
+		-	Copy and rename 'provisioners/scripts/common/install_appdynamics_controller.sh.template' to '.sh'.
+		-	Edit and replace  account username, password, controller release, server passwords, and other variables with your custom values.
+	-	Apply your AppDynamics Controller license file:
+		-	Copy your AppDynamics Controller 'license.lic' and rename it to 'provisioners/scripts/common/tools/appd-controller-license.lic'.
 
     ```
     $ packer build apm-centos74-x86_64.json
@@ -228,7 +230,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
     -	Docker Bash Completion
     -	Docker Compose 1.16.1
     -	Docker Compose Bash Completion
--	Git 2.14.2
+-	Git 2.14.3
     -	Git Bash Completion
     -	Git-Flow 1.11.0 (AVH Edition)
     -	Git-Flow Bash Completion
@@ -255,10 +257,10 @@ In addition, the following continuous integration and continuous delivery (CI/CD
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
--	AppDynamics Controller 4.3.7.1
+-	AppDynamics Controller 4.3.7.2
     -	Controller Repository includes:
     	-	AppDynamics Universal Agent 4.3.7.262
-    	-	AppDynamics Java Agent 4.3.7.1
+    	-	AppDynamics Java Agent 4.3.7.2
 
 The following GUI tools are pre-installed in the __Developer VM__ (desktop) only:
 

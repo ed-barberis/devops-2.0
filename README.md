@@ -27,7 +27,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 	-	vagrant-share 1.1.9
 	-	vagrant-vbguest 0.14.2
 -	Packer 1.1.1
--	Git 2.14.2 for Win64
+-	Git 2.14.3 for Win64
 	-	wget 1.9.1
 	-	tree 1.5.2.2
 
@@ -45,7 +45,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     Create suggested install folder and extract contents of ZIP file to:  
     `C:\HashiCorp\Packer\bin`
 
-5.	Install [Git 2.14.2 for Windows 64-bit](https://github.com/git-for-windows/git/releases/download/v2.14.2.windows.1/Git-2.14.2-64-bit.exe).
+5.	Install [Git 2.14.3 for Windows 64-bit](https://github.com/git-for-windows/git/releases/download/v2.14.3.windows.1/Git-2.14.3-64-bit.exe).
 
 6.	Install optional add-ons for Git Bash.  
     Install [wget 1.9.1 for Windows](https://sourceforge.net/projects/mingw/files/Other/mingwPORT/Current%20Releases/wget-1.9.1-mingwPORT.tar.bz2/download).  
@@ -89,7 +89,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     1.1.1
 
     $ git --version
-    git version 2.14.2.windows.1
+    git version 2.14.3.windows.1
     ```
 
 6.	Install or update the following Vagrant Plugins:
@@ -168,8 +168,8 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
 The DevOps 2.0 project now supports CentOS and Oracle VM builds. Click on a link below for platform-specific instructions.
 
--	[CentOS Linux 7 VMs](BUILD_CENTOS_VM_IMAGES_README.md): Instructions
--	[Oracle Linux 7 VMs](BUILD_ORACLE_VM_IMAGES_README.md): Instructions
+-	[CentOS Linux 7 VMs](CENTOS_VM_BUILD_INSTRUCTIONS.md): Instructions
+-	[Oracle Linux 7 VMs](ORACLE_VM_BUILD_INSTRUCTIONS.md): Instructions
 
 ## DevOps 2.0 Bill-of-Materials
 
@@ -184,7 +184,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
     -	Docker Bash Completion
     -	Docker Compose 1.16.1
     -	Docker Compose Bash Completion
--	Git 2.14.2
+-	Git 2.14.3
     -	Git Bash Completion
     -	Git-Flow 1.11.0 (AVH Edition)
     -	Git-Flow Bash Completion
@@ -213,10 +213,10 @@ In addition, the following continuous integration and continuous delivery (CI/CD
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
--	AppDynamics Controller 4.3.7.1
+-	AppDynamics Controller 4.3.7.2
     -	Controller Repository includes:
     	-	AppDynamics Universal Agent 4.3.7.262
-    	-	AppDynamics Java Agent 4.3.7.1
+    	-	AppDynamics Java Agent 4.3.7.2
 
 The following GUI tools are pre-installed in the __Developer VM__ (desktop) only:
 
