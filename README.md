@@ -185,12 +185,12 @@ The following command-line tools and utilities are pre-installed in the __Develo
     -	Git Bash Completion
     -	Git-Flow 1.11.0 (AVH Edition)
     -	Git-Flow Bash Completion
--   Golang 1.9.1
+-   Golang 1.9.2
 -	Gradle 4.2.1
 -	Groovy 2.4.12
 -	Java SE JDK 8 Update 152
 -	Java SE JDK 9.0.1
--	Maven 3.5.0
+-	Maven 3.5.2
 -	Oracle Compute Cloud Service CLI (opc) 17.2.2 [Optional]
 -	Oracle PaaS Service Manager CLI (psm) 1.1.16 [Optional]
 -   Packer 1.1.1
@@ -222,7 +222,7 @@ The following GUI tools are pre-installed in the __Developer VM__ (desktop) only
 -	Chrome 62.0.3202.62 (64-bit)
 -	Firefox 52.4.0 (64-bit)
 -	GVim 7.4.160-1
--	Postman 5.3.1
+-	Postman 5.3.2
 -	Scala IDE for Eclipse 4.7.0 (Eclipse Oxygen 4.7.1)
 -	Spring Tool Suite 3.9.1 IDE (Eclipse Oxygen 4.7.1a)
 -	Sublime Text 3 Build 3143

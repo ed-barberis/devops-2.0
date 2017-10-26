@@ -21,6 +21,7 @@ rm -f curl-postman-linux-x64.${curdate}.out1
 rm -f curl-postman-linux-x64.${curdate}.out2
 
 # extract postman binary.
+rm -i ${postmanfolder}
 tar -zxvf ${postmanrelease} --no-same-owner --no-overwrite-dir
 chown -R root:root ./${postmanfolder}
 mv ${postmanfolder} ${postmanrelease:0:-7}
