@@ -103,12 +103,12 @@ Follow these instructions to build the Oracle Linux 7.4 VM images.
     Docker version 17.06.2-ol, build d02b7ab
 
     dev[vagrant]$ ansible --version
-    ansible 2.4.0.0
+    ansible 2.4.1.0
       config file = /etc/ansible/ansible.cfg
       configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
       ansible python module location = /usr/lib/python2.7/site-packages/ansible
       executable location = /usr/bin/ansible
-      python version = 2.7.5 (default, May 29 2017, 20:42:36) [GCC 4.8.5 20150623 (Red Hat 4.8.5-11)]
+      python version = 2.7.5 (default, Aug  4 2017, 00:39:18) [GCC 4.8.5 20150623 (Red Hat 4.8.5-16)]
 
     dev[vagrant]$ <run other commands>
     dev[vagrant]$ exit
@@ -129,12 +129,12 @@ Follow these instructions to build the Oracle Linux 7.4 VM images.
     Docker version 17.06.2-ol, build d02b7ab
 
     ops[vagrant]$ ansible --version
-    ansible 2.4.0.0
+    ansible 2.4.1.0
       config file = /etc/ansible/ansible.cfg
       configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
       ansible python module location = /usr/lib/python2.7/site-packages/ansible
       executable location = /usr/bin/ansible
-      python version = 2.7.5 (default, May 29 2017, 20:42:36) [GCC 4.8.5 20150623 (Red Hat 4.8.5-11)]
+      python version = 2.7.5 (default, Aug  4 2017, 00:39:18) [GCC 4.8.5 20150623 (Red Hat 4.8.5-16)]
 
     ops[vagrant]$ <run other commands>
     ops[vagrant]$ exit
@@ -221,7 +221,7 @@ Follow these instructions to build the Oracle Linux 7.4 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Ansible 2.4.0.0
+-	Ansible 2.4.1.0
     -	Ansible Container 0.9.2
 -	Ant 1.10.1
 -   Consul 1.0.0
@@ -249,7 +249,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
     -	Pip3 9.0.1
 -   Scala-lang 2.12.4
     -	Scala Build Tool (SBT) 1.0.2
--   Terraform 0.10.7
+-   Terraform 0.10.8
 -   Vault 0.8.3
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
@@ -259,16 +259,16 @@ In addition, the following continuous integration and continuous delivery (CI/CD
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
--	AppDynamics Controller 4.3.7.2
+-	AppDynamics Controller 4.3.7.3
     -	Controller Repository includes:
     	-	AppDynamics Universal Agent 4.3.7.262
-    	-	AppDynamics Java Agent 4.3.7.2
+    	-	AppDynamics Java Agent 4.3.7.3
 
 The following GUI tools are pre-installed in the __Developer VM__ (desktop) only:
 
 -	Atom Editor 1.21.1
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 62.0.3202.62 (64-bit)
+-	Chrome 62.0.3202.75 (64-bit)
 -	Firefox 52.4.0 (64-bit)
 -	GVim 7.4.160-1
 -	Postman 5.3.2

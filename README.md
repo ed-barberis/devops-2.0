@@ -172,7 +172,7 @@ The DevOps 2.0 project now supports CentOS and Oracle VM builds. Click on a link
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Ansible 2.4.0.0
+-	Ansible 2.4.1.0
     -	Ansible Container 0.9.2
 -	Ant 1.10.1
 -   Consul 1.0.0
@@ -200,7 +200,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
     -	Pip3 9.0.1
 -   Scala-lang 2.12.4
     -	Scala Build Tool (SBT) 1.0.2
--   Terraform 0.10.7
+-   Terraform 0.10.8
 -   Vault 0.8.3
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
@@ -210,16 +210,16 @@ In addition, the following continuous integration and continuous delivery (CI/CD
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
--	AppDynamics Controller 4.3.7.2
+-	AppDynamics Controller 4.3.7.3
     -	Controller Repository includes:
     	-	AppDynamics Universal Agent 4.3.7.262
-    	-	AppDynamics Java Agent 4.3.7.2
+    	-	AppDynamics Java Agent 4.3.7.3
 
 The following GUI tools are pre-installed in the __Developer VM__ (desktop) only:
 
 -	Atom Editor 1.21.1
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 62.0.3202.62 (64-bit)
+-	Chrome 62.0.3202.75 (64-bit)
 -	Firefox 52.4.0 (64-bit)
 -	GVim 7.4.160-1
 -	Postman 5.3.2
