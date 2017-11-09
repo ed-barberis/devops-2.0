@@ -28,32 +28,35 @@ echo "default-size-columns (updated): ${modcols}"
 echo "default-size-rows (updated): ${modrows}"
 echo ""
 
-# modify default desktop background properties. --------------------------------
-pictureuri="/usr/share/gnome-control-center/pixmaps/noise-texture-light.png"
-pictureopts="wallpaper"
+# modify default desktop background properties (oracle linux only). ------------
+distro_name=$(grep PRETTY_NAME /etc/os-release | sed 's/PRETTY_NAME=//g' | tr -d '"' | awk '{print $1}')
+if [ "$distro_name" = "Oracle" ]; then
+  pictureuri="/usr/share/gnome-control-center/pixmaps/noise-texture-light.png"
+  pictureopts="wallpaper"
 
-# display current values.
-echo "Displaying current default desktop background properties..."
-bgkeylist=$(gsettings list-keys org.gnome.desktop.background)
-bgkeyarray=( $bgkeylist )
+  # display current values.
+  echo "Displaying current default desktop background properties..."
+  bgkeylist=$(gsettings list-keys org.gnome.desktop.background)
+  bgkeyarray=( $bgkeylist )
 
-for bgkey in ${bgkeyarray[@]}; do
-  bgvalue=$(gsettings get org.gnome.desktop.background ${bgkey})
-  echo "${bgkey}: ${bgvalue}"
-done
-echo ""
+  for bgkey in ${bgkeyarray[@]}; do
+    bgvalue=$(gsettings get org.gnome.desktop.background ${bgkey})
+    echo "${bgkey}: ${bgvalue}"
+  done
+  echo ""
 
-# update the values.
-dbus-launch --exit-with-session gsettings set org.gnome.desktop.background picture-uri "file://${pictureuri}"
-dbus-launch --exit-with-session gsettings set org.gnome.desktop.background picture-options "${pictureopts}"
+  # update the values.
+  dbus-launch --exit-with-session gsettings set org.gnome.desktop.background picture-uri "file://${pictureuri}"
+  dbus-launch --exit-with-session gsettings set org.gnome.desktop.background picture-options "${pictureopts}"
 
-# display updated values.
-echo "Displaying updated desktop background properties..."
-for bgkey in ${bgkeyarray[@]}; do
-  bgvalue=$(gsettings get org.gnome.desktop.background ${bgkey})
-  echo "${bgkey}: ${bgvalue}"
-done
-echo ""
+  # display updated values.
+  echo "Displaying updated desktop background properties..."
+  for bgkey in ${bgkeyarray[@]}; do
+    bgvalue=$(gsettings get org.gnome.desktop.background ${bgkey})
+    echo "${bgkey}: ${bgvalue}"
+  done
+  echo ""
+fi
 
 # modify default desktop icon view default zoom level. -------------------------
 zoomlevel="small"

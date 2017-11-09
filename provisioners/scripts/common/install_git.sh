@@ -9,7 +9,8 @@ yum -y install curl-devel expat-devel gettext-devel openssl-devel zlib-devel
 yum -y install gcc perl-ExtUtils-MakeMaker
 
 # install git binaries from source. --------------------------------------------
-gitrelease="2.14.3"
+githome="git"
+gitrelease="2.15.0"
 gitfolder="git-${gitrelease}"
 gitbinary="${gitfolder}.tar.gz"
 
@@ -35,10 +36,11 @@ make prefix=/usr/local/git/${gitfolder} install
 
 # create soft link to git binary.
 cd /usr/local/git
-ln -s ${gitfolder} git
+rm -f ${githome}
+ln -s ${gitfolder} ${githome}
 
 # set git home environment variables.
-GIT_HOME=/usr/local/git/git
+GIT_HOME=/usr/local/git/${githome}
 export GIT_HOME
 PATH=${GIT_HOME}/bin:$PATH
 export PATH

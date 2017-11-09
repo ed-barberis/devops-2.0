@@ -5,7 +5,7 @@
 username="<username>"
 password="<password>"
 agent_release="<agent_release - such as '4.3.7.3'>"
-appd_home="/usr/local/appdynamics"
+appd_home="/opt/appdynamics"
 agent_folder="appagent-${agent_release}"
 
 controller_host="apm"

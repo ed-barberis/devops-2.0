@@ -63,7 +63,7 @@
       "expect_disconnect": true,
       "pause_before": "10s",
       "scripts": [
-        "../../../provisioners/scripts/common/install_appdynamics_controller.sh",
+        "../../../provisioners/scripts/centos/install_centos7_appdynamics_enterprise_console.sh",
         "../../../provisioners/scripts/centos/cleanup.sh",
         "../../../submodules/chef/bento/_common/minimize.sh"
       ],

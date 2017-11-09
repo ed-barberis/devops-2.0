@@ -1,0 +1,3 @@
+# ignore appdynamics 'live' installers
+install_centos7_appdynamics_*.sh
+/tools/appd-controller-license.lic

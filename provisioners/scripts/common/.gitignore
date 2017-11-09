@@ -1,4 +1,2 @@
 # ignore appdynamics 'live' installers
-install_appdynamics_controller.sh
-install_appdynamics_java_agent.sh
-/tools/appd-controller-license.lic
+install_appdynamics_*.sh

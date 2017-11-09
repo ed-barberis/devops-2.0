@@ -1,0 +1,110 @@
+#!/bin/sh -eux
+# install appdynamics enterprise console by appdynamics.
+
+# set appdynamics installation variables. --------------------------------------
+username="<username>"
+password="<password>"
+platform_release="<platform_release - such as '4.4.0.3701'>"
+platform_home="/opt/appdynamics/platform"
+
+admin_password="<admin_password>"
+database_password="<database_password>"
+database_root_password="<database_root_password>"
+server_hostname="apm"
+server_port="9191"
+
+# install platform prerequisites. ----------------------------------------------
+# update the repository list.
+yum repolist
+
+# install the netstat network utility.
+yum -y install net-tools
+
+# install the asynchronous i/o library.
+yum -y install libaio
+
+# configure file and process limits for user 'root'.
+ulimit -S -n
+ulimit -S -u
+
+user_limits_dir="/etc/security/limits.d"
+appd_conf="appdynamics.conf"
+num_file_descriptors="65535"
+num_processes="8192"
+
+if [ -d "$user_limits_dir" ]; then
+  rm -f "${user_limits_dir}/${appd_conf}"
+
+  echo "root hard nofile ${num_file_descriptors}" > "${user_limits_dir}/${appd_conf}"
+  echo "root soft nofile ${num_file_descriptors}" >> "${user_limits_dir}/${appd_conf}"
+  echo "root hard nproc ${num_processes}" >> "${user_limits_dir}/${appd_conf}"
+  echo "root soft nproc ${num_processes}" >> "${user_limits_dir}/${appd_conf}"
+fi
+
+# add user limits to the pluggable authentication modules (pam).
+pam_dir="/etc/pam.d"
+session_conf="common-session"
+session_cmd="session required pam_limits.so"
+if [ -d "$pam_dir" ]; then
+  if [ -f "$session_conf" ]; then
+    grep -qF "${session_cmd}" ${session_conf} || echo "${session_cmd}" >> ${session_conf}
+  else
+    echo "${session_cmd}" > ${session_conf}
+  fi
+fi
+
+# verify new file and process limits.
+runuser -c "ulimit -S -n" -
+runuser -c "ulimit -S -u" -
+
+# create temporary scripts directory. ------------------------------------------
+mkdir -p /tmp/scripts/common/appdynamics
+cd /tmp/scripts/common/appdynamics
+
+# set current date for temporary filename. -------------------------------------
+curdate=$(date +"%Y-%m-%d")
+
+# download the appdynamics platform installer. ---------------------------------
+platform_installer="platform-setup-x64-linux-${platform_release}.sh"
+
+# authenticate to the appdynamics domain and store session id in a file.
+curl --silent --cookie-jar cookies-${curdate}.txt --data "username=${username}&password=${password}" https://login.appdynamics.com/sso/login/
+
+# download the installer.
+curl --silent --location --remote-name --cookie cookies-${curdate}.txt https://download.appdynamics.com/download/prox/download-file/platform-admin/${platform_release}/${platform_installer}
+chmod 755 ${platform_installer}
+
+rm -f cookies-${curdate}.txt
+chown -R vagrant:vagrant .
+
+# create silent response file for installer. -----------------------------------
+response_file="appd-platform-response.varfile"
+
+rm -f "${response_file}"
+
+echo "serverHostName=${server_hostname}" >> "${response_file}"
+echo "sys.languageId=en" >> "${response_file}"
+echo "disableEULA=true" >> "${response_file}"
+echo "platformAdmin.port=${server_port}" >> "${response_file}"
+echo "platformAdmin.databasePort=3377" >> "${response_file}"
+echo "platformAdmin.dataDir=${platform_home}/mysql/data" >> "${response_file}"
+echo "platformAdmin.databasePassword=${database_password}" >> "${response_file}"
+echo "platformAdmin.databaseRootPassword=${database_root_password}" >> "${response_file}"
+echo "platformAdmin.adminPassword=${admin_password}" >> "${response_file}"
+echo "platformAdmin.platformDir=${platform_home}" >> "${response_file}"
+
+# install the appdynamics enterprise console. ----------------------------------
+# run the silent installer for linux.
+./${platform_installer} -q -varfile ${response_file}
+
+# verify installation.
+cd ${platform_home}/platform-admin/bin
+./platform-admin.sh show-platform-admin-version
+
+# start the appdynamics enterprise console. ------------------------------------
+#cd ${platform_home}/platform-admin/bin
+#./platform-admin.sh start-platform-admin
+
+# stop the appdynamics enterprise console. -------------------------------------
+#cd ${platform_home}/platform-admin/bin
+#./platform-admin.sh stop-platform-admin

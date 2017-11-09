@@ -42,11 +42,11 @@ Follow these instructions to build the CentOS Linux 7.4 VM images.
 
     NOTE: Prior to building the __APM VM__ image, you will need to perform the following tasks:
 
-	-	Modify the AppDynamics Controller install script template:
-		-	Copy and rename 'provisioners/scripts/common/install_appdynamics_controller.sh.template' to '.sh'.
-		-	Edit and replace  account username, password, controller release, server passwords, and other variables with your custom values.
+	-	Modify the AppDynamics Enterprise Console install script template:
+		-	Copy and rename 'provisioners/scripts/centos/install_centos7_appdynamics_enterprise_console.sh.template' to '.sh'.
+		-	Edit and replace  account username, password, platform release, server passwords, and other variables with your custom values.
 	-	Apply your AppDynamics Controller license file:
-		-	Copy your AppDynamics Controller 'license.lic' and rename it to 'provisioners/scripts/common/tools/appd-controller-license.lic'.
+		-	Copy your AppDynamics Controller 'license.lic' and rename it to 'provisioners/scripts/centos/tools/appd-controller-license.lic'.
 
     ```
     $ packer build apm-centos74-x86_64.json
@@ -191,86 +191,86 @@ Follow these instructions to build the CentOS Linux 7.4 VM images.
     ```
     $ vagrant ssh
     apm[vagrant]$ sudo su -
-    apm[root]# systemctl status appdcontroller
-      appdcontroller.service - LSB: AppDynamics Controller
-       Loaded: loaded (/etc/rc.d/init.d/appdcontroller; bad; vendor preset: disabled)
-       Active: active (running) since Wed 2017-09-20 11:33:50 EDT; 1min 31s ago
-       ...
-    Sep 20 11:33:50 apm systemd[1]: Starting LSB: AppDynamics Controller...
-    Sep 20 11:33:50 apm systemd[1]: Started LSB: AppDynamics Controller.
-
-    apm[root]# systemctl status appdcontroller-db
-      appdcontroller-db.service - LSB: AppDynamics Controller
-       Loaded: loaded (/etc/rc.d/init.d/appdcontroller-db; bad; vendor preset: disabled)
-       Active: active (running) since Wed 2017-09-20 11:33:50 EDT; 1min 42s ago
-       ...
-    Sep 20 11:33:45 apm appdcontroller-db[848]: Starting controller database on port 3388
-    Sep 20 11:33:50 apm appdcontroller-db[848]: Waiting for Controller database to start on port 3388.....
-    Sep 20 11:33:50 apm appdcontroller-db[848]: ***** Controller database started on port 3388 *****
-    Sep 20 11:33:50 apm systemd[1]: Started LSB: AppDynamics Controller.
+    apm[root]# cd /opt/appdynamics/platform/platform-admin/bin
+    apm[root]# ./platform-admin.sh start-platform-admin
+    Starting Enterprise Console Database
+    ...
+    ***** Enterprise Console Database started *****
+    Starting Enterprise Console application
+    Waiting for the Enterprise Console application to start.........
+    ***** Enterprise Console application started on port 9191 *****
     apm[root]# exit
 
     apm[vagrant]$ <run other commands>
+
+    apm[vagrant]$ sudo su -
+    apm[root]# cd /opt/appdynamics/platform/platform-admin/bin
+    apm[root]# ./platform-admin/bin/platform-admin.sh stop-platform-admin
+    Attempting to stop process with id [6662]...
+    .
+    ***** Enterprise Console application stopped *****
+    ..
+    ***** Enterprise Console Database stopped *****
+    apm[root]# exit
     apm[vagrant]$ exit
     $ vagrant halt
     ```
 
-    NOTE: You can access the [AppDynamics Controller](https://www.appdynamics.com/product/) server locally on port '8090' [here](http://10.100.198.231:8090).
+    NOTE: You can access the [AppDynamics Enterprise Console](https://www.appdynamics.com/product/) server locally on port '9191' [here](http://10.100.198.241:9191).
 
 ## DevOps 2.0 Bill-of-Materials
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
 -	Ansible 2.4.1.0
-    -	Ansible Container 0.9.2
+	-	Ansible Container 0.9.2
 -	Ant 1.10.1
--   Consul 1.0.0
--   Cloud-Init 0.7.9 [Optional]
-    Docker 17.09.0 CE
-    -	Docker Bash Completion
-    -	Docker Compose 1.16.1
-    -	Docker Compose Bash Completion
--	Git 2.14.3
-    -	Git Bash Completion
-    -	Git-Flow 1.11.0 (AVH Edition)
-    -	Git-Flow Bash Completion
--   Golang 1.9.2
--	Gradle 4.2.1
+-	Consul 1.0.0
+-	Cloud-Init 0.7.9 [Optional]
+-	Docker 17.09.0 CE
+	-	Docker Bash Completion
+	-	Docker Compose 1.17.1
+	-	Docker Compose Bash Completion
+-	Git 2.15.0
+	-	Git Bash Completion
+	-	Git-Flow 1.11.0 (AVH Edition)
+	-	Git-Flow Bash Completion
+-	Golang 1.9.2
+-	Gradle 4.3.1
 -	Groovy 2.4.12
 -	Java SE JDK 8 Update 152
 -	Java SE JDK 9.0.1
 -	Maven 3.5.2
--   Packer 1.1.1
+-	Packer 1.1.1
 -	Python 2.7.5
-    -	Pip 9.0.1
+	-	Pip 9.0.1
 -	Python 3.3.2
-    -	Pip3 9.0.1
--   Scala-lang 2.12.4
-    -	Scala Build Tool (SBT) 1.0.2
--   Terraform 0.10.8
--   Vault 0.8.3
+	-	Pip3 9.0.1
+-	Scala-lang 2.12.4
+	-	Scala Build Tool (SBT) 1.0.3
+-	Terraform 0.10.8
+-	Vault 0.8.3
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 10.1.0 5a695c4
--	Jenkins 2.73.2
+-	GitLab Community Edition 10.1.2 af60a6c
+-	Jenkins 2.73.3
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
--	AppDynamics Controller 4.3.7.3
-    -	Controller Repository includes:
-    	-	AppDynamics Universal Agent 4.3.7.262
-    	-	AppDynamics Java Agent 4.3.7.3
+-	AppDynamics Enterprise Console 4.4.0.3701
+	-	AppDynamics Controller 4.4.0.4 Build 17833
 
-The following GUI tools are pre-installed in the __Developer VM__ (desktop) only:
+The following developer tools are pre-installed in the __Developer VM__ (desktop) only:
 
--	Atom Editor 1.21.1
+-	AppDynamics Java Agent 4.4.0.17833
+-	Atom Editor 1.22.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 62.0.3202.75 (64-bit)
+-	Chrome 62.0.3202.89 (64-bit)
 -	Firefox 52.4.0 (64-bit)
 -	GVim 7.4.160-1
 -	Postman 5.3.2
 -	Scala IDE for Eclipse 4.7.0 (Eclipse Oxygen 4.7.1)
 -	Spring Tool Suite 3.9.1 IDE (Eclipse Oxygen 4.7.1a)
 -	Sublime Text 3 Build 3143
--	Visual Studio Code 1.17.2
+-	Visual Studio Code 1.18.0
