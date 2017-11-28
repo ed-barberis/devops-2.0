@@ -2,7 +2,7 @@
 # install groovy sdk bundle by apache.
 
 # install apache groovy. -------------------------------------------------------
-groovyrelease="2.4.12"
+groovyrelease="2.4.13"
 groovyfolder="groovy-${groovyrelease}"
 groovysdk="apache-groovy-sdk-${groovyrelease}.zip"
 #groovybinary="apache-groovy-binary-${groovyrelease}.zip"
