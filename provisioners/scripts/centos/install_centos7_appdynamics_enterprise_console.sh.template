@@ -4,13 +4,14 @@
 # set appdynamics installation variables. --------------------------------------
 username="<username>"
 password="<password>"
-platform_release="<platform_release - such as '4.4.0.3701'>"
+platform_release="<platform_release - such as '4.4.0.3870'>"
+platform_installer="platform-admin-x64-linux-${platform_release}.sh"
 platform_home="/opt/appdynamics/platform"
 
 admin_password="<admin_password>"
 database_password="<database_password>"
 database_root_password="<database_root_password>"
-server_hostname="apm"
+server_hostname="$(uname -n)"
 server_port="9191"
 
 # install platform prerequisites. ----------------------------------------------
@@ -65,8 +66,6 @@ cd /tmp/scripts/common/appdynamics
 curdate=$(date +"%Y-%m-%d")
 
 # download the appdynamics platform installer. ---------------------------------
-platform_installer="platform-setup-x64-linux-${platform_release}.sh"
-
 # authenticate to the appdynamics domain and store session id in a file.
 curl --silent --cookie-jar cookies-${curdate}.txt --data "username=${username}&password=${password}" https://login.appdynamics.com/sso/login/
 

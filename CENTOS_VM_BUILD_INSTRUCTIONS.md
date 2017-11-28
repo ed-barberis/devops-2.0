@@ -225,7 +225,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Ansible 2.4.1.0
 	-	Ansible Container 0.9.2
 -	Ant 1.10.1
--	Consul 1.0.0
+-	Consul 1.0.1
 -	Cloud-Init 0.7.9 [Optional]
 -	Docker 17.09.0 CE
 	-	Docker Bash Completion
@@ -237,28 +237,28 @@ The following command-line tools and utilities are pre-installed in the __Develo
 	-	Git-Flow Bash Completion
 -	Golang 1.9.2
 -	Gradle 4.3.1
--	Groovy 2.4.12
+-	Groovy 2.4.13
 -	Java SE JDK 8 Update 152
 -	Java SE JDK 9.0.1
 -	Maven 3.5.2
--	Packer 1.1.1
+-	Packer 1.1.2
 -	Python 2.7.5
 	-	Pip 9.0.1
 -	Python 3.3.2
 	-	Pip3 9.0.1
 -	Scala-lang 2.12.4
-	-	Scala Build Tool (SBT) 1.0.3
--	Terraform 0.10.8
--	Vault 0.8.3
+	-	Scala Build Tool (SBT) 1.0.4
+-	Terraform 0.11.0
+-	Vault 0.9.0
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 10.1.2 af60a6c
+-	GitLab Community Edition 10.2.2 da70bc4
 -	Jenkins 2.73.3
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
--	AppDynamics Enterprise Console 4.4.0.3701
+-	AppDynamics Enterprise Console 4.4.0.3870
 	-	AppDynamics Controller 4.4.0.4 Build 17833
 
 The following developer tools are pre-installed in the __Developer VM__ (desktop) only:
@@ -266,11 +266,11 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 -	AppDynamics Java Agent 4.4.0.17833
 -	Atom Editor 1.22.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 62.0.3202.89 (64-bit)
--	Firefox 52.4.0 (64-bit)
+-	Chrome 62.0.3202.94 (64-bit)
+-	Firefox 52.5.0 (64-bit)
 -	GVim 7.4.160-1
 -	Postman 5.3.2
 -	Scala IDE for Eclipse 4.7.0 (Eclipse Oxygen 4.7.1)
 -	Spring Tool Suite 3.9.1 IDE (Eclipse Oxygen 4.7.1a)
 -	Sublime Text 3 Build 3143
--	Visual Studio Code 1.18.0
+-	Visual Studio Code 1.18.1

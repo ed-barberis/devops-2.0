@@ -20,28 +20,28 @@ Next, using these base VMs as a foundation, the user can build more advanced VM 
 
 To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the following open source software needs to be installed on the host machine:
 
--	VirtualBox 5.2.0
-	-	VirtualBox Extension Pack 5.2.0
+-	VirtualBox 5.2.2
+	-	VirtualBox Extension Pack 5.2.2
 -	Vagrant 2.0.1 with Plugins
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 1.1.9
 	-	vagrant-vbguest 0.15.0
--	Packer 1.1.1
+-	Packer 1.1.2
 -	Git 2.15.0 for Win64
 	-	wget 1.9.1
 	-	tree 1.5.2.2
 
 ## Installation Instructions - Windows 64-Bit
 
-1.	Install [VirtualBox 5.2.0 for Windows 64-bit](http://download.virtualbox.org/virtualbox/5.2.0/VirtualBox-5.2.0-118431-Win.exe).
+1.	Install [VirtualBox 5.2.2 for Windows 64-bit](http://download.virtualbox.org/virtualbox/5.2.2/VirtualBox-5.2.2-119230-Win.exe).
 
-2.	Install [VirtualBox Extension Pack 5.2.0](http://download.virtualbox.org/virtualbox/5.2.0/Oracle_VM_VirtualBox_Extension_Pack-5.2.0-118431.vbox-extpack).
+2.	Install [VirtualBox Extension Pack 5.2.2](http://download.virtualbox.org/virtualbox/5.2.2/Oracle_VM_VirtualBox_Extension_Pack-5.2.2-119230.vbox-extpack).
 
 3.	Install [Vagrant 2.0.1 for Windows 64-bit](https://releases.hashicorp.com/vagrant/2.0.1/vagrant_2.0.1_x86_64.msi).  
     Suggested install folder:  
     `C:\HashiCorp\vagrant`
 
-4.	Install [Packer 1.1.1 for Windows 64-bit](https://releases.hashicorp.com/packer/1.1.1/packer_1.1.1_windows_amd64.zip).  
+4.	Install [Packer 1.1.2 for Windows 64-bit](https://releases.hashicorp.com/packer/1.1.2/packer_1.1.2_windows_amd64.zip).  
     Create suggested install folder and extract contents of ZIP file to:  
     `C:\HashiCorp\Packer\bin`
 
@@ -80,13 +80,13 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
     ```
     $ VBoxManage --version
-    5.2.0r118431
+    5.2.2r119230
 
     $ vagrant --version
     Vagrant 2.0.1
 
     $ packer --version
-    1.1.1
+    1.1.2
 
     $ git --version
     git version 2.15.0.windows.1
