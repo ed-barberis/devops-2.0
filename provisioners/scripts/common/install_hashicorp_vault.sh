@@ -2,7 +2,7 @@
 # install vault tool for managing secrets by hashicorp.
 
 # install hashicorp vault. -----------------------------------------------------
-vault_release="0.8.3"
+vault_release="0.9.0"
 vault_binary="vault_${vault_release}_linux_amd64.zip"
 
 # create local bin directory (if needed).
@@ -13,13 +13,14 @@ cd /usr/local/bin
 wget --no-verbose https://releases.hashicorp.com/vault/${vault_release}/${vault_binary}
 
 # extract vault binary.
+rm -f vault
 unzip ${vault_binary}
 chmod 755 vault
 rm -f ${vault_binary}
 
 # set vault environment variables.
-#PATH=/usr/local/bin:$PATH
-#export PATH
+PATH=/usr/local/bin:$PATH
+export PATH
 
 # verify installation.
-#vault --version
+vault --version

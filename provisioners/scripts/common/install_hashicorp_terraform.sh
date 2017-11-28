@@ -2,7 +2,7 @@
 # install terraform infrastructure as code tool by hashicorp.
 
 # install hashicorp terraform. -------------------------------------------------
-terraform_release="0.10.8"
+terraform_release="0.11.0"
 terraform_binary="terraform_${terraform_release}_linux_amd64.zip"
 
 # create local bin directory (if needed).
@@ -13,13 +13,14 @@ cd /usr/local/bin
 wget --no-verbose https://releases.hashicorp.com/terraform/${terraform_release}/${terraform_binary}
 
 # extract terraform binary.
+rm -f terraform
 unzip ${terraform_binary}
 chmod 755 terraform
 rm -f ${terraform_binary}
 
 # set terraform environment variables.
-#PATH=/usr/local/bin:$PATH
-#export PATH
+PATH=/usr/local/bin:$PATH
+export PATH
 
 # verify installation.
-#terraform --version
+terraform --version
