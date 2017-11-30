@@ -6,6 +6,7 @@
 *.desktop eol=lf
 *.rb eol=lf
 *.sh eol=lf
+*.template eol=lf
 
 *ks.cfg eol=lf
 preseed.cfg eol=lf

@@ -103,7 +103,7 @@ Follow these instructions to build the CentOS Linux 7.4 VM images.
     Docker version 17.09.0-ce, build afdb6d4
 
     dev[vagrant]$ ansible --version
-    ansible 2.4.1.0
+    ansible 2.4.2.0
       config file = /etc/ansible/ansible.cfg
       configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
       ansible python module location = /usr/lib/python2.7/site-packages/ansible
@@ -129,7 +129,7 @@ Follow these instructions to build the CentOS Linux 7.4 VM images.
     Docker version 17.09.0-ce, build afdb6d4
 
     ops[vagrant]$ ansible --version
-    ansible 2.4.1.0
+    ansible 2.4.2.0
       config file = /etc/ansible/ansible.cfg
       configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
       ansible python module location = /usr/lib/python2.7/site-packages/ansible
@@ -222,7 +222,7 @@ Follow these instructions to build the CentOS Linux 7.4 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Ansible 2.4.1.0
+-	Ansible 2.4.2.0
 	-	Ansible Container 0.9.2
 -	Ant 1.10.1
 -	Consul 1.0.1
@@ -231,7 +231,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
 	-	Docker Bash Completion
 	-	Docker Compose 1.17.1
 	-	Docker Compose Bash Completion
--	Git 2.15.0
+-	Git 2.15.1
 	-	Git Bash Completion
 	-	Git-Flow 1.11.0 (AVH Edition)
 	-	Git-Flow Bash Completion
@@ -258,12 +258,12 @@ In addition, the following continuous integration and continuous delivery (CI/CD
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
--	AppDynamics Enterprise Console 4.4.0.3870
-	-	AppDynamics Controller 4.4.0.4 Build 17833
+-	AppDynamics Enterprise Console 4.4.0.5 Build 4220
+	-	AppDynamics Controller 4.4.0.5 Build 19090
 
 The following developer tools are pre-installed in the __Developer VM__ (desktop) only:
 
--	AppDynamics Java Agent 4.4.0.17833
+-	AppDynamics Java Agent 4.4.0.5 Build 19009
 -	Atom Editor 1.22.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
 -	Chrome 62.0.3202.94 (64-bit)

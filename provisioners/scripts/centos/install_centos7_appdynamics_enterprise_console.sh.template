@@ -4,8 +4,8 @@
 # set appdynamics installation variables. --------------------------------------
 username="<username>"
 password="<password>"
-platform_release="<platform_release - such as '4.4.0.3870'>"
-platform_installer="platform-admin-x64-linux-${platform_release}.sh"
+platform_release="<platform_release - such as '4.4.0.4220'>"
+platform_installer="platform-setup-x64-linux-${platform_release}.sh"
 platform_home="/opt/appdynamics/platform"
 
 admin_password="<admin_password>"
@@ -70,7 +70,7 @@ curdate=$(date +"%Y-%m-%d")
 curl --silent --cookie-jar cookies-${curdate}.txt --data "username=${username}&password=${password}" https://login.appdynamics.com/sso/login/
 
 # download the installer.
-curl --silent --location --remote-name --cookie cookies-${curdate}.txt https://download.appdynamics.com/download/prox/download-file/platform-admin/${platform_release}/${platform_installer}
+curl --silent --location --remote-name --cookie cookies-${curdate}.txt https://download.appdynamics.com/download/prox/download-file/enterprise-console/${platform_release}/${platform_installer}
 chmod 755 ${platform_installer}
 
 rm -f cookies-${curdate}.txt

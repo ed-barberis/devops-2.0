@@ -4,9 +4,10 @@
 # set appdynamics java agent installation variables. ---------------------------
 username="<username>"
 password="<password>"
-agent_release="<agent_release - such as '4.3.7.3'>"
+agent_release="<agent_release - such as '4.4.0.19009'>"
 appd_home="/opt/appdynamics"
 agent_folder="appagent-${agent_release}"
+agent_binary="AppServerAgent-${agent_release}.zip"
 
 controller_host="apm"
 controller_port="8090"
@@ -24,8 +25,6 @@ cd ${appd_home}/${agent_folder}
 curdate=$(date +"%Y-%m-%d")
 
 # install appdynamics java agent -----------------------------------------------
-agent_binary="AppServerAgent-${agent_release}.zip"
-
 # authenticate to the appdynamics domain and store session id in a file.
 curl --silent --cookie-jar cookies-${curdate}.txt --data "username=${username}&password=${password}" https://login.appdynamics.com/sso/login/
 
