@@ -250,12 +250,12 @@ The following command-line tools and utilities are pre-installed in the __Develo
 	-	Pip3 9.0.1
 -	Scala-lang 2.12.4
 	-	Scala Build Tool (SBT) 1.0.4
--	Terraform 0.11.0
+-	Terraform 0.11.1
 -	Vault 0.9.0
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 10.2.2 da70bc4
+-	GitLab Community Edition 10.2.3 3141105
 -	Jenkins 2.73.3
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):

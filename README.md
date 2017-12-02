@@ -26,7 +26,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 1.1.9
 	-	vagrant-vbguest 0.15.0
--	Packer 1.1.2
+-	Packer 1.1.1
 -	Git 2.15.1 for Win64
 	-	wget 1.9.1
 	-	tree 1.5.2.2
@@ -39,11 +39,20 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
 3.	Install [Vagrant 2.0.1 for Windows 64-bit](https://releases.hashicorp.com/vagrant/2.0.1/vagrant_2.0.1_x86_64.msi).  
     Suggested install folder:  
-    `C:\HashiCorp\vagrant`
+    `C:\HashiCorp\vagrant`  
 
-4.	Install [Packer 1.1.2 for Windows 64-bit](https://releases.hashicorp.com/packer/1.1.2/packer_1.1.2_windows_amd64.zip).  
+    **NOTE:** There is currently an issue on Windows 10 when using SSH to access the VM with Git Bash or Cygwin. To work-around, set the following environment variable:  
+    ```
+    export VAGRANT_PREFER_SYSTEM_BIN=1
+    ```
+
+    If this is set, Vagrant will prefer using utility executables (like `ssh` and `rsync`) from the local system instead of those vendored within the Vagrant installation.  
+
+4.	Install [Packer 1.1.1 for Windows 64-bit](https://releases.hashicorp.com/packer/1.1.1/packer_1.1.1_windows_amd64.zip).  
     Create suggested install folder and extract contents of ZIP file to:  
-    `C:\HashiCorp\Packer\bin`
+    `C:\HashiCorp\Packer\bin`  
+
+    **NOTE:** There is currently an issue on Windows 10 with Packer 1.1.2 (current latest release) and VirtualBox Guest Additions 5.2.2 where the Guest Additions ISO image cannot be found on the local file system. The work-around is to use Packer 1.1.1 instead.  
 
 5.	Install [Git 2.15.1 for Windows 64-bit](https://github.com/git-for-windows/git/releases/download/v2.15.1.windows.1/Git-2.15.1-64-bit.exe).
 
@@ -86,7 +95,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     Vagrant 2.0.1
 
     $ packer --version
-    1.1.2
+    1.1.1
 
     $ git --version
     git version 2.15.1.windows.1
