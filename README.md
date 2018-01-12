@@ -20,8 +20,8 @@ Next, using these base VMs as a foundation, the user can build more advanced VM 
 
 To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the following open source software needs to be installed on the host machine:
 
--	VirtualBox 5.2.2
-	-	VirtualBox Extension Pack 5.2.2
+-	VirtualBox 5.2.4
+	-	VirtualBox Extension Pack 5.2.4
 -	Vagrant 2.0.1 with Plugins
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 1.1.9
@@ -33,9 +33,9 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
 ## Installation Instructions - Windows 64-Bit
 
-1.	Install [VirtualBox 5.2.2 for Windows 64-bit](http://download.virtualbox.org/virtualbox/5.2.2/VirtualBox-5.2.2-119230-Win.exe).
+1.	Install [VirtualBox 5.2.4 for Windows 64-bit](http://download.virtualbox.org/virtualbox/5.2.4/VirtualBox-5.2.4-119785-Win.exe).
 
-2.	Install [VirtualBox Extension Pack 5.2.2](http://download.virtualbox.org/virtualbox/5.2.2/Oracle_VM_VirtualBox_Extension_Pack-5.2.2-119230.vbox-extpack).
+2.	Install [VirtualBox Extension Pack 5.2.4](http://download.virtualbox.org/virtualbox/5.2.4/Oracle_VM_VirtualBox_Extension_Pack-5.2.4-119785.vbox-extpack).
 
 3.	Install [Vagrant 2.0.1 for Windows 64-bit](https://releases.hashicorp.com/vagrant/2.0.1/vagrant_2.0.1_x86_64.msi).  
     Suggested install folder:  
@@ -52,7 +52,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     Create suggested install folder and extract contents of ZIP file to:  
     `C:\HashiCorp\Packer\bin`  
 
-    **NOTE:** There is currently an issue on Windows 10 with Packer 1.1.2 (current latest release) and VirtualBox Guest Additions 5.2.2 where the Guest Additions ISO image cannot be found on the local file system. The work-around is to use Packer 1.1.1 instead.  
+    **NOTE:** There is currently an issue on Windows 10 with Packer 1.1.2 (and above) and VirtualBox Guest Additions 5.2.2 (and above) where the Guest Additions ISO image cannot be found on the local file system. The work-around is to use Packer 1.1.1 instead.  
 
 5.	Install [Git 2.15.1 for Windows 64-bit](https://github.com/git-for-windows/git/releases/download/v2.15.1.windows.1/Git-2.15.1-64-bit.exe).
 
@@ -89,7 +89,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
     ```
     $ VBoxManage --version
-    5.2.2r119230
+    5.2.4r119785
 
     $ vagrant --version
     Vagrant 2.0.1

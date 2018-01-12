@@ -225,52 +225,52 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Ansible 2.4.2.0
 	-	Ansible Container 0.9.2
 -	Ant 1.10.1
--	Consul 1.0.1
+-	Consul 1.0.2
 -	Cloud-Init 0.7.9 [Optional]
 -	Docker 17.09.0 CE
 	-	Docker Bash Completion
-	-	Docker Compose 1.17.1
+	-	Docker Compose 1.18.0
 	-	Docker Compose Bash Completion
 -	Git 2.15.1
 	-	Git Bash Completion
 	-	Git-Flow 1.11.0 (AVH Edition)
 	-	Git-Flow Bash Completion
 -	Golang 1.9.2
--	Gradle 4.3.1
+-	Gradle 4.4.1
 -	Groovy 2.4.13
 -	Java SE JDK 8 Update 152
 -	Java SE JDK 9.0.1
 -	Maven 3.5.2
--	Packer 1.1.2
+-	Packer 1.1.3
 -	Python 2.7.5
 	-	Pip 9.0.1
 -	Python 3.3.2
 	-	Pip3 9.0.1
 -	Scala-lang 2.12.4
-	-	Scala Build Tool (SBT) 1.0.4
--	Terraform 0.11.1
--	Vault 0.9.0
+	-	Scala Build Tool (SBT) 1.1.0
+-	Terraform 0.11.2
+-	Vault 0.9.1
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 10.2.3 3141105
--	Jenkins 2.73.3
+-	GitLab Community Edition 10.3.4 56dc722
+-	Jenkins 2.89.2
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
--	AppDynamics Enterprise Console 4.4.0.5 Build 4220
-	-	AppDynamics Controller 4.4.0.5 Build 19090
+-	AppDynamics Enterprise Console 4.4.0.6 Build 4731
+	-	AppDynamics Controller 4.4.0.6 Build 21748
 
 The following developer tools are pre-installed in the __Developer VM__ (desktop) only:
 
--	AppDynamics Java Agent 4.4.0.5 Build 19009
--	Atom Editor 1.22.0
+-	AppDynamics Java Agent 4.4.0.6 Build 21351
+-	Atom Editor 1.23.3
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 62.0.3202.94 (64-bit)
--	Firefox 52.5.0 (64-bit)
+-	Chrome 63.0.3239.132 (64-bit)
+-	Firefox 52.5.1 (64-bit)
 -	GVim 7.4.160-1
--	Postman 5.3.2
--	Scala IDE for Eclipse 4.7.0 (Eclipse Oxygen 4.7.1)
--	Spring Tool Suite 3.9.1 IDE (Eclipse Oxygen 4.7.1a)
+-	Postman 5.5.0
+-	Scala IDE for Eclipse 4.7.0 (Eclipse Oxygen.1 [4.7.1])
+-	Spring Tool Suite 3.9.2 IDE (Eclipse Oxygen.2 [4.7.2])
 -	Sublime Text 3 Build 3143
--	Visual Studio Code 1.18.1
+-	Visual Studio Code 1.19.2

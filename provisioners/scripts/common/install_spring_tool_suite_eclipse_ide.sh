@@ -3,10 +3,10 @@
 
 # install spring tool suite ide. -----------------------------------------------
 stshome="sts-bundle"
-stsrelease="3.9.1"
-stsnumber="430668885"
+stsrelease="3.9.2"
+stsnumber="2073709847"
 eclipseversion="oxygen"
-eclipserelease="4.7.1a"
+eclipserelease="4.7.2"
 
 eclipsedist=$(echo "e${eclipserelease}" | awk -F "." '{printf "%s.%s", $1, $2}')
 stsbinary="spring-tool-suite-${stsrelease}.RELEASE-e${eclipserelease}-linux-gtk-x86_64.tar.gz"
