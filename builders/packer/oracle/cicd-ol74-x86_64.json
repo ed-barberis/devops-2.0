@@ -6,7 +6,6 @@
       "headless": "{{ user `headless` }}",
       "source_path": "../../../artifacts/oracle/ops-ol74/ops-ol74.ovf",
       "output_directory": "../../../artifacts/oracle/{{user `box_basename`}}",
-      "post_shutdown_delay": "{{user `post_shutdown_delay`}}",
       "shutdown_command": "echo 'vagrant' | sudo -S /sbin/halt -h -p",
       "ssh_password": "vagrant",
       "ssh_port": 22,
@@ -82,7 +81,6 @@
     "memory": "6144",
     "name": "cicd-ol74",
     "no_proxy": "{{env `no_proxy`}}",
-    "post_shutdown_delay": "10s",
     "version": "TIMESTAMP"
   }
 }
