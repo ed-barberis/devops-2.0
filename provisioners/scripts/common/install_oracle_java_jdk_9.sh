@@ -3,8 +3,9 @@
 
 # install java se 9 development kit. -------------------------------------------
 jdkhome="jdk9"
-jdkbuild="9.0.1+11"
-jdkfolder="jdk-9.0.1"
+jdkbuild="9.0.4+11"
+jdkhash="c2514751926b4512b076cc82f959763f"
+jdkfolder="jdk-9.0.4"
 jdkbinary="${jdkfolder}_linux-x64_bin.tar.gz"
 
 # create java home parent folder.
@@ -12,7 +13,7 @@ mkdir -p /usr/local/java
 cd /usr/local/java
 
 # download jdk 9 binary from oracle otn.
-wget --no-verbose --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/${jdkbuild}/${jdkbinary}
+wget --no-verbose --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/${jdkbuild}/${jdkhash}/${jdkbinary}
 
 # extract jdk 9 binary and create softlink to 'jdk9'.
 rm -f ${jdkhome}

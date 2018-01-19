@@ -3,14 +3,14 @@
 
 # install java se 8 development kit. -------------------------------------------
 jdkhome="jdk180"
-#jdkbuild="8u151-b12"
-#jdkhash="e758a0de34e24606bca991d704f6dcbf"
-#jdkbinary="jdk-8u151-linux-x64.tar.gz"
-#jdkfolder="jdk1.8.0_151"
-jdkbuild="8u152-b16"
-jdkhash="aa0333dd3019491ca4f6ddbe78cdb6d0"
-jdkbinary="jdk-8u152-linux-x64.tar.gz"
-jdkfolder="jdk1.8.0_152"
+#jdkbuild="8u161-b12"
+#jdkhash="2f38c3b165be4555a1fa6e98c45e0808"
+#jdkbinary="jdk-8u161-linux-x64.tar.gz"
+#jdkfolder="jdk1.8.0_161"
+jdkbuild="8u162-b12"
+jdkhash="0da788060d494f5095bf8624735fa2f1"
+jdkbinary="jdk-8u162-linux-x64.tar.gz"
+jdkfolder="jdk1.8.0_162"
 
 # create java home parent folder.
 mkdir -p /usr/local/java

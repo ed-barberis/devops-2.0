@@ -231,15 +231,15 @@ The following command-line tools and utilities are pre-installed in the __Develo
 	-	Docker Bash Completion
 	-	Docker Compose 1.18.0
 	-	Docker Compose Bash Completion
--	Git 2.15.1
+-	Git 2.16.0
 	-	Git Bash Completion
 	-	Git-Flow 1.11.0 (AVH Edition)
 	-	Git-Flow Bash Completion
 -	Golang 1.9.2
 -	Gradle 4.4.1
 -	Groovy 2.4.13
--	Java SE JDK 8 Update 152
--	Java SE JDK 9.0.1
+-	Java SE JDK 8 Update 162
+-	Java SE JDK 9.0.4
 -	Maven 3.5.2
 -	Oracle Compute Cloud Service CLI (opc) 17.2.2 [Optional]
 -	Oracle PaaS Service Manager CLI (psm) 1.1.16 [Optional]
@@ -255,8 +255,8 @@ The following command-line tools and utilities are pre-installed in the __Develo
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 10.3.4 56dc722
--	Jenkins 2.89.2
+-	GitLab Community Edition 10.3.5 7c30d48
+-	Jenkins 2.89.3
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
