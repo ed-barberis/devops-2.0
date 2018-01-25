@@ -33,6 +33,7 @@ distro_name=$(grep PRETTY_NAME /etc/os-release | sed 's/PRETTY_NAME=//g' | tr -d
 if [ "$distro_name" = "Oracle" ]; then
   pictureuri="/usr/share/gnome-control-center/pixmaps/noise-texture-light.png"
   pictureopts="wallpaper"
+  primarycolor="#880e0e"
 
   # display current values.
   echo "Displaying current default desktop background properties..."
@@ -48,6 +49,10 @@ if [ "$distro_name" = "Oracle" ]; then
   # update the values.
   dbus-launch --exit-with-session gsettings set org.gnome.desktop.background picture-uri "file://${pictureuri}"
   dbus-launch --exit-with-session gsettings set org.gnome.desktop.background picture-options "${pictureopts}"
+
+  if [ "$USER" = "oracle" ]; then
+    dbus-launch --exit-with-session gsettings set org.gnome.desktop.background primary-color "${primarycolor}"
+  fi
 
   # display updated values.
   echo "Displaying updated desktop background properties..."

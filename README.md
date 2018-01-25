@@ -27,7 +27,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 	-	vagrant-share 1.1.9
 	-	vagrant-vbguest 0.15.0
 -	Packer 1.1.1
--	Git 2.16.0 for Win64
+-	Git 2.16.1 for Win64
 	-	wget 1.9.1
 	-	tree 1.5.2.2
 
@@ -54,7 +54,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
     **NOTE:** There is currently an issue on Windows 10 with Packer 1.1.2 (and above) and VirtualBox Guest Additions 5.2.2 (and above) where the Guest Additions ISO image cannot be found on the local file system. The work-around is to use Packer 1.1.1 instead.  
 
-5.	Install [Git 2.16.0 for Windows 64-bit](https://github.com/git-for-windows/git/releases/download/v2.16.0.windows.1/Git-2.16.0-64-bit.exe).
+5.	Install [Git 2.16.1 for Windows 64-bit](https://github.com/git-for-windows/git/releases/download/v2.16.1.windows.1/Git-2.16.1-64-bit.exe).
 
 6.	Install optional add-ons for Git Bash.  
     Install [wget 1.9.1 for Windows](https://sourceforge.net/projects/mingw/files/Other/mingwPORT/Current%20Releases/wget-1.9.1-mingwPORT.tar.bz2/download).  
@@ -98,7 +98,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     1.1.1
 
     $ git --version
-    git version 2.16.0.windows.1
+    git version 2.16.1.windows.1
     ```
 
 6.	Install or update the following Vagrant Plugins:

@@ -225,17 +225,17 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Ansible 2.4.2.0
 	-	Ansible Container 0.9.2
 -	Ant 1.10.1
--	Consul 1.0.2
+-	Consul 1.0.3
 -	Cloud-Init 0.7.9 [Optional]
 -	Docker 17.09.0 CE
 	-	Docker Bash Completion
 	-	Docker Compose 1.18.0
 	-	Docker Compose Bash Completion
--	Git 2.16.0
+-	Git 2.16.1
 	-	Git Bash Completion
 	-	Git-Flow 1.11.0 (AVH Edition)
 	-	Git-Flow Bash Completion
--	Golang 1.9.2
+-	Golang 1.9.3
 -	Gradle 4.4.1
 -	Groovy 2.4.13
 -	Java SE JDK 8 Update 162
@@ -253,7 +253,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 10.3.5 7c30d48
+-	GitLab Community Edition 10.4.1 be80a97
 -	Jenkins 2.89.3
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
@@ -266,10 +266,10 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 -	AppDynamics Java Agent 4.4.0.6 Build 21351
 -	Atom Editor 1.23.3
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 63.0.3239.132 (64-bit)
--	Firefox 52.5.1 (64-bit)
+-	Chrome 64.0.3282.119 (64-bit)
+-	Firefox 52.6.0 (64-bit)
 -	GVim 7.4.160-1
--	Postman 5.5.0
+-	Postman 5.5.2
 -	Scala IDE for Eclipse 4.7.0 (Eclipse Oxygen.1 [4.7.1])
 -	Spring Tool Suite 3.9.2 IDE (Eclipse Oxygen.2 [4.7.2])
 -	Sublime Text 3 Build 3143

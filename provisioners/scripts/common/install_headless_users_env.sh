@@ -8,8 +8,8 @@ rootrc="/tmp/scripts/common/users/user-root-bashrc.sh"
 # uncomment proxy environment variables (if set).
 proxy_set="${http_proxy:-}"
 if [ -n "${proxy_set}" ]; then
-  sed -i 's/#http_proxy/http_proxy/g;s/#export http_proxy/export http_proxy/g' ${rootrc}
-  sed -i 's/#https_proxy/https_proxy/g;s/#export https_proxy/export https_proxy/g' ${rootrc}
+  sed -i 's/^#http_proxy/http_proxy/g;s/^#export http_proxy/export http_proxy/g' ${rootrc}
+  sed -i 's/^#https_proxy/https_proxy/g;s/^#export https_proxy/export https_proxy/g' ${rootrc}
 fi
 
 # copy environment profiles to user 'root' home.
@@ -39,8 +39,8 @@ vagrantrc="/tmp/scripts/common/users/user-vagrant-bashrc.sh"
 # uncomment proxy environment variables (if set).
 proxy_set="${http_proxy:-}"
 if [ -n "${proxy_set}" ]; then
-  sed -i 's/#http_proxy/http_proxy/g;s/#export http_proxy/export http_proxy/g' ${vagrantrc}
-  sed -i 's/#https_proxy/https_proxy/g;s/#export https_proxy/export https_proxy/g' ${vagrantrc}
+  sed -i 's/^#http_proxy/http_proxy/g;s/^#export http_proxy/export http_proxy/g' ${vagrantrc}
+  sed -i 's/^#https_proxy/https_proxy/g;s/^#export https_proxy/export https_proxy/g' ${vagrantrc}
 fi
 
 # copy environment profiles to user 'vagrant' home.

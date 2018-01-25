@@ -73,7 +73,7 @@ rm -f vim-files.tar.gz
 chown -R vagrant:vagrant .
 chmod 644 .bash_profile .bashrc
 
-# configure gnome-3 desktop properties for devops users. --------------------------
+# configure gnome-3 desktop properties for devops users. -----------------------
 cd /tmp/scripts/centos
 chmod 755 config_centos7_gnome_desktop.sh
 runuser -c "/tmp/scripts/centos/config_centos7_gnome_desktop.sh" - vagrant
