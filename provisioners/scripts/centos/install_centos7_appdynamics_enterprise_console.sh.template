@@ -4,7 +4,7 @@
 # set appdynamics installation variables. --------------------------------------
 username="<username>"
 password="<password>"
-platform_release="<platform_release - such as '4.4.0.4731'>"
+platform_release="<platform_release - such as '4.4.1.5193'>"
 platform_installer="platform-setup-x64-linux-${platform_release}.sh"
 platform_home="/opt/appdynamics/platform"
 

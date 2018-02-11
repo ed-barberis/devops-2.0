@@ -4,9 +4,10 @@
 # set appdynamics java agent installation variables. ---------------------------
 username="<username>"
 password="<password>"
-agent_release="<agent_release - such as '4.4.0.21351'>"
+agent_release="<agent_release - such as '4.4.1.21006'>"
 appd_home="/opt/appdynamics"
-agent_folder="appagent-${agent_release}"
+agent_home="appagent"
+agent_folder="${agent_home}-${agent_release}"
 agent_binary="AppServerAgent-${agent_release}.zip"
 
 controller_host="apm"
@@ -35,11 +36,12 @@ chmod 644 ${agent_binary}
 rm -f cookies-${curdate}.txt
 
 # extract appdynamics java agent binary.
+rm -f ${agent_home}
 unzip ${agent_binary}
 chown -R vagrant:vagrant .
 rm -f ${agent_binary}
 cd ${appd_home}
-ln -s ${agent_folder} appagent
+ln -s ${agent_folder} ${agent_home}
 
 # configure appdynamics java agent ---------------------------------------------
 agent_config_file="controller-info.xml"
