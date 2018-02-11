@@ -8,8 +8,13 @@ user_group="${user_group:-}"                                # user login group.
 user_id="${user_id:-}"                                      # [optional] custom user id.
 user_comment="${user_comment:-$user_name}"                  # [optional] user comment [full name] (defaults to 'user_name').
 user_supplementary_groups="${user_supplementary_groups:-}"  # [optional] comma separated list of groups.
-user_sudo_privileges="${user_sudo_privileges:-}"            # [optional] 'true' boolean.
+user_sudo_privileges="${user_sudo_privileges:-false}"       # [optional] user sudo privileges boolean (defaults to 'false').
 user_home="${user_home:-/home/$user_name}"                  # [optional] user home (defaults to '/home/user_name').
+user_headless_env="${user_headless_env:-false}"             # [optional] user install headless environment (defaults to 'false').
+                                                            #
+                                                            # NOTE: if 'user_headless_env' is 'true'--
+                                                            #       the following [optional] pass-thru env variables may be defined:
+user_docker_profile="${user_docker_profile:-false}"         # [optional] user docker profile (defaults to 'false').
 user_prompt_color="${user_prompt_color:-green}"             # [optional] user prompt color (defaults to 'green').
                                                             #            valid colors are:
                                                             #              'black', 'blue', 'cyan', 'green', 'magenta', 'red', 'white', 'yellow'
@@ -27,8 +32,13 @@ Usage:
     [root]# export user_id="1001"                           # [optional] custom user id.
     [root]# export user_comment="user1"                     # [optional] user comment [full name] (defaults to 'user_name').
     [root]# export user_supplementary_groups="grp2,grp3"    # [optional] comma separated list of groups.
-    [root]# export user_sudo_privileges="true"              # [optional] 'true' boolean.
+    [root]# export user_sudo_privileges="true"              # [optional] user sudo privileges boolean (defaults to 'false').
     [root]# export user_home="/home/user1"                  # [optional] user home (defaults to '/home/user_name').
+    [root]# export user_headless_env="true"                 # [optional] user install headless environment (defaults to 'false').
+                                                            #
+                                                            # NOTE: if 'user_headless_env' is 'true'--
+                                                            #       the following [optional] pass-thru env variables may be defined:
+    [root]# export user_docker_profile="true"               # [optional] user docker profile (defaults to 'false').
     [root]# export user_prompt_color="yellow"               # [optional] user prompt color (defaults to 'green').
                                                             #            valid colors:
                                                             #              'black', 'blue', 'cyan', 'green', 'magenta', 'red', 'white', 'yellow'
@@ -55,7 +65,7 @@ if [ -z "$user_group" ]; then
   exit 1
 fi
 
-if [ ! -z "$user_prompt_color" ]; then
+if [ -n "$user_prompt_color" ]; then
   case $user_prompt_color in
       black|blue|cyan|green|magenta|red|white|yellow)
         ;;
@@ -69,7 +79,7 @@ fi
 
 # create user and add to associated groups. ------------------------------------
 # check for custom user id.
-if [ ! -z "$user_id" ]; then
+if [ -n "$user_id" ]; then
   useradd ${user_name} -u ${user_id} -g ${user_group}
 else
   useradd ${user_name} -g ${user_group}
@@ -79,12 +89,12 @@ fi
 echo "${user_name}:${user_password}" | chpasswd
 
 # add user comment (usually a full name).
-if [ ! -z "$user_comment" ]; then
+if [ -n "$user_comment" ]; then
   usermod -c "${user_comment}" ${user_name}
 fi
 
 # add user to supplementary groups.
-if [ ! -z "$user_supplementary_groups" ]; then
+if [ -n "$user_supplementary_groups" ]; then
   usermod -aG ${user_supplementary_groups} ${user_name}
 fi
 
@@ -94,6 +104,14 @@ if [ "$user_sudo_privileges" == "true" ]; then
 fi
 
 # create environment profile for the user. -------------------------------------
-cd /tmp/scripts/common
-chmod 755 install_headless_user_env.sh
-./install_headless_user_env.sh
+if [ "$user_headless_env" == "true" ]; then
+  # NOTE: if 'user_headless_env' is 'true'--
+  #       the following [optional] pass-thru env variables may be defined:
+  #         user_docker_profile:                            # [optional] user docker profile (defaults to 'false').
+  #         user_prompt_color:                              # [optional] user prompt color (defaults to 'green').
+  #            valid colors are:
+  #              'black', 'blue', 'cyan', 'green', 'magenta', 'red', 'white', 'yellow'
+  cd /tmp/scripts/common
+  chmod 755 install_headless_user_env.sh
+  ./install_headless_user_env.sh
+fi

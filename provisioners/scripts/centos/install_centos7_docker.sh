@@ -1,9 +1,6 @@
 #!/bin/sh -eux
 # install the docker engine on centos 7.x.
 
-# update the repository list. --------------------------------------------------
-yum repolist
-
 # install the docker prerequisites. --------------------------------------------
 yum -y install yum-utils
 yum -y install device-mapper-persistent-data
@@ -36,9 +33,6 @@ if [ -f "$sysctlfile" ]; then
   sysctl net.ipv4.ip_forward
 fi
 
-# add user 'vagrant' to 'docker' group.
-usermod -aG docker vagrant
-
 # start the docker service and configure it to start at boot time.
 systemctl start docker
 systemctl enable docker
@@ -50,16 +44,6 @@ systemctl status docker
 docker info
 docker version
 docker --version
-
-# install docker completion for bash. ------------------------------------------
-dcompletion_release="17.03.2-ce"
-dcompletion_binary=".docker-completion.sh"
-userfolder="/home/vagrant"
-
-# download docker completion for bash from github.com.
-curl --silent --location "https://github.com/moby/moby/raw/v${dcompletion_release}/contrib/completion/bash/docker" --output ${userfolder}/${dcompletion_binary}
-chown -R vagrant:vagrant ${userfolder}/${dcompletion_binary}
-chmod 644 ${userfolder}/${dcompletion_binary}
 
 # install docker-compose utility. ----------------------------------------------
 dcbin="docker-compose"
@@ -88,12 +72,3 @@ export PATH
 
 # verify installation.
 docker-compose --version
-
-# install docker compose completion for bash. ----------------------------------
-dccompletion_binary=".docker-compose-completion.sh"
-userfolder="/home/vagrant"
-
-# download docker completion for bash from github.com.
-curl --silent --location "https://github.com/docker/compose/raw/${dcrelease}/contrib/completion/bash/docker-compose" --output ${userfolder}/${dccompletion_binary}
-chown -R vagrant:vagrant ${userfolder}/${dccompletion_binary}
-chmod 644 ${userfolder}/${dccompletion_binary}

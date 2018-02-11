@@ -32,7 +32,7 @@ group_ids_array=( $group_ids )
 group_ids_length=${#group_ids_array[@]}
 
 # if group ids are present, do the number of group names and ids match?
-if [ ! -z "$group_ids" ]; then
+if [ -n "$group_ids" ]; then
   if [ ! "$group_names_length" -eq "$group_ids_length" ];then
     echo "Error: Number of 'group_names' and 'group_ids' must be equal."
     usage
@@ -44,7 +44,7 @@ fi
 ii=0                                                        # initialize array index.
 for group_name in "${group_names_array[@]}"; do
   # check for custom group ids.
-  if [ ! -z "$group_ids" ]; then
+  if [ -n "$group_ids" ]; then
     groupadd -g ${group_ids_array[$ii]} ${group_name}
   else
     groupadd ${group_name}

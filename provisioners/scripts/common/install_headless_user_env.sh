@@ -5,6 +5,7 @@
 user_name="${user_name:-}"                                  # user name.
 user_group="${user_group:-}"                                # user login group.
 user_home="${user_home:-/home/$user_name}"                  # [optional] user home (defaults to '/home/user_name').
+user_docker_profile="${user_docker_profile:-false}"         # [optional] user docker profile (defaults to 'false').
 user_prompt_color="${user_prompt_color:-green}"             # [optional] user prompt color (defaults to 'green').
                                                             #            valid colors are:
                                                             #              'black', 'blue', 'cyan', 'green', 'magenta', 'red', 'white', 'yellow'
@@ -19,6 +20,7 @@ Usage:
     [root]# export user_name="user1"                        # user name.
     [root]# export user_group="group1"                      # user login group.
     [root]# export user_home="/home/user1"                  # [optional] user home (defaults to '/home/user_name').
+    [root]# export user_docker_profile="true"               # [optional] user docker profile (defaults to 'false').
     [root]# export user_prompt_color="yellow"               # [optional] user prompt color (defaults to 'green').
                                                             #            valid colors:
                                                             #              'black', 'blue', 'cyan', 'green', 'magenta', 'red', 'white', 'yellow'
@@ -39,7 +41,7 @@ if [ -z "$user_group" ]; then
   exit 1
 fi
 
-if [ ! -z "$user_prompt_color" ]; then
+if [ -n "$user_prompt_color" ]; then
   case $user_prompt_color in
       black|blue|cyan|green|magenta|red|white|yellow)
         ;;
@@ -90,3 +92,27 @@ rm -f vim-files.tar.gz
 
 chown -R ${user_name}:${user_group} .
 chmod 644 .bash_profile .bashrc
+
+# create docker profile for the user. ------------------------------------------
+if [ "$user_docker_profile" == "true" ] && [ "$user_name" != "root" ]; then
+  # add user to the 'docker' group.
+  usermod -aG docker ${user_name}
+
+  # install docker completion for bash.
+  dcompletion_release="17.03.1-ce"
+  dcompletion_binary=".docker-completion.sh"
+
+  # download docker completion for bash from github.com.
+  curl --silent --location "https://github.com/moby/moby/raw/v${dcompletion_release}/contrib/completion/bash/docker" --output ${user_home}/${dcompletion_binary}
+  chown -R ${user_name}:${user_group} ${user_home}/${dcompletion_binary}
+  chmod 644 ${user_home}/${dcompletion_binary}
+
+  # install docker compose completion for bash.
+  dcrelease="1.18.0"
+  dccompletion_binary=".docker-compose-completion.sh"
+
+  # download docker completion for bash from github.com.
+  curl --silent --location "https://github.com/docker/compose/raw/${dcrelease}/contrib/completion/bash/docker-compose" --output ${user_home}/${dccompletion_binary}
+  chown -R ${user_name}:${user_group} ${user_home}/${dccompletion_binary}
+  chmod 644 ${user_home}/${dccompletion_binary}
+fi

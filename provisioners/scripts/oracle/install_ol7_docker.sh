@@ -4,9 +4,6 @@
 # set empty default value for 'http_proxy' if not set. -------------------------
 http_proxy="${http_proxy:-}"
 
-# update the repository list. --------------------------------------------------
-yum repolist
-
 # install the docker engine. ---------------------------------------------------
 yum -y install docker-engine
 
@@ -32,11 +29,17 @@ if [ -f "$updatedbfile" ]; then
   sed -i 's/PRUNEPATHS = "/PRUNEPATHS = "\/var\/lib\/docker /g' $updatedbfile
 fi
 
-# set docker to use btrfs as the storage file system and notify docker
-# that selinux is off.
-dockerfile="/etc/sysconfig/docker"
-if [ -f "$dockerfile" ]; then
-  sed -i "s/OPTIONS='--selinux-enabled'/OPTIONS='--storage-driver btrfs --selinux-enabled=false'/g" $dockerfile
+# set docker to use 'overlay2' as the storage driver.
+daemon_dir="/etc/docker"
+daemon_file="daemon.json"
+storage_driver="overlay2"
+if [ ! -d "$daemon_dir" ]; then
+  mkdir -p $daemon_dir
+  touch "${daemon_dir}/${daemon_file}"
+  echo "{" >> "${daemon_dir}/${daemon_file}"
+  echo "  \"storage-driver\": \"${storage_driver}\"" >> "${daemon_dir}/${daemon_file}"
+  echo "}" >> "${daemon_dir}/${daemon_file}"
+  chmod 600 "${daemon_dir}/${daemon_file}"
 fi
 
 # enable ip forwarding if not set.
@@ -49,9 +52,6 @@ if [ -f "$sysctlfile" ]; then
   sysctl net.ipv4.ip_forward
 fi
 
-# add user 'vagrant' to 'docker' group.
-usermod -aG docker vagrant
-
 # start the docker service and configure it to start at boot time.
 systemctl start docker
 systemctl enable docker
@@ -63,16 +63,6 @@ systemctl status docker
 docker info
 docker version
 docker --version
-
-# install docker completion for bash. ------------------------------------------
-dcompletion_release="17.03.1-ce"
-dcompletion_binary=".docker-completion.sh"
-userfolder="/home/vagrant"
-
-# download docker completion for bash from github.com.
-curl --silent --location "https://github.com/moby/moby/raw/v${dcompletion_release}/contrib/completion/bash/docker" --output ${userfolder}/${dcompletion_binary}
-chown -R vagrant:vagrant ${userfolder}/${dcompletion_binary}
-chmod 644 ${userfolder}/${dcompletion_binary}
 
 # install docker-compose utility. ----------------------------------------------
 dcbin="docker-compose"
@@ -101,12 +91,3 @@ export PATH
 
 # verify installation.
 docker-compose --version
-
-# install docker compose completion for bash. ----------------------------------
-dccompletion_binary=".docker-compose-completion.sh"
-userfolder="/home/vagrant"
-
-# download docker completion for bash from github.com.
-curl --silent --location "https://github.com/docker/compose/raw/${dcrelease}/contrib/completion/bash/docker-compose" --output ${userfolder}/${dccompletion_binary}
-chown -R vagrant:vagrant ${userfolder}/${dccompletion_binary}
-chmod 644 ${userfolder}/${dccompletion_binary}

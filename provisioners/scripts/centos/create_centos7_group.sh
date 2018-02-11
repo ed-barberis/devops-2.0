@@ -27,7 +27,7 @@ fi
 
 # create group. ----------------------------------------------------------------
 # check for custom group id.
-if [ ! -z "$group_id" ]; then
+if [ -n "$group_id" ]; then
   groupadd -g ${group_id} ${group_name}
 else
   groupadd ${group_name}

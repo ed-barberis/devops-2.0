@@ -73,6 +73,29 @@ rm -f vim-files.tar.gz
 chown -R vagrant:vagrant .
 chmod 644 .bash_profile .bashrc
 
+# create docker profile for the user. ------------------------------------------
+# add user 'vagrant' to the 'docker' group.
+usermod -aG docker vagrant
+
+# install docker completion for bash.
+dcompletion_release="17.03.1-ce"
+dcompletion_binary=".docker-completion.sh"
+userfolder="/home/vagrant"
+
+# download docker completion for bash from github.com.
+curl --silent --location "https://github.com/moby/moby/raw/v${dcompletion_release}/contrib/completion/bash/docker" --output ${userfolder}/${dcompletion_binary}
+chown -R vagrant:vagrant ${userfolder}/${dcompletion_binary}
+chmod 644 ${userfolder}/${dcompletion_binary}
+
+# install docker compose completion for bash.
+dcrelease="1.18.0"
+dccompletion_binary=".docker-compose-completion.sh"
+
+# download docker completion for bash from github.com.
+curl --silent --location "https://github.com/docker/compose/raw/${dcrelease}/contrib/completion/bash/docker-compose" --output ${userfolder}/${dccompletion_binary}
+chown -R vagrant:vagrant ${userfolder}/${dccompletion_binary}
+chmod 644 ${userfolder}/${dccompletion_binary}
+
 # configure gnome-3 desktop properties for devops users. -----------------------
 cd /tmp/scripts/centos
 chmod 755 config_centos7_gnome_desktop.sh
