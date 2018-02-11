@@ -22,11 +22,11 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
 -	VirtualBox 5.2.6
 	-	VirtualBox Extension Pack 5.2.6
--	Vagrant 2.0.1 with Plugins
+-	Vagrant 2.0.2 with Plugins
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 1.1.9
-	-	vagrant-vbguest 0.15.0
--	Packer 1.1.1
+	-	vagrant-vbguest 0.15.1
+-	Packer 1.2.0
 -	Git 2.16.1 for Win64
 	-	wget 1.9.1
 	-	tree 1.5.2.2
@@ -37,7 +37,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
 2.	Install [VirtualBox Extension Pack 5.2.6](http://download.virtualbox.org/virtualbox/5.2.6/Oracle_VM_VirtualBox_Extension_Pack-5.2.6-120293.vbox-extpack).
 
-3.	Install [Vagrant 2.0.1 for Windows 64-bit](https://releases.hashicorp.com/vagrant/2.0.1/vagrant_2.0.1_x86_64.msi).  
+3.	Install [Vagrant 2.0.2 for Windows 64-bit](https://releases.hashicorp.com/vagrant/2.0.2/vagrant_2.0.2_x86_64.msi).  
     Suggested install folder:  
     `C:\HashiCorp\vagrant`  
 
@@ -48,11 +48,9 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
     If this is set, Vagrant will prefer using utility executables (like `ssh` and `rsync`) from the local system instead of those vendored within the Vagrant installation.  
 
-4.	Install [Packer 1.1.1 for Windows 64-bit](https://releases.hashicorp.com/packer/1.1.1/packer_1.1.1_windows_amd64.zip).  
+4.	Install [Packer 1.2.0 for Windows 64-bit](https://releases.hashicorp.com/packer/1.2.0/packer_1.2.0_windows_amd64.zip).  
     Create suggested install folder and extract contents of ZIP file to:  
     `C:\HashiCorp\Packer\bin`  
-
-    **NOTE:** There is currently an issue on Windows 10 with Packer 1.1.2 (and above) and VirtualBox Guest Additions 5.2.2 (and above) where the Guest Additions ISO image cannot be found on the local file system. The work-around is to use Packer 1.1.1 instead.  
 
 5.	Install [Git 2.16.1 for Windows 64-bit](https://github.com/git-for-windows/git/releases/download/v2.16.1.windows.1/Git-2.16.1-64-bit.exe).
 
@@ -92,10 +90,10 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     5.2.6r120293
 
     $ vagrant --version
-    Vagrant 2.0.1
+    Vagrant 2.0.2
 
     $ packer --version
-    1.1.1
+    1.2.0
 
     $ git --version
     git version 2.16.1.windows.1
@@ -120,7 +118,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     $ vagrant plugin list
     vagrant-cachier (1.2.1)
     vagrant-share (1.1.9, system)
-    vagrant-vbguest (0.15.0)
+    vagrant-vbguest (0.15.1)
     ```
 
 8.	Validate optional add-ons for Git Bash:
@@ -158,14 +156,14 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 3.	Fix bug in Vagrant VB-Guest Plugin File '`oracle.rb`':
 
     ```
-    $ cd /c/Users/<your-username>/.vagrant.d/gems/2.4.2/gems/vagrant-vbguest-0.15.0/lib/vagrant-vbguest/installers
+    $ cd /c/Users/<your-username>/.vagrant.d/gems/2.4.3/gems/vagrant-vbguest-0.15.1/lib/vagrant-vbguest/installers
     $ cp -p oracle.rb oracle.rb.orig
     $ cp /<drive>/projects/devops-2.0/shared/patches/vagrant-vbguest/oracle.rb .
     ```
 
 4.	Fix bug in Vagrant VB-Guest Plugin File '`download.rb`':
     ```
-    $ cd /c/Users/<your-username>/.vagrant.d/gems/2.4.2/gems/vagrant-vbguest-0.15.0/lib/vagrant-vbguest
+    $ cd /c/Users/<your-username>/.vagrant.d/gems/2.4.3/gems/vagrant-vbguest-0.15.1/lib/vagrant-vbguest
     $ cp -p download.rb download.rb.orig
     $ cp /<drive>/projects/devops-2.0/shared/patches/vagrant-vbguest/download.rb .
     ```
