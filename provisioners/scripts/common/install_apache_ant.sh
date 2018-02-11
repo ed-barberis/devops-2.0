@@ -2,7 +2,8 @@
 # install ant build tool by apache.
 
 # install apache ant. ----------------------------------------------------------
-antfolder="apache-ant-1.10.1"
+anthome="apache-ant"
+antfolder="${anthome}-1.10.2"
 antbinary="${antfolder}-bin.tar.gz"
 
 # create apache parent folder.
@@ -13,9 +14,10 @@ cd /usr/local/apache
 wget --no-verbose http://archive.apache.org/dist/ant/binaries/${antbinary}
 
 # extract ant binary.
+rm -f ${anthome}
 tar -zxvf ${antbinary} --no-same-owner --no-overwrite-dir
 chown -R root:root ./${antfolder}
-ln -s ${antfolder} apache-ant
+ln -s ${antfolder} ${anthome}
 rm -f ${antbinary}
 
 # set jdk home environment variables.
@@ -23,7 +25,7 @@ JAVA_HOME=/usr/local/java/jdk180
 export JAVA_HOME
 
 # set ant home environment variables.
-ANT_HOME=/usr/local/apache/apache-ant
+ANT_HOME=/usr/local/apache/${anthome}
 export ANT_HOME
 PATH=${ANT_HOME}/bin:${JAVA_HOME}/bin:$PATH
 export PATH
@@ -51,4 +53,4 @@ rm -f ${acbinary}
 
 # copy ant contrib library to apache-ant/lib.
 cd /usr/local/apache/${acfolder}
-cp -p ${acjar} /usr/local/apache/apache-ant/lib
+cp -p ${acjar} /usr/local/apache/${anthome}/lib

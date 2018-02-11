@@ -6,7 +6,7 @@ mkdir -p /tmp/scripts/centos
 cd /tmp/scripts/centos
 
 # install ansible. -------------------------------------------------------------
-ansible_release="2.4.2.0-1"
+ansible_release="2.4.3.0-1"
 ansible_binary="ansible-${ansible_release}.el7.ans.noarch.rpm"
 
 # download ansible repository.
