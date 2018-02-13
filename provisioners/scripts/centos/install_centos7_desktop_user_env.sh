@@ -4,6 +4,8 @@
 # set default values for input environment variables if not set. ---------------
 user_name="${user_name:-}"                                  # user name.
 user_home="${user_home:-/home/$user_name}"                  # [optional] user home (defaults to '/home/user_name').
+                                                            #
+devops_home="${devops_home:-/opt/devops}"                   # [optional] devops home (defaults to '/opt/devops').
 
 # define usage function. -------------------------------------------------------
 usage() {
@@ -14,6 +16,8 @@ Usage:
   Example:
     [root]# export user_name="user1"                        # user name.
     [root]# export user_home="/home/user1"                  # [optional] user home (defaults to '/home/user_name').
+                                                            #
+    [root]# export devops_home="/opt/devops"                # [optional] devops home (defaults to '/opt/devops').
     [root]# $0
 EOF
 }
@@ -36,6 +40,6 @@ sed -i 's/^PATH=/##PATH=/g;s/^#PATH=/PATH=/g;s/^##PATH=/#PATH=/g' .bashrc
 sed -i 's/^#alias gvim/alias gvim/g' .bashrc
 
 # configure gnome-3 desktop properties for devops users. -----------------------
-cd /tmp/scripts/centos
+cd ${devops_home}/provisioners/scripts/centos
 chmod 755 config_centos7_gnome_desktop.sh
-runuser -c "/tmp/scripts/centos/config_centos7_gnome_desktop.sh" - ${user_name}
+runuser -c "${devops_home}/provisioners/scripts/centos/config_centos7_gnome_desktop.sh" - ${user_name}

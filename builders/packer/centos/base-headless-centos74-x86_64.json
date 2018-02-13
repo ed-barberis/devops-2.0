@@ -41,16 +41,20 @@
   ],
   "provisioners": [
     {
-      "inline": ["mkdir -p /tmp/scripts"],
+      "inline": [
+        "sudo mkdir -p {{ user `devops_home` }}/provisioners/scripts",
+        "sudo chown -R vagrant:vagrant /opt/devops-2.0"
+      ],
       "type": "shell"
     },
     {
-      "destination": "/tmp/scripts",
+      "destination": "{{ user `devops_home` }}/provisioners/scripts",
       "source": "../../../provisioners/scripts/",
       "type": "file"
     },
     {
       "environment_vars": [
+        "devops_home={{user `devops_home`}}",
         "HOME_DIR=/home/vagrant",
         "http_proxy={{user `http_proxy`}}",
         "https_proxy={{user `https_proxy`}}",
@@ -69,6 +73,7 @@
     },
     {
       "environment_vars": [
+        "devops_home={{user `devops_home`}}",
         "HOME_DIR=/home/vagrant",
         "http_proxy={{user `http_proxy`}}",
         "https_proxy={{user `https_proxy`}}",
@@ -102,6 +107,7 @@
     "box_basename": "base-headless-centos74",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
     "cpus": "1",
+    "devops_home": "/opt/devops-2.0",
     "disk_size": "131072",
     "git_revision": "__unknown_git_revision__",
     "headless": "false",

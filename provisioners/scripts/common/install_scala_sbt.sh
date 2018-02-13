@@ -1,6 +1,9 @@
 #!/bin/sh -eux
 # install scala build tool (sbt) for scala.
 
+# set default value for devops home environment variable if not set. -----------
+devops_home="${devops_home:-/opt/devops}"                   # [optional] devops home (defaults to '/opt/devops').
+
 # install sbt. -----------------------------------------------------------------
 sbthome="scala-sbt"
 
@@ -60,7 +63,7 @@ sbt_env_value="/usr/local/scala/${sbthome}"
 cd /home/vagrant
 
 # if env name exists (grep command), skip awk update.
-grep -qF "${sbt_env_name}" .bashrc || awk -v env_comment=${sbt_env_comment} -v env_name=${sbt_env_name} -v env_value=${sbt_env_value} -f /tmp/scripts/common/append_env_path.awk .bashrc > .bashrc.${curdate}.${sbthome}
+grep -qF "${sbt_env_name}" .bashrc || awk -v env_comment=${sbt_env_comment} -v env_name=${sbt_env_name} -v env_value=${sbt_env_value} -f ${devops_home}/provisioners/scripts/common/append_env_path.awk .bashrc > .bashrc.${curdate}.${sbthome}
 
 if [ -f ".bashrc.${curdate}.${sbthome}" ]; then
   mv -f .bashrc.${curdate}.${sbthome} .bashrc

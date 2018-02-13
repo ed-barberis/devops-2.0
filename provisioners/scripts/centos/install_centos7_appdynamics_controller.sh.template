@@ -1,6 +1,9 @@
 #!/bin/sh -eux
 # install appdynamics controller by appdynamics.
 
+# set default value for devops home environment variable if not set. -----------
+devops_home="${devops_home:-/opt/devops}"                   # [optional] devops home (defaults to '/opt/devops').
+
 # set appdynamics installation variables. --------------------------------------
 username="<username>"
 password="<password>"
@@ -61,9 +64,9 @@ fi
 runuser -c "ulimit -S -n" -
 runuser -c "ulimit -S -u" -
 
-# create temporary scripts directory. ------------------------------------------
-mkdir -p /tmp/scripts/common/appdynamics
-cd /tmp/scripts/common/appdynamics
+# create temporary download directory. -----------------------------------------
+mkdir -p ${devops_home}/provisioners/scripts/common/appdynamics
+cd ${devops_home}/provisioners/scripts/common/appdynamics
 
 # set current date for temporary filename. -------------------------------------
 curdate=$(date +"%Y-%m-%d")
@@ -121,7 +124,7 @@ echo "userName=${admin_user}" >> "${response_file}"
 ./${controller_installer} -q -varfile ${response_file}
 
 # apply the license.
-license_file="/tmp/scripts/common/tools/appd-controller-license.lic"
+license_file="${devops_home}/provisioners/scripts/common/tools/appd-controller-license.lic"
 if [ -f "$license_file" ]; then
   cp ${license_file} ${controller_home}/license.lic
 fi

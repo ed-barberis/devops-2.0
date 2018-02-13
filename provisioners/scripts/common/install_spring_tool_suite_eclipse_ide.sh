@@ -1,6 +1,9 @@
 #!/bin/sh -eux
 # install spring tool suite text editor with associated gnome desktop app and images.
 
+# set default value for devops home environment variable if not set. -----------
+devops_home="${devops_home:-/opt/devops}"                   # [optional] devops home (defaults to '/opt/devops').
+
 # install spring tool suite ide. -----------------------------------------------
 stshome="sts-bundle"
 stsrelease="3.9.2"
@@ -35,7 +38,7 @@ cp -p STS.ini STS.ini.orig
 curdate=$(date +"%Y-%m-%d")
 
 # set the default jdk and adjust the jvm heap.
-awk -f /tmp/scripts/common/config_spring_tool_suite_eclipse_ide.awk STS.ini > STS.${curdate}.ini
+awk -f ${devops_home}/provisioners/scripts/common/config_spring_tool_suite_eclipse_ide.awk STS.ini > STS.${curdate}.ini
 mv -f STS.${curdate}.ini STS.ini
 
 # create the default user workspace. -------------------------------------------
@@ -69,7 +72,7 @@ imgname="spring-tool-suite-logo"
 imgsizearray=( "16x16" "22x22" "24x24" "32x32" "48x48" "64x64" "128x128" "256x256" )
 imgfolder="/usr/share/icons/hicolor"
 
-cd /tmp/scripts/common
+cd ${devops_home}/provisioners/scripts/common
 
 # install spring tool suite icon image files.
 for imgsize in "${imgsizearray[@]}"; do

@@ -1,6 +1,9 @@
 #!/bin/sh -eux
 # install scala programming language.
 
+# set default value for devops home environment variable if not set. -----------
+devops_home="${devops_home:-/opt/devops}"                   # [optional] devops home (defaults to '/opt/devops').
+
 # install scala-lang. ----------------------------------------------------------
 scalahome="scala-lang"
 
@@ -55,7 +58,7 @@ scala_env_value="/usr/local/scala/${scalahome}"
 cd /home/vagrant
 
 # if env name exists (grep command), skip awk update.
-grep -qF "${scala_env_name}" .bashrc || awk -v env_comment=${scala_env_comment} -v env_name=${scala_env_name} -v env_value=${scala_env_value} -f /tmp/scripts/common/append_env_path.awk .bashrc > .bashrc.${curdate}.${scalahome}
+grep -qF "${scala_env_name}" .bashrc || awk -v env_comment=${scala_env_comment} -v env_name=${scala_env_name} -v env_value=${scala_env_value} -f ${devops_home}/provisioners/scripts/common/append_env_path.awk .bashrc > .bashrc.${curdate}.${scalahome}
 
 if [ -f ".bashrc.${curdate}.${scalahome}" ]; then
   mv -f .bashrc.${curdate}.${scalahome} .bashrc

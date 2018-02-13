@@ -9,6 +9,8 @@ user_docker_profile="${user_docker_profile:-false}"         # [optional] user do
 user_prompt_color="${user_prompt_color:-green}"             # [optional] user prompt color (defaults to 'green').
                                                             #            valid colors are:
                                                             #              'black', 'blue', 'cyan', 'green', 'magenta', 'red', 'white', 'yellow'
+                                                            #
+devops_home="${devops_home:-/opt/devops}"                   # [optional] devops home (defaults to '/opt/devops').
 
 # define usage function. -------------------------------------------------------
 usage() {
@@ -24,6 +26,8 @@ Usage:
     [root]# export user_prompt_color="yellow"               # [optional] user prompt color (defaults to 'green').
                                                             #            valid colors:
                                                             #              'black', 'blue', 'cyan', 'green', 'magenta', 'red', 'white', 'yellow'
+                                                            #
+    [root]# export devops_home="/opt/devops"                # [optional] devops home (defaults to '/opt/devops').
     [root]# $0
 EOF
 }
@@ -55,12 +59,12 @@ fi
 
 # create default environment profile for the user. -----------------------------
 if [ "$user_name" == "root" ]; then
-  master_bashprofile="/tmp/scripts/common/users/user-root-bash_profile.sh"
-  master_bashrc="/tmp/scripts/common/users/user-root-bashrc.sh"
+  master_bashprofile="${devops_home}/provisioners/scripts/common/users/user-root-bash_profile.sh"
+  master_bashrc="${devops_home}/provisioners/scripts/common/users/user-root-bashrc.sh"
   user_home="/root"                                         # override user home for 'root' user.
 else
-  master_bashprofile="/tmp/scripts/common/users/user-vagrant-bash_profile.sh"
-  master_bashrc="/tmp/scripts/common/users/user-vagrant-bashrc.sh"
+  master_bashprofile="${devops_home}/provisioners/scripts/common/users/user-vagrant-bash_profile.sh"
+  master_bashrc="${devops_home}/provisioners/scripts/common/users/user-vagrant-bashrc.sh"
 fi
 
 # copy environment profiles to user home.
@@ -86,7 +90,7 @@ if [ -d ".vim" ]; then
   rm -Rf ./.vim
 fi
 
-cp -f /tmp/scripts/common/tools/vim-files.tar.gz .
+cp -f ${devops_home}/provisioners/scripts/common/tools/vim-files.tar.gz .
 tar -zxvf vim-files.tar.gz --no-same-owner --no-overwrite-dir
 rm -f vim-files.tar.gz
 

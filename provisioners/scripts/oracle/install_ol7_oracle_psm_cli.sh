@@ -1,9 +1,12 @@
 #!/bin/sh -eux
 # install oracle paas service manager (psm) cli client on oracle linux 7.x.
 
-# create temporary scripts directory. ------------------------------------------
-mkdir -p /tmp/scripts/oracle
-cd /tmp/scripts/oracle
+# set default value for devops home environment variable if not set. -----------
+devops_home="${devops_home:-/opt/devops}"                   # [optional] devops home (defaults to '/opt/devops').
+
+# create scripts directory (if needed). ----------------------------------------
+mkdir -p ${devops_home}/provisioners/scripts/oracle
+cd ${devops_home}/provisioners/scripts/oracle
 
 # update the repository list. --------------------------------------------------
 yum repolist
@@ -36,5 +39,5 @@ runuser -c "scl enable python33 -- psm dbcs services" - vagrant
 runuser -c "scl enable python33 -- psm jcs services" - vagrant
 
 # change ownership for the entire temporary directory structure.
-cd /tmp/scripts
+cd ${devops_home}/provisioners/scripts
 chown -R vagrant:vagrant .

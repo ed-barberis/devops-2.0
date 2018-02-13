@@ -1,6 +1,9 @@
 #!/bin/sh -eux
 # install postman app rest client tool by google.
 
+# set default value for devops home environment variable if not set. -----------
+devops_home="${devops_home:-/opt/devops}"                   # [optional] devops home (defaults to '/opt/devops').
+
 # install postman app. ---------------------------------------------------------
 postmanbinary="Postman-linux-x64.tar.gz"
 postmanfolder="Postman"
@@ -33,7 +36,7 @@ imgname="postman-logo"
 imgsizearray=( "16x16" "22x22" "24x24" "32x32" "48x48" "64x64" "128x128" "256x256" )
 imgfolder="/usr/share/icons/hicolor"
 
-cd /tmp/scripts/common
+cd ${devops_home}/provisioners/scripts/common
 
 # install postman icon image files.
 for imgsize in "${imgsizearray[@]}"; do

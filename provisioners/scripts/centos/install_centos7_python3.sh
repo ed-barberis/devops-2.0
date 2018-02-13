@@ -1,9 +1,12 @@
 #!/bin/sh -eux
 # install python 3.3 from the software collection library for linux 7.x..
 
-# create temporary scripts directory. ------------------------------------------
-mkdir -p /tmp/scripts/centos
-cd /tmp/scripts/centos
+# set default value for devops home environment variable if not set. -----------
+devops_home="${devops_home:-/opt/devops}"                   # [optional] devops home (defaults to '/opt/devops').
+
+# create scripts directory (if needed). ----------------------------------------
+mkdir -p ${devops_home}/provisioners/scripts/centos
+cd ${devops_home}/provisioners/scripts/centos
 
 # update the repository list. --------------------------------------------------
 yum repolist
@@ -14,10 +17,6 @@ scl enable python33 -- python --version
 
 # install python 3.3 pip. ------------------------------------------------------
 wget --no-verbose https://bootstrap.pypa.io/get-pip.py
-scl enable python33 -- python /tmp/scripts/centos/get-pip.py
+scl enable python33 -- python ${devops_home}/provisioners/scripts/centos/get-pip.py
 scl enable python33 -- pip --version
 scl enable python33 -- pip3 --version
-
-# change ownership for the entire temporary directory structure.
-cd /tmp/scripts
-chown -R vagrant:vagrant .

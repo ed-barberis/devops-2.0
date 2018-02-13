@@ -12,6 +12,8 @@ user_sudo_privileges="${user_sudo_privileges:-false}"       # [optional] user su
 user_home="${user_home:-/home/$user_name}"                  # [optional] user home (defaults to '/home/user_name').
 user_headless_env="${user_headless_env:-false}"             # [optional] user install headless environment (defaults to 'false').
                                                             #
+devops_home="${devops_home:-/opt/devops}"                   # [optional] devops home (defaults to '/opt/devops').
+                                                            #
                                                             # NOTE: if 'user_headless_env' is 'true'--
                                                             #       the following [optional] pass-thru env variables may be defined:
 user_docker_profile="${user_docker_profile:-false}"         # [optional] user docker profile (defaults to 'false').
@@ -35,6 +37,8 @@ Usage:
     [root]# export user_sudo_privileges="true"              # [optional] user sudo privileges boolean (defaults to 'false').
     [root]# export user_home="/home/user1"                  # [optional] user home (defaults to '/home/user_name').
     [root]# export user_headless_env="true"                 # [optional] user install headless environment (defaults to 'false').
+                                                            #
+    [root]# export devops_home="/opt/devops"                # [optional] devops home (defaults to '/opt/devops').
                                                             #
                                                             # NOTE: if 'user_headless_env' is 'true'--
                                                             #       the following [optional] pass-thru env variables may be defined:
@@ -111,7 +115,7 @@ if [ "$user_headless_env" == "true" ]; then
   #         user_prompt_color:                              # [optional] user prompt color (defaults to 'green').
   #            valid colors are:
   #              'black', 'blue', 'cyan', 'green', 'magenta', 'red', 'white', 'yellow'
-  cd /tmp/scripts/common
+  cd ${devops_home}/provisioners/scripts/common
   chmod 755 install_headless_user_env.sh
   ./install_headless_user_env.sh
 fi
