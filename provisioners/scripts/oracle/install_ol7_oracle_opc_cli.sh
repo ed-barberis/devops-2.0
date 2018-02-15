@@ -34,7 +34,7 @@ opc_cli_profile_directory="/home/vagrant/.opc/profiles"
 opc_cli_profile_file="profile-${identity_domain}"
 
 cd /home/vagrant
-awk -v opc_profile_directory=${opc_cli_profile_directory} -v opc_profile_file=${opc_cli_profile_file} -f ${devops_home}/provisioners/scripts/oracle/enable_ol7_oracle_opc_cli.awk ${devops_home}/provisioners/scripts/oracle/users/user-vagrant-bashrc.sh > .bashrc.${curdate}.opc-cli
+awk -v opc_profile_directory=${opc_cli_profile_directory} -v opc_profile_file=${opc_cli_profile_file} -f ${devops_home}/provisioners/scripts/oracle/enable_ol7_oracle_opc_cli.awk ${devops_home}/provisioners/scripts/common/users/user-vagrant-bashrc.sh > .bashrc.${curdate}.opc-cli
 mv -f .bashrc.${curdate}.opc-cli .bashrc
 
 chown vagrant:vagrant .bashrc

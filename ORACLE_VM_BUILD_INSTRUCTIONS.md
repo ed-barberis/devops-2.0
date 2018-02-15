@@ -256,7 +256,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
 -	GitLab Community Edition 10.4.3 183dd5d
--	Jenkins 2.89.3
+-	Jenkins 2.89.4
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
@@ -272,7 +272,7 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 -	Chrome 64.0.3282.167 (64-bit)
 -	Firefox 52.6.0 (64-bit)
 -	GVim 7.4.160-1
--	Postman 5.5.2
+-	Postman 5.5.3
 -	Scala IDE for Eclipse 4.7.0 (Eclipse Oxygen.1 [4.7.1])
 -	Spring Tool Suite 3.9.2 IDE (Eclipse Oxygen.2 [4.7.2])
 -	Sublime Text 3 Build 3143

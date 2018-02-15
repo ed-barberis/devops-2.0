@@ -36,7 +36,7 @@ imgname="postman-logo"
 imgsizearray=( "16x16" "22x22" "24x24" "32x32" "48x48" "64x64" "128x128" "256x256" )
 imgfolder="/usr/share/icons/hicolor"
 
-cd ${devops_home}/provisioners/scripts/common
+cd ${devops_home}/provisioners/scripts/centos
 
 # install postman icon image files.
 for imgsize in "${imgsizearray[@]}"; do

@@ -38,7 +38,7 @@ cp -p STS.ini STS.ini.orig
 curdate=$(date +"%Y-%m-%d")
 
 # set the default jdk and adjust the jvm heap.
-awk -f ${devops_home}/provisioners/scripts/common/config_spring_tool_suite_eclipse_ide.awk STS.ini > STS.${curdate}.ini
+awk -f ${devops_home}/provisioners/scripts/centos/config_centos7_spring_tool_suite_eclipse_ide.awk STS.ini > STS.${curdate}.ini
 mv -f STS.${curdate}.ini STS.ini
 
 # create the default user workspace. -------------------------------------------
@@ -72,7 +72,7 @@ imgname="spring-tool-suite-logo"
 imgsizearray=( "16x16" "22x22" "24x24" "32x32" "48x48" "64x64" "128x128" "256x256" )
 imgfolder="/usr/share/icons/hicolor"
 
-cd ${devops_home}/provisioners/scripts/common
+cd ${devops_home}/provisioners/scripts/centos
 
 # install spring tool suite icon image files.
 for imgsize in "${imgsizearray[@]}"; do

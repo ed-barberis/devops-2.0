@@ -39,7 +39,7 @@ cp -p eclipse.ini eclipse.ini.orig
 curdate=$(date +"%Y-%m-%d")
 
 # set the default jdk and adjust the jvm heap.
-awk -f ${devops_home}/provisioners/scripts/common/config_scala_ide_for_eclipse.awk eclipse.ini > eclipse.${curdate}.ini
+awk -f ${devops_home}/provisioners/scripts/centos/config_centos7_scala_ide_for_eclipse.awk eclipse.ini > eclipse.${curdate}.ini
 mv -f eclipse.${curdate}.ini eclipse.ini
 
 # create the default user workspace. -------------------------------------------
@@ -73,7 +73,7 @@ imgname="scala-ide-for-eclipse-logo"
 imgsizearray=( "16x16" "22x22" "24x24" "32x32" "48x48" "64x64" "128x128" "256x256" )
 imgfolder="/usr/share/icons/hicolor"
 
-cd ${devops_home}/provisioners/scripts/common
+cd ${devops_home}/provisioners/scripts/centos
 
 # install scala ide icon image files.
 for imgsize in "${imgsizearray[@]}"; do
