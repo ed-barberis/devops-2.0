@@ -8,9 +8,6 @@ devops_home="${devops_home:-/opt/devops}"                   # [optional] devops 
 mkdir -p ${devops_home}/provisioners/scripts/oracle
 cd ${devops_home}/provisioners/scripts/oracle
 
-# update the repository list. --------------------------------------------------
-yum repolist
-
 # install python 3.3. ----------------------------------------------------------
 yum -y install python33
 scl enable python33 -- python --version

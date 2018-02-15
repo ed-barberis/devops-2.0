@@ -1,9 +1,6 @@
 #!/bin/sh -eux
 # install git distributed version control system.
 
-# update the repository list. --------------------------------------------------
-yum repolist
-
 # install tools needed to build git from source. -------------------------------
 yum -y install curl-devel expat-devel gettext-devel openssl-devel zlib-devel
 yum -y install gcc perl-ExtUtils-MakeMaker

@@ -11,12 +11,8 @@ cd ${devops_home}/provisioners/scripts/centos
 # install epel repository if needed. -------------------------------------------
 if [ ! -f "/etc/yum.repos.d/epel.repo" ]; then
   wget --no-verbose https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-  yum repolist
   yum -y install epel-release-latest-7.noarch.rpm
 fi
-
-# update the repository list. --------------------------------------------------
-yum repolist
 
 # install python 2.x pip and setuptools. ---------------------------------------
 yum -y install python-pip

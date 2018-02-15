@@ -2,7 +2,6 @@
 # install useful gui developer tools.
 
 # install 'gvim' graphical editor. ---------------------------------------------
-yum repolist
 yum -y install vim-X11
 gvim --version
 

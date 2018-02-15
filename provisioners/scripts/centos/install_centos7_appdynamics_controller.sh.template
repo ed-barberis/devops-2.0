@@ -21,9 +21,6 @@ server_hostname="apm"
 server_port="8090"
 
 # install controller prerequisites. --------------------------------------------
-# update the repository list.
-yum repolist
-
 # install the netstat network utility.
 yum -y install net-tools
 

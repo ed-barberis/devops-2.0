@@ -18,9 +18,6 @@ server_hostname="$(uname -n)"
 server_port="9191"
 
 # install platform prerequisites. ----------------------------------------------
-# update the repository list.
-yum repolist
-
 # install the netstat network utility.
 yum -y install net-tools
 

@@ -20,9 +20,6 @@ yum-config-manager --disable ol7_UEKR3
 yum-config-manager --enable ol7_addons
 yum-config-manager --enable ol7_software_collections
 
-# update the repository list. --------------------------------------------------
-yum repolist
-
 # install the latest ol7 updates. ----------------------------------------------
 yum -y update
 

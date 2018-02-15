@@ -14,7 +14,6 @@ bracketsfolder="/usr/share/brackets"
 
 # download brackets repository.
 wget --no-verbose ftp://ftp.pbone.net/mirror/li.nux.ro/download/nux/dextop/el7/x86_64/${bracketsbinary}
-yum repolist
 yum -y install ${bracketsbinary}
 
 # install brackets as gnome desktop app.

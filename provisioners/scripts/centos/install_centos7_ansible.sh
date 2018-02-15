@@ -16,7 +16,6 @@ ansible_binary="ansible-${ansible_release}.el7.ans.noarch.rpm"
 wget --no-verbose http://releases.ansible.com/ansible/rpm/release/epel-7-x86_64/${ansible_binary}
 
 # install ansible. -------------------------------------------------------------
-yum repolist
 yum -y install ${ansible_binary}
 
 # verify ansible installation.

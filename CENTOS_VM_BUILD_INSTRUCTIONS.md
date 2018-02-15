@@ -265,13 +265,13 @@ In addition, the following application performance management applications are p
 The following developer tools are pre-installed in the __Developer VM__ (desktop) only:
 
 -	AppDynamics Java Agent 4.4.1.0 Build 21006
--	Atom Editor 1.23.3
+-	Atom Editor 1.24.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 64.0.3282.140 (64-bit)
+-	Chrome 64.0.3282.167 (64-bit)
 -	Firefox 52.6.0 (64-bit)
 -	GVim 7.4.160-1
 -	Postman 5.5.2
 -	Scala IDE for Eclipse 4.7.0 (Eclipse Oxygen.1 [4.7.1])
 -	Spring Tool Suite 3.9.2 IDE (Eclipse Oxygen.2 [4.7.2])
 -	Sublime Text 3 Build 3143
--	Visual Studio Code 1.20.0
+-	Visual Studio Code 1.20.1

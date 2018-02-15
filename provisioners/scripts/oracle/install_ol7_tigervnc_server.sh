@@ -4,9 +4,6 @@
 # NOTE: This script file is currently a work-in-progress. DO NOT USE.
 # ==============================================================================
 
-# update the repository list. --------------------------------------------------
-yum repolist
-
 # install the vnc server. ------------------------------------------------------
 yum -y install tigervnc-server
 
