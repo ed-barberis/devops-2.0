@@ -231,17 +231,17 @@ The following command-line tools and utilities are pre-installed in the __Develo
 	-	Docker Bash Completion
 	-	Docker Compose 1.19.0
 	-	Docker Compose Bash Completion
--	Git 2.16.1
+-	Git 2.16.2
 	-	Git Bash Completion
 	-	Git-Flow 1.11.0 (AVH Edition)
 	-	Git-Flow Bash Completion
--	Go 1.9.4
--	Gradle 4.5.1
--	Groovy 2.4.13
+-	Go 1.10
+-	Gradle 4.6
+-	Groovy 2.4.14
 -	Java SE JDK 8 Update 162
 -	Java SE JDK 9.0.4
 -	Maven 3.5.2
--	Packer 1.2.0
+-	Packer 1.2.1
 -	Python 2.7.5
 	-	Pip 9.0.1
 -	Python 3.3.2
@@ -249,16 +249,16 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Scala-lang 2.12.4
 	-	Scala Build Tool (SBT) 1.1.1
 -	Terraform 0.11.3
--	Vault 0.9.3
+-	Vault 0.9.5
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 10.4.3 183dd5d
+-	GitLab Community Edition 10.5.2 b951e0d
 -	Jenkins 2.89.4
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
--	AppDynamics Enterprise Console 4.4.1.0 Build 5193
+-	AppDynamics Enterprise Console 4.4.1.0 Build 5840
 	-	AppDynamics Controller 4.4.1.0 Build 103
 	-	AppDynamics Event Service 4.4.1.0 Build 13998
 
@@ -267,10 +267,10 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 -	AppDynamics Java Agent 4.4.1.0 Build 21006
 -	Atom Editor 1.24.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 64.0.3282.167 (64-bit)
+-	Chrome 64.0.3282.186 (64-bit)
 -	Firefox 52.6.0 (64-bit)
 -	GVim 7.4.160-1
--	Postman 5.5.3
+-	Postman 6.0.8
 -	Scala IDE for Eclipse 4.7.0 (Eclipse Oxygen.1 [4.7.1])
 -	Spring Tool Suite 3.9.2 IDE (Eclipse Oxygen.2 [4.7.2])
 -	Sublime Text 3 Build 3143

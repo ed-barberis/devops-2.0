@@ -20,22 +20,22 @@ Next, using these base VMs as a foundation, the user can build more advanced VM 
 
 To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the following open source software needs to be installed on the host machine:
 
--	VirtualBox 5.2.6
-	-	VirtualBox Extension Pack 5.2.6
+-	VirtualBox 5.2.8
+	-	VirtualBox Extension Pack 5.2.8
 -	Vagrant 2.0.2 with Plugins
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 1.1.9
 	-	vagrant-vbguest 0.15.1
--	Packer 1.2.0
--	Git 2.16.1 for Win64
+-	Packer 1.2.1
+-	Git 2.16.2 for Win64
 	-	wget 1.9.1
 	-	tree 1.5.2.2
 
 ## Installation Instructions - Windows 64-Bit
 
-1.	Install [VirtualBox 5.2.6 for Windows 64-bit](http://download.virtualbox.org/virtualbox/5.2.6/VirtualBox-5.2.6-120293-Win.exe).
+1.	Install [VirtualBox 5.2.8 for Windows 64-bit](https://download.virtualbox.org/virtualbox/5.2.8/VirtualBox-5.2.8-121009-Win.exe).
 
-2.	Install [VirtualBox Extension Pack 5.2.6](http://download.virtualbox.org/virtualbox/5.2.6/Oracle_VM_VirtualBox_Extension_Pack-5.2.6-120293.vbox-extpack).
+2.	Install [VirtualBox Extension Pack 5.2.8](https://download.virtualbox.org/virtualbox/5.2.8/Oracle_VM_VirtualBox_Extension_Pack-5.2.8-121009.vbox-extpack).
 
 3.	Install [Vagrant 2.0.2 for Windows 64-bit](https://releases.hashicorp.com/vagrant/2.0.2/vagrant_2.0.2_x86_64.msi).  
     Suggested install folder:  
@@ -48,11 +48,11 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
     If this is set, Vagrant will prefer using utility executables (like `ssh` and `rsync`) from the local system instead of those vendored within the Vagrant installation.  
 
-4.	Install [Packer 1.2.0 for Windows 64-bit](https://releases.hashicorp.com/packer/1.2.0/packer_1.2.0_windows_amd64.zip).  
+4.	Install [Packer 1.2.1 for Windows 64-bit](https://releases.hashicorp.com/packer/1.2.1/packer_1.2.1_windows_amd64.zip).  
     Create suggested install folder and extract contents of ZIP file to:  
     `C:\HashiCorp\Packer\bin`  
 
-5.	Install [Git 2.16.1 for Windows 64-bit](https://github.com/git-for-windows/git/releases/download/v2.16.1.windows.1/Git-2.16.1-64-bit.exe).
+5.	Install [Git 2.16.2 for Windows 64-bit](https://github.com/git-for-windows/git/releases/download/v2.16.2.windows.1/Git-2.16.2-64-bit.exe).
 
 6.	Install optional add-ons for Git Bash.  
     Install [wget 1.9.1 for Windows](https://sourceforge.net/projects/mingw/files/Other/mingwPORT/Current%20Releases/wget-1.9.1-mingwPORT.tar.bz2/download).  
@@ -87,16 +87,16 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
     ```
     $ VBoxManage --version
-    5.2.6r120293
+    5.2.8r121009
 
     $ vagrant --version
     Vagrant 2.0.2
 
     $ packer --version
-    1.2.0
+    1.2.1
 
     $ git --version
-    git version 2.16.1.windows.1
+    git version 2.16.2.windows.1
     ```
 
 6.	Install or update the following Vagrant Plugins:
