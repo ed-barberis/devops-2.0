@@ -34,7 +34,7 @@
     {
       "inline": [
         "sudo mkdir -p {{ user `devops_home` }}/provisioners/scripts",
-        "sudo chown -R vagrant:vagrant /opt/devops-2.0"
+        "sudo chown -R vagrant:vagrant {{ user `devops_home` }}"
       ],
       "type": "shell"
     },
@@ -42,6 +42,10 @@
       "destination": "{{ user `devops_home` }}/provisioners/scripts",
       "source": "../../../provisioners/scripts/",
       "type": "file"
+    },
+    {
+      "inline": ["sudo chown -R root:root {{ user `devops_home` }}"],
+      "type": "shell"
     },
     {
       "expect_disconnect": true,

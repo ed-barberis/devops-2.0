@@ -34,7 +34,3 @@ runuser -c "scl enable python33 -- eval ${psm_setup_cmd}" - vagrant
 runuser -c "scl enable python33 -- psm accs apps" - vagrant
 runuser -c "scl enable python33 -- psm dbcs services" - vagrant
 runuser -c "scl enable python33 -- psm jcs services" - vagrant
-
-# change ownership for the entire temporary directory structure.
-cd ${devops_home}/provisioners/scripts
-chown -R vagrant:vagrant .

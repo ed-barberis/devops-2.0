@@ -23,7 +23,7 @@ mkdir -p ${appd_home}/${agent_folder}
 cd ${appd_home}/${agent_folder}
 
 # set current date for temporary filename. -------------------------------------
-curdate=$(date +"%Y-%m-%d")
+curdate=$(date +"%Y-%m-%d.%H-%M-%S")
 
 # install appdynamics java agent -----------------------------------------------
 # authenticate to the appdynamics domain and store session id in a file.
@@ -38,7 +38,7 @@ rm -f cookies-${curdate}.txt
 # extract appdynamics java agent binary.
 rm -f ${agent_home}
 unzip ${agent_binary}
-chown -R vagrant:vagrant .
+chown -R root:root .
 rm -f ${agent_binary}
 cd ${appd_home}
 ln -s ${agent_folder} ${agent_home}

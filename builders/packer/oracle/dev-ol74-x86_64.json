@@ -34,7 +34,7 @@
     {
       "inline": [
         "sudo mkdir -p {{ user `devops_home` }}/provisioners/scripts",
-        "sudo chown -R vagrant:vagrant /opt/devops-2.0"
+        "sudo chown -R vagrant:vagrant {{ user `devops_home` }}"
       ],
       "type": "shell"
     },
@@ -42,6 +42,10 @@
       "destination": "{{ user `devops_home` }}/provisioners/scripts",
       "source": "../../../provisioners/scripts/",
       "type": "file"
+    },
+    {
+      "inline": ["sudo chown -R root:root {{ user `devops_home` }}"],
+      "type": "shell"
     },
     {
       "expect_disconnect": true,
@@ -89,6 +93,7 @@
         "../../../provisioners/scripts/centos/install_centos7_spring_tool_suite_eclipse_ide.sh",
         "../../../provisioners/scripts/centos/install_centos7_sublime_text_editor.sh",
         "../../../provisioners/scripts/centos/install_centos7_microsoft_visual_studio_code_editor.sh",
+        "../../../provisioners/scripts/centos/install_centos7_desktop_users_env.sh",
         "../../../provisioners/scripts/centos/cleanup.sh",
         "../../../submodules/chef/bento/_common/minimize.sh"
       ],

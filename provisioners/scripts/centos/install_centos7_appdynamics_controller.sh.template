@@ -62,11 +62,11 @@ runuser -c "ulimit -S -n" -
 runuser -c "ulimit -S -u" -
 
 # create temporary download directory. -----------------------------------------
-mkdir -p ${devops_home}/provisioners/scripts/common/appdynamics
-cd ${devops_home}/provisioners/scripts/common/appdynamics
+mkdir -p ${devops_home}/provisioners/scripts/centos/appdynamics
+cd ${devops_home}/provisioners/scripts/centos/appdynamics
 
 # set current date for temporary filename. -------------------------------------
-curdate=$(date +"%Y-%m-%d")
+curdate=$(date +"%Y-%m-%d.%H-%M-%S")
 
 # download the appdynamics controller installer. -------------------------------
 controller_installer="controller_64bit_linux-${controller_release}.sh"
@@ -79,7 +79,6 @@ curl --silent --location --remote-name --cookie cookies-${curdate}.txt https://d
 chmod 755 ${controller_installer}
 
 rm -f cookies-${curdate}.txt
-chown -R vagrant:vagrant .
 
 # create silent response file for installer. -----------------------------------
 response_file="appd-controller-response.varfile"
@@ -121,7 +120,7 @@ echo "userName=${admin_user}" >> "${response_file}"
 ./${controller_installer} -q -varfile ${response_file}
 
 # apply the license.
-license_file="${devops_home}/provisioners/scripts/common/tools/appd-controller-license.lic"
+license_file="${devops_home}/provisioners/scripts/centos/tools/appd-controller-license.lic"
 if [ -f "$license_file" ]; then
   cp ${license_file} ${controller_home}/license.lic
 fi

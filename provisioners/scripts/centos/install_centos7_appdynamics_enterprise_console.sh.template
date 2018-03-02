@@ -7,7 +7,7 @@ devops_home="${devops_home:-/opt/devops}"                   # [optional] devops 
 # set appdynamics installation variables. --------------------------------------
 username="<username>"
 password="<password>"
-platform_release="<platform_release - such as '4.4.1.5193'>"
+platform_release="<platform_release - such as '4.4.1.5840'>"
 platform_installer="platform-setup-x64-linux-${platform_release}.sh"
 platform_home="/opt/appdynamics/platform"
 
@@ -59,11 +59,11 @@ runuser -c "ulimit -S -n" -
 runuser -c "ulimit -S -u" -
 
 # create temporary download directory. -----------------------------------------
-mkdir -p ${devops_home}/provisioners/scripts/common/appdynamics
-cd ${devops_home}/provisioners/scripts/common/appdynamics
+mkdir -p ${devops_home}/provisioners/scripts/centos/appdynamics
+cd ${devops_home}/provisioners/scripts/centos/appdynamics
 
 # set current date for temporary filename. -------------------------------------
-curdate=$(date +"%Y-%m-%d")
+curdate=$(date +"%Y-%m-%d.%H-%M-%S")
 
 # download the appdynamics platform installer. ---------------------------------
 # authenticate to the appdynamics domain and store session id in a file.
@@ -74,7 +74,6 @@ curl --silent --location --remote-name --cookie cookies-${curdate}.txt https://d
 chmod 755 ${platform_installer}
 
 rm -f cookies-${curdate}.txt
-chown -R vagrant:vagrant .
 
 # create silent response file for installer. -----------------------------------
 response_file="appd-platform-response.varfile"
