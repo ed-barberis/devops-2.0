@@ -26,7 +26,7 @@ unzip ${opc_cli_binary}
 yum -y install ${opc_cli_repo}
 
 # set current date for temporary filename. -------------------------------------
-curdate=$(date +"%Y-%m-%d")
+curdate=$(date +"%Y-%m-%d.%H-%M-%S")
 
 # configure the opc-cli client. ------------------------------------------------
 # add environment variables to '.bashrc' for user 'vagrant'.

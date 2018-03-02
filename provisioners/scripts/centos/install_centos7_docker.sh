@@ -53,7 +53,7 @@ mkdir -p /usr/local/bin
 cd /usr/local/bin
 
 # set current date for temporary filename.
-curdate=$(date +"%Y-%m-%d")
+curdate=$(date +"%Y-%m-%d.%H-%M-%S")
 
 # retrieve version number of latest release.
 curl --silent --dump-header curl-docker-compose.${curdate}.out1 https://github.com/docker/compose/releases/latest --output /dev/null

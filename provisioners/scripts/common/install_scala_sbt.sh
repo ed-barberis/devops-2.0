@@ -12,7 +12,7 @@ mkdir -p /usr/local/scala
 cd /usr/local/scala
 
 # set current date for temporary filename.
-curdate=$(date +"%Y-%m-%d")
+curdate=$(date +"%Y-%m-%d.%H-%M-%S")
 
 # retrieve version number of latest release.
 curl --silent --dump-header curl-${sbthome}.${curdate}.out1 https://github.com/sbt/sbt/releases/latest --output /dev/null

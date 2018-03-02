@@ -2,7 +2,7 @@
 # install the oracle linux 7 uekr4 kernel.
 
 # set current date for temporary filename. -------------------------------------
-curdate=$(date +"%Y-%m-%d")
+curdate=$(date +"%Y-%m-%d.%H-%M-%S")
 
 # get the latest public yum ol7 repository file. -------------------------------
 cd /etc/yum.repos.d
