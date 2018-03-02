@@ -35,7 +35,7 @@ cd ${stshome}/sts-${stsrelease}.RELEASE
 cp -p STS.ini STS.ini.orig
 
 # set current date for temporary filename.
-curdate=$(date +"%Y-%m-%d")
+curdate=$(date +"%Y-%m-%d.%H-%M-%S")
 
 # set the default jdk and adjust the jvm heap.
 awk -f ${devops_home}/provisioners/scripts/centos/config_centos7_spring_tool_suite_eclipse_ide.awk STS.ini > STS.${curdate}.ini
@@ -87,11 +87,9 @@ echo "Installing spring-tool-suite.desktop in applications menu..."
 desktop-file-install --dir=/usr/share/applications/ ./desktops/spring-tool-suite.desktop
 update-desktop-database /usr/share/applications/
 
-# install spring tool suite launcher on user desktop. --------------------------
-echo "Installing spring-tool-suite.desktop on user desktop..."
-mkdir -p /home/vagrant/Desktop
-cd /home/vagrant/Desktop
+# copy spring tool suite launcher to devops applications folder. ---------------
+echo "Copying spring-tool-suite.desktop launcher to devops 'applications' folder..."
+mkdir -p ${devops_home}/provisioners/scripts/centos/applications
+cd ${devops_home}/provisioners/scripts/centos/applications
 cp -f /usr/share/applications/spring-tool-suite.desktop .
-
-chown -R vagrant:vagrant .
 chmod 755 ./spring-tool-suite.desktop

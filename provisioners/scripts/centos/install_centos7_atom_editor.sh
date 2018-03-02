@@ -9,7 +9,7 @@ mkdir -p ${devops_home}/provisioners/scripts/centos
 cd ${devops_home}/provisioners/scripts/centos
 
 # set current date for temporary filename. -------------------------------------
-curdate=$(date +"%Y-%m-%d")
+curdate=$(date +"%Y-%m-%d.%H-%M-%S")
 
 # install atom editor. ---------------------------------------------------------
 atomrepo="atom.x86_64.rpm"
@@ -41,11 +41,9 @@ yum -y install ${atomrepo}
 #runuser -c "apm install ide-java" - vagrant
 #runuser -c "apm install ide-typescript" - vagrant
 
-# install atom launcher on user desktop.
-echo "Installing atom.desktop on user desktop..."
-mkdir -p /home/vagrant/Desktop
-cd /home/vagrant/Desktop
+# copy atom launcher to devops applications folder. ----------------------------
+echo "Copying atom.desktop launcher to devops 'applications' folder..."
+mkdir -p ${devops_home}/provisioners/scripts/centos/applications
+cd ${devops_home}/provisioners/scripts/centos/applications
 cp -f /usr/share/applications/atom.desktop .
-
-chown -R vagrant:vagrant .
 chmod 755 ./atom.desktop

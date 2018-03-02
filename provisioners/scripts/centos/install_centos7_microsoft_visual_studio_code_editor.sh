@@ -9,7 +9,7 @@ mkdir -p ${devops_home}/provisioners/scripts/centos
 cd ${devops_home}/provisioners/scripts/centos
 
 # set current date for temporary filename. -------------------------------------
-curdate=$(date +"%Y-%m-%d")
+curdate=$(date +"%Y-%m-%d.%H-%M-%S")
 
 # install visual studio code editor. -------------------------------------------
 # retrieve download location and repository of latest release.
@@ -30,11 +30,9 @@ yum -y install ${vscoderepo}
 # verify installation.
 #code --version
 
-# install visual studio code launcher on user desktop. -------------------------
-echo "Installing code.desktop on user desktop..."
-mkdir -p /home/vagrant/Desktop
-cd /home/vagrant/Desktop
+# copy visual studio code launcher to devops applications folder. --------------
+echo "Copying code.desktop launcher to devops 'applications' folder..."
+mkdir -p ${devops_home}/provisioners/scripts/centos/applications
+cd ${devops_home}/provisioners/scripts/centos/applications
 cp -f /usr/share/applications/code.desktop .
-
-chown -R vagrant:vagrant .
 chmod 755 ./code.desktop

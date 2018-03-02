@@ -13,7 +13,7 @@ mkdir -p /usr/local/google
 cd /usr/local/google
 
 # set current date for temporary filename.
-curdate=$(date +"%Y-%m-%d")
+curdate=$(date +"%Y-%m-%d.%H-%M-%S")
 
 # download postman binary and retrieve version number of latest release.
 curl --silent --dump-header curl-postman-linux-x64.${curdate}.out1 https://dl.pstmn.io/download/latest/linux?arch=64 --output ${postmanbinary}
@@ -51,11 +51,9 @@ echo "Installing postman.desktop in applications menu..."
 desktop-file-install --dir=/usr/share/applications/ ./desktops/postman.desktop
 update-desktop-database /usr/share/applications/
 
-# install postman launcher on user desktop. ------------------------------------
-echo "Installing postman.desktop on user desktop..."
-mkdir -p /home/vagrant/Desktop
-cd /home/vagrant/Desktop
+# copy postman launcher to devops applications folder. -------------------------
+echo "Copying postman.desktop launcher to devops 'applications' folder..."
+mkdir -p ${devops_home}/provisioners/scripts/centos/applications
+cd ${devops_home}/provisioners/scripts/centos/applications
 cp -f /usr/share/applications/postman.desktop .
-
-chown -R vagrant:vagrant .
 chmod 755 ./postman.desktop

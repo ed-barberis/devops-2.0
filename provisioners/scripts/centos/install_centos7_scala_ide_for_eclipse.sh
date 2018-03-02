@@ -36,7 +36,7 @@ cd ${idehome}
 cp -p eclipse.ini eclipse.ini.orig
 
 # set current date for temporary filename.
-curdate=$(date +"%Y-%m-%d")
+curdate=$(date +"%Y-%m-%d.%H-%M-%S")
 
 # set the default jdk and adjust the jvm heap.
 awk -f ${devops_home}/provisioners/scripts/centos/config_centos7_scala_ide_for_eclipse.awk eclipse.ini > eclipse.${curdate}.ini
@@ -88,11 +88,9 @@ echo "Installing scala-ide-for-eclipse.desktop in applications menu..."
 desktop-file-install --dir=/usr/share/applications/ ./desktops/scala-ide-for-eclipse.desktop
 update-desktop-database /usr/share/applications/
 
-# install scala ide launcher on user desktop. ----------------------------------
-echo "Installing scala-ide-for-eclipse.desktop on user desktop..."
-mkdir -p /home/vagrant/Desktop
-cd /home/vagrant/Desktop
+# copy scala ide launcher to devops applications folder. -----------------------
+echo "Copying scala-ide-for-eclipse.desktop launcher to devops 'applications' folder..."
+mkdir -p ${devops_home}/provisioners/scripts/centos/applications
+cd ${devops_home}/provisioners/scripts/centos/applications
 cp -f /usr/share/applications/scala-ide-for-eclipse.desktop .
-
-chown -R vagrant:vagrant .
 chmod 755 ./scala-ide-for-eclipse.desktop

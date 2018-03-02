@@ -18,11 +18,9 @@ yum -y install flash-plugin
 wget --no-verbose https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
 yum -y install google-chrome-stable_current_x86_64.rpm
 
-# install linux chrome launcher on user desktop.
-#echo "Installing google-chrome.desktop on user desktop..."
-#mkdir -p /home/vagrant/Desktop
-#cd /home/vagrant/Desktop
-#cp -f /usr/share/applications/google-chrome.desktop .
-
-#chown -R vagrant:vagrant .
-#chmod 755 ./google-chrome.desktop
+# copy linux chrome launcher to devops applications folder. --------------------
+echo "Copying google-chrome.desktop to devops 'applications' folder..."
+mkdir -p ${devops_home}/provisioners/scripts/centos/applications
+cd ${devops_home}/provisioners/scripts/centos/applications
+cp -f /usr/share/applications/google-chrome.desktop .
+chmod 755 ./google-chrome.desktop

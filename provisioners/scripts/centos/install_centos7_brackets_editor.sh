@@ -16,7 +16,7 @@ bracketsfolder="/usr/share/brackets"
 wget --no-verbose ftp://ftp.pbone.net/mirror/li.nux.ro/download/nux/dextop/el7/x86_64/${bracketsbinary}
 yum -y install ${bracketsbinary}
 
-# install brackets as gnome desktop app.
+# install brackets as gnome desktiop app. --------------------------------------
 imgname="appshell"
 imgsizearray=( "32" "48" "128" "256" )
 imgfolder="/usr/share/icons/hicolor"
@@ -34,16 +34,14 @@ done
 # update home folder and category references in brackets desktop file.
 sed -i "s/\/opt\/brackets/\/usr\/share\/brackets/g;s/Categories=Development/Categories=TextEditor;Development;/g" ./brackets.desktop
 
-# install brackets desktop in applications menu.
+# install brackets desktop in applications menu. -------------------------------
 echo "Installing brackets.desktop in applications menu..."
 desktop-file-install --dir=/usr/share/applications/ ./brackets.desktop
 update-desktop-database /usr/share/applications/
 
-# install brackets launcher on user desktop.
-echo "Installing brackets.desktop on user desktop..."
-mkdir -p /home/vagrant/Desktop
-cd /home/vagrant/Desktop
+# copy brackets launcher to devops applications folder. ------------------------
+echo "Copying brackets.desktop launcher to devops 'applications' folder..."
+mkdir -p ${devops_home}/provisioners/scripts/centos/applications
+cd ${devops_home}/provisioners/scripts/centos/applications
 cp -f /usr/share/applications/brackets.desktop .
-
-chown -R vagrant:vagrant .
 chmod 755 ./brackets.desktop

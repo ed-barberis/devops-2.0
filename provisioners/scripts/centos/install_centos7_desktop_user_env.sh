@@ -42,4 +42,5 @@ sed -i 's/^#alias gvim/alias gvim/g' .bashrc
 # configure gnome-3 desktop properties for devops users. -----------------------
 cd ${devops_home}/provisioners/scripts/centos
 chmod 755 config_centos7_gnome_desktop.sh
-runuser -c "${devops_home}/provisioners/scripts/centos/config_centos7_gnome_desktop.sh" - ${user_name}
+#sudo -u ${user_name} -S -E sh -eux "${devops_home}/provisioners/scripts/centos/config_centos7_gnome_desktop.sh"
+runuser -c "devops_home=${devops_home} ${devops_home}/provisioners/scripts/centos/config_centos7_gnome_desktop.sh" - ${user_name}

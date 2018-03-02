@@ -18,7 +18,7 @@ tar -jxvf ${sublimebinary}
 chown -R root:root ./${sublimefolder}
 rm -f ${sublimebinary}
 
-# install sublime as gnome desktop app.
+# install sublime as gnome desktop app. ----------------------------------------
 imgname="sublime-text"
 imgsizearray=( "16x16" "32x32" "48x48" "128x128" "256x256" )
 imgfolder="/usr/share/icons/hicolor"
@@ -36,16 +36,14 @@ done
 # update home folder and icon references in sublime desktop file.
 sed -i "s/\/opt\/sublime_text/\/usr\/local\/sublime_text\/${sublimefolder}/g;s/sublime-text/\/usr\/share\/icons\/hicolor\/128x128\/apps\/sublime-text.png/g" ./sublime_text.desktop
 
-# install sublime desktop in applications menu.
+# install sublime desktop in applications menu. --------------------------------
 echo "Installing sublime_text.desktop in applications menu..."
 desktop-file-install --dir=/usr/share/applications/ ./sublime_text.desktop
 update-desktop-database /usr/share/applications/
 
-# install sublime launcher on user desktop.
-echo "Installing sublime_text.desktop on user desktop..."
-mkdir -p /home/vagrant/Desktop
-cd /home/vagrant/Desktop
+# copy sublime launcher to devops applications folder. -------------------------
+echo "Copying sublime_text.desktop launcher to devops 'applications' folder..."
+mkdir -p ${devops_home}/provisioners/scripts/centos/applications
+cd ${devops_home}/provisioners/scripts/centos/applications
 cp -f /usr/share/applications/sublime_text.desktop .
-
-chown -R vagrant:vagrant .
 chmod 755 ./sublime_text.desktop
