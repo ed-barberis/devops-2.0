@@ -80,6 +80,7 @@
         "../../../provisioners/scripts/common/install_scala_lang.sh",
         "../../../provisioners/scripts/common/install_scala_sbt.sh",
         "../../../provisioners/scripts/common/install_oracle_java_jdk_9.sh",
+        "../../../provisioners/scripts/common/install_jq_json_processor.sh",
         "../../../provisioners/scripts/common/install_hashicorp_consul.sh",
         "../../../provisioners/scripts/common/install_hashicorp_packer.sh",
         "../../../provisioners/scripts/common/install_hashicorp_terraform.sh",

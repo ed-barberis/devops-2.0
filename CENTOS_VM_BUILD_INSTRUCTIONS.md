@@ -240,6 +240,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Groovy 2.4.14
 -	Java SE JDK 8 Update 162
 -	Java SE JDK 9.0.4
+-	jq command-line JSON processor 1.5
 -	Maven 3.5.2
 -	Packer 1.2.1
 -	Python 2.7.5
