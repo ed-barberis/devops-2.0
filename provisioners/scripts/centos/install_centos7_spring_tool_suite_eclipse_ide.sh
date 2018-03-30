@@ -6,10 +6,10 @@ devops_home="${devops_home:-/opt/devops}"                   # [optional] devops 
 
 # install spring tool suite ide. -----------------------------------------------
 stshome="sts-bundle"
-stsrelease="3.9.2"
-stsnumber="2073709847"
+stsrelease="3.9.3"
+stsnumber="578216487"
 eclipseversion="oxygen"
-eclipserelease="4.7.2"
+eclipserelease="4.7.3"
 
 eclipsedist=$(echo "e${eclipserelease}" | awk -F "." '{printf "%s.%s", $1, $2}')
 stsbinary="spring-tool-suite-${stsrelease}.RELEASE-e${eclipserelease}-linux-gtk-x86_64.tar.gz"
