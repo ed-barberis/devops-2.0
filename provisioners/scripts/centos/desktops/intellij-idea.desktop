@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=IntelliJ IDEA
+Comment=Capable and Ergonomic IDE for JVM (Java, Groovy, Scala and Android).
+GenericName=IntelliJ IDE
+Exec=/usr/local/jetbrains/idea/bin/idea.sh
+Icon=/usr/share/icons/hicolor/128x128/apps/intellij-idea-logo.png
+Type=Application
+Categories=WebDevelopment;TextEditor;Development;
+Terminal=false

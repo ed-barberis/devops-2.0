@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=WebStorm
+Comment=The smartest JavaScript IDE.
+GenericName=JavaScript IDE
+Exec=/usr/local/jetbrains/webstorm/bin/webstorm.sh
+Icon=/usr/share/icons/hicolor/128x128/apps/webstorm-logo.png
+Type=Application
+Categories=WebDevelopment;TextEditor;Development;
+Terminal=false

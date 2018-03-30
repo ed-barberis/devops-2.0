@@ -95,6 +95,8 @@
         "../../../provisioners/scripts/common/install_appdynamics_java_agent.sh",
         "../../../provisioners/scripts/centos/install_centos7_atom_editor.sh",
         "../../../provisioners/scripts/centos/install_centos7_brackets_editor.sh",
+        "../../../provisioners/scripts/centos/install_centos7_jetbrains_intellij_idea_community_edition.sh",
+        "../../../provisioners/scripts/centos/install_centos7_jetbrains_webstorm_javascript_ide.sh",
         "../../../provisioners/scripts/centos/install_centos7_scala_ide_for_eclipse.sh",
         "../../../provisioners/scripts/centos/install_centos7_spring_tool_suite_eclipse_ide.sh",
         "../../../provisioners/scripts/centos/install_centos7_sublime_text_editor.sh",
