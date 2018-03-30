@@ -16,18 +16,18 @@ Next, using these base VMs as a foundation, the user can build more advanced VM 
 -	__Developer VM__: Desktop VM designed for a project-specific Developer role,
 -	__Operations VM__: Headless VM designed for a project-specific Operations role.
 -	__CICD VM__: Headless VM designed for continuous integration, continuous delivery (CI/CD) and project-specific DevOps automation.
--	__APM VM__: Headless VM designed for Application Performance Monitoring with the AppDynamics Controller.
+-	__APM VM__: Headless VM designed for Application Performance Monitoring with the AppDynamics App iQ Platform. It consists of the Enterprise Console, Controller, and Events Service.
 
 To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the following open source software needs to be installed on the host machine:
 
 -	VirtualBox 5.2.8
 	-	VirtualBox Extension Pack 5.2.8
--	Vagrant 2.0.2 with Plugins
+-	Vagrant 2.0.3 with Plugins
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 1.1.9
 	-	vagrant-vbguest 0.15.1
--	Packer 1.2.1
--	Git 2.16.2 for Win64
+-	Packer 1.2.2
+-	Git 2.16.3 for Win64
 	-	wget 1.9.1
 	-	tree 1.5.2.2
 
@@ -37,7 +37,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
 2.	Install [VirtualBox Extension Pack 5.2.8](https://download.virtualbox.org/virtualbox/5.2.8/Oracle_VM_VirtualBox_Extension_Pack-5.2.8-121009.vbox-extpack).
 
-3.	Install [Vagrant 2.0.2 for Windows 64-bit](https://releases.hashicorp.com/vagrant/2.0.2/vagrant_2.0.2_x86_64.msi).  
+3.	Install [Vagrant 2.0.3 for Windows 64-bit](https://releases.hashicorp.com/vagrant/2.0.3/vagrant_2.0.3_x86_64.msi).  
     Suggested install folder:  
     `C:\HashiCorp\vagrant`  
 
@@ -48,11 +48,11 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
     If this is set, Vagrant will prefer using utility executables (like `ssh` and `rsync`) from the local system instead of those vendored within the Vagrant installation.  
 
-4.	Install [Packer 1.2.1 for Windows 64-bit](https://releases.hashicorp.com/packer/1.2.1/packer_1.2.1_windows_amd64.zip).  
+4.	Install [Packer 1.2.2 for Windows 64-bit](https://releases.hashicorp.com/packer/1.2.2/packer_1.2.2_windows_amd64.zip).  
     Create suggested install folder and extract contents of ZIP file to:  
     `C:\HashiCorp\Packer\bin`  
 
-5.	Install [Git 2.16.2 for Windows 64-bit](https://github.com/git-for-windows/git/releases/download/v2.16.2.windows.1/Git-2.16.2-64-bit.exe).
+5.	Install [Git 2.16.3 for Windows 64-bit](https://github.com/git-for-windows/git/releases/download/v2.16.3.windows.1/Git-2.16.3-64-bit.exe).
 
 6.	Install optional add-ons for Git Bash.  
     Install [wget 1.9.1 for Windows](https://sourceforge.net/projects/mingw/files/Other/mingwPORT/Current%20Releases/wget-1.9.1-mingwPORT.tar.bz2/download).  
@@ -90,13 +90,13 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     5.2.8r121009
 
     $ vagrant --version
-    Vagrant 2.0.2
+    Vagrant 2.0.3
 
     $ packer --version
-    1.2.1
+    1.2.2
 
     $ git --version
-    git version 2.16.2.windows.1
+    git version 2.16.3.windows.1
     ```
 
 6.	Install or update the following Vagrant Plugins:

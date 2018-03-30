@@ -60,6 +60,11 @@
     },
     {
       "environment_vars": [
+        "appd_admin_password={{user `appd_admin_password`}}",
+        "appd_db_password={{user `appd_db_password`}}",
+        "appd_db_root_password={{user `appd_db_root_password`}}",
+        "appd_username={{user `appd_username`}}",
+        "appd_password={{user `appd_password`}}",
         "devops_home={{user `devops_home`}}",
         "HOME_DIR=/home/vagrant",
         "http_proxy={{user `http_proxy`}}",
@@ -78,6 +83,11 @@
     }
   ],
   "variables": {
+    "appd_admin_password": "{{env `appd_admin_password`}}",
+    "appd_db_password": "{{env `appd_db_password`}}",
+    "appd_db_root_password": "{{env `appd_db_root_password`}}",
+    "appd_password": "{{env `appd_password`}}",
+    "appd_username": "{{env `appd_username`}}",
     "box_basename": "apm-ol74",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
     "cpus": "2",

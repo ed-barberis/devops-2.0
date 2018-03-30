@@ -60,6 +60,9 @@
     },
     {
       "environment_vars": [
+        "appd_config_agent={{user `appd_config_agent`}}",
+        "appd_username={{user `appd_username`}}",
+        "appd_password={{user `appd_password`}}",
         "devops_home={{user `devops_home`}}",
         "HOME_DIR=/home/vagrant",
         "http_proxy={{user `http_proxy`}}",
@@ -102,6 +105,9 @@
     }
   ],
   "variables": {
+    "appd_config_agent": "true",
+    "appd_password": "{{env `appd_password`}}",
+    "appd_username": "{{env `appd_username`}}",
     "box_basename": "dev-centos74",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
     "cpus": "2",
