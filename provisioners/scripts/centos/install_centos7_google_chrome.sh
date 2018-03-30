@@ -9,12 +9,14 @@ mkdir -p ${devops_home}/provisioners/scripts/centos
 cd ${devops_home}/provisioners/scripts/centos
 
 # install the adobe flash plug-in. ---------------------------------------------
+#rm -f adobe-release-x86_64-1.0-1.noarch.rpm
 #wget --no-verbose http://linuxdownload.adobe.com/linux/x86_64/adobe-release-x86_64-1.0-1.noarch.rpm
 #yum -y install adobe-release-x86_64-1.0-1.noarch.rpm
 yum -y install ./tools/adobe-release-x86_64-1.0-1.noarch.rpm
 yum -y install flash-plugin
 
 # install google chrome browser. -----------------------------------------------
+rm -f google-chrome-stable_current_x86_64.rpm
 wget --no-verbose https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
 yum -y install google-chrome-stable_current_x86_64.rpm
 

@@ -22,6 +22,7 @@ rm -f curl-atom.${curdate}.out1
 rm -f curl-atom.${curdate}.out2
 
 # download atom repository from github.com.
+rm -f ${atomrepo}
 wget --no-verbose https://github.com/atom/atom/releases/download/${atomrelease}/${atomrepo}
 yum -y install ${atomrepo}
 

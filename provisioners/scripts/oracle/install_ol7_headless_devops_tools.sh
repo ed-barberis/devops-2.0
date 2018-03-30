@@ -10,6 +10,7 @@ cd ${devops_home}/provisioners/scripts/oracle
 
 # install epel repository if needed. -------------------------------------------
 if [ ! -f "/etc/yum.repos.d/epel.repo" ]; then
+  rm -f epel-release-latest-7.noarch.rpm
   wget --no-verbose https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
   yum -y install epel-release-latest-7.noarch.rpm
 fi

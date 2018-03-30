@@ -24,6 +24,7 @@ rm -f curl-vscode.${curdate}.out1
 rm -f curl-vscode.${curdate}.out2
 
 # download visual studio code repository from microsoft.
+rm -f ${vscoderepo}
 wget --no-verbose ${vscodelocation}
 yum -y install ${vscoderepo}
 

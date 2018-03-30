@@ -7,7 +7,7 @@ yum -y install gcc perl-ExtUtils-MakeMaker
 
 # install git binaries from source. --------------------------------------------
 githome="git"
-gitrelease="2.16.2"
+gitrelease="2.16.3"
 gitfolder="git-${gitrelease}"
 gitbinary="${gitfolder}.tar.gz"
 
@@ -64,6 +64,7 @@ gcbin=".git-completion.bash"
 gcfolder="/home/vagrant"
 
 # download git completion for bash from github.com.
+rm -f ${gcfolder}/${gcbin}
 curl --silent --location "https://raw.githubusercontent.com/git/git/v${gitrelease}/contrib/completion/git-completion.bash" --output ${gcfolder}/${gcbin}
 
 chown -R vagrant:vagrant ${gcfolder}/${gcbin}

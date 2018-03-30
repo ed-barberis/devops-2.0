@@ -109,6 +109,7 @@ dcompletion_binary=".docker-completion.sh"
 userfolder="/home/vagrant"
 
 # download docker completion for bash from github.com.
+rm -f ${userfolder}/${dcompletion_binary}
 curl --silent --location "https://github.com/moby/moby/raw/v${dcompletion_release}/contrib/completion/bash/docker" --output ${userfolder}/${dcompletion_binary}
 chown -R vagrant:vagrant ${userfolder}/${dcompletion_binary}
 chmod 644 ${userfolder}/${dcompletion_binary}
@@ -117,7 +118,8 @@ chmod 644 ${userfolder}/${dcompletion_binary}
 dcrelease="1.18.0"
 dccompletion_binary=".docker-compose-completion.sh"
 
-# download docker completion for bash from github.com.
+# download docker compose completion for bash from github.com.
+rm -f ${userfolder}/${dccompletion_binary}
 curl --silent --location "https://github.com/docker/compose/raw/${dcrelease}/contrib/completion/bash/docker-compose" --output ${userfolder}/${dccompletion_binary}
 chown -R vagrant:vagrant ${userfolder}/${dccompletion_binary}
 chmod 644 ${userfolder}/${dccompletion_binary}

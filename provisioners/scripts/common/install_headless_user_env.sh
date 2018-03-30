@@ -9,7 +9,8 @@ user_docker_profile="${user_docker_profile:-false}"         # [optional] user do
 user_prompt_color="${user_prompt_color:-green}"             # [optional] user prompt color (defaults to 'green').
                                                             #            valid colors are:
                                                             #              'black', 'blue', 'cyan', 'green', 'magenta', 'red', 'white', 'yellow'
-                                                            #
+
+# set default value for devops home environment variable if not set. -----------
 devops_home="${devops_home:-/opt/devops}"                   # [optional] devops home (defaults to '/opt/devops').
 
 # define usage function. -------------------------------------------------------
@@ -107,6 +108,7 @@ if [ "$user_docker_profile" == "true" ] && [ "$user_name" != "root" ]; then
   dcompletion_binary=".docker-completion.sh"
 
   # download docker completion for bash from github.com.
+  rm -f ${user_home}/${dcompletion_binary}
   curl --silent --location "https://github.com/moby/moby/raw/v${dcompletion_release}/contrib/completion/bash/docker" --output ${user_home}/${dcompletion_binary}
   chown -R ${user_name}:${user_group} ${user_home}/${dcompletion_binary}
   chmod 644 ${user_home}/${dcompletion_binary}
@@ -116,6 +118,7 @@ if [ "$user_docker_profile" == "true" ] && [ "$user_name" != "root" ]; then
   dccompletion_binary=".docker-compose-completion.sh"
 
   # download docker completion for bash from github.com.
+  rm -f ${user_home}/${dccompletion_binary}
   curl --silent --location "https://github.com/docker/compose/raw/${dcrelease}/contrib/completion/bash/docker-compose" --output ${user_home}/${dccompletion_binary}
   chown -R ${user_name}:${user_group} ${user_home}/${dccompletion_binary}
   chmod 644 ${user_home}/${dccompletion_binary}

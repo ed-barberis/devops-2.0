@@ -9,10 +9,11 @@ mkdir -p ${devops_home}/provisioners/scripts/centos
 cd ${devops_home}/provisioners/scripts/centos
 
 # install ansible. -------------------------------------------------------------
-ansible_release="2.4.3.0-1"
+ansible_release="2.5.0-1"
 ansible_binary="ansible-${ansible_release}.el7.ans.noarch.rpm"
 
 # download ansible repository.
+rm -f ${ansible_binary}
 wget --no-verbose http://releases.ansible.com/ansible/rpm/release/epel-7-x86_64/${ansible_binary}
 
 # install ansible. -------------------------------------------------------------

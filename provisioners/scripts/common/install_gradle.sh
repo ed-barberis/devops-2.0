@@ -7,6 +7,7 @@ mkdir -p /usr/local/gradle
 cd /usr/local/gradle
 
 # retrieve version number of latest release.
+rm -f gradle-release-notes.html
 curl --silent https://docs.gradle.org/current/release-notes.html --output gradle-release-notes.html
 gradlehome="gradle"
 gradlerelease=$(awk '/Release Notes<\/title>/ {print $2}' gradle-release-notes.html)

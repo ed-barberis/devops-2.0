@@ -22,6 +22,7 @@ region="<valid values are 'us', 'emea', and 'aucom'>"
 format="<valid values are 'short', 'json', and 'html'>"
 
 # retrieve and install the psm-cli from the oracle cloud.
+rm -f psmcli.zip
 curl --silent --request GET --user ${username}:${password} --header X-ID-TENANT-NAME:${identity_domain} https://psm.${data_center}.oraclecloud.com/paas/core/api/v1.1/cli/${identity_domain}/client --output psmcli.zip
 scl enable python33 -- pip3 install --upgrade psmcli.zip
 runuser -c "scl enable python33 -- psm --version" - vagrant

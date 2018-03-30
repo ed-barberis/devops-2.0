@@ -12,7 +12,7 @@ if [ -f "$repofile" ]; then
   mv -f $repofile ${repofile}.${curdate}.orig
 fi
 
-wget --no-verbose http://yum.oracle.com/public-yum-ol7.repo
+wget --no-verbose http://yum.oracle.com/${repofile}
 
 # ensure that the uekr4 kernel is enabled by default. --------------------------
 yum-config-manager --enable ol7_UEKR4

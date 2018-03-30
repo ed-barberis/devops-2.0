@@ -82,8 +82,9 @@ rm -f curl-docker-compose.${curdate}.out1
 rm -f curl-docker-compose.${curdate}.out2
 
 # download docker compose utility from github.com.
+rm -f ${dcbin}
 curl --silent --location "https://github.com/docker/compose/releases/download/${dcrelease}/docker-compose-$(uname -s)-$(uname -m)" --output ${dcbin}
-chmod 755 ./${dcbin}
+chmod 755 ${dcbin}
 
 # set docker-compose home environment variables.
 PATH=/usr/local/bin:$PATH

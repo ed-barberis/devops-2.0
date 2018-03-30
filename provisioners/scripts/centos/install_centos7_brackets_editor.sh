@@ -13,6 +13,7 @@ bracketsbinary="brackets-1.7.0-1.el7.nux.x86_64.rpm"
 bracketsfolder="/usr/share/brackets"
 
 # download brackets repository.
+rm -f ${bracketsbinary}
 wget --no-verbose ftp://ftp.pbone.net/mirror/li.nux.ro/download/nux/dextop/el7/x86_64/${bracketsbinary}
 yum -y install ${bracketsbinary}
 

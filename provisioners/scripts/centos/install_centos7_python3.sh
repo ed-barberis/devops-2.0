@@ -10,10 +10,15 @@ cd ${devops_home}/provisioners/scripts/centos
 
 # install python 3.3. ----------------------------------------------------------
 yum -y install python33
+
+# verify installation.
 scl enable python33 -- python --version
 
 # install python 3.3 pip. ------------------------------------------------------
+rm -f get-pip.py
 wget --no-verbose https://bootstrap.pypa.io/get-pip.py
 scl enable python33 -- python ${devops_home}/provisioners/scripts/centos/get-pip.py
+
+# verify installation.
 scl enable python33 -- pip --version
 scl enable python33 -- pip3 --version
