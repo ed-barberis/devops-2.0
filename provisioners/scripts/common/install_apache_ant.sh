@@ -3,7 +3,7 @@
 
 # install apache ant. ----------------------------------------------------------
 anthome="apache-ant"
-antfolder="${anthome}-1.10.2"
+antfolder="${anthome}-1.10.3"
 antbinary="${antfolder}-bin.tar.gz"
 
 # create apache parent folder.

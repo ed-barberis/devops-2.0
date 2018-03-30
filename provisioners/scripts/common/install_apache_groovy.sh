@@ -3,7 +3,7 @@
 
 # install apache groovy. -------------------------------------------------------
 groovyhome="groovy"
-groovyrelease="2.4.14"
+groovyrelease="2.4.15"
 groovyfolder="${groovyhome}-${groovyrelease}"
 groovysdk="apache-groovy-sdk-${groovyrelease}.zip"
 #groovybinary="apache-groovy-binary-${groovyrelease}.zip"
