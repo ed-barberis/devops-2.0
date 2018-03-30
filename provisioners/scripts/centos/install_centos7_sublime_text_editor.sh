@@ -1,6 +1,9 @@
 #!/bin/sh -eux
 # install sublime text editor with associated gnome desktop app and images.
 
+# set default value for devops home environment variable if not set. -----------
+devops_home="${devops_home:-/opt/devops}"                   # [optional] devops home (defaults to '/opt/devops').
+
 # install sublime text editor. -------------------------------------------------
 sublimerelease="3143"
 sublimefolder="sublime_text_3"

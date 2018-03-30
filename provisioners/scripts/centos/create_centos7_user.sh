@@ -12,14 +12,15 @@ user_sudo_privileges="${user_sudo_privileges:-false}"       # [optional] user su
 user_home="${user_home:-/home/$user_name}"                  # [optional] user home (defaults to '/home/user_name').
 user_headless_env="${user_headless_env:-false}"             # [optional] user install headless environment (defaults to 'false').
                                                             #
-devops_home="${devops_home:-/opt/devops}"                   # [optional] devops home (defaults to '/opt/devops').
-                                                            #
                                                             # NOTE: if 'user_headless_env' is 'true'--
                                                             #       the following [optional] pass-thru env variables may be defined:
 user_docker_profile="${user_docker_profile:-false}"         # [optional] user docker profile (defaults to 'false').
 user_prompt_color="${user_prompt_color:-green}"             # [optional] user prompt color (defaults to 'green').
                                                             #            valid colors are:
                                                             #              'black', 'blue', 'cyan', 'green', 'magenta', 'red', 'white', 'yellow'
+
+# set default value for devops home environment variable if not set. -----------
+devops_home="${devops_home:-/opt/devops}"                   # [optional] devops home (defaults to '/opt/devops').
 
 # define usage function. -------------------------------------------------------
 usage() {
@@ -38,14 +39,14 @@ Usage:
     [root]# export user_home="/home/user1"                  # [optional] user home (defaults to '/home/user_name').
     [root]# export user_headless_env="true"                 # [optional] user install headless environment (defaults to 'false').
                                                             #
-    [root]# export devops_home="/opt/devops"                # [optional] devops home (defaults to '/opt/devops').
-                                                            #
                                                             # NOTE: if 'user_headless_env' is 'true'--
                                                             #       the following [optional] pass-thru env variables may be defined:
     [root]# export user_docker_profile="true"               # [optional] user docker profile (defaults to 'false').
     [root]# export user_prompt_color="yellow"               # [optional] user prompt color (defaults to 'green').
                                                             #            valid colors:
                                                             #              'black', 'blue', 'cyan', 'green', 'magenta', 'red', 'white', 'yellow'
+                                                            #
+    [root]# export devops_home="/opt/devops"                # [optional] devops home (defaults to '/opt/devops').
     [root]# $0
 EOF
 }

@@ -4,7 +4,8 @@
 # set default values for input environment variables if not set. ---------------
 user_name="${user_name:-}"                                  # user name.
 user_home="${user_home:-/home/$user_name}"                  # [optional] user home (defaults to '/home/user_name').
-                                                            #
+
+# set default value for devops home environment variable if not set. -----------
 devops_home="${devops_home:-/opt/devops}"                   # [optional] devops home (defaults to '/opt/devops').
 
 # define usage function. -------------------------------------------------------
