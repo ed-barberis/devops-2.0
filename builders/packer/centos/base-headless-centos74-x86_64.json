@@ -91,6 +91,7 @@
         "../../../provisioners/scripts/centos/install_centos7_headless_devops_tools.sh",
         "../../../provisioners/scripts/common/install_oracle_java_jdk_8.sh",
         "../../../provisioners/scripts/centos/install_centos7_docker.sh",
+        "../../../provisioners/scripts/common/install_docker_compose.sh",
         "../../../provisioners/scripts/centos/install_centos7_python3.sh",
         "../../../provisioners/scripts/common/install_headless_users_env.sh",
         "../../../provisioners/scripts/centos/cleanup.sh",

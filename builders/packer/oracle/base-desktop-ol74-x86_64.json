@@ -102,6 +102,7 @@
         "../../../provisioners/scripts/centos/install_centos7_desktop_devops_tools.sh",
         "../../../provisioners/scripts/centos/install_centos7_google_chrome.sh",
         "../../../provisioners/scripts/oracle/install_ol7_docker.sh",
+        "../../../provisioners/scripts/common/install_docker_compose.sh",
         "../../../provisioners/scripts/oracle/install_ol7_python3.sh",
         "../../../provisioners/scripts/centos/install_centos7_desktop_users_env.sh",
         "../../../provisioners/scripts/centos/cleanup.sh",

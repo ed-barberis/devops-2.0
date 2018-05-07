@@ -100,6 +100,7 @@
         "../../../provisioners/scripts/oracle/install_ol7_headless_devops_tools.sh",
         "../../../provisioners/scripts/common/install_oracle_java_jdk_8.sh",
         "../../../provisioners/scripts/oracle/install_ol7_docker.sh",
+        "../../../provisioners/scripts/common/install_docker_compose.sh",
         "../../../provisioners/scripts/oracle/install_ol7_python3.sh",
         "../../../provisioners/scripts/common/install_headless_users_env.sh",
         "../../../provisioners/scripts/centos/cleanup.sh",
