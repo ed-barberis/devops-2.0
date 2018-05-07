@@ -96,7 +96,7 @@
     "headless": "false",
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
-    "memory": "6144",
+    "memory": "8192",
     "name": "apm-centos74",
     "no_proxy": "{{env `no_proxy`}}",
     "version": "TIMESTAMP"

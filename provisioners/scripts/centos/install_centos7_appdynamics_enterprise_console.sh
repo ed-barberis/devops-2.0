@@ -11,7 +11,7 @@ appd_password="${appd_password:-}"                          # appd account user 
 appd_home="${appd_home:-/opt/appdynamics}"                  # [optional] appd home (defaults to '/opt/appdynamics').
 appd_platform_home="${appd_platform_home:-platform}"        # [optional] appd platform home (defaults to 'platform').
 appd_platform_user="${appd_platform_user:-root}"            # [optional] appd platform user (defaults to user 'root').
-appd_platform_rel="${appd_platform_rel:-4.4.2.7140}"        # [optional] appd platform release (defaults to '4.4.2.7140').
+appd_platform_rel="${appd_platform_rel:-4.4.3.9040}"        # [optional] appd platform release (defaults to '4.4.3.9040').
 
 appd_admin_password="${appd_admin_password:-welcome1}"      # [optional] appd admin password (defaults to 'welcome1').
 appd_db_password="${appd_db_password:-welcome1}"            # [optional] appd database password (defaults to 'welcome1').
@@ -35,7 +35,7 @@ Usage:
     [root]# export appd_home="/opt/appdynamics"             # [optional] appd home (defaults to '/opt/appdynamics').
     [root]# export appd_platform_home="platform"            # [optional] appd platform home (defaults to 'platform').
     [root]# export appd_platform_user="root"                # [optional] appd platform user (defaults to user 'root').
-    [root]# export appd_platform_rel="4.4.2.7140"           # [optional] appd platform release (defaults to '4.4.2.7140').
+    [root]# export appd_platform_rel="4.4.3.9040"           # [optional] appd platform release (defaults to '4.4.3.9040').
    #
     [root]# export appd_admin_password="welcome1"           # [optional] appd admin password (defaults to 'welcome1').
     [root]# export appd_db_password="welcome1"              # [optional] appd database password (defaults to 'welcome1').
