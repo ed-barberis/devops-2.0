@@ -1,15 +1,17 @@
 #!/bin/sh -eux
 # install spring tool suite text editor with associated gnome desktop app and images.
+# NOTE: if the sts release is updated, you will also need to update the sts release path
+#       in the companion 'desktops/spring-tool-suite.desktop' file.
 
 # set default value for devops home environment variable if not set. -----------
 devops_home="${devops_home:-/opt/devops}"                   # [optional] devops home (defaults to '/opt/devops').
 
 # install spring tool suite ide. -----------------------------------------------
 stshome="sts-bundle"
-stsrelease="3.9.3"
-stsnumber="578216487"
+stsrelease="3.9.4"
+stsnumber="1064824475"
 eclipseversion="oxygen"
-eclipserelease="4.7.3"
+eclipserelease="4.7.3a"
 
 eclipsedist=$(echo "e${eclipserelease}" | awk -F "." '{printf "%s.%s", $1, $2}')
 stsbinary="spring-tool-suite-${stsrelease}.RELEASE-e${eclipserelease}-linux-gtk-x86_64.tar.gz"
