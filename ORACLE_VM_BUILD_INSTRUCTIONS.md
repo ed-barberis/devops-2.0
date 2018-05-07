@@ -1,37 +1,37 @@
 # Oracle 7 VM Build Instructions
 
-Follow these instructions to build the Oracle Linux 7.4 VM images.
+Follow these instructions to build the Oracle Linux 7.5 VM images.
 
 ## Build the Vagrant Box Images with Packer
 
 1.	Start VirtualBox:  
     Start Menu -- > All apps -- > Oracle VM VirtualBox -- > Oracle VM VirtualBox
 
-2.	Build the Oracle Linux 7.4 'base-desktop' box (desktop):
+2.	Build the Oracle Linux 7.5 'base-desktop' box (desktop):
 
     This will take several minutes to run. If this is the first time you are
-    running a build, the ISO image for Oracle Linux 7.4 will be downloaded and
+    running a build, the ISO image for Oracle Linux 7.5 will be downloaded and
     cached locally.
 
     ```
     $ cd /<drive>/projects/devops-2.0/builders/packer/oracle
-    $ packer build base-desktop-ol74-x86_64.json
+    $ packer build base-desktop-ol75-x86_64.json
     ```
 
-3.	Build the Oracle Linux 7.4 'base-headless' box (headless):
+3.	Build the Oracle Linux 7.5 'base-headless' box (headless):
 
     This will take several minutes to run. However, this build will be shorter
-    because the ISO image for Oracle Linux 7.4 has been cached locally and the
+    because the ISO image for Oracle Linux 7.5 has been cached locally and the
     headless image contains fewer packages then the desktop image.
 
     ```
-    $ packer build base-headless-ol74-x86_64.json
+    $ packer build base-headless-ol75-x86_64.json
     ```
 
-4.	Build the Oracle Linux 7.4 'dev' box (desktop):
+4.	Build the Oracle Linux 7.5 'dev' box (desktop):
 
     This will take several minutes to run. However, this build will be shorter
-    because it is based on the 'base-desktop-ol74' image.
+    because it is based on the 'base-desktop-ol75' image.
 
     NOTE: By default, the __DEV VM__ build provisions the AppDynamics Java Agent
     which requires external credentials to download the installer. You will need
@@ -43,37 +43,37 @@ Follow these instructions to build the Oracle Linux 7.4 VM images.
     ```
     $ export appd_username="name@example.com"
     $ export appd_password="password"
-    $ packer build dev-ol74-x86_64.json
+    $ packer build dev-ol75-x86_64.json
     ```
 
     For additional configuration options, please refer to the documentation in
     '`provisioners/scripts/common/install_appdynamics_java_agent.sh`' and define
-    these variables in '`builders/packer/oracle/dev-ol74-x86_64.json`'.
+    these variables in '`builders/packer/oracle/dev-ol75-x86_64.json`'.
 
     If you don't have an AppDynamics account, you can remove the line containing
     '`../../../provisioners/scripts/common/install_appdynamics_java_agent.sh`'
-    from '`builders/packer/oracle/dev-ol74-x86_64.json`' to disable provisioning
+    from '`builders/packer/oracle/dev-ol75-x86_64.json`' to disable provisioning
     of the Java Agent.
 
-5.	Build the Oracle Linux 7.4 'ops' box (headless):
+5.	Build the Oracle Linux 7.5 'ops' box (headless):
 
-    This build is based on the 'base-headless-ol74' image.
-
-    ```
-    $ packer build ops-ol74-x86_64.json
-    ```
-
-6.	Build the Oracle Linux 7.4 'cicd' box (headless):
-
-    This build is based on the 'ops-ol74' image.
+    This build is based on the 'base-headless-ol75' image.
 
     ```
-    $ packer build cicd-ol74-x86_64.json
+    $ packer build ops-ol75-x86_64.json
     ```
 
-7.	Build the Oracle Linux 7.4 'apm' box (headless):
+6.	Build the Oracle Linux 7.5 'cicd' box (headless):
 
-    This build is based on the 'base-headless-ol74' image.
+    This build is based on the 'ops-ol75' image.
+
+    ```
+    $ packer build cicd-ol75-x86_64.json
+    ```
+
+7.	Build the Oracle Linux 7.5 'apm' box (headless):
+
+    This build is based on the 'base-headless-ol75' image.
 
     Prior to building the __APM VM__ image, you will need to supply a valid
     AppDynamics Controller license file. To apply your license file:
@@ -96,52 +96,52 @@ Follow these instructions to build the Oracle Linux 7.4 VM images.
     $ export appd_admin_password="welcome1"     # [optional]
     $ export appd_db_password="welcome1"        # [optional]
     $ export appd_db_root_password="welcome1"   # [optional]
-    $ packer build apm-ol74-x86_64.json
+    $ packer build apm-ol75-x86_64.json
     ```
 
     For additional configuration options, please refer to the documentation in
     '`provisioners/scripts/centos/install_centos7_appdynamics_enterprise_console.sh`' and define
-    these variables in '`builders/packer/oracle/apm-ol74-x86_64.json`'.
+    these variables in '`builders/packer/oracle/apm-ol75-x86_64.json`'.
 
 ## Import the Vagrant Box Images
 
-1.	Import the Oracle Linux 7.4 'dev' box image (desktop):
+1.	Import the Oracle Linux 7.5 'dev' box image (desktop):
     ```
-    $ cd /<drive>/projects/devops-2.0/artifacts/oracle/dev-ol74
-    $ vagrant box add dev-ol74 dev-ol74.virtualbox.box
-    ```
-
-2.	Import the Oracle Linux 7.4 'ops' box image (headless):
-    ```
-    $ cd ../ops-ol74
-    $ vagrant box add ops-ol74 ops-ol74.virtualbox.box
+    $ cd /<drive>/projects/devops-2.0/artifacts/oracle/dev-ol75
+    $ vagrant box add dev-ol75 dev-ol75.virtualbox.box
     ```
 
-3.	Import the Oracle Linux 7.4 'cicd' box image (headless):
+2.	Import the Oracle Linux 7.5 'ops' box image (headless):
     ```
-    $ cd ../cicd-ol74
-    $ vagrant box add cicd-ol74 cicd-ol74.virtualbox.box
+    $ cd ../ops-ol75
+    $ vagrant box add ops-ol75 ops-ol75.virtualbox.box
     ```
 
-4.	Import the Oracle Linux 7.4 'apm' box image (headless):
+3.	Import the Oracle Linux 7.5 'cicd' box image (headless):
     ```
-    $ cd ../apm-ol74
-    $ vagrant box add apm-ol74 apm-ol74.virtualbox.box
+    $ cd ../cicd-ol75
+    $ vagrant box add cicd-ol75 cicd-ol75.virtualbox.box
+    ```
+
+4.	Import the Oracle Linux 7.5 'apm' box image (headless):
+    ```
+    $ cd ../apm-ol75
+    $ vagrant box add apm-ol75 apm-ol75.virtualbox.box
     ```
 
 5.	List the Vagrant box images:
     ```
     $ vagrant box list
-    apm-ol74 (virtualbox, 0)
-    cicd-ol74 (virtualbox, 0)
-    dev-ol74 (virtualbox, 0)
-    ops-ol74 (virtualbox, 0)
+    apm-ol75 (virtualbox, 0)
+    cicd-ol75 (virtualbox, 0)
+    dev-ol75 (virtualbox, 0)
+    ops-ol75 (virtualbox, 0)
     ...
     ```
 
 ## Start the VirtualBox Images
 
-1.	Start the __Developer VM__ with Oracle Linux 7.4 (desktop):
+1.	Start the __Developer VM__ with Oracle Linux 7.5 (desktop):
 
     This will take a few minutes to import the Vagrant box and start the VM:
     ```
@@ -170,9 +170,9 @@ Follow these instructions to build the Oracle Linux 7.4 VM images.
     $ vagrant halt
     ```
 
-    The Developer VM with Oracle Linux 7.4 (desktop) can also be used directly from VirtualBox.
+    The Developer VM with Oracle Linux 7.5 (desktop) can also be used directly from VirtualBox.
 
-2.	Start the __Operations VM__ with Oracle Linux 7.4 (headless):
+2.	Start the __Operations VM__ with Oracle Linux 7.5 (headless):
 
     This will take a few minutes to import the Vagrant box and start the VM:
     ```
@@ -201,7 +201,7 @@ Follow these instructions to build the Oracle Linux 7.4 VM images.
     $ vagrant halt
     ```
 
-3.	Start the __CICD VM__ with Oracle Linux 7.4 (headless):
+3.	Start the __CICD VM__ with Oracle Linux 7.5 (headless):
 
     This will take a few minutes to import the Vagrant box and start the VM:
     ```
@@ -247,7 +247,7 @@ Follow these instructions to build the Oracle Linux 7.4 VM images.
 
     NOTE: You can access the [GitLab Community Edition](https://about.gitlab.com/) server locally on port '80' [here](http://10.100.198.230) and the [Jenkins](https://jenkins.io/) build server locally on port '9080' [here](http://10.100.198.230:9080).
 
-4.	Start the __APM VM__ with Oracle Linux 7.4 (headless):
+4.	Start the __APM VM__ with Oracle Linux 7.5 (headless):
 
     This will take a few minutes to import the Vagrant box and start the VM:
     ```
