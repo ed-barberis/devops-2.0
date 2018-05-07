@@ -50,6 +50,11 @@ Follow these instructions to build the Oracle Linux 7.4 VM images.
     '`provisioners/scripts/common/install_appdynamics_java_agent.sh`' and define
     these variables in '`builders/packer/oracle/dev-ol74-x86_64.json`'.
 
+    If you don't have an AppDynamics account, you can remove the line containing
+    '`../../../provisioners/scripts/common/install_appdynamics_java_agent.sh`'
+    from '`builders/packer/oracle/dev-ol74-x86_64.json`' to disable provisioning
+    of the Java Agent.
+
 5.	Build the Oracle Linux 7.4 'ops' box (headless):
 
     This build is based on the 'base-headless-ol74' image.
@@ -150,12 +155,12 @@ Follow these instructions to build the Oracle Linux 7.4 VM images.
     Docker version 17.06.2-ol, build d02b7ab
 
     dev[vagrant]$ ansible --version
-    ansible 2.5.0
+    ansible 2.5.2
       config file = /etc/ansible/ansible.cfg
       configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
       ansible python module location = /usr/lib/python2.7/site-packages/ansible
       executable location = /usr/bin/ansible
-      python version = 2.7.5 (default, May 29 2017, 20:42:36) [GCC 4.8.5 20150623 (Red Hat 4.8.5-11)]
+      python version = 2.7.5 (default, Apr 11 2018, 17:41:36) [GCC 4.8.5 20150623 (Red Hat 4.8.5-28.0.1)]
 
     dev[vagrant]$ <run other commands>
     ```
@@ -181,12 +186,12 @@ Follow these instructions to build the Oracle Linux 7.4 VM images.
     Docker version 17.06.2-ol, build d02b7ab
 
     ops[vagrant]$ ansible --version
-    ansible 2.5.0
+    ansible 2.5.2
       config file = /etc/ansible/ansible.cfg
       configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
       ansible python module location = /usr/lib/python2.7/site-packages/ansible
       executable location = /usr/bin/ansible
-      python version = 2.7.5 (default, May 29 2017, 20:42:36) [GCC 4.8.5 20150623 (Red Hat 4.8.5-11)]
+      python version = 2.7.5 (default, Apr 11 2018, 17:41:36) [GCC 4.8.5 20150623 (Red Hat 4.8.5-28.0.1)]
 
     ops[vagrant]$ <run other commands>
     ```
@@ -287,63 +292,62 @@ Follow these instructions to build the Oracle Linux 7.4 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Ansible 2.5.0
+-	Ansible 2.5.2
 	-	Ansible Container 0.9.2
 -	Ant 1.10.3
--	Consul 1.0.6
+-	Consul 1.0.7
 -	Cloud-Init 0.7.9 [Optional]
 -	Docker 17.06.2 CE
 	-	Docker Bash Completion
-	-	Docker Compose 1.20.1
+	-	Docker Compose 1.21.2
 	-	Docker Compose Bash Completion
--	Git 2.16.3
+-	Git 2.17.0
 	-	Git Bash Completion
 	-	Git-Flow 1.11.0 (AVH Edition)
 	-	Git-Flow Bash Completion
--	Go 1.10.1
--	Gradle 4.6
+-	Go 1.10.2
+-	Gradle 4.7
 -	Groovy 2.4.15
--	Java SE JDK 8 Update 162
--	Java SE JDK 9.0.4
--	Java SE JDK 10
+-	Java SE JDK 8 Update 172
+-	Java SE JDK 10.0.1
 -	JMESPath jp 0.1.3 (command-line JSON processor)
 -	jq 1.5 (command-line JSON processor)
 -	Maven 3.5.3
 -	Oracle Compute Cloud Service CLI (opc) 17.2.2 [Optional]
 -	Oracle PaaS Service Manager CLI (psm) 1.1.16 [Optional]
--	Packer 1.2.2
+-	Packer 1.2.3
 -	Python 2.7.5
-	-	Pip 9.0.3
+	-	Pip 10.0.1
 -	Python 3.3.2
-	-	Pip3 9.0.3
--	Scala 2.12.5
-	-	Scala Build Tool (SBT) 1.1.2
--	Terraform 0.11.5
--	Vault 0.9.6
+	-	Pip3 10.0.1
+-	Scala 2.12.6
+	-	Scala Build Tool (SBT) 1.1.4
+-	Terraform 0.11.7
+-	Vault 0.10.0
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 10.6.2 3e3c05b
--	Jenkins 2.107.1
+-	GitLab Community Edition 10.6.4 dee2c87
+-	Jenkins 2.107.2
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
--	AppDynamics Enterprise Console 4.4.2.0 Build 7140
-	-	AppDynamics Controller 4.4.2.1 Build 134
-	-	AppDynamics Event Service 4.4.2.0 Build 15675
+-	AppDynamics Enterprise Console 4.4.3.0 Build 9040
+	-	AppDynamics Controller 4.4.3.4 Build 278
+	-	AppDynamics Event Service 4.4.3.0 Build 16720
 
 The following developer tools are pre-installed in the __Developer VM__ (desktop) only:
 
--	AppDynamics Java Agent 4.4.2.0 Build 21763
--	Atom Editor 1.25.0
+-	AppDynamics Java Agent 4.4.3.0 Build 23079
+-	Atom Editor 1.26.1
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 65.0.3325.181 (64-bit)
--	Firefox 52.7.2 (64-bit)
+-	Chrome 66.0.3359.139 (64-bit)
+-	Firefox 52.7.3 (64-bit)
 -	GVim 7.4.160-1
--	IntelliJ IDEA 2018.1 (Community Edition)
+-	IntelliJ IDEA 2018.1.2 (Community Edition)
 -	Postman 6.0.10
 -	Scala IDE for Eclipse 4.7.0 (Eclipse Oxygen.1 [4.7.1])
--	Spring Tool Suite 3.9.3 IDE (Eclipse Oxygen.3 [4.7.3])
+-	Spring Tool Suite 3.9.4 IDE (Eclipse Oxygen.3a [4.7.3a])
 -	Sublime Text 3 Build 3143
--	Visual Studio Code 1.21.1
--	WebStorm 2018.1 (JavaScript IDE)
+-	Visual Studio Code 1.23.0
+-	WebStorm 2018.1.2 (JavaScript IDE)
