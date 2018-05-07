@@ -82,7 +82,6 @@
         "../../../provisioners/scripts/common/install_google_golang.sh",
         "../../../provisioners/scripts/common/install_scala_lang.sh",
         "../../../provisioners/scripts/common/install_scala_sbt.sh",
-        "../../../provisioners/scripts/common/install_oracle_java_jdk_9.sh",
         "../../../provisioners/scripts/common/install_oracle_java_jdk_10.sh",
         "../../../provisioners/scripts/common/install_jmespath_jp_json_processor.sh",
         "../../../provisioners/scripts/common/install_jq_json_processor.sh",
