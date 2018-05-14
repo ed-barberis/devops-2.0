@@ -295,7 +295,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Ansible 2.5.2
 	-	Ansible Container 0.9.2
 -	Ant 1.10.3
--	Consul 1.0.7
+-	Consul 1.1.0
 -	Cloud-Init 0.7.9 [Optional]
 -	Docker 17.06.2 CE
 	-	Docker Bash Completion
@@ -321,19 +321,19 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Python 3.3.2
 	-	Pip3 10.0.1
 -	Scala 2.12.6
-	-	Scala Build Tool (SBT) 1.1.4
+	-	Scala Build Tool (SBT) 1.1.5
 -	Terraform 0.11.7
 -	Vault 0.10.0
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 10.6.4 dee2c87
--	Jenkins 2.107.2
+-	GitLab Community Edition 10.7.3 2555d6c
+-	Jenkins 2.107.3
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
--	AppDynamics Enterprise Console 4.4.3.0 Build 9040
-	-	AppDynamics Controller 4.4.3.4 Build 278
+-	AppDynamics Enterprise Console 4.4.3.0 Build 9459
+	-	AppDynamics Controller 4.4.3.4 Build 299
 	-	AppDynamics Event Service 4.4.3.0 Build 16720
 
 The following developer tools are pre-installed in the __Developer VM__ (desktop) only:
@@ -341,13 +341,13 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 -	AppDynamics Java Agent 4.4.3.0 Build 23079
 -	Atom Editor 1.26.1
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 66.0.3359.139 (64-bit)
+-	Chrome 66.0.3359.170 (64-bit)
 -	Firefox 52.7.3 (64-bit)
 -	GVim 7.4.160-1
--	IntelliJ IDEA 2018.1.2 (Community Edition)
+-	IntelliJ IDEA 2018.1.3 (Community Edition)
 -	Postman 6.0.10
 -	Scala IDE for Eclipse 4.7.0 (Eclipse Oxygen.1 [4.7.1])
 -	Spring Tool Suite 3.9.4 IDE (Eclipse Oxygen.3a [4.7.3a])
--	Sublime Text 3 Build 3143
--	Visual Studio Code 1.23.0
--	WebStorm 2018.1.2 (JavaScript IDE)
+-	Sublime Text 3 Build 3176
+-	Visual Studio Code 1.23.1
+-	WebStorm 2018.1.3 (JavaScript IDE)

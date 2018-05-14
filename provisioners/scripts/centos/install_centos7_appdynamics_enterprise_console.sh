@@ -11,7 +11,7 @@ appd_password="${appd_password:-}"                          # appd account user 
 appd_home="${appd_home:-/opt/appdynamics}"                  # [optional] appd home (defaults to '/opt/appdynamics').
 appd_platform_home="${appd_platform_home:-platform}"        # [optional] appd platform home (defaults to 'platform').
 appd_platform_user="${appd_platform_user:-root}"            # [optional] appd platform user (defaults to user 'root').
-appd_platform_rel="${appd_platform_rel:-4.4.3.9040}"        # [optional] appd platform release (defaults to '4.4.3.9040').
+appd_platform_rel="${appd_platform_rel:-4.4.3.9459}"        # [optional] appd platform release (defaults to '4.4.3.9459').
 
 appd_admin_password="${appd_admin_password:-welcome1}"      # [optional] appd admin password (defaults to 'welcome1').
 appd_db_password="${appd_db_password:-welcome1}"            # [optional] appd database password (defaults to 'welcome1').
@@ -35,14 +35,14 @@ Usage:
     [root]# export appd_home="/opt/appdynamics"             # [optional] appd home (defaults to '/opt/appdynamics').
     [root]# export appd_platform_home="platform"            # [optional] appd platform home (defaults to 'platform').
     [root]# export appd_platform_user="root"                # [optional] appd platform user (defaults to user 'root').
-    [root]# export appd_platform_rel="4.4.3.9040"           # [optional] appd platform release (defaults to '4.4.3.9040').
+    [root]# export appd_platform_rel="4.4.3.9459"           # [optional] appd platform release (defaults to '4.4.3.9459').
    #
     [root]# export appd_admin_password="welcome1"           # [optional] appd admin password (defaults to 'welcome1').
     [root]# export appd_db_password="welcome1"              # [optional] appd database password (defaults to 'welcome1').
     [root]# export appd_db_root_password="welcome1"         # [optional] appd database root password (defaults to 'welcome1').
     [root]# export appd_server_host="apm"                   # [optional] appd hostname (defaults to 'uname -n').
     [root]# export appd_server_port="9191"                  # [optional] appd server port (defaults to '9191').
-                                                            #
+   #
     [root]# export devops_home="/opt/devops"                # [optional] devops home (defaults to '/opt/devops').
     [root]# $0
 EOF
@@ -154,3 +154,38 @@ cd ${appd_platform_folder}/platform-admin/bin
 # shutdown the appdynamics platform components. --------------------------------
 # stop the appdynamics enterprise console.
 ./platform-admin.sh stop-platform-admin
+
+# configure the appdynamics enterprise console as a service. -------------------
+systemd_dir="/etc/systemd/system"
+appd_enterprise_console_service="appd-enterprise-console.service"
+service_filepath="${systemd_dir}/${appd_enterprise_console_service}"
+
+# create systemd service file.
+if [ -d "$systemd_dir" ]; then
+  rm -f "${service_filepath}"
+
+  touch "${service_filepath}"
+  chmod 644 "${service_filepath}"
+
+  echo "[Unit]" >> "${service_filepath}"
+  echo "Description=The AppDynamics Enterprise Console." >> "${service_filepath}"
+  echo "After=network.target remote-fs.target nss-lookup.target" >> "${service_filepath}"
+  echo "" >> "${service_filepath}"
+  echo "[Service]" >> "${service_filepath}"
+  echo "Type=forking" >> "${service_filepath}"
+  echo "ExecStart=/opt/appdynamics/platform/platform-admin/bin/platform-admin.sh start-platform-admin" >> "${service_filepath}"
+  echo "ExecStop=/opt/appdynamics/platform/platform-admin/bin/platform-admin.sh stop-platform-admin" >> "${service_filepath}"
+  echo "" >> "${service_filepath}"
+  echo "[Install]" >> "${service_filepath}"
+  echo "WantedBy=multi-user.target" >> "${service_filepath}"
+fi
+
+# reload systemd manager configuration.
+systemctl daemon-reload
+
+# enable the enterprise console to start at boot time.
+systemctl enable "${appd_enterprise_console_service}"
+systemctl is-enabled "${appd_enterprise_console_service}"
+
+# check current status.
+#systemctl status "${appd_enterprise_console_service}"

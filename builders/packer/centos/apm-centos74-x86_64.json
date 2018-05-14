@@ -63,8 +63,10 @@
         "appd_admin_password={{user `appd_admin_password`}}",
         "appd_db_password={{user `appd_db_password`}}",
         "appd_db_root_password={{user `appd_db_root_password`}}",
-        "appd_username={{user `appd_username`}}",
         "appd_password={{user `appd_password`}}",
+        "appd_platform_name={{user `appd_platform_name`}}",
+        "appd_platform_desc={{user `appd_platform_desc`}}",
+        "appd_username={{user `appd_username`}}",
         "devops_home={{user `devops_home`}}",
         "HOME_DIR=/home/vagrant",
         "http_proxy={{user `http_proxy`}}",
@@ -76,6 +78,7 @@
       "pause_before": "10s",
       "scripts": [
         "../../../provisioners/scripts/centos/install_centos7_appdynamics_enterprise_console.sh",
+        "../../../provisioners/scripts/common/install_appdynamics_platform_services.sh",
         "../../../provisioners/scripts/centos/cleanup.sh",
         "../../../submodules/chef/bento/_common/minimize.sh"
       ],
@@ -87,6 +90,8 @@
     "appd_db_password": "{{env `appd_db_password`}}",
     "appd_db_root_password": "{{env `appd_db_root_password`}}",
     "appd_password": "{{env `appd_password`}}",
+    "appd_platform_name": "{{env `appd_platform_name`}}",
+    "appd_platform_desc": "{{env `appd_platform_desc`}}",
     "appd_username": "{{env `appd_username`}}",
     "box_basename": "apm-centos74",
     "build_timestamp": "{{isotime \"20060102150405\"}}",

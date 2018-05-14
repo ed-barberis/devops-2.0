@@ -20,9 +20,9 @@ Next, using these base VMs as a foundation, the user can build more advanced VM 
 
 To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the following open source software needs to be installed on the host machine:
 
--	VirtualBox 5.2.10
-	-	VirtualBox Extension Pack 5.2.10
--	Vagrant 2.1.0 with Plugins
+-	VirtualBox 5.2.12
+	-	VirtualBox Extension Pack 5.2.12
+-	Vagrant 2.1.1 with Plugins
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 1.1.9
 	-	vagrant-vbguest 0.15.1
@@ -33,11 +33,11 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
 ## Installation Instructions - Windows 64-Bit
 
-1.	Install [VirtualBox 5.2.10 for Windows 64-bit](https://download.virtualbox.org/virtualbox/5.2.10/VirtualBox-5.2.10-122406-Win.exe).
+1.	Install [VirtualBox 5.2.12 for Windows 64-bit](https://download.virtualbox.org/virtualbox/5.2.12/VirtualBox-5.2.12-122591-Win.exe).
 
-2.	Install [VirtualBox Extension Pack 5.2.10](https://download.virtualbox.org/virtualbox/5.2.10/Oracle_VM_VirtualBox_Extension_Pack-5.2.10-122406.vbox-extpack).
+2.	Install [VirtualBox Extension Pack 5.2.12](https://download.virtualbox.org/virtualbox/5.2.12/Oracle_VM_VirtualBox_Extension_Pack-5.2.12-122591.vbox-extpack).
 
-3.	Install [Vagrant 2.1.0 for Windows 64-bit](https://releases.hashicorp.com/vagrant/2.1.0/vagrant_2.1.0_x86_64.msi).  
+3.	Install [Vagrant 2.1.1 for Windows 64-bit](https://releases.hashicorp.com/vagrant/2.1.1/vagrant_2.1.1_x86_64.msi).  
     Suggested install folder:  
     `C:\HashiCorp\vagrant`  
 
@@ -87,10 +87,10 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
     ```
     $ VBoxManage --version
-    5.2.10r122406
+    5.2.12r122591
 
     $ vagrant --version
-    Vagrant 2.1.0
+    Vagrant 2.1.1
 
     $ packer --version
     1.2.3
