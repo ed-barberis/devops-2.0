@@ -24,4 +24,4 @@ systemctl start jenkins
 systemctl enable jenkins
 
 # display network configuration. -----------------------------------------------
-ifconfig
+#ip addr show
