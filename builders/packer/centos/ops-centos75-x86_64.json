@@ -1,26 +1,17 @@
 {
   "builders": [
     {
-      "boot_command": [
-        "<up><wait><tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `ks_path`}}<enter><wait>"
-      ],
       "boot_wait": "10s",
-      "disk_size": "{{user `disk_size`}}",
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
-      "guest_os_type": "RedHat_64",
-      "hard_drive_interface": "sata",
       "headless": "{{ user `headless` }}",
-      "http_directory": "http",
-      "iso_checksum": "{{user `iso_checksum`}}",
-      "iso_checksum_type": "{{user `iso_checksum_type`}}",
-      "iso_url": "{{user `mirror`}}/{{user `mirror_directory`}}/{{user `iso_name`}}",
+      "source_path": "../../../artifacts/centos/base-headless-centos75/base-headless-centos75.ovf",
       "output_directory": "../../../artifacts/centos/{{user `box_basename`}}",
       "shutdown_command": "echo 'vagrant' | sudo -S /sbin/halt -h -p",
       "ssh_password": "vagrant",
       "ssh_port": 22,
       "ssh_username": "vagrant",
       "ssh_wait_timeout": "10000s",
-      "type": "virtualbox-iso",
+      "type": "virtualbox-ovf",
       "vboxmanage": [
         ["modifyvm", "{{.Name}}", "--memory", "{{ user `memory` }}"],
         ["modifyvm", "{{.Name}}", "--cpus", "{{ user `cpus` }}"]
@@ -57,21 +48,13 @@
       "type": "shell"
     },
     {
-      "environment_vars": [
-        "devops_home={{user `devops_home`}}",
-        "HOME_DIR=/home/vagrant",
-        "http_proxy={{user `http_proxy`}}",
-        "https_proxy={{user `https_proxy`}}",
-        "no_proxy={{user `no_proxy`}}"
-      ],
-      "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "expect_disconnect": true,
-      "scripts": [
-        "../../../submodules/chef/bento/centos/scripts/update.sh",
-        "../../../submodules/chef/bento/centos/scripts/networking.sh",
-        "../../../submodules/chef/bento/_common/sshd.sh",
-        "../../../submodules/chef/bento/_common/vagrant.sh",
-        "../../../provisioners/scripts/centos/install_centos7_repositories.sh"
+      "inline": [
+        "sudo yum -y update",
+        "sudo hostnamectl set-hostname ops --static",
+        "sudo hostnamectl set-hostname ops",
+        "sudo hostnamectl status",
+        "sudo systemctl reboot"
       ],
       "type": "shell"
     },
@@ -87,45 +70,40 @@
       "expect_disconnect": true,
       "pause_before": "10s",
       "scripts": [
-        "../../../submodules/chef/bento/_common/virtualbox.sh",
-        "../../../provisioners/scripts/centos/install_centos7_headless_devops_tools.sh",
-        "../../../provisioners/scripts/common/install_oracle_java_jdk_8.sh",
-        "../../../provisioners/scripts/centos/install_centos7_docker.sh",
-        "../../../provisioners/scripts/common/install_docker_compose.sh",
-        "../../../provisioners/scripts/centos/install_centos7_python3.sh",
-        "../../../provisioners/scripts/common/install_headless_users_env.sh",
+        "../../../provisioners/scripts/common/install_apache_ant.sh",
+        "../../../provisioners/scripts/common/install_apache_maven.sh",
+        "../../../provisioners/scripts/common/install_apache_groovy.sh",
+        "../../../provisioners/scripts/common/install_gradle.sh",
+        "../../../provisioners/scripts/centos/install_centos7_ansible.sh",
+        "../../../provisioners/scripts/common/install_google_golang.sh",
+        "../../../provisioners/scripts/common/install_scala_lang.sh",
+        "../../../provisioners/scripts/common/install_scala_sbt.sh",
+        "../../../provisioners/scripts/common/install_oracle_java_jdk_10.sh",
+        "../../../provisioners/scripts/common/install_jmespath_jp_json_processor.sh",
+        "../../../provisioners/scripts/common/install_jq_json_processor.sh",
+        "../../../provisioners/scripts/common/install_hashicorp_consul.sh",
+        "../../../provisioners/scripts/common/install_hashicorp_packer.sh",
+        "../../../provisioners/scripts/common/install_hashicorp_terraform.sh",
+        "../../../provisioners/scripts/common/install_hashicorp_vault.sh",
+        "../../../provisioners/scripts/centos/install_centos7_git.sh",
+        "../../../provisioners/scripts/common/install_git_flow.sh",
         "../../../provisioners/scripts/centos/cleanup.sh",
         "../../../submodules/chef/bento/_common/minimize.sh"
-      ],
-      "type": "shell"
-    },
-    {
-      "inline": [
-        "sudo usermod -aG vboxsf vagrant",
-        "sudo plymouth-set-default-theme details",
-        "sudo dracut -f"
       ],
       "type": "shell"
     }
   ],
   "variables": {
-    "box_basename": "base-headless-centos74",
+    "box_basename": "ops-centos75",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
     "cpus": "1",
     "devops_home": "/opt/devops-2.0",
-    "disk_size": "131072",
     "git_revision": "__unknown_git_revision__",
     "headless": "false",
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
-    "iso_checksum": "ec7500d4b006702af6af023b1f8f1b890b6c7ee54400bb98cef968b883cd6546",
-    "iso_checksum_type": "sha256",
-    "iso_name": "CentOS-7-x86_64-DVD-1708.iso",
-    "ks_path": "7/centos74-headless-ks.cfg",
     "memory": "4096",
-    "mirror": "http://mirrors.kernel.org/centos",
-    "mirror_directory": "7.4.1708/isos/x86_64",
-    "name": "base-headless-centos74",
+    "name": "ops-centos75",
     "no_proxy": "{{env `no_proxy`}}",
     "version": "TIMESTAMP"
   }

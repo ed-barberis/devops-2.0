@@ -1,37 +1,37 @@
 # CentOS 7 VM Build Instructions
 
-Follow these instructions to build the CentOS Linux 7.4 VM images.
+Follow these instructions to build the CentOS Linux 7.5 VM images.
 
 ## Build the Vagrant Box Images with Packer
 
 1.	Start VirtualBox:  
     Start Menu -- > All apps -- > Oracle VM VirtualBox -- > Oracle VM VirtualBox
 
-2.	Build the CentOS Linux 7.4 'base-desktop' box (desktop):
+2.	Build the CentOS Linux 7.5 'base-desktop' box (desktop):
 
     This will take several minutes to run. If this is the first time you are
-    running a build, the ISO image for CentOS Linux 7.4 will be downloaded and
+    running a build, the ISO image for CentOS Linux 7.5 will be downloaded and
     cached locally.
 
     ```
     $ cd /<drive>/projects/devops-2.0/builders/packer/centos
-    $ packer build base-desktop-centos74-x86_64.json
+    $ packer build base-desktop-centos75-x86_64.json
     ```
 
-3.	Build the CentOS Linux 7.4 'base-headless' box (headless):
+3.	Build the CentOS Linux 7.5 'base-headless' box (headless):
 
     This will take several minutes to run. However, this build will be shorter
-    because the ISO image for CentOS Linux 7.4 has been cached locally and the
+    because the ISO image for CentOS Linux 7.5 has been cached locally and the
     headless image contains fewer packages then the desktop image.
 
     ```
-    $ packer build base-headless-centos74-x86_64.json
+    $ packer build base-headless-centos75-x86_64.json
     ```
 
-4.	Build the CentOS Linux 7.4 'dev' box (desktop):
+4.	Build the CentOS Linux 7.5 'dev' box (desktop):
 
     This will take several minutes to run. However, this build will be shorter
-    because it is based on the 'base-desktop-centos74' image.
+    because it is based on the 'base-desktop-centos75' image.
 
     NOTE: By default, the __DEV VM__ build provisions the AppDynamics Java Agent
     which requires external credentials to download the installer. You will need
@@ -43,37 +43,37 @@ Follow these instructions to build the CentOS Linux 7.4 VM images.
     ```
     $ export appd_username="name@example.com"
     $ export appd_password="password"
-    $ packer build dev-centos74-x86_64.json
+    $ packer build dev-centos75-x86_64.json
     ```
 
     For additional configuration options, please refer to the documentation in
     '`provisioners/scripts/common/install_appdynamics_java_agent.sh`' and define
-    these variables in '`builders/packer/centos/dev-centos74-x86_64.json`'.
+    these variables in '`builders/packer/centos/dev-centos75-x86_64.json`'.
 
     If you don't have an AppDynamics account, you can remove the line containing
     '`../../../provisioners/scripts/common/install_appdynamics_java_agent.sh`'
-    from '`builders/packer/centos/dev-centos74-x86_64.json`' to disable provisioning
+    from '`builders/packer/centos/dev-centos75-x86_64.json`' to disable provisioning
     of the Java Agent.
 
-5.	Build the CentOS Linux 7.4 'ops' box (headless):
+5.	Build the CentOS Linux 7.5 'ops' box (headless):
 
-    This build is based on the 'base-headless-centos74' image.
-
-    ```
-    $ packer build ops-centos74-x86_64.json
-    ```
-
-6.	Build the CentOS Linux 7.4 'cicd' box (headless):
-
-    This build is based on the 'ops-centos74' image.
+    This build is based on the 'base-headless-centos75' image.
 
     ```
-    $ packer build cicd-centos74-x86_64.json
+    $ packer build ops-centos75-x86_64.json
     ```
 
-7.	Build the CentOS Linux 7.4 'apm' box (headless):
+6.	Build the CentOS Linux 7.5 'cicd' box (headless):
 
-    This build is based on the 'base-headless-centos74' image.
+    This build is based on the 'ops-centos75' image.
+
+    ```
+    $ packer build cicd-centos75-x86_64.json
+    ```
+
+7.	Build the CentOS Linux 7.5 'apm' box (headless):
+
+    This build is based on the 'base-headless-centos75' image.
 
     Prior to building the __APM VM__ image, you will need to supply a valid
     AppDynamics Controller license file. To apply your license file:
@@ -96,52 +96,52 @@ Follow these instructions to build the CentOS Linux 7.4 VM images.
     $ export appd_admin_password="welcome1"     # [optional]
     $ export appd_db_password="welcome1"        # [optional]
     $ export appd_db_root_password="welcome1"   # [optional]
-    $ packer build apm-centos74-x86_64.json
+    $ packer build apm-centos75-x86_64.json
     ```
 
     For additional configuration options, please refer to the documentation in
     '`provisioners/scripts/centos/install_centos7_appdynamics_enterprise_console.sh`' and define
-    these variables in '`builders/packer/centos/apm-centos74-x86_64.json`'.
+    these variables in '`builders/packer/centos/apm-centos75-x86_64.json`'.
 
 ## Import the Vagrant Box Images
 
-1.	Import the CentOS Linux 7.4 'dev' box image (desktop):
+1.	Import the CentOS Linux 7.5 'dev' box image (desktop):
     ```
-    $ cd /<drive>/projects/devops-2.0/artifacts/centos/dev-centos74
-    $ vagrant box add dev-centos74 dev-centos74.virtualbox.box
-    ```
-
-2.	Import the CentOS Linux 7.4 'ops' box image (headless):
-    ```
-    $ cd ../ops-centos74
-    $ vagrant box add ops-centos74 ops-centos74.virtualbox.box
+    $ cd /<drive>/projects/devops-2.0/artifacts/centos/dev-centos75
+    $ vagrant box add dev-centos75 dev-centos75.virtualbox.box
     ```
 
-3.	Import the CentOS Linux 7.4 'cicd' box image (headless):
+2.	Import the CentOS Linux 7.5 'ops' box image (headless):
     ```
-    $ cd ../cicd-centos74
-    $ vagrant box add cicd-centos74 cicd-centos74.virtualbox.box
+    $ cd ../ops-centos75
+    $ vagrant box add ops-centos75 ops-centos75.virtualbox.box
     ```
 
-4.	Import the CentOS Linux 7.4 'apm' box image (headless):
+3.	Import the CentOS Linux 7.5 'cicd' box image (headless):
     ```
-    $ cd ../apm-centos74
-    $ vagrant box add apm-centos74 apm-centos74.virtualbox.box
+    $ cd ../cicd-centos75
+    $ vagrant box add cicd-centos75 cicd-centos75.virtualbox.box
+    ```
+
+4.	Import the CentOS Linux 7.5 'apm' box image (headless):
+    ```
+    $ cd ../apm-centos75
+    $ vagrant box add apm-centos75 apm-centos75.virtualbox.box
     ```
 
 5.	List the Vagrant box images:
     ```
     $ vagrant box list
-    apm-centos74 (virtualbox, 0)
-    cicd-centos74 (virtualbox, 0)
-    dev-centos74 (virtualbox, 0)
-    ops-centos74 (virtualbox, 0)
+    apm-centos75 (virtualbox, 0)
+    cicd-centos75 (virtualbox, 0)
+    dev-centos75 (virtualbox, 0)
+    ops-centos75 (virtualbox, 0)
     ...
     ```
 
 ## Start the VirtualBox Images
 
-1.	Start the __Developer VM__ with CentOS Linux 7.4 (desktop):
+1.	Start the __Developer VM__ with CentOS Linux 7.5 (desktop):
 
     This will take a few minutes to import the Vagrant box and start the VM:
     ```
@@ -170,9 +170,9 @@ Follow these instructions to build the CentOS Linux 7.4 VM images.
     $ vagrant halt
     ```
 
-    The Developer VM with CentOS Linux 7.4 (desktop) can also be used directly from VirtualBox.
+    The Developer VM with CentOS Linux 7.5 (desktop) can also be used directly from VirtualBox.
 
-2.	Start the __Operations VM__ with CentOS Linux 7.4 (headless):
+2.	Start the __Operations VM__ with CentOS Linux 7.5 (headless):
 
     This will take a few minutes to import the Vagrant box and start the VM:
     ```
@@ -201,7 +201,7 @@ Follow these instructions to build the CentOS Linux 7.4 VM images.
     $ vagrant halt
     ```
 
-3.	Start the __CICD VM__ with CentOS Linux 7.4 (headless):
+3.	Start the __CICD VM__ with CentOS Linux 7.5 (headless):
 
     This will take a few minutes to import the Vagrant box and start the VM:
     ```
@@ -247,7 +247,7 @@ Follow these instructions to build the CentOS Linux 7.4 VM images.
 
     NOTE: You can access the [GitLab Community Edition](https://about.gitlab.com/) server locally on port '80' [here](http://10.100.198.230) and the [Jenkins](https://jenkins.io/) build server locally on port '9080' [here](http://10.100.198.230:9080).
 
-4.	Start the __APM VM__ with CentOS Linux 7.4 (headless):
+4.	Start the __APM VM__ with CentOS Linux 7.5 (headless):
 
     This will take a few minutes to import the Vagrant box and start the VM:
     ```
