@@ -6,8 +6,8 @@ devops_home="${devops_home:-/opt/devops}"                   # [optional] devops 
 
 # install intellij idea community edition. -------------------------------------
 idea_home="idea"
-idea_release="2018.1.3"
-idea_build="181.4892.42"
+idea_release="2018.1.4"
+idea_build="181.5087.20"
 
 idea_binary="ideaIC-${idea_release}-no-jdk.tar.gz"
 idea_folder="idea-IC-${idea_build}"
