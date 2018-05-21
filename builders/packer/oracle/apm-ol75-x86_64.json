@@ -77,6 +77,7 @@
       "expect_disconnect": true,
       "pause_before": "10s",
       "scripts": [
+        "../../../provisioners/scripts/centos/install_centos7_oracle_mysql_shell_8.sh",
         "../../../provisioners/scripts/centos/install_centos7_appdynamics_enterprise_console.sh",
         "../../../provisioners/scripts/common/install_appdynamics_platform_services.sh",
         "../../../provisioners/scripts/centos/cleanup.sh",
@@ -101,7 +102,7 @@
     "headless": "false",
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
-    "memory": "8192",
+    "memory": "10240",
     "name": "apm-ol75",
     "no_proxy": "{{env `no_proxy`}}",
     "version": "TIMESTAMP"

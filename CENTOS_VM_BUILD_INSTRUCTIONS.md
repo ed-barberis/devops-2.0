@@ -87,7 +87,7 @@ Follow these instructions to build the CentOS Linux 7.5 VM images.
 
     The build will __fail__ if they are not set.
 
-    The Enterprise Controller admin user and database passwords may also be
+    The Enterprise Console admin user and database passwords may also be
     provided, but are optional. The default passwords are '`welcome1`'.
 
     ```
@@ -155,12 +155,12 @@ Follow these instructions to build the CentOS Linux 7.5 VM images.
     Docker version 18.03.1-ce, build 9ee9f40
 
     dev[vagrant]$ ansible --version
-    ansible 2.5.2
+    ansible 2.5.3
       config file = /etc/ansible/ansible.cfg
-      configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+      configured module search path = [u'/root/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
       ansible python module location = /usr/lib/python2.7/site-packages/ansible
-      executable location = /usr/bin/ansible
-      python version = 2.7.5 (default, Aug  4 2017, 00:39:18) [GCC 4.8.5 20150623 (Red Hat 4.8.5-16)]
+      executable location = /bin/ansible
+      python version = 2.7.5 (default, Apr 11 2018, 07:36:10) [GCC 4.8.5 20150623 (Red Hat 4.8.5-28)]
 
     dev[vagrant]$ <run other commands>
     ```
@@ -186,12 +186,12 @@ Follow these instructions to build the CentOS Linux 7.5 VM images.
     Docker version 18.03.1-ce, build 9ee9f40
 
     ops[vagrant]$ ansible --version
-    ansible 2.5.2
+    ansible 2.5.3
       config file = /etc/ansible/ansible.cfg
-      configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+      configured module search path = [u'/root/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
       ansible python module location = /usr/lib/python2.7/site-packages/ansible
-      executable location = /usr/bin/ansible
-      python version = 2.7.5 (default, Aug  4 2017, 00:39:18) [GCC 4.8.5 20150623 (Red Hat 4.8.5-16)]
+      executable location = /bin/ansible
+      python version = 2.7.5 (default, Apr 11 2018, 07:36:10) [GCC 4.8.5 20150623 (Red Hat 4.8.5-28)]
 
     ops[vagrant]$ <run other commands>
     ```
@@ -211,8 +211,7 @@ Follow these instructions to build the CentOS Linux 7.5 VM images.
     Connect to the VM via SSH and run some [optional] commands:
     ```
     $ vagrant ssh
-    cicd[vagrant]$ sudo su -
-    cicd[root]# gitlab-ctl status
+    cicd[vagrant]$ sudo gitlab-ctl status
     run: gitaly: (pid 633) 393s; run: log: (pid 632) 393s
     run: gitlab-monitor: (pid 687) 393s; run: log: (pid 686) 393s
     run: gitlab-workhorse: (pid 661) 393s; run: log: (pid 660) 393s
@@ -227,7 +226,7 @@ Follow these instructions to build the CentOS Linux 7.5 VM images.
     run: sidekiq: (pid 629) 393s; run: log: (pid 628) 393s
     run: unicorn: (pid 620) 393s; run: log: (pid 618) 393s
 
-    cicd[root]# systemctl status jenkins
+    cicd[vagrant]$ sudo systemctl status jenkins
       jenkins.service - LSB: Jenkins Automation Server
        Loaded: loaded (/etc/rc.d/init.d/jenkins; bad; vendor preset: disabled)
        Active: active (running) since Wed 2017-09-20 12:08:35 EDT; 2h 22min ago
@@ -235,7 +234,6 @@ Follow these instructions to build the CentOS Linux 7.5 VM images.
     Sep 20 12:08:12 cicd systemd[1]: Starting LSB: Jenkins Automation Server...
     Sep 20 12:08:35 cicd jenkins[967]: Starting Jenkins [  OK  ]
     Sep 20 12:08:35 cicd systemd[1]: Started LSB: Jenkins Automation Server.
-    cicd[root]# exit
 
     cicd[vagrant]$ <run other commands>
     ```
@@ -249,7 +247,14 @@ Follow these instructions to build the CentOS Linux 7.5 VM images.
 
 4.	Start the __APM VM__ with CentOS Linux 7.5 (headless):
 
-    This will take a few minutes to import the Vagrant box and start the VM:
+    This will take a few minutes to import the Vagrant box and start the VM.
+
+    NOTE: After the VM boots, it will take a few minutes for all of the AppDynamics
+    services to start. The Enterprise Console and Events Service start fairly
+    quickly, but the Controller may take several minutes (~5 min).
+
+    Check the progress of the Controller service start by running the `journalctl`
+    command below to view the systemd log:
     ```
     $ cd /<drive>/projects/devops-2.0/builders/vagrant/centos/demo/apm
     $ vagrant up
@@ -257,42 +262,30 @@ Follow these instructions to build the CentOS Linux 7.5 VM images.
     Connect to the VM via SSH and run some [optional] commands:
     ```
     $ vagrant ssh
-    apm[vagrant]$ sudo su -
-    apm[root]# cd /opt/appdynamics/platform/platform-admin/bin
-    apm[root]# ./platform-admin.sh start-platform-admin
-    Starting Enterprise Console Database
+    apm[vagrant]$ sudo journalctl -fu appd-controller.service
     ...
-    ***** Enterprise Console Database started *****
-    Starting Enterprise Console application
-    Waiting for the Enterprise Console application to start.........
-    ***** Enterprise Console application started on port 9191 *****
-    apm[root]# exit
+    May 21 13:29:15 apm platform-admin.sh[4750]: Controller successfully started.
+    May 21 13:29:15 apm platform-admin.sh[4750]: Job duration: 4 minutes 16 seconds
+    May 21 13:29:16 apm systemd[1]: Started The AppDynamics Controller..
+    <CTRL-C>
 
     apm[vagrant]$ <run other commands>
-
-    apm[vagrant]$ sudo su -
-    apm[root]# cd /opt/appdynamics/platform/platform-admin/bin
-    apm[root]# ./platform-admin/bin/platform-admin.sh stop-platform-admin
-    Attempting to stop process with id [6662]...
-    .
-    ***** Enterprise Console application stopped *****
-    ..
-    ***** Enterprise Console Database stopped *****
+    apm[vagrant]$ sudo systemctl status appd-enterprise-console.service
+    apm[vagrant]$ sudo systemctl status appd-events-service.service
     ```
     Gracefully shutdown the VM:
     ```
-    apm[root]# exit
     apm[vagrant]$ exit
     $ vagrant halt
     ```
 
-    NOTE: You can access the [AppDynamics Enterprise Console](https://www.appdynamics.com/product/) server locally on port '9191' [here](http://10.100.198.241:9191).
+    NOTE: You can access the [AppDynamics Enterprise Console](https://www.appdynamics.com/product/) server locally on port '9191' [here](http://10.100.198.241:9191). The [AppDynamics Controller](https://www.appdynamics.com/product/) server can be accessed locally on port '8090' [here](http://10.100.198.241:8090/controller).
 
 ## DevOps 2.0 Bill-of-Materials
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Ansible 2.5.2
+-	Ansible 2.5.3
 	-	Ansible Container 0.9.2
 -	Ant 1.10.3
 -	Consul 1.1.0
@@ -325,25 +318,26 @@ The following command-line tools and utilities are pre-installed in the __Develo
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 10.7.3 2555d6c
+-	GitLab Community Edition 10.8.0 55e4a0b
 -	Jenkins 2.107.3
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
--	AppDynamics Enterprise Console 4.4.3.0 Build 9459
-	-	AppDynamics Controller 4.4.3.4 Build 299
+-	AppDynamics Enterprise Console 4.4.3.0 Build 10005
+	-	AppDynamics Controller 4.4.3.4 Build 323
 	-	AppDynamics Event Service 4.4.3.0 Build 16720
+-	MySQL Shell 8.0.11
 
 The following developer tools are pre-installed in the __Developer VM__ (desktop) only:
 
 -	AppDynamics Java Agent 4.4.3.0 Build 23079
--	Atom Editor 1.26.1
+-	Atom Editor 1.27.1
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 66.0.3359.170 (64-bit)
--	Firefox 52.7.3 (64-bit)
+-	Chrome 66.0.3359.181 (64-bit)
+-	Firefox 52.8.0 (64-bit)
 -	GVim 7.4.160-1
--	IntelliJ IDEA 2018.1.3 (Community Edition)
--	Postman 6.0.10
+-	IntelliJ IDEA 2018.1.4 (Community Edition)
+-	Postman 6.1.2
 -	Scala IDE for Eclipse 4.7.0 (Eclipse Oxygen.1 [4.7.1])
 -	Spring Tool Suite 3.9.4 IDE (Eclipse Oxygen.3a [4.7.3a])
 -	Sublime Text 3 Build 3176
