@@ -342,4 +342,4 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 -	Spring Tool Suite 3.9.4 IDE (Eclipse Oxygen.3a [4.7.3a])
 -	Sublime Text 3 Build 3176
 -	Visual Studio Code 1.23.1
--	WebStorm 2018.1.3 (JavaScript IDE)
+-	WebStorm 2018.1.4 (JavaScript IDE)
