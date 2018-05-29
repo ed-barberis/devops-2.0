@@ -10,9 +10,9 @@ appd_username="${appd_username:-}"                          # appd account user 
 appd_password="${appd_password:-}"                          # appd account user password.
 appd_home="${appd_home:-/opt/appdynamics}"                  # [optional] appd home (defaults to '/opt/appdynamics').
 appd_platform_home="${appd_platform_home:-platform}"        # [optional] appd platform home (defaults to 'platform').
-appd_platform_user="${appd_platform_user:-root}"            # [optional] appd platform user (defaults to user 'root').
-appd_platform_rel="${appd_platform_rel:-4.4.3.10005}"       # [optional] appd platform release (defaults to '4.4.3.10005').
+appd_platform_rel="${appd_platform_rel:-4.4.3.10393}"       # [optional] appd platform release (defaults to '4.4.3.10393').
 
+appd_admin_username="${appd_admin_username:-admin}"         # [optional] appd admin user name (defaults to user 'admin').
 appd_admin_password="${appd_admin_password:-welcome1}"      # [optional] appd admin password (defaults to 'welcome1').
 appd_db_password="${appd_db_password:-welcome1}"            # [optional] appd database password (defaults to 'welcome1').
 appd_db_root_password="${appd_db_root_password:-welcome1}"  # [optional] appd database root password (defaults to 'welcome1').
@@ -34,9 +34,9 @@ Usage:
     [root]# export appd_password="password"                 # appd account user password.
     [root]# export appd_home="/opt/appdynamics"             # [optional] appd home (defaults to '/opt/appdynamics').
     [root]# export appd_platform_home="platform"            # [optional] appd platform home (defaults to 'platform').
-    [root]# export appd_platform_user="root"                # [optional] appd platform user (defaults to user 'root').
-    [root]# export appd_platform_rel="4.4.3.10005"          # [optional] appd platform release (defaults to '4.4.3.10005').
+    [root]# export appd_platform_rel="4.4.3.10393"          # [optional] appd platform release (defaults to '4.4.3.10393').
    #
+    [root]# export appd_admin_username="admin"              # [optional] appd admin user name (defaults to user 'admin').
     [root]# export appd_admin_password="welcome1"           # [optional] appd admin password (defaults to 'welcome1').
     [root]# export appd_db_password="welcome1"              # [optional] appd database password (defaults to 'welcome1').
     [root]# export appd_db_root_password="welcome1"         # [optional] appd database root password (defaults to 'welcome1').
@@ -140,6 +140,7 @@ echo "platformAdmin.databasePort=3377" >> "${response_file}"
 echo "platformAdmin.dataDir=${appd_platform_folder}/mysql/data" >> "${response_file}"
 echo "platformAdmin.databasePassword=${appd_db_password}" >> "${response_file}"
 echo "platformAdmin.databaseRootPassword=${appd_db_root_password}" >> "${response_file}"
+echo "platformAdmin.adminUsername=${appd_admin_username}" >> "${response_file}"
 echo "platformAdmin.adminPassword=${appd_admin_password}" >> "${response_file}"
 echo "platformAdmin.platformDir=${appd_platform_folder}" >> "${response_file}"
 

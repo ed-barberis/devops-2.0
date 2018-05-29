@@ -4,6 +4,8 @@
 # set default values for input environment variables if not set. ---------------
 # appd platform install parameters.
 appd_home="${appd_home:-/opt/appdynamics}"                                      # [optional] appd home (defaults to '/opt/appdynamics').
+appd_admin_username="${appd_admin_username:-admin}"                             # [optional] appd admin user name (defaults to user 'admin').
+appd_admin_password="${appd_admin_password:-welcome1}"                          # [optional] appd admin password (defaults to 'welcome1').
 appd_platform_home="${appd_platform_home:-platform}"                            # [optional] appd platform home (defaults to 'platform').
 appd_platform_name="${appd_platform_name:-My Platform}"                         # [optional] appd platform name (defaults to 'My Platform').
 appd_platform_desc="${appd_platform_desc:-My Platform application.}"            # [optional] appd platform description (defaults to 'My Platform application.').
@@ -34,6 +36,8 @@ Usage:
   Example:
    # appd platform install parameters.
     [root]# export appd_home="/opt/appdynamics"                     # [optional] appd home (defaults to '/opt/appdynamics').
+    [root]# export appd_admin_username="admin"                      # [optional] appd admin user name (defaults to user 'admin').
+    [root]# export appd_admin_password="welcome1"                   # [optional] appd admin password (defaults to 'welcome1').
     [root]# export appd_platform_home="platform"                    # [optional] appd platform home (defaults to 'platform').
     [root]# export appd_platform_name="My Platform"                 # [optional] appd platform name (defaults to 'My Platform').
     [root]# export appd_platform_desc="My Platform application."    # [optional] appd platform description (defaults to 'My Platform application.').
@@ -83,6 +87,9 @@ cd ${appd_platform_folder}/platform-admin/bin
 cd ${appd_platform_folder}/platform-admin/bin
 ./platform-admin.sh show-platform-admin-version
 
+# login to the appdynamics platform. -------------------------------------------
+./platform-admin.sh login --user-name "${appd_admin_username}" --password "${appd_admin_password}"
+
 # create an appdynamics platform. ----------------------------------------------
 ./platform-admin.sh create-platform --name "${appd_platform_name}" --description "${appd_platform_desc}" --installation-dir "${appd_product_folder}"
 
@@ -115,6 +122,7 @@ if [ -d "$systemd_dir" ]; then
   echo "Type=forking" >> "${service_filepath}"
   echo "RemainAfterExit=true" >> "${service_filepath}"
   echo "TimeoutStartSec=300" >> "${service_filepath}"
+  echo "ExecStartPre=/opt/appdynamics/platform/platform-admin/bin/platform-admin.sh login --user-name ${appd_admin_username} --password ${appd_admin_password}" >> "${service_filepath}"
   echo "ExecStart=/opt/appdynamics/platform/platform-admin/bin/platform-admin.sh start-events-service" >> "${service_filepath}"
   echo "ExecStop=/opt/appdynamics/platform/platform-admin/bin/platform-admin.sh stop-events-service" >> "${service_filepath}"
   echo "" >> "${service_filepath}"
@@ -155,13 +163,14 @@ if [ -d "$systemd_dir" ]; then
 
   echo "[Unit]" >> "${service_filepath}"
   echo "Description=The AppDynamics Controller." >> "${service_filepath}"
-  echo "After=network.target remote-fs.target nss-lookup.target appd-enterprise-console.service" >> "${service_filepath}"
+  echo "After=network.target remote-fs.target nss-lookup.target appd-enterprise-console.service appd-events-service.service" >> "${service_filepath}"
   echo "" >> "${service_filepath}"
   echo "[Service]" >> "${service_filepath}"
   echo "Type=forking" >> "${service_filepath}"
   echo "RemainAfterExit=true" >> "${service_filepath}"
   echo "TimeoutStartSec=600" >> "${service_filepath}"
   echo "TimeoutStopSec=120" >> "${service_filepath}"
+  echo "ExecStartPre=/opt/appdynamics/platform/platform-admin/bin/platform-admin.sh login --user-name ${appd_admin_username} --password ${appd_admin_password}" >> "${service_filepath}"
   echo "ExecStart=/opt/appdynamics/platform/platform-admin/bin/platform-admin.sh start-controller-appserver --with-db" >> "${service_filepath}"
   echo "ExecStop=/opt/appdynamics/platform/platform-admin/bin/platform-admin.sh stop-controller-appserver --with-db" >> "${service_filepath}"
   echo "" >> "${service_filepath}"

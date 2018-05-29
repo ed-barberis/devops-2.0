@@ -243,7 +243,7 @@ Follow these instructions to build the CentOS Linux 7.5 VM images.
     $ vagrant halt
     ```
 
-    NOTE: You can access the [GitLab Community Edition](https://about.gitlab.com/) server locally on port '80' [here](http://10.100.198.230) and the [Jenkins](https://jenkins.io/) build server locally on port '9080' [here](http://10.100.198.230:9080).
+    NOTE: You can access the [GitLab Community Edition](https://about.gitlab.com/) server locally on port '80' [here](http://10.100.198.240) and the [Jenkins](https://jenkins.io/) build server locally on port '9080' [here](http://10.100.198.240:9080).
 
 4.	Start the __APM VM__ with CentOS Linux 7.5 (headless):
 
@@ -318,12 +318,12 @@ The following command-line tools and utilities are pre-installed in the __Develo
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 10.8.0 55e4a0b
+-	GitLab Community Edition 10.8.1 21a8d61
 -	Jenkins 2.107.3
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
--	AppDynamics Enterprise Console 4.4.3.0 Build 10005
+-	AppDynamics Enterprise Console 4.4.3.0 Build 10393
 	-	AppDynamics Controller 4.4.3.4 Build 323
 	-	AppDynamics Event Service 4.4.3.0 Build 16720
 -	MySQL Shell 8.0.11
@@ -337,7 +337,7 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 -	Firefox 52.8.0 (64-bit)
 -	GVim 7.4.160-1
 -	IntelliJ IDEA 2018.1.4 (Community Edition)
--	Postman 6.1.2
+-	Postman 6.1.3
 -	Scala IDE for Eclipse 4.7.0 (Eclipse Oxygen.1 [4.7.1])
 -	Spring Tool Suite 3.9.4 IDE (Eclipse Oxygen.3a [4.7.3a])
 -	Sublime Text 3 Build 3176
