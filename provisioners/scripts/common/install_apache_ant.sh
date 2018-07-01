@@ -1,9 +1,13 @@
 #!/bin/sh -eux
 # install ant build tool by apache.
 
+# set default value for devops home environment variable if not set. -----------
+devops_home="${devops_home:-/opt/devops}"                   # [optional] devops home (defaults to '/opt/devops').
+
 # install apache ant. ----------------------------------------------------------
 anthome="apache-ant"
-antfolder="${anthome}-1.10.3"
+antrelease="1.10.4"
+antfolder="${anthome}-${antrelease}"
 antbinary="${antfolder}-bin.tar.gz"
 
 # create apache parent folder.
@@ -45,6 +49,7 @@ cd /usr/local/apache
 
 # download ant contrib library from sourceforge.net.
 curl --silent --location "https://sourceforge.net/projects/${acfolder}/files/${acfolder}/${acrelease}/${acbinary}/download" --output ${acbinary}
+#cp -f ${devops_home}/provisioners/scripts/common/tools/${acbinary} .
 
 # extract ant contrib binary.
 tar -zxvf ${acbinary} --no-same-owner --no-overwrite-dir
