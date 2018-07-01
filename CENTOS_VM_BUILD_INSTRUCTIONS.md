@@ -155,9 +155,9 @@ Follow these instructions to build the CentOS Linux 7.5 VM images.
     Docker version 18.03.1-ce, build 9ee9f40
 
     dev[vagrant]$ ansible --version
-    ansible 2.5.3
+    ansible 2.6.0
       config file = /etc/ansible/ansible.cfg
-      configured module search path = [u'/root/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+      configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
       ansible python module location = /usr/lib/python2.7/site-packages/ansible
       executable location = /bin/ansible
       python version = 2.7.5 (default, Apr 11 2018, 07:36:10) [GCC 4.8.5 20150623 (Red Hat 4.8.5-28)]
@@ -186,9 +186,9 @@ Follow these instructions to build the CentOS Linux 7.5 VM images.
     Docker version 18.03.1-ce, build 9ee9f40
 
     ops[vagrant]$ ansible --version
-    ansible 2.5.3
+    ansible 2.6.0
       config file = /etc/ansible/ansible.cfg
-      configured module search path = [u'/root/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+      configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
       ansible python module location = /usr/lib/python2.7/site-packages/ansible
       executable location = /bin/ansible
       python version = 2.7.5 (default, Apr 11 2018, 07:36:10) [GCC 4.8.5 20150623 (Red Hat 4.8.5-28)]
@@ -285,61 +285,61 @@ Follow these instructions to build the CentOS Linux 7.5 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Ansible 2.5.3
+-	Ansible 2.6.0
 	-	Ansible Container 0.9.2
--	Ant 1.10.3
--	Consul 1.1.0
+-	Ant 1.10.4
+-	Consul 1.2.0
 -	Cloud-Init 0.7.9 [Optional]
 -	Docker 18.03.1 CE
 	-	Docker Bash Completion
 	-	Docker Compose 1.21.2
 	-	Docker Compose Bash Completion
--	Git 2.17.0
+-	Git 2.18.0
 	-	Git Bash Completion
 	-	Git-Flow 1.11.0 (AVH Edition)
 	-	Git-Flow Bash Completion
--	Go 1.10.2
--	Gradle 4.7
--	Groovy 2.4.15
+-	Go 1.10.3
+-	Gradle 4.8.1
+-	Groovy 2.5.0
 -	Java SE JDK 8 Update 172
 -	Java SE JDK 10.0.1
 -	JMESPath jp 0.1.3 (command-line JSON processor)
 -	jq 1.5 (command-line JSON processor)
--	Maven 3.5.3
--	Packer 1.2.3
+-	Maven 3.5.4
+-	Packer 1.2.4
 -	Python 2.7.5
 	-	Pip 10.0.1
 -	Python 3.3.2
 	-	Pip3 10.0.1
 -	Scala 2.12.6
-	-	Scala Build Tool (SBT) 1.1.5
+	-	Scala Build Tool (SBT) 1.1.6
 -	Terraform 0.11.7
--	Vault 0.10.0
+-	Vault 0.10.3
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 10.8.1 21a8d61
--	Jenkins 2.107.3
+-	GitLab Community Edition 11.0.2 d9540ee
+-	Jenkins 2.121.1
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
--	AppDynamics Enterprise Console 4.4.3.0 Build 10393
-	-	AppDynamics Controller 4.4.3.4 Build 323
+-	AppDynamics Enterprise Console 4.4.3.0 Build 10902
+	-	AppDynamics Controller 4.4.3.4 Build 20058
 	-	AppDynamics Event Service 4.4.3.0 Build 16720
 -	MySQL Shell 8.0.11
 
 The following developer tools are pre-installed in the __Developer VM__ (desktop) only:
 
--	AppDynamics Java Agent 4.4.3.0 Build 23079
--	Atom Editor 1.27.1
+-	AppDynamics Java Agent 4.4.3.0 Build 23530
+-	Atom Editor 1.28.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 66.0.3359.181 (64-bit)
+-	Chrome 67.0.3396.99 (64-bit)
 -	Firefox 52.8.0 (64-bit)
 -	GVim 7.4.160-1
--	IntelliJ IDEA 2018.1.4 (Community Edition)
--	Postman 6.1.3
+-	IntelliJ IDEA 2018.1.5 (Community Edition)
+-	Postman 6.1.4
 -	Scala IDE for Eclipse 4.7.0 (Eclipse Oxygen.1 [4.7.1])
 -	Spring Tool Suite 3.9.4 IDE (Eclipse Oxygen.3a [4.7.3a])
 -	Sublime Text 3 Build 3176
--	Visual Studio Code 1.23.1
--	WebStorm 2018.1.4 (JavaScript IDE)
+-	Visual Studio Code 1.24.1
+-	WebStorm 2018.1.5 (JavaScript IDE)
