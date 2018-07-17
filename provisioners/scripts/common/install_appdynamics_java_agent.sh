@@ -8,7 +8,7 @@ appd_password="${appd_password:-}"                          # appd account user 
 appd_home="${appd_home:-/opt/appdynamics}"                  # [optional] appd home (defaults to '/opt/appdynamics').
 appd_agent_home="${appd_agent_home:-appagent}"              # [optional] appd agent home (defaults to 'appagent').
 appd_agent_user="${appd_agent_user:-vagrant}"               # [optional] appd agent user (defaults to user 'vagrant').
-appd_agent_release="${appd_agent_release:-4.4.3.23530}"     # [optional] appd agent release (defaults to '4.4.3.23530').
+appd_agent_release="${appd_agent_release:-4.5.0.23604}"     # [optional] appd agent release (defaults to '4.5.0.23604').
 #
 # appd config parameters.
 # NOTE: Setting 'appd_config_agent' to 'true' allows you to perform the Java Agent configuration
@@ -41,7 +41,7 @@ Usage:
     [root]# export appd_home="/opt/appdynamics"             # [optional] appd home (defaults to '/opt/appdynamics').
     [root]# export appd_agent_home="appagent"               # [optional] appd agent home (defaults to 'appagent').
     [root]# export appd_agent_user="vagrant"                # [optional] appd agent user (defaults to user 'vagrant').
-    [root]# export appd_agent_release="4.4.3.23530"         # [optional] appd agent release (defaults to '4.4.3.23530').
+    [root]# export appd_agent_release="4.5.0.23604"         # [optional] appd agent release (defaults to '4.5.0.23604').
    #
    # appd config parameters.
    # NOTE: Setting 'appd_config_agent' to 'true' allows you to perform the Java Agent configuration

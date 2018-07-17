@@ -20,22 +20,22 @@ Next, using these base VMs as a foundation, the user can build more advanced VM 
 
 To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the following open source software needs to be installed on the host machine:
 
--	VirtualBox 5.2.12
-	-	VirtualBox Extension Pack 5.2.12
+-	VirtualBox 5.2.16
+	-	VirtualBox Extension Pack 5.2.16
 -	Vagrant 2.1.2 with Plugins
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 1.1.9
 	-	vagrant-vbguest 0.15.2
--	Packer 1.2.4
+-	Packer 1.2.5
 -	Git 2.18.0 for Win64
 	-	wget 1.9.1
 	-	tree 1.5.2.2
 
 ## Installation Instructions - Windows 64-Bit
 
-1.	Install [VirtualBox 5.2.12 for Windows 64-bit](https://download.virtualbox.org/virtualbox/5.2.12/VirtualBox-5.2.12-122591-Win.exe).
+1.	Install [VirtualBox 5.2.16 for Windows 64-bit](https://download.virtualbox.org/virtualbox/5.2.16/VirtualBox-5.2.16-123759-Win.exe).
 
-2.	Install [VirtualBox Extension Pack 5.2.12](https://download.virtualbox.org/virtualbox/5.2.12/Oracle_VM_VirtualBox_Extension_Pack-5.2.12-122591.vbox-extpack).
+2.	Install [VirtualBox Extension Pack 5.2.16](https://download.virtualbox.org/virtualbox/5.2.16/Oracle_VM_VirtualBox_Extension_Pack-5.2.16-123759.vbox-extpack).
 
 3.	Install [Vagrant 2.1.2 for Windows 64-bit](https://releases.hashicorp.com/vagrant/2.1.2/vagrant_2.1.2_x86_64.msi).  
     Suggested install folder:  
@@ -48,7 +48,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
     If this is set, Vagrant will prefer using utility executables (like `ssh` and `rsync`) from the local system instead of those vendored within the Vagrant installation.  
 
-4.	Install [Packer 1.2.4 for Windows 64-bit](https://releases.hashicorp.com/packer/1.2.4/packer_1.2.4_windows_amd64.zip).  
+4.	Install [Packer 1.2.5 for Windows 64-bit](https://releases.hashicorp.com/packer/1.2.5/packer_1.2.5_windows_amd64.zip).  
     Create suggested install folder and extract contents of ZIP file to:  
     `C:\HashiCorp\Packer\bin`  
 
@@ -87,13 +87,13 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
     ```
     $ VBoxManage --version
-    5.2.12r122591
+    5.2.16r123759
 
     $ vagrant --version
     Vagrant 2.1.2
 
     $ packer --version
-    1.2.4
+    1.2.5
 
     $ git --version
     git version 2.18.0.windows.1

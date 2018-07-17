@@ -155,7 +155,7 @@ Follow these instructions to build the CentOS Linux 7.5 VM images.
     Docker version 18.03.1-ce, build 9ee9f40
 
     dev[vagrant]$ ansible --version
-    ansible 2.6.0
+    ansible 2.6.1
       config file = /etc/ansible/ansible.cfg
       configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
       ansible python module location = /usr/lib/python2.7/site-packages/ansible
@@ -186,7 +186,7 @@ Follow these instructions to build the CentOS Linux 7.5 VM images.
     Docker version 18.03.1-ce, build 9ee9f40
 
     ops[vagrant]$ ansible --version
-    ansible 2.6.0
+    ansible 2.6.1
       config file = /etc/ansible/ansible.cfg
       configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
       ansible python module location = /usr/lib/python2.7/site-packages/ansible
@@ -285,10 +285,10 @@ Follow these instructions to build the CentOS Linux 7.5 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Ansible 2.6.0
+-	Ansible 2.6.1
 	-	Ansible Container 0.9.2
--	Ant 1.10.4
--	Consul 1.2.0
+-	Ant 1.10.5
+-	Consul 1.2.1
 -	Cloud-Init 0.7.9 [Optional]
 -	Docker 18.03.1 CE
 	-	Docker Bash Completion
@@ -299,14 +299,14 @@ The following command-line tools and utilities are pre-installed in the __Develo
 	-	Git-Flow 1.11.0 (AVH Edition)
 	-	Git-Flow Bash Completion
 -	Go 1.10.3
--	Gradle 4.8.1
--	Groovy 2.5.0
+-	Gradle 4.9
+-	Groovy 2.5.1
 -	Java SE JDK 8 Update 172
 -	Java SE JDK 10.0.1
 -	JMESPath jp 0.1.3 (command-line JSON processor)
 -	jq 1.5 (command-line JSON processor)
 -	Maven 3.5.4
--	Packer 1.2.4
+-	Packer 1.2.5
 -	Python 2.7.5
 	-	Pip 10.0.1
 -	Python 3.3.2
@@ -318,28 +318,28 @@ The following command-line tools and utilities are pre-installed in the __Develo
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 11.0.2 d9540ee
+-	GitLab Community Edition 11.0.3 aa62075
 -	Jenkins 2.121.1
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
--	AppDynamics Enterprise Console 4.4.3.0 Build 10902
-	-	AppDynamics Controller 4.4.3.4 Build 20058
-	-	AppDynamics Event Service 4.4.3.0 Build 16720
+-	AppDynamics Enterprise Console 4.5.0.0 Build 11464
+	-	AppDynamics Controller 4.5.0.2 Build 25201
+	-	AppDynamics Event Service 4.5.0.0 Build 17318
 -	MySQL Shell 8.0.11
 
 The following developer tools are pre-installed in the __Developer VM__ (desktop) only:
 
 -	AppDynamics Java Agent 4.4.3.0 Build 23530
--	Atom Editor 1.28.0
+-	Atom Editor 1.28.2
 -	Brackets Editor 1.7 Experimental 1.7.0-0
 -	Chrome 67.0.3396.99 (64-bit)
 -	Firefox 52.8.0 (64-bit)
 -	GVim 7.4.160-1
--	IntelliJ IDEA 2018.1.5 (Community Edition)
+-	IntelliJ IDEA 2018.1.6 (Community Edition)
 -	Postman 6.1.4
 -	Scala IDE for Eclipse 4.7.0 (Eclipse Oxygen.1 [4.7.1])
--	Spring Tool Suite 3.9.4 IDE (Eclipse Oxygen.3a [4.7.3a])
+-	Spring Tool Suite 3.9.5 IDE (Eclipse Photon [4.8.0])
 -	Sublime Text 3 Build 3176
--	Visual Studio Code 1.24.1
+-	Visual Studio Code 1.25.1
 -	WebStorm 2018.1.5 (JavaScript IDE)
