@@ -2,7 +2,7 @@
 # install consul service discovery and configuration tool by hashicorp.
 
 # install hashicorp consul. ----------------------------------------------------
-consul_release="1.2.0"
+consul_release="1.2.1"
 consul_binary="consul_${consul_release}_linux_amd64.zip"
 
 # create local bin directory (if needed).
