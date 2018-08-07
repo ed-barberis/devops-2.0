@@ -3,9 +3,9 @@
 
 # install java se 10 development kit. ------------------------------------------
 jdkhome="jdk10"
-jdkbuild="10.0.1+10"
-jdkhash="fb4372174a714e6b8c52526dc134031e"
-jdkfolder="jdk-10.0.1"
+jdkbuild="10.0.2+13"
+jdkhash="19aef61b38124481863b1413dce1855f"
+jdkfolder="jdk-10.0.2"
 jdkbinary="${jdkfolder}_linux-x64_bin.tar.gz"
 
 # create java home parent folder.
