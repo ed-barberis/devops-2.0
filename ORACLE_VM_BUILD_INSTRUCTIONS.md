@@ -155,12 +155,12 @@ Follow these instructions to build the Oracle Linux 7.5 VM images.
     Docker version 17.06.2-ol, build d02b7ab
 
     dev[vagrant]$ ansible --version
-    ansible 2.6.1
+    ansible 2.6.2
       config file = /etc/ansible/ansible.cfg
       configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
       ansible python module location = /usr/lib/python2.7/site-packages/ansible
       executable location = /usr/bin/ansible
-      python version = 2.7.5 (default, Apr 11 2018, 17:41:36) [GCC 4.8.5 20150623 (Red Hat 4.8.5-28.0.1)]
+      python version = 2.7.5 (default, Jul  3 2018, 06:28:28) [GCC 4.8.5 20150623 (Red Hat 4.8.5-28.0.1)]
 
     dev[vagrant]$ <run other commands>
     ```
@@ -186,12 +186,12 @@ Follow these instructions to build the Oracle Linux 7.5 VM images.
     Docker version 17.06.2-ol, build d02b7ab
 
     ops[vagrant]$ ansible --version
-    ansible 2.6.1
+    ansible 2.6.2
       config file = /etc/ansible/ansible.cfg
       configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
       ansible python module location = /usr/lib/python2.7/site-packages/ansible
       executable location = /usr/bin/ansible
-      python version = 2.7.5 (default, Apr 11 2018, 17:41:36) [GCC 4.8.5 20150623 (Red Hat 4.8.5-28.0.1)]
+      python version = 2.7.5 (default, Jul  3 2018, 06:28:28) [GCC 4.8.5 20150623 (Red Hat 4.8.5-28.0.1)]
 
     ops[vagrant]$ <run other commands>
     ```
@@ -285,14 +285,14 @@ Follow these instructions to build the Oracle Linux 7.5 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Ansible 2.6.1
+-	Ansible 2.6.2
 	-	Ansible Container 0.9.2
 -	Ant 1.10.5
--	Consul 1.2.1
+-	Consul 1.2.2
 -	Cloud-Init 0.7.9 [Optional]
 -	Docker 17.06.2 CE
 	-	Docker Bash Completion
-	-	Docker Compose 1.21.2
+	-	Docker Compose 1.22.0
 	-	Docker Compose Bash Completion
 -	Git 2.18.0
 	-	Git Bash Completion
@@ -301,8 +301,8 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Go 1.10.3
 -	Gradle 4.9
 -	Groovy 2.5.1
--	Java SE JDK 8 Update 172
--	Java SE JDK 10.0.1
+-	Java SE JDK 8 Update 181
+-	Java SE JDK 10.0.2
 -	JMESPath jp 0.1.3 (command-line JSON processor)
 -	jq 1.5 (command-line JSON processor)
 -	Maven 3.5.4
@@ -314,34 +314,36 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Python 3.3.2
 	-	Pip3 10.0.1
 -	Scala 2.12.6
-	-	Scala Build Tool (SBT) 1.1.6
+	-	Scala Build Tool (SBT) 1.2.1
 -	Terraform 0.11.7
--	Vault 0.10.3
+-	Vault 0.10.4
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 11.0.3 aa62075
--	Jenkins 2.121.1
+-	GitLab Community Edition 11.1.4 63daf37
+-	Jenkins 2.121.2
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
--	AppDynamics Enterprise Console 4.5.0.0 Build 11464
-	-	AppDynamics Controller 4.5.0.2 Build 25201
+-	AppDynamics Enterprise Console 4.5.0.0 Build 12039
+	-	AppDynamics Controller 4.5.0.2 Build 25228
 	-	AppDynamics Event Service 4.5.0.0 Build 17318
--	MySQL Shell 8.0.11
+-	MySQL Shell 8.0.12
 
 The following developer tools are pre-installed in the __Developer VM__ (desktop) only:
 
--	AppDynamics Java Agent 4.4.3.0 Build 23079
--	Atom Editor 1.28.2
+-	Apache Tomcat 7.0.90
+-	AppDynamics Java Agent 4.5.0.0 Build 23604
+-	Atom Editor 1.29.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 67.0.3396.99 (64-bit)
--	Firefox 52.8.0 (64-bit)
+-	Chrome 68.0.3440.84 (64-bit)
+-	Firefox 60.1.0est (64-bit)
 -	GVim 7.4.160-1
--	IntelliJ IDEA 2018.1.6 (Community Edition)
--	Postman 6.1.4
+-	JetBrains IntelliJ IDEA 2018.2 (Community Edition)
+-	JetBrains IntelliJ IDEA 2018.2 (Ultimate Edition)
+-	JetBrains WebStorm 2018.2 (JavaScript IDE)
+-	Postman 6.2.3
 -	Scala IDE for Eclipse 4.7.0 (Eclipse Oxygen.1 [4.7.1])
 -	Spring Tool Suite 3.9.5 IDE (Eclipse Photon [4.8.0])
 -	Sublime Text 3 Build 3176
 -	Visual Studio Code 1.25.1
--	WebStorm 2018.1.5 (JavaScript IDE)
