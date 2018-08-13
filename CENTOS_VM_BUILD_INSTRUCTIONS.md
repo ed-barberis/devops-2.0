@@ -334,13 +334,13 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 -	AppDynamics Java Agent 4.5.0.0 Build 23604
 -	Atom Editor 1.29.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 68.0.3440.84 (64-bit)
+-	Chrome 68.0.3440.106 (64-bit)
 -	Firefox 60.1.0est (64-bit)
 -	GVim 7.4.160-1
--	JetBrains IntelliJ IDEA 2018.2 (Community Edition)
--	JetBrains IntelliJ IDEA 2018.2 (Ultimate Edition)
--	JetBrains WebStorm 2018.2 (JavaScript IDE)
--	Postman 6.2.3
+-	JetBrains IntelliJ IDEA 2018.2.1 (Community Edition)
+-	JetBrains IntelliJ IDEA 2018.2.1 (Ultimate Edition)
+-	JetBrains WebStorm 2018.2.1 (JavaScript IDE)
+-	Postman 6.2.4
 -	Scala IDE for Eclipse 4.7.0 (Eclipse Oxygen.1 [4.7.1])
 -	Spring Tool Suite 3.9.5 IDE (Eclipse Photon [4.8.0])
 -	Sublime Text 3 Build 3176
