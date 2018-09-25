@@ -1,9 +1,9 @@
 [Desktop Entry]
-Name=Spring Tool Suite
+Name=Spring Tool Suite 4
 Comment=Eclipse-based development environment customized for Spring applications.
 GenericName=Spring IDE
-Exec=/usr/local/spring/sts-bundle/sts-3.9.5.RELEASE/STS
-Icon=/usr/share/icons/hicolor/128x128/apps/spring-tool-suite-logo.png
+Exec=/usr/local/spring/sts/SpringToolSuite4
+Icon=/usr/share/icons/hicolor/128x128/apps/spring-tools-4-logo.png
 Type=Application
 Categories=TextEditor;Development;
 Terminal=false
