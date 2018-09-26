@@ -10,7 +10,7 @@ appd_username="${appd_username:-}"                          # appd account user 
 appd_password="${appd_password:-}"                          # appd account user password.
 appd_home="${appd_home:-/opt/appdynamics}"                  # [optional] appd home (defaults to '/opt/appdynamics').
 appd_platform_home="${appd_platform_home:-platform}"        # [optional] appd platform home (defaults to 'platform').
-appd_platform_rel="${appd_platform_rel:-4.5.0.12039}"       # [optional] appd platform release (defaults to '4.5.0.12039').
+appd_platform_rel="${appd_platform_rel:-4.5.1.13941}"       # [optional] appd platform release (defaults to '4.5.1.13941').
 
 appd_admin_username="${appd_admin_username:-admin}"         # [optional] appd admin user name (defaults to user 'admin').
 appd_admin_password="${appd_admin_password:-welcome1}"      # [optional] appd admin password (defaults to 'welcome1').
@@ -34,7 +34,7 @@ Usage:
     [root]# export appd_password="password"                 # appd account user password.
     [root]# export appd_home="/opt/appdynamics"             # [optional] appd home (defaults to '/opt/appdynamics').
     [root]# export appd_platform_home="platform"            # [optional] appd platform home (defaults to 'platform').
-    [root]# export appd_platform_rel="4.5.0.12039"          # [optional] appd platform release (defaults to '4.5.0.12039').
+    [root]# export appd_platform_rel="4.5.1.13941"          # [optional] appd platform release (defaults to '4.5.1.13941').
    #
     [root]# export appd_admin_username="admin"              # [optional] appd admin user name (defaults to user 'admin').
     [root]# export appd_admin_password="welcome1"           # [optional] appd admin password (defaults to 'welcome1').
@@ -117,15 +117,30 @@ cd ${devops_home}/provisioners/scripts/centos/appdynamics
 curdate=$(date +"%Y-%m-%d.%H-%M-%S")
 
 # download the appdynamics platform installer. ---------------------------------
-# authenticate to the appdynamics domain and store session id in a file.
-curl --silent --cookie-jar cookies-${curdate}.txt --data "username=${appd_username}&password=${appd_password}" https://login.appdynamics.com/sso/login/
+# authenticate to the appdynamics domain and store the oauth token to a file.
+post_data_filename="post-data.${curdate}.json"
+oauth_token_filename="oauth-token.${curdate}.json"
+
+rm -f "${post_data_filename}"
+touch "${post_data_filename}"
+chmod 644 "${post_data_filename}"
+
+echo "{" >> ${post_data_filename}
+echo "  \"username\": \"${appd_username}\"," >> ${post_data_filename}
+echo "  \"password\": \"${appd_password}\"," >> ${post_data_filename}
+echo "  \"scopes\": [\"download\"]" >> ${post_data_filename}
+echo "}" >> ${post_data_filename}
+
+curl --silent --request POST --data @${post_data_filename} https://identity.msrv.saas.appdynamics.com/v2.0/oauth/token --output ${oauth_token_filename}
+oauth_token=$(awk -F '"' '{print $4}' ${oauth_token_filename})
 
 # download the installer.
 rm -f ${appd_platform_installer}
-curl --silent --location --remote-name --cookie cookies-${curdate}.txt https://download.appdynamics.com/download/prox/download-file/enterprise-console/${appd_platform_rel}/${appd_platform_installer}
+curl --silent --location --remote-name --header "Authorization: Bearer ${oauth_token}" https://download.appdynamics.com/download/prox/download-file/enterprise-console/${appd_platform_rel}/${appd_platform_installer}
 chmod 755 ${appd_platform_installer}
 
-rm -f cookies-${curdate}.txt
+rm -f ${post_data_filename}
+rm -f ${oauth_token_filename}
 
 # create silent response file for installer. -----------------------------------
 response_file="appd-platform-response.varfile"

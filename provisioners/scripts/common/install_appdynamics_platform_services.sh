@@ -8,7 +8,7 @@ appd_admin_username="${appd_admin_username:-admin}"                             
 appd_admin_password="${appd_admin_password:-welcome1}"                          # [optional] appd admin password (defaults to 'welcome1').
 appd_platform_home="${appd_platform_home:-platform}"                            # [optional] appd platform home (defaults to 'platform').
 appd_platform_name="${appd_platform_name:-My Platform}"                         # [optional] appd platform name (defaults to 'My Platform').
-appd_platform_desc="${appd_platform_desc:-My Platform application.}"            # [optional] appd platform description (defaults to 'My Platform application.').
+appd_platform_description="${appd_platform_description:-My platform config.}"   # [optional] appd platform description (defaults to 'My platform config.').
 appd_platform_install_dir="${appd_platform_install_dir:-product}"               # [optional] appd platform base installation directory for platform products (defaults to 'product').
 appd_platform_hosts="${appd_platform_hosts:-platformadmin}"                     # [optional] appd platform hosts (defaults to 'platformadmin' which is the localhost).
 
@@ -40,7 +40,7 @@ Usage:
     [root]# export appd_admin_password="welcome1"                   # [optional] appd admin password (defaults to 'welcome1').
     [root]# export appd_platform_home="platform"                    # [optional] appd platform home (defaults to 'platform').
     [root]# export appd_platform_name="My Platform"                 # [optional] appd platform name (defaults to 'My Platform').
-    [root]# export appd_platform_desc="My Platform application."    # [optional] appd platform description (defaults to 'My Platform application.').
+    [root]# export appd_platform_description="My platform config."  # [optional] appd platform description (defaults to 'My platform config.').
     [root]# export appd_platform_install_dir="product"              # [optional] appd platform base installation directory for platform products (defaults to 'product').
     [root]# export appd_platform_hosts="platformadmin"              # [optional] appd platform hosts (defaults to 'platformadmin' which is the localhost).
    #
@@ -91,7 +91,7 @@ cd ${appd_platform_folder}/platform-admin/bin
 ./platform-admin.sh login --user-name "${appd_admin_username}" --password "${appd_admin_password}"
 
 # create an appdynamics platform. ----------------------------------------------
-./platform-admin.sh create-platform --name "${appd_platform_name}" --description "${appd_platform_desc}" --installation-dir "${appd_product_folder}"
+./platform-admin.sh create-platform --name "${appd_platform_name}" --description "${appd_platform_description}" --installation-dir "${appd_product_folder}"
 
 # add local host ('platformadmin') to platform. --------------------------------
 ./platform-admin.sh add-hosts --hosts "${appd_platform_hosts}"

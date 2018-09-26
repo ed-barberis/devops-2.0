@@ -8,7 +8,7 @@ appd_password="${appd_password:-}"                          # appd account user 
 appd_home="${appd_home:-/opt/appdynamics}"                  # [optional] appd home (defaults to '/opt/appdynamics').
 appd_agent_home="${appd_agent_home:-appagent}"              # [optional] appd agent home (defaults to 'appagent').
 appd_agent_user="${appd_agent_user:-vagrant}"               # [optional] appd agent user (defaults to user 'vagrant').
-appd_agent_release="${appd_agent_release:-4.5.0.23604}"     # [optional] appd agent release (defaults to '4.5.0.23604').
+appd_agent_release="${appd_agent_release:-4.5.2.23891}"     # [optional] appd agent release (defaults to '4.5.2.23891').
 #
 # appd config parameters.
 # NOTE: Setting 'appd_config_agent' to 'true' allows you to perform the Java Agent configuration
@@ -41,7 +41,7 @@ Usage:
     [root]# export appd_home="/opt/appdynamics"             # [optional] appd home (defaults to '/opt/appdynamics').
     [root]# export appd_agent_home="appagent"               # [optional] appd agent home (defaults to 'appagent').
     [root]# export appd_agent_user="vagrant"                # [optional] appd agent user (defaults to user 'vagrant').
-    [root]# export appd_agent_release="4.5.0.23604"         # [optional] appd agent release (defaults to '4.5.0.23604').
+    [root]# export appd_agent_release="4.5.2.23891"         # [optional] appd agent release (defaults to '4.5.2.23891').
    #
    # appd config parameters.
    # NOTE: Setting 'appd_config_agent' to 'true' allows you to perform the Java Agent configuration
@@ -89,14 +89,30 @@ cd ${appd_home}/${appd_agent_folder}
 curdate=$(date +"%Y-%m-%d.%H-%M-%S")
 
 # install appdynamics java agent -----------------------------------------------
-# authenticate to the appdynamics domain and store session id in a file.
-curl --silent --cookie-jar cookies-${curdate}.txt --data "username=${appd_username}&password=${appd_password}" https://login.appdynamics.com/sso/login/
+# authenticate to the appdynamics domain and store the oauth token to a file.
+post_data_filename="post-data.${curdate}.json"
+oauth_token_filename="oauth-token.${curdate}.json"
+
+rm -f "${post_data_filename}"
+touch "${post_data_filename}"
+chmod 644 "${post_data_filename}"
+
+echo "{" >> ${post_data_filename}
+echo "  \"username\": \"${appd_username}\"," >> ${post_data_filename}
+echo "  \"password\": \"${appd_password}\"," >> ${post_data_filename}
+echo "  \"scopes\": [\"download\"]" >> ${post_data_filename}
+echo "}" >> ${post_data_filename}
+
+curl --silent --request POST --data @${post_data_filename} https://identity.msrv.saas.appdynamics.com/v2.0/oauth/token --output ${oauth_token_filename}
+oauth_token=$(awk -F '"' '{print $4}' ${oauth_token_filename})
 
 # download the appdynamics java agent binary.
-curl --silent --location --remote-name --cookie cookies-${curdate}.txt https://download.appdynamics.com/download/prox/download-file/sun-jvm/${appd_agent_release}/${appd_agent_binary}
+rm -f ${appd_agent_binary}
+curl --silent --location --remote-name --header "Authorization: Bearer ${oauth_token}" https://download.appdynamics.com/download/prox/download-file/sun-jvm/${appd_agent_release}/${appd_agent_binary}
 chmod 644 ${appd_agent_binary}
 
-rm -f cookies-${curdate}.txt
+rm -f ${post_data_filename}
+rm -f ${oauth_token_filename}
 
 # extract appdynamics java agent binary.
 unzip ${appd_agent_binary}

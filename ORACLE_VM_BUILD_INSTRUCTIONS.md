@@ -152,10 +152,10 @@ Follow these instructions to build the Oracle Linux 7.5 VM images.
     ```
     $ vagrant ssh
     dev[vagrant]$ docker --version
-    Docker version 17.06.2-ol, build d02b7ab
+    Docker version 18.03.1-ol, build 0d51d18
 
     dev[vagrant]$ ansible --version
-    ansible 2.6.2
+    ansible 2.6.4
       config file = /etc/ansible/ansible.cfg
       configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
       ansible python module location = /usr/lib/python2.7/site-packages/ansible
@@ -183,10 +183,10 @@ Follow these instructions to build the Oracle Linux 7.5 VM images.
     ```
     $ vagrant ssh
     dev[vagrant]$ docker --version
-    Docker version 17.06.2-ol, build d02b7ab
+    Docker version 18.03.1-ol, build 0d51d18
 
     ops[vagrant]$ ansible --version
-    ansible 2.6.2
+    ansible 2.6.4
       config file = /etc/ansible/ansible.cfg
       configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
       ansible python module location = /usr/lib/python2.7/site-packages/ansible
@@ -285,65 +285,67 @@ Follow these instructions to build the Oracle Linux 7.5 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Ansible 2.6.2
+-	Ansible 2.6.4
 	-	Ansible Container 0.9.2
 -	Ant 1.10.5
--	Consul 1.2.2
+-	Consul 1.2.3
 -	Cloud-Init 0.7.9 [Optional]
--	Docker 17.06.2 CE
+-	Docker 18.03.1 CE
 	-	Docker Bash Completion
 	-	Docker Compose 1.22.0
 	-	Docker Compose Bash Completion
--	Git 2.18.0
+-	Git 2.19.0
 	-	Git Bash Completion
 	-	Git-Flow 1.11.0 (AVH Edition)
 	-	Git-Flow Bash Completion
--	Go 1.10.3
--	Gradle 4.9
--	Groovy 2.5.1
+-	Go 1.11
+-	Gradle 4.10.2
+-	Groovy 2.5.2
 -	Java SE JDK 8 Update 181
 -	Java SE JDK 10.0.2
+-	Java SE JDK 11
 -	JMESPath jp 0.1.3 (command-line JSON processor)
 -	jq 1.5 (command-line JSON processor)
 -	Maven 3.5.4
 -	Oracle Compute Cloud Service CLI (opc) 17.2.2 [Optional]
 -	Oracle PaaS Service Manager CLI (psm) 1.1.16 [Optional]
--	Packer 1.2.5
+-	Packer 1.3.1
 -	Python 2.7.5
 	-	Pip 10.0.1
 -	Python 3.3.2
 	-	Pip3 10.0.1
 -	Scala 2.12.6
-	-	Scala Build Tool (SBT) 1.2.1
--	Terraform 0.11.7
--	Vault 0.10.4
+	-	Scala Build Tool (SBT) 1.2.3
+-	Terraform 0.11.8
+-	Vault 0.11.1
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 11.1.4 63daf37
--	Jenkins 2.121.2
+-	GitLab Community Edition 11.3.0 17bd59a
+-	Jenkins 2.138.1
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
--	AppDynamics Enterprise Console 4.5.0.0 Build 12039
-	-	AppDynamics Controller 4.5.0.2 Build 25228
-	-	AppDynamics Event Service 4.5.0.0 Build 17318
+-	AppDynamics Enterprise Console 4.5.1.0 Build 13941
+	-	AppDynamics Controller 4.5.1.1 Build 30286
+	-	AppDynamics Event Service 4.5.1.0 Build 18232
 -	MySQL Shell 8.0.12
 
 The following developer tools are pre-installed in the __Developer VM__ (desktop) only:
 
--	Apache Tomcat 7.0.90
--	AppDynamics Java Agent 4.5.0.0 Build 23604
--	Atom Editor 1.29.0
+-	Apache Tomcat 7.0.91
+-	Apache Tomcat 8.5.34
+-	AppDynamics Java Agent 4.5.2.0 Build 23891
+-	Atom Editor 1.30.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 68.0.3440.106 (64-bit)
+-	Chrome 69.0.3497.100 (64-bit)
 -	Firefox 60.1.0est (64-bit)
 -	GVim 7.4.160-1
--	JetBrains IntelliJ IDEA 2018.2.1 (Community Edition)
--	JetBrains IntelliJ IDEA 2018.2.1 (Ultimate Edition)
--	JetBrains WebStorm 2018.2.1 (JavaScript IDE)
--	Postman 6.2.4
+-	JetBrains IntelliJ IDEA 2018.2.4 (Community Edition)
+-	JetBrains IntelliJ IDEA 2018.2.4 (Ultimate Edition)
+-	JetBrains WebStorm 2018.2.3 (JavaScript IDE)
+-	Postman 6.3.0
 -	Scala IDE for Eclipse 4.7.0 (Eclipse Oxygen.1 [4.7.1])
--	Spring Tool Suite 3.9.5 IDE (Eclipse Photon [4.8.0])
+-	Spring Tool Suite 4 [4.0.0] IDE (Eclipse 2018-09 [4.9.0])
 -	Sublime Text 3 Build 3176
--	Visual Studio Code 1.25.1
+-	Visual Studio Code 1.27.2
