@@ -3,9 +3,9 @@
 
 # install java se 11 development kit. ------------------------------------------
 jdkhome="jdk11"
-jdkbuild="11+28"
-jdkhash="55eed80b163941c8885ad9298e6d786a"
-jdkfolder="jdk-11"
+jdkbuild="11.0.1+13"
+jdkhash="90cf5d8f270a4347a95050320eef3fb7"
+jdkfolder="jdk-11.0.1"
 jdkbinary="${jdkfolder}_linux-x64_bin.tar.gz"
 
 # create java home parent folder.
