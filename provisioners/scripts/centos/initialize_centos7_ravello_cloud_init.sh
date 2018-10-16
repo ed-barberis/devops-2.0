@@ -1,5 +1,5 @@
 #!/bin/sh -eux
-# ravello cloud-init script to initialize oracle linux 7 vm imported from virtualbox.
+# ravello cloud-init script to initialize centos 7 vm imported from virtualbox.
 
 # add public keys for vagrant user. --------------------------------------------
 echo "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAk5kFiJyh5qsfrjthhp00TH5TfPptKGvGdhhWQN4XLMxHfJgx0T0BDEAGX0B3VzjxjPXtr1vRD+7V9A6RfouSK6u/Vii2pRe9483nq3gWuJvKLSHWRa7QowwndsuTdb1HUKcxsmu6uRjZph5fXroLxpoiPoBwj+eHIWq+lAcxHOp7etQqceXhj4eUcJ40xzyk1UpxYXac/QDojG1EG4N3V9EWOmPFr3XdPGAXl6+61bsWmll614QqFHPVoLQ8D/Bss2P/dCiPJEJRkmmVdppwn6sn0B2mABaiUsvNEFFP8rPUqsWJIAqEZV8SY23VAkLrgipAceQn9VnJKB6XomCQ2Q== devops-2.0" >> /home/vagrant/.ssh/authorized_keys
