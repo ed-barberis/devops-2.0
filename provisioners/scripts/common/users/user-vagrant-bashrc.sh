@@ -137,5 +137,5 @@ function netstatgrep {
 }
 
 function sclenable {
-  scl enable python33 -- bash
+  scl enable rh-python36 -- bash
 }

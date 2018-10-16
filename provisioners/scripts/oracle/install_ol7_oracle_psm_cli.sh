@@ -8,10 +8,10 @@ devops_home="${devops_home:-/opt/devops}"                   # [optional] devops 
 mkdir -p ${devops_home}/provisioners/scripts/oracle
 cd ${devops_home}/provisioners/scripts/oracle
 
-# verify python 3.3 tools. -----------------------------------------------------
-scl enable python33 -- python --version
-scl enable python33 -- pip --version
-scl enable python33 -- pip3 --version
+# verify python 3.6 tools. -----------------------------------------------------
+scl enable rh-python36 -- python --version
+scl enable rh-python36 -- pip --version
+scl enable rh-python36 -- pip3 --version
 
 # install oracle paas service manager (psm) cli client. ------------------------
 username="<username>"
