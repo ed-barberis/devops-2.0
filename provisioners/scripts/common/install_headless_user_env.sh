@@ -104,17 +104,17 @@ if [ "$user_docker_profile" == "true" ] && [ "$user_name" != "root" ]; then
   usermod -aG docker ${user_name}
 
   # install docker completion for bash.
-  dcompletion_release="17.03.1-ce"
+  dcompletion_release="18.06.1-ce"
   dcompletion_binary=".docker-completion.sh"
 
   # download docker completion for bash from github.com.
   rm -f ${user_home}/${dcompletion_binary}
-  curl --silent --location "https://github.com/moby/moby/raw/v${dcompletion_release}/contrib/completion/bash/docker" --output ${user_home}/${dcompletion_binary}
+  curl --silent --location "https://github.com/docker/cli/raw/v${dcompletion_release}/contrib/completion/bash/docker" --output ${user_home}/${dcompletion_binary}
   chown -R ${user_name}:${user_group} ${user_home}/${dcompletion_binary}
   chmod 644 ${user_home}/${dcompletion_binary}
 
   # install docker compose completion for bash.
-  dcrelease="1.18.0"
+  dcrelease="1.22.0"
   dccompletion_binary=".docker-compose-completion.sh"
 
   # download docker completion for bash from github.com.
