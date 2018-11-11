@@ -3,7 +3,7 @@
 
 # install apache maven. --------------------------------------------------------
 m2home="apache-maven"
-mvnrelease="3.5.4"
+mvnrelease="3.6.0"
 mvnfolder="${m2home}-${mvnrelease}"
 mvnbinary="${mvnfolder}-bin.tar.gz"
 

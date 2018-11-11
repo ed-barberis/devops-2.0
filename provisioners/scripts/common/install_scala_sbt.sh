@@ -18,7 +18,7 @@ curdate=$(date +"%Y-%m-%d.%H-%M-%S")
 curl --silent --dump-header curl-${sbthome}.${curdate}.out1 https://github.com/sbt/sbt/releases/latest --output /dev/null
 tr -d '\r' < curl-${sbthome}.${curdate}.out1 > curl-${sbthome}.${curdate}.out2
 sbtrelease=$(awk '/Location/ {print $2}' curl-${sbthome}.${curdate}.out2 | awk -F "/" '{print $8}')
-sbtrelease="v1.2.4"
+sbtrelease="v1.2.6"
 sbtdir="sbt"
 sbtfolder="${sbthome}-${sbtrelease:1}"
 sbtbinary="sbt-${sbtrelease:1}.tgz"
