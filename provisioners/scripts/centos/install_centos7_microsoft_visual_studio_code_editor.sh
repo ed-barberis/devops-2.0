@@ -16,7 +16,8 @@ curdate=$(date +"%Y-%m-%d.%H-%M-%S")
 #curl --silent --dump-header curl-get-code.${curdate}.out1 https://go.microsoft.com/fwlink/?LinkID=620884 --output /dev/null
 #curl --silent --dump-header curl-vscode.${curdate}.out1 https://vscode-update.azurewebsites.net/latest/linux-x64/stable --output /dev/null
 #curl --silent --dump-header curl-get-code.${curdate}.out1 https://go.microsoft.com/fwlink/?LinkID=760867 --output /dev/null
-curl --silent --dump-header curl-vscode.${curdate}.out1 https://vscode-update.azurewebsites.net/latest/linux-rpm-x64/stable --output /dev/null
+#curl --silent --dump-header curl-vscode.${curdate}.out1 https://vscode-update.azurewebsites.net/latest/linux-rpm-x64/stable --output /dev/null
+curl --silent --dump-header curl-vscode.${curdate}.out1 https://update.code.visualstudio.com/latest/linux-rpm-x64/stable --output /dev/null
 tr -d '\r' < curl-vscode.${curdate}.out1 > curl-vscode.${curdate}.out2
 vscodelocation=$(awk '/Location/ {print $2}' curl-vscode.${curdate}.out2)
 vscoderepo=$(awk '/Location/ {print $2}' curl-vscode.${curdate}.out2 | awk -F "/" '{print $6}')
