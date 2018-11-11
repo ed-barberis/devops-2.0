@@ -13,7 +13,7 @@ curdate=$(date +"%Y-%m-%d.%H-%M-%S")
 curl --silent --dump-header curl-jq.${curdate}.out1 https://github.com/stedolan/jq/releases/latest --output /dev/null
 tr -d '\r' < curl-jq.${curdate}.out1 > curl-jq.${curdate}.out2
 jq_release=$(awk '/Location/ {print $2}' curl-jq.${curdate}.out2 | awk -F "/" '{print $8}')
-#jq_release="jq-1.5"
+#jq_release="jq-1.6"
 jq_binary="jq-linux64"
 rm -f curl-jq.${curdate}.out1
 rm -f curl-jq.${curdate}.out2
