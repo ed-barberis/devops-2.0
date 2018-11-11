@@ -8,8 +8,8 @@ devops_home="${devops_home:-/opt/devops}"                   # [optional] devops 
 
 # install spring tool suite ide. -----------------------------------------------
 stshome="sts"
-stsrelease="4.0.0"
-stsnumber="323109826"
+stsrelease="4.0.1"
+stsnumber="1484344637"
 eclipseversion="2018-09"
 eclipserelease="4.9.0"
 
