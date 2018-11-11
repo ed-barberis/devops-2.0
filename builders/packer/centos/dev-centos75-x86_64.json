@@ -63,6 +63,7 @@
         "appd_config_agent={{user `appd_config_agent`}}",
         "appd_username={{user `appd_username`}}",
         "appd_password={{user `appd_password`}}",
+        "appd_sim_enabled={{user `appd_sim_enabled`}}",
         "devops_home={{user `devops_home`}}",
         "HOME_DIR=/home/vagrant",
         "http_proxy={{user `http_proxy`}}",
@@ -93,6 +94,7 @@
         "../../../provisioners/scripts/common/install_git_flow.sh",
         "../../../provisioners/scripts/common/install_apache_tomcat_7.sh",
         "../../../provisioners/scripts/common/install_appdynamics_java_agent.sh",
+        "../../../provisioners/scripts/centos/install_centos7_appdynamics_machine_agent.sh",
         "../../../provisioners/scripts/centos/install_centos7_atom_editor.sh",
         "../../../provisioners/scripts/centos/install_centos7_jetbrains_intellij_idea_ultimate_edition.sh",
         "../../../provisioners/scripts/centos/install_centos7_jetbrains_webstorm_javascript_ide.sh",
@@ -109,6 +111,7 @@
   "variables": {
     "appd_config_agent": "true",
     "appd_password": "{{env `appd_password`}}",
+    "appd_sim_enabled": "true",
     "appd_username": "{{env `appd_username`}}",
     "box_basename": "dev-centos75",
     "build_timestamp": "{{isotime \"20060102150405\"}}",

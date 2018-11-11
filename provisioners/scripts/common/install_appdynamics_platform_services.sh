@@ -104,7 +104,7 @@ cd ${appd_platform_folder}/platform-admin/bin
 
 # configure the appdynamics events service as a service. -----------------------
 systemd_dir="/etc/systemd/system"
-appd_events_service_service="appd-events-service.service"
+appd_events_service_service="appdynamics-events-service.service"
 service_filepath="${systemd_dir}/${appd_events_service_service}"
 
 # create systemd service file.
@@ -116,7 +116,7 @@ if [ -d "$systemd_dir" ]; then
 
   echo "[Unit]" >> "${service_filepath}"
   echo "Description=The AppDynamics Events Service." >> "${service_filepath}"
-  echo "After=network.target remote-fs.target nss-lookup.target appd-enterprise-console.service" >> "${service_filepath}"
+  echo "After=network.target remote-fs.target nss-lookup.target appdynamics-enterprise-console.service" >> "${service_filepath}"
   echo "" >> "${service_filepath}"
   echo "[Service]" >> "${service_filepath}"
   echo "Type=forking" >> "${service_filepath}"
@@ -151,7 +151,7 @@ curl --silent http://localhost:8090/controller/rest/serverstatus
 
 # configure the appdynamics controller as a service. ---------------------------
 systemd_dir="/etc/systemd/system"
-appd_controller_service="appd-controller.service"
+appd_controller_service="appdynamics-controller.service"
 service_filepath="${systemd_dir}/${appd_controller_service}"
 
 # create systemd service file.
@@ -163,7 +163,7 @@ if [ -d "$systemd_dir" ]; then
 
   echo "[Unit]" >> "${service_filepath}"
   echo "Description=The AppDynamics Controller." >> "${service_filepath}"
-  echo "After=network.target remote-fs.target nss-lookup.target appd-enterprise-console.service appd-events-service.service" >> "${service_filepath}"
+  echo "After=network.target remote-fs.target nss-lookup.target appdynamics-enterprise-console.service appdynamics-events-service.service" >> "${service_filepath}"
   echo "" >> "${service_filepath}"
   echo "[Service]" >> "${service_filepath}"
   echo "Type=forking" >> "${service_filepath}"

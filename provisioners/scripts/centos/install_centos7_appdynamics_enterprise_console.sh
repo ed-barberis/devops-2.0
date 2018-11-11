@@ -10,7 +10,7 @@ appd_username="${appd_username:-}"                          # appd account user 
 appd_password="${appd_password:-}"                          # appd account user password.
 appd_home="${appd_home:-/opt/appdynamics}"                  # [optional] appd home (defaults to '/opt/appdynamics').
 appd_platform_home="${appd_platform_home:-platform}"        # [optional] appd platform home (defaults to 'platform').
-appd_platform_rel="${appd_platform_rel:-4.5.2.14570}"       # [optional] appd platform release (defaults to '4.5.2.14570').
+appd_platform_rel="${appd_platform_rel:-4.5.2.15051}"       # [optional] appd platform release (defaults to '4.5.2.15051').
 
 appd_admin_username="${appd_admin_username:-admin}"         # [optional] appd admin user name (defaults to user 'admin').
 appd_admin_password="${appd_admin_password:-welcome1}"      # [optional] appd admin password (defaults to 'welcome1').
@@ -34,7 +34,7 @@ Usage:
     [root]# export appd_password="password"                 # appd account user password.
     [root]# export appd_home="/opt/appdynamics"             # [optional] appd home (defaults to '/opt/appdynamics').
     [root]# export appd_platform_home="platform"            # [optional] appd platform home (defaults to 'platform').
-    [root]# export appd_platform_rel="4.5.2.14570"          # [optional] appd platform release (defaults to '4.5.2.14570').
+    [root]# export appd_platform_rel="4.5.2.15051"          # [optional] appd platform release (defaults to '4.5.2.15051').
    #
     [root]# export appd_admin_username="admin"              # [optional] appd admin user name (defaults to user 'admin').
     [root]# export appd_admin_password="welcome1"           # [optional] appd admin password (defaults to 'welcome1').
@@ -173,7 +173,7 @@ cd ${appd_platform_folder}/platform-admin/bin
 
 # configure the appdynamics enterprise console as a service. -------------------
 systemd_dir="/etc/systemd/system"
-appd_enterprise_console_service="appd-enterprise-console.service"
+appd_enterprise_console_service="appdynamics-enterprise-console.service"
 service_filepath="${systemd_dir}/${appd_enterprise_console_service}"
 
 # create systemd service file.

@@ -155,7 +155,7 @@ Follow these instructions to build the CentOS Linux 7.5 VM images.
     Docker version 18.06.1-ce, build e68fc7a 
 
     dev[vagrant]$ ansible --version
-    ansible 2.7.0
+    ansible 2.7.1
       config file = /etc/ansible/ansible.cfg
       configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
       ansible python module location = /usr/lib/python2.7/site-packages/ansible
@@ -186,7 +186,7 @@ Follow these instructions to build the CentOS Linux 7.5 VM images.
     Docker version 18.06.1-ce, build e68fc7a 
 
     ops[vagrant]$ ansible --version
-    ansible 2.7.0
+    ansible 2.7.1
       config file = /etc/ansible/ansible.cfg
       configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
       ansible python module location = /usr/lib/python2.7/site-packages/ansible
@@ -262,7 +262,7 @@ Follow these instructions to build the CentOS Linux 7.5 VM images.
     Connect to the VM via SSH and run some [optional] commands:
     ```
     $ vagrant ssh
-    apm[vagrant]$ sudo journalctl -fu appd-controller.service
+    apm[vagrant]$ sudo journalctl -fu appdynamics-controller
     ...
     May 21 13:29:15 apm platform-admin.sh[4750]: Controller successfully started.
     May 21 13:29:15 apm platform-admin.sh[4750]: Job duration: 4 minutes 16 seconds
@@ -270,8 +270,8 @@ Follow these instructions to build the CentOS Linux 7.5 VM images.
     <CTRL-C>
 
     apm[vagrant]$ <run other commands>
-    apm[vagrant]$ sudo systemctl status appd-enterprise-console.service
-    apm[vagrant]$ sudo systemctl status appd-events-service.service
+    apm[vagrant]$ sudo systemctl status appdynamics-enterprise-console
+    apm[vagrant]$ sudo systemctl status appdynamics-events-service
     ```
     Gracefully shutdown the VM:
     ```
@@ -285,64 +285,66 @@ Follow these instructions to build the CentOS Linux 7.5 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Ansible 2.7.0
-	-	Ansible Container 0.9.2
+-	Amazon AWS CLI 1.16.52 (command-line interface) [Optional]
+-	Ansible 2.7.1
+	-	Ansible Container 0.9.2 [Optional]
 -	Ant 1.10.5
 -	Consul 1.3.0
 -	Cloud-Init 0.7.9 [Optional]
 -	Docker 18.06.1 CE
 	-	Docker Bash Completion
-	-	Docker Compose 1.22.0
+	-	Docker Compose 1.23.1
 	-	Docker Compose Bash Completion
 -	Git 2.19.1
 	-	Git Bash Completion
 	-	Git-Flow 1.11.0 (AVH Edition)
 	-	Git-Flow Bash Completion
--	Go 1.11.1
+-	Go 1.11.2
 -	Gradle 4.10.2
 -	Groovy 2.5.3
 -	Java SE JDK 8 Update 192
 -	Java SE JDK 11.0.1
 -	JMESPath jp 0.1.3 (command-line JSON processor)
--	jq 1.5 (command-line JSON processor)
--	Maven 3.5.4
--	Packer 1.3.1
+-	jq 1.6 (command-line JSON processor)
+-	Maven 3.6.0
+-	Packer 1.3.2
 -	Python 2.7.5
 	-	Pip 18.1
 -	Python 3.6.3
 	-	Pip3 18.1
 -	Scala 2.12.7
-	-	Scala Build Tool (SBT) 1.2.4
--	Terraform 0.11.8
--	Vault 0.11.3
+	-	Scala Build Tool (SBT) 1.2.6
+-	Terraform 0.11.10
+-	Vault 0.11.4
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 11.3.5 c74e8d9
--	Jenkins 2.138.2
+-	GitLab Community Edition 11.4.5 f5536c6
+-	Jenkins 2.138.3
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
--	AppDynamics Enterprise Console 4.5.2.0 Build 14570
-	-	AppDynamics Controller 4.5.2.1 Build 8041
+-	AppDynamics Enterprise Console 4.5.2.0 Build 15051
+	-	AppDynamics Controller 4.5.2.1 Build 8058
 	-	AppDynamics Event Service 4.5.2.0 Build 19418
--	MySQL Shell 8.0.12
+-	MySQL Shell 8.0.13
 
 The following developer tools are pre-installed in the __Developer VM__ (desktop) only:
 
 -	Apache Tomcat 7.0.91
--	Apache Tomcat 8.5.34
--	AppDynamics Java Agent 4.5.2.0 Build 24246
--	Atom Editor 1.31.2
+-	Apache Tomcat 8.5.35
+-	AppDynamics Java Agent 4.5.4.0 Build 24355
+-	AppDynamics Machine Agent 4.5.4.0 Build 1735
+-	Atom Editor 1.32.2
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 70.0.3538.67 (64-bit)
--	Firefox 60.2.2est (64-bit)
+-	Chrome 70.0.3538.102 (64-bit)
+-	Firefox 60.3.0est (64-bit)
 -	GVim 7.4.160-1
 -	JetBrains IntelliJ IDEA 2018.2.5 (Community Edition)
 -	JetBrains IntelliJ IDEA 2018.2.5 (Ultimate Edition)
--	JetBrains WebStorm 2018.2.4 (JavaScript IDE)
--	Postman 6.4.2
--	Scala IDE for Eclipse 4.7.0 (Eclipse Oxygen.1 [4.7.1])
--	Spring Tool Suite 4 [4.0.0] IDE (Eclipse 2018-09 [4.9.0])
+-	JetBrains WebStorm 2018.2.5 (JavaScript IDE)
+-	Postman 6.5.2
+-	Scala IDE for Eclipse 4.7.0 (Eclipse Oxygen.1 [4.7.1]) [Optional]
+-	Spring Tool Suite 4 [4.0.1] IDE (Eclipse 2018-09 [4.9.0])
 -	Sublime Text 3 Build 3176
--	Visual Studio Code 1.28.1
+-	Visual Studio Code 1.28.2

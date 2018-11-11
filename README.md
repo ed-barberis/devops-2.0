@@ -20,24 +20,24 @@ Next, using these base VMs as a foundation, the user can build more advanced VM 
 
 To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the following open source software needs to be installed on the host machine:
 
--	VirtualBox 5.2.20
-	-	VirtualBox Extension Pack 5.2.20
--	Vagrant 2.1.5 with Plugins
+-	VirtualBox 5.2.22
+	-	VirtualBox Extension Pack 5.2.22
+-	Vagrant 2.2.0 with Plugins
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 1.1.9
 	-	vagrant-vbguest 0.16.0
--	Packer 1.3.1
+-	Packer 1.3.2
 -	Git 2.19.1 for Win64
 	-	wget 1.9.1
 	-	tree 1.5.2.2
 
 ## Installation Instructions - Windows 64-Bit
 
-1.	Install [VirtualBox 5.2.20 for Windows 64-bit](https://download.virtualbox.org/virtualbox/5.2.20/VirtualBox-5.2.20-125813-Win.exe).
+1.	Install [VirtualBox 5.2.22 for Windows 64-bit](https://download.virtualbox.org/virtualbox/5.2.22/VirtualBox-5.2.22-126460-Win.exe).
 
-2.	Install [VirtualBox Extension Pack 5.2.20](https://download.virtualbox.org/virtualbox/5.2.20/Oracle_VM_VirtualBox_Extension_Pack-5.2.20-125813.vbox-extpack).
+2.	Install [VirtualBox Extension Pack 5.2.22](https://download.virtualbox.org/virtualbox/5.2.22/Oracle_VM_VirtualBox_Extension_Pack-5.2.22-126460.vbox-extpack).
 
-3.	Install [Vagrant 2.1.5 for Windows 64-bit](https://releases.hashicorp.com/vagrant/2.1.5/vagrant_2.1.5_x86_64.msi).  
+3.	Install [Vagrant 2.2.0 for Windows 64-bit](https://releases.hashicorp.com/vagrant/2.2.0/vagrant_2.2.0_x86_64.msi).  
     Suggested install folder:  
     `C:\HashiCorp\vagrant`  
 
@@ -48,7 +48,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
     If this is set, Vagrant will prefer using utility executables (like `ssh` and `rsync`) from the local system instead of those vendored within the Vagrant installation.  
 
-4.	Install [Packer 1.3.1 for Windows 64-bit](https://releases.hashicorp.com/packer/1.3.1/packer_1.3.1_windows_amd64.zip).  
+4.	Install [Packer 1.3.2 for Windows 64-bit](https://releases.hashicorp.com/packer/1.3.2/packer_1.3.2_windows_amd64.zip).  
     Create suggested install folder and extract contents of ZIP file to:  
     `C:\HashiCorp\Packer\bin`  
 
@@ -87,13 +87,13 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
     ```
     $ VBoxManage --version
-    5.2.20r125813
+    5.2.22r126460
 
     $ vagrant --version
-    Vagrant 2.1.5
+    Vagrant 2.2.0
 
     $ packer --version
-    1.3.1
+    1.3.2
 
     $ git --version
     git version 2.19.1.windows.1
