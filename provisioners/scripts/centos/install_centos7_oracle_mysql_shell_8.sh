@@ -9,7 +9,7 @@ mkdir -p ${devops_home}/provisioners/scripts/centos
 cd ${devops_home}/provisioners/scripts/centos
 
 # install mysql shell. ---------------------------------------------------------
-mysqlsh_release="8.0.12-1"
+mysqlsh_release="8.0.13-1"
 mysqlsh_binary="mysql-shell-${mysqlsh_release}.el7.x86_64.rpm"
 
 # download mysql shell repository.
