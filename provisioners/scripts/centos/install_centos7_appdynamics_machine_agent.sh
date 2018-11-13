@@ -8,7 +8,7 @@ appd_password="${appd_password:-}"                                  # appd accou
 appd_home="${appd_home:-/opt/appdynamics}"                          # [optional] appd home (defaults to '/opt/appdynamics').
 appd_agent_home="${appd_agent_home:-machine-agent}"                 # [optional] appd agent home (defaults to 'machine-agent').
 appd_agent_user="${appd_agent_user:-vagrant}"                       # [optional] appd agent user (defaults to user 'vagrant').
-appd_agent_release="${appd_agent_release:-4.5.4.1735}"              # [optional] appd agent release (defaults to '4.5.4.1735').
+appd_agent_release="${appd_agent_release:-4.5.5.1784}"              # [optional] appd agent release (defaults to '4.5.5.1784').
 #
 # appd config parameters.
 # NOTE: Setting 'appd_config_agent' to 'true' allows you to perform the Machine Agent configuration
@@ -43,7 +43,7 @@ Usage:
     [root]# export appd_home="/opt/appdynamics"             # [optional] appd home (defaults to '/opt/appdynamics').
     [root]# export appd_agent_home="machine-agent"          # [optional] appd agent home (defaults to 'machine-agent').
     [root]# export appd_agent_user="vagrant"                # [optional] appd agent user (defaults to user 'vagrant').
-    [root]# export appd_agent_release="4.5.4.1735"          # [optional] appd agent release (defaults to '4.5.4.1735').
+    [root]# export appd_agent_release="4.5.5.1784"          # [optional] appd agent release (defaults to '4.5.5.1784').
    #
    # appd config parameters.
    # NOTE: Setting 'appd_config_agent' to 'true' allows you to perform the Machine Agent configuration

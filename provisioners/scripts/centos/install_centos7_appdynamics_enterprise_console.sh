@@ -2,25 +2,25 @@
 # install appdynamics enterprise console by appdynamics.
 
 # set local installation variables. --------------------------------------------
-local_hostname="$(uname -n)"                                # initialize hostname.
+local_hostname="$(uname -n)"                                    # initialize hostname.
 
 # set default values for input environment variables if not set. ---------------
 # appd platform install parameters.
-appd_username="${appd_username:-}"                          # appd account user name.
-appd_password="${appd_password:-}"                          # appd account user password.
-appd_home="${appd_home:-/opt/appdynamics}"                  # [optional] appd home (defaults to '/opt/appdynamics').
-appd_platform_home="${appd_platform_home:-platform}"        # [optional] appd platform home (defaults to 'platform').
-appd_platform_rel="${appd_platform_rel:-4.5.2.15051}"       # [optional] appd platform release (defaults to '4.5.2.15051').
+appd_username="${appd_username:-}"                              # appd account user name.
+appd_password="${appd_password:-}"                              # appd account user password.
+appd_home="${appd_home:-/opt/appdynamics}"                      # [optional] appd home (defaults to '/opt/appdynamics').
+appd_platform_home="${appd_platform_home:-platform}"            # [optional] appd platform home (defaults to 'platform').
+appd_platform_rel="${appd_platform_rel:-4.5.2.15329}"           # [optional] appd platform release (defaults to '4.5.2.15329').
 
-appd_admin_username="${appd_admin_username:-admin}"         # [optional] appd admin user name (defaults to user 'admin').
-appd_admin_password="${appd_admin_password:-welcome1}"      # [optional] appd admin password (defaults to 'welcome1').
-appd_db_password="${appd_db_password:-welcome1}"            # [optional] appd database password (defaults to 'welcome1').
-appd_db_root_password="${appd_db_root_password:-welcome1}"  # [optional] appd database root password (defaults to 'welcome1').
-appd_server_host="${appd_server_host:-$local_hostname}"     # [optional] appd hostname (defaults to 'uname -n').
-appd_server_port="${appd_server_port:-9191}"                # [optional] appd server port (defaults to '9191').
+appd_admin_username="${appd_admin_username:-admin}"             # [optional] appd admin user name (defaults to user 'admin').
+appd_admin_password="${appd_admin_password:-welcome1}"          # [optional] appd admin password (defaults to 'welcome1').
+appd_db_password="${appd_db_password:-welcome1}"                # [optional] appd database password (defaults to 'welcome1').
+appd_db_root_password="${appd_db_root_password:-welcome1}"      # [optional] appd database root password (defaults to 'welcome1').
+appd_server_host="${appd_server_host:-$local_hostname}"         # [optional] appd hostname (defaults to 'uname -n').
+appd_server_port="${appd_server_port:-9191}"                    # [optional] appd server port (defaults to '9191').
 
 # set default value for devops home environment variable if not set. -----------
-devops_home="${devops_home:-/opt/devops}"                   # [optional] devops home (defaults to '/opt/devops').
+devops_home="${devops_home:-/opt/devops}"                       # [optional] devops home (defaults to '/opt/devops').
 
 # define usage function. -------------------------------------------------------
 usage() {
@@ -30,20 +30,20 @@ Usage:
   Script should be run with 'root' privilege.
   Example:
    # appd platform install parameters.
-    [root]# export appd_username="name@example.com"         # appd account user name.
-    [root]# export appd_password="password"                 # appd account user password.
-    [root]# export appd_home="/opt/appdynamics"             # [optional] appd home (defaults to '/opt/appdynamics').
-    [root]# export appd_platform_home="platform"            # [optional] appd platform home (defaults to 'platform').
-    [root]# export appd_platform_rel="4.5.2.15051"          # [optional] appd platform release (defaults to '4.5.2.15051').
+    [root]# export appd_username="name@example.com"             # appd account user name.
+    [root]# export appd_password="password"                     # appd account user password.
+    [root]# export appd_home="/opt/appdynamics"                 # [optional] appd home (defaults to '/opt/appdynamics').
+    [root]# export appd_platform_home="platform"                # [optional] appd platform home (defaults to 'platform').
+    [root]# export appd_platform_rel="4.5.2.15329"              # [optional] appd platform release (defaults to '4.5.2.15329').
    #
-    [root]# export appd_admin_username="admin"              # [optional] appd admin user name (defaults to user 'admin').
-    [root]# export appd_admin_password="welcome1"           # [optional] appd admin password (defaults to 'welcome1').
-    [root]# export appd_db_password="welcome1"              # [optional] appd database password (defaults to 'welcome1').
-    [root]# export appd_db_root_password="welcome1"         # [optional] appd database root password (defaults to 'welcome1').
-    [root]# export appd_server_host="apm"                   # [optional] appd hostname (defaults to 'uname -n').
-    [root]# export appd_server_port="9191"                  # [optional] appd server port (defaults to '9191').
+    [root]# export appd_admin_username="admin"                  # [optional] appd admin user name (defaults to user 'admin').
+    [root]# export appd_admin_password="welcome1"               # [optional] appd admin password (defaults to 'welcome1').
+    [root]# export appd_db_password="welcome1"                  # [optional] appd database password (defaults to 'welcome1').
+    [root]# export appd_db_root_password="welcome1"             # [optional] appd database root password (defaults to 'welcome1').
+    [root]# export appd_server_host="apm"                       # [optional] appd hostname (defaults to 'uname -n').
+    [root]# export appd_server_port="9191"                      # [optional] appd server port (defaults to '9191').
    #
-    [root]# export devops_home="/opt/devops"                # [optional] devops home (defaults to '/opt/devops').
+    [root]# export devops_home="/opt/devops"                    # [optional] devops home (defaults to '/opt/devops').
     [root]# $0
 EOF
 }
