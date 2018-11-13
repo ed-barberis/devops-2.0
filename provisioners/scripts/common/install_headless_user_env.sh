@@ -2,16 +2,16 @@
 # create default headless (command-line) environment profile for devops user.
 
 # set default values for input environment variables if not set. ---------------
-user_name="${user_name:-}"                                  # user name.
-user_group="${user_group:-}"                                # user login group.
-user_home="${user_home:-/home/$user_name}"                  # [optional] user home (defaults to '/home/user_name').
-user_docker_profile="${user_docker_profile:-false}"         # [optional] user docker profile (defaults to 'false').
-user_prompt_color="${user_prompt_color:-green}"             # [optional] user prompt color (defaults to 'green').
-                                                            #            valid colors are:
-                                                            #              'black', 'blue', 'cyan', 'green', 'magenta', 'red', 'white', 'yellow'
+user_name="${user_name:-}"                                      # user name.
+user_group="${user_group:-}"                                    # user login group.
+user_home="${user_home:-/home/$user_name}"                      # [optional] user home (defaults to '/home/user_name').
+user_docker_profile="${user_docker_profile:-false}"             # [optional] user docker profile (defaults to 'false').
+user_prompt_color="${user_prompt_color:-green}"                 # [optional] user prompt color (defaults to 'green').
+                                                                #            valid colors are:
+                                                                #              'black', 'blue', 'cyan', 'green', 'magenta', 'red', 'white', 'yellow'
 
 # set default value for devops home environment variable if not set. -----------
-devops_home="${devops_home:-/opt/devops}"                   # [optional] devops home (defaults to '/opt/devops').
+devops_home="${devops_home:-/opt/devops}"                       # [optional] devops home (defaults to '/opt/devops').
 
 # define usage function. -------------------------------------------------------
 usage() {
@@ -20,15 +20,15 @@ Usage:
   All inputs are defined by external environment variables.
   Script should be run with correct privilege for the given user name.
   Example:
-    [root]# export user_name="user1"                        # user name.
-    [root]# export user_group="group1"                      # user login group.
-    [root]# export user_home="/home/user1"                  # [optional] user home (defaults to '/home/user_name').
-    [root]# export user_docker_profile="true"               # [optional] user docker profile (defaults to 'false').
-    [root]# export user_prompt_color="yellow"               # [optional] user prompt color (defaults to 'green').
-                                                            #            valid colors:
-                                                            #              'black', 'blue', 'cyan', 'green', 'magenta', 'red', 'white', 'yellow'
-                                                            #
-    [root]# export devops_home="/opt/devops"                # [optional] devops home (defaults to '/opt/devops').
+    [root]# export user_name="user1"                            # user name.
+    [root]# export user_group="group1"                          # user login group.
+    [root]# export user_home="/home/user1"                      # [optional] user home (defaults to '/home/user_name').
+    [root]# export user_docker_profile="true"                   # [optional] user docker profile (defaults to 'false').
+    [root]# export user_prompt_color="yellow"                   # [optional] user prompt color (defaults to 'green').
+                                                                #            valid colors:
+                                                                #              'black', 'blue', 'cyan', 'green', 'magenta', 'red', 'white', 'yellow'
+                                                                #
+    [root]# export devops_home="/opt/devops"                    # [optional] devops home (defaults to '/opt/devops').
     [root]# $0
 EOF
 }
@@ -104,7 +104,7 @@ if [ "$user_docker_profile" == "true" ] && [ "$user_name" != "root" ]; then
   usermod -aG docker ${user_name}
 
   # install docker completion for bash.
-  dcompletion_release="18.06.1-ce"
+  dcompletion_release="18.09.0"
   dcompletion_binary=".docker-completion.sh"
 
   # download docker completion for bash from github.com.
@@ -114,7 +114,7 @@ if [ "$user_docker_profile" == "true" ] && [ "$user_name" != "root" ]; then
   chmod 644 ${user_home}/${dcompletion_binary}
 
   # install docker compose completion for bash.
-  dcrelease="1.22.0"
+  dcrelease="1.23.1"
   dccompletion_binary=".docker-compose-completion.sh"
 
   # download docker completion for bash from github.com.

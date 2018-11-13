@@ -74,17 +74,15 @@ PS1="${reset}${cyan}\h${blue}[${green}\u${blue}]${white}\$ "
 export PS1
 
 # add local applications to main PATH.
-PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$M2:$GROOVY_HOME/bin:$GRADLE_HOME/bin:$GIT_HOME/bin:$GIT_FLOW_HOME/bin:$GOROOT/bin:$PATH
-#PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$M2:$GROOVY_HOME/bin:$GRADLE_HOME/bin:$GIT_HOME/bin:$GIT_FLOW_HOME/bin:$GOROOT/bin:$POSTMAN_HOME:$PATH
+PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$M2:$GROOVY_HOME/bin:$GRADLE_HOME/bin:$GIT_HOME/bin:$GIT_FLOW_HOME/bin:$GOROOT/bin:$HOME/.local/bin:$PATH
+#PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$M2:$GROOVY_HOME/bin:$GRADLE_HOME/bin:$GIT_HOME/bin:$GIT_FLOW_HOME/bin:$GOROOT/bin:$POSTMAN_HOME:$HOME/.local/bin:$PATH
 export PATH
 
-# set oracle proxy.
-#http_proxy=http://www-proxy.us.oracle.com:80
+# set corporate proxy.
+#http_proxy=http://proxy.esl.cisco.com:8080
 #export http_proxy
-#https_proxy=http://www-proxy.us.oracle.com:80
+#https_proxy=http://proxy.esl.cisco.com:8080
 #export https_proxy
-#socks_proxy=socks://www-proxy.us.oracle.com:80
-#export socks_proxy
 
 # set options.
 set -o noclobber
