@@ -1,5 +1,5 @@
 #!/bin/sh -eux
-# install the oracle linux 7 uekr4 kernel.
+# install the oracle linux 7 uekr5 kernel.
 
 # set current date for temporary filename. -------------------------------------
 curdate=$(date +"%Y-%m-%d.%H-%M-%S")
@@ -14,8 +14,9 @@ fi
 
 wget --no-verbose http://yum.oracle.com/${repofile}
 
-# ensure that the uekr4 kernel is enabled by default. --------------------------
-yum-config-manager --enable ol7_UEKR4
+# ensure that the uekr5 kernel is enabled by default. --------------------------
+yum-config-manager --enable ol7_UEKR5
+yum-config-manager --disable ol7_UEKR4
 yum-config-manager --disable ol7_UEKR3
 yum-config-manager --enable ol7_addons
 yum-config-manager --enable ol7_software_collections
