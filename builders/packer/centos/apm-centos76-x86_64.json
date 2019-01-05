@@ -85,7 +85,7 @@
       "scripts": [
         "../../../provisioners/scripts/centos/install_centos7_oracle_mysql_shell_8.sh",
         "../../../provisioners/scripts/centos/install_centos7_appdynamics_enterprise_console.sh",
-        "../../../provisioners/scripts/common/install_appdynamics_platform_services.sh",
+        "../../../provisioners/scripts/centos/install_centos7_appdynamics_platform_services.sh",
         "../../../provisioners/scripts/centos/cleanup.sh",
         "../../../submodules/chef/bento/_common/minimize.sh"
       ],

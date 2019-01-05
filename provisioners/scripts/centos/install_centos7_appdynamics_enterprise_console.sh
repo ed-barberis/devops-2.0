@@ -1,54 +1,85 @@
 #!/bin/sh -eux
-# install appdynamics enterprise console by appdynamics.
+#---------------------------------------------------------------------------------------------------
+# Install AppDynamics Enterprise Console by AppDynamics.
+#
+# The Enterprise Console is the installer for the Controller and Events Service. You can use
+# it to install and manage the entire lifecycle of new or existing on-premises AppDynamics
+# Platforms and components. The application provides a GUI and command line interface.
+#
+# For more details, please visit:
+#   https://docs.appdynamics.com/display/LATEST/Enterprise+Console
+#
+# NOTE: All inputs are defined by external environment variables.
+#       Optional variables have reasonable defaults, but you may override as needed.
+#       See 'usage()' function below for environment variable descriptions.
+#       Script should be run with 'root' privilege.
+#---------------------------------------------------------------------------------------------------
 
-# set local installation variables. --------------------------------------------
+# set local installation variables. ----------------------------------------------------------------
 local_hostname="$(uname -n)"                                    # initialize hostname.
 
-# set default values for input environment variables if not set. ---------------
+# set default values for input environment variables if not set. -----------------------------------
+# [MANDATORY] appdynamics account parameters.
+set +x  # temporarily turn command display OFF.
+appd_username="${appd_username:-}"
+appd_password="${appd_password:-}"
+set -x  # turn command display back ON.
+
+# [OPTIONAL] appdynamics platform install parameters [w/ defaults].
 # appd platform install parameters.
-appd_username="${appd_username:-}"                              # appd account user name.
-appd_password="${appd_password:-}"                              # appd account user password.
-appd_home="${appd_home:-/opt/appdynamics}"                      # [optional] appd home (defaults to '/opt/appdynamics').
-appd_platform_home="${appd_platform_home:-platform}"            # [optional] appd platform home (defaults to 'platform').
-appd_platform_rel="${appd_platform_rel:-4.5.2.15329}"           # [optional] appd platform release (defaults to '4.5.2.15329').
+appd_home="${appd_home:-/opt/appdynamics}"
+appd_platform_home="${appd_platform_home:-platform}"
+appd_platform_release="${appd_platform_release:-4.5.5.16472}"
+set +x  # temporarily turn command display OFF.
+appd_platform_admin_username="${appd_platform_admin_username:-admin}"
+appd_platform_admin_password="${appd_platform_admin_password:-welcome1}"
+appd_platform_db_password="${appd_platform_db_password:-welcome1}"
+appd_platform_db_root_password="${appd_platform_db_root_password:-welcome1}"
+set -x  # turn command display back ON.
+appd_platform_server_host="${appd_platform_server_host:-$local_hostname}"
+appd_platform_server_port="${appd_platform_server_port:-9191}"
 
-appd_admin_username="${appd_admin_username:-admin}"             # [optional] appd admin user name (defaults to user 'admin').
-appd_admin_password="${appd_admin_password:-welcome1}"          # [optional] appd admin password (defaults to 'welcome1').
-appd_db_password="${appd_db_password:-welcome1}"                # [optional] appd database password (defaults to 'welcome1').
-appd_db_root_password="${appd_db_root_password:-welcome1}"      # [optional] appd database root password (defaults to 'welcome1').
-appd_server_host="${appd_server_host:-$local_hostname}"         # [optional] appd hostname (defaults to 'uname -n').
-appd_server_port="${appd_server_port:-9191}"                    # [optional] appd server port (defaults to '9191').
+# [OPTIONAL] devops home folder [w/ default].
+devops_home="${devops_home:-/opt/devops}"
 
-# set default value for devops home environment variable if not set. -----------
-devops_home="${devops_home:-/opt/devops}"                       # [optional] devops home (defaults to '/opt/devops').
-
-# define usage function. -------------------------------------------------------
+# define usage function. ---------------------------------------------------------------------------
 usage() {
   cat <<EOF
 Usage:
   All inputs are defined by external environment variables.
+  Optional variables have reasonable defaults, but you may override as needed.
   Script should be run with 'root' privilege.
+
+  -------------------------------------
+  Description of Environment Variables:
+  -------------------------------------
+   # [MANDATORY] appdynamics account parameters.
+    [root]# export appd_username="name@example.com"                     # user name for downloading binaries.
+    [root]# export appd_password="password"                             # user password.
+
+   # [OPTIONAL] appdynamics platform install parameters [w/ defaults].
+    [root]# export appd_home="/opt/appdynamics"                         # [optional] appd home (defaults to '/opt/appdynamics').
+    [root]# export appd_platform_home="platform"                        # [optional] platform home folder (defaults to 'platform').
+    [root]# export appd_platform_release="4.5.5.16472"                  # [optional] platform release (defaults to '4.5.5.16472').
+    [root]# export appd_platform_admin_username="admin"                 # [optional] platform admin user name (defaults to user 'admin').
+    [root]# export appd_platform_admin_password="welcome1"              # [optional] platform admin password (defaults to 'welcome1').
+    [root]# export appd_platform_db_password="welcome1"                 # [optional] platform database password (defaults to 'welcome1').
+    [root]# export appd_platform_db_root_password="welcome1"            # [optional] platform database root password (defaults to 'welcome1').
+    [root]# export appd_platform_server_host="apm"                      # [optional] platform server hostname (defaults to 'uname -n').
+    [root]# export appd_platform_server_port="9191"                     # [optional] platform server port (defaults to '9191').
+
+  # [OPTIONAL] devops home folder [w/ default].
+    [root]# export devops_home="/opt/devops"                            # [optional] devops home (defaults to '/opt/devops').
+
+  --------
   Example:
-   # appd platform install parameters.
-    [root]# export appd_username="name@example.com"             # appd account user name.
-    [root]# export appd_password="password"                     # appd account user password.
-    [root]# export appd_home="/opt/appdynamics"                 # [optional] appd home (defaults to '/opt/appdynamics').
-    [root]# export appd_platform_home="platform"                # [optional] appd platform home (defaults to 'platform').
-    [root]# export appd_platform_rel="4.5.2.15329"              # [optional] appd platform release (defaults to '4.5.2.15329').
-   #
-    [root]# export appd_admin_username="admin"                  # [optional] appd admin user name (defaults to user 'admin').
-    [root]# export appd_admin_password="welcome1"               # [optional] appd admin password (defaults to 'welcome1').
-    [root]# export appd_db_password="welcome1"                  # [optional] appd database password (defaults to 'welcome1').
-    [root]# export appd_db_root_password="welcome1"             # [optional] appd database root password (defaults to 'welcome1').
-    [root]# export appd_server_host="apm"                       # [optional] appd hostname (defaults to 'uname -n').
-    [root]# export appd_server_port="9191"                      # [optional] appd server port (defaults to '9191').
-   #
-    [root]# export devops_home="/opt/devops"                    # [optional] devops home (defaults to '/opt/devops').
+  --------
     [root]# $0
 EOF
 }
 
-# validate environment variables. ----------------------------------------------
+# validate environment variables. ------------------------------------------------------------------
+set +x  # temporarily turn command display OFF.
 if [ -z "$appd_username" ]; then
   echo "Error: 'appd_username' environment variable not set."
   usage
@@ -60,12 +91,13 @@ if [ -z "$appd_password" ]; then
   usage
   exit 1
 fi
+set -x  # turn command display back ON.
 
-# set appdynamics platform installation variables. -----------------------------
+# set appdynamics platform installation variables. -------------------------------------------------
 appd_platform_folder="${appd_home}/${appd_platform_home}"
-appd_platform_installer="platform-setup-x64-linux-${appd_platform_rel}.sh"
+appd_platform_installer="platform-setup-x64-linux-${appd_platform_release}.sh"
 
-# install platform prerequisites. ----------------------------------------------
+# install platform prerequisites. ------------------------------------------------------------------
 # install the netstat network utility.
 yum -y install net-tools
 
@@ -109,14 +141,14 @@ fi
 runuser -c "ulimit -S -n" -
 runuser -c "ulimit -S -u" -
 
-# create temporary download directory. -----------------------------------------
+# create temporary download directory. -------------------------------------------------------------
 mkdir -p ${devops_home}/provisioners/scripts/centos/appdynamics
 cd ${devops_home}/provisioners/scripts/centos/appdynamics
 
-# set current date for temporary filename. -------------------------------------
+# set current date for temporary filename. ---------------------------------------------------------
 curdate=$(date +"%Y-%m-%d.%H-%M-%S")
 
-# download the appdynamics platform installer. ---------------------------------
+# download the appdynamics platform installer. -----------------------------------------------------
 # authenticate to the appdynamics domain and store the oauth token to a file.
 post_data_filename="post-data.${curdate}.json"
 oauth_token_filename="oauth-token.${curdate}.json"
@@ -125,41 +157,45 @@ rm -f "${post_data_filename}"
 touch "${post_data_filename}"
 chmod 644 "${post_data_filename}"
 
+set +x  # temporarily turn command display OFF.
 echo "{" >> ${post_data_filename}
 echo "  \"username\": \"${appd_username}\"," >> ${post_data_filename}
 echo "  \"password\": \"${appd_password}\"," >> ${post_data_filename}
 echo "  \"scopes\": [\"download\"]" >> ${post_data_filename}
 echo "}" >> ${post_data_filename}
+set -x  # turn command display back ON.
 
 curl --silent --request POST --data @${post_data_filename} https://identity.msrv.saas.appdynamics.com/v2.0/oauth/token --output ${oauth_token_filename}
 oauth_token=$(awk -F '"' '{print $4}' ${oauth_token_filename})
 
 # download the installer.
 rm -f ${appd_platform_installer}
-curl --silent --location --remote-name --header "Authorization: Bearer ${oauth_token}" https://download.appdynamics.com/download/prox/download-file/enterprise-console/${appd_platform_rel}/${appd_platform_installer}
+curl --silent --location --remote-name --header "Authorization: Bearer ${oauth_token}" https://download.appdynamics.com/download/prox/download-file/enterprise-console/${appd_platform_release}/${appd_platform_installer}
 chmod 755 ${appd_platform_installer}
 
 rm -f ${post_data_filename}
 rm -f ${oauth_token_filename}
 
-# create silent response file for installer. -----------------------------------
+# create silent response file for installer. -------------------------------------------------------
 response_file="appd-platform-response.varfile"
 
 rm -f "${response_file}"
 
-echo "serverHostName=${appd_server_host}" >> "${response_file}"
+echo "serverHostName=${appd_platform_server_host}" >> "${response_file}"
 echo "sys.languageId=en" >> "${response_file}"
 echo "disableEULA=true" >> "${response_file}"
-echo "platformAdmin.port=${appd_server_port}" >> "${response_file}"
+echo "platformAdmin.port=${appd_platform_server_port}" >> "${response_file}"
 echo "platformAdmin.databasePort=3377" >> "${response_file}"
 echo "platformAdmin.dataDir=${appd_platform_folder}/mysql/data" >> "${response_file}"
-echo "platformAdmin.databasePassword=${appd_db_password}" >> "${response_file}"
-echo "platformAdmin.databaseRootPassword=${appd_db_root_password}" >> "${response_file}"
-echo "platformAdmin.adminUsername=${appd_admin_username}" >> "${response_file}"
-echo "platformAdmin.adminPassword=${appd_admin_password}" >> "${response_file}"
+set +x  # temporarily turn command display OFF.
+echo "platformAdmin.databasePassword=${appd_platform_db_password}" >> "${response_file}"
+echo "platformAdmin.databaseRootPassword=${appd_platform_db_root_password}" >> "${response_file}"
+echo "platformAdmin.adminUsername=${appd_platform_admin_username}" >> "${response_file}"
+echo "platformAdmin.adminPassword=${appd_platform_admin_password}" >> "${response_file}"
+set -x  # turn command display back ON.
 echo "platformAdmin.platformDir=${appd_platform_folder}" >> "${response_file}"
 
-# install the appdynamics enterprise console. ----------------------------------
+# install the appdynamics enterprise console. ------------------------------------------------------
 # run the silent installer for linux.
 ./${appd_platform_installer} -q -varfile ${response_file}
 
@@ -167,11 +203,11 @@ echo "platformAdmin.platformDir=${appd_platform_folder}" >> "${response_file}"
 cd ${appd_platform_folder}/platform-admin/bin
 ./platform-admin.sh show-platform-admin-version
 
-# shutdown the appdynamics platform components. --------------------------------
+# shutdown the appdynamics platform components. ----------------------------------------------------
 # stop the appdynamics enterprise console.
 ./platform-admin.sh stop-platform-admin
 
-# configure the appdynamics enterprise console as a service. -------------------
+# configure the appdynamics enterprise console as a service. ---------------------------------------
 systemd_dir="/etc/systemd/system"
 appd_enterprise_console_service="appdynamics-enterprise-console.service"
 service_filepath="${systemd_dir}/${appd_enterprise_console_service}"

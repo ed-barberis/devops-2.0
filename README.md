@@ -22,12 +22,12 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
 -	VirtualBox 5.2.22
 	-	VirtualBox Extension Pack 5.2.22
--	Vagrant 2.2.0 with Plugins
+-	Vagrant 2.2.2 with Plugins
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 1.1.9
 	-	vagrant-vbguest 0.16.0
--	Packer 1.3.2
--	Git 2.19.1 for Win64
+-	Packer 1.3.3
+-	Git 2.20.1 for Win64
 	-	wget 1.9.1
 	-	tree 1.5.2.2
 
@@ -37,7 +37,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
 2.	Install [VirtualBox Extension Pack 5.2.22](https://download.virtualbox.org/virtualbox/5.2.22/Oracle_VM_VirtualBox_Extension_Pack-5.2.22-126460.vbox-extpack).
 
-3.	Install [Vagrant 2.2.0 for Windows 64-bit](https://releases.hashicorp.com/vagrant/2.2.0/vagrant_2.2.0_x86_64.msi).  
+3.	Install [Vagrant 2.2.2 for Windows 64-bit](https://releases.hashicorp.com/vagrant/2.2.2/vagrant_2.2.2_x86_64.msi).  
     Suggested install folder:  
     `C:\HashiCorp\vagrant`  
 
@@ -48,11 +48,11 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
     If this is set, Vagrant will prefer using utility executables (like `ssh` and `rsync`) from the local system instead of those vendored within the Vagrant installation.  
 
-4.	Install [Packer 1.3.2 for Windows 64-bit](https://releases.hashicorp.com/packer/1.3.2/packer_1.3.2_windows_amd64.zip).  
+4.	Install [Packer 1.3.3 for Windows 64-bit](https://releases.hashicorp.com/packer/1.3.3/packer_1.3.3_windows_amd64.zip).  
     Create suggested install folder and extract contents of ZIP file to:  
     `C:\HashiCorp\Packer\bin`  
 
-5.	Install [Git 2.19.1 for Windows 64-bit](https://github.com/git-for-windows/git/releases/download/v2.19.1.windows.1/Git-2.19.1-64-bit.exe).
+5.	Install [Git 2.20.1 for Windows 64-bit](https://github.com/git-for-windows/git/releases/download/v2.20.1.windows.1/Git-2.20.1-64-bit.exe).
 
 6.	Install optional add-ons for Git Bash.  
     Install [wget 1.9.1 for Windows](https://sourceforge.net/projects/mingw/files/Other/mingwPORT/Current%20Releases/wget-1.9.1-mingwPORT.tar.bz2/download).  
@@ -90,13 +90,13 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     5.2.22r126460
 
     $ vagrant --version
-    Vagrant 2.2.0
+    Vagrant 2.2.2
 
     $ packer --version
-    1.3.2
+    1.3.3
 
     $ git --version
-    git version 2.19.1.windows.1
+    git version 2.20.1.windows.1
     ```
 
 6.	Install or update the following Vagrant Plugins:
