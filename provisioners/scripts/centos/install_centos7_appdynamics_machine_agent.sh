@@ -1,74 +1,109 @@
 #!/bin/sh -eux
-# install appdynamics machine agent by appdynamics.
+#---------------------------------------------------------------------------------------------------
+# Install AppDynamics Machine Agent by AppDynamics.
+#
+# The Standalone Machine Agent (Machine Agent) is used to collect basic hardware metrics and
+# is a Java program that has an extensible architecture enabling you to supplement the
+# basic metrics reported in the AppDynamics Controller UI with your own custom metrics.
+#
+# For more details, please visit:
+#   https://docs.appdynamics.com/display/LATEST/Standalone+Machine+Agent
+#
+# NOTE: All inputs are defined by external environment variables.
+#       Optional variables have reasonable defaults, but you may override as needed.
+#       See 'usage()' function below for environment variable descriptions.
+#       Script should be run with 'root' privilege.
+#---------------------------------------------------------------------------------------------------
 
-# set default values for input environment variables if not set. ---------------
-# appd install parameters.
-appd_username="${appd_username:-}"                                  # appd account user name.
-appd_password="${appd_password:-}"                                  # appd account user password.
-appd_home="${appd_home:-/opt/appdynamics}"                          # [optional] appd home (defaults to '/opt/appdynamics').
-appd_agent_home="${appd_agent_home:-machine-agent}"                 # [optional] appd agent home (defaults to 'machine-agent').
-appd_agent_user="${appd_agent_user:-vagrant}"                       # [optional] appd agent user (defaults to user 'vagrant').
-appd_agent_release="${appd_agent_release:-4.5.5.1784}"              # [optional] appd agent release (defaults to '4.5.5.1784').
-#
-# appd config parameters.
-# NOTE: Setting 'appd_config_agent' to 'true' allows you to perform the Machine Agent configuration
-#       concurrently with the installation. At a minimum, you must override the 'host' and 'access key'
-#       parameters using valid entries for your environment.
-#
-#       In either case, you will need to validate the configuration before running the Machine Agent.
-#       The configuration file can be found here: '<agent_home>/conf/controller-info.xml'
-#
-appd_config_agent="${appd_config_agent:-false}"                     # [optional] configure appd machine agent boolean (defaults to 'false').
-appd_controller_host="${appd_controller_host:-apm}"                 # [optional] appd controller host (defaults to 'apm').
-appd_controller_port="${appd_controller_port:-8090}"                # [optional] appd controller port (defaults to '8090').
-appd_controller_ssl_enabled="${appd_controller_ssl_enabled:-false}" # [optional] appd controller ssl enabled (defaults to 'false').
-appd_enable_orchestration="${appd_enable_orchestration:-false}"     # [optional] appd enable orchestration (defaults to 'false').
-appd_unique_host_id="${appd_unique_host_id:-}"                      # [optional] appd unique host id (defaults to '').
-appd_sim_enabled="${appd_sim_enabled:-false}"                       # [optional] appd sim enabled (defaults to 'false').
-appd_machine_path="${appd_machine_path:-}"                          # [optional] appd machine path (defaults to '').
-appd_account_name="${appd_account_name:-customer1}"                 # [optional] appd account name (defaults to 'customer1').
-                                                                    # [optional] appd account access key.
-appd_account_access_key="${appd_account_access_key:-abcdef01-2345-6789-abcd-ef0123456789}"
+# set default values for input environment variables if not set. -----------------------------------
+# [MANDATORY] appdynamics account parameters.
+set +x  # temporarily turn command display OFF.
+appd_username="${appd_username:-}"
+appd_password="${appd_password:-}"
+set -x  # turn command display back ON.
 
-# define usage function. -------------------------------------------------------
+# [OPTIONAL] appdynamics machine agent install parameters [w/ defaults].
+appd_home="${appd_home:-/opt/appdynamics}"
+set +x  # temporarily turn command display OFF.
+appd_controller_root_password="${appd_controller_root_password:-welcome1}"
+set -x  # turn command display back ON.
+appd_machine_agent_home="${appd_machine_agent_home:-machine-agent}"
+appd_machine_agent_user="${appd_machine_agent_user:-vagrant}"
+appd_machine_agent_release="${appd_machine_agent_release:-4.5.6.1859}"
+
+# [OPTIONAL] appdynamics machine agent config parameters [w/ defaults].
+appd_machine_agent_config="${appd_machine_agent_config:-false}"
+appd_machine_agent_controller_host="${appd_machine_agent_controller_host:-apm}"
+appd_machine_agent_controller_port="${appd_machine_agent_controller_port:-8090}"
+appd_machine_agent_controller_ssl_enabled="${appd_machine_agent_controller_ssl_enabled:-false}"
+appd_machine_agent_enable_orchestration="${appd_machine_agent_enable_orchestration:-false}"
+appd_machine_agent_unique_host_id="${appd_machine_agent_unique_host_id:-}"
+appd_machine_agent_sim_enabled="${appd_machine_agent_sim_enabled:-false}"
+appd_machine_agent_machine_path="${appd_machine_agent_machine_path:-}"
+appd_machine_agent_account_name="${appd_machine_agent_account_name:-customer1}"
+appd_machine_agent_account_access_key="${appd_machine_agent_account_access_key:-abcdef01-2345-6789-abcd-ef0123456789}"
+appd_machine_agent_java_opts="${appd_machine_agent_java_opts:-}"
+appd_machine_agent_application_name="${appd_machine_agent_application_name:-}"
+appd_machine_agent_tier_name="${appd_machine_agent_tier_name:-}"
+appd_machine_agent_node_name="${appd_machine_agent_node_name:-}"
+
+# define usage function. ---------------------------------------------------------------------------
 usage() {
   cat <<EOF
 Usage:
   All inputs are defined by external environment variables.
+  Optional variables have reasonable defaults, but you may override as needed.
   Script should be run with 'root' privilege.
+
+  -------------------------------------
+  Description of Environment Variables:
+  -------------------------------------
+   # [MANDATORY] appdynamics account parameters.
+    [root]# export appd_username="name@example.com"                     # user name for downloading binaries.
+    [root]# export appd_password="password"                             # user password.
+
+   # [OPTIONAL] appdynamics machine agent install parameters [w/ defaults].
+    [root]# export appd_home="/opt/appdynamics"                         # [optional] appd home (defaults to '/opt/appdynamics').
+    [root]# export appd_controller_root_password="welcome1"             # [optional] controller root password (defaults to 'welcome1').
+    [root]# export appd_machine_agent_home="machine-agent"              # [optional] machine agent home folder (defaults to 'machine-agent').
+    [root]# export appd_machine_agent_user="vagrant"                    # [optional] machine agent user name (defaults to user 'vagrant').
+    [root]# export appd_machine_agent_release="4.5.6.1859"              # [optional] machine agent release (defaults to '4.5.6.1859').
+
+   # [OPTIONAL] appdynamics machine agent config parameters [w/ defaults].
+    [root]# export appd_machine_agent_config="true"                     # [optional] configure appd machine agent? [boolean] (defaults to 'false').
+
+   # NOTE: Setting 'appd_machine_agent_config' to 'true' allows you to perform the Machine Agent configuration
+   #       concurrently with the installation. To successfully connect to the Controller, you should override
+   #       the 'appd_machine_agent_controller_host' and 'appd_machine_agent_account_access_key' parameters
+   #       using valid entries for your environment.
+   #
+   #       In either case, you will need to validate the configuration before starting the Machine Agent. The
+   #       configuration file can be found here: '<machine_agent_home>/conf/controller-info.xml'
+
+    [root]# export appd_machine_agent_controller_host="apm"             # [optional] controller host (defaults to 'apm').
+    [root]# export appd_machine_agent_controller_port="8090"            # [optional] controller port (defaults to '8090').
+    [root]# export appd_machine_agent_controller_ssl_enabled="false"    # [optional] controller ssl enabled? [boolean] (defaults to 'false').
+    [root]# export appd_machine_agent_enable_orchestration="false"      # [optional] enable orchestration? [boolean] (defaults to 'false').
+    [root]# export appd_machine_agent_unique_host_id=""                 # [optional] unique host id (defaults to '').
+    [root]# export appd_machine_agent_sim_enabled="true"                # [optional] sim enabled? [boolean] (defaults to 'false').
+    [root]# export appd_machine_agent_machine_path=""                   # [optional] machine path (defaults to '').
+    [root]# export appd_machine_agent_account_name="customer1"          # [optional] account name (defaults to 'customer1').
+                                                                        # [optional] account access key (defaults to <placeholder_value>).
+    [root]# export appd_machine_agent_account_access_key="abcdef01-2345-6789-abcd-ef0123456789"
+    [root]# export appd_machine_agent_java_opts=""                      # [optional] machine agent java options (defaults to '').
+    [root]# export appd_machine_agent_application_name=""               # [optional] associate machine agent with application (defaults to '').
+    [root]# export appd_machine_agent_tier_name=""                      # [optional] associate machine agent with tier (defaults to '').
+    [root]# export appd_machine_agent_node_name=""                      # [optional] associate machine agent with node (defaults to '').
+
+  --------
   Example:
-   # appd install parameters.
-    [root]# export appd_username="name@example.com"         # appd account user name.
-    [root]# export appd_password="password"                 # appd account user password.
-    [root]# export appd_home="/opt/appdynamics"             # [optional] appd home (defaults to '/opt/appdynamics').
-    [root]# export appd_agent_home="machine-agent"          # [optional] appd agent home (defaults to 'machine-agent').
-    [root]# export appd_agent_user="vagrant"                # [optional] appd agent user (defaults to user 'vagrant').
-    [root]# export appd_agent_release="4.5.5.1784"          # [optional] appd agent release (defaults to '4.5.5.1784').
-   #
-   # appd config parameters.
-   # NOTE: Setting 'appd_config_agent' to 'true' allows you to perform the Machine Agent configuration
-   #       concurrently with the installation. At a minimum, you must override the 'host' and 'access key'
-   #       parameters using valid entries for your environment.
-   #
-   #       In either case, you will need to validate the configuration before running the Machine Agent.
-   #       The configuration file can be found here: '<agent_home>/conf/controller-info.xml'
-   #
-    [root]# export appd_config_agent="true"                 # [optional] configure appd machine agent boolean (defaults to 'false').
-    [root]# export appd_controller_host="apm"               # [optional] appd controller host (defaults to 'apm').
-    [root]# export appd_controller_port="8090"              # [optional] appd controller port (defaults to '8090').
-    [root]# export appd_controller_ssl_enabled="false"      # [optional] appd controller ssl enabled (defaults to 'false').
-    [root]# export appd_enable_orchestration="false"        # [optional] appd enable orchestration (defaults to 'false').
-    [root]# export appd_unique_host_id=""                   # [optional] appd unique host id (defaults to '').
-    [root]# export appd_sim_enabled="true"                  # [optional] appd sim enabled (defaults to 'false').
-    [root]# export appd_machine_path=""                     # [optional] appd machine path (defaults to '').
-    [root]# export appd_account_name="customer1"            # [optional] appd account name (defaults to 'customer1').
-                                                            # [optional] appd account access key.
-    [root]# export appd_account_access_key="abcdef01-2345-6789-abcd-ef0123456789"
+  --------
     [root]# $0
 EOF
 }
 
-# validate environment variables. ----------------------------------------------
+# validate mandatory environment variables. --------------------------------------------------------
+set +x  # temporarily turn command display OFF.
 if [ -z "$appd_username" ]; then
   echo "Error: 'appd_username' environment variable not set."
   usage
@@ -80,19 +115,56 @@ if [ -z "$appd_password" ]; then
   usage
   exit 1
 fi
+set -x  # turn command display back ON.
 
-# set appdynamics machine agent installation variables. ------------------------
-appd_agent_folder="${appd_agent_home}-${appd_agent_release}"
-appd_agent_binary="machineagent-bundle-64bit-linux-${appd_agent_release}.zip"
+# if 'application' is set, then all three ('application', 'tier', and 'node') should be set.
+if [ -n "$appd_machine_agent_application_name" ]; then
+  if [ -z "$appd_machine_agent_tier_name" ]; then
+    echo "Error: 'appd_machine_agent_tier_name' environment variable not set."
+    echo "       'tier' should be set when 'application' is set."
+    usage
+    exit 1
+  fi
 
-# create appdynamics machine agent parent folder. ------------------------------
+  if [ -z "$appd_machine_agent_node_name" ]; then
+    echo "Error: 'appd_machine_agent_node_name' environment variable not set."
+    echo "       'node' should be set when 'application' and 'tier' are set."
+    usage
+    exit 1
+  fi
+fi
+
+# prepare for appdynamics machine agent installation. ----------------------------------------------
+# set machine agent installation variables.
+appd_agent_folder="${appd_machine_agent_home}-${appd_machine_agent_release}"
+appd_agent_binary="machineagent-bundle-64bit-linux-${appd_machine_agent_release}.zip"
+
+# retrieve account access key from controller rest api if server is running.
+controller_url="http://${appd_machine_agent_controller_host}:${appd_machine_agent_controller_port}/controller/rest/serverstatus"
+controller_status=$(curl --silent --connect-timeout 10 ${controller_url} | awk '/available/ {print $0}' | awk -F ">" '{print $2}' | awk -F "<" '{print $1}')
+
+# if server is available, retrieve access key.
+if [ "$controller_status" == "true" ]; then
+  # build account info url to retrieve access key.
+  access_key_path="api/accounts/accountinfo?accountname=${appd_machine_agent_account_name}"
+  access_key_url="http://${appd_machine_agent_controller_host}:${appd_machine_agent_controller_port}/${access_key_path}"
+
+  # retrieve the account access key from the returned json string.
+  set +x    # temporarily turn command display OFF.
+  controller_credentials="--user root@system:${appd_controller_root_password}"
+  access_key=$(curl --silent ${controller_credentials} ${access_key_url} | awk 'match($0,"accessKey") {print substr($0,RSTART-1,51)}')
+  set -x    # turn command display back ON.
+  appd_machine_agent_account_access_key=$(echo ${access_key} | awk -F '"' '/accessKey/ {print $4}')
+fi
+
+# create machine agent parent folder.
 mkdir -p ${appd_home}/${appd_agent_folder}
 cd ${appd_home}/${appd_agent_folder}
 
-# set current date for temporary filename. -------------------------------------
+# set current date for temporary filename.
 curdate=$(date +"%Y-%m-%d.%H-%M-%S")
 
-# install appdynamics machine agent --------------------------------------------
+# install appdynamics machine agent. ---------------------------------------------------------------
 # authenticate to the appdynamics domain and store the oauth token to a file.
 post_data_filename="post-data.${curdate}.json"
 oauth_token_filename="oauth-token.${curdate}.json"
@@ -101,49 +173,66 @@ rm -f "${post_data_filename}"
 touch "${post_data_filename}"
 chmod 644 "${post_data_filename}"
 
+set +x  # temporarily turn command display OFF.
 echo "{" >> ${post_data_filename}
 echo "  \"username\": \"${appd_username}\"," >> ${post_data_filename}
 echo "  \"password\": \"${appd_password}\"," >> ${post_data_filename}
 echo "  \"scopes\": [\"download\"]" >> ${post_data_filename}
 echo "}" >> ${post_data_filename}
+set -x  # turn command display back ON.
 
 curl --silent --request POST --data @${post_data_filename} https://identity.msrv.saas.appdynamics.com/v2.0/oauth/token --output ${oauth_token_filename}
 oauth_token=$(awk -F '"' '{print $4}' ${oauth_token_filename})
 
-# download the appdynamics machine agent binary.
+# download the machine agent binary.
 rm -f ${appd_agent_binary}
-curl --silent --location --remote-name --header "Authorization: Bearer ${oauth_token}" https://download.appdynamics.com/download/prox/download-file/machine-bundle/${appd_agent_release}/${appd_agent_binary}
+curl --silent --location --remote-name --header "Authorization: Bearer ${oauth_token}" https://download.appdynamics.com/download/prox/download-file/machine-bundle/${appd_machine_agent_release}/${appd_agent_binary}
 chmod 644 ${appd_agent_binary}
 
 rm -f ${post_data_filename}
 rm -f ${oauth_token_filename}
 
-# extract appdynamics machine agent binary.
+# extract machine agent binary.
 unzip ${appd_agent_binary}
 rm -f ${appd_agent_binary}
 cd ${appd_home}
-rm -f ${appd_agent_home}
-ln -s ${appd_agent_folder} ${appd_agent_home}
-chown -R ${appd_agent_user}:${appd_agent_user} .
+rm -f ${appd_machine_agent_home}
+ln -s ${appd_agent_folder} ${appd_machine_agent_home}
+chown -R ${appd_machine_agent_user}:${appd_machine_agent_user} .
 
-# configure appdynamics machine agent ------------------------------------------
-if [ "$appd_config_agent" == "true" ]; then
+# configure appdynamics machine agent. -------------------------------------------------------------
+if [ "$appd_machine_agent_config" == "true" ]; then
   appd_agent_config_file="controller-info.xml"
-  cd ${appd_home}/${appd_agent_folder}/conf
+  cd ${appd_home}/${appd_machine_agent_home}/conf
   cp -p ${appd_agent_config_file} ${appd_agent_config_file}.orig
 
-  sed -i -e "s/<controller-host>/<controller-host>${appd_controller_host}/g" ${appd_agent_config_file}
-  sed -i -e "s/<controller-port>/<controller-port>${appd_controller_port}/g" ${appd_agent_config_file}
-  sed -i -e "/^    <controller-ssl-enabled>/s/^.*$/    <controller-ssl-enabled>${appd_controller_ssl_enabled}<\/controller-ssl-enabled>/" ${appd_agent_config_file}
-  sed -i -e "/^    <enable-orchestration>/s/^.*$/    <enable-orchestration>${appd_enable_orchestration}<\/enable-orchestration>/" ${appd_agent_config_file}
-  sed -i -e "s/<unique-host-id>/<unique-host-id>${appd_unique_host_id}/g" ${appd_agent_config_file}
-  sed -i -e "s/<account-access-key>/<account-access-key>${appd_account_access_key}/g" ${appd_agent_config_file}
-  sed -i -e "s/<account-name>/<account-name>${appd_account_name}/g" ${appd_agent_config_file}
-  sed -i -e "/^    <sim-enabled>/s/^.*$/    <sim-enabled>${appd_sim_enabled}<\/sim-enabled>/" ${appd_agent_config_file}
-  sed -i -e "s/<machine-path>/<machine-path>${appd_machine_path}/g" ${appd_agent_config_file}
+  sed -i -e "s/<controller-host>/<controller-host>${appd_machine_agent_controller_host}/g" ${appd_agent_config_file}
+  sed -i -e "s/<controller-port>/<controller-port>${appd_machine_agent_controller_port}/g" ${appd_agent_config_file}
+  sed -i -e "/^    <controller-ssl-enabled>/s/^.*$/    <controller-ssl-enabled>${appd_machine_agent_controller_ssl_enabled}<\/controller-ssl-enabled>/" ${appd_agent_config_file}
+  sed -i -e "/^    <enable-orchestration>/s/^.*$/    <enable-orchestration>${appd_machine_agent_enable_orchestration}<\/enable-orchestration>/" ${appd_agent_config_file}
+  sed -i -e "s/<unique-host-id>/<unique-host-id>${appd_machine_agent_unique_host_id}/g" ${appd_agent_config_file}
+  sed -i -e "s/<account-access-key>/<account-access-key>${appd_machine_agent_account_access_key}/g" ${appd_agent_config_file}
+  sed -i -e "s/<account-name>/<account-name>${appd_machine_agent_account_name}/g" ${appd_agent_config_file}
+  sed -i -e "/^    <sim-enabled>/s/^.*$/    <sim-enabled>${appd_machine_agent_sim_enabled}<\/sim-enabled>/" ${appd_agent_config_file}
+  sed -i -e "s/<machine-path>/<machine-path>${appd_machine_agent_machine_path}/g" ${appd_agent_config_file}
+
+  # if 'application' is set, then add all three ('application', 'tier', and 'node') to machine agent config.
+  if [ -n "$appd_machine_agent_application_name" ]; then
+    comment="    <!-- Manually associate Machine Agent with an Application, Tier, and Node. -->"
+    application_name="    <application-name>${appd_machine_agent_application_name}<\/application-name>"
+    tier_name="    <tier-name>${appd_machine_agent_tier_name}<\/tier-name>"
+    node_name="    <node-name>${appd_machine_agent_node_name}<\/node-name>"
+    controller_info_end="<\/controller-info>"
+
+    sed -i -e "s/${controller_info_end}/${comment}\n${controller_info_end}/g" ${appd_agent_config_file}
+    sed -i -e "s/${controller_info_end}/${application_name}\n${controller_info_end}/g" ${appd_agent_config_file}
+    sed -i -e "s/${controller_info_end}/${tier_name}\n${controller_info_end}/g" ${appd_agent_config_file}
+    sed -i -e "s/${controller_info_end}/${node_name}\n${controller_info_end}/g" ${appd_agent_config_file}
+    sed -i -e "s/${controller_info_end}/\n${controller_info_end}/g" ${appd_agent_config_file}
+  fi
 fi
 
-# configure the appdynamics machine agent as a service. ------------------------
+# configure the appdynamics machine agent as a service. --------------------------------------------
 systemd_dir="/etc/systemd/system"
 appd_machine_agent_service="appdynamics-machine-agent.service"
 service_filepath="${systemd_dir}/${appd_machine_agent_service}"
@@ -166,12 +255,12 @@ if [ -d "$systemd_dir" ]; then
   echo "# The machine agent startup script does not fork a process, so this is a simple service." >> "${service_filepath}"
   echo "Type=simple" >> "${service_filepath}"
   echo "" >> "${service_filepath}"
-  echo "Environment=MACHINE_AGENT_HOME=${appd_home}/${appd_agent_home}" >> "${service_filepath}"
-  echo "Environment=JAVA_HOME=${appd_home}/${appd_agent_home}/jre" >> "${service_filepath}"
+  echo "Environment=MACHINE_AGENT_HOME=${appd_home}/${appd_machine_agent_home}" >> "${service_filepath}"
+  echo "Environment=JAVA_HOME=${appd_home}/${appd_machine_agent_home}/jre" >> "${service_filepath}"
   echo "" >> "${service_filepath}"
   echo "# Specify the 'user' to run the machine agent as." >> "${service_filepath}"
-  echo "User=${appd_agent_user}" >> "${service_filepath}"
-  echo "Environment=MACHINE_AGENT_USER=${appd_agent_user}" >> "${service_filepath}"
+  echo "User=${appd_machine_agent_user}" >> "${service_filepath}"
+  echo "Environment=MACHINE_AGENT_USER=${appd_machine_agent_user}" >> "${service_filepath}"
   echo "" >> "${service_filepath}"
   echo "Environment=PIDDIR=${pid_dir}" >> "${service_filepath}"
   echo "Environment=PIDFILE=\${PIDDIR}/${pid_file}" >> "${service_filepath}"
@@ -184,7 +273,13 @@ if [ -d "$systemd_dir" ]; then
   echo "PermissionsStartOnly=true" >> "${service_filepath}"
   echo "" >> "${service_filepath}"
   echo "ExecStartPre=/usr/bin/install -o \${MACHINE_AGENT_USER} -d \${PIDDIR}" >> "${service_filepath}"
-  echo "ExecStart=/bin/sh -c \${MACHINE_AGENT_HOME}/bin/machine-agent -d -p \${PIDFILE}" >> "${service_filepath}"
+
+  if [ -z "$appd_machine_agent_java_opts" ]; then
+    echo "ExecStart=/bin/sh -c \"\${MACHINE_AGENT_HOME}/bin/machine-agent -p \${PIDFILE} -d\"" >> "${service_filepath}"
+  else
+    echo "ExecStart=/bin/sh -c \"\${MACHINE_AGENT_HOME}/bin/machine-agent -p \${PIDFILE} -d ${appd_machine_agent_java_opts}\"" >> "${service_filepath}"
+  fi
+
   echo "" >> "${service_filepath}"
   echo "[Install]" >> "${service_filepath}"
   echo "WantedBy=multi-user.target" >> "${service_filepath}"
