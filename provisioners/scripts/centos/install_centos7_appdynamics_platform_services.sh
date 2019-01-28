@@ -53,14 +53,16 @@ devops_home="${devops_home:-/opt/devops}"
 usage() {
   cat <<EOF
 Usage:
-  All inputs are defined by external environment variables.
-  Optional variables have reasonable defaults, but you may override as needed.
-  Script should be run with 'root' privilege.
+  Install AppDynamics Events Service and Controller Platform Services by AppDynamics.
+
+  NOTE: All inputs are defined by external environment variables.
+        Optional variables have reasonable defaults, but you may override as needed.
+        Script should be run with 'root' privilege.
 
   -------------------------------------
   Description of Environment Variables:
   -------------------------------------
-   # [OPTIONAL] appdynamics platform install parameters [w/ defaults].
+  [OPTIONAL] appdynamics platform install parameters [w/ defaults].
     [root]# export appd_home="/opt/appdynamics"                         # [optional] appd home (defaults to '/opt/appdynamics').
     [root]# export appd_platform_admin_username="admin"                 # [optional] platform admin user name (defaults to user 'admin').
     [root]# export appd_platform_admin_password="welcome1"              # [optional] platform admin password (defaults to 'welcome1').
@@ -72,14 +74,14 @@ Usage:
     [root]# export appd_platform_hosts="platformadmin"                  # [optional] platform hosts
                                                                         #            (defaults to 'platformadmin' which is the localhost).
 
-   # [OPTIONAL] appdynamics events service install parameters [w/ defaults].
+  [OPTIONAL] appdynamics events service install parameters [w/ defaults].
     [root]# export appd_events_service_hosts="platformadmin"            # [optional] events service hosts
                                                                         #            (defaults to 'platformadmin' which is the localhost).
     [root]# export appd_events_service_profile="DEV"                    # [optional] appd events service profile (defaults to 'DEV').
                                                                         #            valid profiles are:
                                                                         #              'DEV', 'dev', 'PROD', 'prod'
 
-   # [OPTIONAL] appdynamics controller install parameters [w/ defaults].
+  [OPTIONAL] appdynamics controller install parameters [w/ defaults].
     [root]# export appd_controller_primary_host="platformadmin"         # [optional] controller primary host
                                                                         #            (defaults to 'platformadmin' which is the localhost).
     [root]# export appd_controller_admin_username="admin"               # [optional] controller admin user name (defaults to 'admin').
@@ -87,7 +89,7 @@ Usage:
     [root]# export appd_controller_root_password="welcome1"             # [optional] controller root password (defaults to 'welcome1').
     [root]# export appd_controller_mysql_password="welcome1"            # [optional] controller mysql root password (defaults to 'welcome1').
 
-  # [OPTIONAL] devops home folder [w/ default].
+  [OPTIONAL] devops home folder [w/ default].
     [root]# export devops_home="/opt/devops"                            # [optional] devops home (defaults to '/opt/devops').
 
   --------
