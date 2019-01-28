@@ -54,6 +54,10 @@ export GOPATH
 #POSTMAN_HOME=/usr/local/google/Postman
 #export POSTMAN_HOME
 
+# set kubectl config path.
+KUBECONFIG=$KUBECONFIG:$HOME/.kube/config
+export KUBECONFIG
+
 # define prompt code and colors.
 reset='\[\e]0;\w\a\]'
 

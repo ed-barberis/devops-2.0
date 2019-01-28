@@ -1,7 +1,7 @@
 #!/bin/sh -eux
 # create default headless (command-line) environment profile for devops user.
 
-# set default values for input environment variables if not set. ---------------
+# set default values for input environment variables if not set. -----------------------------------
 user_name="${user_name:-}"                                      # user name.
 user_group="${user_group:-}"                                    # user login group.
 user_home="${user_home:-/home/$user_name}"                      # [optional] user home (defaults to '/home/user_name').
@@ -10,10 +10,10 @@ user_prompt_color="${user_prompt_color:-green}"                 # [optional] use
                                                                 #            valid colors are:
                                                                 #              'black', 'blue', 'cyan', 'green', 'magenta', 'red', 'white', 'yellow'
 
-# set default value for devops home environment variable if not set. -----------
+# set default value for devops home environment variable if not set. -------------------------------
 devops_home="${devops_home:-/opt/devops}"                       # [optional] devops home (defaults to '/opt/devops').
 
-# define usage function. -------------------------------------------------------
+# define usage function. ---------------------------------------------------------------------------
 usage() {
   cat <<EOF
 Usage:
@@ -33,7 +33,7 @@ Usage:
 EOF
 }
 
-# validate environment variables. ----------------------------------------------
+# validate environment variables. ------------------------------------------------------------------
 if [ -z "$user_name" ]; then
   echo "Error: 'user_name' environment variable not set."
   usage
@@ -58,7 +58,7 @@ if [ -n "$user_prompt_color" ]; then
   esac
 fi
 
-# create default environment profile for the user. -----------------------------
+# create default environment profile for the user. -------------------------------------------------
 if [ "$user_name" == "root" ]; then
   master_bashprofile="${devops_home}/provisioners/scripts/common/users/user-root-bash_profile.sh"
   master_bashrc="${devops_home}/provisioners/scripts/common/users/user-root-bashrc.sh"
@@ -98,7 +98,7 @@ rm -f vim-files.tar.gz
 chown -R ${user_name}:${user_group} .
 chmod 644 .bash_profile .bashrc
 
-# create docker profile for the user. ------------------------------------------
+# create docker profile for the user. --------------------------------------------------------------
 if [ "$user_docker_profile" == "true" ] && [ "$user_name" != "root" ]; then
   # add user to the 'docker' group.
   usermod -aG docker ${user_name}
@@ -114,7 +114,7 @@ if [ "$user_docker_profile" == "true" ] && [ "$user_name" != "root" ]; then
   chmod 644 ${user_home}/${dcompletion_binary}
 
   # install docker compose completion for bash.
-  dcrelease="1.23.1"
+  dcrelease="1.23.2"
   dccompletion_binary=".docker-compose-completion.sh"
 
   # download docker completion for bash from github.com.

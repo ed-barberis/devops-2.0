@@ -1,10 +1,10 @@
 #!/bin/sh -eux
 # create default headless (command-line) environment profiles for devops users.
 
-# set default value for devops home environment variable if not set. -----------
+# set default value for devops home environment variable if not set. -------------------------------
 devops_home="${devops_home:-/opt/devops}"                   # [optional] devops home (defaults to '/opt/devops').
 
-# create default environment profile for user 'root'. --------------------------
+# create default environment profile for user 'root'. ----------------------------------------------
 root_profile="${devops_home}/provisioners/scripts/common/users/user-root-bash_profile.sh"
 root_rc="${devops_home}/provisioners/scripts/common/users/user-root-bashrc.sh"
 
@@ -35,7 +35,7 @@ rm -f vim-files.tar.gz
 chown -R root:root .
 chmod 644 .bash_profile .bashrc
 
-# create default environment profile for user 'vagrant'. -----------------------
+# create default environment profile for user 'vagrant'. -------------------------------------------
 vagrant_profile="${devops_home}/provisioners/scripts/common/users/user-vagrant-bash_profile.sh"
 vagrant_rc="${devops_home}/provisioners/scripts/common/users/user-vagrant-bashrc.sh"
 
@@ -66,7 +66,7 @@ rm -f vim-files.tar.gz
 chown -R vagrant:vagrant .
 chmod 644 .bash_profile .bashrc
 
-# create docker profile for the user. ------------------------------------------
+# create docker profile for the user. --------------------------------------------------------------
 # add user 'vagrant' to the 'docker' group.
 usermod -aG docker vagrant
 
@@ -82,7 +82,7 @@ chown -R vagrant:vagrant ${userfolder}/${dcompletion_binary}
 chmod 644 ${userfolder}/${dcompletion_binary}
 
 # install docker compose completion for bash.
-dcrelease="1.23.1"
+dcrelease="1.23.2"
 dccompletion_binary=".docker-compose-completion.sh"
 
 # download docker completion for bash from github.com.
