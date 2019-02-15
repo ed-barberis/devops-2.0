@@ -18,20 +18,93 @@ Next, using these base VMs as a foundation, the user can build more advanced VM 
 -	__CICD VM__: Headless VM designed for continuous integration, continuous delivery (CI/CD) and project-specific DevOps automation.
 -	__APM VM__: Headless VM designed for Application Performance Monitoring with the AppDynamics App iQ Platform. It consists of the Enterprise Console, Controller, and Events Service.
 
-To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the following open source software needs to be installed on the host machine:
+## Installation Instructions - macOS
+
+To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the following open source software needs to be installed on the host macOS machine:
+
+-	Homebrew 2.0.1
+-	VirtualBox 6.0.4
+	-	VirtualBox Extension Pack 6.0.4
+-	Vagrant 2.2.3 with Plugins
+	-	vagrant-cachier 1.2.1
+	-	vagrant-share 1.1.9
+	-	vagrant-vbguest 0.17.2
+-	Packer 1.3.4
+-	Git 2.20.1
+-	Optional Add-ons
+	-	wget 1.20.1
+	-	tree 1.8.0
+
+Perform the following steps to install the needed software:
+
+1.	Install the [Homebrew 2.0.1](https://brew.sh/) package manager for macOS 64-bit. Paste the following into a macOS Terminal prompt:  
+    `$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`  
+
+2.	Install [VirtualBox 6.0.4](https://www.virtualbox.org/) for macOS 64-bit.  
+    `$ brew cask install virtualbox`  
+
+3.	Install [VirtualBox Extension Pack 6.0.4](https://www.virtualbox.org/) for macOS 64-bit.  
+    `$ brew cask install virtualbox-extension-pack`  
+
+4.	Install [Vagrant 2.2.3]()https://www.vagrantup.com/ for macOS 64-bit.  
+    `$ brew cask install vagrant`  
+
+5.	Install [Packer 1.3.4](https://packer.io/) for macOS 64-bit.  
+    `$ brew install packer`  
+
+6.	Install [Git 2.20.1](https://git-scm.com/downloads) for macOS 64-bit.  
+    `$ brew install git`  
+
+7.	Install optional add-ons for macOS.  
+    `$ brew install wget`  
+    `$ brew install tree`  
+
+### Configuration and Validation - macOS
+
+1.	Validate installed command-line tools:
+
+    ```
+    $ brew --version
+    Homebrew 2.0.1
+    ...
+
+    $ vboxmanage --version
+    6.0.4r128413
+
+    $ vagrant --version
+    Vagrant 2.2.3
+
+    $ packer --version
+    1.3.4
+
+    $ git --version
+    git version 2.20.1
+    ```
+
+2.	Validate optional add-ons:
+
+    ```
+    $ wget --version
+    $ tree --version
+    ```
+
+## Installation Instructions - Windows 64-Bit
+
+To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the following open source software needs to be installed on the host Windows 64-Bit machine:
 
 -	VirtualBox 6.0.4
 	-	VirtualBox Extension Pack 6.0.4
 -	Vagrant 2.2.3 with Plugins
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 1.1.9
-	-	vagrant-vbguest 0.17.1
--	Packer 1.3.3
--	Git 2.20.1 for Win64
-	-	wget 1.9.1
-	-	tree 1.5.2.2
+	-	vagrant-vbguest 0.17.2
+-	Packer 1.3.4
+-	Git 2.20.1
+-	Optional Add-ons for Git Bash
+	-	wget 1.20.1
+	-	tree 1.8.0
 
-## Installation Instructions - Windows 64-Bit
+Perform the following steps to install the needed software:
 
 1.	Install [VirtualBox 6.0.4 for Windows 64-bit](https://download.virtualbox.org/virtualbox/6.0.4/VirtualBox-6.0.4-128413-Win.exe).
 
@@ -48,7 +121,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
     If this is set, Vagrant will prefer using utility executables (like `ssh` and `rsync`) from the local system instead of those vendored within the Vagrant installation.  
 
-4.	Install [Packer 1.3.3 for Windows 64-bit](https://releases.hashicorp.com/packer/1.3.3/packer_1.3.3_windows_amd64.zip).  
+4.	Install [Packer 1.3.4 for Windows 64-bit](https://releases.hashicorp.com/packer/1.3.4/packer_1.3.4_windows_amd64.zip).
     Create suggested install folder and extract contents of ZIP file to:  
     `C:\HashiCorp\Packer\bin`  
 
@@ -63,7 +136,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     Extract `bin\tree.exe` to:  
     `C:\Program Files\Git\mingw64\bin`
 
-## Configuration and Validation
+### Configuration and Validation - Windows 64-Bit
 
 1.	Set Windows Environment `PATH` to:
 
@@ -93,13 +166,22 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     Vagrant 2.2.3
 
     $ packer --version
-    1.3.3
+    1.3.4
 
     $ git --version
     git version 2.20.1.windows.1
     ```
 
-6.	Install or update the following Vagrant Plugins:
+6.	Validate optional add-ons for Git Bash:
+
+    ```
+    $ wget --version
+    $ tree --version
+    ```
+
+## Complete Configuration and Validation
+
+1.	Install or update the following Vagrant Plugins:
 
     ```
     $ vagrant plugin install vagrant-cachier -or-
@@ -112,23 +194,16 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     $ vagrant plugin update vagrant-vbguest
     ```
 
-7.	Validate Vagrant plugins:
+2.	Validate Vagrant plugins:
 
     ```
     $ vagrant plugin list
     vagrant-cachier (1.2.1)
     vagrant-share (1.1.9, system)
-    vagrant-vbguest (0.17.1)
+    vagrant-vbguest (0.17.2)
     ```
 
-8.	Validate optional add-ons for Git Bash:
-
-    ```
-    $ wget --version
-    $ tree --version
-    ```
-
-9.	Configure Git for local user:
+3.	Configure Git for local user:
 
     ```
     $ git config --global user.name "<your_name>"
@@ -153,28 +228,9 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
     $ git submodule update --init --recursive
     ```
 
-3.	Fix bug in Vagrant VB-Guest Plugin File '`oracle.rb`':
-
-    ```
-    $ cd /c/Users/<your-username>/.vagrant.d/gems/2.4.4/gems/vagrant-vbguest-0.17.1/lib/vagrant-vbguest/installers
-    $ cp -p oracle.rb oracle.rb.orig
-    $ cp /<drive>/projects/devops-2.0/shared/patches/vagrant-vbguest/oracle.rb .
-    ```
-
-4.	Fix bug in Vagrant VB-Guest Plugin File '`download.rb`':
-    ```
-    $ cd /c/Users/<your-username>/.vagrant.d/gems/2.4.4/gems/vagrant-vbguest-0.17.1/lib/vagrant-vbguest
-    $ cp -p download.rb download.rb.orig
-    $ cp /<drive>/projects/devops-2.0/shared/patches/vagrant-vbguest/download.rb .
-    ```
-
 ## Build the Vagrant Box Images
 
 The DevOps 2.0 project now supports CentOS and Oracle VM builds. Click on a link below for platform-specific instructions and Bill-of-Materials.
 
 -	[CentOS Linux 7 VMs](CENTOS_VM_BUILD_INSTRUCTIONS.md): Instructions
 -	[Oracle Linux 7 VMs](ORACLE_VM_BUILD_INSTRUCTIONS.md): Instructions
-
-## DevOps 2.0 Bill-of-Materials
-
-NOTE: The Bill-of-Materials section has been moved to the platform-specific instructions links above.
