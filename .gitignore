@@ -13,3 +13,6 @@ tags
 /builders/**/shared
 /provisioners/**/*.live
 /provisioners/**/*.orig
+
+# ignore 'live' bash resource configuration file for devops users.
+/bin/set_devops_env.sh
