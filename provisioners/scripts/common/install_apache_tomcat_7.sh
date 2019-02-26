@@ -4,7 +4,7 @@
 # set default values for input environment variables if not set. ---------------
 # tomcat web server install parameters.
 tomcat_home="${tomcat_home:-apache-tomcat-7}"                       # [optional] tomcat home (defaults to 'apache-tomcat-7').
-tomcat_release="${tomcat_release:-7.0.92}"                          # [optional] tomcat release (defaults to '7.0.92').
+tomcat_release="${tomcat_release:-7.0.93}"                          # [optional] tomcat release (defaults to '7.0.93').
 
 tomcat_username="${tomcat_username:-vagrant}"                       # [optional] tomcat user name (defaults to 'vagrant').
 tomcat_group="${tomcat_group:-vagrant}"                             # [optional] tomcat group (defaults to 'vagrant').
@@ -29,7 +29,7 @@ Usage:
   Example:
    # tomcat web server install parameters.
     [root]# export tomcat_home="apache-tomcat-7"                # [optional] tomcat home (defaults to 'apache-tomcat-7').
-    [root]# export tomcat_release="7.0.92"                      # [optional] tomcat release (defaults to '7.0.92').
+    [root]# export tomcat_release="7.0.93"                      # [optional] tomcat release (defaults to '7.0.93').
    #
     [root]# export tomcat_username="vagrant"                    # [optional] tomcat user name (defaults to 'vagrant').
     [root]# export tomcat_group="vagrant"                       # [optional] tomcat group (defaults to 'vagrant').
