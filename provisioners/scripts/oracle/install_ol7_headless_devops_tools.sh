@@ -8,13 +8,6 @@ devops_home="${devops_home:-/opt/devops}"                   # [optional] devops 
 mkdir -p ${devops_home}/provisioners/scripts/oracle
 cd ${devops_home}/provisioners/scripts/oracle
 
-# install epel repository if needed. -------------------------------------------
-if [ ! -f "/etc/yum.repos.d/epel.repo" ]; then
-  rm -f epel-release-latest-7.noarch.rpm
-  wget --no-verbose https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-  yum -y install epel-release-latest-7.noarch.rpm
-fi
-
 # install python 2.x pip and setuptools. ---------------------------------------
 yum -y install python-pip
 python --version

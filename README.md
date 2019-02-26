@@ -22,7 +22,7 @@ Next, using these base VMs as a foundation, the user can build more advanced VM 
 
 To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the following open source software needs to be installed on the host macOS machine:
 
--	Homebrew 2.0.1
+-	Homebrew 2.0.2
 -	VirtualBox 6.0.4
 	-	VirtualBox Extension Pack 6.0.4
 -	Vagrant 2.2.3 with Plugins
@@ -37,7 +37,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
 Perform the following steps to install the needed software:
 
-1.	Install the [Homebrew 2.0.1](https://brew.sh/) package manager for macOS 64-bit. Paste the following into a macOS Terminal prompt:  
+1.	Install the [Homebrew 2.0.2](https://brew.sh/) package manager for macOS 64-bit. Paste the following into a macOS Terminal prompt:  
     `$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`  
 
 2.	Install [VirtualBox 6.0.4](https://www.virtualbox.org/) for macOS 64-bit.  
@@ -65,7 +65,7 @@ Perform the following steps to install the needed software:
 
     ```
     $ brew --version
-    Homebrew 2.0.1
+    Homebrew 2.0.2
     ...
 
     $ vboxmanage --version
