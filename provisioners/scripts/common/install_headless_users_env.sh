@@ -71,7 +71,7 @@ chmod 644 .bash_profile .bashrc
 usermod -aG docker vagrant
 
 # install docker completion for bash.
-dcompletion_release="18.09.0"
+dcompletion_release="18.09.3"
 dcompletion_binary=".docker-completion.sh"
 userfolder="/home/vagrant"
 
