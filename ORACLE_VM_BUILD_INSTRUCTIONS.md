@@ -285,7 +285,7 @@ Follow these instructions to build the Oracle Linux 7.6 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 1.16.111 (command-line interface) [Optional]
+-	Amazon AWS CLI 1.16.117 (command-line interface) [Optional]
 -	Ansible 2.7.8
 	-	Ansible Container 0.9.2 [Optional]
 -	Ant 1.10.5
@@ -295,9 +295,9 @@ The following command-line tools and utilities are pre-installed in the __Develo
 	-	Docker Bash Completion
 	-	Docker Compose 1.23.2
 	-	Docker Compose Bash Completion
--	Git 2.20.1
+-	Git 2.21.0
 	-	Git Bash Completion
-	-	Git-Flow 1.12.0 (AVH Edition)
+	-	Git-Flow 1.12.1 (AVH Edition)
 	-	Git-Flow Bash Completion
 -	Go 1.12
 -	Gradle 5.2.1
@@ -309,7 +309,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Maven 3.6.0
 -	Oracle Compute Cloud Service CLI (opc) 17.2.2 [Optional]
 -	Oracle PaaS Service Manager CLI (psm) 1.1.16 [Optional]
--	Packer 1.3.4
+-	Packer 1.3.5
 -	Python 2.7.5
 	-	Pip 19.0.3
 -	Python 3.6.3
@@ -327,7 +327,7 @@ In addition, the following continuous integration and continuous delivery (CI/CD
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
 -	AppDynamics Enterprise Console 4.5.7.0 Build 17784
-	-	AppDynamics Controller 4.5.6.1 Build 13944
+	-	AppDynamics Controller 4.5.7.1 Build 17076
 	-	AppDynamics Event Service 4.5.2.0 Build 20201
 -	MySQL Shell 8.0.15
 
@@ -340,12 +340,12 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 	-	AppDynamics AWS EC2 Monitoring Extension 2.0.0 [Optional]
 -	Atom Editor 1.34.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 72.0.3626.119 (64-bit)
--	Firefox 60.4.0est (64-bit)
+-	Chrome 72.0.3626.121 (64-bit)
+-	Firefox 60.5.1est (64-bit)
 -	GVim 7.4.160-1
 -	JetBrains IntelliJ IDEA 2018.3.5 (Community Edition)
 -	JetBrains IntelliJ IDEA 2018.3.5 (Ultimate Edition)
--	JetBrains WebStorm 2018.3.4 (JavaScript IDE)
+-	JetBrains WebStorm 2018.3.5 (JavaScript IDE)
 -	Postman 6.7.4
 -	Scala IDE for Eclipse 4.7.0 (Eclipse Oxygen.1 [4.7.1]) [Optional]
 -	Spring Tool Suite 4 [4.1.2] IDE (Eclipse 2018-12 [4.10.0])

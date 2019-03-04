@@ -25,12 +25,12 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 -	Homebrew 2.0.2
 -	VirtualBox 6.0.4
 	-	VirtualBox Extension Pack 6.0.4
--	Vagrant 2.2.3 with Plugins
+-	Vagrant 2.2.4 with Plugins
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 1.1.9
 	-	vagrant-vbguest 0.17.2
--	Packer 1.3.4
--	Git 2.20.1
+-	Packer 1.3.5
+-	Git 2.21.0
 -	Optional Add-ons
 	-	wget 1.20.1
 	-	tree 1.8.0
@@ -46,13 +46,13 @@ Perform the following steps to install the needed software:
 3.	Install [VirtualBox Extension Pack 6.0.4](https://www.virtualbox.org/) for macOS 64-bit.  
     `$ brew cask install virtualbox-extension-pack`  
 
-4.	Install [Vagrant 2.2.3]()https://www.vagrantup.com/ for macOS 64-bit.  
+4.	Install [Vagrant 2.2.4](https://www.vagrantup.com/) for macOS 64-bit.  
     `$ brew cask install vagrant`  
 
-5.	Install [Packer 1.3.4](https://packer.io/) for macOS 64-bit.  
+5.	Install [Packer 1.3.5](https://packer.io/) for macOS 64-bit.  
     `$ brew install packer`  
 
-6.	Install [Git 2.20.1](https://git-scm.com/downloads) for macOS 64-bit.  
+6.	Install [Git 2.21.0](https://git-scm.com/downloads) for macOS 64-bit.  
     `$ brew install git`  
 
 7.	Install optional add-ons for macOS.  
@@ -72,13 +72,13 @@ Perform the following steps to install the needed software:
     6.0.4r128413
 
     $ vagrant --version
-    Vagrant 2.2.3
+    Vagrant 2.2.4
 
     $ packer --version
-    1.3.4
+    1.3.5
 
     $ git --version
-    git version 2.20.1
+    git version 2.21.0
     ```
 
 2.	Validate optional add-ons:
@@ -94,12 +94,12 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
 -	VirtualBox 6.0.4
 	-	VirtualBox Extension Pack 6.0.4
--	Vagrant 2.2.3 with Plugins
+-	Vagrant 2.2.4 with Plugins
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 1.1.9
 	-	vagrant-vbguest 0.17.2
--	Packer 1.3.4
--	Git 2.20.1
+-	Packer 1.3.5
+-	Git 2.21.0
 -	Optional Add-ons for Git Bash
 	-	wget 1.20.1
 	-	tree 1.8.0
@@ -110,7 +110,7 @@ Perform the following steps to install the needed software:
 
 2.	Install [VirtualBox Extension Pack 6.0.4](https://download.virtualbox.org/virtualbox/6.0.4/Oracle_VM_VirtualBox_Extension_Pack-6.0.4-128413.vbox-extpack).
 
-3.	Install [Vagrant 2.2.3 for Windows 64-bit](https://releases.hashicorp.com/vagrant/2.2.3/vagrant_2.2.3_x86_64.msi).  
+3.	Install [Vagrant 2.2.4 for Windows 64-bit](https://releases.hashicorp.com/vagrant/2.2.4/vagrant_2.2.4_x86_64.msi).  
     Suggested install folder:  
     `C:\HashiCorp\vagrant`  
 
@@ -121,11 +121,11 @@ Perform the following steps to install the needed software:
 
     If this is set, Vagrant will prefer using utility executables (like `ssh` and `rsync`) from the local system instead of those vendored within the Vagrant installation.  
 
-4.	Install [Packer 1.3.4 for Windows 64-bit](https://releases.hashicorp.com/packer/1.3.4/packer_1.3.4_windows_amd64.zip).
+4.	Install [Packer 1.3.5 for Windows 64-bit](https://releases.hashicorp.com/packer/1.3.5/packer_1.3.5_windows_amd64.zip).
     Create suggested install folder and extract contents of ZIP file to:  
     `C:\HashiCorp\Packer\bin`  
 
-5.	Install [Git 2.20.1 for Windows 64-bit](https://github.com/git-for-windows/git/releases/download/v2.20.1.windows.1/Git-2.20.1-64-bit.exe).
+5.	Install [Git 2.21.0 for Windows 64-bit](https://github.com/git-for-windows/git/releases/download/v2.21.0.windows.1/Git-2.21.0-64-bit.exe).
 
 6.	Install optional add-ons for Git Bash.  
     Install [wget 1.9.1 for Windows](https://sourceforge.net/projects/mingw/files/Other/mingwPORT/Current%20Releases/wget-1.9.1-mingwPORT.tar.bz2/download).  
@@ -163,13 +163,13 @@ Perform the following steps to install the needed software:
     6.0.4r128413
 
     $ vagrant --version
-    Vagrant 2.2.3
+    Vagrant 2.2.4
 
     $ packer --version
-    1.3.4
+    1.3.5
 
     $ git --version
-    git version 2.20.1.windows.1
+    git version 2.21.0.windows.1
     ```
 
 6.	Validate optional add-ons for Git Bash:
