@@ -285,11 +285,11 @@ Follow these instructions to build the CentOS Linux 7.6 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 1.16.117 (command-line interface) [Optional]
+-	Amazon AWS CLI 1.16.121 (command-line interface) [Optional]
 -	Ansible 2.7.8
 	-	Ansible Container 0.9.2 [Optional]
 -	Ant 1.10.5
--	Consul 1.4.2
+-	Consul 1.4.3
 -	Cloud-Init 0.7.9 [Optional]
 -	Docker 18.09.0 CE
 	-	Docker Bash Completion
@@ -314,18 +314,18 @@ The following command-line tools and utilities are pre-installed in the __Develo
 	-	Pip3 19.0.3
 -	Scala 2.12.8
 	-	Scala Build Tool (SBT) 1.2.8
--	Terraform 0.11.11
+-	Terraform 0.11.12
 -	Vault 1.0.3
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 11.8.0
+-	GitLab Community Edition 11.8.1
 -	Jenkins 2.150.3
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
--	AppDynamics Enterprise Console 4.5.7.0 Build 17784
-	-	AppDynamics Controller 4.5.7.1 Build 17076
+-	AppDynamics Enterprise Console 4.5.7.0 Build 18225
+	-	AppDynamics Controller 4.5.7.1 Build 17128
 	-	AppDynamics Event Service 4.5.2.0 Build 20201
 -	MySQL Shell 8.0.15
 
@@ -348,4 +348,4 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 -	Scala IDE for Eclipse 4.7.0 (Eclipse Oxygen.1 [4.7.1]) [Optional]
 -	Spring Tool Suite 4 [4.1.2] IDE (Eclipse 2018-12 [4.10.0])
 -	Sublime Text 3 Build 3176
--	Visual Studio Code 1.31.1
+-	Visual Studio Code 1.32.1

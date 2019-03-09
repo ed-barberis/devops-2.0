@@ -22,7 +22,8 @@ Next, using these base VMs as a foundation, the user can build more advanced VM 
 
 To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the following open source software needs to be installed on the host macOS machine:
 
--	Homebrew 2.0.2
+-	Homebrew 2.0.3
+	-	Command Line Tools (CLT) for Xcode
 -	VirtualBox 6.0.4
 	-	VirtualBox Extension Pack 6.0.4
 -	Vagrant 2.2.4 with Plugins
@@ -31,31 +32,40 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 	-	vagrant-vbguest 0.17.2
 -	Packer 1.3.5
 -	Git 2.21.0
+-	jq 1.6
 -	Optional Add-ons
 	-	wget 1.20.1
 	-	tree 1.8.0
 
 Perform the following steps to install the needed software:
 
-1.	Install the [Homebrew 2.0.2](https://brew.sh/) package manager for macOS 64-bit. Paste the following into a macOS Terminal prompt:  
-    `$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`  
+1.	Install [Command Line Tools (CLT) for Xcode](https://developer.apple.com/downloads).  
+    `$ xcode-select --install`  
 
-2.	Install [VirtualBox 6.0.4](https://www.virtualbox.org/) for macOS 64-bit.  
+    **NOTE:** Most Homebrew formulae require a compiler. A handful require a full Xcode installation. You can install [Xcode](https://itunes.apple.com/us/app/xcode/id497799835), the [CLT](https://developer.apple.com/downloads), or both; Homebrew supports all three configurations. Downloading Xcode may require an Apple Developer account on older versions of Mac OS X. Sign up for free [here](https://developer.apple.com/register/index.action).  
+
+2.	Install the [Homebrew 2.0.3](https://brew.sh/) package manager for macOS 64-bit. Paste the following into a macOS Terminal prompt:  
+    `$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+
+3.	Install [VirtualBox 6.0.4](https://www.virtualbox.org/) for macOS 64-bit.  
     `$ brew cask install virtualbox`  
 
-3.	Install [VirtualBox Extension Pack 6.0.4](https://www.virtualbox.org/) for macOS 64-bit.  
+4.	Install [VirtualBox Extension Pack 6.0.4](https://www.virtualbox.org/) for macOS 64-bit.  
     `$ brew cask install virtualbox-extension-pack`  
 
-4.	Install [Vagrant 2.2.4](https://www.vagrantup.com/) for macOS 64-bit.  
+5.	Install [Vagrant 2.2.4](https://www.vagrantup.com/) for macOS 64-bit.  
     `$ brew cask install vagrant`  
 
-5.	Install [Packer 1.3.5](https://packer.io/) for macOS 64-bit.  
+6.	Install [Packer 1.3.5](https://packer.io/) for macOS 64-bit.  
     `$ brew install packer`  
 
-6.	Install [Git 2.21.0](https://git-scm.com/downloads) for macOS 64-bit.  
+7.	Install [Git 2.21.0](https://git-scm.com/downloads) for macOS 64-bit.  
     `$ brew install git`  
 
-7.	Install optional add-ons for macOS.  
+8.	Install [jq 1.6](https://stedolan.github.io/jq/) for macOS 64-bit.  
+    `$ brew install jq`  
+
+9.	Install optional add-ons for macOS.  
     `$ brew install wget`  
     `$ brew install tree`  
 
@@ -65,7 +75,9 @@ Perform the following steps to install the needed software:
 
     ```
     $ brew --version
-    Homebrew 2.0.2
+    Homebrew 2.0.3
+    $ brew doctor
+    Your system is ready to brew.
     ...
 
     $ vboxmanage --version
@@ -79,6 +91,9 @@ Perform the following steps to install the needed software:
 
     $ git --version
     git version 2.21.0
+
+    $ jq --version
+    jq-1.6
     ```
 
 2.	Validate optional add-ons:
@@ -100,6 +115,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 	-	vagrant-vbguest 0.17.2
 -	Packer 1.3.5
 -	Git 2.21.0
+-	jq 1.6
 -	Optional Add-ons for Git Bash
 	-	wget 1.20.1
 	-	tree 1.8.0
@@ -127,7 +143,11 @@ Perform the following steps to install the needed software:
 
 5.	Install [Git 2.21.0 for Windows 64-bit](https://github.com/git-for-windows/git/releases/download/v2.21.0.windows.1/Git-2.21.0-64-bit.exe).
 
-6.	Install optional add-ons for Git Bash.  
+6.	Install [jq 1.6](https://github.com/stedolan/jq/releases/download/jq-1.6/jq-win64.exe) for Windows 64-bit.  
+    Create suggested install folder and rename binary to:  
+    `C:\Program Files\Git\usr\local\bin\jq.exe`
+
+7.	Install optional add-ons for Git Bash.  
     Install [wget 1.9.1 for Windows](https://sourceforge.net/projects/mingw/files/Other/mingwPORT/Current%20Releases/wget-1.9.1-mingwPORT.tar.bz2/download).  
     Extract `wget-1.9.1\mingwPORT\wget.exe` to:  
     `C:\Program Files\Git\mingw64\bin`
@@ -141,7 +161,7 @@ Perform the following steps to install the needed software:
 1.	Set Windows Environment `PATH` to:
 
     ```
-    PATH=C:\HashiCorp\Vagrant\bin;C:\HashiCorp\Packer\bin;C:\Program Files\Oracle\VirtualBox;%PATH%
+    PATH=C:\HashiCorp\Vagrant\bin;C:\HashiCorp\Packer\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Oracle\VirtualBox;%PATH%
     ```
 
 2.	Launch VirtualBox and configure preferences:  
@@ -170,6 +190,9 @@ Perform the following steps to install the needed software:
 
     $ git --version
     git version 2.21.0.windows.1
+
+    $ jq --version
+    jq-1.6
     ```
 
 6.	Validate optional add-ons for Git Bash:
