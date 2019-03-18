@@ -1,7 +1,12 @@
 #!/bin/sh -eux
 # install git flow (avh edition) extensions to git.
 
-# install git-flow binaries from source. ---------------------------------------
+# set default values for input environment variables if not set. -----------------------------------
+# [OPTIONAL] git flow install parameters [w/ defaults].
+user_name="${user_name:-vagrant}"                               # user name.
+user_group="${user_group:-vagrant}"                             # user login group.
+
+# install git-flow binaries from source. -----------------------------------------------------------
 # create git-flow source parent folder.
 mkdir -p /usr/local/src/git
 cd /usr/local/src/git
@@ -29,12 +34,12 @@ export PATH
 # verify installation.
 git flow version
 
-# install git-flow completion for bash. ----------------------------------------
+# install git-flow completion for bash. ------------------------------------------------------------
 gfcbin=".git-flow-completion.bash"
-gfcfolder="/home/vagrant"
+gfcfolder="/home/${user_name}"
 
 # download git-flow completion for bash from github.com.
 rm -f ${gfcfolder}/${gfcbin}
 curl --silent --location "https://raw.githubusercontent.com/petervanderdoes/git-flow-completion/develop/git-flow-completion.bash" --output ${gfcfolder}/${gfcbin}
-chown -R vagrant:vagrant ${gfcfolder}/${gfcbin}
+chown -R ${user_name}:${user_group} ${gfcfolder}/${gfcbin}
 chmod 644 ${gfcfolder}/${gfcbin}
