@@ -285,11 +285,11 @@ Follow these instructions to build the CentOS Linux 7.6 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 1.16.125 (command-line interface) [Optional]
+-	Amazon AWS CLI 1.16.130 (command-line interface) [Optional]
 -	Ansible 2.7.9
 	-	Ansible Container 0.9.2 [Optional]
 -	Ant 1.10.5
--	Consul 1.4.3
+-	Consul 1.4.4
 -	Cloud-Init 0.7.9 [Optional]
 -	Docker 18.09.0 CE
 	-	Docker Bash Completion
@@ -300,10 +300,11 @@ The following command-line tools and utilities are pre-installed in the __Develo
 	-	Git-Flow 1.12.1 (AVH Edition)
 	-	Git-Flow Bash Completion
 -	Go 1.12.1
--	Gradle 5.2.1
+-	Gradle 5.3
 -	Groovy 2.5.6
 -	Java SE JDK 8 Update 202
 -	Java SE JDK 11.0.2
+-	Java SE JDK 12
 -	JMESPath jp 0.1.3 (command-line JSON processor)
 -	jq 1.6 (command-line JSON processor)
 -	Maven 3.6.0
@@ -315,12 +316,12 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Scala 2.12.8
 	-	Scala Build Tool (SBT) 1.2.8
 -	Terraform 0.11.13
--	Vault 1.0.3
+-	Vault 1.1.0
 -	XMLStarlet 1.6.1 (command-line XML processor)
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 11.8.2
+-	GitLab Community Edition 11.9.0
 -	Jenkins 2.164.1
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
@@ -333,18 +334,18 @@ In addition, the following application performance management applications are p
 The following developer tools are pre-installed in the __Developer VM__ (desktop) only:
 
 -	Apache Tomcat 7.0.93
--	Apache Tomcat 8.5.38
+-	Apache Tomcat 8.5.39
 -	AppDynamics Java Agent 4.5.8.0 Build 25346
--	AppDynamics Machine Agent 4.5.8.0 Build 2073
+-	AppDynamics Machine Agent 4.5.9.0 Build 2096
 	-	AppDynamics AWS EC2 Monitoring Extension 2.0.0 [Optional]
 -	Atom Editor 1.35.1
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 73.0.3683.75 (64-bit)
+-	Chrome 73.0.3683.86 (64-bit)
 -	Firefox 60.5.1est (64-bit)
 -	GVim 7.4.160-1
 -	JetBrains IntelliJ IDEA 2018.3.5 (Community Edition)
 -	JetBrains IntelliJ IDEA 2018.3.5 (Ultimate Edition)
--	JetBrains WebStorm 2018.3.5 (JavaScript IDE)
+-	JetBrains WebStorm 2019.1 (JavaScript IDE)
 -	Postman 7.0.6
 -	Scala IDE for Eclipse 4.7.0 (Eclipse Oxygen.1 [4.7.1]) [Optional]
 -	Spring Tool Suite 4 [4.1.2] IDE (Eclipse 2018-12 [4.10.0])

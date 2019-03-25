@@ -31,8 +31,8 @@ export appd_password
 #appd_platform_home="platform"
 #export appd_platform_home
 
-# [optional] platform release (defaults to '4.5.7.18512').
-#appd_platform_release="4.5.7.18512"
+# [optional] platform release (defaults to '4.5.8.18576').
+#appd_platform_release="4.5.8.18576"
 #export appd_platform_release
 
 # [optional] platform admin user name (defaults to user 'admin').
@@ -181,8 +181,8 @@ export appd_java_agent_account_access_key
 #appd_machine_agent_user="ec2-user"
 #export appd_machine_agent_user
 
-# [optional] machine agent release (defaults to '4.5.8.2073').
-#appd_machine_agent_release="4.5.8.2073"
+# [optional] machine agent release (defaults to '4.5.9.2096').
+#appd_machine_agent_release="4.5.9.2096"
 #export appd_machine_agent_release
 
 # ------------------------------------------------------------------------------
