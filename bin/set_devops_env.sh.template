@@ -91,6 +91,14 @@ export appd_platform_description
 # ------------------------------------------------------------------------------
 # [OPTIONAL] appdynamics controller install parameters [w/ defaults].
 # ------------------------------------------------------------------------------
+# [optional] controller host (defaults to 'apm').
+appd_controller_host="apm"
+export appd_controller_host
+
+# [optional] controller port (defaults to '8090').
+#appd_controller_port="8090"
+#export appd_controller_port
+
 # [optional] controller primary host (defaults to 'platformadmin' which is the localhost).
 #appd_controller_primary_host="platformadmin"
 #export appd_controller_primary_host
@@ -130,25 +138,17 @@ export appd_platform_description
 # [OPTIONAL] appdynamics java agent config parameters [w/ defaults].
 # ------------------------------------------------------------------------------
 # [optional] configure appd java agent? [boolean] (defaults to 'false').
-appd_java_agent_config="true"
-export appd_java_agent_config
+#appd_java_agent_config="false"
+#export appd_java_agent_config
 
 # NOTE: Setting 'appd_java_agent_config' to 'true' allows you to perform the Java Agent configuration
 #       concurrently with the installation. When 'true', the following environment variables are used for
 #       the configuration. To successfully connect to the Controller, you should override the
-#       'appd_java_agent_controller_host' and 'appd_java_agent_controller_port' parameters
+#       'appd_controller_host' and 'appd_controller_port' parameters
 #       using valid entries for your environment.
 #
 #       In either case, you will need to validate the configuration before starting the Java Agent. The
 #       configuration file can be found here: '<java_agent_home>/appagent/ver4.5.8.25346/conf/controller-info.xml'
-
-# [optional] controller host (defaults to 'apm').
-appd_java_agent_controller_host="apm"
-export appd_java_agent_controller_host
-
-# [optional] controller port (defaults to '8090').
-#appd_java_agent_controller_port="8090"
-#export appd_java_agent_controller_port
 
 # [optional] associate java agent with application (defaults to ''My App).
 #appd_java_agent_application_name="My App"
@@ -167,8 +167,8 @@ export appd_java_agent_controller_host
 #export appd_java_agent_account_name
 
 # [optional] account access key (defaults to <placeholder_value>).
-appd_java_agent_account_access_key="abcdef01-2345-6789-abcd-ef0123456789"
-export appd_java_agent_account_access_key
+#appd_java_agent_account_access_key="abcdef01-2345-6789-abcd-ef0123456789"
+#export appd_java_agent_account_access_key
 
 # ------------------------------------------------------------------------------
 # [OPTIONAL] appdynamics machine agent install parameters [w/ defaults].
@@ -189,25 +189,17 @@ export appd_java_agent_account_access_key
 # [OPTIONAL] appdynamics machine agent config parameters [w/ defaults].
 # ------------------------------------------------------------------------------
 # [optional] configure appd machine agent? [boolean] (defaults to 'false').
-appd_machine_agent_config="true"
-export appd_machine_agent_config
+#appd_machine_agent_config="false"
+#export appd_machine_agent_config
 
 # NOTE: Setting 'appd_machine_agent_config' to 'true' allows you to perform the Machine Agent configuration
 #       concurrently with the installation. When 'true', the following environment variables are used for
 #       the configuration. To successfully connect to the Controller, you should override the
-#       'appd_machine_agent_controller_host' and 'appd_machine_agent_controller_port' parameters
+#       'appd_controller_host' and 'appd_controller_port' parameters
 #       using valid entries for your environment.
 #
 #       In either case, you will need to validate the configuration before starting the Machine Agent. The
 #       configuration file can be found here: '<machine_agent_home>/conf/controller-info.xml'
-
-# [optional] controller host (defaults to 'apm').
-appd_machine_agent_controller_host="apm"
-export appd_machine_agent_controller_host
-
-# [optional] controller port (defaults to '8090').
-#appd_machine_agent_controller_port="8090"
-#export appd_machine_agent_controller_port
 
 # [optional] controller ssl enabled? [boolean] (defaults to 'false').
 #appd_machine_agent_controller_ssl_enabled="false"
@@ -234,24 +226,24 @@ export appd_machine_agent_controller_host
 #export appd_machine_agent_account_name
 
 # [optional] account access key (defaults to <placeholder_value>).
-appd_machine_agent_account_access_key="abcdef01-2345-6789-abcd-ef0123456789"
-export appd_machine_agent_account_access_key
+#appd_machine_agent_account_access_key="abcdef01-2345-6789-abcd-ef0123456789"
+#export appd_machine_agent_account_access_key
 
 # [optional] machine agent java options (defaults to '').
 #appd_machine_agent_java_opts="-Dappdynamics.agent.maxMetrics=600000"
 #export appd_machine_agent_java_opts
 
 # [optional] associate machine agent with application (defaults to '').
-appd_machine_agent_application_name="<your_application_here>"
-export appd_machine_agent_application_name
+#appd_machine_agent_application_name="<your_app_here>"
+#export appd_machine_agent_application_name
 
 # [optional] associate machine agent with tier (defaults to '').
-appd_machine_agent_tier_name="<your_tier_here>"
-export appd_machine_agent_tier_name
+#appd_machine_agent_tier_name="AWS_Extensions"
+#export appd_machine_agent_tier_name
 
 # [optional] associate machine agent with node (defaults to '').
-appd_machine_agent_node_name="<your_node_here>"
-export appd_machine_agent_node_name
+#appd_machine_agent_node_name="AWS_Ext_Node"
+#export appd_machine_agent_node_name
 
 # [optional] enable service to start at boot? [boolean] (defaults to 'false').
 #appd_machine_agent_enable_service="false"
@@ -272,8 +264,8 @@ export appd_machine_agent_node_name
 # [OPTIONAL] appdynamics aws ec2 monitoring extension config parameters [w/ defaults].
 # --------------------------------------------------------------------------------------------------
 # [optional] configure aws ec2 extension? [boolean] (defaults to 'false').
-appd_aws_ec2_extension_config="true"
-export appd_aws_ec2_extension_config
+#appd_aws_ec2_extension_config="true"
+#export appd_aws_ec2_extension_config
 
 # NOTE: Setting 'appd_aws_ec2_extension_config' to 'true' allows you to perform the Monitoring Extension
 #       configuration concurrently with the installation. When 'true', the following environment variables
@@ -281,12 +273,12 @@ export appd_aws_ec2_extension_config
 #       'AWS_ACCESS_KEY_ID' and 'AWS_SECRET_ACCESS_KEY'.
 
 # [optional] account name to display (defaults to '').
-appd_aws_ec2_extension_display_account_name="<your_account_name>"
-export appd_aws_ec2_extension_display_account_name
+#appd_aws_ec2_extension_display_account_name="<your_account_name>"
+#export appd_aws_ec2_extension_display_account_name
 
 # [optional] whitespace separated list of aws regions to monitor (defaults to 'us-east-1').
-appd_aws_ec2_extension_aws_regions="us-east-1 us-east-2 us-west-1 us-west-2"
-export appd_aws_ec2_extension_aws_regions
+#appd_aws_ec2_extension_aws_regions="us-east-1 us-east-2 us-west-1 us-west-2"
+#export appd_aws_ec2_extension_aws_regions
 
 # [optional] aws cloudwatch monitoring type (defaults to 'Basic').
 #            valid types:
