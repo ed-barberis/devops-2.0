@@ -152,7 +152,7 @@ Follow these instructions to build the CentOS Linux 7.6 VM images.
     ```
     $ vagrant ssh
     dev[vagrant]$ docker --version
-    Docker version 18.09.3, build 774a1f4
+    Docker version 18.09.4, build d14af54266
 
     dev[vagrant]$ ansible --version
     ansible 2.7.9
@@ -183,7 +183,7 @@ Follow these instructions to build the CentOS Linux 7.6 VM images.
     ```
     $ vagrant ssh
     dev[vagrant]$ docker --version
-    Docker version 18.09.3, build 774a1f4
+    Docker version 18.09.4, build d14af54266
 
     ops[vagrant]$ ansible --version
     ansible 2.7.9
@@ -285,22 +285,21 @@ Follow these instructions to build the CentOS Linux 7.6 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 1.16.130 (command-line interface) [Optional]
+-	Amazon AWS CLI 1.16.140 (command-line interface) [Optional]
 -	Ansible 2.7.9
-	-	Ansible Container 0.9.2 [Optional]
 -	Ant 1.10.5
 -	Consul 1.4.4
 -	Cloud-Init 0.7.9 [Optional]
--	Docker 18.09.0 CE
+-	Docker 18.09.4 CE
 	-	Docker Bash Completion
-	-	Docker Compose 1.23.2
+	-	Docker Compose 1.24.0
 	-	Docker Compose Bash Completion
 -	Git 2.21.0
 	-	Git Bash Completion
 	-	Git-Flow 1.12.1 (AVH Edition)
 	-	Git-Flow Bash Completion
--	Go 1.12.1
--	Gradle 5.3
+-	Go 1.12.3
+-	Gradle 5.3.1
 -	Groovy 2.5.6
 -	Java SE JDK 8 Update 202
 -	Java SE JDK 11.0.2
@@ -321,13 +320,13 @@ The following command-line tools and utilities are pre-installed in the __Develo
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 11.9.0
+-	GitLab Community Edition 11.9.6
 -	Jenkins 2.164.1
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
--	AppDynamics Enterprise Console 4.5.7.0 Build 18512
-	-	AppDynamics Controller 4.5.7.1 Build 17145
+-	AppDynamics Enterprise Console 4.5.8.0 Build 18907
+	-	AppDynamics Controller 4.5.8.2 Build 2719
 	-	AppDynamics Event Service 4.5.2.0 Build 20201
 -	MySQL Shell 8.0.15
 
@@ -340,14 +339,14 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 	-	AppDynamics AWS EC2 Monitoring Extension 2.0.0 [Optional]
 -	Atom Editor 1.35.1
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 73.0.3683.86 (64-bit)
+-	Chrome 73.0.3683.103 (64-bit)
 -	Firefox 60.5.1est (64-bit)
 -	GVim 7.4.160-1
--	JetBrains IntelliJ IDEA 2018.3.5 (Community Edition)
--	JetBrains IntelliJ IDEA 2018.3.5 (Ultimate Edition)
+-	JetBrains IntelliJ IDEA 2019.1 (Community Edition)
+-	JetBrains IntelliJ IDEA 2019.1 (Ultimate Edition)
 -	JetBrains WebStorm 2019.1 (JavaScript IDE)
--	Postman 7.0.6
+-	Postman 7.0.7
 -	Scala IDE for Eclipse 4.7.0 (Eclipse Oxygen.1 [4.7.1]) [Optional]
--	Spring Tool Suite 4 [4.1.2] IDE (Eclipse 2018-12 [4.10.0])
--	Sublime Text 3 (3.2 Build 3200)
--	Visual Studio Code 1.32.3
+-	Spring Tool Suite 4 [4.2.0] IDE (Eclipse 2019-03 [4.11.0])
+-	Sublime Text 3 (3.2.1 Build 3207)
+-	Visual Studio Code 1.33.0
