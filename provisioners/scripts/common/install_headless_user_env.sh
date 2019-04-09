@@ -104,7 +104,7 @@ if [ "$user_docker_profile" == "true" ] && [ "$user_name" != "root" ]; then
   usermod -aG docker ${user_name}
 
   # install docker completion for bash.
-  dcompletion_release="18.09.3"
+  dcompletion_release="18.09.4"
   dcompletion_binary=".docker-completion.sh"
 
   # download docker completion for bash from github.com.
@@ -114,7 +114,7 @@ if [ "$user_docker_profile" == "true" ] && [ "$user_name" != "root" ]; then
   chmod 644 ${user_home}/${dcompletion_binary}
 
   # install docker compose completion for bash.
-  dcrelease="1.23.2"
+  dcrelease="1.24.0"
   dccompletion_binary=".docker-compose-completion.sh"
 
   # download docker completion for bash from github.com.

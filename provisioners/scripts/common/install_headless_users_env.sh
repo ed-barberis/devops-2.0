@@ -71,7 +71,7 @@ chmod 644 .bash_profile .bashrc
 usermod -aG docker vagrant
 
 # install docker completion for bash.
-dcompletion_release="18.09.3"
+dcompletion_release="18.09.4"
 dcompletion_binary=".docker-completion.sh"
 userfolder="/home/vagrant"
 
@@ -82,7 +82,7 @@ chown -R vagrant:vagrant ${userfolder}/${dcompletion_binary}
 chmod 644 ${userfolder}/${dcompletion_binary}
 
 # install docker compose completion for bash.
-dcrelease="1.23.2"
+dcrelease="1.24.0"
 dccompletion_binary=".docker-compose-completion.sh"
 
 # download docker completion for bash from github.com.
