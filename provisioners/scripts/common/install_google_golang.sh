@@ -3,7 +3,7 @@
 
 # install go programming language. ---------------------------------------------
 gohome="go"
-gorelease="1.12.3"
+gorelease="1.12.4"
 gobinary="${gohome}${gorelease}.linux-amd64.tar.gz"
 gofolder="${gohome}-${gorelease}"
 
