@@ -16,7 +16,7 @@ Vagrant.configure(2) do |config|
     d.vm.provider "virtualbox" do |v|
       v.name = "apm-ol76"
       v.gui = false
-      v.memory = 8192
+      v.memory = 10240
       v.cpus = 2
       v.customize ["modifyvm", :id, "--vram", "256"]
       v.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
