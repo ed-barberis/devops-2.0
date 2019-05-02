@@ -6,8 +6,8 @@ devops_home="${devops_home:-/opt/devops}"                   # [optional] devops 
 
 # install webstorm javascript ide. ---------------------------------------------
 webstorm_home="webstorm"
-webstorm_release="2019.1"
-webstorm_build="191.6183.63"
+webstorm_release="2019.1.1"
+webstorm_build="191.6707.60"
 
 webstorm_binary="WebStorm-${webstorm_release}.tar.gz"
 webstorm_folder="WebStorm-${webstorm_build}"
