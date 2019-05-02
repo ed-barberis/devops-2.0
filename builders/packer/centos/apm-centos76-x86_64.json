@@ -83,6 +83,7 @@
       "expect_disconnect": true,
       "pause_before": "10s",
       "scripts": [
+        "../../../provisioners/scripts/common/install_jq_json_processor.sh",
         "../../../provisioners/scripts/centos/install_centos7_oracle_mysql_shell_8.sh",
         "../../../provisioners/scripts/centos/install_centos7_appdynamics_enterprise_console.sh",
         "../../../provisioners/scripts/centos/install_centos7_appdynamics_platform_services.sh",
