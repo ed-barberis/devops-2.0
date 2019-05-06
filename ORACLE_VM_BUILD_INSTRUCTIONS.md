@@ -285,7 +285,7 @@ Follow these instructions to build the Oracle Linux 7.6 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 1.16.150 (command-line interface) [Optional]
+-	Amazon AWS CLI 1.16.152 (command-line interface) [Optional]
 -	Ansible 2.7.10
 -	Ant 1.10.5
 -	Consul 1.4.4

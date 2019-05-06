@@ -77,6 +77,10 @@
     },
     {
       "environment_vars": [
+        "user_name=vagrant",
+        "user_group=vagrant",
+        "user_docker_profile={{user `user_docker_profile`}}",
+        "d_completion_release={{user `docker_completion_release`}}",
         "devops_home={{user `devops_home`}}",
         "HOME_DIR=/home/vagrant",
         "http_proxy={{user `http_proxy`}}",
@@ -93,7 +97,8 @@
         "../../../provisioners/scripts/centos/install_centos7_docker.sh",
         "../../../provisioners/scripts/common/install_docker_compose.sh",
         "../../../provisioners/scripts/centos/install_centos7_python3.sh",
-        "../../../provisioners/scripts/common/install_headless_users_env.sh",
+        "../../../provisioners/scripts/common/install_headless_root_user_env.sh",
+        "../../../provisioners/scripts/common/install_headless_user_env.sh",
         "../../../provisioners/scripts/centos/cleanup.sh",
         "../../../submodules/chef/bento/_common/minimize.sh"
       ],
@@ -114,6 +119,7 @@
     "cpus": "1",
     "devops_home": "/opt/devops-2.0",
     "disk_size": "131072",
+    "docker_completion_release": "18.09.5",
     "git_revision": "__unknown_git_revision__",
     "headless": "false",
     "http_proxy": "{{env `http_proxy`}}",
@@ -127,6 +133,7 @@
     "mirror_directory": "7.6.1810/isos/x86_64",
     "name": "base-headless-centos76",
     "no_proxy": "{{env `no_proxy`}}",
+    "user_docker_profile": "true",
     "version": "TIMESTAMP"
   }
 }

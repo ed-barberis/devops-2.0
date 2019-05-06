@@ -2,16 +2,16 @@
 # create default headless (command-line) environment profile for devops user.
 
 # set default values for input environment variables if not set. -----------------------------------
-user_name="${user_name:-}"                                      # user name.
-user_group="${user_group:-}"                                    # user login group.
-user_home="${user_home:-/home/$user_name}"                      # [optional] user home (defaults to '/home/user_name').
-user_docker_profile="${user_docker_profile:-false}"             # [optional] user docker profile (defaults to 'false').
-user_prompt_color="${user_prompt_color:-green}"                 # [optional] user prompt color (defaults to 'green').
-                                                                #            valid colors are:
-                                                                #              'black', 'blue', 'cyan', 'green', 'magenta', 'red', 'white', 'yellow'
+user_name="${user_name:-}"
+user_group="${user_group:-}"
+user_home="${user_home:-/home/$user_name}"
+user_docker_profile="${user_docker_profile:-false}"
+user_prompt_color="${user_prompt_color:-green}"
+d_completion_release="${d_completion_release:-18.09.5}"
+dc_completion_release="${dc_completion_release:-1.24.0}"
 
 # set default value for devops home environment variable if not set. -------------------------------
-devops_home="${devops_home:-/opt/devops}"                       # [optional] devops home (defaults to '/opt/devops').
+devops_home="${devops_home:-/opt/devops}"
 
 # define usage function. ---------------------------------------------------------------------------
 usage() {
@@ -28,6 +28,8 @@ Usage:
                                                                 #            valid colors:
                                                                 #              'black', 'blue', 'cyan', 'green', 'magenta', 'red', 'white', 'yellow'
                                                                 #
+    [root]# export d_completion_release="18.09.5"               # [optional] docker completion for bash release (defaults to '18.09.5').
+    [root]# export dc_completion_release="1.24.0"               # [optional] docker compose completion for bash release (defaults to '1.24.0').
     [root]# export devops_home="/opt/devops"                    # [optional] devops home (defaults to '/opt/devops').
     [root]# $0
 EOF
@@ -60,12 +62,26 @@ fi
 
 # create default environment profile for the user. -------------------------------------------------
 if [ "$user_name" == "root" ]; then
-  master_bashprofile="${devops_home}/provisioners/scripts/common/users/user-root-bash_profile.sh"
-  master_bashrc="${devops_home}/provisioners/scripts/common/users/user-root-bashrc.sh"
+  user_bashprofile="${devops_home}/provisioners/scripts/common/users/user-root-bash_profile.sh"
+  user_bashrc="${devops_home}/provisioners/scripts/common/users/user-root-bashrc.sh"
   user_home="/root"                                         # override user home for 'root' user.
 else
-  master_bashprofile="${devops_home}/provisioners/scripts/common/users/user-vagrant-bash_profile.sh"
-  master_bashrc="${devops_home}/provisioners/scripts/common/users/user-vagrant-bashrc.sh"
+  user_bashprofile="${devops_home}/provisioners/scripts/common/users/user-vagrant-bash_profile.sh"
+  user_bashrc="${devops_home}/provisioners/scripts/common/users/user-vagrant-bashrc.sh"
+fi
+
+# uncomment proxy environment variables (if set).
+proxy_set="${http_proxy:-}"
+if [ -n "${proxy_set}" ]; then
+  sed -i 's/^#http_proxy/http_proxy/g;s/^#export http_proxy/export http_proxy/g' ${user_bashrc}
+  sed -i 's/^#https_proxy/https_proxy/g;s/^#export https_proxy/export https_proxy/g' ${user_bashrc}
+fi
+
+# set user prompt color.
+if [ "$user_name" == "root" ]; then
+  sed -i "s/{red}/{${user_prompt_color}}/g" ${user_bashrc}
+else
+  sed -i "s/{green}/{${user_prompt_color}}/g" ${user_bashrc}
 fi
 
 # copy environment profiles to user home.
@@ -73,18 +89,8 @@ cd ${user_home}
 cp -p .bash_profile .bash_profile.orig
 cp -p .bashrc .bashrc.orig
 
-cp -f ${master_bashprofile} .bash_profile
-cp -f ${master_bashrc} .bashrc
-
-# uncomment proxy environment variables (if set).
-proxy_set="${http_proxy:-}"
-if [ -n "${proxy_set}" ]; then
-  sed -i 's/^#http_proxy/http_proxy/g;s/^#export http_proxy/export http_proxy/g' .bashrc
-  sed -i 's/^#https_proxy/https_proxy/g;s/^#export https_proxy/export https_proxy/g' .bashrc
-fi
-
-# set user prompt color.
-sed -i "s/{green}/{${user_prompt_color}}/g" .bashrc
+cp -f ${user_bashprofile} .bash_profile
+cp -f ${user_bashrc} .bashrc
 
 # remove existing vim profile if it exists.
 if [ -d ".vim" ]; then
@@ -104,22 +110,20 @@ if [ "$user_docker_profile" == "true" ] && [ "$user_name" != "root" ]; then
   usermod -aG docker ${user_name}
 
   # install docker completion for bash.
-  dcompletion_release="18.09.4"
-  dcompletion_binary=".docker-completion.sh"
+  d_completion_binary=".docker-completion.sh"
 
   # download docker completion for bash from github.com.
-  rm -f ${user_home}/${dcompletion_binary}
-  curl --silent --location "https://github.com/docker/cli/raw/v${dcompletion_release}/contrib/completion/bash/docker" --output ${user_home}/${dcompletion_binary}
-  chown -R ${user_name}:${user_group} ${user_home}/${dcompletion_binary}
-  chmod 644 ${user_home}/${dcompletion_binary}
+  rm -f ${user_home}/${d_completion_binary}
+  curl --silent --location "https://github.com/docker/cli/raw/v${d_completion_release}/contrib/completion/bash/docker" --output ${user_home}/${d_completion_binary}
+  chown -R ${user_name}:${user_group} ${user_home}/${d_completion_binary}
+  chmod 644 ${user_home}/${d_completion_binary}
 
   # install docker compose completion for bash.
-  dcrelease="1.24.0"
-  dccompletion_binary=".docker-compose-completion.sh"
+  dc_completion_binary=".docker-compose-completion.sh"
 
   # download docker completion for bash from github.com.
-  rm -f ${user_home}/${dccompletion_binary}
-  curl --silent --location "https://github.com/docker/compose/raw/${dcrelease}/contrib/completion/bash/docker-compose" --output ${user_home}/${dccompletion_binary}
-  chown -R ${user_name}:${user_group} ${user_home}/${dccompletion_binary}
-  chmod 644 ${user_home}/${dccompletion_binary}
+  rm -f ${user_home}/${dc_completion_binary}
+  curl --silent --location "https://github.com/docker/compose/raw/${dc_completion_release}/contrib/completion/bash/docker-compose" --output ${user_home}/${dc_completion_binary}
+  chown -R ${user_name}:${user_group} ${user_home}/${dc_completion_binary}
+  chmod 644 ${user_home}/${dc_completion_binary}
 fi

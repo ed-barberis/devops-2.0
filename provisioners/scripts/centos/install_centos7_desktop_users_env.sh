@@ -1,13 +1,13 @@
 #!/bin/sh -eux
 # create default desktop environment profiles for devops users.
 
-# set default value for devops home environment variable if not set. -----------
+# set default value for devops home environment variable if not set. -------------------------------
 devops_home="${devops_home:-/opt/devops}"                   # [optional] devops home (defaults to '/opt/devops').
 
-# set current date for temporary filename. -------------------------------------
+# set current date for temporary filename. ---------------------------------------------------------
 curdate=$(date +"%Y-%m-%d.%H-%M-%S")
 
-# create default environment profile for user 'root'. --------------------------
+# create default environment profile for user 'root'. ----------------------------------------------
 rootprofile="${devops_home}/provisioners/scripts/common/users/user-root-bash_profile.sh"
 rootrc="${devops_home}/provisioners/scripts/common/users/user-root-bashrc.sh"
 
@@ -23,18 +23,8 @@ sed -i 's/^#alias gvim/alias gvim/g' ${rootrc}
 
 # copy environment profiles to user 'root' home.
 cd /root
-
-if [ -e ".bash_profile.orig" ]; then
-  cp -p .bash_profile .bash_profile.${curdate}
-else
-  cp -p .bash_profile .bash_profile.orig
-fi
-
-if [ -e ".bashrc.orig" ]; then
-  cp -p .bashrc .bashrc.${curdate}
-else
-  cp -p .bashrc .bashrc.orig
-fi
+cp -p .bash_profile .bash_profile.orig
+cp -p .bashrc .bashrc.orig
 
 cp -f ${rootprofile} .bash_profile
 cp -f ${rootrc} .bashrc
@@ -51,7 +41,7 @@ rm -f vim-files.tar.gz
 chown -R root:root .
 chmod 644 .bash_profile .bashrc
 
-# create default environment profile for user 'vagrant'. -----------------------
+# create default environment profile for user 'vagrant'. -------------------------------------------
 vagrantprofile="${devops_home}/provisioners/scripts/common/users/user-vagrant-bash_profile.sh"
 vagrantrc="${devops_home}/provisioners/scripts/common/users/user-vagrant-bashrc.sh"
 
@@ -71,18 +61,8 @@ sed -i 's/^#alias gvim/alias gvim/g' ${vagrantrc}
 
 # copy environment profiles to user 'vagrant' home.
 cd /home/vagrant
-
-if [ -e ".bash_profile.orig" ]; then
-  cp -p .bash_profile .bash_profile.${curdate}
-else
-  cp -p .bash_profile .bash_profile.orig
-fi
-
-if [ -e ".bashrc.orig" ]; then
-  cp -p .bashrc .bashrc.${curdate}
-else
-  cp -p .bashrc .bashrc.orig
-fi
+cp -p .bash_profile .bash_profile.orig
+cp -p .bashrc .bashrc.orig
 
 cp -f ${vagrantprofile} .bash_profile
 cp -f ${vagrantrc} .bashrc
@@ -99,7 +79,7 @@ rm -f vim-files.tar.gz
 chown -R vagrant:vagrant .
 chmod 644 .bash_profile .bashrc
 
-# create docker profile for the user. ------------------------------------------
+# create docker profile for the user. --------------------------------------------------------------
 # add user 'vagrant' to the 'docker' group.
 usermod -aG docker vagrant
 
@@ -124,7 +104,7 @@ curl --silent --location "https://github.com/docker/compose/raw/${dcrelease}/con
 chown -R vagrant:vagrant ${userfolder}/${dccompletion_binary}
 chmod 644 ${userfolder}/${dccompletion_binary}
 
-# configure gnome-3 desktop properties for devops users. -----------------------
+# configure gnome-3 desktop properties for devops users. -------------------------------------------
 cd ${devops_home}/provisioners/scripts/centos
 chmod 755 config_centos7_gnome_desktop.sh
 #sudo -u vagrant -S -E sh -eux "${devops_home}/provisioners/scripts/centos/config_centos7_gnome_desktop.sh"
