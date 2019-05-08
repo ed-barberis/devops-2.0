@@ -30,18 +30,21 @@ if [ -z "$user_name" ]; then
   exit 1
 fi
 
-# create default environment profile for the user. -------------------------------------------------
 if [ "$user_name" == "root" ]; then
-  user_bashprofile="${devops_home}/provisioners/scripts/common/users/user-root-bash_profile.sh"
-  user_bashrc="${devops_home}/provisioners/scripts/common/users/user-root-bashrc.sh"
-  user_home="/root"                                         # override user home for 'root' user.
-else
-  user_bashprofile="${devops_home}/provisioners/scripts/common/users/user-vagrant-bash_profile.sh"
-  user_bashrc="${devops_home}/provisioners/scripts/common/users/user-vagrant-bashrc.sh"
+  echo "Error: 'user_name' should NOT be 'root'."
+  usage
+  exit 1
+fi
 
-  # uncomment postman home path for desktop users.
-  sed -i 's/^#POSTMAN_HOME/POSTMAN_HOME/g;s/^#export POSTMAN_HOME/export POSTMAN_HOME/g' ${user_bashrc}
-  sed -i 's/^PATH=/##PATH=/g;s/^#PATH=/PATH=/g;s/^##PATH=/#PATH=/g' ${user_bashrc}
+# create default environment profile for the user. -------------------------------------------------
+user_bashprofile="${devops_home}/provisioners/scripts/common/users/user-vagrant-bash_profile.sh"
+user_bashrc="${devops_home}/provisioners/scripts/common/users/user-vagrant-bashrc.sh"
+
+# uncomment proxy environment variables (if set).
+proxy_set="${http_proxy:-}"
+if [ -n "${proxy_set}" ]; then
+  sed -i 's/^#http_proxy/http_proxy/g;s/^#export http_proxy/export http_proxy/g' ${user_bashrc}
+  sed -i 's/^#https_proxy/https_proxy/g;s/^#export https_proxy/export https_proxy/g' ${user_bashrc}
 fi
 
 # uncomment gvim alias for desktop users.

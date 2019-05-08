@@ -82,6 +82,7 @@
         "appd_machine_agent_tier_name={{user `appd_machine_agent_tier_name`}}",
         "appd_machine_agent_node_name={{user `appd_machine_agent_node_name`}}",
         "devops_home={{user `devops_home`}}",
+        "user_name=vagrant",
         "HOME_DIR=/home/vagrant",
         "http_proxy={{user `http_proxy`}}",
         "https_proxy={{user `https_proxy`}}",
@@ -120,7 +121,8 @@
         "../../../provisioners/scripts/centos/install_centos7_spring_tool_suite_eclipse_ide.sh",
         "../../../provisioners/scripts/centos/install_centos7_sublime_text_editor.sh",
         "../../../provisioners/scripts/centos/install_centos7_microsoft_visual_studio_code_editor.sh",
-        "../../../provisioners/scripts/centos/install_centos7_desktop_users_env.sh",
+        "../../../provisioners/scripts/centos/install_centos7_desktop_root_user_env.sh",
+        "../../../provisioners/scripts/centos/install_centos7_desktop_user_env.sh",
         "../../../provisioners/scripts/centos/cleanup.sh",
         "../../../submodules/chef/bento/_common/minimize.sh"
       ],

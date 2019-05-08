@@ -1,15 +1,7 @@
 #!/bin/sh -eux
 # install scala build tool (sbt) for scala.
 
-# set default values for input environment variables if not set. -----------------------------------
-# [OPTIONAL] git flow install parameters [w/ defaults].
-user_name="${user_name:-vagrant}"                           # user name.
-user_group="${user_group:-vagrant}"                         # user login group.
-
-# set default value for devops home environment variable if not set. -----------
-devops_home="${devops_home:-/opt/devops}"                   # [optional] devops home (defaults to '/opt/devops').
-
-# install sbt. -----------------------------------------------------------------
+# install sbt. -------------------------------------------------------------------------------------
 sbthome="scala-sbt"
 
 # create scala parent folder.
@@ -58,21 +50,3 @@ export PATH
 # verify installation.
 sbt about
 #sbt sbtVersion
-
-# configure scala-sbt user environment variables. ------------------------------
-# add environment variables to '.bashrc' for devops user.
-sbt_env_comment="${sbthome}"
-sbt_env_name="SBT_HOME"
-sbt_env_value="/usr/local/scala/${sbthome}"
-
-cd /home/${user_name}
-
-# if env name exists (grep command), skip awk update.
-grep -qF "${sbt_env_name}" .bashrc || awk -v env_comment=${sbt_env_comment} -v env_name=${sbt_env_name} -v env_value=${sbt_env_value} -f ${devops_home}/provisioners/scripts/common/append_env_path.awk .bashrc > .bashrc.${curdate}.${sbthome}
-
-if [ -f ".bashrc.${curdate}.${sbthome}" ]; then
-  mv -f .bashrc.${curdate}.${sbthome} .bashrc
-fi
-
-chown ${user_name}:${user_group} .bashrc
-chmod 644 .bashrc

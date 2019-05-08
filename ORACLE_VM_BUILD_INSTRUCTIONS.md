@@ -285,7 +285,7 @@ Follow these instructions to build the Oracle Linux 7.6 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 1.16.152 (command-line interface) [Optional]
+-	Amazon AWS CLI 1.16.154 (command-line interface) [Optional]
 -	Ansible 2.7.10
 -	Ant 1.10.5
 -	Consul 1.4.4
@@ -298,7 +298,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
 	-	Git Bash Completion
 	-	Git-Flow 1.12.1 (AVH Edition)
 	-	Git-Flow Bash Completion
--	Go 1.12.4
+-	Go 1.12.5
 -	Gradle 5.4.1
 -	Groovy 2.5.6
 -	Java SE JDK 8 Update 212 (Amazon Corretto 8)
@@ -311,9 +311,9 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Oracle PaaS Service Manager CLI (psm) 1.1.16 [Optional]
 -	Packer 1.4.0
 -	Python 2.7.5
-	-	Pip 19.1
+	-	Pip 19.1.1
 -	Python 3.6.3
-	-	Pip3 19.1
+	-	Pip3 19.1.1
 -	Scala 2.12.8
 	-	Scala Build Tool (SBT) 1.2.8
 -	Terraform 0.11.13

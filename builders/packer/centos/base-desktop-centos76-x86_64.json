@@ -100,8 +100,8 @@
         "../../../provisioners/scripts/common/install_docker_compose.sh",
         "../../../provisioners/scripts/centos/install_centos7_python3.sh",
         "../../../provisioners/scripts/common/install_headless_root_user_env.sh",
-        "../../../provisioners/scripts/centos/install_centos7_desktop_root_user_env.sh",
         "../../../provisioners/scripts/common/install_headless_user_env.sh",
+        "../../../provisioners/scripts/centos/install_centos7_desktop_root_user_env.sh",
         "../../../provisioners/scripts/centos/install_centos7_desktop_user_env.sh",
         "../../../provisioners/scripts/centos/cleanup.sh",
         "../../../submodules/chef/bento/_common/minimize.sh"

@@ -60,15 +60,15 @@ if [ -n "$user_prompt_color" ]; then
   esac
 fi
 
-# create default environment profile for the user. -------------------------------------------------
 if [ "$user_name" == "root" ]; then
-  user_bashprofile="${devops_home}/provisioners/scripts/common/users/user-root-bash_profile.sh"
-  user_bashrc="${devops_home}/provisioners/scripts/common/users/user-root-bashrc.sh"
-  user_home="/root"                                         # override user home for 'root' user.
-else
-  user_bashprofile="${devops_home}/provisioners/scripts/common/users/user-vagrant-bash_profile.sh"
-  user_bashrc="${devops_home}/provisioners/scripts/common/users/user-vagrant-bashrc.sh"
+  echo "Error: 'user_name' should NOT be 'root'."
+  usage
+  exit 1
 fi
+
+# create default environment profile for the user. -------------------------------------------------
+user_bashprofile="${devops_home}/provisioners/scripts/common/users/user-vagrant-bash_profile.sh"
+user_bashrc="${devops_home}/provisioners/scripts/common/users/user-vagrant-bashrc.sh"
 
 # uncomment proxy environment variables (if set).
 proxy_set="${http_proxy:-}"
@@ -78,11 +78,7 @@ if [ -n "${proxy_set}" ]; then
 fi
 
 # set user prompt color.
-if [ "$user_name" == "root" ]; then
-  sed -i "s/{red}/{${user_prompt_color}}/g" ${user_bashrc}
-else
-  sed -i "s/{green}/{${user_prompt_color}}/g" ${user_bashrc}
-fi
+sed -i "s/{green}/{${user_prompt_color}}/g" ${user_bashrc}
 
 # copy environment profiles to user home.
 cd ${user_home}
@@ -105,7 +101,7 @@ chown -R ${user_name}:${user_group} .
 chmod 644 .bash_profile .bashrc
 
 # create docker profile for the user. --------------------------------------------------------------
-if [ "$user_docker_profile" == "true" ] && [ "$user_name" != "root" ]; then
+if [ "$user_docker_profile" == "true" ]; then
   # add user to the 'docker' group.
   usermod -aG docker ${user_name}
 

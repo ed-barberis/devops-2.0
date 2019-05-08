@@ -50,9 +50,17 @@ export GOROOT
 GOPATH=$HOME/go
 export GOPATH
 
+# set scala-lang home path.
+SCALA_HOME=/usr/local/scala/scala-lang
+export SCALA_HOME
+
+# set scala-sbt home path.
+SBT_HOME=/usr/local/scala/scala-sbt
+export SBT_HOME
+
 # set postman home path.
-#POSTMAN_HOME=/usr/local/google/Postman
-#export POSTMAN_HOME
+POSTMAN_HOME=/usr/local/google/Postman
+export POSTMAN_HOME
 
 # set kubectl config path.
 KUBECONFIG=$KUBECONFIG:$HOME/.kube/config
@@ -78,8 +86,7 @@ PS1="${reset}${cyan}\h${blue}[${green}\u${blue}]${white}\$ "
 export PS1
 
 # add local applications to main PATH.
-PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$M2:$GROOVY_HOME/bin:$GRADLE_HOME/bin:$GIT_HOME/bin:$GIT_FLOW_HOME/bin:$GOROOT/bin:$HOME/.local/bin:$PATH
-#PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$M2:$GROOVY_HOME/bin:$GRADLE_HOME/bin:$GIT_HOME/bin:$GIT_FLOW_HOME/bin:$GOROOT/bin:$POSTMAN_HOME:$HOME/.local/bin:$PATH
+PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$M2:$GROOVY_HOME/bin:$GRADLE_HOME/bin:$GIT_HOME/bin:$GIT_FLOW_HOME/bin:$GOROOT/bin:$SCALA_HOME/bin:$SBT_HOME/bin:$POSTMAN_HOME:$HOME/.local/bin:$PATH
 export PATH
 
 # set corporate proxy.
