@@ -1,13 +1,13 @@
 #!/bin/sh -eux
 # install webstorm javascript ide by jetbrains.
 
-# set default value for devops home environment variable if not set. -----------
+# set default value for devops home environment variable if not set. -------------------------------
 devops_home="${devops_home:-/opt/devops}"                   # [optional] devops home (defaults to '/opt/devops').
 
-# install webstorm javascript ide. ---------------------------------------------
+# install webstorm javascript ide. -----------------------------------------------------------------
 webstorm_home="webstorm"
-webstorm_release="2019.1.1"
-webstorm_build="191.6707.60"
+webstorm_release="2019.1.2"
+webstorm_build="191.7141.49"
 
 webstorm_binary="WebStorm-${webstorm_release}.tar.gz"
 webstorm_folder="WebStorm-${webstorm_build}"
@@ -26,7 +26,7 @@ chown -R root:root ./${webstorm_folder}
 ln -s ${webstorm_folder} ${webstorm_home}
 rm -f ${webstorm_binary}
 
-# install webstorm javascript ide as gnome desktop app. ------------------------
+# install webstorm javascript ide as gnome desktop app. --------------------------------------------
 imgname="webstorm-logo"
 imgsizearray=( "16x16" "22x22" "24x24" "32x32" "48x48" "64x64" "128x128" "256x256" )
 imgfolder="/usr/share/icons/hicolor"
@@ -41,12 +41,12 @@ for imgsize in "${imgsizearray[@]}"; do
   fi
 done
 
-# install webstorm javascript ide desktop in applications menu. ----------------
+# install webstorm javascript ide desktop in applications menu. ------------------------------------
 echo "Installing webstorm.desktop in applications menu..."
 desktop-file-install --dir=/usr/share/applications/ ./desktops/webstorm.desktop
 update-desktop-database /usr/share/applications/
 
-# copy webstorm javascript ide launcher to devops applications folder. ---------
+# copy webstorm javascript ide launcher to devops applications folder. -----------------------------
 echo "Copying webstorm.desktop launcher to devops 'applications' folder..."
 mkdir -p ${devops_home}/provisioners/scripts/centos/applications
 cd ${devops_home}/provisioners/scripts/centos/applications

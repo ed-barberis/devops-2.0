@@ -1,13 +1,13 @@
 #!/bin/sh -eux
 # install intellij idea ultimate edition by jetbrains.
 
-# set default value for devops home environment variable if not set. -----------
+# set default value for devops home environment variable if not set. -------------------------------
 devops_home="${devops_home:-/opt/devops}"                   # [optional] devops home (defaults to '/opt/devops').
 
-# install intellij idea ultimate edition. --------------------------------------
+# install intellij idea ultimate edition. ----------------------------------------------------------
 idea_home="idea-IU"
-idea_release="2019.1.1"
-idea_build="191.6707.61"
+idea_release="2019.1.2"
+idea_build="191.7141.44"
 
 idea_binary="ideaIU-${idea_release}-no-jbr.tar.gz"
 #idea_binary="ideaIU-${idea_release}.tar.gz"
@@ -27,7 +27,7 @@ chown -R root:root ./${idea_folder}
 ln -s ${idea_folder} ${idea_home}
 rm -f ${idea_binary}
 
-# install intellij idea ultimate edition as gnome desktop app. -----------------
+# install intellij idea ultimate edition as gnome desktop app. -------------------------------------
 imgname="intellij-idea-logo"
 imgsizearray=( "16x16" "22x22" "24x24" "32x32" "48x48" "64x64" "128x128" "256x256" )
 imgfolder="/usr/share/icons/hicolor"
@@ -42,7 +42,7 @@ for imgsize in "${imgsizearray[@]}"; do
   fi
 done
 
-# install intellij idea ultimate edition desktop in applications menu. ---------
+# install intellij idea ultimate edition desktop in applications menu. -----------------------------
 echo "Installing intellij-idea-ultimate.desktop in applications menu..."
 desktop-file-install --dir=/usr/share/applications/ ./desktops/intellij-idea-ultimate.desktop
 update-desktop-database /usr/share/applications/
