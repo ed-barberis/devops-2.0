@@ -285,10 +285,10 @@ Follow these instructions to build the Oracle Linux 7.6 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 1.16.154 (command-line interface) [Optional]
+-	Amazon AWS CLI 1.16.155 (command-line interface) [Optional]
 -	Ansible 2.7.10
--	Ant 1.10.5
--	Consul 1.4.4
+-	Ant 1.10.6
+-	Consul 1.5.0
 -	Cloud-Init 0.7.9 [Optional]
 -	Docker 18.03.1 CE
 	-	Docker Bash Completion
@@ -300,7 +300,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
 	-	Git-Flow Bash Completion
 -	Go 1.12.5
 -	Gradle 5.4.1
--	Groovy 2.5.6
+-	Groovy 2.5.7
 -	Java SE JDK 8 Update 212 (Amazon Corretto 8)
 -	Java SE JDK 11.0.3 (Amazon Corretto 11)
 -	Java SE JDK 12.0.1 (Oracle)
@@ -344,9 +344,9 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 -	Chrome 74.0.3729.131 (64-bit)
 -	Firefox 60.5.1est (64-bit)
 -	GVim 7.4.160-1
--	JetBrains IntelliJ IDEA 2019.1.1 (Community Edition)
--	JetBrains IntelliJ IDEA 2019.1.1 (Ultimate Edition)
--	JetBrains WebStorm 2019.1.1 (JavaScript IDE)
+-	JetBrains IntelliJ IDEA 2019.1.2 (Community Edition)
+-	JetBrains IntelliJ IDEA 2019.1.2 (Ultimate Edition)
+-	JetBrains WebStorm 2019.1.2 (JavaScript IDE)
 -	Postman 7.0.9
 -	Scala IDE for Eclipse 4.7.0 (Eclipse Oxygen.1 [4.7.1]) [Optional]
 -	Spring Tool Suite 4 [4.2.1] IDE (Eclipse 2019-03 [4.11.0])
