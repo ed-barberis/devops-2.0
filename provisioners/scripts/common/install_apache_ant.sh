@@ -1,12 +1,12 @@
 #!/bin/sh -eux
 # install ant build tool by apache.
 
-# set default value for devops home environment variable if not set. -----------
+# set default value for devops home environment variable if not set. -------------------------------
 devops_home="${devops_home:-/opt/devops}"                   # [optional] devops home (defaults to '/opt/devops').
 
-# install apache ant. ----------------------------------------------------------
+# install apache ant. ------------------------------------------------------------------------------
 anthome="apache-ant"
-antrelease="1.10.5"
+antrelease="1.10.6"
 antfolder="${anthome}-${antrelease}"
 antbinary="${antfolder}-bin.tar.gz"
 
@@ -37,7 +37,7 @@ export PATH
 # verify installation.
 ant -version
 
-# install apache ant contrib. --------------------------------------------------
+# install apache ant contrib. ----------------------------------------------------------------------
 acfolder="ant-contrib"
 acrelease="1.0b3"
 acbinary="${acfolder}-${acrelease}-bin.tar.gz"

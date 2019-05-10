@@ -1,9 +1,9 @@
 #!/bin/sh -eux
 # install groovy sdk bundle by apache.
 
-# install apache groovy. -------------------------------------------------------
+# install apache groovy. ---------------------------------------------------------------------------
 groovyhome="groovy"
-groovyrelease="2.5.6"
+groovyrelease="2.5.7"
 groovyfolder="${groovyhome}-${groovyrelease}"
 groovysdk="apache-groovy-sdk-${groovyrelease}.zip"
 #groovybinary="apache-groovy-binary-${groovyrelease}.zip"
