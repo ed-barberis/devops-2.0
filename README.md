@@ -57,7 +57,6 @@ Perform the following steps to install the needed software:
     - Open the Terminal application and enter the following commands:
 
       ```
-      # spctl kext-consent list
       # spctl kext-consent add VB5E2TV963
       # spctl kext-consent list
       ```

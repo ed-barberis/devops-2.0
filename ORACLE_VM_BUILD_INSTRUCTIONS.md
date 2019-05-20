@@ -155,12 +155,12 @@ Follow these instructions to build the Oracle Linux 7.6 VM images.
     Docker version 18.09.1-ol, build c3ab8a8
 
     dev[vagrant]$ ansible --version
-    ansible 2.7.10
+    ansible 2.8.0
       config file = /etc/ansible/ansible.cfg
-      configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+      configured module search path = [u'/root/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
       ansible python module location = /usr/lib/python2.7/site-packages/ansible
-      executable location = /usr/bin/ansible
-      python version = 2.7.5 (default, Nov  1 2018, 03:12:47) [GCC 4.8.5 20150623 (Red Hat 4.8.5-36.0.1)]
+      executable location = /bin/ansible
+      python version = 2.7.5 (default, Apr  9 2019, 16:02:27) [GCC 4.8.5 20150623 (Red Hat 4.8.5-36.0.1)]
 
     dev[vagrant]$ <run other commands>
     ```
@@ -186,12 +186,12 @@ Follow these instructions to build the Oracle Linux 7.6 VM images.
     Docker version 18.09.1-ol, build c3ab8a8
 
     ops[vagrant]$ ansible --version
-    ansible 2.7.10
+    ansible 2.8.0
       config file = /etc/ansible/ansible.cfg
-      configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+      configured module search path = [u'/root/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
       ansible python module location = /usr/lib/python2.7/site-packages/ansible
-      executable location = /usr/bin/ansible
-      python version = 2.7.5 (default, Nov  1 2018, 03:12:47) [GCC 4.8.5 20150623 (Red Hat 4.8.5-36.0.1)]
+      executable location = /bin/ansible
+      python version = 2.7.5 (default, Apr  9 2019, 16:02:27) [GCC 4.8.5 20150623 (Red Hat 4.8.5-36.0.1)]
 
     ops[vagrant]$ <run other commands>
     ```
@@ -285,8 +285,8 @@ Follow these instructions to build the Oracle Linux 7.6 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 1.16.155 (command-line interface) [Optional]
--	Ansible 2.7.10
+-	Amazon AWS CLI 1.16.161 (command-line interface) [Optional]
+-	Ansible 2.8.0
 -	Ant 1.10.6
 -	Consul 1.5.0
 -	Cloud-Init 0.7.9 [Optional]
@@ -309,21 +309,21 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Maven 3.6.1
 -	Oracle Compute Cloud Service CLI (opc) 17.2.2 [Optional]
 -	Oracle PaaS Service Manager CLI (psm) 1.1.16 [Optional]
--	Packer 1.4.0
+-	Packer 1.4.1
 -	Python 2.7.5
 	-	Pip 19.1.1
 -	Python 3.6.3
 	-	Pip3 19.1.1
 -	Scala 2.12.8
 	-	Scala Build Tool (SBT) 1.2.8
--	Terraform 0.11.13
+-	Terraform 0.11.14
 -	Vault 1.1.2
 -	XMLStarlet 1.6.1 (command-line XML processor)
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
 -	GitLab Community Edition 11.10.4
--	Jenkins 2.164.2
+-	Jenkins 2.164.3
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
@@ -335,20 +335,20 @@ In addition, the following application performance management applications are p
 The following developer tools are pre-installed in the __Developer VM__ (desktop) only:
 
 -	Apache Tomcat 7.0.94
--	Apache Tomcat 8.5.40
--	AppDynamics Java Agent 4.5.9.0 Build 25648
--	AppDynamics Machine Agent 4.5.10.0 Build 2131
+-	Apache Tomcat 8.5.41
+-	AppDynamics Java Agent 4.5.10.0 Build 25916
+-	AppDynamics Machine Agent 4.5.11.0 Build 2163
 	-	AppDynamics AWS EC2 Monitoring Extension 2.0.1 [Optional]
--	Atom Editor 1.36.1
+-	Atom Editor 1.37.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 74.0.3729.131 (64-bit)
--	Firefox 60.5.1est (64-bit)
+-	Chrome 74.0.3729.157 (64-bit)
+-	Firefox 60.6.1esr (64-bit)
 -	GVim 7.4.160-1
 -	JetBrains IntelliJ IDEA 2019.1.2 (Community Edition)
 -	JetBrains IntelliJ IDEA 2019.1.2 (Ultimate Edition)
 -	JetBrains WebStorm 2019.1.2 (JavaScript IDE)
--	Postman 7.0.9
+-	Postman 7.1.1
 -	Scala IDE for Eclipse 4.7.0 (Eclipse Oxygen.1 [4.7.1]) [Optional]
 -	Spring Tool Suite 4 [4.2.1] IDE (Eclipse 2019-03 [4.11.0])
 -	Sublime Text 3 (3.2.1 Build 3207)
--	Visual Studio Code 1.33.1
+-	Visual Studio Code 1.34.0
