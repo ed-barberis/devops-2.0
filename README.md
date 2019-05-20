@@ -52,8 +52,8 @@ Perform the following steps to install the needed software:
 
     **NOTE:** With the release of macOS Mojave 10.14.5+, all new or updated kernel extensions must be notarized by Apple. Due to this recent significant change, Oracle has NOT had time to update the VirtualBox installer, and the installation will fail. If you have upgraded to Mojave 10.14.5+, perform the following prior to installing VirtualBox:
 
-    **For ADVANCED Users Only!!**
-    a.	Restart your workstation in Recovery Mode. (As your Mac restarts, hold down the Command-R keys immediately upon hearing the startup chime. Hold the keys until the Apple logo appears.
+    **For ADVANCED Users Only!!**  
+    a.	Restart your workstation in Recovery Mode. (As your Mac restarts, hold down the Command-R keys immediately upon hearing the startup chime. Hold the keys until the Apple logo appears.  
     b.	Access Terminal and enter the following command:
 
         `spctl kext-consent add VB5E2TV963`
