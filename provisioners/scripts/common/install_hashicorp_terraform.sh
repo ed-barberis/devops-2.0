@@ -1,8 +1,8 @@
 #!/bin/sh -eux
 # install terraform infrastructure as code tool by hashicorp.
 
-# install hashicorp terraform. -------------------------------------------------
-terraform_release="0.11.13"
+# install hashicorp terraform. ---------------------------------------------------------------------
+terraform_release="0.11.14"
 terraform_binary="terraform_${terraform_release}_linux_amd64.zip"
 
 # create local bin directory (if needed).
