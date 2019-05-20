@@ -50,9 +50,9 @@ Perform the following steps to install the needed software:
 3.	Install [VirtualBox 6.0.8](https://www.virtualbox.org/) for macOS 64-bit.  
     `$ brew cask install virtualbox`  
 
-    **NOTE:** With the release of macOS Mojave 10.14.5+, all new or updated kernel extensions must be notarized by Apple. Due to this recent significant change, Oracle has NOT had time to update the VirtualBox installer, and the installation will fail. If you have upgraded to Mojave 10.14.5+, perform the following prior to installing VirtualBox:
+    **NOTE:** With the release of macOS Mojave 10.14.5+, all new or updated kernel extensions must now be notarized by Apple. Due to this significant change, the VirtualBox installation will *fail* if you have upgraded to 10.14.5+. For a temporary work-around to this issue, perform the following prior to installing VirtualBox:
 
-    **For ADVANCED Users Only!!!**  
+    **WARNING: For ADVANCED Users Only!!!**  
     - Restart your workstation in Recovery Mode. (As the workstation restarts, hold down the Command (⌘)-R keys immediately upon hearing the startup chime. Hold the keys until the Apple logo appears.)
     - Open the Terminal application and enter the following commands:
 
@@ -62,7 +62,7 @@ Perform the following steps to install the needed software:
       # spctl kext-consent list
       ```
 
-    For additional details on this issue, please refer to the User Forum for VirtualBox [here](https://forums.virtualbox.org/viewtopic.php?f=8&t=93151&sid=637f4f3cf543d7ed3a47994b32ae4e93).
+    For additional details, please refer to the User Forum for VirtualBox [here](https://forums.virtualbox.org/viewtopic.php?f=8&t=93151&sid=637f4f3cf543d7ed3a47994b32ae4e93).
 
 4.	Install [VirtualBox Extension Pack 6.0.8](https://www.virtualbox.org/) for macOS 64-bit.  
     `$ brew cask install virtualbox-extension-pack`  
