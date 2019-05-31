@@ -285,7 +285,7 @@ Follow these instructions to build the CentOS Linux 7.6 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 1.16.166 (command-line interface) [Optional]
+-	Amazon AWS CLI 1.16.169 (command-line interface) [Optional]
 -	Ansible 2.8.0
 -	Ant 1.10.6
 -	Consul 1.5.1
@@ -325,8 +325,8 @@ In addition, the following continuous integration and continuous delivery (CI/CD
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
--	AppDynamics Enterprise Console 4.5.9.0 Build 19152
-	-	AppDynamics Controller 4.5.9.2 Build 5729
+-	AppDynamics Enterprise Console 4.5.9.1 Build 19782
+	-	AppDynamics Controller 4.5.9.2 Build 5734
 	-	AppDynamics Event Service 4.5.2.0 Build 20201
 -	MySQL Shell 8.0.16
 
@@ -342,9 +342,9 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 -	Chrome 74.0.3729.169 (64-bit)
 -	Firefox 60.6.1esr (64-bit)
 -	GVim 7.4.160-1
--	JetBrains IntelliJ IDEA 2019.1.2 (Community Edition)
--	JetBrains IntelliJ IDEA 2019.1.2 (Ultimate Edition)
--	JetBrains WebStorm 2019.1.2 (JavaScript IDE)
+-	JetBrains IntelliJ IDEA 2019.1.3 (Community Edition)
+-	JetBrains IntelliJ IDEA 2019.1.3 (Ultimate Edition)
+-	JetBrains WebStorm 2019.1.3 (JavaScript IDE)
 -	Postman 7.1.1
 -	Scala IDE for Eclipse 4.7.0 (Eclipse Oxygen.1 [4.7.1]) [Optional]
 -	Spring Tool Suite 4 [4.2.2] IDE (Eclipse 2019-03 [4.11.0])
