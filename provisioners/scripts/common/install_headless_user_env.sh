@@ -8,7 +8,7 @@ user_home="${user_home:-/home/$user_name}"
 user_docker_profile="${user_docker_profile:-false}"
 user_prompt_color="${user_prompt_color:-green}"
 d_completion_release="${d_completion_release:-18.09.6}"
-dc_completion_release="${dc_completion_release:-1.24.0}"
+dc_completion_release="${dc_completion_release:-1.24.1}"
 
 # set default value for devops home environment variable if not set. -------------------------------
 devops_home="${devops_home:-/opt/devops}"
@@ -29,7 +29,7 @@ Usage:
                                                                 #              'black', 'blue', 'cyan', 'green', 'magenta', 'red', 'white', 'yellow'
                                                                 #
     [root]# export d_completion_release="18.09.6"               # [optional] docker completion for bash release (defaults to '18.09.6').
-    [root]# export dc_completion_release="1.24.0"               # [optional] docker compose completion for bash release (defaults to '1.24.0').
+    [root]# export dc_completion_release="1.24.1"               # [optional] docker compose completion for bash release (defaults to '1.24.1').
     [root]# export devops_home="/opt/devops"                    # [optional] devops home (defaults to '/opt/devops').
     [root]# $0
 EOF
