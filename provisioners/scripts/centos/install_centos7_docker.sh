@@ -1,12 +1,12 @@
 #!/bin/sh -eux
 # install the docker engine on centos 7.x.
 
-# install the docker prerequisites. --------------------------------------------
+# install the docker prerequisites. ----------------------------------------------------------------
 yum -y install yum-utils
 yum -y install device-mapper-persistent-data
 yum -y install lvm2
 
-# install the docker repository. -----------------------------------------------
+# install the docker repository. -------------------------------------------------------------------
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 
 # enable/disable optional docker repositories.
@@ -19,10 +19,13 @@ yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce
 #yum-config-manager --disable docker-ce-test     # optional.
 #yum list docker-ce --showduplicates | sort -r
 
-# install the docker community edition engine. ---------------------------------
+# build yum cache for docker repository.
+yum -y makecache fast
+
+# install the docker community edition engine. -----------------------------------------------------
 yum -y install docker-ce
 
-# configure docker. ------------------------------------------------------------
+# configure docker. --------------------------------------------------------------------------------
 # enable ip forwarding if not set.
 sysctlfile="/etc/sysctl.conf"
 ipv4cmd="net.ipv4.ip_forward = 1"

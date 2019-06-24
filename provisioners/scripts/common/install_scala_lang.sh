@@ -15,7 +15,7 @@ curdate=$(date +"%Y-%m-%d.%H-%M-%S")
 curl --silent --dump-header curl-${scalahome}.${curdate}.out1 https://github.com/scala/scala/releases/latest --output /dev/null
 tr -d '\r' < curl-${scalahome}.${curdate}.out1 > curl-${scalahome}.${curdate}.out2
 scalarelease=$(awk '/Location/ {print $2}' curl-${scalahome}.${curdate}.out2 | awk -F "/" '{print $8}')
-scalarelease="v2.12.8"
+scalarelease="v2.13.0"
 scaladir="scala-${scalarelease:1}"
 scalafolder="${scalahome}-${scalarelease:1}"
 scalabinary="scala-${scalarelease:1}.tgz"
