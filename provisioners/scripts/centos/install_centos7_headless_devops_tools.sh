@@ -36,3 +36,6 @@ yum -y install centos-release-scl
 # install git. -----------------------------------------------------------------
 yum -y install git
 git --version
+
+# install bash completion tools. -----------------------------------------------
+yum -y install bash-completion bash-completion-extras
