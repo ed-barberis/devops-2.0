@@ -24,8 +24,8 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
 -	Homebrew 2.1.7
 	-	Command Line Tools (CLT) for Xcode
--	VirtualBox 6.0.8
-	-	VirtualBox Extension Pack 6.0.8
+-	VirtualBox 6.0.10
+	-	VirtualBox Extension Pack 6.0.10
 -	Vagrant 2.2.4 with Plugins
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 1.1.9
@@ -47,7 +47,7 @@ Perform the following steps to install the needed software:
 2.	Install the [Homebrew 2.1.7](https://brew.sh/) package manager for macOS 64-bit. Paste the following into a macOS Terminal prompt:  
     `$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
 
-3.	Install [VirtualBox 6.0.8](https://www.virtualbox.org/) for macOS 64-bit.  
+3.	Install [VirtualBox 6.0.10](https://www.virtualbox.org/) for macOS 64-bit.  
     `$ brew cask install virtualbox`  
 
     > **NOTE:** With the release of macOS Mojave 10.14.5+, all new or updated kernel extensions must now be notarized by Apple. Due to this significant change, the VirtualBox installation will *fail* if you have upgraded to 10.14.5+. For a temporary work-around to this issue, perform the following prior to installing VirtualBox:
@@ -63,7 +63,7 @@ Perform the following steps to install the needed software:
     >
     > For additional details, please refer to the User Forum for VirtualBox [here](https://forums.virtualbox.org/viewtopic.php?f=8&t=93151&sid=637f4f3cf543d7ed3a47994b32ae4e93).
 
-4.	Install [VirtualBox Extension Pack 6.0.8](https://www.virtualbox.org/) for macOS 64-bit.  
+4.	Install [VirtualBox Extension Pack 6.0.10](https://www.virtualbox.org/) for macOS 64-bit.  
     `$ brew cask install virtualbox-extension-pack`  
 
 5.	Install [Vagrant 2.2.4](https://www.vagrantup.com/) for macOS 64-bit.  
@@ -94,7 +94,7 @@ Perform the following steps to install the needed software:
     ...
 
     $ vboxmanage --version
-    6.0.8r130520
+    6.0.10r132072
 
     $ vagrant --version
     Vagrant 2.2.4
@@ -120,8 +120,8 @@ Perform the following steps to install the needed software:
 
 To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the following open source software needs to be installed on the host Windows 64-Bit machine:
 
--	VirtualBox 6.0.8
-	-	VirtualBox Extension Pack 6.0.8
+-	VirtualBox 6.0.10
+	-	VirtualBox Extension Pack 6.0.10
 -	Vagrant 2.2.4 with Plugins
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 1.1.9
@@ -135,9 +135,9 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
 Perform the following steps to install the needed software:
 
-1.	Install [VirtualBox 6.0.8 for Windows 64-bit](https://download.virtualbox.org/virtualbox/6.0.8/VirtualBox-6.0.8-130520-Win.exe).
+1.	Install [VirtualBox 6.0.10 for Windows 64-bit](https://download.virtualbox.org/virtualbox/6.0.10/VirtualBox-6.0.10-132072-Win.exe).
 
-2.	Install [VirtualBox Extension Pack 6.0.8](https://download.virtualbox.org/virtualbox/6.0.8/Oracle_VM_VirtualBox_Extension_Pack-6.0.8-130520.vbox-extpack).
+2.	Install [VirtualBox Extension Pack 6.0.10](https://download.virtualbox.org/virtualbox/6.0.10/Oracle_VM_VirtualBox_Extension_Pack-6.0.10-132072.vbox-extpack).
 
 3.	Install [Vagrant 2.2.4 for Windows 64-bit](https://releases.hashicorp.com/vagrant/2.2.4/vagrant_2.2.4_x86_64.msi).  
     Suggested install folder:  
@@ -193,7 +193,7 @@ Perform the following steps to install the needed software:
 
     ```
     $ VBoxManage --version
-    6.0.8r130520
+    6.0.10r132072
 
     $ vagrant --version
     Vagrant 2.2.4
