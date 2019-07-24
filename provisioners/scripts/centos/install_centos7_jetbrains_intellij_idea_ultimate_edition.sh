@@ -6,8 +6,8 @@ devops_home="${devops_home:-/opt/devops}"                   # [optional] devops 
 
 # install intellij idea ultimate edition. ----------------------------------------------------------
 idea_home="idea-IU"
-idea_release="2019.1.3"
-idea_build="191.7479.19"
+idea_release="2019.2"
+idea_build="192.5728.98"
 
 idea_binary="ideaIU-${idea_release}-no-jbr.tar.gz"
 #idea_binary="ideaIU-${idea_release}.tar.gz"
