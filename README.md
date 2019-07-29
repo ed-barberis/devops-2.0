@@ -29,7 +29,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 -	Vagrant 2.2.4 with Plugins
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 1.1.9
-	-	vagrant-vbguest 0.18.0
+	-	vagrant-vbguest 0.19.0
 -	Packer 1.4.2
 -	Git 2.21.0
 -	jq 1.6
@@ -125,7 +125,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 -	Vagrant 2.2.4 with Plugins
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 1.1.9
-	-	vagrant-vbguest 0.18.0
+	-	vagrant-vbguest 0.19.0
 -	Packer 1.4.2
 -	Git 2.21.0
 -	jq 1.6
@@ -236,7 +236,7 @@ Perform the following steps to install the needed software:
     $ vagrant plugin list
     vagrant-cachier (1.2.1)
     vagrant-share (1.1.9, system)
-    vagrant-vbguest (0.18.0)
+    vagrant-vbguest (0.19.0)
     ```
 
 3.	Configure Git for local user:

@@ -152,15 +152,15 @@ Follow these instructions to build the Oracle Linux 7.6 VM images.
     ```
     $ vagrant ssh
     dev[vagrant]$ docker --version
-    Docker version 18.09.1-ol, build c3ab8a8
+    Docker version 18.09.1-ol, build e32a1bd
 
     dev[vagrant]$ ansible --version
-    ansible 2.8.2
+    ansible 2.8.3
       config file = /etc/ansible/ansible.cfg
       configured module search path = [u'/root/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
       ansible python module location = /usr/lib/python2.7/site-packages/ansible
       executable location = /bin/ansible
-      python version = 2.7.5 (default, Apr  9 2019, 16:02:27) [GCC 4.8.5 20150623 (Red Hat 4.8.5-36.0.1)]
+      python version = 2.7.5 (default, Jun 20 2019, 13:30:36) [GCC 4.8.5 20150623 (Red Hat 4.8.5-36.0.1)]
 
     dev[vagrant]$ <run other commands>
     ```
@@ -183,15 +183,15 @@ Follow these instructions to build the Oracle Linux 7.6 VM images.
     ```
     $ vagrant ssh
     dev[vagrant]$ docker --version
-    Docker version 18.09.1-ol, build c3ab8a8
+    Docker version 18.09.1-ol, build e32a1bd
 
     ops[vagrant]$ ansible --version
-    ansible 2.8.2
+    ansible 2.8.3
       config file = /etc/ansible/ansible.cfg
       configured module search path = [u'/root/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
       ansible python module location = /usr/lib/python2.7/site-packages/ansible
       executable location = /bin/ansible
-      python version = 2.7.5 (default, Apr  9 2019, 16:02:27) [GCC 4.8.5 20150623 (Red Hat 4.8.5-36.0.1)]
+      python version = 2.7.5 (default, Jun 20 2019, 13:30:36) [GCC 4.8.5 20150623 (Red Hat 4.8.5-36.0.1)]
 
     ops[vagrant]$ <run other commands>
     ```
@@ -285,10 +285,10 @@ Follow these instructions to build the Oracle Linux 7.6 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 1.16.204 (command-line interface) [Optional]
--	Ansible 2.8.2
+-	Amazon AWS CLI 1.16.207 (command-line interface) [Optional]
+-	Ansible 2.8.3
 -	Ant 1.10.6
--	Consul 1.5.2
+-	Consul 1.5.3
 -	Cloud-Init 0.7.9 [Optional]
 -	Docker 18.03.1 CE
 	-	Docker Bash Completion
@@ -311,13 +311,13 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Oracle PaaS Service Manager CLI (psm) 1.1.16 [Optional]
 -	Packer 1.4.2
 -	Python 2.7.5
-	-	Pip 19.1.1
+	-	Pip 19.2.1
 -	Python 3.6.3
-	-	Pip3 19.1.1
+	-	Pip3 19.2.1
 -	Scala 2.13.0
 	-	Scala Build Tool (SBT) 1.2.8
 -	Terraform 0.12.5
--	Vault 1.1.3
+-	Vault 1.1.5
 -	XMLStarlet 1.6.1 (command-line XML processor)
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
@@ -337,9 +337,9 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 -	Apache Tomcat 7.0.94
 -	Apache Tomcat 8.5.43
 -	AppDynamics Java Agent 4.5.12.0 Build 27094
--	AppDynamics Machine Agent 4.5.11.0 Build 2163
+-	AppDynamics Machine Agent 4.5.13.0 Build 2238
 	-	AppDynamics AWS EC2 Monitoring Extension 2.0.1 [Optional]
--	Atom Editor 1.39.0
+-	Atom Editor 1.39.1
 -	Brackets Editor 1.7 Experimental 1.7.0-0
 -	Chrome 75.0.3770.142 (64-bit)
 -	Firefox 60.8.0esr (64-bit)
