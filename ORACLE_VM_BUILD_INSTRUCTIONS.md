@@ -285,7 +285,7 @@ Follow these instructions to build the Oracle Linux 7.6 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 1.16.207 (command-line interface) [Optional]
+-	Amazon AWS CLI 1.16.208 (command-line interface) [Optional]
 -	Ansible 2.8.3
 -	Ant 1.10.6
 -	Consul 1.5.3
@@ -316,19 +316,19 @@ The following command-line tools and utilities are pre-installed in the __Develo
 	-	Pip3 19.2.1
 -	Scala 2.13.0
 	-	Scala Build Tool (SBT) 1.2.8
--	Terraform 0.12.5
--	Vault 1.1.5
+-	Terraform 0.12.6
+-	Vault 1.2.0
 -	XMLStarlet 1.6.1 (command-line XML processor)
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 12.1.1
+-	GitLab Community Edition 12.1.3
 -	Jenkins 2.176.2
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
--	AppDynamics Enterprise Console 4.5.11.0 Build 20620
-	-	AppDynamics Controller 4.5.11.2 Build 3837
+-	AppDynamics Enterprise Console 4.5.12.0 Build 20340
+	-	AppDynamics Controller 4.5.12.1 Build 2228
 	-	AppDynamics Event Service 4.5.2.0 Build 20201
 -	MySQL Shell 8.0.17
 
@@ -341,13 +341,13 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 	-	AppDynamics AWS EC2 Monitoring Extension 2.0.1 [Optional]
 -	Atom Editor 1.39.1
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 75.0.3770.142 (64-bit)
+-	Chrome 76.0.3809.87 (64-bit)
 -	Firefox 60.8.0esr (64-bit)
 -	GVim 7.4.160-1
 -	JetBrains IntelliJ IDEA 2019.2 (Community Edition)
 -	JetBrains IntelliJ IDEA 2019.2 (Ultimate Edition)
 -	JetBrains WebStorm 2019.2 (JavaScript IDE)
--	Postman 7.3.4
+-	Postman 7.3.5
 -	Scala IDE for Eclipse 4.7.0 (Eclipse Oxygen.1 [4.7.1]) [Optional]
 -	Spring Tool Suite 4 [4.3.1] IDE (Eclipse 2019-06 [4.12.0])
 -	Sublime Text 3 (3.2.1 Build 3207)
