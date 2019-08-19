@@ -155,7 +155,7 @@ Follow these instructions to build the Oracle Linux 7.6 VM images.
     Docker version 18.09.1-ol, build e32a1bd
 
     dev[vagrant]$ ansible --version
-    ansible 2.8.3
+    ansible 2.8.4
       config file = /etc/ansible/ansible.cfg
       configured module search path = [u'/root/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
       ansible python module location = /usr/lib/python2.7/site-packages/ansible
@@ -186,7 +186,7 @@ Follow these instructions to build the Oracle Linux 7.6 VM images.
     Docker version 18.09.1-ol, build e32a1bd
 
     ops[vagrant]$ ansible --version
-    ansible 2.8.3
+    ansible 2.8.4
       config file = /etc/ansible/ansible.cfg
       configured module search path = [u'/root/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
       ansible python module location = /usr/lib/python2.7/site-packages/ansible
@@ -285,8 +285,8 @@ Follow these instructions to build the Oracle Linux 7.6 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 1.16.218 (command-line interface) [Optional]
--	Ansible 2.8.3
+-	Amazon AWS CLI 1.16.221 (command-line interface) [Optional]
+-	Ansible 2.8.4
 -	Ant 1.10.6
 -	Consul 1.5.3
 -	Cloud-Init 0.7.9 [Optional]
@@ -294,12 +294,12 @@ The following command-line tools and utilities are pre-installed in the __Develo
 	-	Docker Bash Completion
 	-	Docker Compose 1.24.1
 	-	Docker Compose Bash Completion
--	Git 2.22.1
+-	Git 2.23.0
 	-	Git Bash Completion
 	-	Git-Flow 1.12.3 (AVH Edition)
 	-	Git-Flow Bash Completion
--	Go 1.12.8
--	Gradle 5.5.1
+-	Go 1.12.9
+-	Gradle 5.6
 -	Groovy 2.5.8
 -	Java SE JDK 8 Update 222 (Amazon Corretto 8)
 -	Java SE JDK 11.0.4 (Amazon Corretto 11)
@@ -309,7 +309,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Maven 3.6.1
 -	Oracle Compute Cloud Service CLI (opc) 17.2.2 [Optional]
 -	Oracle PaaS Service Manager CLI (psm) 1.1.16 [Optional]
--	Packer 1.4.2
+-	Packer 1.4.3
 -	Python 2.7.5
 	-	Pip 19.2.2
 -	Python 3.6.3
@@ -317,7 +317,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Scala 2.13.0
 	-	Scala Build Tool (SBT) 1.2.8
 -	Terraform 0.12.6
--	Vault 1.2.1
+-	Vault 1.2.2
 -	XMLStarlet 1.6.1 (command-line XML processor)
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
@@ -327,7 +327,7 @@ In addition, the following continuous integration and continuous delivery (CI/CD
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
--	AppDynamics Enterprise Console 4.5.12.0 Build 20353
+-	AppDynamics Enterprise Console 4.5.12.0 Build 20363
 	-	AppDynamics Controller 4.5.12.1 Build 2241
 	-	AppDynamics Event Service 4.5.2.0 Build 20201
 -	MySQL Shell 8.0.17
@@ -351,4 +351,4 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 -	Scala IDE for Eclipse 4.7.0 (Eclipse Oxygen.1 [4.7.1]) [Optional]
 -	Spring Tool Suite 4 [4.3.2] IDE (Eclipse 2019-06 [4.12.0])
 -	Sublime Text 3 (3.2.1 Build 3207)
--	Visual Studio Code 1.37.0
+-	Visual Studio Code 1.37.1

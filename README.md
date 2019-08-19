@@ -26,12 +26,12 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 	-	Command Line Tools (CLT) for Xcode
 -	VirtualBox 6.0.10
 	-	VirtualBox Extension Pack 6.0.10
--	Vagrant 2.2.4 with Plugins
+-	Vagrant 2.2.5 with Plugins
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 1.1.9
 	-	vagrant-vbguest 0.19.0
--	Packer 1.4.2
--	Git 2.22.1
+-	Packer 1.4.3
+-	Git 2.23.0
 -	jq 1.6
 -	Optional Add-ons
 	-	wget 1.20.3
@@ -66,13 +66,13 @@ Perform the following steps to install the needed software:
 4.	Install [VirtualBox Extension Pack 6.0.10](https://www.virtualbox.org/) for macOS 64-bit.  
     `$ brew cask install virtualbox-extension-pack`  
 
-5.	Install [Vagrant 2.2.4](https://www.vagrantup.com/) for macOS 64-bit.  
+5.	Install [Vagrant 2.2.5](https://www.vagrantup.com/) for macOS 64-bit.  
     `$ brew cask install vagrant`  
 
-6.	Install [Packer 1.4.2](https://packer.io/) for macOS 64-bit.  
+6.	Install [Packer 1.4.3](https://packer.io/) for macOS 64-bit.  
     `$ brew install packer`  
 
-7.	Install [Git 2.22.1](https://git-scm.com/downloads) for macOS 64-bit.  
+7.	Install [Git 2.23.0](https://git-scm.com/downloads) for macOS 64-bit.  
     `$ brew install git`  
 
 8.	Install [jq 1.6](https://stedolan.github.io/jq/) for macOS 64-bit.  
@@ -97,13 +97,13 @@ Perform the following steps to install the needed software:
     6.0.10r132072
 
     $ vagrant --version
-    Vagrant 2.2.4
+    Vagrant 2.2.5
 
     $ packer --version
-    1.4.2
+    1.4.3
 
     $ git --version
-    git version 2.22.1
+    git version 2.23.0
 
     $ jq --version
     jq-1.6
@@ -122,12 +122,12 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
 -	VirtualBox 6.0.10
 	-	VirtualBox Extension Pack 6.0.10
--	Vagrant 2.2.4 with Plugins
+-	Vagrant 2.2.5 with Plugins
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 1.1.9
 	-	vagrant-vbguest 0.19.0
--	Packer 1.4.2
--	Git 2.22.1
+-	Packer 1.4.3
+-	Git 2.23.0
 -	jq 1.6
 -	Optional Add-ons for Git Bash
 	-	wget 1.9.1
@@ -139,7 +139,7 @@ Perform the following steps to install the needed software:
 
 2.	Install [VirtualBox Extension Pack 6.0.10](https://download.virtualbox.org/virtualbox/6.0.10/Oracle_VM_VirtualBox_Extension_Pack-6.0.10-132072.vbox-extpack).
 
-3.	Install [Vagrant 2.2.4 for Windows 64-bit](https://releases.hashicorp.com/vagrant/2.2.4/vagrant_2.2.4_x86_64.msi).  
+3.	Install [Vagrant 2.2.5 for Windows 64-bit](https://releases.hashicorp.com/vagrant/2.2.5/vagrant_2.2.5_x86_64.msi).  
     Suggested install folder:  
     `C:\HashiCorp\vagrant`  
 
@@ -150,11 +150,11 @@ Perform the following steps to install the needed software:
     >
     > If this is set, Vagrant will prefer using utility executables (like `ssh` and `rsync`) from the local system instead of those vendored within the Vagrant installation.  
 
-4.	Install [Packer 1.4.2 for Windows 64-bit](https://releases.hashicorp.com/packer/1.4.2/packer_1.4.2_windows_amd64.zip).
+4.	Install [Packer 1.4.3 for Windows 64-bit](https://releases.hashicorp.com/packer/1.4.3/packer_1.4.3_windows_amd64.zip).
     Create suggested install folder and extract contents of ZIP file to:  
     `C:\HashiCorp\Packer\bin`  
 
-5.	Install [Git 2.22.1 for Windows 64-bit](https://github.com/git-for-windows/git/releases/download/v2.22.1.windows.1/Git-2.22.1-64-bit.exe).
+5.	Install [Git 2.23.0 for Windows 64-bit](https://github.com/git-for-windows/git/releases/download/v2.23.0.windows.1/Git-2.23.0-64-bit.exe).
 
 6.	Install [jq 1.6](https://github.com/stedolan/jq/releases/download/jq-1.6/jq-win64.exe) for Windows 64-bit.  
     Create suggested install folder and rename binary to:  
@@ -196,13 +196,13 @@ Perform the following steps to install the needed software:
     6.0.10r132072
 
     $ vagrant --version
-    Vagrant 2.2.4
+    Vagrant 2.2.5
 
     $ packer --version
-    1.4.2
+    1.4.3
 
     $ git --version
-    git version 2.22.1.windows.1
+    git version 2.23.0.windows.1
 
     $ jq --version
     jq-1.6
