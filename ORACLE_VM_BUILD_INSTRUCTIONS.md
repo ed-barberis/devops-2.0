@@ -285,7 +285,7 @@ Follow these instructions to build the Oracle Linux 7.6 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 1.16.230 (command-line interface) [Optional]
+-	Amazon AWS CLI 1.16.232 (command-line interface) [Optional]
 -	Ansible 2.8.4
 -	Ant 1.10.6
 -	Consul 1.6.0
@@ -315,8 +315,8 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Python 3.6.3
 	-	Pip3 19.2.3
 -	Scala 2.13.0
-	-	Scala Build Tool (SBT) 1.2.8
--	Terraform 0.12.7
+	-	Scala Build Tool (SBT) 1.3.0
+-	Terraform 0.12.8
 -	Vault 1.2.2
 -	XMLStarlet 1.6.1 (command-line XML processor)
 
