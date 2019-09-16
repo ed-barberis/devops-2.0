@@ -6,7 +6,7 @@ devops_home="${devops_home:-/opt/devops}"                   # [optional] devops 
 
 # install apache ant. ------------------------------------------------------------------------------
 anthome="apache-ant"
-antrelease="1.10.6"
+antrelease="1.10.7"
 antfolder="${anthome}-${antrelease}"
 antbinary="${antfolder}-bin.tar.gz"
 
