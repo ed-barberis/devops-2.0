@@ -4,7 +4,7 @@
       "boot_wait": "10s",
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
       "headless": "{{ user `headless` }}",
-      "source_path": "../../../artifacts/oracle/base-desktop-ol76/base-desktop-ol76.ovf",
+      "source_path": "../../../artifacts/oracle/base-desktop-ol77/base-desktop-ol77.ovf",
       "output_directory": "../../../artifacts/oracle/{{user `box_basename`}}",
       "shutdown_command": "echo 'vagrant' | sudo -S /sbin/halt -h -p",
       "ssh_password": "vagrant",
@@ -14,7 +14,8 @@
       "type": "virtualbox-ovf",
       "vboxmanage": [
         ["modifyvm", "{{.Name}}", "--memory", "{{ user `memory` }}"],
-        ["modifyvm", "{{.Name}}", "--cpus", "{{ user `cpus` }}"]
+        ["modifyvm", "{{.Name}}", "--cpus", "{{ user `cpus` }}"],
+        ["modifyvm", "{{.Name}}", "--vram", "{{ user `vram` }}"]
       ],
       "virtualbox_version_file": ".vbox_version",
       "vm_name": "{{ user `box_basename` }}"
@@ -151,7 +152,7 @@
     "appd_machine_agent_application_name": "{{env `appd_machine_agent_application_name`}}",
     "appd_machine_agent_tier_name": "{{env `appd_machine_agent_tier_name`}}",
     "appd_machine_agent_node_name": "{{env `appd_machine_agent_node_name`}}",
-    "box_basename": "dev-ol76",
+    "box_basename": "dev-ol77",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
     "cpus": "2",
     "devops_home": "/opt/devops-2.0",
@@ -160,8 +161,9 @@
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
     "memory": "6144",
-    "name": "dev-ol76",
+    "name": "dev-ol77",
     "no_proxy": "{{env `no_proxy`}}",
-    "version": "TIMESTAMP"
+    "version": "TIMESTAMP",
+    "vram": "256"
   }
 }
