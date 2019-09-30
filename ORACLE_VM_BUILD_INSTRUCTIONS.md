@@ -304,6 +304,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Java SE JDK 8 Update 222 (Amazon Corretto 8)
 -	Java SE JDK 11.0.4 (Amazon Corretto 11)
 -	Java SE JDK 12.0.2 (Oracle)
+-	Java SE JDK 13 (Oracle)
 -	JMESPath jp 0.1.3 (command-line JSON processor)
 -	jq 1.6 (command-line JSON processor)
 -	Maven 3.6.2

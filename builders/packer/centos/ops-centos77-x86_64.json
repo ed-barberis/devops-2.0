@@ -102,6 +102,7 @@
         "../../../provisioners/scripts/common/install_scala_sbt.sh",
         "../../../provisioners/scripts/common/install_aws_corretto_java_jdk_11.sh",
         "../../../provisioners/scripts/common/install_oracle_java_jdk_12.sh",
+        "../../../provisioners/scripts/common/install_oracle_java_jdk_13.sh",
         "../../../provisioners/scripts/common/install_jmespath_jp_json_processor.sh",
         "../../../provisioners/scripts/common/install_jq_json_processor.sh",
         "../../../provisioners/scripts/centos/install_centos7_xmlstarlet_xml_processor.sh",
