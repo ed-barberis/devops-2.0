@@ -114,7 +114,7 @@
         "../../../provisioners/scripts/common/install_hashicorp_vault.sh",
         "../../../provisioners/scripts/centos/install_centos7_git.sh",
         "../../../provisioners/scripts/common/install_git_flow.sh",
-        "../../../provisioners/scripts/common/install_apache_tomcat_7.sh",
+        "../../../provisioners/scripts/centos/install_centos7_apache_tomcat_7.sh",
         "../../../provisioners/scripts/common/install_appdynamics_java_agent.sh",
         "../../../provisioners/scripts/centos/install_centos7_appdynamics_machine_agent.sh",
         "../../../provisioners/scripts/centos/install_centos7_atom_editor.sh",
