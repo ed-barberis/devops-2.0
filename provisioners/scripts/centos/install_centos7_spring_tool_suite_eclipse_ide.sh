@@ -8,10 +8,10 @@ devops_home="${devops_home:-/opt/devops}"                   # [optional] devops 
 
 # install spring tool suite ide. -----------------------------------------------
 stshome="sts"
-stsrelease="4.3.2"
-stsnumber="92718585"
-eclipseversion="2019-06"
-eclipserelease="4.12.0"
+stsrelease="4.4.0"
+stsnumber="1725238982"
+eclipseversion="2019-09"
+eclipserelease="4.13.0"
 
 eclipsedist=$(echo "e${eclipserelease}" | awk -F "." '{printf "%s.%s", $1, $2}')
 stsfamily="${stsrelease:0:1}"
