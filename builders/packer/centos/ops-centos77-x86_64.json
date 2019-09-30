@@ -4,7 +4,7 @@
       "boot_wait": "10s",
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
       "headless": "{{ user `headless` }}",
-      "source_path": "../../../artifacts/centos/base-desktop-centos76/base-desktop-centos76.ovf",
+      "source_path": "../../../artifacts/centos/base-headless-centos77/base-headless-centos77.ovf",
       "output_directory": "../../../artifacts/centos/{{user `box_basename`}}",
       "shutdown_command": "echo 'vagrant' | sudo -S /sbin/halt -h -p",
       "ssh_password": "vagrant",
@@ -14,7 +14,8 @@
       "type": "virtualbox-ovf",
       "vboxmanage": [
         ["modifyvm", "{{.Name}}", "--memory", "{{ user `memory` }}"],
-        ["modifyvm", "{{.Name}}", "--cpus", "{{ user `cpus` }}"]
+        ["modifyvm", "{{.Name}}", "--cpus", "{{ user `cpus` }}"],
+        ["modifyvm", "{{.Name}}", "--vram", "{{ user `vram` }}"]
       ],
       "virtualbox_version_file": ".vbox_version",
       "vm_name": "{{ user `box_basename` }}"
@@ -51,8 +52,8 @@
       "expect_disconnect": true,
       "inline": [
         "sudo yum -y update",
-        "sudo hostnamectl set-hostname dev --static",
-        "sudo hostnamectl set-hostname dev",
+        "sudo hostnamectl set-hostname ops --static",
+        "sudo hostnamectl set-hostname ops",
         "sudo hostnamectl status",
         "sudo systemctl reboot"
       ],
@@ -81,7 +82,6 @@
         "appd_machine_agent_application_name={{user `appd_machine_agent_application_name`}}",
         "appd_machine_agent_tier_name={{user `appd_machine_agent_tier_name`}}",
         "appd_machine_agent_node_name={{user `appd_machine_agent_node_name`}}",
-        "user_name=vagrant",
         "devops_home={{user `devops_home`}}",
         "HOME_DIR=/home/vagrant",
         "http_proxy={{user `http_proxy`}}",
@@ -90,13 +90,12 @@
       ],
       "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "expect_disconnect": true,
-      "pause_before": "120s",
+      "pause_before": "10s",
       "scripts": [
         "../../../provisioners/scripts/common/install_apache_ant.sh",
         "../../../provisioners/scripts/common/install_apache_maven.sh",
         "../../../provisioners/scripts/common/install_apache_groovy.sh",
         "../../../provisioners/scripts/common/install_gradle.sh",
-        "../../../provisioners/scripts/centos/install_centos7_google_postman.sh",
         "../../../provisioners/scripts/centos/install_centos7_ansible.sh",
         "../../../provisioners/scripts/common/install_google_golang.sh",
         "../../../provisioners/scripts/common/install_scala_lang.sh",
@@ -112,17 +111,8 @@
         "../../../provisioners/scripts/common/install_hashicorp_vault.sh",
         "../../../provisioners/scripts/centos/install_centos7_git.sh",
         "../../../provisioners/scripts/common/install_git_flow.sh",
-        "../../../provisioners/scripts/common/install_apache_tomcat_7.sh",
         "../../../provisioners/scripts/common/install_appdynamics_java_agent.sh",
         "../../../provisioners/scripts/centos/install_centos7_appdynamics_machine_agent.sh",
-        "../../../provisioners/scripts/centos/install_centos7_atom_editor.sh",
-        "../../../provisioners/scripts/centos/install_centos7_jetbrains_intellij_idea_ultimate_edition.sh",
-        "../../../provisioners/scripts/centos/install_centos7_jetbrains_webstorm_javascript_ide.sh",
-        "../../../provisioners/scripts/centos/install_centos7_spring_tool_suite_eclipse_ide.sh",
-        "../../../provisioners/scripts/centos/install_centos7_sublime_text_editor.sh",
-        "../../../provisioners/scripts/centos/install_centos7_microsoft_visual_studio_code_editor.sh",
-        "../../../provisioners/scripts/centos/install_centos7_desktop_root_user_env.sh",
-        "../../../provisioners/scripts/centos/install_centos7_desktop_user_env.sh",
         "../../../provisioners/scripts/centos/cleanup.sh",
         "../../../submodules/chef/bento/_common/minimize.sh"
       ],
@@ -151,17 +141,18 @@
     "appd_machine_agent_application_name": "{{env `appd_machine_agent_application_name`}}",
     "appd_machine_agent_tier_name": "{{env `appd_machine_agent_tier_name`}}",
     "appd_machine_agent_node_name": "{{env `appd_machine_agent_node_name`}}",
-    "box_basename": "dev-centos76",
+    "box_basename": "ops-centos77",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
-    "cpus": "2",
+    "cpus": "1",
     "devops_home": "/opt/devops-2.0",
     "git_revision": "__unknown_git_revision__",
     "headless": "false",
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
-    "memory": "6144",
-    "name": "dev-centos76",
+    "memory": "4096",
+    "name": "ops-centos77",
     "no_proxy": "{{env `no_proxy`}}",
-    "version": "TIMESTAMP"
+    "version": "TIMESTAMP",
+    "vram": "10"
   }
 }
