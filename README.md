@@ -22,15 +22,15 @@ Next, using these base VMs as a foundation, the user can build more advanced VM 
 
 To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the following open source software needs to be installed on the host macOS machine:
 
--	Homebrew 2.1.11
+-	Homebrew 2.1.13
 	-	Command Line Tools (CLT) for Xcode
 -	VirtualBox 6.0.12
 	-	VirtualBox Extension Pack 6.0.12
 -	Vagrant 2.2.5 with Plugins
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 1.1.9
-	-	vagrant-vbguest 0.19.0
--	Packer 1.4.3
+	-	vagrant-vbguest 0.20.0
+-	Packer 1.4.4
 -	Git 2.23.0
 -	jq 1.6
 -	Optional Add-ons
@@ -44,7 +44,7 @@ Perform the following steps to install the needed software:
 
     > **NOTE:** Most Homebrew formulae require a compiler. A handful require a full Xcode installation. You can install [Xcode](https://itunes.apple.com/us/app/xcode/id497799835), the [CLT](https://developer.apple.com/downloads), or both; Homebrew supports all three configurations. Downloading Xcode may require an Apple Developer account on older versions of Mac OS X. Sign up for free [here](https://developer.apple.com/register/index.action).  
 
-2.	Install the [Homebrew 2.1.11](https://brew.sh/) package manager for macOS 64-bit. Paste the following into a macOS Terminal prompt:  
+2.	Install the [Homebrew 2.1.13](https://brew.sh/) package manager for macOS 64-bit. Paste the following into a macOS Terminal prompt:  
     `$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
 
 3.	Install [VirtualBox 6.0.12](https://www.virtualbox.org/) for macOS 64-bit.  
@@ -69,7 +69,7 @@ Perform the following steps to install the needed software:
 5.	Install [Vagrant 2.2.5](https://www.vagrantup.com/) for macOS 64-bit.  
     `$ brew cask install vagrant`  
 
-6.	Install [Packer 1.4.3](https://packer.io/) for macOS 64-bit.  
+6.	Install [Packer 1.4.4](https://packer.io/) for macOS 64-bit.  
     `$ brew install packer`  
 
 7.	Install [Git 2.23.0](https://git-scm.com/downloads) for macOS 64-bit.  
@@ -88,7 +88,7 @@ Perform the following steps to install the needed software:
 
     ```
     $ brew --version
-    Homebrew 2.1.11
+    Homebrew 2.1.13
     $ brew doctor
     Your system is ready to brew.
     ...
@@ -100,7 +100,7 @@ Perform the following steps to install the needed software:
     Vagrant 2.2.5
 
     $ packer --version
-    1.4.3
+    1.4.4
 
     $ git --version
     git version 2.23.0
@@ -125,8 +125,8 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 -	Vagrant 2.2.5 with Plugins
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 1.1.9
-	-	vagrant-vbguest 0.19.0
--	Packer 1.4.3
+	-	vagrant-vbguest 0.20.0
+-	Packer 1.4.4
 -	Git 2.23.0
 -	jq 1.6
 -	Optional Add-ons for Git Bash
@@ -150,7 +150,7 @@ Perform the following steps to install the needed software:
     >
     > If this is set, Vagrant will prefer using utility executables (like `ssh` and `rsync`) from the local system instead of those vendored within the Vagrant installation.  
 
-4.	Install [Packer 1.4.3 for Windows 64-bit](https://releases.hashicorp.com/packer/1.4.3/packer_1.4.3_windows_amd64.zip).
+4.	Install [Packer 1.4.4 for Windows 64-bit](https://releases.hashicorp.com/packer/1.4.4/packer_1.4.4_windows_amd64.zip).
     Create suggested install folder and extract contents of ZIP file to:  
     `C:\HashiCorp\Packer\bin`  
 
@@ -199,7 +199,7 @@ Perform the following steps to install the needed software:
     Vagrant 2.2.5
 
     $ packer --version
-    1.4.3
+    1.4.4
 
     $ git --version
     git version 2.23.0.windows.1
@@ -236,7 +236,7 @@ Perform the following steps to install the needed software:
     $ vagrant plugin list
     vagrant-cachier (1.2.1)
     vagrant-share (1.1.9, system)
-    vagrant-vbguest (0.19.0)
+    vagrant-vbguest (0.20.0)
     ```
 
 3.	Configure Git for local user:

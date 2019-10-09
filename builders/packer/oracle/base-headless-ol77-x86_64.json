@@ -67,10 +67,10 @@
       "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "expect_disconnect": true,
       "scripts": [
-        "../../../submodules/chef/bento/centos/scripts/update.sh",
-        "../../../submodules/chef/bento/centos/scripts/networking.sh",
-        "../../../submodules/chef/bento/_common/sshd.sh",
-        "../../../submodules/chef/bento/_common/vagrant.sh",
+        "../../../submodules/chef/bento/packer_templates/centos/scripts/update.sh",
+        "../../../submodules/chef/bento/packer_templates/centos/scripts/networking.sh",
+        "../../../submodules/chef/bento/packer_templates/_common/sshd.sh",
+        "../../../submodules/chef/bento/packer_templates/_common/vagrant.sh",
         "../../../provisioners/scripts/oracle/install_ol7_oracle_uekr5.sh"
       ],
       "type": "shell"
@@ -100,7 +100,7 @@
       "expect_disconnect": true,
       "pause_before": "10s",
       "scripts": [
-        "../../../submodules/chef/bento/_common/virtualbox.sh",
+        "../../../submodules/chef/bento/packer_templates/_common/virtualbox.sh",
         "../../../provisioners/scripts/oracle/install_ol7_headless_devops_tools.sh",
         "../../../provisioners/scripts/common/install_aws_corretto_java_jdk_8.sh",
         "../../../provisioners/scripts/oracle/install_ol7_docker.sh",
@@ -109,7 +109,7 @@
         "../../../provisioners/scripts/common/install_headless_root_user_env.sh",
         "../../../provisioners/scripts/common/install_headless_user_env.sh",
         "../../../provisioners/scripts/centos/cleanup.sh",
-        "../../../submodules/chef/bento/_common/minimize.sh"
+        "../../../submodules/chef/bento/packer_templates/_common/minimize.sh"
       ],
       "type": "shell"
     },

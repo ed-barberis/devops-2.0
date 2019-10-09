@@ -67,10 +67,11 @@
       "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "expect_disconnect": true,
       "scripts": [
-        "../../../submodules/chef/bento/centos/scripts/update.sh",
-        "../../../submodules/chef/bento/centos/scripts/networking.sh",
-        "../../../submodules/chef/bento/_common/sshd.sh",
-        "../../../submodules/chef/bento/_common/vagrant.sh",
+        "../../../submodules/chef/bento/packer_templates/centos/scripts/update.sh",
+        "../../../provisioners/scripts/common/motd.sh",
+        "../../../submodules/chef/bento/packer_templates/_common/sshd.sh",
+        "../../../submodules/chef/bento/packer_templates/centos/scripts/networking.sh",
+        "../../../submodules/chef/bento/packer_templates/_common/vagrant.sh",
         "../../../provisioners/scripts/centos/install_centos7_repositories.sh"
       ],
       "type": "shell"
@@ -91,7 +92,7 @@
       "expect_disconnect": true,
       "pause_before": "120s",
       "scripts": [
-        "../../../submodules/chef/bento/_common/virtualbox.sh",
+        "../../../submodules/chef/bento/packer_templates/_common/virtualbox.sh",
         "../../../provisioners/scripts/centos/install_centos7_headless_devops_tools.sh",
         "../../../provisioners/scripts/common/install_aws_corretto_java_jdk_8.sh",
         "../../../provisioners/scripts/centos/install_centos7_desktop_devops_tools.sh",
@@ -104,7 +105,7 @@
         "../../../provisioners/scripts/centos/install_centos7_desktop_root_user_env.sh",
         "../../../provisioners/scripts/centos/install_centos7_desktop_user_env.sh",
         "../../../provisioners/scripts/centos/cleanup.sh",
-        "../../../submodules/chef/bento/_common/minimize.sh"
+        "../../../submodules/chef/bento/packer_templates/_common/minimize.sh"
       ],
       "type": "shell"
     },
@@ -123,7 +124,7 @@
     "cpus": "2",
     "devops_home": "/opt/devops-2.0",
     "disk_size": "131072",
-    "docker_completion_release": "19.03.2",
+    "docker_completion_release": "19.03.3",
     "git_revision": "__unknown_git_revision__",
     "headless": "false",
     "http_proxy": "{{env `http_proxy`}}",

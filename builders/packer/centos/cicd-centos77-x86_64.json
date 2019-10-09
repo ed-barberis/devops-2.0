@@ -74,7 +74,7 @@
         "../../../provisioners/scripts/centos/install_centos7_gitlab.sh",
         "../../../provisioners/scripts/centos/install_centos7_jenkins.sh",
         "../../../provisioners/scripts/centos/cleanup.sh",
-        "../../../submodules/chef/bento/_common/minimize.sh"
+        "../../../submodules/chef/bento/packer_templates/_common/minimize.sh"
       ],
       "type": "shell"
     }
