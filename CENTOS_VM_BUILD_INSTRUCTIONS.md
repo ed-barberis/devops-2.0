@@ -155,7 +155,7 @@ Follow these instructions to build the CentOS Linux 7.7 VM images.
     Docker version 19.03.3, build a872fc2f86
 
     dev[vagrant]$ ansible --version
-    ansible 2.8.5
+    ansible 2.8.6
       config file = /etc/ansible/ansible.cfg
       configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
       ansible python module location = /usr/lib/python2.7/site-packages/ansible
@@ -186,7 +186,7 @@ Follow these instructions to build the CentOS Linux 7.7 VM images.
     Docker version 19.03.3, build a872fc2f86
 
     ops[vagrant]$ ansible --version
-    ansible 2.8.5
+    ansible 2.8.6
       config file = /etc/ansible/ansible.cfg
       configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
       ansible python module location = /usr/lib/python2.7/site-packages/ansible
@@ -286,7 +286,7 @@ Follow these instructions to build the CentOS Linux 7.7 VM images.
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
 -	Amazon AWS CLI 1.16.261 (command-line interface) [Optional]
--	Ansible 2.8.5
+-	Ansible 2.8.6
 -	Ant 1.10.7
 -	Consul 1.6.1
 -	Cloud-Init 0.7.9 [Optional]
@@ -298,7 +298,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
 	-	Git Bash Completion
 	-	Git-Flow 1.12.3 (AVH Edition)
 	-	Git-Flow Bash Completion
--	Go 1.13.1
+-	Go 1.13.2
 -	Gradle 5.6.2
 -	Groovy 2.5.8
 -	Java SE JDK 8 Update 232 (Amazon Corretto 8)
@@ -334,7 +334,7 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 
 -	Apache Tomcat 7.0.96
 -	Apache Tomcat 8.5.47
--	AppDynamics Java Agent 4.5.14.0 Build 27768
+-	AppDynamics Java Agent 4.5.15.0 Build 27926
 -	AppDynamics Machine Agent 4.5.15.0 Build 2316
 	-	AppDynamics AWS EC2 Monitoring Extension 2.0.1 [Optional]
 -	Atom Editor 1.40.1
