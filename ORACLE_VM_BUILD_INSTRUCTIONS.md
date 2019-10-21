@@ -152,14 +152,14 @@ Follow these instructions to build the Oracle Linux 7.7 VM images.
     ```
     $ vagrant ssh
     dev[vagrant]$ docker --version
-    Docker version 18.09.1-ol, build e32a1bd
+    Docker version 18.09.8-ol, build 76804b7
 
     dev[vagrant]$ ansible --version
     ansible 2.8.6
       config file = /etc/ansible/ansible.cfg
-      configured module search path = [u'/root/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+      configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
       ansible python module location = /usr/lib/python2.7/site-packages/ansible
-      executable location = /bin/ansible
+      executable location = /usr/bin/ansible
       python version = 2.7.5 (default, Aug  7 2019, 08:19:52) [GCC 4.8.5 20150623 (Red Hat 4.8.5-39.0.1)]
 
     dev[vagrant]$ <run other commands>
@@ -183,14 +183,14 @@ Follow these instructions to build the Oracle Linux 7.7 VM images.
     ```
     $ vagrant ssh
     dev[vagrant]$ docker --version
-    Docker version 18.09.1-ol, build e32a1bd
+    Docker version 18.09.8-ol, build 76804b7
 
     ops[vagrant]$ ansible --version
     ansible 2.8.6
       config file = /etc/ansible/ansible.cfg
-      configured module search path = [u'/root/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+      configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
       ansible python module location = /usr/lib/python2.7/site-packages/ansible
-      executable location = /bin/ansible
+      executable location = /usr/bin/ansible
       python version = 2.7.5 (default, Aug  7 2019, 08:19:52) [GCC 4.8.5 20150623 (Red Hat 4.8.5-39.0.1)]
 
     ops[vagrant]$ <run other commands>
@@ -285,12 +285,12 @@ Follow these instructions to build the Oracle Linux 7.7 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 1.16.261 (command-line interface) [Optional]
+-	Amazon AWS CLI 1.16.263 (command-line interface) [Optional]
 -	Ansible 2.8.6
 -	Ant 1.10.7
 -	Consul 1.6.1
 -	Cloud-Init 0.7.9 [Optional]
--	Docker 18.03.1 CE
+-	Docker 18.09.8 CE
 	-	Docker Bash Completion
 	-	Docker Compose 1.24.1
 	-	Docker Compose Bash Completion
@@ -298,8 +298,8 @@ The following command-line tools and utilities are pre-installed in the __Develo
 	-	Git Bash Completion
 	-	Git-Flow 1.12.3 (AVH Edition)
 	-	Git-Flow Bash Completion
--	Go 1.13.2
--	Gradle 5.6.2
+-	Go 1.13.3
+-	Gradle 5.6.3
 -	Groovy 2.5.8
 -	Java SE JDK 8 Update 232 (Amazon Corretto 8)
 -	Java SE JDK 11.0.5 (Amazon Corretto 11)
@@ -311,12 +311,12 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Oracle PaaS Service Manager CLI (psm) 1.1.16 [Optional]
 -	Packer 1.4.4
 -	Python 2.7.5
-	-	Pip 19.3
+	-	Pip 19.3.1
 -	Python 3.6.3
-	-	Pip3 19.3
+	-	Pip3 19.3.1
 -	Scala 2.13.1
 	-	Scala Build Tool (SBT) 1.3.3
--	Terraform 0.12.10
+-	Terraform 0.12.12
 -	Vault 1.2.3
 -	XMLStarlet 1.6.1 (command-line XML processor)
 

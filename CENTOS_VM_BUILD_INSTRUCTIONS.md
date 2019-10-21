@@ -285,7 +285,7 @@ Follow these instructions to build the CentOS Linux 7.7 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 1.16.261 (command-line interface) [Optional]
+-	Amazon AWS CLI 1.16.263 (command-line interface) [Optional]
 -	Ansible 2.8.6
 -	Ant 1.10.7
 -	Consul 1.6.1
@@ -298,8 +298,8 @@ The following command-line tools and utilities are pre-installed in the __Develo
 	-	Git Bash Completion
 	-	Git-Flow 1.12.3 (AVH Edition)
 	-	Git-Flow Bash Completion
--	Go 1.13.2
--	Gradle 5.6.2
+-	Go 1.13.3
+-	Gradle 5.6.3
 -	Groovy 2.5.8
 -	Java SE JDK 8 Update 232 (Amazon Corretto 8)
 -	Java SE JDK 11.0.5 (Amazon Corretto 11)
@@ -309,12 +309,12 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Maven 3.6.2
 -	Packer 1.4.4
 -	Python 2.7.5
-	-	Pip 19.3
+	-	Pip 19.3.1
 -	Python 3.6.3
-	-	Pip3 19.3
+	-	Pip3 19.3.1
 -	Scala 2.13.1
 	-	Scala Build Tool (SBT) 1.3.3
--	Terraform 0.12.10
+-	Terraform 0.12.12
 -	Vault 1.2.3
 -	XMLStarlet 1.6.1 (command-line XML processor)
 
