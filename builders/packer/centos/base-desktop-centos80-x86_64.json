@@ -122,7 +122,7 @@
     "cpus": "2",
     "devops_home": "/opt/devops-2.0",
     "disk_size": "131072",
-    "docker_completion_release": "19.03.3",
+    "docker_completion_release": "19.03.4",
     "git_revision": "__unknown_git_revision__",
     "headless": "false",
     "http_proxy": "{{env `http_proxy`}}",
