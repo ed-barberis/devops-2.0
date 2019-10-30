@@ -285,7 +285,7 @@ Follow these instructions to build the Oracle Linux 7.7 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 1.16.263 (command-line interface) [Optional]
+-	Amazon AWS CLI 1.16.269 (command-line interface) [Optional]
 -	Ansible 2.8.6
 -	Ant 1.10.7
 -	Consul 1.6.1
@@ -322,13 +322,13 @@ The following command-line tools and utilities are pre-installed in the __Develo
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 12.3.5
--	Jenkins 2.190.1
+-	GitLab Community Edition 12.4.1
+-	Jenkins 2.190.2
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
--	AppDynamics Enterprise Console 4.5.14.0 Build 20848
-	-	AppDynamics Controller 4.5.14.1 Build 2475
+-	AppDynamics Enterprise Console 4.5.14.0 Build 20861
+	-	AppDynamics Controller 4.5.14.1 Build 2495
 	-	AppDynamics Event Service 4.5.2.0 Build 20560
 -	MySQL Shell 8.0.18
 
@@ -336,19 +336,19 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 
 -	Apache Tomcat 7.0.96
 -	Apache Tomcat 8.5.47
--	AppDynamics Java Agent 4.5.15.0 Build 27926
--	AppDynamics Machine Agent 4.5.15.0 Build 2316
+-	AppDynamics Java Agent 4.5.15.0 Build 28231
+-	AppDynamics Machine Agent 4.5.16.0 Build 2341
 	-	AppDynamics AWS EC2 Monitoring Extension 2.0.1 [Optional]
--	Atom Editor 1.40.1
+-	Atom Editor 1.41.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 77.0.3865.120 (64-bit)
+-	Chrome 78.0.3904.70 (64-bit)
 -	Firefox 60.9.0esr (64-bit)
 -	GVim 7.4.160-1
--	JetBrains IntelliJ IDEA 2019.2.3 (Community Edition)
--	JetBrains IntelliJ IDEA 2019.2.3 (Ultimate Edition)
--	JetBrains WebStorm 2019.2.3 (JavaScript IDE)
--	Postman 7.9.0
+-	JetBrains IntelliJ IDEA 2019.2.4 (Community Edition)
+-	JetBrains IntelliJ IDEA 2019.2.4 (Ultimate Edition)
+-	JetBrains WebStorm 2019.2.4 (JavaScript IDE)
+-	Postman 7.10.0
 -	Scala IDE for Eclipse 4.7.0 (Eclipse Oxygen.1 [4.7.1]) [Optional]
--	Spring Tool Suite 4 [4.4.0] IDE (Eclipse 2019-09 [4.13.0])
+-	Spring Tool Suite 4 [4.4.1] IDE (Eclipse 2019-09 [4.13.0])
 -	Sublime Text 3 (3.2.2 Build 3211)
 -	Visual Studio Code 1.39.2
