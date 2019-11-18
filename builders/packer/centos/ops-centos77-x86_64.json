@@ -2,10 +2,11 @@
   "builders": [
     {
       "boot_wait": "10s",
+      "guest_additions_url": "{{user `guest_additions_url`}}",
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
-      "headless": "{{ user `headless` }}",
-      "source_path": "../../../artifacts/centos/base-headless-centos77/base-headless-centos77.ovf",
-      "output_directory": "../../../artifacts/centos/{{user `box_basename`}}",
+      "headless": "{{user `headless`}}",
+      "source_path": "{{template_dir}}/../../../artifacts/centos/base-headless-centos77/base-headless-centos77.ovf",
+      "output_directory": "{{user `build_directory`}}/{{user `box_basename`}}",
       "shutdown_command": "echo 'vagrant' | sudo -S /sbin/halt -h -p",
       "ssh_password": "vagrant",
       "ssh_port": 22,
@@ -13,39 +14,43 @@
       "ssh_wait_timeout": "10000s",
       "type": "virtualbox-ovf",
       "vboxmanage": [
-        ["modifyvm", "{{.Name}}", "--memory", "{{ user `memory` }}"],
-        ["modifyvm", "{{.Name}}", "--cpus", "{{ user `cpus` }}"],
-        ["modifyvm", "{{.Name}}", "--vram", "{{ user `vram` }}"]
+        ["modifyvm", "{{.Name}}", "--memory", "{{user `memory`}}"],
+        ["modifyvm", "{{.Name}}", "--cpus", "{{user `cpus`}}"],
+        ["modifyvm", "{{.Name}}", "--vram", "{{user `vram`}}"],
+        ["modifyvm", "{{.Name}}", "--clipboard", "bidirectional"],
+        ["modifyvm", "{{.Name}}", "--draganddrop", "bidirectional"],
+        ["modifyvm", "{{.Name}}", "--description", "{{user `vm_description`}}"],
+        ["setextradata", "{{.Name}}", "GUI/ScaleFactor", "1.75"]
       ],
       "virtualbox_version_file": ".vbox_version",
-      "vm_name": "{{ user `box_basename` }}"
+      "vm_name": "{{user `box_basename`}}"
     }
   ],
   "post-processors": [
     {
-      "output": "../../../artifacts/centos/{{user `box_basename`}}/{{user `box_basename`}}.{{.Provider}}.box",
+      "output": "{{user `build_directory`}}/{{user `box_basename`}}/{{user `box_basename`}}.{{.Provider}}.box",
       "type": "vagrant"
     },
     {
-      "output": "../../../artifacts/centos/manifest.json",
+      "output": "{{user `build_directory`}}/manifest.json",
       "type": "manifest"
     }
   ],
   "provisioners": [
     {
       "inline": [
-        "sudo mkdir -p {{ user `devops_home` }}/provisioners/scripts",
-        "sudo chown -R vagrant:vagrant {{ user `devops_home` }}"
+        "sudo mkdir -p {{user `devops_home`}}/provisioners/scripts",
+        "sudo chown -R vagrant:vagrant {{user `devops_home`}}"
       ],
       "type": "shell"
     },
     {
-      "destination": "{{ user `devops_home` }}/provisioners/scripts",
-      "source": "../../../provisioners/scripts/",
+      "destination": "{{user `devops_home`}}/provisioners/scripts",
+      "source": "{{template_dir}}/../../../provisioners/scripts/",
       "type": "file"
     },
     {
-      "inline": ["sudo chown -R root:root {{ user `devops_home` }}"],
+      "inline": ["sudo chown -R root:root {{user `devops_home`}}"],
       "type": "shell"
     },
     {
@@ -92,29 +97,29 @@
       "expect_disconnect": true,
       "pause_before": "10s",
       "scripts": [
-        "../../../provisioners/scripts/common/install_apache_ant.sh",
-        "../../../provisioners/scripts/common/install_apache_maven.sh",
-        "../../../provisioners/scripts/common/install_apache_groovy.sh",
-        "../../../provisioners/scripts/common/install_gradle.sh",
-        "../../../provisioners/scripts/centos/install_centos7_ansible.sh",
-        "../../../provisioners/scripts/common/install_google_golang.sh",
-        "../../../provisioners/scripts/common/install_scala_lang.sh",
-        "../../../provisioners/scripts/common/install_scala_sbt.sh",
-        "../../../provisioners/scripts/common/install_aws_corretto_java_jdk_11.sh",
-        "../../../provisioners/scripts/common/install_oracle_java_jdk_13.sh",
-        "../../../provisioners/scripts/common/install_jmespath_jp_json_processor.sh",
-        "../../../provisioners/scripts/common/install_jq_json_processor.sh",
-        "../../../provisioners/scripts/centos/install_centos7_xmlstarlet_xml_processor.sh",
-        "../../../provisioners/scripts/common/install_hashicorp_consul.sh",
-        "../../../provisioners/scripts/common/install_hashicorp_packer.sh",
-        "../../../provisioners/scripts/common/install_hashicorp_terraform.sh",
-        "../../../provisioners/scripts/common/install_hashicorp_vault.sh",
-        "../../../provisioners/scripts/centos/install_centos7_git.sh",
-        "../../../provisioners/scripts/common/install_git_flow.sh",
-        "../../../provisioners/scripts/common/install_appdynamics_java_agent.sh",
-        "../../../provisioners/scripts/centos/install_centos7_appdynamics_machine_agent.sh",
-        "../../../provisioners/scripts/centos/cleanup.sh",
-        "../../../submodules/chef/bento/packer_templates/_common/minimize.sh"
+        "{{template_dir}}/../../../provisioners/scripts/common/install_apache_ant.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_apache_maven.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_apache_groovy.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_gradle.sh",
+        "{{template_dir}}/../../../provisioners/scripts/centos/install_centos7_ansible.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_google_golang.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_scala_lang.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_scala_sbt.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_aws_corretto_java_jdk_11.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_oracle_java_jdk_13.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_jmespath_jp_json_processor.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_jq_json_processor.sh",
+        "{{template_dir}}/../../../provisioners/scripts/centos/install_centos7_xmlstarlet_xml_processor.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_hashicorp_consul.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_hashicorp_packer.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_hashicorp_terraform.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_hashicorp_vault.sh",
+        "{{template_dir}}/../../../provisioners/scripts/centos/install_centos7_git.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_git_flow.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_appdynamics_java_agent.sh",
+        "{{template_dir}}/../../../provisioners/scripts/centos/install_centos7_appdynamics_machine_agent.sh",
+        "{{template_dir}}/../../../provisioners/scripts/centos/cleanup.sh",
+        "{{template_dir}}/../../../submodules/chef/bento/packer_templates/_common/minimize.sh"
       ],
       "type": "shell"
     }
@@ -142,10 +147,12 @@
     "appd_machine_agent_tier_name": "{{env `appd_machine_agent_tier_name`}}",
     "appd_machine_agent_node_name": "{{env `appd_machine_agent_node_name`}}",
     "box_basename": "ops-centos77",
+    "build_directory": "../../../artifacts/centos",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
     "cpus": "1",
     "devops_home": "/opt/devops-2.0",
     "git_revision": "__unknown_git_revision__",
+    "guest_additions_url": "",
     "headless": "false",
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
@@ -153,6 +160,7 @@
     "name": "ops-centos77",
     "no_proxy": "{{env `no_proxy`}}",
     "version": "TIMESTAMP",
+    "vm_description": "Centos Linux 7.7 VM image for DevOps 2.0 '{{user `box_basename`}}' headless box.",
     "vram": "10"
   }
 }

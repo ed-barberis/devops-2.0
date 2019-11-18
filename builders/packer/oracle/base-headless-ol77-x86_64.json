@@ -2,58 +2,64 @@
   "builders": [
     {
       "boot_command": [
-        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `ks_path`}}<enter><wait>"
+        "<tab> text ks=http://{{.HTTPIP}}:{{.HTTPPort}}/{{user `ks_path`}}<enter><wait>"
       ],
       "boot_wait": "10s",
       "disk_size": "{{user `disk_size`}}",
+      "guest_additions_url": "{{user `guest_additions_url`}}",
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
       "guest_os_type": "Oracle_64",
       "hard_drive_interface": "sata",
-      "headless": "{{ user `headless` }}",
-      "http_directory": "http",
+      "headless": "{{user `headless`}}",
+      "http_directory": "{{template_dir}}/http",
       "iso_checksum": "{{user `iso_checksum`}}",
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
       "iso_url": "{{user `mirror`}}/{{user `mirror_directory`}}/{{user `iso_name`}}",
-      "output_directory": "../../../artifacts/oracle/{{user `box_basename`}}",
+      "output_directory": "{{user `build_directory`}}/{{user `box_basename`}}",
       "shutdown_command": "echo 'vagrant' | sudo -S /sbin/halt -h -p",
       "ssh_password": "vagrant",
       "ssh_port": 22,
       "ssh_username": "vagrant",
       "ssh_wait_timeout": "10000s",
       "type": "virtualbox-iso",
+      "memory": "{{user `memory`}}",
+      "cpus": "{{user `cpus`}}",
       "vboxmanage": [
-        ["modifyvm", "{{.Name}}", "--memory", "{{ user `memory` }}"],
-        ["modifyvm", "{{.Name}}", "--cpus", "{{ user `cpus` }}"]
+        ["modifyvm", "{{.Name}}", "--vram", "{{user `vram`}}"],
+        ["modifyvm", "{{.Name}}", "--clipboard", "bidirectional"],
+        ["modifyvm", "{{.Name}}", "--draganddrop", "bidirectional"],
+        ["modifyvm", "{{.Name}}", "--description", "{{user `vm_description`}}"],
+        ["setextradata", "{{.Name}}", "GUI/ScaleFactor", "1.75"]
       ],
       "virtualbox_version_file": ".vbox_version",
-      "vm_name": "{{ user `box_basename` }}"
+      "vm_name": "{{user `box_basename`}}"
     }
   ],
   "post-processors": [
     {
-      "output": "../../../artifacts/oracle/{{user `box_basename`}}/{{user `box_basename`}}.{{.Provider}}.box",
+      "output": "{{user `build_directory`}}/{{user `box_basename`}}/{{user `box_basename`}}.{{.Provider}}.box",
       "type": "vagrant"
     },
     {
-      "output": "../../../artifacts/oracle/manifest.json",
+      "output": "{{user `build_directory`}}/manifest.json",
       "type": "manifest"
     }
   ],
   "provisioners": [
     {
       "inline": [
-        "sudo mkdir -p {{ user `devops_home` }}/provisioners/scripts",
-        "sudo chown -R vagrant:vagrant {{ user `devops_home` }}"
+        "sudo mkdir -p {{user `devops_home`}}/provisioners/scripts",
+        "sudo chown -R vagrant:vagrant {{user `devops_home`}}"
       ],
       "type": "shell"
     },
     {
-      "destination": "{{ user `devops_home` }}/provisioners/scripts",
-      "source": "../../../provisioners/scripts/",
+      "destination": "{{user `devops_home`}}/provisioners/scripts",
+      "source": "{{template_dir}}/../../../provisioners/scripts/",
       "type": "file"
     },
     {
-      "inline": ["sudo chown -R root:root {{ user `devops_home` }}"],
+      "inline": ["sudo chown -R root:root {{user `devops_home`}}"],
       "type": "shell"
     },
     {
@@ -67,11 +73,11 @@
       "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "expect_disconnect": true,
       "scripts": [
-        "../../../submodules/chef/bento/packer_templates/centos/scripts/update.sh",
-        "../../../submodules/chef/bento/packer_templates/centos/scripts/networking.sh",
-        "../../../submodules/chef/bento/packer_templates/_common/sshd.sh",
-        "../../../submodules/chef/bento/packer_templates/_common/vagrant.sh",
-        "../../../provisioners/scripts/oracle/install_ol7_oracle_uekr5.sh"
+        "{{template_dir}}/../../../submodules/chef/bento/packer_templates/centos/scripts/update.sh",
+        "{{template_dir}}/../../../submodules/chef/bento/packer_templates/centos/scripts/networking.sh",
+        "{{template_dir}}/../../../submodules/chef/bento/packer_templates/_common/sshd.sh",
+        "{{template_dir}}/../../../submodules/chef/bento/packer_templates/_common/vagrant.sh",
+        "{{template_dir}}/../../../provisioners/scripts/oracle/install_ol7_oracle_uekr5.sh"
       ],
       "type": "shell"
     },
@@ -100,16 +106,16 @@
       "expect_disconnect": true,
       "pause_before": "10s",
       "scripts": [
-        "../../../submodules/chef/bento/packer_templates/_common/virtualbox.sh",
-        "../../../provisioners/scripts/oracle/install_ol7_headless_devops_tools.sh",
-        "../../../provisioners/scripts/common/install_aws_corretto_java_jdk_8.sh",
-        "../../../provisioners/scripts/oracle/install_ol7_docker.sh",
-        "../../../provisioners/scripts/common/install_docker_compose.sh",
-        "../../../provisioners/scripts/oracle/install_ol7_python3.sh",
-        "../../../provisioners/scripts/common/install_headless_root_user_env.sh",
-        "../../../provisioners/scripts/common/install_headless_user_env.sh",
-        "../../../provisioners/scripts/centos/cleanup.sh",
-        "../../../submodules/chef/bento/packer_templates/_common/minimize.sh"
+        "{{template_dir}}/../../../submodules/chef/bento/packer_templates/_common/virtualbox.sh",
+        "{{template_dir}}/../../../provisioners/scripts/oracle/install_ol7_headless_devops_tools.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_aws_corretto_java_jdk_8.sh",
+        "{{template_dir}}/../../../provisioners/scripts/oracle/install_ol7_docker.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_docker_compose.sh",
+        "{{template_dir}}/../../../provisioners/scripts/oracle/install_ol7_python3.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_headless_root_user_env.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_headless_user_env.sh",
+        "{{template_dir}}/../../../provisioners/scripts/centos/cleanup.sh",
+        "{{template_dir}}/../../../submodules/chef/bento/packer_templates/_common/minimize.sh"
       ],
       "type": "shell"
     },
@@ -124,12 +130,14 @@
   ],
   "variables": {
     "box_basename": "base-headless-ol77",
+    "build_directory": "../../../artifacts/oracle",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
     "cpus": "1",
     "disk_size": "131072",
     "devops_home": "/opt/devops-2.0",
     "docker_completion_release": "18.09.1",
     "git_revision": "__unknown_git_revision__",
+    "guest_additions_url": "",
     "headless": "false",
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
@@ -143,6 +151,8 @@
     "name": "base-headless-ol77",
     "no_proxy": "{{env `no_proxy`}}",
     "user_docker_profile": "true",
-    "version": "TIMESTAMP"
+    "version": "TIMESTAMP",
+    "vm_description": "Oracle Linux 7.7 (UEKR5) VM image for DevOps 2.0 '{{user `box_basename`}}' headless box.",
+    "vram": "10"
   }
 }

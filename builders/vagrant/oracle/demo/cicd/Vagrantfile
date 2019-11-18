@@ -18,7 +18,7 @@ Vagrant.configure(2) do |config|
       v.gui = false
       v.memory = 6144
       v.cpus = 2
-      v.customize ["modifyvm", :id, "--vram", "256"]
+      v.customize ["modifyvm", :id, "--vram", "10"]
       v.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
       v.customize ["modifyvm", :id, "--draganddrop", "bidirectional"]
       v.customize ["modifyvm", :id, "--description", "Oracle Linux 7.7 (UEKR5) VM image for DevOps 2.0 'cicd-ol77' CI/CD box."]
