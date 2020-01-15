@@ -31,8 +31,8 @@ export appd_password
 #appd_platform_home="platform"
 #export appd_platform_home
 
-# [optional] platform release (defaults to '4.5.16.21279').
-#appd_platform_release="4.5.16.21279"
+# [optional] platform release (defaults to '4.5.16.21295').
+#appd_platform_release="4.5.16.21295"
 #export appd_platform_release
 
 # [optional] platform admin user name (defaults to user 'admin').
@@ -130,8 +130,8 @@ export appd_controller_host
 #appd_java_agent_user="ec2-user"
 #export appd_java_agent_user
 
-# [optional] java agent release (defaults to '4.5.16.28759').
-#appd_java_agent_release="4.5.16.28759"
+# [optional] java agent release (defaults to '4.5.17.28908').
+#appd_java_agent_release="4.5.17.28908"
 #export appd_java_agent_release
 
 # ------------------------------------------------------------------------------
@@ -148,7 +148,7 @@ export appd_controller_host
 #       using valid entries for your environment.
 #
 #       In either case, you will need to validate the configuration before starting the Java Agent. The
-#       configuration file can be found here: '<java_agent_home>/appagent/ver4.5.16.28759/conf/controller-info.xml'
+#       configuration file can be found here: '<java_agent_home>/appagent/ver4.5.17.28908/conf/controller-info.xml'
 
 # [optional] associate java agent with application (defaults to ''My App).
 #appd_java_agent_application_name="My App"
@@ -181,8 +181,8 @@ export appd_controller_host
 #appd_machine_agent_user="ec2-user"
 #export appd_machine_agent_user
 
-# [optional] machine agent release (defaults to '4.5.16.2357').
-#appd_machine_agent_release="4.5.16.2357"
+# [optional] machine agent release (defaults to '4.5.17.2418').
+#appd_machine_agent_release="4.5.17.2418"
 #export appd_machine_agent_release
 
 # ------------------------------------------------------------------------------
@@ -308,8 +308,8 @@ export aws_cli_user_config
 #       configuration. To successfully connect to your AWS environment, you should set 'AWS_ACCESS_KEY_ID'
 #       and 'AWS_SECRET_ACCESS_KEY'.
 
-# [optional] aws cli default region name (defaults to 'us-west-2' [Oregon]).
-aws_cli_default_region_name="us-west-2"
+# [optional] aws cli default region name (defaults to 'us-east-1' [N. Virginia]).
+aws_cli_default_region_name="us-east-1"
 export aws_cli_default_region_name
 
 # [optional] aws cli default output format (defaults to 'json').
@@ -324,6 +324,6 @@ export aws_ami_owner
 
 # aws region to create packer build ami's.
 # current valid regions are:
-#   'us-east-1', 'us-east-2', 'us-west-1', 'us-west-2'
-aws_ami_region="us-west-2"
+#   'ap-southeast-2', eu-central-1', 'eu-west-2', 'eu-west-3, 'sa-east-1', 'us-east-1', 'us-east-2', 'us-west-1', 'us-west-2'
+aws_ami_region="us-east-1"
 export aws_ami_region
