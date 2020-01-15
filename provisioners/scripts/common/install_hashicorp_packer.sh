@@ -2,7 +2,7 @@
 # install packer machine and container image tool by hashicorp.
 
 # install hashicorp packer. ----------------------------------------------------
-packer_release="1.4.5"
+packer_release="1.5.1"
 packer_binary="packer_${packer_release}_linux_amd64.zip"
 
 # create local bin directory (if needed).
