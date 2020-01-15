@@ -3,15 +3,15 @@
 # NOTE: if the sts release is updated, you will also need to update the sts release path
 #       in the companion 'desktops/spring-tool-suite.desktop' file.
 
-# set default value for devops home environment variable if not set. -----------
+# set default value for devops home environment variable if not set. -------------------------------
 devops_home="${devops_home:-/opt/devops}"                   # [optional] devops home (defaults to '/opt/devops').
 
-# install spring tool suite ide. -----------------------------------------------
+# install spring tool suite ide. -------------------------------------------------------------------
 stshome="sts"
-stsrelease="4.4.2"
-stsnumber="1889669944"
-eclipseversion="2019-09"
-eclipserelease="4.13.0"
+stsrelease="4.5.0"
+stsnumber="71712377"
+eclipseversion="2019-12"
+eclipserelease="4.14.0"
 
 eclipsedist=$(echo "e${eclipserelease}" | awk -F "." '{printf "%s.%s", $1, $2}')
 stsfamily="${stsrelease:0:1}"
@@ -24,7 +24,7 @@ mkdir -p /usr/local/spring
 cd /usr/local/spring
 
 # download spring tool suite binary.
-wget --no-verbose http://download.springsource.com/release/STS${stsfamily}/${stsrelease}.RELEASE/dist/${eclipsedist}/${stsbinary}
+wget --no-verbose https://download.springsource.com/release/STS${stsfamily}/${stsrelease}.RELEASE/dist/${eclipsedist}/${stsbinary}
 
 # extract spring tool suite binary.
 rm -f ${stshome}
@@ -33,7 +33,7 @@ chown -R root:root ./${stsfolder}
 ln -s ${stsfolder} ${stshome}
 rm -f ${stsbinary}
 
-# modify the spring tool suite config file. ------------------------------------
+# modify the spring tool suite config file. --------------------------------------------------------
 cd ${stshome}
 cp -p ${stsconfig} ${stsconfig}.orig
 
@@ -44,7 +44,7 @@ curdate=$(date +"%Y-%m-%d.%H-%M-%S")
 awk -f ${devops_home}/provisioners/scripts/centos/config_centos7_spring_tool_suite_eclipse_ide.awk ${stsconfig} > ${stsconfig:0:-4}.${curdate}.ini
 mv -f  ${stsconfig:0:-4}.${curdate}.ini ${stsconfig}
 
-# create the default user workspace. -------------------------------------------
+# create the default user workspace. ---------------------------------------------------------------
 prefsfile="org.eclipse.ui.ide.prefs"
 prefspath="/home/vagrant/.eclipse/org.eclipse.platform_${eclipserelease}_${stsnumber}_linux_gtk_x86_64/configuration/.settings"
 wspath="/home/vagrant/workspaces/spring-sts${stsfamily}-${stsrelease}-${eclipseversion}-${eclipserelease}"
@@ -70,7 +70,7 @@ mkdir -p ${wspath}
 cd /home/vagrant/workspaces
 chown -R vagrant:vagrant .
 
-# install spring tool suite as gnome desktop app. ------------------------------
+# install spring tool suite as gnome desktop app. --------------------------------------------------
 imgname="spring-tools-4-logo"
 imgsizearray=( "16x16" "22x22" "24x24" "32x32" "48x48" "64x64" "128x128" "256x256" )
 imgfolder="/usr/share/icons/hicolor"
@@ -85,12 +85,12 @@ for imgsize in "${imgsizearray[@]}"; do
   fi
 done
 
-# install spring tool suite desktop in applications menu. ----------------------
+# install spring tool suite desktop in applications menu. ------------------------------------------
 echo "Installing spring-tool-suite.desktop in applications menu..."
 desktop-file-install --dir=/usr/share/applications/ ./desktops/spring-tool-suite.desktop
 update-desktop-database /usr/share/applications/
 
-# copy spring tool suite launcher to devops applications folder. ---------------
+# copy spring tool suite launcher to devops applications folder. -----------------------------------
 echo "Copying spring-tool-suite.desktop launcher to devops 'applications' folder..."
 mkdir -p ${devops_home}/provisioners/scripts/centos/applications
 cd ${devops_home}/provisioners/scripts/centos/applications
