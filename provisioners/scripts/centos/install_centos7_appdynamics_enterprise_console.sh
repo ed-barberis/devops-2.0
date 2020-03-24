@@ -29,7 +29,7 @@ set -x  # turn command display back ON.
 # appd platform install parameters.
 appd_home="${appd_home:-/opt/appdynamics}"
 appd_platform_home="${appd_platform_home:-platform}"
-appd_platform_release="${appd_platform_release:-4.5.16.21295}"
+appd_platform_release="${appd_platform_release:-20.3.1.21882}"
 set +x  # temporarily turn command display OFF.
 appd_platform_admin_username="${appd_platform_admin_username:-admin}"
 appd_platform_admin_password="${appd_platform_admin_password:-welcome1}"
@@ -62,7 +62,7 @@ Usage:
   [OPTIONAL] appdynamics platform install parameters [w/ defaults].
     [root]# export appd_home="/opt/appdynamics"                         # [optional] appd home (defaults to '/opt/appdynamics').
     [root]# export appd_platform_home="platform"                        # [optional] platform home folder (defaults to 'platform').
-    [root]# export appd_platform_release="4.5.16.21295"                 # [optional] platform release (defaults to '4.5.16.21295').
+    [root]# export appd_platform_release="20.3.1.21882"                 # [optional] platform release (defaults to '20.3.1.21882').
     [root]# export appd_platform_admin_username="admin"                 # [optional] platform admin user name (defaults to user 'admin').
     [root]# export appd_platform_admin_password="welcome1"              # [optional] platform admin password (defaults to 'welcome1').
     [root]# export appd_platform_db_password="welcome1"                 # [optional] platform database password (defaults to 'welcome1').
@@ -98,6 +98,7 @@ set -x  # turn command display back ON.
 # set appdynamics platform installation variables. -------------------------------------------------
 appd_platform_folder="${appd_home}/${appd_platform_home}"
 appd_platform_installer="platform-setup-x64-linux-${appd_platform_release}.sh"
+appd_platform_sha256="baaf0c80c8b891f20674a14f7540b5e072db79c6400e52d3633dbbd0b230549f"
 
 # install platform prerequisites. ------------------------------------------------------------------
 # install the netstat network utility.
@@ -194,6 +195,10 @@ chmod 755 ${appd_platform_installer}
 
 rm -f ${post_data_filename}
 rm -f ${oauth_token_filename}
+
+# verify the downloaded binary.
+echo "${appd_platform_sha256} ${appd_platform_installer}" | sha256sum --check
+# platform-setup-x64-linux-${appd_platform_release}.sh: OK
 
 # create silent response file for installer. -------------------------------------------------------
 response_file="appd-platform-response.varfile"
