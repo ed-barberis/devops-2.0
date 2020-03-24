@@ -1,0 +1,45 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure(2) do |config|
+  if (/cygwin|mswin|mingw|bccwin|wince|emx/ =~ RUBY_PLATFORM) != nil
+    config.vm.synced_folder ".", "/vagrant", type: "virtualbox"
+  else
+    config.vm.synced_folder ".", "/vagrant"
+  end
+  config.vm.define "base-dev" do |d|
+    d.vm.box = "base-desktop-centos80"
+    d.vm.hostname = "base-dev-centos80"
+    #d.vm.network "public_network"
+    d.vm.network "private_network", ip: "10.100.198.244"
+    #d.vm.provision :shell, path: "../../../../../provisioners/scripts/centos/install_centos7_cloud_init.sh", env: {"http_proxy" => "#{ENV['http_proxy']}", "https_proxy" => "#{ENV['https_proxy']}"}
+    d.vm.provider "virtualbox" do |v|
+      v.name = "base-dev-centos80"
+      v.gui = true
+      v.memory = 6144
+      v.cpus = 2
+      v.customize ["modifyvm", :id, "--vram", "256"]
+      v.customize ["modifyvm", :id, "--accelerate3d", "off"]
+      v.customize ["modifyvm", :id, "--accelerate2dvideo", "off"]
+      v.customize ["modifyvm", :id, "--clipboard-mode", "bidirectional"]
+      v.customize ["modifyvm", :id, "--draganddrop", "bidirectional"]
+      v.customize ["modifyvm", :id, "--description", "Centos Linux 8.0 VM image for DevOps 2.0 'base-dev-centos80' desktop box."]
+      v.customize ["setextradata", :id, "GUI/ScaleFactor", "1.75"]
+      v.customize ["storageattach", :id, "--storagectl", "IDE Controller", "--port", "1", "--device", "0", "--type", "dvddrive", "--medium", "emptydrive"]
+      # mount windows shared folder.
+      #v.customize ["sharedfolder", "add", :id, "--name", "shared", "--hostpath", "I:/shared", "--automount"]
+      # mount macosx shared folder.
+      #v.customize ["sharedfolder", "add", :id, "--name", "shared", "--hostpath", "/Volumes/g-drive/shared", "--automount"]
+    end
+  end
+  if Vagrant.has_plugin?("vagrant-cachier")
+    config.cache.scope = :box
+  end
+  if Vagrant.has_plugin?("vagrant-vbguest")
+    config.vbguest.iso_path = "http://download.virtualbox.org/virtualbox/$VBOX_VERSION/VBoxGuestAdditions_$VBOX_VERSION.iso"
+    config.vbguest.auto_update = true
+    config.vbguest.no_install = false
+    config.vbguest.no_remote = false
+    config.vbguest.auto_reboot = true
+  end
+end
