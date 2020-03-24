@@ -19,7 +19,7 @@ Vagrant.configure(2) do |config|
       v.memory = 10240
       v.cpus = 2
       v.customize ["modifyvm", :id, "--vram", "10"]
-      v.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
+      v.customize ["modifyvm", :id, "--clipboard-mode", "bidirectional"]
       v.customize ["modifyvm", :id, "--draganddrop", "bidirectional"]
       v.customize ["modifyvm", :id, "--description", "Oracle Linux 7.7 (UEKR5) VM image for DevOps 2.0 'apm-ol77' APM box."]
       v.customize ["storageattach", :id, "--storagectl", "IDE Controller", "--port", "1", "--device", "0", "--type", "dvddrive", "--medium", "emptydrive"]

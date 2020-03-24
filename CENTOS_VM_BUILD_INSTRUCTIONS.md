@@ -152,10 +152,10 @@ Follow these instructions to build the CentOS Linux 7.7 VM images.
     ```
     $ vagrant ssh
     dev[vagrant]$ docker --version
-    Docker version 19.03.5, build 633a0ea
+    Docker version 19.03.8, build afacb8b
 
     dev[vagrant]$ ansible --version
-    ansible 2.9.2
+    ansible 2.9.6
       config file = /etc/ansible/ansible.cfg
       configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
       ansible python module location = /usr/lib/python2.7/site-packages/ansible
@@ -183,10 +183,10 @@ Follow these instructions to build the CentOS Linux 7.7 VM images.
     ```
     $ vagrant ssh
     dev[vagrant]$ docker --version
-    Docker version 19.03.5, build 633a0ea
+    Docker version 19.03.8, build afacb8b
 
     ops[vagrant]$ ansible --version
-    ansible 2.9.2
+    ansible 2.9.6
       config file = /etc/ansible/ansible.cfg
       configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
       ansible python module location = /usr/lib/python2.7/site-packages/ansible
@@ -285,68 +285,69 @@ Follow these instructions to build the CentOS Linux 7.7 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 1.17.2 (command-line interface) [Optional]
--	Ansible 2.9.2
+-	Amazon AWS CLI 1.18.27 (command-line interface) [Optional]
+-	Ansible 2.9.6
 -	Ant 1.10.7
--	Consul 1.6.2
+-	Consul 1.7.2
 -	Cloud-Init 0.7.9 [Optional]
--	Docker 19.03.5 CE
+-	Docker 19.03.8 CE
 	-	Docker Bash Completion
-	-	Docker Compose 1.25.1
+	-	Docker Compose 1.25.4
 	-	Docker Compose Bash Completion
--	Git 2.25.0
+-	Git 2.26.0
 	-	Git Bash Completion
 	-	Git-Flow 1.12.3 (AVH Edition)
 	-	Git-Flow Bash Completion
--	Go 1.13.6
--	Gradle 6.0.1
--	Groovy 2.5.9
--	Java SE JDK 8 Update 232 (Amazon Corretto 8)
--	Java SE JDK 11.0.5 (Amazon Corretto 11)
--	Java SE JDK 13.0.1 (Oracle)
+-	Go 1.14.1
+-	Gradle 6.2.2
+-	Groovy 3.0.2
+-	Java SE JDK 8 Update 242 (Amazon Corretto 8)
+-	Java SE JDK 11.0.6 (Amazon Corretto 11)
+-	Java SE JDK 13.0.2 (Oracle)
 -	JMESPath jp 0.1.3 (command-line JSON processor)
 -	jq 1.6 (command-line JSON processor)
 -	Maven 3.6.3
--	Packer 1.5.1
+-	MySQL Community Server 5.7.29
+-	Packer 1.5.4
 -	Python 2.7.5
-	-	Pip 19.3.1
+	-	Pip 20.0.2
 -	Python 3.6.8
-	-	Pip3 19.3.1
+	-	Pip3 20.0.2
 -	Scala 2.13.1
-	-	Scala Build Tool (SBT) 1.3.7
--	Terraform 0.12.19
--	Vault 1.3.1
+	-	Scala Build Tool (SBT) 1.3.8
+-	Terraform 0.12.24
+-	Vault 1.3.4
 -	XMLStarlet 1.6.1 (command-line XML processor)
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 12.6.4
--	Jenkins 2.204.1
+-	GitLab Community Edition 12.9.0
+-	Jenkins 2.204.5
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
--	AppDynamics Enterprise Console 4.5.16.0 Build 21295
-	-	AppDynamics Controller 4.5.16.1 Build 2272
+-	AppDynamics Enterprise Console 20.3.1 Build 21882
+	-	AppDynamics Controller 20.3.1 Build 3123
 	-	AppDynamics Event Service 4.5.2.0 Build 20561
 -	MySQL Shell 8.0.19
 
 The following developer tools are pre-installed in the __Developer VM__ (desktop) only:
 
--	Apache Tomcat 7.0.99
--	Apache Tomcat 8.5.50
--	AppDynamics Java Agent 4.5.17.0 Build 28908
--	AppDynamics Machine Agent 4.5.17.0 Build 2418
-	-	AppDynamics AWS EC2 Monitoring Extension 2.0.1 [Optional]
--	Atom Editor 1.42.0
+-	Apache Tomcat 7.0.103
+-	Apache Tomcat 8.5.53
+-	AppDynamics Java Agent 20.3.0 Build 29587
+-	AppDynamics Machine Agent 20.3.1 Build 2476
+	-	AppDynamics AWS EC2 Monitoring Extension 2.1.1 [Optional]
+-	Atom Editor 1.45.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 79.0.3945.117 (64-bit)
--	Firefox 68.3.0esr (64-bit)
+-	Chrome 80.0.3987.149 (64-bit)
+-	Firefox 68.5.0esr (64-bit)
 -	GVim 7.4.160-1
--	JetBrains IntelliJ IDEA 2019.3.1 (Community Edition)
--	JetBrains IntelliJ IDEA 2019.3.1 (Ultimate Edition)
--	JetBrains WebStorm 2019.3.1 (JavaScript IDE)
--	Postman 7.15.0
+-	JetBrains IntelliJ IDEA 2019.3.4 (Community Edition)
+-	JetBrains IntelliJ IDEA 2019.3.4 (Ultimate Edition)
+-	JetBrains WebStorm 2019.3.4 (JavaScript IDE)
+-	Postman 7.21.0
 -	Scala IDE for Eclipse 4.7.0 (Eclipse Oxygen.1 [4.7.1]) [Optional]
--	Spring Tool Suite 4 [4.5.0] IDE (Eclipse 2019-12 [4.14.0])
+-	Spring Tool Suite 4 [4.6.0] IDE (Eclipse 2020-03 [4.15.0])
 -	Sublime Text 3 (3.2.2 Build 3211)
--	Visual Studio Code 1.41.1
+-	Visual Studio Code 1.43.1

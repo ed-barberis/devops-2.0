@@ -10,14 +10,14 @@
       "shutdown_command": "echo 'vagrant' | sudo -S /sbin/halt -h -p",
       "ssh_password": "vagrant",
       "ssh_port": 22,
+      "ssh_timeout": "10000s",
       "ssh_username": "vagrant",
-      "ssh_wait_timeout": "10000s",
       "type": "virtualbox-ovf",
       "vboxmanage": [
         ["modifyvm", "{{.Name}}", "--memory", "{{user `memory`}}"],
         ["modifyvm", "{{.Name}}", "--cpus", "{{user `cpus`}}"],
         ["modifyvm", "{{.Name}}", "--vram", "{{user `vram`}}"],
-        ["modifyvm", "{{.Name}}", "--clipboard", "bidirectional"],
+        ["modifyvm", "{{.Name}}", "--clipboard-mode", "bidirectional"],
         ["modifyvm", "{{.Name}}", "--draganddrop", "bidirectional"],
         ["modifyvm", "{{.Name}}", "--description", "{{user `vm_description`}}"],
         ["setextradata", "{{.Name}}", "GUI/ScaleFactor", "1.75"]
