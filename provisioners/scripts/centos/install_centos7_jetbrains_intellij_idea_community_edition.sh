@@ -6,12 +6,13 @@ devops_home="${devops_home:-/opt/devops}"                   # [optional] devops 
 
 # install intellij idea community edition. ---------------------------------------------------------
 idea_home="idea-IC"
-idea_release="2019.3.1"
-idea_build="193.5662.53"
+idea_release="2019.3.4"
+idea_build="193.6911.18"
 
+idea_folder="idea-IC-${idea_build}"
 idea_binary="ideaIC-${idea_release}-no-jbr.tar.gz"
 #idea_binary="ideaIC-${idea_release}.tar.gz"
-idea_folder="idea-IC-${idea_build}"
+idea_sha256="ca12d94ce7a416077d5a7dcb063a949d90a55b135312f276a1f395c662e903e3"
 
 # create jetbrains home parent folder.
 mkdir -p /usr/local/jetbrains
@@ -19,6 +20,10 @@ cd /usr/local/jetbrains
 
 # download intellij idea community edition binary.
 wget --no-verbose https://download.jetbrains.com/idea/${idea_binary}
+
+# verify the downloaded binary.
+echo "${idea_sha256} ${idea_binary}" | sha256sum --check
+# ideaIC-${idea_release}-no-jbr.tar.gz: OK
 
 # extract intellij idea community edition binary.
 rm -f ${idea_home}
