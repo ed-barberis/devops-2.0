@@ -12,15 +12,13 @@ cd /usr/local/scala
 curdate=$(date +"%Y-%m-%d.%H-%M-%S")
 
 # retrieve version number of latest release.
-curl --silent --dump-header curl-${sbthome}.${curdate}.out1 https://github.com/sbt/sbt/releases/latest --output /dev/null
-tr -d '\r' < curl-${sbthome}.${curdate}.out1 > curl-${sbthome}.${curdate}.out2
-sbtrelease=$(awk '/Location/ {print $2}' curl-${sbthome}.${curdate}.out2 | awk -F "/" '{print $8}')
-sbtrelease="v1.3.7"
+curl --silent --dump-header curl-${sbthome}.${curdate}.out https://github.com/sbt/sbt/releases/latest --output /dev/null
+sbtrelease=$(awk '{ sub("\r$", ""); print }' curl-${sbthome}.${curdate}.out | awk '/Location/ {print $2}' | awk -F "/" '{print $8}')
+sbtrelease="v1.3.8"
 sbtdir="sbt"
 sbtfolder="${sbthome}-${sbtrelease:1}"
 sbtbinary="sbt-${sbtrelease:1}.tgz"
-rm -f curl-${sbthome}.${curdate}.out1
-rm -f curl-${sbthome}.${curdate}.out2
+rm -f curl-${sbthome}.${curdate}.out
 
 # download sbt from cocl.us.
 wget --no-verbose https://github.com/sbt/sbt/releases/download/${sbtrelease}/${sbtbinary}
