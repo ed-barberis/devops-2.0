@@ -7,47 +7,52 @@
 devops_home="${devops_home:-/opt/devops}"                   # [optional] devops home (defaults to '/opt/devops').
 
 # install spring tool suite ide. -------------------------------------------------------------------
-stshome="sts"
-stsrelease="4.5.0"
-stsnumber="71712377"
-eclipseversion="2019-12"
-eclipserelease="4.14.0"
+sts_home="sts"
+sts_release="4.6.0"
+sts_number="1868663736"
+eclipse_version="2020-03"
+eclipse_release="4.15.0"
 
-eclipsedist=$(echo "e${eclipserelease}" | awk -F "." '{printf "%s.%s", $1, $2}')
-stsfamily="${stsrelease:0:1}"
-stsbinary="spring-tool-suite-${stsfamily}-${stsrelease}.RELEASE-e${eclipserelease}-linux.gtk.x86_64.tar.gz"
-stsfolder="${stshome}-${stsrelease}.RELEASE"
-stsconfig="SpringToolSuite${stsfamily}.ini"
+eclipse_dist=$(echo "e${eclipse_release}" | awk -F "." '{printf "%s.%s", $1, $2}')
+sts_family="${sts_release:0:1}"
+sts_folder="${sts_home}-${sts_release}.RELEASE"
+sts_config="SpringToolSuite${sts_family}.ini"
+sts_binary="spring-tool-suite-${sts_family}-${sts_release}.RELEASE-e${eclipse_release}-linux.gtk.x86_64.tar.gz"
+sts_sha1="20d646957408c93cb9f675ae46d5e4c87fbe2aa7"
 
 # create spring tool suite home parent folder.
 mkdir -p /usr/local/spring
 cd /usr/local/spring
 
 # download spring tool suite binary.
-wget --no-verbose https://download.springsource.com/release/STS${stsfamily}/${stsrelease}.RELEASE/dist/${eclipsedist}/${stsbinary}
+wget --no-verbose https://download.springsource.com/release/STS${sts_family}/${sts_release}.RELEASE/dist/${eclipse_dist}/${sts_binary}
+
+# verify the downloaded binary.
+echo "${sts_sha1} ${sts_binary}" | sha1sum --check
+# spring-tool-suite-${sts_family}-${sts_release}.RELEASE-e${eclipse_release}-linux.gtk.x86_64.tar.gz: OK
 
 # extract spring tool suite binary.
-rm -f ${stshome}
-tar -zxvf ${stsbinary} --no-same-owner --no-overwrite-dir
-chown -R root:root ./${stsfolder}
-ln -s ${stsfolder} ${stshome}
-rm -f ${stsbinary}
+rm -f ${sts_home}
+tar -zxvf ${sts_binary} --no-same-owner --no-overwrite-dir
+chown -R root:root ./${sts_folder}
+ln -s ${sts_folder} ${sts_home}
+rm -f ${sts_binary}
 
 # modify the spring tool suite config file. --------------------------------------------------------
-cd ${stshome}
-cp -p ${stsconfig} ${stsconfig}.orig
+cd ${sts_home}
+cp -p ${sts_config} ${sts_config}.orig
 
 # set current date for temporary filename.
 curdate=$(date +"%Y-%m-%d.%H-%M-%S")
 
 # set the default jdk and adjust the jvm heap.
-awk -f ${devops_home}/provisioners/scripts/centos/config_centos7_spring_tool_suite_eclipse_ide.awk ${stsconfig} > ${stsconfig:0:-4}.${curdate}.ini
-mv -f  ${stsconfig:0:-4}.${curdate}.ini ${stsconfig}
+awk -f ${devops_home}/provisioners/scripts/centos/config_centos7_spring_tool_suite_eclipse_ide.awk ${sts_config} > ${sts_config:0:-4}.${curdate}.ini
+mv -f  ${sts_config:0:-4}.${curdate}.ini ${sts_config}
 
 # create the default user workspace. ---------------------------------------------------------------
 prefsfile="org.eclipse.ui.ide.prefs"
-prefspath="/home/vagrant/.eclipse/org.eclipse.platform_${eclipserelease}_${stsnumber}_linux_gtk_x86_64/configuration/.settings"
-wspath="/home/vagrant/workspaces/spring-sts${stsfamily}-${stsrelease}-${eclipseversion}-${eclipserelease}"
+prefspath="/home/vagrant/.eclipse/org.eclipse.platform_${eclipse_release}_${sts_number}_linux_gtk_x86_64/configuration/.settings"
+wspath="/home/vagrant/workspaces/spring-sts${sts_family}-${sts_release}-${eclipse_version}-${eclipse_release}"
 
 # create the ide preferences file.
 mkdir -p ${prefspath}
