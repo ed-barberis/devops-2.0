@@ -13,23 +13,28 @@ curdate=$(date +"%Y-%m-%d.%H-%M-%S")
 
 # retrieve version number of latest release.
 curl --silent --dump-header curl-${sbthome}.${curdate}.out https://github.com/sbt/sbt/releases/latest --output /dev/null
-sbtrelease=$(awk '{ sub("\r$", ""); print }' curl-${sbthome}.${curdate}.out | awk '/Location/ {print $2}' | awk -F "/" '{print $8}')
-sbtrelease="v1.3.8"
-sbtdir="sbt"
-sbtfolder="${sbthome}-${sbtrelease:1}"
-sbtbinary="sbt-${sbtrelease:1}.tgz"
+sbt_release=$(awk '{ sub("\r$", ""); print }' curl-${sbthome}.${curdate}.out | awk '/Location/ {print $2}' | awk -F "/" '{print $8}')
+sbt_release="v1.3.10"
+sbt_dir="sbt"
+sbt_folder="${sbthome}-${sbt_release:1}"
+sbt_binary="sbt-${sbt_release:1}.tgz"
+sbt_sha256="3060065764193651aa3fe860a17ff8ea9afc1e90a3f9570f0584f2d516c34380"
 rm -f curl-${sbthome}.${curdate}.out
 
 # download sbt from cocl.us.
-wget --no-verbose https://github.com/sbt/sbt/releases/download/${sbtrelease}/${sbtbinary}
+wget --no-verbose https://github.com/sbt/sbt/releases/download/${sbt_release}/${sbt_binary}
+
+# verify the downloaded binary.
+echo "${sbt_sha256} ${sbt_binary}" | sha256sum --check
+# sbt-${sbt_release:1}.tgz: OK
 
 # extract sbt binary.
 rm -f ${sbthome}
-tar -zxvf ${sbtbinary} --no-same-owner --no-overwrite-dir
-mv -f ${sbtdir} ${sbtfolder}
-chown -R root:root ./${sbtfolder}
-ln -s ${sbtfolder} ${sbthome}
-rm -f ${sbtbinary}
+tar -zxvf ${sbt_binary} --no-same-owner --no-overwrite-dir
+mv -f ${sbt_dir} ${sbt_folder}
+chown -R root:root ./${sbt_folder}
+ln -s ${sbt_folder} ${sbthome}
+rm -f ${sbt_binary}
 
 # set jdk home environment variables.
 JAVA_HOME=/usr/local/java/jdk180
