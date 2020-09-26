@@ -2,16 +2,16 @@
 # bash resource configuration template for devops users.
 # rename and remove the '.template'.
 
-# ------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------
 # set devops home.
-# ------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------
 # [optional] devops home (defaults to '/opt/devops').
 devops_home="/opt/devops-2.0"
 export devops_home
 
-# ------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------
 # set appdynamics account credentials.
-# ------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------
 # user name for downloading binaries.
 appd_username="<your_appd_account_email_here>"
 export appd_username
@@ -20,9 +20,9 @@ export appd_username
 appd_password="<your_appd_account_password_here>"
 export appd_password
 
-# ------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------
 # [OPTIONAL] appdynamics platform install parameters [w/ defaults].
-# ------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------
 # [optional] appd home (defaults to '/opt/appdynamics').
 #appd_home="/opt/appdynamics"
 #export appd_home
@@ -31,9 +31,25 @@ export appd_password
 #appd_platform_home="platform"
 #export appd_platform_home
 
-# [optional] platform release (defaults to '20.3.5.21927').
-#appd_platform_release="20.3.5.21927"
+# [optional] platform release (defaults to '20.8.5.23257').
+#appd_platform_release="20.8.5.23257"
 #export appd_platform_release
+
+# [optional] platform sha-256 checksum (defaults to published value).
+#appd_platform_sha256="b42ca70e3c32d56b36dcec9743b7f78f7cf972416142da366370d8b754bd3114"
+#export appd_platform_sha256
+
+# [optional] platform user name (defaults to 'vagrant').
+#appd_platform_user_name="root"
+#export appd_platform_user_name
+
+# [optional] platform user password (defaults to 'welcome1').
+appd_platform_user_password="welcome1"
+export appd_platform_user_password
+
+# [optional] platform group (defaults to 'vagrant').
+#appd_platform_user_group="root"
+#export appd_platform_user_group
 
 # [optional] platform admin user name (defaults to user 'admin').
 #appd_platform_admin_username="admin"
@@ -59,6 +75,10 @@ export appd_password
 #appd_platform_server_port="9191"
 #export appd_platform_server_port
 
+# [optional] platform use https [boolean] (defaults to 'false').
+#appd_platform_use_https="false"
+#export appd_platform_use_https
+
 # [optional] platform name (defaults to 'My Platform').
 appd_platform_name="DevOps"
 export appd_platform_name
@@ -75,9 +95,9 @@ export appd_platform_description
 #appd_platform_hosts="platformadmin"
 #export appd_platform_hosts
 
-# ------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------
 # [OPTIONAL] appdynamics events service install parameters [w/ defaults].
-# ------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------
 # [optional] events service hosts (defaults to 'platformadmin' which is the localhost).
 #appd_events_service_hosts="platformadmin"
 #export appd_events_service_hosts
@@ -88,9 +108,9 @@ export appd_platform_description
 #appd_events_service_profile="DEV"
 #export appd_events_service_profile
 
-# ------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------
 # [OPTIONAL] appdynamics controller install parameters [w/ defaults].
-# ------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------
 # [optional] controller host (defaults to 'apm').
 appd_controller_host="apm"
 export appd_controller_host
@@ -119,24 +139,28 @@ export appd_controller_host
 #appd_controller_mysql_password="welcome1"
 #export appd_controller_mysql_password
 
-# ------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------
 # [OPTIONAL] appdynamics java agent install parameters [w/ defaults].
-# ------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------
 # [optional] java agent home (defaults to 'appagent').
 #appd_java_agent_home="appagent"
 #export appd_java_agent_home
 
-# [optional] java agent user (defaults to user 'centos').
-#appd_java_agent_user="centos"
+# [optional] java agent user (defaults to user 'vagrant').
+#appd_java_agent_user="vagrant"
 #export appd_java_agent_user
 
-# [optional] java agent release (defaults to '20.3.0.29587').
-#appd_java_agent_release="20.3.0.29587"
+# [optional] java agent release (defaults to '20.9.0.30985').
+#appd_java_agent_release="20.9.0.30985"
 #export appd_java_agent_release
 
-# ------------------------------------------------------------------------------
+# [optional] java agent sha-256 checksum (defaults to published value).
+#appd_java_agent_sha256="494819db178ba88b48f69e734f4efb8f0bce08e1dcabce98e95b2f474cf01fdd"
+#export appd_java_agent_sha256
+
+# --------------------------------------------------------------------------------------------------
 # [OPTIONAL] appdynamics java agent config parameters [w/ defaults].
-# ------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------
 # [optional] configure appd java agent? [boolean] (defaults to 'false').
 #appd_java_agent_config="false"
 #export appd_java_agent_config
@@ -148,7 +172,7 @@ export appd_controller_host
 #       using valid entries for your environment.
 #
 #       In either case, you will need to validate the configuration before starting the Java Agent. The
-#       configuration file can be found here: '<java_agent_home>/appagent/ver20.3.0.29587/conf/controller-info.xml'
+#       configuration file can be found here: '<java_agent_home>/appagent/ver20.9.0.30985/conf/controller-info.xml'
 
 # [optional] associate java agent with application (defaults to ''My App).
 #appd_java_agent_application_name="My App"
@@ -170,24 +194,28 @@ export appd_controller_host
 #appd_java_agent_account_access_key="abcdef01-2345-6789-abcd-ef0123456789"
 #export appd_java_agent_account_access_key
 
-# ------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------
 # [OPTIONAL] appdynamics machine agent install parameters [w/ defaults].
-# ------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------
 # [optional] machine agent home folder (defaults to 'machine-agent').
 #appd_machine_agent_home="machine-agent"
 #export appd_machine_agent_home
 
-# [optional] machine agent user name (defaults to user 'centos').
-#appd_machine_agent_user="centos"
+# [optional] machine agent user name (defaults to user 'vagrant').
+#appd_machine_agent_user="vagrant"
 #export appd_machine_agent_user
 
-# [optional] machine agent release (defaults to '20.3.2.2520').
-#appd_machine_agent_release="20.3.2.2520"
+# [optional] machine agent release (defaults to '20.9.0.2763').
+#appd_machine_agent_release="20.9.0.2763"
 #export appd_machine_agent_release
 
-# ------------------------------------------------------------------------------
+# [optional] machine agent sha-256 checksum (defaults to published value).
+#appd_machine_agent_sha256="fe642eeb758ed2860fe6429bf215eade0f17c40510a1352eb30618c723d3216f"
+#export appd_machine_agent_sha256
+
+# --------------------------------------------------------------------------------------------------
 # [OPTIONAL] appdynamics machine agent config parameters [w/ defaults].
-# ------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------
 # [optional] configure appd machine agent? [boolean] (defaults to 'false').
 #appd_machine_agent_config="false"
 #export appd_machine_agent_config
@@ -252,12 +280,12 @@ export appd_controller_host
 # --------------------------------------------------------------------------------------------------
 # [OPTIONAL] appdynamics aws ec2 monitoring extension install parameters [w/ defaults].
 # --------------------------------------------------------------------------------------------------
-# [optional] aws ec2 extension release (defaults to user '2.1.1').
-#appd_aws_ec2_extension_release="2.1.1"
+# [optional] aws ec2 extension release (defaults to user '2.1.3').
+#appd_aws_ec2_extension_release="2.1.3"
 #export appd_aws_ec2_extension_release
 
-# [optional] aws ec2 extension build (defaults to user '1526042422').
-#appd_aws_ec2_extension_build="1526042422"
+# [optional] aws ec2 extension build (defaults to build '1588861412').
+#appd_aws_ec2_extension_build="1588861412"
 #export appd_aws_ec2_extension_build
 
 # --------------------------------------------------------------------------------------------------
@@ -276,7 +304,7 @@ export appd_controller_host
 #appd_aws_ec2_extension_display_account_name="<your_account_name>"
 #export appd_aws_ec2_extension_display_account_name
 
-# [optional] whitespace separated list of aws regions to monitor (defaults to 'us-east-1').
+# [optional] whitespace separated list of aws regions to monitor (defaults to 'us-east-1' [N. Virginia]).
 #appd_aws_ec2_extension_aws_regions="ap-southeast-2 eu-central-1 eu-west-2 eu-west-3 sa-east-1 us-east-1 us-east-2 us-west-1 us-west-2"
 #export appd_aws_ec2_extension_aws_regions
 
@@ -290,9 +318,20 @@ export appd_controller_host
 #appd_aws_ec2_extension_tier_component_id="8"
 #export appd_aws_ec2_extension_tier_component_id
 
-# ------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------
+# [OPTIONAL] cwom platform install parameters [w/ defaults].
+# --------------------------------------------------------------------------------------------------
+# [optional] cwom platform release (defaults to '2.3.22').
+#cwom_platform_release="2.3.22"
+#export cwom_platform_release
+
+# [optional] cwom platform sha-512 (defaults to published value).
+#cwom_platform_sha512="ce476e25bb43b88806dbb09122c6002639d4f08dd30b7376b1b45abf85ccf50e76eaf05a23648fbdb7cdad078487f5b0b7b57d5c6bf054d09f9f9aee41b76cc4"
+#export cwom_platform_sha512
+
+# --------------------------------------------------------------------------------------------------
 # amazon aws environment parameters.
-# ------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------
 # set amazon aws cli credentials (appdynamics).
 AWS_ACCESS_KEY_ID="<your_AWS_ACCESS_KEY_ID_here>"
 export AWS_ACCESS_KEY_ID
@@ -327,3 +366,23 @@ export aws_ami_owner
 #   'ap-southeast-2', 'eu-central-1', 'eu-west-2', 'eu-west-3', 'sa-east-1', 'us-east-1', 'us-east-2', 'us-west-1', 'us-west-2'
 aws_ami_region="us-east-1"
 export aws_ami_region
+
+# --------------------------------------------------------------------------------------------------
+# google cloud platform environment parameters.
+# --------------------------------------------------------------------------------------------------
+# gcp zone to create packer build images.
+# current valid zones are:
+#   'australia-southeast1-a', 'australia-southeast1-b', 'australia-southeast1-c' [Sydney]
+#   'europe-west1-b', 'europe-west1-c', 'europe-west1-d'                         [Belgium]
+#   'europe-west2-a', 'europe-west2-b', 'europe-west2-c'                         [London]
+#   'europe-west3-a', 'europe-west3-b', 'europe-west3-c'                         [Frankfurt]
+#   'southamerica-east1-a', 'southamerica-east1-b', 'southamerica-east1-c'       [São Paulo]
+#   'us-central1-a', 'us-central1-b', 'us-central1-c', 'us-central1-f'           [Iowa]
+#   'us-east1-b', 'us-east1-c', 'us-east1-d'                                     [South Carolina]
+#   'us-east4-a', 'us-east4-b', 'us-east4-c'                                     [N. Virginia]
+#   'us-west1-a', 'us-west1-b', 'us-west1-c'                                     [Oregon]
+#   'us-west2-a', 'us-west2-b', 'us-west2-c'                                     [Los Angeles]
+#   'us-west3-a', 'us-west3-b', 'us-west3-c'                                     [Salt Lake City]
+#   'us-west4-a', 'us-west4-b', 'us-west4-c'                                     [Las Vegas]
+gcp_zone="us-central1-a"
+export gcp_zone
