@@ -9,12 +9,17 @@ mkdir -p ${devops_home}/provisioners/scripts/centos
 cd ${devops_home}/provisioners/scripts/centos
 
 # install mysql shell. -----------------------------------------------------------------------------
-mysqlsh_release="8.0.19-1"
+mysqlsh_release="8.0.21-1"
 mysqlsh_binary="mysql-shell-${mysqlsh_release}.el7.x86_64.rpm"
+mysqlsh_checksum="000a0173d2911073112321728f7558eb"
 
 # download mysql shell repository.
 rm -f ${mysqlsh_binary}
 wget --no-verbose --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" https://dev.mysql.com/get/Downloads/MySQL-Shell/${mysqlsh_binary}
+
+# verify the downloaded binary using the md5 checksum.
+echo "${mysqlsh_checksum} ${mysqlsh_binary}" | md5sum --check -
+# amazon-corretto-${jdk_build}-linux-x64.tar.gz: OK
 
 # install mysql shell. -----------------------------------------------------------------------------
 yum -y install ${mysqlsh_binary}
