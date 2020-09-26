@@ -14,7 +14,7 @@ curdate=$(date +"%Y-%m-%d.%H-%M-%S")
 # retrieve version number of latest release.
 curl --silent --dump-header curl-${scalahome}.${curdate}.out https://github.com/scala/scala/releases/latest --output /dev/null
 scalarelease=$(awk '{ sub("\r$", ""); print }' curl-${scalahome}.${curdate}.out | awk '/Location/ {print $2}' | awk -F "/" '{print $8}')
-scalarelease="v2.13.1"
+scalarelease="v2.13.3"
 scaladir="scala-${scalarelease:1}"
 scalafolder="${scalahome}-${scalarelease:1}"
 scalabinary="scala-${scalarelease:1}.tgz"
