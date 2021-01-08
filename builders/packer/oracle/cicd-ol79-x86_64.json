@@ -5,7 +5,7 @@
       "guest_additions_url": "{{user `guest_additions_url`}}",
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
       "headless": "{{user `headless`}}",
-      "source_path": "{{template_dir}}/../../../artifacts/oracle/ops-ol77/ops-ol77.ovf",
+      "source_path": "{{template_dir}}/../../../artifacts/oracle/ops-ol79/ops-ol79.ovf",
       "output_directory": "{{user `build_directory`}}/{{user `box_basename`}}",
       "shutdown_command": "echo 'vagrant' | sudo -S /sbin/halt -h -p",
       "ssh_password": "vagrant",
@@ -86,7 +86,7 @@
     }
   ],
   "variables": {
-    "box_basename": "cicd-ol77",
+    "box_basename": "cicd-ol79",
     "build_directory": "../../../artifacts/oracle",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
     "cpus": "2",
@@ -97,10 +97,10 @@
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
     "memory": "6144",
-    "name": "cicd-ol77",
+    "name": "cicd-ol79",
     "no_proxy": "{{env `no_proxy`}}",
     "version": "TIMESTAMP",
-    "vm_description": "Oracle Linux 7.7 (UEKR5) VM image for DevOps 2.0 '{{user `box_basename`}}' CI/CD box.",
+    "vm_description": "Oracle Linux 7.9 (UEKR6) VM image for DevOps 2.0 '{{user `box_basename`}}' CI/CD box.",
     "vram": "10"
   }
 }

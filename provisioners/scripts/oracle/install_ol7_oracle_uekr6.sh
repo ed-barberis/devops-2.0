@@ -1,8 +1,9 @@
 #!/bin/sh -eux
-# install the oracle linux 7 uekr5 kernel.
+# install the oracle linux 7 uekr6 kernel.
 
-# ensure that the uekr5 kernel is enabled by default. ----------------------------------------------
-yum-config-manager --enable ol7_UEKR5
+# ensure that the uekr6 kernel is enabled by default. ----------------------------------------------
+yum-config-manager --enable ol7_UEKR6
+yum-config-manager --disable ol7_UEKR5
 yum-config-manager --disable ol7_UEKR4
 yum-config-manager --disable ol7_UEKR3
 yum-config-manager --enable ol7_addons
@@ -24,7 +25,8 @@ yum -y remove PackageKit
 /usr/bin/ol_yum_configure.sh
 
 # re-enable the correct repositories after the yum configuration update. ---------------------------
-yum-config-manager --enable ol7_UEKR5
+yum-config-manager --enable ol7_UEKR6
+yum-config-manager --disable ol7_UEKR5
 yum-config-manager --disable ol7_UEKR4
 yum-config-manager --disable ol7_UEKR3
 yum-config-manager --enable ol7_addons
