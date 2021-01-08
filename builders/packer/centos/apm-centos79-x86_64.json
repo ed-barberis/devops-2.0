@@ -7,7 +7,7 @@
       "headless": "{{user `headless`}}",
       "output_directory": "{{user `build_directory`}}/{{user `box_basename`}}",
       "shutdown_command": "echo 'vagrant' | sudo -S /sbin/halt -h -p",
-      "source_path": "{{template_dir}}/../../../artifacts/centos/base-headless-centos78/base-headless-centos78.ovf",
+      "source_path": "{{template_dir}}/../../../artifacts/centos/base-headless-centos79/base-headless-centos79.ovf",
       "ssh_password": "vagrant",
       "ssh_port": 22,
       "ssh_timeout": "10000s",
@@ -121,7 +121,7 @@
     "appd_controller_admin_password": "{{env `appd_controller_admin_password`}}",
     "appd_controller_root_password": "{{env `appd_controller_root_password`}}",
     "appd_controller_mysql_password": "{{env `appd_controller_mysql_password`}}",
-    "box_basename": "apm-centos78",
+    "box_basename": "apm-centos79",
     "build_directory": "../../../artifacts/centos",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
     "cpus": "2",
@@ -132,10 +132,10 @@
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
     "memory": "10240",
-    "name": "apm-centos78",
+    "name": "apm-centos79",
     "no_proxy": "{{env `no_proxy`}}",
     "version": "TIMESTAMP",
-    "vm_description": "Centos Linux 7.8 VM image for DevOps 2.0 '{{user `box_basename`}}' APM box.",
+    "vm_description": "Centos Linux 7.9 VM image for DevOps 2.0 '{{user `box_basename`}}' APM box.",
     "vram": "10"
   }
 }

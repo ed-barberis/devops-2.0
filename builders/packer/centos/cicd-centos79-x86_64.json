@@ -5,7 +5,7 @@
       "guest_additions_url": "{{user `guest_additions_url`}}",
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
       "headless": "{{user `headless`}}",
-      "source_path": "{{template_dir}}/../../../artifacts/centos/ops-centos78/ops-centos78.ovf",
+      "source_path": "{{template_dir}}/../../../artifacts/centos/ops-centos79/ops-centos79.ovf",
       "output_directory": "{{user `build_directory`}}/{{user `box_basename`}}",
       "shutdown_command": "echo 'vagrant' | sudo -S /sbin/halt -h -p",
       "ssh_password": "vagrant",
@@ -86,7 +86,7 @@
     }
   ],
   "variables": {
-    "box_basename": "cicd-centos78",
+    "box_basename": "cicd-centos79",
     "build_directory": "../../../artifacts/centos",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
     "cpus": "2",
@@ -97,10 +97,10 @@
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
     "memory": "6144",
-    "name": "cicd-centos78",
+    "name": "cicd-centos79",
     "no_proxy": "{{env `no_proxy`}}",
     "version": "TIMESTAMP",
-    "vm_description": "Centos Linux 7.8 VM image for DevOps 2.0 '{{user `box_basename`}}' CI/CD box.",
+    "vm_description": "Centos Linux 7.9 VM image for DevOps 2.0 '{{user `box_basename`}}' CI/CD box.",
     "vram": "10"
   }
 }

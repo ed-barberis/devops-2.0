@@ -8,20 +8,20 @@ Vagrant.configure(2) do |config|
     config.vm.synced_folder ".", "/vagrant"
   end
   config.vm.define "demo-dev" do |d|
-    d.vm.box = "dev-centos78"
+    d.vm.box = "dev-centos79"
     d.vm.hostname = "dev"
     #d.vm.network "public_network"
     d.vm.network "private_network", ip: "10.100.198.239"
     #d.vm.provision :shell, path: "../../../../../provisioners/scripts/centos/install_centos7_cloud_init.sh", env: {"http_proxy" => "#{ENV['http_proxy']}", "https_proxy" => "#{ENV['https_proxy']}"}
     d.vm.provider "virtualbox" do |v|
-      v.name = "dev-centos78"
+      v.name = "dev-centos79"
       v.gui = true
       v.memory = 6144
       v.cpus = 2
       v.customize ["modifyvm", :id, "--vram", "256"]
       v.customize ["modifyvm", :id, "--clipboard-mode", "bidirectional"]
       v.customize ["modifyvm", :id, "--draganddrop", "bidirectional"]
-      v.customize ["modifyvm", :id, "--description", "Centos Linux 7.8 VM image for DevOps 2.0 'dev-centos78' desktop box."]
+      v.customize ["modifyvm", :id, "--description", "Centos Linux 7.9 VM image for DevOps 2.0 'dev-centos79' desktop box."]
       v.customize ["modifyvm", :id, "--graphicscontroller", "vmsvga"]
       v.customize ["setextradata", :id, "GUI/ScaleFactor", "1.75"]
       v.customize ["storageattach", :id, "--storagectl", "IDE Controller", "--port", "1", "--device", "0", "--type", "dvddrive", "--medium", "emptydrive"]
