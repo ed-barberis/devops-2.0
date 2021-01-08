@@ -18,8 +18,8 @@
 
 # set amazon corretto 11 installation variables. ---------------------------------------------------
 jdk_home="jdk11"
-jdk_build="11.0.8.10.1"
-jdk_checksum="58b8ae057e363594fb2efaf70cf13b4d"
+jdk_build="11.0.9.12.1"
+jdk_checksum="8929d09963d1f6b847cf955c6340133b"
 jdk_folder="amazon-corretto-${jdk_build}-linux-x64"
 jdk_binary="amazon-corretto-${jdk_build}-linux-x64.tar.gz"
 #jdk_binary="amazon-corretto-${jdk_build:0:2}-x64-linux-jdk.tar.gz"
@@ -107,4 +107,4 @@ PATH=${JAVA_HOME}/bin:$PATH
 export PATH
 
 # verify installation.
-java -version
+java --version
