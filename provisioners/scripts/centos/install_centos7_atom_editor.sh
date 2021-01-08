@@ -17,7 +17,7 @@ curdate=$(date +"%Y-%m-%d.%H-%M-%S")
 # retrieve version number of latest release.
 curl --silent --dump-header curl-atom.${curdate}.out https://github.com/atom/atom/releases/latest --output /dev/null
 atomrelease=$(awk '{ sub("\r$", ""); print }' curl-atom.${curdate}.out | awk '/Location/ {print $2}' | awk -F "/" '{print $8}')
-atomrelease="v1.51.0"
+atomrelease="v1.53.0"
 rm -f curl-atom.${curdate}.out
 
 # download atom repository from github.com.
