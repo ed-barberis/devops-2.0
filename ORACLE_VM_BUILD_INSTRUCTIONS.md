@@ -1,37 +1,37 @@
 # Oracle 7 VM Build Instructions
 
-Follow these instructions to build the Oracle Linux 7.7 VM images.
+Follow these instructions to build the Oracle Linux 7.9 VM images.
 
 ## Build the Vagrant Box Images with Packer
 
 1.	Start VirtualBox:  
     Start Menu -- > All apps -- > Oracle VM VirtualBox -- > Oracle VM VirtualBox
 
-2.	Build the Oracle Linux 7.7 'base-desktop' box (desktop):
+2.	Build the Oracle Linux 7.9 'base-desktop' box (desktop):
 
     This will take several minutes to run. If this is the first time you are
-    running a build, the ISO image for Oracle Linux 7.7 will be downloaded and
+    running a build, the ISO image for Oracle Linux 7.9 will be downloaded and
     cached locally.
 
-    ```
+    ```bash
     $ cd /<drive>/projects/devops-2.0/builders/packer/oracle
-    $ packer build base-desktop-ol77-x86_64.json
+    $ packer build base-desktop-ol79-x86_64.json
     ```
 
-3.	Build the Oracle Linux 7.7 'base-headless' box (headless):
+3.	Build the Oracle Linux 7.9 'base-headless' box (headless):
 
     This will take several minutes to run. However, this build will be shorter
-    because the ISO image for Oracle Linux 7.7 has been cached locally and the
+    because the ISO image for Oracle Linux 7.9 has been cached locally and the
     headless image contains fewer packages then the desktop image.
 
-    ```
-    $ packer build base-headless-ol77-x86_64.json
+    ```bash
+    $ packer build base-headless-ol79-x86_64.json
     ```
 
-4.	Build the Oracle Linux 7.7 'dev' box (desktop):
+4.	Build the Oracle Linux 7.9 'dev' box (desktop):
 
     This will take several minutes to run. However, this build will be shorter
-    because it is based on the 'base-desktop-ol77' image.
+    because it is based on the 'base-desktop-ol79' image.
 
     NOTE: By default, the __DEV VM__ build provisions the AppDynamics Java Agent
     which requires external credentials to download the installer. You will need
@@ -40,40 +40,40 @@ Follow these instructions to build the Oracle Linux 7.7 VM images.
 
     The build will __fail__ if they are not set.
 
-    ```
+    ```bash
     $ export appd_username="name@example.com"
     $ export appd_password="password"
-    $ packer build dev-ol77-x86_64.json
+    $ packer build dev-ol79-x86_64.json
     ```
 
     For additional configuration options, please refer to the documentation in
     '`provisioners/scripts/common/install_appdynamics_java_agent.sh`' and define
-    these variables in '`builders/packer/oracle/dev-ol77-x86_64.json`'.
+    these variables in '`builders/packer/oracle/dev-ol79-x86_64.json`'.
 
     If you don't have an AppDynamics account, you can remove the line containing
     '`../../../provisioners/scripts/common/install_appdynamics_java_agent.sh`'
-    from '`builders/packer/oracle/dev-ol77-x86_64.json`' to disable provisioning
+    from '`builders/packer/oracle/dev-ol79-x86_64.json`' to disable provisioning
     of the Java Agent.
 
-5.	Build the Oracle Linux 7.7 'ops' box (headless):
+5.	Build the Oracle Linux 7.9 'ops' box (headless):
 
-    This build is based on the 'base-headless-ol77' image.
+    This build is based on the 'base-headless-ol79' image.
 
-    ```
-    $ packer build ops-ol77-x86_64.json
-    ```
-
-6.	Build the Oracle Linux 7.7 'cicd' box (headless):
-
-    This build is based on the 'ops-ol77' image.
-
-    ```
-    $ packer build cicd-ol77-x86_64.json
+    ```bash
+    $ packer build ops-ol79-x86_64.json
     ```
 
-7.	Build the Oracle Linux 7.7 'apm' box (headless):
+6.	Build the Oracle Linux 7.9 'cicd' box (headless):
 
-    This build is based on the 'base-headless-ol77' image.
+    This build is based on the 'ops-ol79' image.
+
+    ```bash
+    $ packer build cicd-ol79-x86_64.json
+    ```
+
+7.	Build the Oracle Linux 7.9 'apm' box (headless):
+
+    This build is based on the 'base-headless-ol79' image.
 
     Prior to building the __APM VM__ image, you will need to supply a valid
     AppDynamics Controller license file. To apply your license file:
@@ -90,126 +90,126 @@ Follow these instructions to build the Oracle Linux 7.7 VM images.
     The Enterprise Console admin user and database passwords may also be
     provided, but are optional. The default passwords are '`welcome1`'.
 
-    ```
+    ```bash
     $ export appd_username="name@example.com"
     $ export appd_password="password"
     $ export appd_admin_password="welcome1"     # [optional]
     $ export appd_db_password="welcome1"        # [optional]
     $ export appd_db_root_password="welcome1"   # [optional]
-    $ packer build apm-ol77-x86_64.json
+    $ packer build apm-ol79-x86_64.json
     ```
 
     For additional configuration options, please refer to the documentation in
     '`provisioners/scripts/centos/install_centos7_appdynamics_enterprise_console.sh`' and define
-    these variables in '`builders/packer/oracle/apm-ol77-x86_64.json`'.
+    these variables in '`builders/packer/oracle/apm-ol79-x86_64.json`'.
 
 ## Import the Vagrant Box Images
 
-1.	Import the Oracle Linux 7.7 'dev' box image (desktop):
-    ```
-    $ cd /<drive>/projects/devops-2.0/artifacts/oracle/dev-ol77
-    $ vagrant box add dev-ol77 dev-ol77.virtualbox.box
-    ```
-
-2.	Import the Oracle Linux 7.7 'ops' box image (headless):
-    ```
-    $ cd ../ops-ol77
-    $ vagrant box add ops-ol77 ops-ol77.virtualbox.box
+1.	Import the Oracle Linux 7.9 'dev' box image (desktop):
+    ```bash
+    $ cd /<drive>/projects/devops-2.0/artifacts/oracle/dev-ol79
+    $ vagrant box add dev-ol79 dev-ol79.virtualbox.box
     ```
 
-3.	Import the Oracle Linux 7.7 'cicd' box image (headless):
-    ```
-    $ cd ../cicd-ol77
-    $ vagrant box add cicd-ol77 cicd-ol77.virtualbox.box
+2.	Import the Oracle Linux 7.9 'ops' box image (headless):
+    ```bash
+    $ cd ../ops-ol79
+    $ vagrant box add ops-ol79 ops-ol79.virtualbox.box
     ```
 
-4.	Import the Oracle Linux 7.7 'apm' box image (headless):
+3.	Import the Oracle Linux 7.9 'cicd' box image (headless):
+    ```bash
+    $ cd ../cicd-ol79
+    $ vagrant box add cicd-ol79 cicd-ol79.virtualbox.box
     ```
-    $ cd ../apm-ol77
-    $ vagrant box add apm-ol77 apm-ol77.virtualbox.box
+
+4.	Import the Oracle Linux 7.9 'apm' box image (headless):
+    ```bash
+    $ cd ../apm-ol79
+    $ vagrant box add apm-ol79 apm-ol79.virtualbox.box
     ```
 
 5.	List the Vagrant box images:
-    ```
+    ```bash
     $ vagrant box list
-    apm-ol77 (virtualbox, 0)
-    cicd-ol77 (virtualbox, 0)
-    dev-ol77 (virtualbox, 0)
-    ops-ol77 (virtualbox, 0)
+    apm-ol79 (virtualbox, 0)
+    cicd-ol79 (virtualbox, 0)
+    dev-ol79 (virtualbox, 0)
+    ops-ol79 (virtualbox, 0)
     ...
     ```
 
 ## Start the VirtualBox Images
 
-1.	Start the __Developer VM__ with Oracle Linux 7.7 (desktop):
+1.	Start the __Developer VM__ with Oracle Linux 7.9 (desktop):
 
     This will take a few minutes to import the Vagrant box and start the VM:
-    ```
+    ```bash
     $ cd /<drive>/projects/devops-2.0/builders/vagrant/oracle/demo/dev
     $ vagrant up
     ```
     Connect to the VM via SSH and run some [optional] commands:
-    ```
+    ```bash
     $ vagrant ssh
     dev[vagrant]$ docker --version
-    Docker version 19.03.1-ol, build ead9442
+    Docker version 19.03.11-ol, build 748876d
 
     dev[vagrant]$ ansible --version
-    ansible 2.9.7
+    ansible 2.9.16
       config file = /etc/ansible/ansible.cfg
       configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
       ansible python module location = /usr/lib/python2.7/site-packages/ansible
       executable location = /usr/bin/ansible
-      python version = 2.7.5 (default, Dec  4 2019, 17:34:13) [GCC 4.8.5 20150623 (Red Hat 4.8.5-39.0.1)]
+      python version = 2.7.5 (default, Nov 13 2020, 02:52:00) [GCC 4.8.5 20150623 (Red Hat 4.8.5-44.0.3)]
 
     dev[vagrant]$ <run other commands>
     ```
     Gracefully shutdown the VM:
-    ```
+    ```bash
     dev[vagrant]$ exit
     $ vagrant halt
     ```
 
-    The Developer VM with Oracle Linux 7.7 (desktop) can also be used directly from VirtualBox.
+    The Developer VM with Oracle Linux 7.9 (desktop) can also be used directly from VirtualBox.
 
-2.	Start the __Operations VM__ with Oracle Linux 7.7 (headless):
+2.	Start the __Operations VM__ with Oracle Linux 7.9 (headless):
 
     This will take a few minutes to import the Vagrant box and start the VM:
-    ```
+    ```bash
     $ cd /<drive>/projects/devops-2.0/builders/vagrant/oracle/demo/ops
     $ vagrant up
     ```
     Connect to the VM via SSH and run some [optional] commands:
-    ```
+    ```bash
     $ vagrant ssh
     dev[vagrant]$ docker --version
-    Docker version 19.03.1-ol, build ead9442
+    Docker version 19.03.11-ol, build 748876d
 
     ops[vagrant]$ ansible --version
-    ansible 2.9.7
+    ansible 2.9.16
       config file = /etc/ansible/ansible.cfg
       configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
       ansible python module location = /usr/lib/python2.7/site-packages/ansible
       executable location = /usr/bin/ansible
-      python version = 2.7.5 (default, Dec  4 2019, 17:34:13) [GCC 4.8.5 20150623 (Red Hat 4.8.5-39.0.1)]
+      python version = 2.7.5 (default, Nov 13 2020, 02:52:00) [GCC 4.8.5 20150623 (Red Hat 4.8.5-44.0.3)]
 
     ops[vagrant]$ <run other commands>
     ```
     Gracefully shutdown the VM:
-    ```
+    ```bash
     ops[vagrant]$ exit
     $ vagrant halt
     ```
 
-3.	Start the __CICD VM__ with Oracle Linux 7.7 (headless):
+3.	Start the __CICD VM__ with Oracle Linux 7.9 (headless):
 
     This will take a few minutes to import the Vagrant box and start the VM:
-    ```
+    ```bash
     $ cd /<drive>/projects/devops-2.0/builders/vagrant/oracle/demo/cicd
     $ vagrant up
     ```
     Connect to the VM via SSH and run some [optional] commands:
-    ```
+    ```bash
     $ vagrant ssh
     cicd[vagrant]$ sudo gitlab-ctl status
     run: gitaly: (pid 633) 393s; run: log: (pid 632) 393s
@@ -238,14 +238,14 @@ Follow these instructions to build the Oracle Linux 7.7 VM images.
     cicd[vagrant]$ <run other commands>
     ```
     Gracefully shutdown the VM:
-    ```
+    ```bash
     cicd[vagrant]$ exit
     $ vagrant halt
     ```
 
     NOTE: You can access the [GitLab Community Edition](https://about.gitlab.com/) server locally on port '80' [here](http://10.100.198.230) and the [Jenkins](https://jenkins.io/) build server locally on port '9080' [here](http://10.100.198.230:9080).
 
-4.	Start the __APM VM__ with Oracle Linux 7.7 (headless):
+4.	Start the __APM VM__ with Oracle Linux 7.9 (headless):
 
     This will take a few minutes to import the Vagrant box and start the VM.
 
@@ -255,12 +255,12 @@ Follow these instructions to build the Oracle Linux 7.7 VM images.
 
     Check the progress of the Controller service start by running the `journalctl`
     command below to view the systemd log:
-    ```
+    ```bash
     $ cd /<drive>/projects/devops-2.0/builders/vagrant/oracle/demo/apm
     $ vagrant up
     ```
     Connect to the VM via SSH and run some [optional] commands:
-    ```
+    ```bash
     $ vagrant ssh
     apm[vagrant]$ sudo journalctl -fu appdynamics-controller
     ...
@@ -274,7 +274,7 @@ Follow these instructions to build the Oracle Linux 7.7 VM images.
     apm[vagrant]$ sudo systemctl status appdynamics-events-service
     ```
     Gracefully shutdown the VM:
-    ```
+    ```bash
     apm[vagrant]$ exit
     $ vagrant halt
     ```
@@ -285,71 +285,71 @@ Follow these instructions to build the Oracle Linux 7.7 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 1.18.40 (command-line interface) [Optional]
--	Ansible 2.9.7
--	Ant 1.10.7
--	Consul 1.7.2
+-	Amazon AWS CLI 2.1.17 (command-line interface) [Optional]
+-	Ansible 2.9.16
+-	Ant 1.10.9
+-	Consul 1.9.1
 -	Cloud-Init 0.7.9 [Optional]
 -	Docker 19.03.1 CE
 	-	Docker Bash Completion
-	-	Docker Compose 1.25.4
+	-	Docker Compose 1.27.4
 	-	Docker Compose Bash Completion
--	Git 2.26.1
+-	Git 2.30.0
 	-	Git Bash Completion
-	-	Git-Flow 1.12.3 (AVH Edition)
+	-	Git-Flow 1.12.4 (AVH Edition)
 	-	Git-Flow Bash Completion
--	Go 1.14.2
--	Gradle 6.3
--	Groovy 3.0.3
--	Java SE JDK 8 Update 252 (Amazon Corretto 8)
--	Java SE JDK 11.0.7 (Amazon Corretto 11)
--	Java SE JDK 14.0.1 (Oracle)
+-	Go 1.15.6
+-	Gradle 6.7.1
+-	Groovy 3.0.7
+-	Java SE JDK 8 Update 275 (Amazon Corretto 8)
+-	Java SE JDK 11.0.9 (Amazon Corretto 11)
+-	Java SE JDK 15.0.1 (Amazon Corretto 15)
 -	JMESPath jp 0.1.3 (command-line JSON processor)
 -	jq 1.6 (command-line JSON processor)
 -	Maven 3.6.3
--	MySQL Community Server 5.7.29
+-	MySQL Community Server 5.7.32
 -	Oracle Compute Cloud Service CLI (opc) 17.2.2 [Optional]
 -	Oracle PaaS Service Manager CLI (psm) 1.1.16 [Optional]
--	Packer 1.5.5
+-	Packer 1.6.5
 -	Python 2.7.5
-	-	Pip 20.0.2
+	-	Pip 20.3.3
 -	Python 3.6.9
-	-	Pip3 20.0.2
--	Scala 2.13.1
-	-	Scala Build Tool (SBT) 1.3.8
--	Terraform 0.12.24
--	Vault 1.4.0
+	-	Pip3 20.3.3
+-	Scala 2.13.4
+	-	Scala Build Tool (SBT) 1.4.6
+-	Terraform 0.14.4
+-	Vault 1.6.1
 -	XMLStarlet 1.6.1 (command-line XML processor)
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 12.9.4
--	Jenkins 2.222.1
+-	GitLab Community Edition 13.7.3
+-	Jenkins 2.263.1 LTS
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
--	AppDynamics Enterprise Console 20.3.5 Build 21927
-	-	AppDynamics Controller 20.3.5 Build 3229
-	-	AppDynamics Event Service 4.5.2.0 Build 20561
--	MySQL Shell 8.0.19
+-	AppDynamics Enterprise Console 20.11.5 Build 23850
+	-	AppDynamics Controller 20.11.5 Build 1987
+	-	AppDynamics Events Service 4.5.2.0 Build 20640
+-	MySQL Shell 8.0.22
 
 The following developer tools are pre-installed in the __Developer VM__ (desktop) only:
 
--	Apache Tomcat 7.0.103
--	Apache Tomcat 8.5.54
--	AppDynamics Java Agent 20.3.0 Build 29587
--	AppDynamics Machine Agent 20.3.1 Build 2476
-	-	AppDynamics AWS EC2 Monitoring Extension 2.1.1 [Optional]
--	Atom Editor 1.45.0
+-	Apache Tomcat 7.0.107
+-	Apache Tomcat 8.5.61
+-	AppDynamics Java Agent 20.11.1 Build 31618
+-	AppDynamics Machine Agent 20.12.0 Build 3016
+	-	AppDynamics AWS EC2 Monitoring Extension 2.1.3 [Optional]
+-	Atom Editor 1.53.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 81.0.4044.113 (64-bit)
--	Firefox 68.6.0esr (64-bit)
+-	Chrome 87.0.4280.141 (64-bit)
+-	Firefox 78.4.0esr (64-bit)
 -	GVim 7.4.160-1
--	JetBrains IntelliJ IDEA 2020.1 (Community Edition)
--	JetBrains IntelliJ IDEA 2020.1 (Ultimate Edition)
--	JetBrains WebStorm 2020.1 (JavaScript IDE)
--	Postman 7.22.1
+-	JetBrains IntelliJ IDEA 2020.3.1 (Community Edition)
+-	JetBrains IntelliJ IDEA 2020.3.1 (Ultimate Edition)
+-	JetBrains WebStorm 2020.3.1 (JavaScript IDE)
+-	Postman 7.36.1
 -	Scala IDE for Eclipse 4.7.0 (Eclipse Oxygen.1 [4.7.1]) [Optional]
--	Spring Tool Suite 4 [4.6.0] IDE (Eclipse 2020-03 [4.15.0])
+-	Spring Tool Suite 4 [4.8.1] IDE (Eclipse 2020-09 [4.17.0])
 -	Sublime Text 3 (3.2.2 Build 3211)
--	Visual Studio Code 1.44.2
+-	Visual Studio Code 1.52.1
