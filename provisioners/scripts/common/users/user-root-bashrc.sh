@@ -1,4 +1,4 @@
-# .bashrc
+# @(#).bashrc       1.0 2020/04/16 SMI
 # bash resource configuration for devops administrators.
 
 # user 'root' specific aliases and functions.
@@ -16,7 +16,19 @@ umask 022
 
 # set java home path.
 JAVA_HOME=/usr/local/java/jdk180
+#JAVA_HOME=/usr/local/java/jdk11
+#JAVA_HOME=/usr/local/java/jdk14
 export JAVA_HOME
+
+# set git home paths.
+GIT_HOME=/usr/local/git/git
+export GIT_HOME
+GIT_FLOW_HOME=/usr/local/git/gitflow
+export GIT_FLOW_HOME
+
+# set devops 2.0 home path.
+devops_home=/opt/devops-2.0
+export devops_home
 
 # define prompt code and colors.
 reset='\[\e]0;\w\a\]'
@@ -38,7 +50,7 @@ PS1="${reset}${cyan}\h${blue}[${red}\u${blue}]${white}# "
 export PS1
 
 # add local applications to main PATH.
-PATH=$JAVA_HOME/bin:$HOME/.local/bin:$PATH
+PATH=$JAVA_HOME/bin:$GIT_HOME/bin:$GIT_FLOW_HOME/bin:$HOME/.local/bin:$PATH
 export PATH
 
 # set corporate proxy.
@@ -53,7 +65,7 @@ set -o ignoreeof
 set -o vi
 
 # set environment variables to configure command history.
-HISTSIZE=8192
+HISTSIZE=16384
 export HISTSIZE
 HISTCONTROL=ignoredups
 export HISTCONTROL
@@ -61,12 +73,12 @@ export HISTCONTROL
 # define system alias commands.
 alias back='cd $OLDPWD; pwd'
 alias c=clear
+alias devopshome='cd $devops_home; pwd'
 #alias gvim='gvim -u $HOME/.vim/vimrc.vim'
 alias here='cd $here; pwd'
 alias more='less'
 alias there='cd $there; pwd'
-alias vi='vim -u $HOME/.vim/vimrc.vim'
-alias vim='vim -u $HOME/.vim/vimrc.vim'
+alias vi='vim'
 
 # fix issue with bash shell tab completion.
 complete -r

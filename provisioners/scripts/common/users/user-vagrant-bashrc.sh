@@ -1,4 +1,4 @@
-# .bashrc
+# @(#).bashrc       1.0 2020/04/16 SMI
 # bash resource configuration for devops users.
 
 # source global definitions.
@@ -14,6 +14,8 @@ umask 022
 
 # set java home path.
 JAVA_HOME=/usr/local/java/jdk180
+#JAVA_HOME=/usr/local/java/jdk11
+#JAVA_HOME=/usr/local/java/jdk14
 export JAVA_HOME
 
 # set ant home path.
@@ -62,6 +64,10 @@ export SBT_HOME
 POSTMAN_HOME=/usr/local/google/Postman
 export POSTMAN_HOME
 
+# set devops 2.0 home path.
+devops_home=/opt/devops-2.0
+export devops_home
+
 # set kubectl config path.
 KUBECONFIG=$KUBECONFIG:$HOME/.kube/config
 export KUBECONFIG
@@ -101,7 +107,7 @@ set -o ignoreeof
 set -o vi
 
 # set environment variables to configure command history.
-HISTSIZE=8192
+HISTSIZE=16384
 export HISTSIZE
 HISTCONTROL=ignoredups
 export HISTCONTROL
@@ -113,8 +119,7 @@ alias c=clear
 alias here='cd $here; pwd'
 alias more='less'
 alias there='cd $there; pwd'
-alias vi='vim -u $HOME/.vim/vimrc.vim'
-alias vim='vim -u $HOME/.vim/vimrc.vim'
+alias vi='vim'
 
 # fix issue with bash shell tab completion.
 complete -r

@@ -4,7 +4,7 @@
 # set default values for input environment variables if not set. -----------------------------------
 user_name="${user_name:-}"
 user_group="${user_group:-}"
-user_home="${user_home:-/home/$user_name}"
+user_home="${user_home:-}"
 user_docker_profile="${user_docker_profile:-false}"
 user_prompt_color="${user_prompt_color:-green}"
 d_completion_release="${d_completion_release:-20.10.2}"
@@ -22,7 +22,7 @@ Usage:
   Example:
     [root]# export user_name="user1"                            # user name.
     [root]# export user_group="group1"                          # user login group.
-    [root]# export user_home="/home/user1"                      # [optional] user home (defaults to '/home/user_name').
+    [root]# export user_home="/home/user1"                      # [optional] user home directory path.
     [root]# export user_docker_profile="true"                   # [optional] user docker profile (defaults to 'false').
     [root]# export user_prompt_color="yellow"                   # [optional] user prompt color (defaults to 'green').
                                                                 #            valid colors:
@@ -66,19 +66,14 @@ if [ "$user_name" == "root" ]; then
   exit 1
 fi
 
+# if not set, retrieve user home directory path.
+if [ -z "$user_home" ]; then
+  user_home=$(eval echo "~${user_name}")
+fi
+
 # create default environment profile for the user. -------------------------------------------------
 user_bashprofile="${devops_home}/provisioners/scripts/common/users/user-vagrant-bash_profile.sh"
 user_bashrc="${devops_home}/provisioners/scripts/common/users/user-vagrant-bashrc.sh"
-
-# uncomment proxy environment variables (if set).
-proxy_set="${http_proxy:-}"
-if [ -n "${proxy_set}" ]; then
-  sed -i 's/^#http_proxy/http_proxy/g;s/^#export http_proxy/export http_proxy/g' ${user_bashrc}
-  sed -i 's/^#https_proxy/https_proxy/g;s/^#export https_proxy/export https_proxy/g' ${user_bashrc}
-fi
-
-# set user prompt color.
-sed -i "s/{green}/{${user_prompt_color}}/g" ${user_bashrc}
 
 # copy environment profiles to user home.
 cd ${user_home}
@@ -88,7 +83,17 @@ cp -p .bashrc .bashrc.orig
 cp -f ${user_bashprofile} .bash_profile
 cp -f ${user_bashrc} .bashrc
 
-# remove existing vim profile if it exists.
+# uncomment proxy environment variables (if set).
+proxy_set="${http_proxy:-}"
+if [ -n "${proxy_set}" ]; then
+  sed -i 's/^#http_proxy/http_proxy/g;s/^#export http_proxy/export http_proxy/g' .bashrc
+  sed -i 's/^#https_proxy/https_proxy/g;s/^#export https_proxy/export https_proxy/g' .bashrc
+fi
+
+# set user prompt color.
+sed -i "s/{green}/{${user_prompt_color}}/g" .bashrc
+
+# remove existing vim profile if it exists. --------------------------------------------------------
 if [ -d ".vim" ]; then
   rm -Rf ./.vim
 fi
@@ -97,6 +102,43 @@ cp -f ${devops_home}/provisioners/scripts/common/tools/vim-files.tar.gz .
 tar -zxvf vim-files.tar.gz --no-same-owner --no-overwrite-dir
 rm -f vim-files.tar.gz
 
+# configure the vim profile. -----------------------------------------------------------------------
+# set current date for temporary filename.
+curdate=$(date +"%Y-%m-%d.%H-%M-%S")
+
+# rename the vimrc folder if it exists.
+vimrc_home="${user_home}/.vim"
+if [ -d "$vimrc_home" ]; then
+  # rename the folder using the current date.
+  mv ${vimrc_home} ${user_home}/vim.${curdate}.orig
+fi
+
+# download useful vim configuration based on developer pair stations at pivotal labs.
+runuser -c "git clone https://github.com/pivotal/vim-config.git ~/.vim" - ${user_name}
+runuser -c "TERM=xterm-256color ~/.vim/bin/install" - ${user_name}
+
+# create vimrc local to override default vim configuration.
+vimrc_local="${user_home}/.vimrc.local"
+if [ -f "$vimrc_local" ]; then
+  # rename the folder using the current date.
+  mv ${vimrc_local} ${user_home}/vimrc_local.${curdate}.orig
+fi
+
+cat <<EOF > ${vimrc_local}
+" Override default Vim resource configuration.
+colorscheme triplejelly                 " Set colorscheme to 'triplejelly'. Default is 'Tomorrow-Night'.
+set nofoldenable                        " Turn-off folding of code files. To toggle on/off: use 'zi'.
+let g:vim_json_syntax_conceal = 0       " Turn-off concealing of double quotes in 'vim-json' plugin.
+
+" Autoclose 'NERDTree' plugin if it's the only open window left.
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+EOF
+chown ${user_name}:${user_group} ${vimrc_local}
+
+# initialize the vim plugin manager by opening vim to display the color scheme.
+runuser -c "TERM=xterm-256color vim -c colorscheme -c quitall" - ${user_name}
+
+# set directory ownership and file permissions. ----------------------------------------------------
 chown -R ${user_name}:${user_group} .
 chmod 644 .bash_profile .bashrc
 
