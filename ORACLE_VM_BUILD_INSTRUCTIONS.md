@@ -299,7 +299,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
 	-	Git-Flow 1.12.4 (AVH Edition)
 	-	Git-Flow Bash Completion
 -	Go 1.15.6
--	Gradle 6.7.1
+-	Gradle 6.8
 -	Groovy 3.0.7
 -	Java SE JDK 8 Update 275 (Amazon Corretto 8)
 -	Java SE JDK 11.0.9 (Amazon Corretto 11)
