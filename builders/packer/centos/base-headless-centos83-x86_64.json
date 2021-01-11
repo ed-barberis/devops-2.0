@@ -2,19 +2,20 @@
   "builders": [
     {
       "boot_command": [
-        "<up><wait><tab> text ks=http://{{.HTTPIP}}:{{.HTTPPort}}/{{user `ks_path`}}<enter><wait>"
+        "<up><wait><tab> inst.text inst.ks=http://{{.HTTPIP}}:{{.HTTPPort}}/{{user `ks_path`}}<enter><wait>"
       ],
       "boot_wait": "10s",
+      "cpus": "{{user `cpus`}}",
       "disk_size": "{{user `disk_size`}}",
-      "guest_additions_url": "{{user `guest_additions_url`}}",
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
+      "guest_additions_url": "{{user `guest_additions_url`}}",
       "guest_os_type": "RedHat_64",
       "hard_drive_interface": "sata",
       "headless": "{{user `headless`}}",
       "http_directory": "{{user `http_directory`}}",
       "iso_checksum": "{{user `iso_checksum`}}",
-      "iso_checksum_type": "{{user `iso_checksum_type`}}",
       "iso_url": "{{user `mirror`}}/{{user `mirror_directory`}}/{{user `iso_name`}}",
+      "memory": "{{user `memory`}}",
       "output_directory": "{{user `build_directory`}}/{{user `box_basename`}}",
       "shutdown_command": "echo 'vagrant' | sudo -S /sbin/halt -h -p",
       "ssh_password": "vagrant",
@@ -22,8 +23,6 @@
       "ssh_timeout": "10000s",
       "ssh_username": "vagrant",
       "type": "virtualbox-iso",
-      "memory": "{{user `memory`}}",
-      "cpus": "{{user `cpus`}}",
       "vboxmanage": [
         ["modifyvm", "{{.Name}}", "--vram", "{{user `vram`}}"],
         ["modifyvm", "{{.Name}}", "--clipboard-mode", "bidirectional"],
@@ -98,7 +97,7 @@
       "expect_disconnect": true,
       "pause_before": "10s",
       "scripts": [
-        "{{template_dir}}/../../../submodules/chef/bento/packer_templates/_common/virtualbox.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/virtualbox.sh",
         "{{template_dir}}/../../../provisioners/scripts/centos/install_centos8_headless_devops_tools.sh",
         "{{template_dir}}/../../../provisioners/scripts/common/install_aws_corretto_java_jdk_8.sh",
         "{{template_dir}}/../../../provisioners/scripts/centos/install_centos8_python3.sh",
@@ -119,31 +118,30 @@
     }
   ],
   "variables": {
-    "box_basename": "base-headless-centos81",
+    "box_basename": "base-headless-centos83",
     "build_directory": "../../../artifacts/centos",
     "build_timestamp": "{{isotime \"2019102650405\"}}",
     "cpus": "1",
     "devops_home": "/opt/devops-2.0",
     "disk_size": "131072",
-    "docker_completion_release": "19.03.8",
+    "docker_completion_release": "20.10.2",
     "git_revision": "__unknown_git_revision__",
     "guest_additions_url": "",
     "headless": "false",
     "http_directory": "{{template_dir}}/http",
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
-    "iso_checksum": "3ee3f4ea1538e026fff763e2b284a6f20b259d91d1ad5688f5783a67d279423b",
-    "iso_checksum_type": "sha256",
-    "iso_name": "CentOS-8.1.1911-x86_64-dvd1.iso",
-    "ks_path": "8/centos81-headless-ks.cfg",
+    "iso_checksum": "aaf9d4b3071c16dbbda01dfe06085e5d0fdac76df323e3bbe87cce4318052247",
+    "iso_name": "CentOS-8.3.2011-x86_64-dvd1.iso",
+    "ks_path": "8/centos83-headless-ks.cfg",
     "memory": "4096",
     "mirror": "http://mirrors.kernel.org/centos",
-    "mirror_directory": "8.1.1911/isos/x86_64",
-    "name": "base-headless-centos81",
+    "mirror_directory": "8.3.2011/isos/x86_64",
+    "name": "base-headless-centos83",
     "no_proxy": "{{env `no_proxy`}}",
     "user_docker_profile": "true",
     "version": "TIMESTAMP",
-    "vm_description": "Centos Linux 8.1 VM image for DevOps 2.0 '{{user `box_basename`}}' headless box.",
+    "vm_description": "Centos Linux 8.3 VM image for DevOps 2.0 '{{user `box_basename`}}' headless box.",
     "vram": "10"
   }
 }
