@@ -106,6 +106,7 @@
         "{{template_dir}}/../../../provisioners/scripts/common/install_docker_compose.sh",
         "{{template_dir}}/../../../provisioners/scripts/centos/install_centos7_python3.sh",
         "{{template_dir}}/../../../provisioners/scripts/centos/install_centos7_python3_scl.sh",
+        "{{template_dir}}/../../../provisioners/scripts/centos/install_centos7_vim_8.sh",
         "{{template_dir}}/../../../provisioners/scripts/common/install_headless_root_user_env.sh",
         "{{template_dir}}/../../../provisioners/scripts/common/install_headless_user_env.sh",
         "{{template_dir}}/../../../provisioners/scripts/centos/install_centos7_desktop_root_user_env.sh",
