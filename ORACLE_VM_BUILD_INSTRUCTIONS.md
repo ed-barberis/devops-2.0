@@ -285,7 +285,7 @@ Follow these instructions to build the Oracle Linux 7.9 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 2.1.17 (command-line interface) [Optional]
+-	Amazon AWS CLI 2.1.18 (command-line interface) [Optional]
 -	Ansible 2.9.16
 -	Ant 1.10.9
 -	Consul 1.9.1
@@ -324,7 +324,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
 -	GitLab Community Edition 13.7.3
--	Jenkins 2.263.1 LTS
+-	Jenkins 2.263.2 LTS
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
