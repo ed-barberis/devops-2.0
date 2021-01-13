@@ -1,0 +1,74 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+N = 2
+
+Vagrant.configure(2) do |config|
+  if (/cygwin|mswin|mingw|bccwin|wince|emx/ =~ RUBY_PLATFORM) != nil
+    config.vm.synced_folder ".", "/vagrant", type: "virtualbox"
+  else
+    config.vm.synced_folder ".", "/vagrant"
+  end
+
+  config.vm.define "k8s-master" do |master|
+    master.vm.box = "k8s-centos79"
+    master.vm.hostname = "k8s-master"
+    master.vm.network "public_network", bridge: "en0: Wi-Fi (AirPort)", ip: "192.168.1.200"
+    #master.vm.network "public_network"
+    #master.vm.network "private_network", ip: "10.100.198.238"
+    #master.vm.provision :shell, path: "../../../../../provisioners/scripts/centos/install_centos7_cloud_init.sh", env: {"http_proxy" => "#{ENV['http_proxy']}", "https_proxy" => "#{ENV['https_proxy']}"}
+
+    master.vm.provider "virtualbox" do |v|
+      v.name = "k8s-master"
+      v.gui = false
+      v.memory = 2048
+      v.cpus = 2
+      v.customize ["modifyvm", :id, "--vram", "10"]
+      v.customize ["modifyvm", :id, "--clipboard-mode", "bidirectional"]
+      v.customize ["modifyvm", :id, "--draganddrop", "bidirectional"]
+      v.customize ["modifyvm", :id, "--description", "Centos Linux 7.9 VM image for DevOps 2.0 'k8s-centos79' headless box."]
+      v.customize ["storageattach", :id, "--storagectl", "IDE Controller", "--port", "1", "--device", "0", "--type", "dvddrive", "--medium", "emptydrive"]
+      # mount windows shared folder.
+      #v.customize ["sharedfolder", "add", :id, "--name", "shared", "--hostpath", "I:/shared", "--automount"]
+      # mount macosx shared folder.
+      #v.customize ["sharedfolder", "add", :id, "--name", "shared", "--hostpath", "/Volumes/g-drive/shared", "--automount"]
+    end
+  end
+
+  (1..N).each do |i|
+    config.vm.define "k8s-node-#{i}" do |node|
+      node.vm.box = "k8s-centos79"
+      node.vm.network "public_network", bridge: "en0: Wi-Fi (AirPort)", ip: "192.168.1.#{i + 200}"
+      #node.vm.network "public_network"
+      #node.vm.network "private_network", ip: "192.168.50.#{i + 10}"
+      node.vm.hostname = "k8s-node-#{i}"
+      node.vm.provider "virtualbox" do |v|
+        v.name = "k8s-node-#{i}"
+        v.gui = false
+        v.memory = 2048
+        v.cpus = 2
+        v.customize ["modifyvm", :id, "--vram", "256"]
+        v.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
+        v.customize ["modifyvm", :id, "--draganddrop", "bidirectional"]
+        v.customize ["modifyvm", :id, "--description", "Centos Linux 7.9 VM image for DevOps 2.0 'k8s-centos79' headless box."]
+        v.customize ["storageattach", :id, "--storagectl", "IDE Controller", "--port", "1", "--device", "0", "--type", "dvddrive", "--medium", "emptydrive"]
+        # mount windows shared folder.
+        #v.customize ["sharedfolder", "add", :id, "--name", "shared", "--hostpath", "I:/shared", "--automount"]
+        # mount macosx shared folder.
+        #v.customize ["sharedfolder", "add", :id, "--name", "shared", "--hostpath", "/Volumes/g-drive/shared", "--automount"]
+      end
+    end
+  end
+
+  if Vagrant.has_plugin?("vagrant-cachier")
+    config.cache.scope = :box
+  end
+
+  if Vagrant.has_plugin?("vagrant-vbguest")
+    config.vbguest.iso_path = "http://download.virtualbox.org/virtualbox/$VBOX_VERSION/VBoxGuestAdditions_$VBOX_VERSION.iso"
+    config.vbguest.auto_update = true
+    config.vbguest.no_install = false
+    config.vbguest.no_remote = false
+    config.vbguest.auto_reboot = true
+  end
+end
