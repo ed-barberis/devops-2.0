@@ -3,7 +3,7 @@
 
 # set default values for input environment variables if not set. -----------------------------------
 user_name="${user_name:-}"
-user_home="${user_home:-/home/$user_name}"
+user_home="${user_home:-}"
 
 # set default value for devops home environment variable if not set. -------------------------------
 devops_home="${devops_home:-/opt/devops}"
@@ -16,7 +16,7 @@ Usage:
   Script should be run with 'root' privilege.
   Example:
     [root]# export user_name="user1"                        # user name.
-    [root]# export user_home="/home/user1"                  # [optional] user home (defaults to '/home/user_name').
+    [root]# export user_home="/home/user1"                  # [optional] user home directory path.
                                                             #
     [root]# export devops_home="/opt/devops"                # [optional] devops home (defaults to '/opt/devops').
     [root]# $0
@@ -36,27 +36,23 @@ if [ "$user_name" == "root" ]; then
   exit 1
 fi
 
-# create default environment profile for the user. -------------------------------------------------
-user_bashprofile="${devops_home}/provisioners/scripts/common/users/user-vagrant-bash_profile.sh"
-user_bashrc="${devops_home}/provisioners/scripts/common/users/user-vagrant-bashrc.sh"
+# if not set, retrieve user home directory path.
+if [ -z "$user_home" ]; then
+  user_home=$(eval echo "~${user_name}")
+fi
+
+# modify default environment profile for the user. -------------------------------------------------
+cd ${user_home}
 
 # uncomment proxy environment variables (if set).
 proxy_set="${http_proxy:-}"
 if [ -n "${proxy_set}" ]; then
-  sed -i 's/^#http_proxy/http_proxy/g;s/^#export http_proxy/export http_proxy/g' ${user_bashrc}
-  sed -i 's/^#https_proxy/https_proxy/g;s/^#export https_proxy/export https_proxy/g' ${user_bashrc}
+  sed -i 's/^#http_proxy/http_proxy/g;s/^#export http_proxy/export http_proxy/g' .bashrc
+  sed -i 's/^#https_proxy/https_proxy/g;s/^#export https_proxy/export https_proxy/g' .bashrc
 fi
 
 # uncomment gvim alias for desktop users.
-sed -i 's/^#alias gvim/alias gvim/g' ${user_bashrc}
-
-# create default environment profile for the user. -------------------------------------------------
-cd ${user_home}
-cp -p .bash_profile .bash_profile.orig
-cp -p .bashrc .bashrc.orig
-
-cp -f ${user_bashprofile} .bash_profile
-cp -f ${user_bashrc} .bashrc
+sed -i 's/^#alias gvim/alias gvim/g' .bashrc
 
 # configure gnome-3 desktop properties for devops users. -------------------------------------------
 #cd ${devops_home}/provisioners/scripts/centos
