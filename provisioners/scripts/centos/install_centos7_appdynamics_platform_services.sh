@@ -23,8 +23,8 @@
 # set default values for input environment variables if not set. -----------------------------------
 # [OPTIONAL] appdynamics platform install parameters [w/ defaults].
 appd_home="${appd_home:-/opt/appdynamics}"
-appd_platform_user_name="${appd_platform_user_name:-centos}"
-appd_platform_user_group="${appd_platform_user_group:-centos}"
+appd_platform_user_name="${appd_platform_user_name:-vagrant}"
+appd_platform_user_group="${appd_platform_user_group:-vagrant}"
 set +x  # temporarily turn command display OFF.
 appd_platform_admin_username="${appd_platform_admin_username:-admin}"
 appd_platform_admin_password="${appd_platform_admin_password:-welcome1}"
@@ -66,8 +66,8 @@ Usage:
   -------------------------------------
   [OPTIONAL] appdynamics platform install parameters [w/ defaults].
     [root]# export appd_home="/opt/appdynamics"                         # [optional] appd home (defaults to '/opt/appdynamics').
-    [root]# export appd_platform_user_name="centos"                     # [optional] platform user name (defaults to 'centos').
-    [root]# export appd_platform_user_group="centos"                    # [optional] platform group (defaults to 'centos').
+    [root]# export appd_platform_user_name="vagrant"                    # [optional] platform user name (defaults to 'vagrant').
+    [root]# export appd_platform_user_group="vagrant"                   # [optional] platform group (defaults to 'vagrant').
     [root]# export appd_platform_admin_username="admin"                 # [optional] platform admin user name (defaults to user 'admin').
     [root]# export appd_platform_admin_password="welcome1"              # [optional] platform admin password (defaults to 'welcome1').
     [root]# export appd_platform_home="platform"                        # [optional] platform home folder (defaults to 'machine-agent').
