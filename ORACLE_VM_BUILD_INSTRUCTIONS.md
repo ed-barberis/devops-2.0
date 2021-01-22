@@ -155,7 +155,7 @@ Follow these instructions to build the Oracle Linux 7.9 VM images.
     Docker version 19.03.11-ol, build 748876d
 
     dev[vagrant]$ ansible --version
-    ansible 2.9.16
+    ansible 2.9.17
       config file = /etc/ansible/ansible.cfg
       configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
       ansible python module location = /usr/lib/python2.7/site-packages/ansible
@@ -186,7 +186,7 @@ Follow these instructions to build the Oracle Linux 7.9 VM images.
     Docker version 19.03.11-ol, build 748876d
 
     ops[vagrant]$ ansible --version
-    ansible 2.9.16
+    ansible 2.9.17
       config file = /etc/ansible/ansible.cfg
       configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
       ansible python module location = /usr/lib/python2.7/site-packages/ansible
@@ -285,29 +285,29 @@ Follow these instructions to build the Oracle Linux 7.9 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 2.1.19 (command-line interface) [Optional]
--	Ansible 2.9.16
+-	Amazon AWS CLI 2.1.21 (command-line interface) [Optional]
+-	Ansible 2.9.17
 -	Ant 1.10.9
--	Consul 1.9.1
+-	Consul 1.9.2
 -	Cloud-Init 0.7.9 [Optional]
 -	Docker 19.03.1 CE
 	-	Docker Bash Completion
-	-	Docker Compose 1.27.4
+	-	Docker Compose 1.28.0
 	-	Docker Compose Bash Completion
 -	Git 2.30.0
 	-	Git Bash Completion
 	-	Git-Flow 1.12.4 (AVH Edition)
 	-	Git-Flow Bash Completion
--	Go 1.15.6
+-	Go 1.15.7
 -	Gradle 6.8
 -	Groovy 3.0.7
--	Java SE JDK 8 Update 275 (Amazon Corretto 8)
--	Java SE JDK 11.0.9 (Amazon Corretto 11)
--	Java SE JDK 15.0.1 (Amazon Corretto 15)
+-	Java SE JDK 8 Update 282 (Amazon Corretto 8)
+-	Java SE JDK 11.0.10 (Amazon Corretto 11)
+-	Java SE JDK 15.0.2 (Amazon Corretto 15)
 -	JMESPath jp 0.1.3 (command-line JSON processor)
 -	jq 1.6 (command-line JSON processor)
 -	Maven 3.6.3
--	MySQL Community Server 5.7.32
+-	MySQL Community Server 5.7.33
 -	Oracle Compute Cloud Service CLI (opc) 17.2.2 [Optional]
 -	Oracle PaaS Service Manager CLI (psm) 1.1.16 [Optional]
 -	Packer 1.6.5
@@ -317,13 +317,13 @@ The following command-line tools and utilities are pre-installed in the __Develo
 	-	Pip3 20.3.3
 -	Scala 2.13.4
 	-	Scala Build Tool (SBT) 1.4.6
--	Terraform 0.14.4
+-	Terraform 0.14.5
 -	Vault 1.6.1
 -	XMLStarlet 1.6.1 (command-line XML processor)
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 13.7.4
+-	GitLab Community Edition 13.8.0
 -	Jenkins 2.263.2 LTS
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
@@ -331,18 +331,18 @@ In addition, the following application performance management applications are p
 -	AppDynamics Enterprise Console 20.11.5 Build 23850
 	-	AppDynamics Controller 20.11.5 Build 1987
 	-	AppDynamics Events Service 4.5.2.0 Build 20640
--	MySQL Shell 8.0.22
+-	MySQL Shell 8.0.23
 
 The following developer tools are pre-installed in the __Developer VM__ (desktop) only:
 
 -	Apache Tomcat 7.0.107
 -	Apache Tomcat 8.5.61
--	AppDynamics Java Agent 20.11.1 Build 31618
+-	AppDynamics Java Agent 21.1.0 Build 31582
 -	AppDynamics Machine Agent 20.12.0 Build 3016
-	-	AppDynamics AWS EC2 Monitoring Extension 2.1.3 [Optional]
+	-	AppDynamics AWS EC2 Monitoring Extension 2.1.4 [Optional]
 -	Atom Editor 1.54.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 87.0.4280.141 (64-bit)
+-	Chrome 88.0.4324.96 (64-bit)
 -	Firefox 78.4.0esr (64-bit)
 -	GVim 7.4.160-1
 -	JetBrains IntelliJ IDEA 2020.3.1 (Community Edition)

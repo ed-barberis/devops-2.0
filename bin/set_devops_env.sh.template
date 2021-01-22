@@ -95,6 +95,26 @@ export appd_platform_description
 #appd_platform_hosts="platformadmin"
 #export appd_platform_hosts
 
+# [optional] platform credential name (defaults to 'AppD-Cloud-Kickstart-AWS').
+#appd_platform_credential_name="AppD-Cloud-Kickstart-AWS"
+#export appd_platform_credential_name
+
+# [optional] platform credential type (defaults to 'ssh').
+#appd_platform_credential_type="ssh"
+#export appd_platform_credential_type
+
+# [optional] platform domain (defaults to 'localdomain').
+#appd_platform_domain="localdomain"
+#export appd_platform_domain
+
+# [optional] platform number of file descriptors (defaults to '65535').
+#appd_platform_num_file_descriptors="65535"
+#export appd_platform_num_file_descriptors
+
+# [optional] platform number of processes (defaults to '8192').
+#appd_platform_num_processes="8192"
+#export appd_platform_num_processes
+
 # --------------------------------------------------------------------------------------------------
 # [OPTIONAL] appdynamics events service install parameters [w/ defaults].
 # --------------------------------------------------------------------------------------------------
@@ -121,7 +141,13 @@ export appd_controller_host
 
 # [optional] controller primary host (defaults to 'platformadmin' which is the localhost).
 #appd_controller_primary_host="platformadmin"
+#appd_controller_primary_host="controller-node-01"
 #export appd_controller_primary_host
+
+# [optional] controller secondary host (defaults to '', which is primary host only).
+#appd_controller_secondary_host=""
+#appd_controller_secondary_host="controller-node-02"
+#export appd_controller_secondary_host
 
 # [optional] controller admin user name (defaults to 'admin').
 #appd_controller_admin_username="admin"
@@ -139,6 +165,20 @@ export appd_controller_host
 #appd_controller_mysql_password="welcome1"
 #export appd_controller_mysql_password
 
+# [optional] appd controller profile (defaults to 'DEMO').
+#            valid profiles are:
+#              'INTERNAL', 'internal', 'DEMO', 'demo', 'SMALL', 'small',
+#              'MEDIUM', 'medium', 'LARGE', 'large', 'EXTRA-LARGE', 'extra-large'
+#appd_controller_profile="DEMO"
+appd_controller_profile="MEDIUM"
+export appd_controller_profile
+
+# [optional] appd controller tenancy mode (defaults to 'SINGLE').
+#            valid tenancy modes are:
+#              'SINGLE', 'single', 'MULTI', 'multi'
+appd_controller_tenancy_mode="SINGLE"
+export appd_controller_tenancy_mode
+
 # --------------------------------------------------------------------------------------------------
 # [OPTIONAL] appdynamics java agent install parameters [w/ defaults].
 # --------------------------------------------------------------------------------------------------
@@ -150,12 +190,12 @@ export appd_controller_host
 #appd_java_agent_user="vagrant"
 #export appd_java_agent_user
 
-# [optional] java agent release (defaults to '20.11.1.31618').
-#appd_java_agent_release="20.11.1.31618"
+# [optional] java agent release (defaults to '21.1.0.31582').
+#appd_java_agent_release="21.1.0.31582"
 #export appd_java_agent_release
 
 # [optional] java agent sha-256 checksum (defaults to published value).
-#appd_java_agent_sha256="166ef703f60e6f0f5d8537bead98df0c6667ac51367ab8e9ea2e5242d1844d8d"
+#appd_java_agent_sha256="e9c381916aee849ec1542837acd375bd4ef9aad02e0257709ae51b6294725239"
 #export appd_java_agent_sha256
 
 # --------------------------------------------------------------------------------------------------
@@ -172,7 +212,7 @@ export appd_controller_host
 #       using valid entries for your environment.
 #
 #       In either case, you will need to validate the configuration before starting the Java Agent. The
-#       configuration file can be found here: '<java_agent_home>/appagent/ver20.11.1.31618/conf/controller-info.xml'
+#       configuration file can be found here: '<java_agent_home>/appagent/ver21.1.0.31582/conf/controller-info.xml'
 
 # [optional] associate java agent with application (defaults to ''My App).
 #appd_java_agent_application_name="My App"
@@ -280,12 +320,12 @@ export appd_controller_host
 # --------------------------------------------------------------------------------------------------
 # [OPTIONAL] appdynamics aws ec2 monitoring extension install parameters [w/ defaults].
 # --------------------------------------------------------------------------------------------------
-# [optional] aws ec2 extension release (defaults to user '2.1.3').
-#appd_aws_ec2_extension_release="2.1.3"
+# [optional] aws ec2 extension release (defaults to user '2.1.4').
+#appd_aws_ec2_extension_release="2.1.4"
 #export appd_aws_ec2_extension_release
 
-# [optional] aws ec2 extension build (defaults to build '1588861412').
-#appd_aws_ec2_extension_build="1588861412"
+# [optional] aws ec2 extension build (defaults to build '1611125254').
+#appd_aws_ec2_extension_build="1611125254"
 #export appd_aws_ec2_extension_build
 
 # --------------------------------------------------------------------------------------------------
@@ -305,7 +345,7 @@ export appd_controller_host
 #export appd_aws_ec2_extension_display_account_name
 
 # [optional] whitespace separated list of aws regions to monitor (defaults to 'us-east-1' [N. Virginia]).
-#appd_aws_ec2_extension_aws_regions="ap-southeast-2 eu-central-1 eu-west-2 eu-west-3 sa-east-1 us-east-1 us-east-2 us-west-1 us-west-2"
+#appd_aws_ec2_extension_aws_regions="ap-south-1 ap-southeast-2 eu-central-1 eu-west-2 eu-west-3 sa-east-1 us-east-1 us-east-2 us-west-1 us-west-2"
 #export appd_aws_ec2_extension_aws_regions
 
 # [optional] aws cloudwatch monitoring type (defaults to 'Basic').
@@ -363,9 +403,19 @@ export aws_ami_owner
 
 # aws region to create packer build ami's.
 # current valid regions are:
-#   'ap-southeast-2', 'eu-central-1', 'eu-west-2', 'eu-west-3', 'sa-east-1', 'us-east-1', 'us-east-2', 'us-west-1', 'us-west-2'
+#   'ap-south-1', 'ap-southeast-2', 'eu-central-1', 'eu-west-2', 'eu-west-3', 'sa-east-1', 'us-east-1', 'us-east-2', 'us-west-1', 'us-west-2'
 aws_ami_region="us-east-1"
 export aws_ami_region
+
+# source cidrs used by packer when creating a temporary security group for image builds (defaults to '0.0.0.0/0').
+aws_ec2_temporary_source_cidrs="0.0.0.0/0"
+export aws_ec2_temporary_source_cidrs
+
+# --------------------------------------------------------------------------------------------------
+# microsoft azure environment parameters.
+# --------------------------------------------------------------------------------------------------
+azure_temporary_source_cidrs="0.0.0.0/0"
+export azure_temporary_source_cidrs
 
 # --------------------------------------------------------------------------------------------------
 # google cloud platform environment parameters.
