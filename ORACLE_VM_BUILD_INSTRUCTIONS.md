@@ -285,21 +285,21 @@ Follow these instructions to build the Oracle Linux 7.9 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 2.1.21 (command-line interface) [Optional]
+-	Amazon AWS CLI 2.1.22 (command-line interface) [Optional]
 -	Ansible 2.9.17
 -	Ant 1.10.9
--	Consul 1.9.2
+-	Consul 1.9.3
 -	Cloud-Init 0.7.9 [Optional]
 -	Docker 19.03.1 CE
 	-	Docker Bash Completion
-	-	Docker Compose 1.28.0
+	-	Docker Compose 1.28.2
 	-	Docker Compose Bash Completion
 -	Git 2.30.0
 	-	Git Bash Completion
 	-	Git-Flow 1.12.4 (AVH Edition)
 	-	Git-Flow Bash Completion
 -	Go 1.15.7
--	Gradle 6.8
+-	Gradle 6.8.1
 -	Groovy 3.0.7
 -	Java SE JDK 8 Update 282 (Amazon Corretto 8)
 -	Java SE JDK 11.0.10 (Amazon Corretto 11)
@@ -312,24 +312,24 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Oracle PaaS Service Manager CLI (psm) 1.1.16 [Optional]
 -	Packer 1.6.5
 -	Python 2.7.5
-	-	Pip 20.3.3
+	-	Pip 21.0.1
 -	Python 3.6.9
-	-	Pip3 20.3.3
+	-	Pip3 21.0.1
 -	Scala 2.13.4
-	-	Scala Build Tool (SBT) 1.4.6
+	-	Scala Build Tool (SBT) 1.4.7
 -	Terraform 0.14.5
--	Vault 1.6.1
+-	Vault 1.6.2
 -	XMLStarlet 1.6.1 (command-line XML processor)
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 13.8.0
--	Jenkins 2.263.2 LTS
+-	GitLab Community Edition 13.8.1
+-	Jenkins 2.263.3 LTS
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
--	AppDynamics Enterprise Console 20.11.5 Build 23850
-	-	AppDynamics Controller 20.11.5 Build 1987
+-	AppDynamics Enterprise Console 20.11.7 Build 23894
+	-	AppDynamics Controller 20.11.7 Build 2000
 	-	AppDynamics Events Service 4.5.2.0 Build 20640
 -	MySQL Shell 8.0.23
 
@@ -337,18 +337,18 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 
 -	Apache Tomcat 7.0.107
 -	Apache Tomcat 8.5.61
--	AppDynamics Java Agent 21.1.0 Build 31582
--	AppDynamics Machine Agent 20.12.0 Build 3016
+-	AppDynamics Java Agent 21.1.1 Build 31776
+-	AppDynamics Machine Agent 21.1.0 Build 3041
 	-	AppDynamics AWS EC2 Monitoring Extension 2.1.4 [Optional]
 -	Atom Editor 1.54.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
 -	Chrome 88.0.4324.96 (64-bit)
--	Firefox 78.4.0esr (64-bit)
+-	Firefox 78.7.0esr (64-bit)
 -	GVim 7.4.160-1
 -	JetBrains IntelliJ IDEA 2020.3.1 (Community Edition)
 -	JetBrains IntelliJ IDEA 2020.3.1 (Ultimate Edition)
 -	JetBrains WebStorm 2020.3.1 (JavaScript IDE)
--	Postman 7.36.1
+-	Postman 8.0.3
 -	Scala IDE for Eclipse 4.7.0 (Eclipse Oxygen.1 [4.7.1]) [Optional]
 -	Spring Tool Suite 4 [4.8.1] IDE (Eclipse 2020-09 [4.17.0])
 -	Sublime Text 3 (3.2.2 Build 3211)
