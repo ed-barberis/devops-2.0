@@ -21,7 +21,7 @@ Vagrant.configure(2) do |config|
       v.customize ["modifyvm", :id, "--vram", "256"]
       v.customize ["modifyvm", :id, "--clipboard-mode", "bidirectional"]
       v.customize ["modifyvm", :id, "--draganddrop", "bidirectional"]
-      v.customize ["modifyvm", :id, "--description", "Centos Linux 8.3 VM image for DevOps 2.0 'base-dev-centos80' desktop box."]
+      v.customize ["modifyvm", :id, "--description", "Centos Linux 8.3 VM image for DevOps 2.0 'base-dev-centos83' desktop box."]
       v.customize ["modifyvm", :id, "--graphicscontroller", "vmsvga"]
       v.customize ["setextradata", :id, "GUI/ScaleFactor", "1.75"]
       v.customize ["storageattach", :id, "--storagectl", "IDE Controller", "--port", "1", "--device", "0", "--type", "dvddrive", "--medium", "emptydrive"]
