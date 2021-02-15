@@ -1,0 +1,182 @@
+{
+  "builders": [
+    {
+      "boot_command": [
+        "<up><wait><tab> text ks=http://{{.HTTPIP}}:{{.HTTPPort}}/{{user `ks_path`}}<enter><wait>"
+      ],
+      "boot_wait": "10s",
+      "cpus": "{{user `cpus`}}",
+      "disk_size": "{{user `disk_size`}}",
+      "format": "ova",
+      "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
+      "guest_additions_url": "{{user `guest_additions_url`}}",
+      "guest_os_type": "RedHat_64",
+      "hard_drive_interface": "sata",
+      "headless": "{{user `headless`}}",
+      "http_directory": "{{user `http_directory`}}",
+      "iso_checksum": "{{user `iso_checksum`}}",
+      "iso_url": "{{user `mirror`}}/{{user `mirror_directory`}}/{{user `iso_name`}}",
+      "memory": "{{user `memory`}}",
+      "output_directory": "{{user `build_directory`}}/{{user `box_basename`}}",
+      "shutdown_command": "echo '{{user `vm_user_password`}}' | sudo -S /sbin/halt -h -p",
+      "ssh_password": "{{user `vm_user_password`}}",
+      "ssh_port": 22,
+      "ssh_timeout": "10000s",
+      "ssh_username": "{{user `vm_user_name`}}",
+      "type": "virtualbox-iso",
+      "vboxmanage": [
+        ["modifyvm", "{{.Name}}", "--vram", "{{user `vram`}}"],
+        ["modifyvm", "{{.Name}}", "--clipboard-mode", "bidirectional"],
+        ["modifyvm", "{{.Name}}", "--draganddrop", "bidirectional"],
+        ["modifyvm", "{{.Name}}", "--description", "{{user `vm_description`}}"],
+        ["setextradata", "{{.Name}}", "GUI/ScaleFactor", "1.75"]
+      ],
+      "virtualbox_version_file": ".vbox_version",
+      "vm_name": "{{user `box_basename`}}"
+    }
+  ],
+  "post-processors": [
+    {
+      "output": "{{user `build_directory`}}/{{user `box_basename`}}/{{user `box_basename`}}.{{.Provider}}.box",
+      "type": "vagrant"
+    },
+    {
+      "output": "{{user `build_directory`}}/manifest.json",
+      "type": "manifest"
+    }
+  ],
+  "provisioners": [
+    {
+      "inline": [
+        "sudo mkdir -p {{user `devops_home`}}/provisioners/scripts",
+        "sudo chown -R {{user `vm_user_name`}}:{{user `vm_user_group`}} {{user `devops_home`}}"
+      ],
+      "type": "shell"
+    },
+    {
+      "destination": "{{user `devops_home`}}/provisioners/scripts",
+      "source": "{{template_dir}}/../../../provisioners/scripts/",
+      "type": "file"
+    },
+    {
+      "inline": ["sudo chown -R root:root {{user `devops_home`}}"],
+      "type": "shell"
+    },
+    {
+      "environment_vars": [
+        "devops_home={{user `devops_home`}}",
+        "HOME_DIR=/home/{{user `vm_user_name`}}",
+        "http_proxy={{user `http_proxy`}}",
+        "https_proxy={{user `https_proxy`}}",
+        "no_proxy={{user `no_proxy`}}"
+      ],
+      "execute_command": "echo '{{user `vm_user_password`}}' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
+      "expect_disconnect": true,
+      "scripts": [
+        "{{template_dir}}/../../../submodules/chef/bento/packer_templates/centos/scripts/update.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/motd.sh",
+        "{{template_dir}}/../../../submodules/chef/bento/packer_templates/_common/sshd.sh",
+        "{{template_dir}}/../../../submodules/chef/bento/packer_templates/centos/scripts/networking.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/vagrant.sh",
+        "{{template_dir}}/../../../provisioners/scripts/centos/install_centos7_repositories.sh"
+      ],
+      "type": "shell"
+    },
+    {
+      "environment_vars": [
+        "user_name={{user `vm_user_name`}}",
+        "user_group={{user `vm_user_group`}}",
+        "user_docker_profile={{user `user_docker_profile`}}",
+        "tomcat_username={{user `vm_user_name`}}",
+        "tomcat_group={{user `vm_user_group`}}",
+        "tomcat_home={{user `tomcat_home`}}",
+        "tomcat_catalina_opts={{user `tomcat_catalina_opts`}}",
+        "d_completion_release={{user `docker_completion_release`}}",
+        "devops_home={{user `devops_home`}}",
+        "HOME_DIR=/home/{{user `vm_user_name`}}",
+        "http_proxy={{user `http_proxy`}}",
+        "https_proxy={{user `https_proxy`}}",
+        "no_proxy={{user `no_proxy`}}"
+      ],
+      "execute_command": "echo '{{user `vm_user_password`}}' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
+      "expect_disconnect": true,
+      "pause_before": "10s",
+      "scripts": [
+        "{{template_dir}}/../../../provisioners/scripts/common/virtualbox.sh",
+        "{{template_dir}}/../../../provisioners/scripts/centos/install_centos7_headless_devops_tools.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_aws_corretto_java_jdk_8.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_aws_corretto_java_jdk_11.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_aws_corretto_java_jdk_15.sh",
+        "{{template_dir}}/../../../provisioners/scripts/centos/install_centos7_docker.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_docker_compose.sh",
+        "{{template_dir}}/../../../provisioners/scripts/centos/install_centos7_python3.sh",
+        "{{template_dir}}/../../../provisioners/scripts/centos/install_centos7_python3_scl.sh",
+        "{{template_dir}}/../../../provisioners/scripts/centos/install_centos7_vim_8.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_headless_root_user_env.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_headless_user_env.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_apache_ant.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_apache_maven.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_apache_groovy.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_gradle.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_google_golang.sh",
+        "{{template_dir}}/../../../provisioners/scripts/centos/install_centos7_ansible.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_aws_cli_2.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_jq_json_processor.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_hashicorp_packer.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_hashicorp_terraform.sh",
+        "{{template_dir}}/../../../provisioners/scripts/centos/install_centos7_git.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_git_flow.sh",
+        "{{template_dir}}/../../../provisioners/scripts/centos/install_centos7_mariadb_community_server_10.sh",
+        "{{template_dir}}/../../../provisioners/scripts/centos/install_centos7_apache_tomcat_9.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_teastore_application_on_tomcat.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_helm_cli.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_nodejs_javascript_runtime.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_serverless_framework_cli.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_appdynamics_nodejs_serverless_tracer.sh",
+        "{{template_dir}}/../../../provisioners/scripts/centos/cleanup.sh",
+        "{{template_dir}}/../../../submodules/chef/bento/packer_templates/_common/minimize.sh"
+      ],
+      "type": "shell"
+    },
+    {
+      "inline": [
+        "sudo usermod -aG vboxsf {{user `vm_user_name`}}",
+        "sudo plymouth-set-default-theme details",
+        "sudo dracut -f"
+      ],
+      "type": "shell"
+    }
+  ],
+  "variables": {
+    "box_basename": "teastore-base-centos79",
+    "build_directory": "../../../artifacts/centos",
+    "build_timestamp": "{{isotime \"20060102150405\"}}",
+    "cpus": "2",
+    "devops_home": "/opt/devops-2.0",
+    "disk_size": "131072",
+    "docker_completion_release": "20.10.3",
+    "git_revision": "__unknown_git_revision__",
+    "guest_additions_url": "",
+    "headless": "false",
+    "http_directory": "{{template_dir}}/http",
+    "http_proxy": "{{env `http_proxy`}}",
+    "https_proxy": "{{env `https_proxy`}}",
+    "iso_checksum": "e33d7b1ea7a9e2f38c8f693215dd85254c3a4fe446f93f563279715b68d07987",
+    "iso_name": "CentOS-7-x86_64-DVD-2009.iso",
+    "ks_path": "7/teastore-base-centos79-ks.cfg",
+    "memory": "8192",
+    "mirror": "http://mirrors.kernel.org/centos",
+    "mirror_directory": "7.9.2009/isos/x86_64",
+    "name": "teastore-base-centos79",
+    "no_proxy": "{{env `no_proxy`}}",
+    "tomcat_home": "apache-tomcat-9",
+    "tomcat_catalina_opts": "-Xms512M -Xmx4096M -server -XX:+UseParallelGC",
+    "user_docker_profile": "true",
+    "version": "TIMESTAMP",
+    "vm_description": "TeaStore VM with pre-configured tooling for Tomcat 9.0 and MariaDB Server 10.5 on Centos Linux 7.9 for DevOps 2.0 '{{user `box_basename`}}' box.",
+    "vm_user_group": "centos",
+    "vm_user_name": "centos",
+    "vm_user_password": "password",
+    "vram": "10"
+  }
+}
