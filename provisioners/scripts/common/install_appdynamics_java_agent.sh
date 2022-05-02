@@ -5,7 +5,7 @@
 # The Java Agent is used to monitor Java applications in the Controller.
 #
 # For more details, please visit:
-#   https://docs.appdynamics.com/display/LATEST/Java+Agent
+#   https://docs.appdynamics.com/latest/en/application-monitoring/install-app-server-agents/java-agent
 #
 # NOTE: All inputs are defined by external environment variables.
 #       Optional variables have reasonable defaults, but you may override as needed.
@@ -14,12 +14,6 @@
 #---------------------------------------------------------------------------------------------------
 
 # set default values for input environment variables if not set. -----------------------------------
-# [MANDATORY] appdynamics account parameters.
-set +x  # temporarily turn command display OFF.
-appd_username="${appd_username:-}"
-appd_password="${appd_password:-}"
-set -x  # turn command display back ON.
-
 # [OPTIONAL] appdynamics java agent install parameters [w/ defaults].
 appd_home="${appd_home:-/opt/appdynamics}"
 set +x  # temporarily turn command display OFF.
@@ -27,8 +21,8 @@ appd_controller_root_password="${appd_controller_root_password:-welcome1}"
 set -x  # turn command display back ON.
 appd_java_agent_home="${appd_java_agent_home:-appagent}"
 appd_java_agent_user="${appd_java_agent_user:-vagrant}"
-appd_java_agent_release="${appd_java_agent_release:-21.2.0.31849}"
-appd_java_agent_sha256="${appd_java_agent_sha256:-119ffa09f4f22270b94dc7102f20fc16ab590dabb95f4d16f2417c40eb7b0e47}"
+appd_java_agent_release="${appd_java_agent_release:-22.4.0.33722}"
+appd_java_agent_sha256="${appd_java_agent_sha256:-ed88f285d2d406a3b3c799f0ec455b118f02ca522f57f0b2d730b1e1a48f8389}"
 
 # [OPTIONAL] appdynamics java agent config parameters [w/ defaults].
 appd_java_agent_config="${appd_java_agent_config:-false}"
@@ -53,18 +47,14 @@ Usage:
   -------------------------------------
   Description of Environment Variables:
   -------------------------------------
-  [MANDATORY] appdynamics account parameters.
-    [root]# export appd_username="name@example.com"                     # user name for downloading binaries.
-    [root]# export appd_password="password"                             # user password.
-
   [OPTIONAL] appdynamics java agent install parameters [w/ defaults].
     [root]# export appd_home="/opt/appdynamics"                         # [optional] appd home (defaults to '/opt/appdynamics').
     [root]# export appd_controller_root_password="welcome1"             # [optional] controller root password (defaults to 'welcome1').
     [root]# export appd_java_agent_home="appagent"                      # [optional] java agent home (defaults to 'appagent').
     [root]# export appd_java_agent_user="vagrant"                       # [optional] java agent user (defaults to user 'vagrant').
-    [root]# export appd_java_agent_release="21.2.0.31849"               # [optional] java agent release (defaults to '21.2.0.31849').
+    [root]# export appd_java_agent_release="22.4.0.33722"               # [optional] java agent release (defaults to '22.4.0.33722').
                                                                         # [optional] java agent sha-256 checksum (defaults to published value).
-    [root]# export appd_java_agent_sha256="119ffa09f4f22270b94dc7102f20fc16ab590dabb95f4d16f2417c40eb7b0e47"
+    [root]# export appd_java_agent_sha256="ed88f285d2d406a3b3c799f0ec455b118f02ca522f57f0b2d730b1e1a48f8389"
 
   [OPTIONAL] appdynamics java agent config parameters [w/ defaults].
     [root]# export appd_java_agent_config="true"                        # [optional] configure appd java agent? [boolean] (defaults to 'false').
@@ -76,7 +66,7 @@ Usage:
           environment.
 
           In either case, you will need to validate the configuration before starting the Java Agent. The
-          configuration file can be found here: '<java_agent_home>/appagent/ver21.2.0.31849/conf/controller-info.xml'
+          configuration file can be found here: '<java_agent_home>/appagent/ver22.4.0.33722/conf/controller-info.xml'
 
     [root]# export appd_controller_host="apm"                           # [optional] controller host (defaults to 'apm').
     [root]# export appd_controller_port="8090"                          # [optional] controller port (defaults to '8090').
@@ -94,21 +84,6 @@ Usage:
 EOF
 }
 
-# validate environment variables. ------------------------------------------------------------------
-set +x  # temporarily turn command display OFF.
-if [ -z "$appd_username" ]; then
-  echo "Error: 'appd_username' environment variable not set."
-  usage
-  exit 1
-fi
-
-if [ -z "$appd_password" ]; then
-  echo "Error: 'appd_password' environment variable not set."
-  usage
-  exit 1
-fi
-set -x  # turn command display back ON.
-
 # set appdynamics java agent installation variables. -----------------------------------------------
 appd_java_agent_folder="${appd_java_agent_home}-${appd_java_agent_release}"
 appd_java_agent_binary="AppServerAgent-1.8-${appd_java_agent_release}.zip"
@@ -121,32 +96,10 @@ cd ${appd_home}/${appd_java_agent_folder}
 curdate=$(date +"%Y-%m-%d.%H-%M-%S")
 
 # install appdynamics java agent. ------------------------------------------------------------------
-# authenticate to the appdynamics domain and store the oauth token to a file.
-post_data_filename="post-data.${curdate}.json"
-oauth_token_filename="oauth-token.${curdate}.json"
-
-rm -f "${post_data_filename}"
-touch "${post_data_filename}"
-chmod 644 "${post_data_filename}"
-
-set +x  # temporarily turn command display OFF.
-echo "{" >> ${post_data_filename}
-echo "  \"username\": \"${appd_username}\"," >> ${post_data_filename}
-echo "  \"password\": \"${appd_password}\"," >> ${post_data_filename}
-echo "  \"scopes\": [\"download\"]" >> ${post_data_filename}
-echo "}" >> ${post_data_filename}
-set -x  # turn command display back ON.
-
-curl --silent --request POST --data @${post_data_filename} https://identity.msrv.saas.appdynamics.com/v2.0/oauth/token --output ${oauth_token_filename}
-oauth_token=$(awk -F '"' '{print $10}' ${oauth_token_filename})
-
 # download the appdynamics java agent binary.
 rm -f ${appd_java_agent_binary}
-curl --silent --location --remote-name --header "Authorization: Bearer ${oauth_token}" https://download.appdynamics.com/download/prox/download-file/java-jdk8/${appd_java_agent_release}/${appd_java_agent_binary}
+curl --silent --location --remote-name https://download-files.appdynamics.com/download-file/java-jdk8/${appd_java_agent_release}/${appd_java_agent_binary}
 chmod 644 ${appd_java_agent_binary}
-
-rm -f ${post_data_filename}
-rm -f ${oauth_token_filename}
 
 # verify the downloaded binary.
 echo "${appd_java_agent_sha256} ${appd_java_agent_binary}" | sha256sum --check
