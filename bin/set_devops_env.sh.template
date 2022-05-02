@@ -13,12 +13,12 @@ export devops_home
 # set appdynamics account credentials.
 # --------------------------------------------------------------------------------------------------
 # user name for downloading binaries.
-appd_username="<your_appd_account_email_here>"
-export appd_username
+#appd_username="<your_appd_account_email_here>"
+#export appd_username
 
 # user password.
-appd_password="<your_appd_account_password_here>"
-export appd_password
+#appd_password="<your_appd_account_password_here>"
+#export appd_password
 
 # --------------------------------------------------------------------------------------------------
 # [OPTIONAL] appdynamics platform install parameters [w/ defaults].
@@ -31,12 +31,12 @@ export appd_password
 #appd_platform_home="platform"
 #export appd_platform_home
 
-# [optional] platform release (defaults to '20.11.8.23902').
-#appd_platform_release="20.11.8.23902"
+# [optional] platform release (defaults to '21.4.14.24728').
+#appd_platform_release="21.4.14.24728"
 #export appd_platform_release
 
 # [optional] platform sha-256 checksum (defaults to published value).
-#appd_platform_sha256="b3b6f6a5382de34507e87a7420856404ff512ff62ddfbb96556d612d37c42f65"
+#appd_platform_sha256="6eb22cff81a22545334cf5da5b9d6a05ebea74caeae73ba3c819bf8aff2cd81c"
 #export appd_platform_sha256
 
 # [optional] platform user name (defaults to 'vagrant').
@@ -190,12 +190,12 @@ export appd_controller_tenancy_mode
 #appd_java_agent_user="vagrant"
 #export appd_java_agent_user
 
-# [optional] java agent release (defaults to '21.2.0.31849').
-#appd_java_agent_release="21.2.0.31849"
+# [optional] java agent release (defaults to '22.4.0.33722').
+#appd_java_agent_release="22.4.0.33722"
 #export appd_java_agent_release
 
 # [optional] java agent sha-256 checksum (defaults to published value).
-#appd_java_agent_sha256="119ffa09f4f22270b94dc7102f20fc16ab590dabb95f4d16f2417c40eb7b0e47"
+#appd_java_agent_sha256="ed88f285d2d406a3b3c799f0ec455b118f02ca522f57f0b2d730b1e1a48f8389"
 #export appd_java_agent_sha256
 
 # --------------------------------------------------------------------------------------------------
@@ -212,7 +212,7 @@ export appd_controller_tenancy_mode
 #       using valid entries for your environment.
 #
 #       In either case, you will need to validate the configuration before starting the Java Agent. The
-#       configuration file can be found here: '<java_agent_home>/appagent/ver21.2.0.31849/conf/controller-info.xml'
+#       configuration file can be found here: '<java_agent_home>/appagent/ver22.4.0.33722/conf/controller-info.xml'
 
 # [optional] associate java agent with application (defaults to ''My App).
 #appd_java_agent_application_name="My App"
@@ -245,12 +245,12 @@ export appd_controller_tenancy_mode
 #appd_machine_agent_user="vagrant"
 #export appd_machine_agent_user
 
-# [optional] machine agent release (defaults to '21.1.0.3041').
-#appd_machine_agent_release="21.1.0.3041"
+# [optional] machine agent release (defaults to '22.4.0.3344').
+#appd_machine_agent_release="22.4.0.3344"
 #export appd_machine_agent_release
 
 # [optional] machine agent sha-256 checksum (defaults to published value).
-#appd_machine_agent_sha256="a16c1ee47a9a9c4d0674c0b0c1980fb4aa7ab1d0205675601068ce12384e07e9"
+#appd_machine_agent_sha256="ef057f0235620216a8d6bfee62bd57ccdb7f0d1ec79ce30105dfbd39011bb5b5"
 #export appd_machine_agent_sha256
 
 # --------------------------------------------------------------------------------------------------
@@ -359,6 +359,64 @@ export appd_controller_tenancy_mode
 #export appd_aws_ec2_extension_tier_component_id
 
 # --------------------------------------------------------------------------------------------------
+# [OPTIONAL] appdynamics cluster agent install parameters [w/ defaults].
+# --------------------------------------------------------------------------------------------------
+# [optional] cluster agent home folder (defaults to 'cluster-agent').
+#appd_cluster_agent_home="cluster-agent"
+#export appd_cluster_agent_home
+
+# [optional] cluster agent user name (defaults to user 'vagrant').
+#appd_cluster_agent_user="vagrant"
+#export appd_cluster_agent_user
+
+# [optional] cluster agent group (defaults to 'vagrant').
+#appd_cluster_agent_user_group="vagrant"
+#export appd_cluster_agent_user_group
+
+# [optional] cluster agent release (defaults to '21.5.0.2052').
+#appd_cluster_agent_release="21.5.0.2052"
+#export appd_cluster_agent_release
+
+# [optional] cluster agent sha-256 checksum (defaults to published value).
+#appd_cluster_agent_sha256="45a0006f47e7b56b8c3af60da381d58a84e76b666e6be822b1e448edc319ad27"
+#export appd_cluster_agent_sha256
+
+# --------------------------------------------------------------------------------------------------
+# [OPTIONAL] appdynamics cluster agent config parameters [w/ defaults].
+# --------------------------------------------------------------------------------------------------
+# [optional] install kubernetes metrics server? [boolean] (defaults to 'true').
+#appd_install_kubernetes_metrics_server="true"
+#export appd_install_kubernetes_metrics_server
+
+# [optional] configure cluster agent auto instrumentation? [boolean] (defaults to 'false').
+#appd_cluster_agent_auto_instrumentation="false"
+#export appd_cluster_agent_auto_instrumentation
+
+# [optional] account name (defaults to 'customer1').
+#appd_cluster_agent_account_name="customer1"
+#export appd_cluster_agent_account_name
+
+# [optional] account access key (defaults to <placeholder_value>).
+#appd_cluster_agent_account_access_key="abcdef01-2345-6789-abcd-ef0123456789"
+#export appd_cluster_agent_account_access_key
+
+# [optional] cluster agent docker image (defaults to 'docker.io/appdynamics/cluster-agent:latest').
+#appd_cluster_agent_docker_image="docker.io/appdynamics/cluster-agent:latest"
+#export appd_cluster_agent_docker_image
+
+# [optional] cluster agent application name (defaults to 'My-App').
+#appd_cluster_agent_application_name="<your_app_here>"
+#export appd_cluster_agent_application_name
+
+# [optional] cluster agent tier name (defaults to 'My-App-Web-Tier').
+#appd_cluster_agent_tier_name="<your_tier_here>"
+#export appd_cluster_agent_tier_name
+
+# [optional] cluster agent node name (defaults to 'Development').
+#appd_cluster_agent_node_name="<your_node_here>"
+#export appd_cluster_agent_node_name
+
+# --------------------------------------------------------------------------------------------------
 # [OPTIONAL] cwom platform install parameters [w/ defaults].
 # --------------------------------------------------------------------------------------------------
 # [optional] cwom platform release (defaults to '2.3.28').
@@ -436,3 +494,11 @@ export azure_temporary_source_cidrs
 #   'us-west4-a', 'us-west4-b', 'us-west4-c'                                     [Las Vegas]
 gcp_zone="us-central1-a"
 export gcp_zone
+
+# [optional] kubectl release (defaults to '1.19.7').
+#kubectl_release="1.19.7"
+#export kubectl_release
+
+# [optional] kubectl sha-256 checksum (defaults to published value).
+#kubectl_sha256="d46eb3bbe2575e5b6bedbc6d3519424b4f2f57929d7da1ef7e11c09068f37297"
+#export kubectl_sha256

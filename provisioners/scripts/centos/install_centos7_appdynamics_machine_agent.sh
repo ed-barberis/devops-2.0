@@ -11,7 +11,7 @@
 # instances created from the image.
 #
 # For more details, please visit:
-#   https://docs.appdynamics.com/display/LATEST/Standalone+Machine+Agent
+#   https://docs.appdynamics.com/latest/en/infrastructure-visibility/machine-agent
 #
 # NOTE: All inputs are defined by external environment variables.
 #       Optional variables have reasonable defaults, but you may override as needed.
@@ -20,12 +20,6 @@
 #---------------------------------------------------------------------------------------------------
 
 # set default values for input environment variables if not set. -----------------------------------
-# [MANDATORY] appdynamics account parameters.
-set +x  # temporarily turn command display OFF.
-appd_username="${appd_username:-}"
-appd_password="${appd_password:-}"
-set -x  # turn command display back ON.
-
 # [OPTIONAL] appdynamics machine agent install parameters [w/ defaults].
 appd_home="${appd_home:-/opt/appdynamics}"
 set +x  # temporarily turn command display OFF.
@@ -33,8 +27,8 @@ appd_controller_root_password="${appd_controller_root_password:-welcome1}"
 set -x  # turn command display back ON.
 appd_machine_agent_home="${appd_machine_agent_home:-machine-agent}"
 appd_machine_agent_user="${appd_machine_agent_user:-vagrant}"
-appd_machine_agent_release="${appd_machine_agent_release:-21.1.0.3041}"
-appd_machine_agent_sha256="${appd_machine_agent_sha256:-a16c1ee47a9a9c4d0674c0b0c1980fb4aa7ab1d0205675601068ce12384e07e9}"
+appd_machine_agent_release="${appd_machine_agent_release:-22.4.0.3344}"
+appd_machine_agent_sha256="${appd_machine_agent_sha256:-ef057f0235620216a8d6bfee62bd57ccdb7f0d1ec79ce30105dfbd39011bb5b5}"
 
 # [OPTIONAL] appdynamics machine agent config parameters [w/ defaults].
 appd_machine_agent_config="${appd_machine_agent_config:-false}"
@@ -66,18 +60,14 @@ Usage:
   -------------------------------------
   Description of Environment Variables:
   -------------------------------------
-  [MANDATORY] appdynamics account parameters.
-    [root]# export appd_username="name@example.com"                     # user name for downloading binaries.
-    [root]# export appd_password="password"                             # user password.
-
   [OPTIONAL] appdynamics machine agent install parameters [w/ defaults].
     [root]# export appd_home="/opt/appdynamics"                         # [optional] appd home (defaults to '/opt/appdynamics').
     [root]# export appd_controller_root_password="welcome1"             # [optional] controller root password (defaults to 'welcome1').
     [root]# export appd_machine_agent_home="machine-agent"              # [optional] machine agent home folder (defaults to 'machine-agent').
     [root]# export appd_machine_agent_user="vagrant"                    # [optional] machine agent user name (defaults to user 'vagrant').
-    [root]# export appd_machine_agent_release="21.1.0.3041"             # [optional] machine agent release (defaults to '21.1.0.3041').
+    [root]# export appd_machine_agent_release="22.4.0.3344"             # [optional] machine agent release (defaults to '22.4.0.3344').
                                                                         # [optional] machine agent sha-256 checksum (defaults to published value).
-    [root]* export appd_machine_agent_sha256="a16c1ee47a9a9c4d0674c0b0c1980fb4aa7ab1d0205675601068ce12384e07e9"
+    [root]# export appd_machine_agent_sha256="ef057f0235620216a8d6bfee62bd57ccdb7f0d1ec79ce30105dfbd39011bb5b5"
 
   [OPTIONAL] appdynamics machine agent config parameters [w/ defaults].
     [root]# export appd_machine_agent_config="true"                     # [optional] configure appd machine agent? [boolean] (defaults to 'false').
@@ -115,20 +105,6 @@ EOF
 }
 
 # validate mandatory environment variables. --------------------------------------------------------
-set +x  # temporarily turn command display OFF.
-if [ -z "$appd_username" ]; then
-  echo "Error: 'appd_username' environment variable not set."
-  usage
-  exit 1
-fi
-
-if [ -z "$appd_password" ]; then
-  echo "Error: 'appd_password' environment variable not set."
-  usage
-  exit 1
-fi
-set -x  # turn command display back ON.
-
 # if 'application' is set, then all three ('application', 'tier', and 'node') should be set.
 if [ -n "$appd_machine_agent_application_name" ]; then
   if [ -z "$appd_machine_agent_tier_name" ]; then
@@ -155,36 +131,11 @@ appd_machine_agent_binary="machineagent-bundle-64bit-linux-${appd_machine_agent_
 mkdir -p ${appd_home}/${appd_machine_agent_folder}
 cd ${appd_home}/${appd_machine_agent_folder}
 
-# set current date for temporary filename.
-curdate=$(date +"%Y-%m-%d.%H-%M-%S")
-
 # install appdynamics machine agent. ---------------------------------------------------------------
-# authenticate to the appdynamics domain and store the oauth token to a file.
-post_data_filename="post-data.${curdate}.json"
-oauth_token_filename="oauth-token.${curdate}.json"
-
-rm -f "${post_data_filename}"
-touch "${post_data_filename}"
-chmod 644 "${post_data_filename}"
-
-set +x  # temporarily turn command display OFF.
-echo "{" >> ${post_data_filename}
-echo "  \"username\": \"${appd_username}\"," >> ${post_data_filename}
-echo "  \"password\": \"${appd_password}\"," >> ${post_data_filename}
-echo "  \"scopes\": [\"download\"]" >> ${post_data_filename}
-echo "}" >> ${post_data_filename}
-set -x  # turn command display back ON.
-
-curl --silent --request POST --data @${post_data_filename} https://identity.msrv.saas.appdynamics.com/v2.0/oauth/token --output ${oauth_token_filename}
-oauth_token=$(awk -F '"' '{print $10}' ${oauth_token_filename})
-
 # download the machine agent binary.
 rm -f ${appd_machine_agent_binary}
-curl --silent --location --remote-name --header "Authorization: Bearer ${oauth_token}" https://download.appdynamics.com/download/prox/download-file/machine-bundle/${appd_machine_agent_release}/${appd_machine_agent_binary}
+curl --silent --location --remote-name https://download-files.appdynamics.com/download-file/machine-bundle/${appd_machine_agent_release}/${appd_machine_agent_binary}
 chmod 644 ${appd_machine_agent_binary}
-
-rm -f ${post_data_filename}
-rm -f ${oauth_token_filename}
 
 # verify the downloaded binary.
 echo "${appd_machine_agent_sha256} ${appd_machine_agent_binary}" | sha256sum --check
