@@ -1,15 +1,15 @@
 #!/bin/sh -eux
-# install tomcat 8 web server by apache.
+# install tomcat 10 web server by apache.
 # all inputs are defined by external environment variables.
 # script should be run with 'root' privilege.
 # NOTE: This script is still a work-in-progress.
 
 # set default values for input environment variables if not set. -----------------------------------
 # tomcat web server install parameters.
-tomcat_home="${tomcat_home:-apache-tomcat-8}"                       # [optional] tomcat home (defaults to 'apache-tomcat-8').
-tomcat_release="${tomcat_release:-8.5.78}"                          # [optional] tomcat release (defaults to '8.5.78').
+tomcat_home="${tomcat_home:-apache-tomcat-10}"                      # [optional] tomcat home (defaults to 'apache-tomcat-10').
+tomcat_release="${tomcat_release:-10.0.20}"                         # [optional] tomcat release (defaults to '10.0.20').
                                                                     # [optional] tomcat sha-512 checksum (defaults to published value).
-tomcat_sha512="${tomcat_sha512:-b50213e64cc1fd3da2847deda1ca13bee4c26663093c11d53c5ecfe4cdec8856e743b4a1d8488e0c0cbe9bf149e755df40a4140f3b155e2195e3bc6335de3512}"
+tomcat_sha512="${tomcat_sha512:-53bfdbac2e6af5cca97dc01fffb0428380fbe21d8375f45d015c16a57017ff946fdc555ebad9e9fcbcb97b438c4f6daf3aa39d36ca79fd5a372cfc1a80b7117f}"
 
 tomcat_username="${tomcat_username:-vagrant}"                       # [optional] tomcat user name (defaults to 'vagrant').
 tomcat_group="${tomcat_group:-vagrant}"                             # [optional] tomcat group (defaults to 'vagrant').
@@ -27,7 +27,7 @@ tomcat_java_opts="${tomcat_java_opts:--Djava.awt.headless=true -Djava.security.e
 
 # install apache tomcat. ---------------------------------------------------------------------------
 # set tomcat web server installation variables.
-tomcat_folder="${tomcat_home:0:-2}-${tomcat_release}"
+tomcat_folder="${tomcat_home:0:-3}-${tomcat_release}"
 tomcat_binary="${tomcat_folder}.tar.gz"
 
 # create apache parent folder.
@@ -80,7 +80,7 @@ if [ -d "$setenv_dir" ]; then
   chown ${tomcat_username}:${tomcat_group} "${setenv_filepath}"
 
   echo "#!/bin/sh" >> "${setenv_filepath}"
-  echo "#Set environment variables for the Apache Tomcat ${tomcat_home:${#tomcat_home}-1:1} web server." >> "${setenv_filepath}"
+  echo "#Set environment variables for the Apache Tomcat ${tomcat_home:${#tomcat_home}-2:2} web server." >> "${setenv_filepath}"
   echo "JAVA_HOME=\"${JAVA_HOME}\"" >> "${setenv_filepath}"
   echo "CATALINA_PID=\"${CATALINA_HOME}/tomcat.pid\"" >> "${setenv_filepath}"
   echo "CATALINA_OPTS=\"\${CATALINA_OPTS} ${tomcat_catalina_opts}\"" >> "${setenv_filepath}"
@@ -116,7 +116,7 @@ if [ -d "$systemd_dir" ]; then
   chmod 644 "${service_filepath}"
 
   echo "[Unit]" >> "${service_filepath}"
-  echo "Description=The Apache Tomcat ${tomcat_home:${#tomcat_home}-1:1} web server." >> "${service_filepath}"
+  echo "Description=The Apache Tomcat ${tomcat_home:${#tomcat_home}-2:2} web server." >> "${service_filepath}"
   echo "After=network.target remote-fs.target nss-lookup.target" >> "${service_filepath}"
   echo "" >> "${service_filepath}"
   echo "[Service]" >> "${service_filepath}"
