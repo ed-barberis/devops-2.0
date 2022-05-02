@@ -109,6 +109,7 @@
         "{{template_dir}}/../../../provisioners/scripts/common/virtualbox.sh",
         "{{template_dir}}/../../../provisioners/scripts/centos/install_centos8_headless_devops_tools.sh",
         "{{template_dir}}/../../../provisioners/scripts/common/install_aws_corretto_java_jdk_8.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_aws_corretto_java_jdk_11.sh",
         "{{template_dir}}/../../../provisioners/scripts/centos/install_centos8_python3.sh",
         "{{template_dir}}/../../../provisioners/scripts/centos/install_centos8_vim_8.sh",
         "{{template_dir}}/../../../provisioners/scripts/common/install_headless_root_user_env.sh",
@@ -128,7 +129,7 @@
     }
   ],
   "variables": {
-    "box_basename": "base-headless-ol83",
+    "box_basename": "base-headless-ol84",
     "build_directory": "../../../artifacts/oracle",
     "build_timestamp": "{{isotime \"2019102650405\"}}",
     "cpus": "1",
@@ -141,17 +142,17 @@
     "http_directory": "{{template_dir}}/http",
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
-    "iso_checksum": "771e383adfd5406d1a360ff24822011a88cbb45b6019e2f1095758c46a406aaa",
-    "iso_name": "OracleLinux-R8-U3-x86_64-dvd.iso",
-    "ks_path": "8/ol83-headless-ks.cfg",
+    "iso_checksum": "a55e97eec90e8c810f23625a349af816e1fdf162428e2bf96b752ff562106d4b",
+    "iso_name": "OracleLinux-R8-U4-x86_64-dvd.iso",
+    "ks_path": "8/ol84-headless-ks.cfg",
     "memory": "4096",
     "mirror": "http://yum.oracle.com/ISOS/OracleLinux",
-    "mirror_directory": "OL8/u3/x86_64",
-    "name": "base-headless-ol83",
+    "mirror_directory": "OL8/u4/x86_64",
+    "name": "base-headless-ol84",
     "no_proxy": "{{env `no_proxy`}}",
     "user_docker_profile": "true",
     "version": "TIMESTAMP",
-    "vm_description": "Oracle Linux 8.3 (UEKR6) VM image for DevOps 2.0 '{{user `box_basename`}}' headless box.",
+    "vm_description": "Oracle Linux 8.4 (UEKR6) VM image for DevOps 2.0 '{{user `box_basename`}}' headless box.",
     "vram": "10"
   }
 }
