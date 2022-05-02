@@ -1,4 +1,4 @@
-# Oracle 7 VM Build Instructions
+  # Oracle 7 VM Build Instructions
 
 Follow these instructions to build the Oracle Linux 7.9 VM images.
 
@@ -33,16 +33,7 @@ Follow these instructions to build the Oracle Linux 7.9 VM images.
     This will take several minutes to run. However, this build will be shorter
     because it is based on the 'base-desktop-ol79' image.
 
-    NOTE: By default, the __DEV VM__ build provisions the AppDynamics Java Agent
-    which requires external credentials to download the installer. You will need
-    to provide your AppDynamics account user name and password as external
-    environment variables.
-
-    The build will __fail__ if they are not set.
-
     ```bash
-    $ export appd_username="name@example.com"
-    $ export appd_password="password"
     $ packer build dev-ol79-x86_64.json
     ```
 
@@ -81,18 +72,12 @@ Follow these instructions to build the Oracle Linux 7.9 VM images.
 	-	Copy your AppDynamics Controller '`license.lic`' and rename it to '`provisioners/scripts/centos/tools/appd-controller-license.lic`'.
 
     NOTE: Configuration and customization for provisioning the __APM VM__ image
-    is also handled via external environment variables and requires external
-    credentials to download the installer. You will need to provide your
-    AppDynamics account user name and password.
-
-    The build will __fail__ if they are not set.
+    is also handled via external environment variables.
 
     The Enterprise Console admin user and database passwords may also be
     provided, but are optional. The default passwords are '`welcome1`'.
 
     ```bash
-    $ export appd_username="name@example.com"
-    $ export appd_password="password"
     $ export appd_admin_password="welcome1"     # [optional]
     $ export appd_db_password="welcome1"        # [optional]
     $ export appd_db_root_password="welcome1"   # [optional]
@@ -152,15 +137,15 @@ Follow these instructions to build the Oracle Linux 7.9 VM images.
     ```bash
     $ vagrant ssh
     dev[vagrant]$ docker --version
-    Docker version 19.03.11-ol, build 748876d
+    Docker version 19.03.11-ol, build f0aae77
 
     dev[vagrant]$ ansible --version
-    ansible 2.9.17
+    ansible 2.9.27
       config file = /etc/ansible/ansible.cfg
       configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
       ansible python module location = /usr/lib/python2.7/site-packages/ansible
       executable location = /usr/bin/ansible
-      python version = 2.7.5 (default, Nov 13 2020, 02:52:00) [GCC 4.8.5 20150623 (Red Hat 4.8.5-44.0.3)]
+      python version = 2.7.5 (default, Mar 12 2021, 14:55:44) [GCC 4.8.5 20150623 (Red Hat 4.8.5-44.0.3)]
 
     dev[vagrant]$ <run other commands>
     ```
@@ -183,15 +168,15 @@ Follow these instructions to build the Oracle Linux 7.9 VM images.
     ```bash
     $ vagrant ssh
     dev[vagrant]$ docker --version
-    Docker version 19.03.11-ol, build 748876d
+    Docker version 19.03.11-ol, build f0aae77
 
     ops[vagrant]$ ansible --version
-    ansible 2.9.17
+    ansible 2.9.27
       config file = /etc/ansible/ansible.cfg
       configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
       ansible python module location = /usr/lib/python2.7/site-packages/ansible
       executable location = /usr/bin/ansible
-      python version = 2.7.5 (default, Nov 13 2020, 02:52:00) [GCC 4.8.5 20150623 (Red Hat 4.8.5-44.0.3)]
+      python version = 2.7.5 (default, Mar 12 2021, 14:55:44) [GCC 4.8.5 20150623 (Red Hat 4.8.5-44.0.3)]
 
     ops[vagrant]$ <run other commands>
     ```
@@ -285,72 +270,74 @@ Follow these instructions to build the Oracle Linux 7.9 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 2.1.26 (command-line interface) [Optional]
--	Ansible 2.9.17
--	Ant 1.10.9
--	Consul 1.9.3
+-	Amazon AWS CLI 2.6.1 (command-line interface) [Optional]
+-	Ansible 2.9.27
+-	Ant 1.10.12
+-	Consul 1.12.0
 -	Cloud-Init 0.7.9 [Optional]
 -	Docker 19.03.11 CE
 	-	Docker Bash Completion
-	-	Docker Compose 1.28.2
+	-	Docker Compose 1.29.2
 	-	Docker Compose Bash Completion
--	Git 2.30.1
+-	Git 2.36.0
 	-	Git Bash Completion
 	-	Git-Flow 1.12.4 (AVH Edition)
 	-	Git-Flow Bash Completion
--	Go 1.15.8
--	Gradle 6.8.2
--	Groovy 3.0.7
--	Java SE JDK 8 Update 282 (Amazon Corretto 8)
--	Java SE JDK 11.0.10 (Amazon Corretto 11)
--	Java SE JDK 15.0.2 (Amazon Corretto 15)
--	JMESPath jp 0.1.3 (command-line JSON processor)
+-	Go 1.18.1
+-	Gradle 7.4.2
+-	Groovy 4.0.2
+-	Java SE JDK 8 Update 332 (Amazon Corretto 8)
+-	Java SE JDK 11.0.15 (Amazon Corretto 11)
+-	Java SE JDK 17.0.3 (Amazon Corretto 17)
+-	Java SE JDK 18.0.1 (Amazon Corretto 18)
+-	JMESPath jp 0.2.1 (command-line JSON processor)
 -	jq 1.6 (command-line JSON processor)
--	Maven 3.6.3
--	MySQL Community Server 5.7.33
+-	Maven 3.8.5
+-	MySQL Community Server 5.7.38
 -	Oracle Compute Cloud Service CLI (opc) 17.2.2 [Optional]
 -	Oracle PaaS Service Manager CLI (psm) 1.1.16 [Optional]
--	Packer 1.6.6
+-	Packer 1.8.0
 -	Python 2.7.5
-	-	Pip 21.0.1
--	Python 3.6.9
-	-	Pip3 21.0.1
--	Scala 2.13.4
-	-	Scala Build Tool (SBT) 1.4.7
--	Terraform 0.14.6
--	Vault 1.6.2
+	-	Pip 22.0.4
+-	Python 3.6.8
+	-	Pip3 22.0.4
+-	Scala 3.1.2
+	-	Scala Build Tool (SBT) 1.6.2
+-	Terraform 1.1.9
+-	Vault 1.10.2
 -	XMLStarlet 1.6.1 (command-line XML processor)
+-	yq 4.25.1 (command-line YAML processor)
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 13.8.4
--	Jenkins 2.263.4 LTS
+-	GitLab Community Edition 14.10.0
+-	Jenkins 2.332.2 LTS
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
--	AppDynamics Enterprise Console 20.11.8 Build 23902
-	-	AppDynamics Controller 20.11.8 Build 2006
-	-	AppDynamics Events Service 4.5.2.0 Build 20640
--	MySQL Shell 8.0.23
+-	AppDynamics Enterprise Console 21.4.14 Build 24728
+	-	AppDynamics Controller 21.4.14 Build 1533
+	-	AppDynamics Events Service 4.5.2 Build 20651
+-	MySQL Shell 8.0.29
 
 The following developer tools are pre-installed in the __Developer VM__ (desktop) only:
 
--	Apache Tomcat 7.0.108
--	Apache Tomcat 8.5.63
--	Apache Tomcat 9.0.43
--	AppDynamics Java Agent 21.2.0 Build 31849
--	AppDynamics Machine Agent 21.1.0 Build 3041
-	-	AppDynamics AWS EC2 Monitoring Extension 2.1.4 [Optional]
--	Atom Editor 1.54.0
+-	Apache Tomcat 8.5.78
+-	Apache Tomcat 9.0.62
+-	Apache Tomcat 10.0.20
+-	AppDynamics Java Agent 22.4.0 Build 33722
+-	AppDynamics Machine Agent 22.4.0 Build 3344
+	-	AppDynamics AWS EC2 Monitoring Extension 2.1.5 [Optional]
+-	Atom Editor 1.57.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 88.0.4324.150 (64-bit)
--	Firefox 78.7.0esr (64-bit)
+-	Chrome 101.0.4951.41 (64-bit)
+-	Firefox 91.7.0esr (64-bit)
 -	GVim 7.4.160-1
--	JetBrains IntelliJ IDEA 2020.3.1 (Community Edition)
--	JetBrains IntelliJ IDEA 2020.3.1 (Ultimate Edition)
--	JetBrains WebStorm 2020.3.1 (JavaScript IDE)
--	Postman 8.0.5
+-	JetBrains IntelliJ IDEA 2022.1 (Community Edition)
+-	JetBrains IntelliJ IDEA 2022.1 (Ultimate Edition)
+-	JetBrains WebStorm 2022.1 (JavaScript IDE)
+-	Postman 9.17.1
 -	Scala IDE for Eclipse 4.7.0 (Eclipse Oxygen.1 [4.7.1]) [Optional]
--	Spring Tool Suite 4 [4.8.1] IDE (Eclipse 2020-09 [4.17.0])
--	Sublime Text 3 (3.2.2 Build 3211)
--	Visual Studio Code 1.53.2
+-	Spring Tool Suite 4 [4.14.1] IDE (Eclipse 2022-03 [4.23.0])
+-	Sublime Text 4 (Build 4126)
+-	Visual Studio Code 1.66.2
