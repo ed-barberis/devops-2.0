@@ -1,4 +1,4 @@
-# @(#).bashrc       1.0 2021/02/11 SMI
+# @(#).bashrc       1.0 2022/04/13 SMI
 # bash resource configuration for devops administrators.
 
 # user 'root' specific aliases and functions.
@@ -15,9 +15,10 @@ fi
 umask 022
 
 # set java home path.
-JAVA_HOME=/usr/local/java/jdk180
-#JAVA_HOME=/usr/local/java/jdk11
-#JAVA_HOME=/usr/local/java/jdk14
+#JAVA_HOME=/usr/local/java/jdk180
+JAVA_HOME=/usr/local/java/jdk11
+#JAVA_HOME=/usr/local/java/jdk17
+#JAVA_HOME=/usr/local/java/jdk18
 export JAVA_HOME
 
 # set maven home environment variables.

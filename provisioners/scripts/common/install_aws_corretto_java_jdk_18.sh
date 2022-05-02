@@ -1,6 +1,6 @@
 #!/bin/sh -eux
 #---------------------------------------------------------------------------------------------------
-# Install Amazon Corretto 15 OpenJDK by Amazon.
+# Install Amazon Corretto 18 OpenJDK by Amazon.
 #
 # Amazon Corretto is a no-cost, multiplatform, production-ready distribution of the Open Java
 # Development Kit (OpenJDK). Corretto comes with long-term support that will include performance
@@ -16,10 +16,10 @@
 # NOTE: Script should be run with 'root' privilege.
 #---------------------------------------------------------------------------------------------------
 
-# set amazon corretto 15 installation variables. ---------------------------------------------------
-jdk_home="jdk15"
-jdk_build="15.0.2.7.1"
-jdk_checksum="9d7e2c55ef9f13ad16a2fa2cd2e6514c"
+# set amazon corretto 18 installation variables. ---------------------------------------------------
+jdk_home="jdk18"
+jdk_build="18.0.1.10.1"
+jdk_sha256="30a47e6a1992f6169bd3eab24bddabf302a7111ea39e7b0d70213f06b5bea2dc"
 jdk_folder="amazon-corretto-${jdk_build}-linux-x64"
 jdk_binary="amazon-corretto-${jdk_build}-linux-x64.tar.gz"
 #jdk_binary="amazon-corretto-${jdk_build:0:2}-x64-linux-jdk.tar.gz"
@@ -30,17 +30,17 @@ jdk_sig_file="${jdk_binary}.sig"
 mkdir -p /usr/local/java
 cd /usr/local/java
 
-# download and validate corretto 15 binary from aws. -----------------------------------------------
-# download the corretto 15 binary.
+# download and validate corretto 18 binary from aws. -----------------------------------------------
+# download the corretto 18 binary.
 rm -f ${jdk_binary}
 wget --no-verbose https://corretto.aws/downloads/resources/${jdk_build}/${jdk_binary}
 #wget --no-verbose https://corretto.aws/downloads/latest/${jdk_binary}  # permanent (latest) url.
 
-# verify the downloaded binary using the md5 checksum.
-echo "${jdk_checksum} ${jdk_binary}" | md5sum --check -
+# verify the downloaded binary.
+echo "${jdk_sha256} ${jdk_binary}" | sha256sum --check
 # amazon-corretto-${jdk_build}-linux-x64.tar.gz: OK
 
-# download the corretto 15 pgp signature.
+# download the corretto 18 pgp signature.
 rm -f ${jdk_sig_file}
 wget --no-verbose https://corretto.aws/downloads/resources/${jdk_build}/${jdk_sig_file}
 
@@ -79,18 +79,18 @@ y2VhKc09A8RwSI69vDs=
 -----END PGP PUBLIC KEY BLOCK-----
 EOF
 
-# import the corretto 15 public key.
+# import the corretto 18 public key.
 gpg --import ${jdk_pgpkey_file}
 
 # verify the downloaded binary using the pgp signature.
 gpg --verify ${jdk_sig_file} ${jdk_binary}
 
-# install amazon corretto 15. ----------------------------------------------------------------------
+# install amazon corretto 18. ----------------------------------------------------------------------
 # remove existing installation.
 rm -f ${jdk_home}
 rm -Rf ${jdk_folder}
 
-# extract corretto 15 binary and create softlink to 'jdk15'.
+# extract corretto 18 binary and create softlink to 'jdk18'.
 tar -zxvf ${jdk_binary} --no-same-owner --no-overwrite-dir
 chown -R root:root ./${jdk_folder}
 ln -s ${jdk_folder} ${jdk_home}
@@ -100,7 +100,7 @@ rm -f ${jdk_binary}
 rm -f ${jdk_sig_file}
 rm -f ${jdk_pgpkey_file}
 
-# set corretto 15 home environment variables.
+# set corretto 18 home environment variables.
 JAVA_HOME=/usr/local/java/${jdk_home}
 export JAVA_HOME
 PATH=${JAVA_HOME}/bin:$PATH

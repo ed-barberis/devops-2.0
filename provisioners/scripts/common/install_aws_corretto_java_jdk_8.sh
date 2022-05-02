@@ -18,8 +18,8 @@
 
 # set amazon corretto 8 installation variables. ----------------------------------------------------
 jdk_home="jdk180"
-jdk_build="8.282.08.1"
-jdk_checksum="d87913dbf7c3f4322a8749b2a7970eea"
+jdk_build="8.332.08.1"
+jdk_sha256="364105ae5825cda8b7426fd819916b78526a279fbfd352bfada490358c3c0888"
 jdk_folder="amazon-corretto-${jdk_build}-linux-x64"
 jdk_binary="amazon-corretto-${jdk_build}-linux-x64.tar.gz"
 #jdk_binary="amazon-corretto-${jdk_build:0:1}-x64-linux-jdk.tar.gz"     # permanent (latest) binary.
@@ -36,8 +36,8 @@ rm -f ${jdk_binary}
 wget --no-verbose https://corretto.aws/downloads/resources/${jdk_build}/${jdk_binary}
 #wget --no-verbose https://corretto.aws/downloads/latest/${jdk_binary}  # permanent (latest) url.
 
-# verify the downloaded binary using the md5 checksum.
-echo "${jdk_checksum} ${jdk_binary}" | md5sum --check -
+# verify the downloaded binary.
+echo "${jdk_sha256} ${jdk_binary}" | sha256sum --check
 # amazon-corretto-${jdk_build}-linux-x64.tar.gz: OK
 
 # download the corretto 8 pgp signature.

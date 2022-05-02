@@ -1,4 +1,4 @@
-# @(#).bashrc       1.0 2020/04/16 SMI
+# @(#).bashrc       1.0 2022/04/13 SMI
 # bash resource configuration for devops users.
 
 # source global definitions.
@@ -13,9 +13,10 @@ fi
 umask 022
 
 # set java home path.
-JAVA_HOME=/usr/local/java/jdk180
-#JAVA_HOME=/usr/local/java/jdk11
-#JAVA_HOME=/usr/local/java/jdk14
+#JAVA_HOME=/usr/local/java/jdk180
+JAVA_HOME=/usr/local/java/jdk11
+#JAVA_HOME=/usr/local/java/jdk17
+#JAVA_HOME=/usr/local/java/jdk18
 export JAVA_HOME
 
 # set ant home path.
@@ -69,7 +70,7 @@ devops_home=/opt/devops-2.0
 export devops_home
 
 # set kubectl config path.
-KUBECONFIG=$KUBECONFIG:$HOME/.kube/config
+KUBECONFIG=$HOME/.kube/config
 export KUBECONFIG
 
 # define prompt code and colors.
