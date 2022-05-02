@@ -7,7 +7,7 @@
 # Platforms and components. The application provides a GUI and command line interface.
 #
 # For more details, please visit:
-#   https://docs.appdynamics.com/display/LATEST/Enterprise+Console
+#   https://docs.appdynamics.com/latest/en/application-performance-monitoring-platform/enterprise-console
 #
 # NOTE: All inputs are defined by external environment variables.
 #       Optional variables have reasonable defaults, but you may override as needed.
@@ -20,18 +20,12 @@ local_hostname="$(hostname --short)"                            # initialize sho
 #local_hostname="$(uname -n)"                                    # initialize hostname.
 
 # set default values for input environment variables if not set. -----------------------------------
-# [MANDATORY] appdynamics account parameters.
-set +x  # temporarily turn command display OFF.
-appd_username="${appd_username:-}"
-appd_password="${appd_password:-}"
-set -x  # turn command display back ON.
-
 # [OPTIONAL] appdynamics platform install parameters [w/ defaults].
 # appd platform install parameters.
 appd_home="${appd_home:-/opt/appdynamics}"
 appd_platform_home="${appd_platform_home:-platform}"
-appd_platform_release="${appd_platform_release:-20.11.8.23902}"
-appd_platform_sha256="${appd_platform_sha256:-b3b6f6a5382de34507e87a7420856404ff512ff62ddfbb96556d612d37c42f65}"
+appd_platform_release="${appd_platform_release:-21.4.14.24728}"
+appd_platform_sha256="${appd_platform_sha256:-6eb22cff81a22545334cf5da5b9d6a05ebea74caeae73ba3c819bf8aff2cd81c}"
 appd_platform_user_name="${appd_platform_user_name:-vagrant}"
 appd_platform_user_group="${appd_platform_user_group:-vagrant}"
 set +x  # temporarily turn command display OFF.
@@ -60,16 +54,12 @@ Usage:
   -------------------------------------
   Description of Environment Variables:
   -------------------------------------
-  [MANDATORY] appdynamics account parameters.
-    [root]# export appd_username="name@example.com"                     # user name for downloading binaries.
-    [root]# export appd_password="password"                             # user password.
-
   [OPTIONAL] appdynamics platform install parameters [w/ defaults].
     [root]# export appd_home="/opt/appdynamics"                         # [optional] appd home (defaults to '/opt/appdynamics').
     [root]# export appd_platform_home="platform"                        # [optional] platform home folder (defaults to 'platform').
-    [root]# export appd_platform_release="20.11.8.23902"                # [optional] platform release (defaults to '20.11.8.23902').
+    [root]# export appd_platform_release="21.4.14.24728"                # [optional] platform release (defaults to '21.4.14.24728').
                                                                         # [optional] platform sha-256 checksum (defaults to published value).
-    [root]# export appd_platform_sha256="b3b6f6a5382de34507e87a7420856404ff512ff62ddfbb96556d612d37c42f65"
+    [root]# export appd_platform_sha256="6eb22cff81a22545334cf5da5b9d6a05ebea74caeae73ba3c819bf8aff2cd81c"
     [root]# export appd_platform_user_name="vagrant"                    # [optional] platform user name (defaults to 'vagrant').
     [root]# export appd_platform_user_group="vagrant"                   # [optional] platform group (defaults to 'vagrant').
     [root]# export appd_platform_admin_username="admin"                 # [optional] platform admin user name (defaults to user 'admin').
@@ -89,21 +79,6 @@ Usage:
     [root]# $0
 EOF
 }
-
-# validate environment variables. ------------------------------------------------------------------
-set +x  # temporarily turn command display OFF.
-if [ -z "$appd_username" ]; then
-  echo "Error: 'appd_username' environment variable not set."
-  usage
-  exit 1
-fi
-
-if [ -z "$appd_password" ]; then
-  echo "Error: 'appd_password' environment variable not set."
-  usage
-  exit 1
-fi
-set -x  # turn command display back ON.
 
 # set appdynamics platform installation variables. -------------------------------------------------
 appd_platform_folder="${appd_home}/${appd_platform_home}"
@@ -209,6 +184,16 @@ if [ "$appd_platform_user_name" != "root" ]; then
   runuser -c "ulimit -S -u" - ${appd_platform_user_name}
 fi
 
+# increase the limits on virtual memory mapping. (needed by the new elasticsearch configuration.)
+sysctlfile="/etc/sysctl.conf"
+maxmapcount="vm.max_map_count=262144"
+if [ -f "$sysctlfile" ]; then
+  sysctl vm.max_map_count
+  grep -qF "${maxmapcount}" ${sysctlfile} || echo "${maxmapcount}" >> ${sysctlfile}
+  sysctl -p /etc/sysctl.conf
+  sysctl vm.max_map_count
+fi
+
 # create temporary download directory. -------------------------------------------------------------
 mkdir -p ${devops_home}/provisioners/scripts/centos/appdynamics
 cd ${devops_home}/provisioners/scripts/centos/appdynamics
@@ -220,36 +205,11 @@ if [ "$appd_platform_user_name" != "root" ]; then
   chown -R ${appd_platform_user_name}:${appd_platform_user_group} ${appd_home}
 fi
 
-# set current date for temporary filename. ---------------------------------------------------------
-curdate=$(date +"%Y-%m-%d.%H-%M-%S")
-
 # download the appdynamics platform installer. -----------------------------------------------------
-# authenticate to the appdynamics domain and store the oauth token to a file.
-post_data_filename="post-data.${curdate}.json"
-oauth_token_filename="oauth-token.${curdate}.json"
-
-rm -f "${post_data_filename}"
-touch "${post_data_filename}"
-chmod 644 "${post_data_filename}"
-
-set +x  # temporarily turn command display OFF.
-echo "{" >> ${post_data_filename}
-echo "  \"username\": \"${appd_username}\"," >> ${post_data_filename}
-echo "  \"password\": \"${appd_password}\"," >> ${post_data_filename}
-echo "  \"scopes\": [\"download\"]" >> ${post_data_filename}
-echo "}" >> ${post_data_filename}
-set -x  # turn command display back ON.
-
-curl --silent --request POST --data @${post_data_filename} https://identity.msrv.saas.appdynamics.com/v2.0/oauth/token --output ${oauth_token_filename}
-oauth_token=$(awk -F '"' '{print $10}' ${oauth_token_filename})
-
 # download the installer.
 rm -f ${appd_platform_installer}
-curl --silent --location --remote-name --header "Authorization: Bearer ${oauth_token}" https://download.appdynamics.com/download/prox/download-file/enterprise-console/${appd_platform_release}/${appd_platform_installer}
+curl --silent --location --remote-name https://download-files.appdynamics.com/download-file/enterprise-console/${appd_platform_release}/${appd_platform_installer}
 chmod 755 ${appd_platform_installer}
-
-rm -f ${post_data_filename}
-rm -f ${oauth_token_filename}
 
 # verify the downloaded binary.
 echo "${appd_platform_sha256} ${appd_platform_installer}" | sha256sum --check
