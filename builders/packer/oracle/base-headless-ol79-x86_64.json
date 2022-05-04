@@ -149,7 +149,7 @@
     "iso_name": "OracleLinux-R7-U9-Server-x86_64-dvd.iso",
     "ks_path": "7/ol79-headless-ks.cfg",
     "memory": "4096",
-    "mirror": "http://yum.oracle.com/ISOS/OracleLinux",
+    "mirror": "https://yum.oracle.com/ISOS/OracleLinux",
     "mirror_directory": "OL7/u9/x86_64",
     "name": "base-headless-ol79",
     "no_proxy": "{{env `no_proxy`}}",

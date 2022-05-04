@@ -132,7 +132,7 @@
     }
   ],
   "variables": {
-    "box_basename": "base-desktop-ol84",
+    "box_basename": "base-desktop-ol85",
     "build_directory": "../../../artifacts/oracle",
     "build_timestamp": "{{isotime \"2019102650405\"}}",
     "cpus": "2",
@@ -145,17 +145,17 @@
     "http_directory": "{{template_dir}}/http",
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
-    "iso_checksum": "a55e97eec90e8c810f23625a349af816e1fdf162428e2bf96b752ff562106d4b",
-    "iso_name": "OracleLinux-R8-U4-x86_64-dvd.iso",
-    "ks_path": "8/ol84-desktop-ks.cfg",
+    "iso_checksum": "45939e85542c19dd519aaad7c4dbe84a6fcadfaca348245f92ae4472fc7f50ac",
+    "iso_name": "OracleLinux-R8-U5-x86_64-dvd.iso",
+    "ks_path": "8/ol85-desktop-ks.cfg",
     "memory": "6144",
-    "mirror": "http://yum.oracle.com/ISOS/OracleLinux",
-    "mirror_directory": "OL8/u4/x86_64",
-    "name": "base-desktop-ol84",
+    "mirror": "https://yum.oracle.com/ISOS/OracleLinux",
+    "mirror_directory": "OL8/u5/x86_64",
+    "name": "base-desktop-ol85",
     "no_proxy": "{{env `no_proxy`}}",
     "user_docker_profile": "true",
     "version": "TIMESTAMP",
-    "vm_description": "Oracle Linux 8.4 (UEKR6) VM image for DevOps 2.0 '{{user `box_basename`}}' desktop box.",
+    "vm_description": "Oracle Linux 8.5 (UEKR6) VM image for DevOps 2.0 '{{user `box_basename`}}' desktop box.",
     "vram": "256"
   }
 }
