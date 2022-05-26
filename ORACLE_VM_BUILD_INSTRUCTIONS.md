@@ -270,10 +270,10 @@ Follow these instructions to build the Oracle Linux 7.9 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 2.7.1 (command-line interface) [Optional]
+-	Amazon AWS CLI 2.7.3 (command-line interface) [Optional]
 -	Ansible 2.9.27
 -	Ant 1.10.12
--	Consul 1.12.0
+-	Consul 1.12.1
 -	Cloud-Init 0.7.9 [Optional]
 -	Docker 19.03.11 CE
 	-	Docker Bash Completion
@@ -298,12 +298,12 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Oracle PaaS Service Manager CLI (psm) 1.1.16 [Optional]
 -	Packer 1.8.0
 -	Python 2.7.5
-	-	Pip 22.1
+	-	Pip 22.1.1
 -	Python 3.6.8
-	-	Pip3 22.1
+	-	Pip3 22.1.1
 -	Scala 3.1.2
 	-	Scala Build Tool (SBT) 1.6.2
--	Terraform 1.2.0
+-	Terraform 1.2.1
 -	Vault 1.10.3
 -	XMLStarlet 1.6.1 (command-line XML processor)
 -	yq 4.25.1 (command-line YAML processor)
@@ -322,15 +322,15 @@ In addition, the following application performance management applications are p
 
 The following developer tools are pre-installed in the __Developer VM__ (desktop) only:
 
--	Apache Tomcat 8.5.78
+-	Apache Tomcat 8.5.79
 -	Apache Tomcat 9.0.63
 -	Apache Tomcat 10.0.21
--	AppDynamics Java Agent 22.4.0 Build 33722
--	AppDynamics Machine Agent 22.4.0 Build 3344
+-	AppDynamics Java Agent 22.5.0 Build 33845
+-	AppDynamics Machine Agent 22.5.0 Build 3361
 	-	AppDynamics AWS EC2 Monitoring Extension 2.1.5 [Optional]
 -	Atom Editor 1.57.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 101.0.4951.64 (64-bit)
+-	Chrome 102.0.5005.61 (64-bit)
 -	Firefox 91.9.0esr (64-bit)
 -	GVim 7.4.160-1
 -	JetBrains IntelliJ IDEA 2022.1.1 (Community Edition)
