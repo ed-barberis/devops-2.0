@@ -41,9 +41,9 @@ jq --version
 #   $ curl 'https://api.github.com/repos/stedolan/jq/commits?per_page=5' | jq '.'
 #
 # Example #2:
-#  The 'curl' request returns a lot of information, so we'll restricty it down
-#  to the most interesting fields. This example takes the first element of the
-#  array and builds a new JSON object out of the 'message' and 'name' fields.
+#   The 'curl' request returns a lot of information, so we'll restricty it down
+#   to the most interesting fields. This example takes the first element of the
+#   array and builds a new JSON object out of the 'message' and 'name' fields.
 #
 #   $ curl 'https://api.github.com/repos/stedolan/jq/commits?per_page=5' | jq '.[0] | {message: .commit.message, name: .commit.committer.name}'
 #   {

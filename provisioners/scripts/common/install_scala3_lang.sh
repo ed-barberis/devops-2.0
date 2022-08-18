@@ -3,11 +3,11 @@
 
 # install scala3-lang. -----------------------------------------------------------------------------
 scala3_home="scala-lang"
-scala3_release="3.1.2"
+scala3_release="3.1.3"
 scala3_dir="scala3-${scala3_release}"
 scala3_folder="${scala3_home}-${scala3_release}"
 scala3_binary="scala3-${scala3_release}.tar.gz"
-scala3_sha256="154f42c1c2fa4be470266b12a9f2052f927873a6599318b6eb1bee6d43cf88bf"
+scala3_sha256="9e1eefdcab77b2d2a9057b3d6f78301591e9c27513c92413f3c353a77093f2d7"
 
 # create scala 3 parent folder.
 mkdir -p /usr/local/scala
