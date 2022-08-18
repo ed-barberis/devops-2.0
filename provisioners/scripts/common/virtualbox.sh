@@ -24,14 +24,22 @@ virtualbox-iso|virtualbox-ovf)
         zypper install -y perl cpp gcc make bzip2 tar kernel-default-devel
     fi
 
-    echo "installing the vbox additions"
-    # this install script fails with non-zero exit codes for no apparent reason so we need better ways to know if it worked
-    /tmp/vbox/VBoxLinuxAdditions.run --nox11 || true
+### echo "installing the vbox additions"
+### # this install script fails with non-zero exit codes for no apparent reason so we need better ways to know if it worked
+### /tmp/vbox/VBoxLinuxAdditions.run --nox11 || true
 
-    if ! modinfo vboxsf >/dev/null 2>&1; then
-         echo "Cannot find vbox kernel module. Installation of guest additions unsuccessful!"
-         exit 1
-    fi
+### # debug code: ed barberis ----------------------------------------------------------------------
+### echo ""
+### echo "Contents of: /var/log/vboxadd-setup.log --------------------------------------------------"
+### cat /var/log/vboxadd-setup.log
+### echo "------------------------------------------------------------------------------------------"
+### echo ""
+### # debug code: ed barberis ----------------------------------------------------------------------
+
+### if ! modinfo vboxsf >/dev/null 2>&1; then
+###      echo "Cannot find vbox kernel module. Installation of guest additions unsuccessful!"
+###      exit 1
+### fi
 
     echo "unmounting and removing the vbox ISO"
     umount /tmp/vbox;
