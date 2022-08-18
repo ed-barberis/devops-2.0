@@ -7,9 +7,9 @@
 # set default values for input environment variables if not set. -----------------------------------
 # tomcat web server install parameters.
 tomcat_home="${tomcat_home:-apache-tomcat-10}"                      # [optional] tomcat home (defaults to 'apache-tomcat-10').
-tomcat_release="${tomcat_release:-10.0.21}"                         # [optional] tomcat release (defaults to '10.0.21').
+tomcat_release="${tomcat_release:-10.0.23}"                         # [optional] tomcat release (defaults to '10.0.23').
                                                                     # [optional] tomcat sha-512 checksum (defaults to published value).
-tomcat_sha512="${tomcat_sha512:-a20d905486fc446bcc67501418520ab8a30425944fe30f30fb3306ef975573cd0a6c439c0b764bcec9144083684668ebe4aa0c80ccc7dd931af6c2f487f2fdba}"
+tomcat_sha512="${tomcat_sha512:-0e0263e8280f2ccfb4bef916444a6105fef689a3d95c334c8a7bfe59f1e3966d48ea624727f1818a4df331a603f1ac5e21b908dda3cae676ddc1aef90c2d12ab}"
 
 tomcat_username="${tomcat_username:-vagrant}"                       # [optional] tomcat user name (defaults to 'vagrant').
 tomcat_group="${tomcat_group:-vagrant}"                             # [optional] tomcat group (defaults to 'vagrant').
