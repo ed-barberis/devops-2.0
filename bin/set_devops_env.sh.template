@@ -31,12 +31,12 @@ export devops_home
 #appd_platform_home="platform"
 #export appd_platform_home
 
-# [optional] platform release (defaults to '21.4.14.24728').
-#appd_platform_release="21.4.14.24728"
+# [optional] platform release (defaults to '21.4.17.24779').
+#appd_platform_release="21.4.17.24779"
 #export appd_platform_release
 
 # [optional] platform sha-256 checksum (defaults to published value).
-#appd_platform_sha256="6eb22cff81a22545334cf5da5b9d6a05ebea74caeae73ba3c819bf8aff2cd81c"
+#appd_platform_sha256="5c9bdc38344817845fe1dc0d4558885f93ed18af0cde79bb531c2a7fbff0fea6"
 #export appd_platform_sha256
 
 # [optional] platform user name (defaults to 'vagrant').
@@ -245,12 +245,12 @@ export appd_controller_tenancy_mode
 #appd_machine_agent_user="vagrant"
 #export appd_machine_agent_user
 
-# [optional] machine agent release (defaults to '22.4.0.3344').
-#appd_machine_agent_release="22.4.0.3344"
+# [optional] machine agent release (defaults to '22.7.0.3411').
+#appd_machine_agent_release="22.7.0.3411"
 #export appd_machine_agent_release
 
 # [optional] machine agent sha-256 checksum (defaults to published value).
-#appd_machine_agent_sha256="ef057f0235620216a8d6bfee62bd57ccdb7f0d1ec79ce30105dfbd39011bb5b5"
+#appd_machine_agent_sha256="eb7c91f3f74acc70d047428134913f69073221eed336b6ce430434994fbd4e03"
 #export appd_machine_agent_sha256
 
 # --------------------------------------------------------------------------------------------------
