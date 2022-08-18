@@ -1,4 +1,4 @@
-#!/bin/sh -eux
+#!/bin/bash -eux
 # create default headless (command-line) environment profile for devops 'root' user.
 
 # set default values for input environment variables if not set. -----------------------------------
@@ -18,8 +18,14 @@ root_bashrc="${devops_home}/provisioners/scripts/common/users/user-root-bashrc.s
 
 # copy environment profiles to user home.
 cd ${user_home}
-cp -p .bash_profile .bash_profile.orig
-cp -p .bashrc .bashrc.orig
+
+if [ -f ".bash_profile" ]; then
+  cp -p .bash_profile .bash_profile.orig
+fi
+
+if [ -f ".bashrc" ]; then
+  cp -p .bashrc .bashrc.orig
+fi
 
 cp -f ${root_bashprofile} .bash_profile
 cp -f ${root_bashrc} .bashrc
@@ -77,7 +83,7 @@ chown ${user_name}:${user_group} ${vimrc_local}
 # download and install useful vim configuration based on developer pair stations at pivotal labs.
 git clone https://github.com/pivotal-legacy/vim-config.git ${user_home}/.vim
 
-# use the stream editor to substitute the terraform plugin into the vim config. --------------------
+# use the stream editor to add the terraform plugin into the vim config. ---------------------------
 vim_config_file="vimrc"
 cd ${vimrc_home}
 cp -p ${vim_config_file} ${vim_config_file}.orig

@@ -115,7 +115,6 @@
     },
     {
       "inline": [
-        "sudo usermod -aG vboxsf vagrant",
         "sudo plymouth-set-default-theme details",
         "sudo dracut -f"
       ],
@@ -129,7 +128,7 @@
     "cpus": "1",
     "devops_home": "/opt/devops-2.0",
     "disk_size": "131072",
-    "docker_completion_release": "20.10.16",
+    "docker_completion_release": "20.10.17",
     "git_revision": "__unknown_git_revision__",
     "guest_additions_url": "",
     "headless": "false",
