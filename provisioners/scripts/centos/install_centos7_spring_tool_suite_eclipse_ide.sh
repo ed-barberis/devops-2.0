@@ -8,18 +8,17 @@ devops_home="${devops_home:-/opt/devops}"                   # [optional] devops 
 
 # install spring tool suite ide. -------------------------------------------------------------------
 sts_home="sts"
-sts_release="4.14.1"
-sts_number="579010855"
-sts_number="1228443608"
-eclipse_version="2022-03"
-eclipse_release="4.23.0"
+sts_release="4.15.3"
+sts_number="537882134"
+eclipse_version="2022-06"
+eclipse_release="4.24.0"
 
 eclipse_dist=$(echo "e${eclipse_release}" | awk -F "." '{printf "%s.%s", $1, $2}')
 sts_family="${sts_release:0:1}"
 sts_folder="${sts_home}-${sts_release}.RELEASE"
 sts_config="SpringToolSuite${sts_family}.ini"
 sts_binary="spring-tool-suite-${sts_family}-${sts_release}.RELEASE-e${eclipse_release}-linux.gtk.x86_64.tar.gz"
-sts_sha1="8db44ba03fb1e42ac53e33978ca4ac4297da9c69"
+sts_sha1="4bf37b168a4b4b3f01cf91483dd0bf52a97aa8c3"
 
 # create spring tool suite home parent folder.
 mkdir -p /usr/local/spring
