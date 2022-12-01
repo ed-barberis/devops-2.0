@@ -270,72 +270,73 @@ Follow these instructions to build the CentOS Linux 7.9 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 2.8.0 (command-line interface) [Optional]
+-	Amazon AWS CLI 2.9.3 (command-line interface) [Optional]
 -	Ansible 2.9.27
 -	Ant 1.10.12
--	Consul 1.13.2
+-	Consul 1.14.2
 -	Cloud-Init 0.7.9 [Optional]
--	Docker 20.10.18 CE
+-	Docker 20.10.21 CE
 	-	Docker Bash Completion
 	-	Docker Compose 1.29.2
 	-	Docker Compose Bash Completion
--	Git 2.38.0
+-	Git 2.38.1
 	-	Git Bash Completion
 	-	Git-Flow 1.12.4 (AVH Edition)
 	-	Git-Flow Bash Completion
--	Go 1.19.2
--	Gradle 7.5.1
--	Groovy 4.0.5
--	Java SE JDK 8 Update 342 (Amazon Corretto 8)
--	Java SE JDK 11.0.16 (Amazon Corretto 11)
--	Java SE JDK 17.0.4 (Amazon Corretto 17)
--	Java SE JDK 19.0.0 (Amazon Corretto 19)
+-	Go 1.19.3
+-	Gradle 7.6
+-	Groovy 4.0.6
+-	Java SE JDK 8 Update 352 (Amazon Corretto 8)
+-	Java SE JDK 11.0.17 (Amazon Corretto 11)
+-	Java SE JDK 17.0.5 (Amazon Corretto 17)
+-	Java SE JDK 19.0.1 (Amazon Corretto 19)
 -	JMESPath jp 0.2.1 (command-line JSON processor)
 -	jq 1.6 (command-line JSON processor)
 -	Maven 3.8.6
--	MySQL Community Server 5.7.38
--	Packer 1.8.3
+-	MySQL Community Server 5.7.40
+-	Packer 1.8.4
 -	Python 2.7.5
-	-	Pip 22.2.2
+	-	Pip 22.3.1
 -	Python 3.6.8
-	-	Pip3 22.2.2
--	Scala 3.2.0
--	Scala 2.12.16
-	-	Scala Build Tool (SBT) 1.7.2
--	Terraform 1.3.1
--	Vault 1.11.4
+	-	Pip3 22.3.1
+-	Scala 3.2.1
+-	Scala 2.12.17
+	-	Scala Build Tool (SBT) 1.8.0
+-	Terraform 1.3.6
+-	Vault 1.12.2
 -	XMLStarlet 1.6.1 (command-line XML processor)
--	yq 4.28.1 (command-line YAML processor)
+-	yq 4.30.5 (command-line YAML processor)
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 15.4.2
--	Jenkins 2.361.2 LTS
+-	GitLab Community Edition 15.6.1
+-	Jenkins 2.375.1 LTS
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
--	AppDynamics Enterprise Console 21.4.17 Build 24779
-	-	AppDynamics Controller 21.4.17 Build 1609
+-	AppDynamics Enterprise Console 21.4.19 Build 24836
+	-	AppDynamics Controller 21.4.19 Build 1681
 	-	AppDynamics Events Service 4.5.2 Build 20670
--	MySQL Shell 8.0.30
+-	MySQL Shell 8.0.31
 
 The following developer tools are pre-installed in the __Developer VM__ (desktop) only:
 
--	Apache Tomcat 8.5.82
--	Apache Tomcat 9.0.67
--	Apache Tomcat 10.0.26
--	AppDynamics Java Agent 22.9.1 Build 34265
--	AppDynamics Machine Agent 22.9.0 Build 3458
+-	Apache Tomcat 8.5.84
+-	Apache Tomcat 9.0.69
+-	Apache Tomcat 10.0.27
+-	Apache Tomcat 10.1.2
+-	AppDynamics Java Agent 22.11.0 Build 34486
+-	AppDynamics Machine Agent 22.11.0 Build 3514
 	-	AppDynamics AWS EC2 Monitoring Extension 2.1.5 [Optional]
 -	Atom Editor 1.57.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 106.0.5249.91 (64-bit)
+-	Chrome 108.0.5359.71 (64-bit)
 -	Firefox 91.13.0esr (64-bit)
 -	GVim 7.4.160-1
--	JetBrains IntelliJ IDEA 2022.2.2 (Community Edition)
--	JetBrains IntelliJ IDEA 2022.2.2 (Ultimate Edition)
--	JetBrains WebStorm 2022.2.2 (JavaScript IDE)
--	Postman 10.0.15
--	Spring Tool Suite 4 [4.16.0] IDE (Eclipse 2022-09 [4.25.0])
--	Sublime Text 4 (Build 4126)
--	Visual Studio Code 1.71.2
+-	JetBrains IntelliJ IDEA 2022.3 (Community Edition)
+-	JetBrains IntelliJ IDEA 2022.3 (Ultimate Edition)
+-	JetBrains WebStorm 2022.3 (JavaScript IDE)
+-	Postman 10.5.7
+-	Spring Tool Suite 4 [4.16.1] IDE (Eclipse 2022-09 [4.25.0])
+-	Sublime Text 4 (Build 4142)
+-	Visual Studio Code 1.73.1
