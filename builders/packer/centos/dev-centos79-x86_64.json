@@ -40,7 +40,7 @@
     {
       "inline": [
         "sudo mkdir -p {{user `devops_home`}}/provisioners/scripts",
-        "sudo chown -R vagrant:vagrant {{user `devops_home`}}"
+        "sudo chown -R {{user `vbox_username`}}:{{user `vbox_group`}} {{user `devops_home`}}"
       ],
       "type": "shell"
     },
@@ -50,7 +50,9 @@
       "type": "file"
     },
     {
-      "inline": ["sudo chown -R root:root {{user `devops_home`}}"],
+      "inline": [
+        "sudo chown -R root:root {{user `devops_home`}}"
+      ],
       "type": "shell"
     },
     {
@@ -87,17 +89,28 @@
         "appd_machine_agent_node_name={{user `appd_machine_agent_node_name`}}",
         "AWS_ACCESS_KEY_ID={{user `aws_access_key`}}",
         "AWS_SECRET_ACCESS_KEY={{user `aws_secret_key`}}",
+        "AWS_SESSION_TOKEN={{user `aws_session_token`}}",
         "aws_cli_user_config={{user `aws_cli_user_config`}}",
         "aws_cli_default_region_name={{user `aws_cli_default_region_name`}}",
         "aws_cli_default_output_format={{user `aws_cli_default_output_format`}}",
         "devops_home={{user `devops_home`}}",
-        "user_name=vagrant",
-        "HOME_DIR=/home/vagrant",
+        "HOME_DIR=/home/{{user `vbox_username`}}",
         "http_proxy={{user `http_proxy`}}",
         "https_proxy={{user `https_proxy`}}",
-        "no_proxy={{user `no_proxy`}}"
+        "no_proxy={{user `no_proxy`}}",
+        "tomcat_release={{user `tomcat_release`}}",
+        "tomcat_sha512={{user `tomcat_sha512`}}",
+        "tomcat_username={{user `vbox_username`}}",
+        "tomcat_group={{user `vbox_group`}}",
+        "tomcat_admin_roles={{user `tomcat_admin_roles`}}",
+        "tomcat_jdk_home={{user `tomcat_jdk_home`}}",
+        "tomcat_catalina_opts={{user `tomcat_catalina_opts`}}",
+        "tomcat_enable_service={{user `tomcat_enable_service`}}",
+        "tomcat_manager_apps_remote_access={{user `tomcat_manager_apps_remote_access`}}",
+        "user_name={{user `vbox_username`}}",
+        "user_group={{user `vbox_group`}}"
       ],
-      "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
+      "execute_command": "echo '{{user `vbox_username`}}' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "expect_disconnect": true,
       "pause_before": "120s",
       "scripts": [
@@ -122,7 +135,7 @@
         "{{template_dir}}/../../../provisioners/scripts/common/install_hashicorp_vault.sh",
         "{{template_dir}}/../../../provisioners/scripts/centos/install_centos7_git.sh",
         "{{template_dir}}/../../../provisioners/scripts/common/install_git_flow.sh",
-        "{{template_dir}}/../../../provisioners/scripts/centos/install_centos7_apache_tomcat_8.sh",
+        "{{template_dir}}/../../../provisioners/scripts/centos/install_centos7_apache_tomcat_9.sh",
         "{{template_dir}}/../../../provisioners/scripts/common/install_appdynamics_java_agent.sh",
         "{{template_dir}}/../../../provisioners/scripts/centos/install_centos7_appdynamics_machine_agent.sh",
         "{{template_dir}}/../../../provisioners/scripts/centos/install_centos7_atom_editor.sh",
@@ -167,6 +180,7 @@
     "appd_machine_agent_node_name": "{{env `appd_machine_agent_node_name`}}",
     "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
     "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
+    "aws_session_token": "{{env `AWS_SESSION_TOKEN`}}",
     "aws_cli_user_config": "{{env `aws_cli_user_config`}}",
     "aws_cli_default_region_name": "{{env `aws_cli_default_region_name`}}",
     "aws_cli_default_output_format": "{{env `aws_cli_default_output_format`}}",
@@ -183,6 +197,15 @@
     "memory": "6144",
     "name": "dev-centos79",
     "no_proxy": "{{env `no_proxy`}}",
+    "tomcat_release": "9.0.50",
+    "tomcat_sha512": "06cd51abbeebba9385f594ed092bd30e510b6314c90c421f4be5d8bec596c6a177785efc2ce27363813f6822af89fc88a2072d7b051960e5387130faf69c447b",
+    "tomcat_admin_roles": "manager-gui",
+    "tomcat_jdk_home": "/usr/local/java/jdk180",
+    "tomcat_catalina_opts": "-Xms1024M -Xmx4096M -server -XX:+UseParallelGC",
+    "tomcat_enable_service": "false",
+    "tomcat_manager_apps_remote_access": "true",
+    "vbox_username": "vagrant",
+    "vbox_group": "vagrant",
     "version": "TIMESTAMP",
     "vm_description": "Centos Linux 7.9 VM image for DevOps 2.0 '{{user `box_basename`}}' desktop box.",
     "vram": "256"

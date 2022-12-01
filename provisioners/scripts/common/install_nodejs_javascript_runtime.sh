@@ -24,7 +24,9 @@
 
 # set default values for input environment variables if not set. -----------------------------------
 # [OPTIONAL] node.js nvm install parameters [w/ defaults].
-user_name="${user_name:-vagrant}"
+user_name="${user_name:-centos}"
+nodejs_release="${nodejs_release:-16}"
+npm_release="${npm_release:-latest}"
 
 # install nvm (node version mannager). -------------------------------------------------------------
 nvm_binary="nvm-linux-amd64"
@@ -35,7 +37,7 @@ curdate=$(date +"%Y-%m-%d.%H-%M-%S")
 # retrieve version number of latest release.
 curl --silent --dump-header curl-nvm.${curdate}.out https://github.com/nvm-sh/nvm/releases/latest --output /dev/null
 nvm_release=$(awk '{ sub("\r$", ""); print }' curl-nvm.${curdate}.out | awk '/Location/ {print $2}' | awk -F "/" '{print $8}')
-nvm_release="v0.39.1"
+nvm_release="v0.39.2"
 rm -f curl-nvm.${curdate}.out
 
 # install nvm.
@@ -46,14 +48,16 @@ runuser -c "nvm --version" - ${user_name}
 
 # install node.js javascript runtime. --------------------------------------------------------------
 # install current node.js lts (long term support) version.
-runuser -c "nvm install --lts" - ${user_name}
+runuser -c "nvm install ${nodejs_release}" - ${user_name}
+#runuser -c "nvm install --lts" - ${user_name}
 
 # verify node installation.
 runuser -c "node --version" - ${user_name}
 runuser -c "npm --version" - ${user_name}
 
 # upgrade npm (node package manager) to latest version. --------------------------------------------
-runuser -c "npm install -g npm@latest" - ${user_name}
+runuser -c "npm install -g npm@${npm_release}" - ${user_name}
+#runuser -c "npm install -g npm@latest" - ${user_name}
 
 # verify npm installation.
 runuser -c "npm --version" - ${user_name}
