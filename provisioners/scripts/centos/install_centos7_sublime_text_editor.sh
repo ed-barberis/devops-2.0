@@ -5,7 +5,7 @@
 devops_home="${devops_home:-/opt/devops}"                   # [optional] devops home (defaults to '/opt/devops').
 
 # install sublime text editor. ---------------------------------------------------------------------
-sublimerelease="4126"
+sublimerelease="4143"
 sublimefolder="sublime_text"
 sublimebinary="${sublimefolder}_build_${sublimerelease}_x64.tar.xz"
 
