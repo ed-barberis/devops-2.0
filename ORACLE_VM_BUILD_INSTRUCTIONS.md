@@ -270,7 +270,7 @@ Follow these instructions to build the Oracle Linux 7.9 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 2.9.3 (command-line interface) [Optional]
+-	Amazon AWS CLI 2.9.4 (command-line interface) [Optional]
 -	Ansible 2.9.27
 -	Ant 1.10.12
 -	Consul 1.14.2
@@ -316,15 +316,15 @@ In addition, the following continuous integration and continuous delivery (CI/CD
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
--	AppDynamics Enterprise Console 21.4.19 Build 24836
-	-	AppDynamics Controller 21.4.19 Build 1681
+-	AppDynamics Enterprise Console 21.4.20 Build 24850
+	-	AppDynamics Controller 21.4.20 Build 1696
 	-	AppDynamics Events Service 4.5.2 Build 20670
 -	MySQL Shell 8.0.31
 
 The following developer tools are pre-installed in the __Developer VM__ (desktop) only:
 
 -	Apache Tomcat 8.5.84
--	Apache Tomcat 9.0.69
+-	Apache Tomcat 9.0.70
 -	Apache Tomcat 10.0.27
 -	Apache Tomcat 10.1.2
 -	AppDynamics Java Agent 22.11.0 Build 34486
@@ -332,7 +332,7 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 	-	AppDynamics AWS EC2 Monitoring Extension 2.1.5 [Optional]
 -	Atom Editor 1.57.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 108.0.5359.71 (64-bit)
+-	Chrome 108.0.5359.94 (64-bit)
 -	Firefox 91.13.0esr (64-bit)
 -	GVim 7.4.160-1
 -	JetBrains IntelliJ IDEA 2022.3 (Community Edition)
