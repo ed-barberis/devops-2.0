@@ -25,8 +25,8 @@ tomcat_home="${tomcat_home:-apache-tomcat-10}"                      # [optional]
 tomcat_release="${tomcat_release:-10.0.27}"                         # [optional] tomcat release (defaults to '10.0.27').
                                                                     # [optional] tomcat sha-512 checksum (defaults to published value).
 tomcat_sha512="${tomcat_sha512:-33c51be9410eaa0ce1393f8ce80a42a9639b68c7b7af1e9e642045614c170a12f8841ce4142933d1f4d18ba7efc85c630f91c312e959dcdc64aae396c46bdd97}"
-tomcat_username="${tomcat_username:-centos}"                        # [optional] tomcat user name (defaults to 'centos').
-tomcat_group="${tomcat_group:-centos}"                              # [optional] tomcat group (defaults to 'centos').
+tomcat_username="${tomcat_username:-vagrant}"                       # [optional] tomcat user name (defaults to 'vagrant').
+tomcat_group="${tomcat_group:-vagrant}"                             # [optional] tomcat group (defaults to 'vagrant').
 
 # [OPTIONAL] tomcat web server config parameters [w/ defaults].
 tomcat_admin_username="${tomcat_admin_username:-admin}"             # [optional] tomcat admin user name (defaults to 'admin').
