@@ -311,7 +311,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 15.6.1
+-	GitLab Community Edition 15.6.2
 -	Jenkins 2.375.1 LTS
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
@@ -338,7 +338,7 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 -	JetBrains IntelliJ IDEA 2022.3 (Community Edition)
 -	JetBrains IntelliJ IDEA 2022.3 (Ultimate Edition)
 -	JetBrains WebStorm 2022.3 (JavaScript IDE)
--	Postman 10.5.7
+-	Postman 10.5.8
 -	Spring Tool Suite 4 [4.16.1] IDE (Eclipse 2022-09 [4.25.0])
 -	Sublime Text 4 (Build 4142)
 -	Visual Studio Code 1.73.1
