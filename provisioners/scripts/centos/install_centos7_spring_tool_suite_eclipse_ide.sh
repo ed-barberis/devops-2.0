@@ -8,17 +8,17 @@ devops_home="${devops_home:-/opt/devops}"                   # [optional] devops 
 
 # install spring tool suite ide. -------------------------------------------------------------------
 sts_home="sts"
-sts_release="4.16.1"
-sts_number="527379030"
-eclipse_version="2022-09"
-eclipse_release="4.25.0"
+sts_release="4.17.0"
+sts_number="516875926"
+eclipse_version="2022-12"
+eclipse_release="4.26.0"
 
 eclipse_dist=$(echo "e${eclipse_release}" | awk -F "." '{printf "%s.%s", $1, $2}')
 sts_family="${sts_release:0:1}"
 sts_folder="${sts_home}-${sts_release}.RELEASE"
 sts_config="SpringToolSuite${sts_family}.ini"
 sts_binary="spring-tool-suite-${sts_family}-${sts_release}.RELEASE-e${eclipse_release}-linux.gtk.x86_64.tar.gz"
-sts_sha1="0db68a248a88e799cbec377696ea5b5b17bee699"
+sts_sha256="6c12720467f9ffa72302021aae4f75da715a262db39f9d7657dae243e466fcb9"
 
 # create spring tool suite home parent folder.
 mkdir -p /usr/local/spring
@@ -28,7 +28,7 @@ cd /usr/local/spring
 wget --no-verbose https://download.springsource.com/release/STS${sts_family}/${sts_release}.RELEASE/dist/${eclipse_dist}/${sts_binary}
 
 # verify the downloaded binary.
-echo "${sts_sha1} ${sts_binary}" | sha1sum --check
+echo "${sts_sha256} ${sts_binary}" | sha256sum --check
 # spring-tool-suite-${sts_family}-${sts_release}.RELEASE-e${eclipse_release}-linux.gtk.x86_64.tar.gz: OK
 
 # extract spring tool suite binary.

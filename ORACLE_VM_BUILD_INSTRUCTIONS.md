@@ -283,7 +283,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
 	-	Git Bash Completion
 	-	Git-Flow 1.12.4 (AVH Edition)
 	-	Git-Flow Bash Completion
--	Go 1.19.3
+-	Go 1.19.4
 -	Gradle 7.6
 -	Groovy 4.0.6
 -	Java SE JDK 8 Update 352 (Amazon Corretto 8)
@@ -339,6 +339,6 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 -	JetBrains IntelliJ IDEA 2022.3 (Ultimate Edition)
 -	JetBrains WebStorm 2022.3 (JavaScript IDE)
 -	Postman 10.5.8
--	Spring Tool Suite 4 [4.16.1] IDE (Eclipse 2022-09 [4.25.0])
--	Sublime Text 4 (Build 4142)
+-	Spring Tool Suite 4 [4.17.0] IDE (Eclipse 2022-12 [4.26.0])
+-	Sublime Text 4 (Build 4143)
 -	Visual Studio Code 1.73.1
