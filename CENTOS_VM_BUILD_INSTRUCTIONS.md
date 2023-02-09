@@ -302,7 +302,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Scala 3.2.2
 -	Scala 2.12.17
 	-	Scala Build Tool (SBT) 1.8.2
--	Terraform 1.3.7
+-	Terraform 1.3.8
 -	Vault 1.12.3
 -	XMLStarlet 1.6.1 (command-line XML processor)
 -	yq 4.30.8 (command-line YAML processor)
