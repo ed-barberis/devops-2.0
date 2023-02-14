@@ -124,7 +124,6 @@
     },
     {
       "inline": [
-        "sudo usermod -aG vboxsf vagrant",
         "sudo plymouth-set-default-theme details",
         "sudo dracut -f"
       ],
