@@ -28,6 +28,7 @@
         ["modifyvm", "{{.Name}}", "--clipboard-mode", "bidirectional"],
         ["modifyvm", "{{.Name}}", "--draganddrop", "bidirectional"],
         ["modifyvm", "{{.Name}}", "--description", "{{user `vm_description`}}"],
+        ["modifyvm", "{{.Name}}", "--nat-localhostreachable1", "on"],
         ["setextradata", "{{.Name}}", "GUI/ScaleFactor", "1.75"]
       ],
       "virtualbox_version_file": ".vbox_version",
@@ -128,7 +129,7 @@
     "cpus": "1",
     "devops_home": "/opt/devops-2.0",
     "disk_size": "131072",
-    "docker_completion_release": "23.0.0",
+    "docker_completion_release": "23.0.1",
     "git_revision": "__unknown_git_revision__",
     "guest_additions_url": "",
     "headless": "false",

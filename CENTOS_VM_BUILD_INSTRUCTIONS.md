@@ -137,7 +137,7 @@ Follow these instructions to build the CentOS Linux 7.9 VM images.
     ```bash
     $ vagrant ssh
     dev[vagrant]$ docker --version
-    Docker version 23.0.0, build d7573ab
+    Docker version 23.0.1, build a5ee5b1
 
     dev[vagrant]$ ansible --version
     ansible 2.9.27
@@ -168,7 +168,7 @@ Follow these instructions to build the CentOS Linux 7.9 VM images.
     ```bash
     $ vagrant ssh
     dev[vagrant]$ docker --version
-    Docker version 23.0.0, build d7573ab
+    Docker version 23.0.1, build a5ee5b1
 
     ops[vagrant]$ ansible --version
     ansible 2.9.27
@@ -275,16 +275,16 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Ant 1.10.13
 -	Consul 1.14.4
 -	Cloud-Init 0.7.9 [Optional]
--	Docker 23.0.0 CE
+-	Docker 23.0.1 CE
 	-	Docker Bash Completion
 	-	Docker Compose 1.29.2
 	-	Docker Compose Bash Completion
--	Git 2.39.1
+-	Git 2.39.2
 	-	Git Bash Completion
 	-	Git-Flow 1.12.4 (AVH Edition)
 	-	Git-Flow Bash Completion
--	Go 1.20
--	Gradle 7.6
+-	Go 1.20.1
+-	Gradle 8.0
 -	Groovy 4.0.9
 -	Java SE JDK 8 Update 362 (Amazon Corretto 8)
 -	Java SE JDK 11.0.18 (Amazon Corretto 11)
@@ -304,12 +304,13 @@ The following command-line tools and utilities are pre-installed in the __Develo
 	-	Scala Build Tool (SBT) 1.8.2
 -	Terraform 1.3.8
 -	Vault 1.12.3
+-	VIM - Vi IMproved 9.0
 -	XMLStarlet 1.6.1 (command-line XML processor)
 -	yq 4.30.8 (command-line YAML processor)
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 15.8.1
+-	GitLab Community Edition 15.8.2
 -	Jenkins 2.375.3 LTS
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
@@ -330,13 +331,12 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 	-	AppDynamics AWS EC2 Monitoring Extension 2.1.5 [Optional]
 -	Atom Editor 1.57.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 110.0.5481.77 (64-bit)
--	Firefox 102.5.0esr (64-bit)
--	GVim 7.4.160-1
+-	Chrome 110.0.5481.100 (64-bit)
+-	Firefox 102.7.0esr (64-bit)
 -	JetBrains IntelliJ IDEA 2022.3.2 (Community Edition)
 -	JetBrains IntelliJ IDEA 2022.3.2 (Ultimate Edition)
 -	JetBrains WebStorm 2022.3.2 (JavaScript IDE)
--	Postman 10.9.4
+-	Postman 10.10.4
 -	Spring Tool Suite 4 [4.17.2] IDE (Eclipse 2022-12 [4.26.0])
 -	Sublime Text 4 (Build 4143)
--	Visual Studio Code 1.75.0
+-	Visual Studio Code 1.75.1
