@@ -31,7 +31,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 	-	vagrant-share 2.0.0
 	-	vagrant-vbguest 0.31.0
 -	Packer 1.8.5
--	Git 2.39.1
+-	Git 2.39.2
 -	jq 1.6
 -	Optional Add-ons
 	-	wget 1.21.3
@@ -72,7 +72,7 @@ Perform the following steps to install the needed software:
 6.	Install [Packer 1.8.5](https://packer.io/) for macOS 64-bit.  
     `$ brew install hashicorp/tap/packer`  
 
-7.	Install [Git 2.39.1](https://git-scm.com/downloads) for macOS 64-bit.  
+7.	Install [Git 2.39.2](https://git-scm.com/downloads) for macOS 64-bit.  
     `$ brew install git`  
 
 8.	Install [jq 1.6](https://stedolan.github.io/jq/) for macOS 64-bit.  
@@ -103,7 +103,7 @@ Perform the following steps to install the needed software:
     1.8.5
 
     $ git --version
-    git version 2.39.1
+    git version 2.39.2
 
     $ jq --version
     jq-1.6
@@ -127,7 +127,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 	-	vagrant-share 2.0.0
 	-	vagrant-vbguest 0.31.0
 -	Packer 1.8.5
--	Git 2.39.1
+-	Git 2.39.2
 -	jq 1.6
 -	Optional Add-ons for Git Bash
 	-	wget 1.9.1
@@ -154,7 +154,7 @@ Perform the following steps to install the needed software:
     Create suggested install folder and extract contents of ZIP file to:  
     `C:\HashiCorp\Packer\bin`  
 
-5.	Install [Git 2.39.1 for Windows 64-bit](https://github.com/git-for-windows/git/releases/download/v2.39.1.windows.1/Git-2.39.1-64-bit.exe).
+5.	Install [Git 2.39.2 for Windows 64-bit](https://github.com/git-for-windows/git/releases/download/v2.39.2.windows.1/Git-2.39.2-64-bit.exe).
 
 6.	Install [jq 1.6](https://github.com/stedolan/jq/releases/download/jq-1.6/jq-win64.exe) for Windows 64-bit.  
     Create suggested install folder and rename binary to:  
@@ -202,7 +202,7 @@ Perform the following steps to install the needed software:
     1.8.5
 
     $ git --version
-    git version 2.39.1.windows.1
+    git version 2.39.2.windows.1
 
     $ jq --version
     jq-1.6
