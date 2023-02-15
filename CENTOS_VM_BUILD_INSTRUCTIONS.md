@@ -310,13 +310,13 @@ The following command-line tools and utilities are pre-installed in the __Develo
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 15.8.2
+-	GitLab Community Edition 15.8.3
 -	Jenkins 2.375.3 LTS
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
--	AppDynamics Enterprise Console 23.1.0 Build 5
-	-	AppDynamics Controller 23.1.0 Build 17
+-	AppDynamics Enterprise Console 23.1.1 Build 18
+	-	AppDynamics Controller 23.1.1 Build 25
 	-	AppDynamics Events Service 4.5.2 Build 20822
 -	MySQL Shell 8.0.32
 
