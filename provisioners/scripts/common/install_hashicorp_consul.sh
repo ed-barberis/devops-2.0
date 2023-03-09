@@ -20,9 +20,9 @@
 #---------------------------------------------------------------------------------------------------
 
 # install hashicorp consul. ------------------------------------------------------------------------
-consul_release="1.14.4"
+consul_release="1.15.1"
 consul_binary="consul_${consul_release}_linux_amd64.zip"
-consul_sha256="eafb7c853ce9cc1536bffa99325f8df365ff70a3b83c037836e63964a8adfd7a"
+consul_sha256="23f7eb0461dd01a95c5d56472b91c22d5dacec84f31f1846c0c9f9621f98f29f"
 
 # create local bin directory (if needed).
 mkdir -p /usr/local/bin
