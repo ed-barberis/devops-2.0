@@ -1,6 +1,6 @@
 #!/bin/bash -eux
 #---------------------------------------------------------------------------------------------------
-# Install MongoDB Community Server 5.0 on CentOS Linux 7.x.
+# Install MongoDB Community Server 6.0 on CentOS Linux 7.x.
 #
 # MongoDB is a document database designed for ease of development and scaling. It is
 # source-available, cross-platform, and classified as a NoSQL database program, MongoDB uses
@@ -31,13 +31,13 @@ devops_home="${devops_home:-/opt/devops}"                                   # [o
 
 # prepare the mongodb repository for installation. -------------------------------------------------
 # create the mongodb repository.
-cat <<EOF > /etc/yum.repos.d/mongodb-org-5.0.repo
-[mongodb-org-5.0]
+cat <<EOF > /etc/yum.repos.d/mongodb-org-6.0.repo
+[mongodb-org-6.0]
 name=MongoDB Repository
-baseurl=https://repo.mongodb.org/yum/redhat/\$releasever/mongodb-org/5.0/x86_64/
+baseurl=https://repo.mongodb.org/yum/redhat/\$releasever/mongodb-org/6.0/x86_64/
 gpgcheck=1
 enabled=1
-gpgkey=https://www.mongodb.org/static/pgp/server-5.0.asc
+gpgkey=https://www.mongodb.org/static/pgp/server-6.0.asc
 EOF
 
 # install the mongodb database. --------------------------------------------------------------------
@@ -60,9 +60,6 @@ systemctl status mongod
 # set mongodb shell environment variables.
 PATH=/usr/bin:$PATH
 export PATH
-
-# verify mongodb version.
-mongo --version
 
 # verify mongodb shell version.
 mongosh --version
