@@ -270,7 +270,7 @@ Follow these instructions to build the Oracle Linux 7.9 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 2.11.1 (command-line interface) [Optional]
+-	Amazon AWS CLI 2.11.2 (command-line interface) [Optional]
 -	Ansible 2.9.27
 -	Ant 1.10.13
 -	Consul 1.15.1
@@ -279,13 +279,13 @@ The following command-line tools and utilities are pre-installed in the __Develo
 	-	Docker Bash Completion
 	-	Docker Compose 1.29.2
 	-	Docker Compose Bash Completion
--	Git 2.39.2
+-	Git 2.40.0
 	-	Git Bash Completion
 	-	Git-Flow 1.12.4 (AVH Edition)
 	-	Git-Flow Bash Completion
 -	Go 1.20.2
 -	Gradle 8.0.2
--	Groovy 4.0.9
+-	Groovy 4.0.10
 -	Java SE JDK 8 Update 362 (Amazon Corretto 8)
 -	Java SE JDK 11.0.18 (Amazon Corretto 11)
 -	Java SE JDK 17.0.6 (Amazon Corretto 17)
@@ -312,7 +312,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 15.9.2
+-	GitLab Community Edition 15.9.3
 -	Jenkins 2.387.1 LTS
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
@@ -341,4 +341,4 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 -	Postman 10.11.2
 -	Spring Tool Suite 4 [4.17.2] IDE (Eclipse 2022-12 [4.26.0])
 -	Sublime Text 4 (Build 4143)
--	Visual Studio Code 1.76.0
+-	Visual Studio Code 1.76.1
