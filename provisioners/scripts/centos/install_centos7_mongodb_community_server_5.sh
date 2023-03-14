@@ -24,8 +24,8 @@ mongodb_server_admin_password="${mongodb_server_admin_password:-welcome1}"      
 set -x  # turn command display back ON.
 mongodb_enable_access_control="${mongodb_enable_access_control:-false}"         # [optional] enable access control for mongodb (defaults to 'false').
 
-# [OPTIONAL] fso lab devops home folder [w/ default].
-devops_home="${devops_home:-/opt/fso-lab-devops}"                               # [optional] devops home (defaults to '/opt/fso-lab-devops').
+# [OPTIONAL] devops home folder [w/ default].
+devops_home="${devops_home:-/opt/devops}"                                       # [optional] devops home (defaults to '/opt/devops').
 
 # prepare the mongodb repository for installation. -------------------------------------------------
 # create the mongodb repository.

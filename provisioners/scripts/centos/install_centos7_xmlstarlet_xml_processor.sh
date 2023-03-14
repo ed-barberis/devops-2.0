@@ -2,7 +2,7 @@
 # install xmlstarlet command-line xml processor for linux 64-bit.
 
 # set default value for devops home environment variable if not set. -------------------------------
-devops_home="${devops_home:-/opt/fso-lab-devops}"               # [optional] devops home (defaults to '/opt/fso-lab-devops').
+devops_home="${devops_home:-/opt/devops}"   # [optional] devops home (defaults to '/opt/devops').
 
 # create scripts directory (if needed). ------------------------------------------------------------
 mkdir -p ${devops_home}/provisioners/scripts/centos
