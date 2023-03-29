@@ -6,12 +6,12 @@ devops_home="${devops_home:-/opt/devops}"                   # [optional] devops 
 
 # install intellij idea community edition. ---------------------------------------------------------
 idea_home="idea-IC"
-idea_release="2022.3.3"
-idea_build="223.8836.41"
+idea_release="2023.1"
+idea_build="231.8109.175"
 
 idea_folder="idea-IC-${idea_build}"
 idea_binary="ideaIC-${idea_release}.tar.gz"
-idea_sha256="699492fb5a9de750250fdaadca5fc9212114ee445a50875b59bbc99f0187c2e4"
+idea_sha256="e6fe45c9df8e763ee3278444b5fb1003910c436752e83221e0303a62c5e81eaa"
 
 # create jetbrains home parent folder.
 mkdir -p /usr/local/jetbrains
