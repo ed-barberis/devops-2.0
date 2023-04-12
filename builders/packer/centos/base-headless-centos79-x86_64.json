@@ -129,7 +129,7 @@
     "cpus": "1",
     "devops_home": "/opt/devops-2.0",
     "disk_size": "131072",
-    "docker_completion_release": "23.0.2",
+    "docker_completion_release": "23.0.3",
     "git_revision": "__unknown_git_revision__",
     "guest_additions_url": "",
     "headless": "false",

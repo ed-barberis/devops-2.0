@@ -270,7 +270,7 @@ Follow these instructions to build the Oracle Linux 7.9 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 2.11.8 (command-line interface) [Optional]
+-	Amazon AWS CLI 2.11.11 (command-line interface) [Optional]
 -	Ansible 2.9.27
 -	Ant 1.10.13
 -	Consul 1.15.2
@@ -283,13 +283,13 @@ The following command-line tools and utilities are pre-installed in the __Develo
 	-	Git Bash Completion
 	-	Git-Flow 1.12.4 (AVH Edition)
 	-	Git-Flow Bash Completion
--	Go 1.20.2
+-	Go 1.20.3
 -	Gradle 8.0.2
 -	Groovy 4.0.11
 -	Java SE JDK 8 Update 362 (Amazon Corretto 8)
 -	Java SE JDK 11.0.18 (Amazon Corretto 11)
 -	Java SE JDK 17.0.6 (Amazon Corretto 17)
--	Java SE JDK 19.0.2 (Amazon Corretto 19)
+-	Java SE JDK 20.0.0 (Amazon Corretto 20)
 -	JMESPath jp 0.2.1 (command-line JSON processor)
 -	jq 1.6 (command-line JSON processor)
 -	Maven 3.9.1
@@ -308,18 +308,18 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Vault 1.13.0
 -	VIM - Vi IMproved 9.0
 -	XMLStarlet 1.6.1 (command-line XML processor)
--	yq 4.33.2 (command-line YAML processor)
+-	yq 4.33.3 (command-line YAML processor)
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 15.10.1
--	Jenkins 2.387.1 LTS
+-	GitLab Community Edition 15.10.2
+-	Jenkins 2.387.2 LTS
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
 -	AppDynamics Enterprise Console 23.1.2 Build 22
 	-	AppDynamics Controller 23.1.2 Build 53
-	-	AppDynamics Events Service 4.5.2 Build 20822
+	-	AppDynamics Events Service 4.5.2 Build 20827
 -	MySQL Shell 8.0.32
 
 The following developer tools are pre-installed in the __Developer VM__ (desktop) only:
@@ -333,12 +333,12 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 	-	AppDynamics AWS EC2 Monitoring Extension 2.1.5 [Optional]
 -	Atom Editor 1.57.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 111.0.5563.146 (64-bit)
+-	Chrome 112.0.5615.49 (64-bit)
 -	Firefox 102.8.0esr (64-bit)
 -	JetBrains IntelliJ IDEA 2023.1 (Community Edition)
 -	JetBrains IntelliJ IDEA 2023.1 (Ultimate Edition)
 -	JetBrains WebStorm 2023.1 (JavaScript IDE)
--	Postman 10.12.10
+-	Postman 10.12.13
 -	Spring Tool Suite 4 [4.18.0] IDE (Eclipse 2023-03 [4.27.0])
 -	Sublime Text 4 (Build 4143)
--	Visual Studio Code 1.77.0
+-	Visual Studio Code 1.77.2
