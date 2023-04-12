@@ -284,7 +284,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
 	-	Git-Flow 1.12.4 (AVH Edition)
 	-	Git-Flow Bash Completion
 -	Go 1.20.3
--	Gradle 8.0.2
+-	Gradle 8.1
 -	Groovy 4.0.11
 -	Java SE JDK 8 Update 362 (Amazon Corretto 8)
 -	Java SE JDK 11.0.18 (Amazon Corretto 11)
@@ -304,7 +304,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Scala 3.2.2
 -	Scala 2.12.17
 	-	Scala Build Tool (SBT) 1.8.2
--	Terraform 1.4.4
+-	Terraform 1.4.5
 -	Vault 1.13.0
 -	VIM - Vi IMproved 9.0
 -	XMLStarlet 1.6.1 (command-line XML processor)
@@ -341,4 +341,4 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 -	Postman 10.12.13
 -	Spring Tool Suite 4 [4.18.0] IDE (Eclipse 2023-03 [4.27.0])
 -	Sublime Text 4 (Build 4143)
--	Visual Studio Code 1.77.2
+-	Visual Studio Code 1.77.3
