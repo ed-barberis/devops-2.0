@@ -110,6 +110,8 @@
         "{{template_dir}}/../../../provisioners/scripts/centos/install_centos8_headless_devops_tools.sh",
         "{{template_dir}}/../../../provisioners/scripts/common/install_aws_corretto_java_jdk_8.sh",
         "{{template_dir}}/../../../provisioners/scripts/common/install_aws_corretto_java_jdk_11.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_aws_corretto_java_jdk_17.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_aws_corretto_java_jdk_20.sh",
         "{{template_dir}}/../../../provisioners/scripts/centos/install_centos8_desktop_devops_tools.sh",
         "{{template_dir}}/../../../provisioners/scripts/centos/install_centos7_google_chrome.sh",
         "{{template_dir}}/../../../provisioners/scripts/centos/install_centos8_python3.sh",

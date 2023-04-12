@@ -1,4 +1,4 @@
-# @(#).bashrc       1.0 2022/09/21 SMI
+# @(#).bashrc       1.0 2023/04/12 SMI
 # bash resource configuration for devops users.
 
 # source global definitions.
@@ -14,9 +14,9 @@ umask 022
 
 # set java home path.
 #JAVA_HOME=/usr/local/java/jdk180
-JAVA_HOME=/usr/local/java/jdk11
-#JAVA_HOME=/usr/local/java/jdk17
-#JAVA_HOME=/usr/local/java/jdk19
+#JAVA_HOME=/usr/local/java/jdk11
+JAVA_HOME=/usr/local/java/jdk17
+#JAVA_HOME=/usr/local/java/jdk20
 export JAVA_HOME
 
 # set ant home path.
