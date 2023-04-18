@@ -22,10 +22,10 @@ Next, using these base VMs as a foundation, the user can build more advanced VM 
 
 To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the following open source software needs to be installed on the host macOS machine:
 
--	Homebrew 4.0.12
+-	Homebrew 4.0.14
 	-	Command Line Tools (CLT) for Xcode
--	VirtualBox 6.1.38
-	-	VirtualBox Extension Pack 6.1.38
+-	VirtualBox 7.0.8
+	-	VirtualBox Extension Pack 7.0.8
 -	Vagrant 2.3.4 with Plugins
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 2.0.0
@@ -44,10 +44,10 @@ Perform the following steps to install the needed software:
 
     > **NOTE:** Most Homebrew formulae require a compiler. A handful require a full Xcode installation. You can install [Xcode](https://itunes.apple.com/us/app/xcode/id497799835), the [CLT](https://developer.apple.com/downloads), or both; Homebrew supports all three configurations. Downloading Xcode may require an Apple Developer account on older versions of Mac OS X. Sign up for free [here](https://developer.apple.com/register/index.action).  
 
-2.	Install the [Homebrew 4.0.12](https://brew.sh/) package manager for macOS 64-bit. Paste the following into a macOS Terminal prompt:  
+2.	Install the [Homebrew 4.0.14](https://brew.sh/) package manager for macOS 64-bit. Paste the following into a macOS Terminal prompt:  
     `$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"`
 
-3.	Install [VirtualBox 6.1.38](https://www.virtualbox.org/) for macOS 64-bit.  
+3.	Install [VirtualBox 7.0.8](https://www.virtualbox.org/) for macOS 64-bit.  
     `$ brew cask install virtualbox`  
 
     > **NOTE:** With the release of macOS Mojave 10.14.5+, all new or updated kernel extensions must now be notarized by Apple. Due to this significant change, the VirtualBox installation will *fail* if you have upgraded to 10.14.5+. For a temporary work-around to this issue, perform the following prior to installing VirtualBox:
@@ -63,7 +63,7 @@ Perform the following steps to install the needed software:
     >
     > For additional details, please refer to the User Forum for VirtualBox [here](https://forums.virtualbox.org/viewtopic.php?f=8&t=93151&sid=637f4f3cf543d7ed3a47994b32ae4e93).
 
-4.	Install [VirtualBox Extension Pack 6.1.38](https://www.virtualbox.org/) for macOS 64-bit.  
+4.	Install [VirtualBox Extension Pack 7.0.8](https://www.virtualbox.org/) for macOS 64-bit.  
     `$ brew cask install virtualbox-extension-pack`  
 
 5.	Install [Vagrant 2.3.4](https://www.vagrantup.com/) for macOS 64-bit.  
@@ -88,13 +88,13 @@ Perform the following steps to install the needed software:
 
     ```bash
     $ brew --version
-    Homebrew 4.0.12
+    Homebrew 4.0.14
     $ brew doctor
     Your system is ready to brew.
     ...
 
     $ vboxmanage --version
-    6.1.38r153438
+    7.0.8r156879
 
     $ vagrant --version
     Vagrant 2.3.4
@@ -120,8 +120,8 @@ Perform the following steps to install the needed software:
 
 To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the following open source software needs to be installed on the host Windows 64-Bit machine:
 
--	VirtualBox 6.1.38
-	-	VirtualBox Extension Pack 6.1.38
+-	VirtualBox 7.0.8
+	-	VirtualBox Extension Pack 7.0.8
 -	Vagrant 2.3.4 with Plugins
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 2.0.0
@@ -135,9 +135,9 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
 Perform the following steps to install the needed software:
 
-1.	Install [VirtualBox 6.1.38 for Windows 64-bit](https://download.virtualbox.org/virtualbox/6.1.38/VirtualBox-6.1.38-153438-Win.exe).
+1.	Install [VirtualBox 7.0.8 for Windows 64-bit](https://download.virtualbox.org/virtualbox/7.0.8/VirtualBox-7.0.8-156879-Win.exe).
 
-2.	Install [VirtualBox Extension Pack 6.1.38](https://download.virtualbox.org/virtualbox/6.1.38/Oracle_VM_VirtualBox_Extension_Pack-6.1.38-153438.vbox-extpack).
+2.	Install [VirtualBox Extension Pack 7.0.8](https://download.virtualbox.org/virtualbox/7.0.8/Oracle_VM_VirtualBox_Extension_Pack-7.0.8-156879.vbox-extpack).
 
 3.	Install [Vagrant 2.3.4 for Windows 64-bit](https://releases.hashicorp.com/vagrant/2.3.4/vagrant_2.3.4_x86_64.msi).  
     Suggested install folder:  
@@ -193,7 +193,7 @@ Perform the following steps to install the needed software:
 
     ```bash
     $ VBoxManage --version
-    6.1.38r153438
+    7.0.8r156879
 
     $ vagrant --version
     Vagrant 2.3.4
