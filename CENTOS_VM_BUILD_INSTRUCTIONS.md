@@ -286,10 +286,10 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Go 1.20.3
 -	Gradle 8.1
 -	Groovy 4.0.11
--	Java SE JDK 8 Update 362 (Amazon Corretto 8)
--	Java SE JDK 11.0.18 (Amazon Corretto 11)
--	Java SE JDK 17.0.6 (Amazon Corretto 17)
--	Java SE JDK 20.0.0 (Amazon Corretto 20)
+-	Java SE JDK 8 Update 372 (Amazon Corretto 8)
+-	Java SE JDK 11.0.19 (Amazon Corretto 11)
+-	Java SE JDK 17.0.7 (Amazon Corretto 17)
+-	Java SE JDK 20.0.1 (Amazon Corretto 20)
 -	JMESPath jp 0.2.1 (command-line JSON processor)
 -	jq 1.6 (command-line JSON processor)
 -	Maven 3.9.1
@@ -331,7 +331,7 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 	-	AppDynamics AWS EC2 Monitoring Extension 2.1.5 [Optional]
 -	Atom Editor 1.57.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 112.0.5615.121 (64-bit)
+-	Chrome 112.0.5615.137 (64-bit)
 -	Firefox 102.8.0esr (64-bit)
 -	JetBrains IntelliJ IDEA 2023.1 (Community Edition)
 -	JetBrains IntelliJ IDEA 2023.1 (Ultimate Edition)
