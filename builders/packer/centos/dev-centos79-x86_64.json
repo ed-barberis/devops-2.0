@@ -42,7 +42,7 @@
       "inline": [
         "sudo hostnamectl | awk '/Operating System/ {print $0}'",
         "sudo mkdir -p {{user `devops_home`}}/provisioners/scripts",
-        "sudo chown -R {{user `vbox_username`}}:{{user `vbox_group`}} {{user `devops_home`}}"
+        "sudo chown -R {{user `vbox_user_name`}}:{{user `vbox_user_group`}} {{user `devops_home`}}"
       ],
       "type": "shell"
     },
@@ -96,7 +96,7 @@
         "aws_cli_default_region_name={{user `aws_cli_default_region_name`}}",
         "aws_cli_default_output_format={{user `aws_cli_default_output_format`}}",
         "devops_home={{user `devops_home`}}",
-        "HOME_DIR=/home/{{user `vbox_username`}}",
+        "HOME_DIR=/home/{{user `vbox_user_name`}}",
         "http_proxy={{user `http_proxy`}}",
         "https_proxy={{user `https_proxy`}}",
         "no_proxy={{user `no_proxy`}}",
@@ -104,17 +104,17 @@
         "npm_release={{user `npm_release`}}",
         "tomcat_release={{user `tomcat_release`}}",
         "tomcat_sha512={{user `tomcat_sha512`}}",
-        "tomcat_username={{user `vbox_username`}}",
-        "tomcat_group={{user `vbox_group`}}",
+        "tomcat_username={{user `vbox_user_name`}}",
+        "tomcat_group={{user `vbox_user_group`}}",
         "tomcat_admin_roles={{user `tomcat_admin_roles`}}",
         "tomcat_jdk_home={{user `tomcat_jdk_home`}}",
         "tomcat_catalina_opts={{user `tomcat_catalina_opts`}}",
         "tomcat_enable_service={{user `tomcat_enable_service`}}",
         "tomcat_manager_apps_remote_access={{user `tomcat_manager_apps_remote_access`}}",
-        "user_name={{user `vbox_username`}}",
-        "user_group={{user `vbox_group`}}"
+        "user_name={{user `vbox_user_name`}}",
+        "user_group={{user `vbox_user_group`}}"
       ],
-      "execute_command": "echo '{{user `vbox_username`}}' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
+      "execute_command": "echo '{{user `vbox_user_name`}}' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "expect_disconnect": true,
       "pause_before": "120s",
       "scripts": [
