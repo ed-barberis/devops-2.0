@@ -1,6 +1,6 @@
 #!/bin/sh -eux
 #---------------------------------------------------------------------------------------------------
-# Install Vim 8 - Vi IMproved, a programmer's text editor.
+# Install Vim 9 - Vi IMproved, a programmer's text editor.
 #
 # Vim is a text editor that is upwards compatible to Vi. It can be used to edit all kinds
 # of plain text. It is especially useful for editing programs.
@@ -19,14 +19,14 @@
 # NOTE: Script should be run with 'root' privilege.
 #---------------------------------------------------------------------------------------------------
 
-# prepare yum packages. ----------------------------------------------------------------------------
+# prepare dnf packages. ----------------------------------------------------------------------------
 # install packages needed to build vim from source.
-yum -y install gcc make ncurses ncurses-devel
-yum -y install ctags tcl-devel ruby ruby-devel python3-devel perl perl-devel
-yum -y install perl-ExtUtils-ParseXS perl-ExtUtils-XSpp perl-ExtUtils-CBuilder perl-ExtUtils-Embed
+dnf -y install gcc make ncurses ncurses-devel
+dnf -y install ctags tcl-devel ruby ruby-devel python3-devel perl perl-devel
+dnf -y install perl-ExtUtils-ParseXS perl-ExtUtils-CBuilder perl-ExtUtils-Embed
 
 # remove existing vim installation.
-yum -y remove vim-enhanced vim-common vim-filesystem
+dnf -y remove vim-enhanced vim-common vim-filesystem
 
 # install vim binaries from source. ----------------------------------------------------------------
 # create vim source parent folder.
@@ -40,7 +40,7 @@ cd vim
 git fetch origin
 
 # build and install vim binaries.
-./configure --with-features=huge --enable-multibyte --enable-rubyinterp --enable-python3interp --enable-perlinterp
+./configure --with-features=huge --enable-multibyte --enable-rubyinterp --enable-python3interp --with-tlib=ncurses
 make
 make install
 
