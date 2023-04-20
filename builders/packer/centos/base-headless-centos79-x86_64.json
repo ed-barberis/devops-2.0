@@ -5,8 +5,8 @@
         "<up><wait><tab> text ks=http://{{.HTTPIP}}:{{.HTTPPort}}/{{user `ks_path`}}<enter><wait>"
       ],
       "boot_wait": "10s",
-      "cpus": "{{user `cpus`}}",
       "disk_size": "{{user `disk_size`}}",
+      "format": "ovf",
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
       "guest_additions_url": "{{user `guest_additions_url`}}",
       "guest_os_type": "RedHat_64",
@@ -15,15 +15,16 @@
       "http_directory": "{{user `http_directory`}}",
       "iso_checksum": "{{user `iso_checksum`}}",
       "iso_url": "{{user `mirror`}}/{{user `mirror_directory`}}/{{user `iso_name`}}",
-      "memory": "{{user `memory`}}",
       "output_directory": "{{user `build_directory`}}/{{user `box_basename`}}",
-      "shutdown_command": "echo 'vagrant' | sudo -S /sbin/halt -h -p",
-      "ssh_password": "vagrant",
+      "shutdown_command": "echo '{{user `vbox_user_password`}}' | sudo -S /sbin/halt -h -p",
+      "ssh_password": "{{user `vbox_user_password`}}",
       "ssh_port": 22,
       "ssh_timeout": "10000s",
-      "ssh_username": "vagrant",
+      "ssh_username": "{{user `vbox_user_name`}}",
       "type": "virtualbox-iso",
       "vboxmanage": [
+        ["modifyvm", "{{.Name}}", "--memory", "{{user `memory`}}"],
+        ["modifyvm", "{{.Name}}", "--cpus", "{{user `cpus`}}"],
         ["modifyvm", "{{.Name}}", "--vram", "{{user `vram`}}"],
         ["modifyvm", "{{.Name}}", "--clipboard-mode", "bidirectional"],
         ["modifyvm", "{{.Name}}", "--draganddrop", "bidirectional"],
@@ -48,8 +49,9 @@
   "provisioners": [
     {
       "inline": [
+        "sudo hostnamectl | awk '/Operating System/ {print $0}'",
         "sudo mkdir -p {{user `devops_home`}}/provisioners/scripts",
-        "sudo chown -R vagrant:vagrant {{user `devops_home`}}"
+        "sudo chown -R {{user `vbox_user_name`}}:{{user `vbox_user_group`}} {{user `devops_home`}}"
       ],
       "type": "shell"
     },
@@ -65,12 +67,12 @@
     {
       "environment_vars": [
         "devops_home={{user `devops_home`}}",
-        "HOME_DIR=/home/vagrant",
+        "HOME_DIR=/home/{{user `vbox_user_name`}}",
         "http_proxy={{user `http_proxy`}}",
         "https_proxy={{user `https_proxy`}}",
         "no_proxy={{user `no_proxy`}}"
       ],
-      "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
+      "execute_command": "echo '{{user `vbox_user_password`}}' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "expect_disconnect": true,
       "scripts": [
         "{{template_dir}}/../../../submodules/chef/bento/packer_templates/centos/scripts/update.sh",
@@ -84,17 +86,17 @@
     },
     {
       "environment_vars": [
-        "user_name=vagrant",
-        "user_group=vagrant",
+        "user_name={{user `vbox_user_name`}}",
+        "user_group={{user `vbox_user_group`}}",
         "user_docker_profile={{user `user_docker_profile`}}",
         "d_completion_release={{user `docker_completion_release`}}",
         "devops_home={{user `devops_home`}}",
-        "HOME_DIR=/home/vagrant",
+        "HOME_DIR=/home/{{user `vbox_user_name`}}",
         "http_proxy={{user `http_proxy`}}",
         "https_proxy={{user `https_proxy`}}",
         "no_proxy={{user `no_proxy`}}"
       ],
-      "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
+      "execute_command": "echo '{{user `vbox_user_password`}}' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "expect_disconnect": true,
       "pause_before": "10s",
       "scripts": [
@@ -108,7 +110,7 @@
         "{{template_dir}}/../../../provisioners/scripts/common/install_docker_compose.sh",
         "{{template_dir}}/../../../provisioners/scripts/centos/install_centos7_python3.sh",
         "{{template_dir}}/../../../provisioners/scripts/centos/install_centos7_python3_scl.sh",
-        "{{template_dir}}/../../../provisioners/scripts/centos/install_centos7_vim_8.sh",
+        "{{template_dir}}/../../../provisioners/scripts/centos/install_centos7_vim_9.sh",
         "{{template_dir}}/../../../provisioners/scripts/common/install_headless_root_user_env.sh",
         "{{template_dir}}/../../../provisioners/scripts/common/install_headless_user_env.sh",
         "{{template_dir}}/../../../provisioners/scripts/centos/cleanup.sh",
@@ -147,6 +149,9 @@
     "name": "base-headless-centos79",
     "no_proxy": "{{env `no_proxy`}}",
     "user_docker_profile": "true",
+    "vbox_user_group": "vagrant",
+    "vbox_user_name": "vagrant",
+    "vbox_user_password": "vagrant",
     "version": "TIMESTAMP",
     "vm_description": "Centos Linux 7.9 VM image for DevOps 2.0 '{{user `box_basename`}}' headless box.",
     "vram": "10"
