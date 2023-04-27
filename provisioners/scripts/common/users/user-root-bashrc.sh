@@ -1,4 +1,4 @@
-# @(#).bashrc       1.0 2023/04/12 SMI
+# @(#).bashrc       1.0 2023/04/20 SMI
 # bash resource configuration for devops administrators.
 
 # user 'root' specific aliases and functions.
@@ -15,9 +15,9 @@ fi
 umask 022
 
 # set java home path.
-#JAVA_HOME=/usr/local/java/jdk180
+JAVA_HOME=/usr/local/java/jdk180
 #JAVA_HOME=/usr/local/java/jdk11
-JAVA_HOME=/usr/local/java/jdk17
+#JAVA_HOME=/usr/local/java/jdk17
 #JAVA_HOME=/usr/local/java/jdk20
 export JAVA_HOME
 
@@ -107,7 +107,7 @@ function psgrep {
 }
 
 function netstatgrep {
-  netstat -an | grep "Active\|Proto\|$@"
+  netstat -ant | grep "Active\|Proto\|$@"
 }
 
 function sclenable {
