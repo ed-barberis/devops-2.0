@@ -139,7 +139,6 @@
         "{{template_dir}}/../../../provisioners/scripts/common/install_git_flow.sh",
         "{{template_dir}}/../../../provisioners/scripts/centos/install_centos7_neofetch.sh",
         "{{template_dir}}/../../../provisioners/scripts/centos/install_centos7_apache_tomcat_9.sh",
-        "{{template_dir}}/../../../provisioners/scripts/centos/install_centos7_oracle_mysql_community_server_57.sh",
         "{{template_dir}}/../../../provisioners/scripts/common/install_appdynamics_java_agent.sh",
         "{{template_dir}}/../../../provisioners/scripts/centos/install_centos7_appdynamics_machine_agent.sh",
         "{{template_dir}}/../../../provisioners/scripts/centos/install_centos7_google_postman.sh",
