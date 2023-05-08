@@ -21,9 +21,9 @@
 #---------------------------------------------------------------------------------------------------
 
 # install hashicorp vault. -------------------------------------------------------------------------
-vault_release="1.13.0"
+vault_release="1.13.2"
 vault_binary="vault_${vault_release}_linux_amd64.zip"
-vault_sha256="69c1ce6dd383bb342c4f861a51a91413eb05e1324159e4395532e42a8a59af9d"
+vault_sha256="f7930279de8381de7c532164b4a4408895d9606c0d24e2e9d2f9acb5dfe99b3c"
 
 # create local bin directory (if needed).
 mkdir -p /usr/local/bin
