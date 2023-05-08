@@ -6,12 +6,12 @@ devops_home="${devops_home:-/opt/devops}"                   # [optional] devops 
 
 # install webstorm javascript ide. -----------------------------------------------------------------
 webstorm_home="webstorm"
-webstorm_release="2023.1"
-webstorm_build="231.8109.174"
+webstorm_release="2023.1.1"
+webstorm_build="231.8770.64"
 
 webstorm_folder="WebStorm-${webstorm_build}"
 webstorm_binary="WebStorm-${webstorm_release}.tar.gz"
-webstorm_sha256="bd074c7bafdcfcce4db001a4356040d0badd7cd2f65418a35b4156b00a07e94b"
+webstorm_sha256="93e11177010037a156939f2ded59ac5d8d0661e47a4471399665affe4a1eb7a9"
 
 # create jetbrains home parent folder.
 mkdir -p /usr/local/jetbrains
