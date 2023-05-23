@@ -22,11 +22,11 @@ Next, using these base VMs as a foundation, the user can build more advanced VM 
 
 To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the following open source software needs to be installed on the host macOS machine:
 
--	Homebrew 4.0.17
+-	Homebrew 4.0.19
 	-	Command Line Tools (CLT) for Xcode
 -	VirtualBox 7.0.8
 	-	VirtualBox Extension Pack 7.0.8
--	Vagrant 2.3.4 with Plugins
+-	Vagrant 2.3.6 with Plugins
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 2.0.0
 	-	vagrant-vbguest 0.31.0
@@ -34,7 +34,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 -	Git 2.40.1
 -	jq 1.6
 -	Optional Add-ons
-	-	wget 1.21.3
+	-	wget 1.21.1
 	-	tree 2.1.0
 
 Perform the following steps to install the needed software:
@@ -44,7 +44,7 @@ Perform the following steps to install the needed software:
 
     > **NOTE:** Most Homebrew formulae require a compiler. A handful require a full Xcode installation. You can install [Xcode](https://itunes.apple.com/us/app/xcode/id497799835), the [CLT](https://developer.apple.com/downloads), or both; Homebrew supports all three configurations. Downloading Xcode may require an Apple Developer account on older versions of Mac OS X. Sign up for free [here](https://developer.apple.com/register/index.action).  
 
-2.	Install the [Homebrew 4.0.17](https://brew.sh/) package manager for macOS 64-bit. Paste the following into a macOS Terminal prompt:  
+2.	Install the [Homebrew 4.0.19](https://brew.sh/) package manager for macOS 64-bit. Paste the following into a macOS Terminal prompt:  
     `$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"`
 
 3.	Install [VirtualBox 7.0.8](https://www.virtualbox.org/) for macOS 64-bit.  
@@ -66,7 +66,7 @@ Perform the following steps to install the needed software:
 4.	Install [VirtualBox Extension Pack 7.0.8](https://www.virtualbox.org/) for macOS 64-bit.  
     `$ brew cask install virtualbox-extension-pack`  
 
-5.	Install [Vagrant 2.3.4](https://www.vagrantup.com/) for macOS 64-bit.  
+5.	Install [Vagrant 2.3.6](https://www.vagrantup.com/) for macOS 64-bit.  
     `$ brew cask install vagrant`  
 
 6.	Install [Packer 1.8.7](https://packer.io/) for macOS 64-bit.  
@@ -88,7 +88,7 @@ Perform the following steps to install the needed software:
 
     ```bash
     $ brew --version
-    Homebrew 4.0.17
+    Homebrew 4.0.19
     $ brew doctor
     Your system is ready to brew.
     ...
@@ -97,7 +97,7 @@ Perform the following steps to install the needed software:
     7.0.8r156879
 
     $ vagrant --version
-    Vagrant 2.3.4
+    Vagrant 2.3.6
 
     $ packer --version
     1.8.7
@@ -122,7 +122,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 
 -	VirtualBox 7.0.8
 	-	VirtualBox Extension Pack 7.0.8
--	Vagrant 2.3.4 with Plugins
+-	Vagrant 2.3.6 with Plugins
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 2.0.0
 	-	vagrant-vbguest 0.31.0
@@ -139,7 +139,7 @@ Perform the following steps to install the needed software:
 
 2.	Install [VirtualBox Extension Pack 7.0.8](https://download.virtualbox.org/virtualbox/7.0.8/Oracle_VM_VirtualBox_Extension_Pack-7.0.8-156879.vbox-extpack).
 
-3.	Install [Vagrant 2.3.4 for Windows 64-bit](https://releases.hashicorp.com/vagrant/2.3.4/vagrant_2.3.4_x86_64.msi).  
+3.	Install [Vagrant 2.3.6 for Windows 64-bit](https://releases.hashicorp.com/vagrant/2.3.6/vagrant_2.3.6_x86_64.msi).  
     Suggested install folder:  
     `C:\HashiCorp\vagrant`  
 
@@ -196,7 +196,7 @@ Perform the following steps to install the needed software:
     7.0.8r156879
 
     $ vagrant --version
-    Vagrant 2.3.4
+    Vagrant 2.3.6
 
     $ packer --version
     1.8.7
