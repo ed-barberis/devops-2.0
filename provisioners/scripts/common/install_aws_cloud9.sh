@@ -34,7 +34,7 @@
 user_name="${user_name:-}"
 
 # set default value for devops home environment variable if not set. -------------------------------
-devops_home="${devops_home:-/opt/devops}"
+devops_home="${devops_home:-/opt/fso-lab-devops}"
 
 # define usage function. ---------------------------------------------------------------------------
 usage() {
@@ -44,8 +44,7 @@ Usage:
   Script should be run with 'root' privilege.
   Example:
     [root]# export user_name="ec2-user"                         # user name.
-    [root]# export devops_home="/opt/devops"                    # [optional] devops home (defaults to '/opt/devops').
-
+    [root]# export devops_home="/opt/fso-lab-devops"            # [optional] devops home (defaults to '/opt/fso-lab-devops').
     [root]# $0
 EOF
 }
@@ -70,23 +69,27 @@ case $user_host_os in
   "CentOS Linux 7 (Core)")
     yum -y install glibc-static
     ;;
+
   "Amazon Linux 2023"|"Fedora 34 (Cloud Edition)")
     dnf -y install glibc-static
     ;;
+
   # in centos 8 like environments, the 'glibc-static' library is found in the 'powertools' repo.
-  "AlmaLinux 8.7 (Stone Smilodon)"|"CentOS Stream 8"|"Rocky Linux 8.6 (Green Obsidian)")
+  "AlmaLinux 8.8 (Sapphire Caracal)"|"CentOS Stream 8"|"Rocky Linux 8.8 (Green Obsidian)")
     dnf -y install dnf-plugins-core
     dnf -y install epel-release
     dnf config-manager --set-enabled powertools
     dnf -y install glibc-static
     ;;
+
   # in centos 9 like environments, the 'glibc-static' library is found in the 'crb' repo.
-  "AlmaLinux 9.1 (Lime Lynx)"|"CentOS Stream 9"|"Rocky Linux 9.1 (Blue Onyx)")
+  "AlmaLinux 9.2 (Turquoise Kodkod)"|"CentOS Stream 9"|"Rocky Linux 9.2 (Blue Onyx)")
     dnf -y install dnf-plugins-core
     dnf -y install epel-release
     dnf config-manager --set-enabled crb
     dnf -y install glibc-static
     ;;
+
   *)
     ;;
 esac
@@ -94,9 +97,10 @@ esac
 # install the cloud9 runtime environment in the user's home directory ('~/.c9').
 case $user_host_os in
   # for newer os environments that don't have 'python2', we need to run the new c9 v2.0.0 installer script.
-  "AlmaLinux 9.1 (Lime Lynx)"|"Amazon Linux 2023"|"CentOS Stream 9"|"Fedora 34 (Cloud Edition)"|"Rocky Linux 9.1 (Blue Onyx)"|"Ubuntu 20.04.6 LTS"|"Ubuntu 22.04.2 LTS"|"Ubuntu 22.10")
+  "AlmaLinux 9.2 (Turquoise Kodkod)"|"Amazon Linux 2023"|"CentOS Stream 9"|"Fedora 34 (Cloud Edition)"|"Rocky Linux 9.2 (Blue Onyx)"|"Ubuntu 20.04.6 LTS"|"Ubuntu 22.04.2 LTS"|"Ubuntu 22.10"|"Ubuntu 23.04")
     runuser -c "${devops_home}/provisioners/scripts/aws/c9-install-2.0.0.sh" - ${user_name}
     ;;
+
   *)
     runuser -c "${devops_home}/provisioners/scripts/aws/c9-install.sh" - ${user_name}
     ;;
