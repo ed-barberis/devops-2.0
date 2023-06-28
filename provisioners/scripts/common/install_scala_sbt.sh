@@ -14,11 +14,11 @@ curdate=$(date +"%Y-%m-%d.%H-%M-%S")
 # retrieve version number of latest release.
 curl --silent --dump-header curl-${sbthome}.${curdate}.out https://github.com/sbt/sbt/releases/latest --output /dev/null
 sbt_release=$(awk '{ sub("\r$", ""); print }' curl-${sbthome}.${curdate}.out | awk '/Location/ {print $2}' | awk -F "/" '{print $8}')
-sbt_release="v1.8.3"
+sbt_release="v1.9.1"
 sbt_dir="sbt"
 sbt_folder="${sbthome}-${sbt_release:1}"
 sbt_binary="sbt-${sbt_release:1}.tgz"
-sbt_sha256="21f4210786fd68fd15dca3f4c8ee9cae0db249c54e1b0ef6e829e9fa4936423a"
+sbt_sha256="29cca5153cc96315d6e423777e5800b831e45723b47732c207a66efa5ca4fc2b"
 
 rm -f curl-${sbthome}.${curdate}.out
 
