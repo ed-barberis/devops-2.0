@@ -270,49 +270,48 @@ Follow these instructions to build the Oracle Linux 7.9 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 2.12.3 (command-line interface) [Optional]
+-	Amazon AWS CLI 2.13.2 (command-line interface) [Optional]
 -	Ansible 2.9.27
 -	Ant 1.10.13
 -	Consul 1.16.0
 -	Cloud-Init 0.7.9 [Optional]
 -	Docker 19.03.11 CE
 	-	Docker Bash Completion
-	-	Docker Compose 1.29.2
-	-	Docker Compose Bash Completion
+	-	Docker Compose 2.20.2
 -	Git 2.41.0
 	-	Git Bash Completion
 	-	Git-Flow 1.12.4 (AVH Edition)
 	-	Git-Flow Bash Completion
--	Go 1.20.5
--	Gradle 8.1.1
--	Groovy 4.0.12
--	Java SE JDK 8 Update 372 (Amazon Corretto 8)
--	Java SE JDK 11.0.19 (Amazon Corretto 11)
--	Java SE JDK 17.0.7 (Amazon Corretto 17)
--	Java SE JDK 20.0.1 (Amazon Corretto 20)
+-	Go 1.20.6
+-	Gradle 8.2.1
+-	Groovy 4.0.13
+-	Java SE JDK 8 Update 382 (Amazon Corretto 8)
+-	Java SE JDK 11.0.20 (Amazon Corretto 11)
+-	Java SE JDK 17.0.8 (Amazon Corretto 17)
+-	Java SE JDK 20.0.2 (Amazon Corretto 20)
 -	JMESPath jp 0.2.1 (command-line JSON processor)
 -	jq 1.6 (command-line JSON processor)
 -	Maven 3.9.3
 -	MySQL Community Server 5.7.42
 -	Oracle Compute Cloud Service CLI (opc) 17.2.2 [Optional]
 -	Oracle PaaS Service Manager CLI (psm) 1.1.16 [Optional]
--	Packer 1.9.1
+-	Packer 1.9.2
 -	Python 2.7.5
-	-	Pip 23.1.2
+	-	Pip 23.2
 -	Python 3.6.8
-	-	Pip3 23.1.2
+	-	Pip3 23.2
 -	Scala 3.3.0
 -	Scala 2.12.18
-	-	Scala Build Tool (SBT) 1.9.1
--	Terraform 1.5.2
+	-	Scala Build Tool (SBT) 1.9.2
+-	Terraform 1.5.3
 -	Vault 1.14.0
 -	VIM - Vi IMproved 9.0
 -	XMLStarlet 1.6.1 (command-line XML processor)
--	yq 4.34.1 (command-line YAML processor)
+-	yq 4.34.2 (command-line YAML processor)
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 16.1.0
+-	GitLab Community Edition 16.2.0
 -	Jenkins 2.401.2 LTS
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
@@ -320,24 +319,24 @@ In addition, the following application performance management applications are p
 -	AppDynamics Enterprise Console 23.4.0 Build 10041
 	-	AppDynamics Controller 23.4.0.2 Build 10019
 	-	AppDynamics Events Service 4.5.2 Build 20827
--	MySQL Shell 8.0.33
+-	MySQL Shell 8.0.34
 
 The following developer tools are pre-installed in the __Developer VM__ (desktop) only:
 
--	Apache Tomcat 8.5.90
--	Apache Tomcat 9.0.76
--	Apache Tomcat 10.1.10
--	AppDynamics Java Agent 23.6.0 Build 34839
+-	Apache Tomcat 8.5.91
+-	Apache Tomcat 9.0.78
+-	Apache Tomcat 10.1.11
+-	AppDynamics Java Agent 23.6.1 Build 34894
 -	AppDynamics Machine Agent 23.6.0 Build 3657
 	-	AppDynamics AWS EC2 Monitoring Extension 2.1.5 [Optional]
 -	Atom Editor 1.57.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 114.0.5735.198 (64-bit)
+-	Chrome 115.0.5790.102 (64-bit)
 -	Firefox 102.10.0esr (64-bit)
--	JetBrains IntelliJ IDEA 2023.1.3 (Community Edition)
--	JetBrains IntelliJ IDEA 2023.1.3 (Ultimate Edition)
--	JetBrains WebStorm 2023.1.3 (JavaScript IDE)
--	Postman 10.15.4
+-	JetBrains IntelliJ IDEA 2023.1.4 (Community Edition)
+-	JetBrains IntelliJ IDEA 2023.1.4 (Ultimate Edition)
+-	JetBrains WebStorm 2023.1.4 (JavaScript IDE)
+-	Postman 10.16.3
 -	Spring Tool Suite 4 [4.19.0] IDE (Eclipse 2023-06 [4.28.0])
 -	Sublime Text 4 (Build 4143)
--	Visual Studio Code 1.79.2
+-	Visual Studio Code 1.80.1
