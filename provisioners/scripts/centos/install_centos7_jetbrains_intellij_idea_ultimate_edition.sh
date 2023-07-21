@@ -6,12 +6,12 @@ devops_home="${devops_home:-/opt/devops}"                   # [optional] devops 
 
 # install intellij idea ultimate edition. ----------------------------------------------------------
 idea_home="idea-IU"
-idea_release="2023.1.3"
-idea_build="231.9161.38"
+idea_release="2023.1.4"
+idea_build="231.9225.16"
 
 idea_folder="idea-IU-${idea_build}"
 idea_binary="ideaIU-${idea_release}.tar.gz"
-idea_sha256="a58954ed6732eb799502e14b250ead8b21e00c3f064e196ada34dcd6a3a3f399"
+idea_sha256="b5b15e1bbc7d953715a2b3f5eb25b9bb26baa99bdbee2d11acc91339c725f73a"
 
 # create jetbrains home parent folder.
 mkdir -p /usr/local/jetbrains
