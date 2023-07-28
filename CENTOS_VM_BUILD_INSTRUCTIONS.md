@@ -137,7 +137,7 @@ Follow these instructions to build the CentOS Linux 7.9 VM images.
     ```bash
     $ vagrant ssh
     dev[vagrant]$ docker --version
-    Docker version 24.0.4, build 3713ee1
+    Docker version 24.0.5, build ced0996
 
     dev[vagrant]$ ansible --version
     ansible 2.9.27
@@ -168,7 +168,7 @@ Follow these instructions to build the CentOS Linux 7.9 VM images.
     ```bash
     $ vagrant ssh
     dev[vagrant]$ docker --version
-    Docker version 24.0.4, build 3713ee1
+    Docker version 24.0.5, build ced0996
 
     ops[vagrant]$ ansible --version
     ansible 2.9.27
@@ -270,12 +270,12 @@ Follow these instructions to build the CentOS Linux 7.9 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 2.13.2 (command-line interface) [Optional]
+-	Amazon AWS CLI 2.13.4 (command-line interface) [Optional]
 -	Ansible 2.9.27
 -	Ant 1.10.13
 -	Consul 1.16.0
 -	Cloud-Init 0.7.9 [Optional]
--	Docker 24.0.4 CE
+-	Docker 24.0.5 CE
 	-	Docker Bash Completion
 	-	Docker Compose 2.20.2
 -	Git 2.41.0
@@ -295,22 +295,22 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	MySQL Community Server 5.7.40
 -	Packer 1.9.2
 -	Python 2.7.5
-	-	Pip 23.2
+	-	Pip 23.2.1
 -	Python 3.6.8
-	-	Pip3 23.2
+	-	Pip3 23.2.1
 -	Scala 3.3.0
 -	Scala 2.12.18
-	-	Scala Build Tool (SBT) 1.9.2
--	Terraform 1.5.3
--	Vault 1.14.0
+	-	Scala Build Tool (SBT) 1.9.3
+-	Terraform 1.5.4
+-	Vault 1.14.1
 -	VIM - Vi IMproved 9.0
 -	XMLStarlet 1.6.1 (command-line XML processor)
 -	yq 4.34.2 (command-line YAML processor)
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 16.2.0
--	Jenkins 2.401.2 LTS
+-	GitLab Community Edition 16.2.1
+-	Jenkins 2.401.3 LTS
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
@@ -325,16 +325,16 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 -	Apache Tomcat 9.0.78
 -	Apache Tomcat 10.1.11
 -	AppDynamics Java Agent 23.6.1 Build 34894
--	AppDynamics Machine Agent 23.6.0 Build 3657
+-	AppDynamics Machine Agent 23.7.0 Build 3689
 	-	AppDynamics AWS EC2 Monitoring Extension 2.1.5 [Optional]
 -	Atom Editor 1.57.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 115.0.5790.102 (64-bit)
+-	Chrome 115.0.5790.114 (64-bit)
 -	Firefox 102.10.0esr (64-bit)
--	JetBrains IntelliJ IDEA 2023.1.4 (Community Edition)
--	JetBrains IntelliJ IDEA 2023.1.4 (Ultimate Edition)
--	JetBrains WebStorm 2023.1.4 (JavaScript IDE)
+-	JetBrains IntelliJ IDEA 2023.2 (Community Edition)
+-	JetBrains IntelliJ IDEA 2023.2 (Ultimate Edition)
+-	JetBrains WebStorm 2023.2 (JavaScript IDE)
 -	Postman 10.16.3
 -	Spring Tool Suite 4 [4.19.0] IDE (Eclipse 2023-06 [4.28.0])
 -	Sublime Text 4 (Build 4143)
--	Visual Studio Code 1.80.1
+-	Visual Studio Code 1.80.2
