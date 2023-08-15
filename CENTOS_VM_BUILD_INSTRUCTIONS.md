@@ -270,19 +270,19 @@ Follow these instructions to build the CentOS Linux 7.9 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 2.13.4 (command-line interface) [Optional]
+-	Amazon AWS CLI 2.13.9 (command-line interface) [Optional]
 -	Ansible 2.9.27
 -	Ant 1.10.13
--	Consul 1.16.0
+-	Consul 1.16.1
 -	Cloud-Init 0.7.9 [Optional]
 -	Docker 24.0.5 CE
 	-	Docker Bash Completion
-	-	Docker Compose 2.20.2
+	-	Docker Compose 2.20.3
 -	Git 2.41.0
 	-	Git Bash Completion
 	-	Git-Flow 1.12.4 (AVH Edition)
 	-	Git-Flow Bash Completion
--	Go 1.20.6
+-	Go 1.21.0
 -	Gradle 8.2.1
 -	Groovy 4.0.13
 -	Java SE JDK 8 Update 382 (Amazon Corretto 8)
@@ -291,7 +291,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Java SE JDK 20.0.2 (Amazon Corretto 20)
 -	JMESPath jp 0.2.1 (command-line JSON processor)
 -	jq 1.6 (command-line JSON processor)
--	Maven 3.9.3
+-	Maven 3.9.4
 -	MySQL Community Server 5.7.40
 -	Packer 1.9.2
 -	Python 2.7.5
@@ -301,40 +301,40 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Scala 3.3.0
 -	Scala 2.12.18
 	-	Scala Build Tool (SBT) 1.9.3
--	Terraform 1.5.4
+-	Terraform 1.5.5
 -	Vault 1.14.1
 -	VIM - Vi IMproved 9.0
 -	XMLStarlet 1.6.1 (command-line XML processor)
--	yq 4.34.2 (command-line YAML processor)
+-	yq 4.35.1 (command-line YAML processor)
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 16.2.1
+-	GitLab Community Edition 16.2.4
 -	Jenkins 2.401.3 LTS
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
--	AppDynamics Enterprise Console 23.4.0 Build 10041
-	-	AppDynamics Controller 23.4.0.2 Build 10019
+-	AppDynamics Enterprise Console 23.7.0 Build 10073
+	-	AppDynamics Controller 23.7.0.1 Build 10034
 	-	AppDynamics Events Service 4.5.2 Build 20827
 -	MySQL Shell 8.0.34
 
 The following developer tools are pre-installed in the __Developer VM__ (desktop) only:
 
--	Apache Tomcat 8.5.91
--	Apache Tomcat 9.0.78
--	Apache Tomcat 10.1.11
--	AppDynamics Java Agent 23.6.1 Build 34894
+-	Apache Tomcat 8.5.92
+-	Apache Tomcat 9.0.79
+-	Apache Tomcat 10.1.12
+-	AppDynamics Java Agent 23.7.0 Build 34957
 -	AppDynamics Machine Agent 23.7.0 Build 3689
 	-	AppDynamics AWS EC2 Monitoring Extension 2.1.5 [Optional]
 -	Atom Editor 1.57.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 115.0.5790.114 (64-bit)
+-	Chrome 115.0.5790.170 (64-bit)
 -	Firefox 102.10.0esr (64-bit)
 -	JetBrains IntelliJ IDEA 2023.2 (Community Edition)
 -	JetBrains IntelliJ IDEA 2023.2 (Ultimate Edition)
 -	JetBrains WebStorm 2023.2 (JavaScript IDE)
--	Postman 10.16.3
--	Spring Tool Suite 4 [4.19.0] IDE (Eclipse 2023-06 [4.28.0])
--	Sublime Text 4 (Build 4143)
--	Visual Studio Code 1.80.2
+-	Postman 10.17.1
+-	Spring Tool Suite 4 [4.19.1] IDE (Eclipse 2023-06 [4.28.0])
+-	Sublime Text 4 (Build 4152)
+-	Visual Studio Code 1.81.1
