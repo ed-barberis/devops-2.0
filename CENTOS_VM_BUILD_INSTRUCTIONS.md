@@ -329,7 +329,7 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 	-	AppDynamics AWS EC2 Monitoring Extension 2.1.5 [Optional]
 -	Atom Editor 1.57.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 115.0.5790.170 (64-bit)
+-	Chrome 116.0.5845.96 (64-bit)
 -	Firefox 102.10.0esr (64-bit)
 -	JetBrains IntelliJ IDEA 2023.2 (Community Edition)
 -	JetBrains IntelliJ IDEA 2023.2 (Ultimate Edition)
