@@ -270,9 +270,9 @@ Follow these instructions to build the Oracle Linux 7.9 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 2.13.9 (command-line interface) [Optional]
+-	Amazon AWS CLI 2.13.11 (command-line interface) [Optional]
 -	Ansible 2.9.27
--	Ant 1.10.13
+-	Ant 1.10.14
 -	Consul 1.16.1
 -	Cloud-Init 0.7.9 [Optional]
 -	Docker 19.03.11 CE
@@ -283,7 +283,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
 	-	Git-Flow 1.12.4 (AVH Edition)
 	-	Git-Flow Bash Completion
 -	Go 1.21.0
--	Gradle 8.2.1
+-	Gradle 8.3
 -	Groovy 4.0.13
 -	Java SE JDK 8 Update 382 (Amazon Corretto 8)
 -	Java SE JDK 11.0.20 (Amazon Corretto 11)
@@ -295,7 +295,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	MySQL Community Server 5.7.42
 -	Oracle Compute Cloud Service CLI (opc) 17.2.2 [Optional]
 -	Oracle PaaS Service Manager CLI (psm) 1.1.16 [Optional]
--	Packer 1.9.2
+-	Packer 1.9.4
 -	Python 2.7.5
 	-	Pip 23.2.1
 -	Python 3.6.8
@@ -311,7 +311,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 16.2.4
+-	GitLab Community Edition 16.3.0
 -	Jenkins 2.401.3 LTS
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
@@ -336,7 +336,7 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 -	JetBrains IntelliJ IDEA 2023.2 (Community Edition)
 -	JetBrains IntelliJ IDEA 2023.2 (Ultimate Edition)
 -	JetBrains WebStorm 2023.2 (JavaScript IDE)
--	Postman 10.17.1
+-	Postman 10.17.2
 -	Spring Tool Suite 4 [4.19.1] IDE (Eclipse 2023-06 [4.28.0])
 -	Sublime Text 4 (Build 4152)
 -	Visual Studio Code 1.81.1

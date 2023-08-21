@@ -30,7 +30,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 2.0.0
 	-	vagrant-vbguest 0.31.0
--	Packer 1.9.2
+-	Packer 1.9.4
 -	Git 2.41.0
 -	jq 1.6
 -	Optional Add-ons
@@ -69,7 +69,7 @@ Perform the following steps to install the needed software:
 5.	Install [Vagrant 2.3.7](https://www.vagrantup.com/) for macOS 64-bit.  
     `$ brew cask install vagrant`  
 
-6.	Install [Packer 1.9.2](https://packer.io/) for macOS 64-bit.  
+6.	Install [Packer 1.9.4](https://packer.io/) for macOS 64-bit.  
     `$ brew install hashicorp/tap/packer`  
 
 7.	Install [Git 2.41.0](https://git-scm.com/downloads) for macOS 64-bit.  
@@ -100,7 +100,7 @@ Perform the following steps to install the needed software:
     Vagrant 2.3.7
 
     $ packer --version
-    1.9.2
+    1.9.4
 
     $ git --version
     git version 2.41.0
@@ -126,7 +126,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 2.0.0
 	-	vagrant-vbguest 0.31.0
--	Packer 1.9.2
+-	Packer 1.9.4
 -	Git 2.41.0
 -	jq 1.6
 -	Optional Add-ons for Git Bash
@@ -150,7 +150,7 @@ Perform the following steps to install the needed software:
     >
     > If this is set, Vagrant will prefer using utility executables (like `ssh` and `rsync`) from the local system instead of those vendored within the Vagrant installation.  
 
-4.	Install [Packer 1.9.2 for Windows 64-bit](https://releases.hashicorp.com/packer/1.9.2/packer_1.9.2_windows_amd64.zip).
+4.	Install [Packer 1.9.4 for Windows 64-bit](https://releases.hashicorp.com/packer/1.9.4/packer_1.9.4_windows_amd64.zip).
     Create suggested install folder and extract contents of ZIP file to:  
     `C:\HashiCorp\Packer\bin`  
 
@@ -199,7 +199,7 @@ Perform the following steps to install the needed software:
     Vagrant 2.3.7
 
     $ packer --version
-    1.9.2
+    1.9.4
 
     $ git --version
     git version 2.41.0.windows.1
