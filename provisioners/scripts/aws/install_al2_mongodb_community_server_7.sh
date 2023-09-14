@@ -1,6 +1,6 @@
 #!/bin/bash -eux
 #---------------------------------------------------------------------------------------------------
-# Install MongoDB Community Server 6.0 on CentOS Linux 7.x.
+# Install MongoDB Community Server 7.0 on Amazon Linux 2.
 #
 # MongoDB is a document database designed for ease of development and scaling. It is
 # source-available, cross-platform, and classified as a NoSQL database program, MongoDB uses
@@ -9,7 +9,7 @@
 # For more details, please visit:
 #   https://www.mongodb.com/docs/manual/introduction/
 #   https://www.mongodb.com/try/download/community/
-#   https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-red-hat/
+#   https://www.mongodb.com/docs/upcoming/tutorial/install-mongodb-on-amazon/
 #
 # NOTE: All inputs are defined by external environment variables.
 #       Optional variables have reasonable defaults, but you may override as needed.
@@ -18,26 +18,26 @@
 
 # set default values for input environment variables if not set. -----------------------------------
 # [OPTIONAL] mongodb community server install parameters [w/ defaults].
-user_name="${user_name:-centos}"                                            # [optional] user name for testing.
-user_group="${user_group:-centos}"                                          # [optional] user login group for testing.
+user_name="${user_name:-ec2-user}"                                          # [optional] user name for testing.
+user_group="${user_group:-ec2-user}"                                        # [optional] user login group for testing.
 mongodb_server_admin_username="${mongodb_server_admin_username:-userAdmin}" # [optional] MongoDB admin username (defaults to 'userAdmin').
 set +x  # temporarily turn command display OFF.
 mongodb_server_admin_password="${mongodb_server_admin_password:-welcome1}"  # [optional] admin password (defaults to 'welcome1').
 set -x  # turn command display back ON.
 mongodb_enable_access_control="${mongodb_enable_access_control:-false}"     # [optional] enable access control for mongodb (defaults to 'false').
 
-# [OPTIONAL] fso lab devops home folder [w/ default].
+# [OPTIONAL] devops home folder [w/ default].
 devops_home="${devops_home:-/opt/devops}"                                   # [optional] devops home (defaults to '/opt/devops').
 
 # prepare the mongodb repository for installation. -------------------------------------------------
 # create the mongodb repository.
-cat <<EOF > /etc/yum.repos.d/mongodb-org-6.0.repo
-[mongodb-org-6.0]
+cat <<EOF > /etc/yum.repos.d/mongodb-org-7.0.repo
+[mongodb-org-7.0]
 name=MongoDB Repository
-baseurl=https://repo.mongodb.org/yum/redhat/\$releasever/mongodb-org/6.0/x86_64/
+baseurl=https://repo.mongodb.org/yum/amazon/2/mongodb-org/7.0/x86_64/
 gpgcheck=1
 enabled=1
-gpgkey=https://www.mongodb.org/static/pgp/server-6.0.asc
+gpgkey=https://www.mongodb.org/static/pgp/server-7.0.asc
 EOF
 
 # install the mongodb database. --------------------------------------------------------------------
