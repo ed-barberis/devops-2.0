@@ -137,7 +137,7 @@ Follow these instructions to build the CentOS Linux 7.9 VM images.
     ```bash
     $ vagrant ssh
     dev[vagrant]$ docker --version
-    Docker version 24.0.5, build ced0996
+    Docker version 24.0.6, build ed223bc
 
     dev[vagrant]$ ansible --version
     ansible 2.9.27
@@ -168,7 +168,7 @@ Follow these instructions to build the CentOS Linux 7.9 VM images.
     ```bash
     $ vagrant ssh
     dev[vagrant]$ docker --version
-    Docker version 24.0.5, build ced0996
+    Docker version 24.0.6, build ed223bc
 
     ops[vagrant]$ ansible --version
     ansible 2.9.27
@@ -270,27 +270,27 @@ Follow these instructions to build the CentOS Linux 7.9 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 2.13.11 (command-line interface) [Optional]
+-	Amazon AWS CLI 2.13.18 (command-line interface) [Optional]
 -	Ansible 2.9.27
 -	Ant 1.10.14
 -	Consul 1.16.1
 -	Cloud-Init 0.7.9 [Optional]
--	Docker 24.0.5 CE
+-	Docker 24.0.6 CE
 	-	Docker Bash Completion
-	-	Docker Compose 2.20.3
--	Git 2.41.0
+	-	Docker Compose 2.21.0
+-	Git 2.42.0
 	-	Git Bash Completion
 	-	Git-Flow 1.12.4 (AVH Edition)
 	-	Git-Flow Bash Completion
--	Go 1.21.0
+-	Go 1.21.1
 -	Gradle 8.3
--	Groovy 4.0.13
+-	Groovy 4.0.14
 -	Java SE JDK 8 Update 382 (Amazon Corretto 8)
 -	Java SE JDK 11.0.20 (Amazon Corretto 11)
 -	Java SE JDK 17.0.8 (Amazon Corretto 17)
 -	Java SE JDK 20.0.2 (Amazon Corretto 20)
 -	JMESPath jp 0.2.1 (command-line JSON processor)
--	jq 1.6 (command-line JSON processor)
+-	jq 1.7 (command-line JSON processor)
 -	Maven 3.9.4
 -	MySQL Community Server 5.7.40
 -	Packer 1.9.4
@@ -298,43 +298,43 @@ The following command-line tools and utilities are pre-installed in the __Develo
 	-	Pip 23.2.1
 -	Python 3.6.8
 	-	Pip3 23.2.1
--	Scala 3.3.0
--	Scala 2.12.18
-	-	Scala Build Tool (SBT) 1.9.3
--	Terraform 1.5.5
--	Vault 1.14.1
+-	Scala 3.3.1
+-	Scala 2.13.12
+	-	Scala Build Tool (SBT) 1.9.5
+-	Terraform 1.5.7
+-	Vault 1.14.3
 -	VIM - Vi IMproved 9.0
 -	XMLStarlet 1.6.1 (command-line XML processor)
 -	yq 4.35.1 (command-line YAML processor)
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 16.3.0
--	Jenkins 2.401.3 LTS
+-	GitLab Community Edition 16.3.3
+-	Jenkins 2.414.1 LTS
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
--	AppDynamics Enterprise Console 23.7.0 Build 10073
+-	AppDynamics Enterprise Console 23.8.0 Build 10005
 	-	AppDynamics Controller 23.7.0.1 Build 10034
 	-	AppDynamics Events Service 4.5.2 Build 20827
 -	MySQL Shell 8.0.34
 
 The following developer tools are pre-installed in the __Developer VM__ (desktop) only:
 
--	Apache Tomcat 8.5.92
--	Apache Tomcat 9.0.79
--	Apache Tomcat 10.1.12
--	AppDynamics Java Agent 23.7.0 Build 34957
--	AppDynamics Machine Agent 23.7.0 Build 3689
+-	Apache Tomcat 8.5.93
+-	Apache Tomcat 9.0.80
+-	Apache Tomcat 10.1.13
+-	AppDynamics Java Agent 23.8.0 Build 35032
+-	AppDynamics Machine Agent 23.9.0 Build 3723
 	-	AppDynamics AWS EC2 Monitoring Extension 2.1.5 [Optional]
 -	Atom Editor 1.57.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 116.0.5845.96 (64-bit)
+-	Chrome 117.0.5938.62 (64-bit)
 -	Firefox 102.10.0esr (64-bit)
--	JetBrains IntelliJ IDEA 2023.2 (Community Edition)
--	JetBrains IntelliJ IDEA 2023.2 (Ultimate Edition)
--	JetBrains WebStorm 2023.2 (JavaScript IDE)
--	Postman 10.17.2
--	Spring Tool Suite 4 [4.19.1] IDE (Eclipse 2023-06 [4.28.0])
+-	JetBrains IntelliJ IDEA 2023.2.2 (Community Edition)
+-	JetBrains IntelliJ IDEA 2023.2.2 (Ultimate Edition)
+-	JetBrains WebStorm 2023.2.1 (JavaScript IDE)
+-	Postman 10.18.1
+-	Spring Tool Suite 4 [4.20.0] IDE (Eclipse 2023-09 [4.29.0])
 -	Sublime Text 4 (Build 4152)
--	Visual Studio Code 1.81.1
+-	Visual Studio Code 1.82.1
