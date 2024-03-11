@@ -126,7 +126,7 @@
     "name": "k8s-centos79",
     "no_proxy": "{{env `no_proxy`}}",
     "nodejs_release": "16",
-    "npm_release": "9.8.1",
+    "npm_release": "9.9.3",
     "vbox_user_group": "vagrant",
     "vbox_user_name": "vagrant",
     "vbox_user_password": "vagrant",

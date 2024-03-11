@@ -200,7 +200,7 @@
     "name": "dev-centos79",
     "no_proxy": "{{env `no_proxy`}}",
     "nodejs_release": "16",
-    "npm_release": "9.8.1",
+    "npm_release": "9.9.3",
     "tomcat_release": "9.0.74",
     "tomcat_sha512": "0e173fc2a76404c41c571c50a1956a2b867870d767200bd30f48d89bf04a4b6337f12e6577415da932cd2dfef9b4e9e9fdd52bd873afb06c6258b0e64244a44e",
     "tomcat_admin_roles": "manager-gui",
