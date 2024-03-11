@@ -111,7 +111,7 @@
         "{{template_dir}}/../../../provisioners/scripts/common/install_aws_corretto_java_jdk_8.sh",
         "{{template_dir}}/../../../provisioners/scripts/common/install_aws_corretto_java_jdk_11.sh",
         "{{template_dir}}/../../../provisioners/scripts/common/install_aws_corretto_java_jdk_17.sh",
-        "{{template_dir}}/../../../provisioners/scripts/common/install_aws_corretto_java_jdk_20.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_aws_corretto_java_jdk_21.sh",
         "{{template_dir}}/../../../provisioners/scripts/centos/install_centos8_python3.sh",
         "{{template_dir}}/../../../provisioners/scripts/centos/install_centos8_vim_8.sh",
         "{{template_dir}}/../../../provisioners/scripts/common/install_headless_root_user_env.sh",

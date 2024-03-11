@@ -1,4 +1,4 @@
-# @(#).bashrc       1.0 2023/04/20 SMI
+# @(#).bashrc       1.0 2023/12/06 SMI
 # bash resource configuration for devops users.
 
 # source global definitions.
@@ -16,7 +16,7 @@ umask 022
 JAVA_HOME=/usr/local/java/jdk180
 #JAVA_HOME=/usr/local/java/jdk11
 #JAVA_HOME=/usr/local/java/jdk17
-#JAVA_HOME=/usr/local/java/jdk20
+#JAVA_HOME=/usr/local/java/jdk21
 export JAVA_HOME
 
 # set ant home path.
@@ -33,7 +33,7 @@ export MAVEN_OPTS
 M2=$M2_HOME/bin
 export M2
 
-# set groovy home path.
+# set groovy home environment variables.
 GROOVY_HOME=/usr/local/apache/groovy
 export GROOVY_HOME
 
