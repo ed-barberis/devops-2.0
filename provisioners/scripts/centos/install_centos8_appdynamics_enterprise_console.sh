@@ -86,7 +86,7 @@ appd_platform_installer="platform-setup-x64-linux-${appd_platform_release}.sh"
 
 # install platform prerequisites. ------------------------------------------------------------------
 # install network tools.
-yum -y install net-tools libaio numactl tzdata
+dnf -y install net-tools libaio numactl tzdata
 
 # create temporary download directory. -------------------------------------------------------------
 mkdir -p ${devops_home}/provisioners/scripts/centos/appdynamics
@@ -113,7 +113,7 @@ if ([ "$distro_name" = "Amazon" ] && [ "${version_name}" = "2" ]) || \
   rpm -ivh --force ${ncurses_5_libs_package}
 else
   # for all other distros, install standard ncurses 5 packages.
-  yum -y install ncurses-libs
+  dnf -y install ncurses-libs
 fi
 
 # configure file and process limits for user 'root'.
