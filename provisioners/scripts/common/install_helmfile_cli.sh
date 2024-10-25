@@ -23,9 +23,9 @@
 #####user_name="${user_name:-centos}"
 
 # install helmfile cli client. ---------------------------------------------------------------------
-helmfile_release="0.169.1"
+helmfile_release="0.168.0"
 helmfile_binary="helmfile_${helmfile_release}_linux_amd64.tar.gz"
-helmfile_sha256="c3c18ad2fbc83a5440f09f79a9dfa8df2a288595766655fe79b34dd902ba8c6d"
+helmfile_sha256="6df25a7ea49d4ba4b4a192100b7cf648a89c6c99e02a440f6938f78fb89cad8d"
 
 # check if 'helm' is installed. --------------------------------------------------------------------
 if [ ! -f "/usr/local/bin/helm" ] && [ ! -f "/opt/homebrew/bin/helm" ]; then

@@ -22,7 +22,7 @@ Next, using these base VMs as a foundation, the user can build more advanced VM 
 
 To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the following open source software needs to be installed on the host macOS machine:
 
--	Homebrew 4.4.2
+-	Homebrew 4.3.23
 	-	Command Line Tools (CLT) for Xcode
 -	VirtualBox 7.0.14
 	-	VirtualBox Extension Pack 7.0.14
@@ -31,7 +31,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 	-	vagrant-share 2.0.0
 	-	vagrant-vbguest 0.32.0
 -	Packer 1.11.2
--	Git 2.47.0
+-	Git 2.46.1
 -	jq 1.7.1
 -	Optional Add-ons
 	-	wget 1.24.5
@@ -44,7 +44,7 @@ Perform the following steps to install the needed software:
 
     > **NOTE:** Most Homebrew formulae require a compiler. A handful require a full Xcode installation. You can install [Xcode](https://itunes.apple.com/us/app/xcode/id497799835), the [CLT](https://developer.apple.com/downloads), or both; Homebrew supports all three configurations. Downloading Xcode may require an Apple Developer account on older versions of Mac OS X. Sign up for free [here](https://developer.apple.com/register/index.action).  
 
-2.	Install the [Homebrew 4.4.2](https://brew.sh/) package manager for macOS 64-bit. Paste the following into a macOS Terminal prompt:  
+2.	Install the [Homebrew 4.3.23](https://brew.sh/) package manager for macOS 64-bit. Paste the following into a macOS Terminal prompt:  
     `$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"`
 
 3.	Install [VirtualBox 7.0.14](https://www.virtualbox.org/) for macOS 64-bit.  
@@ -72,7 +72,7 @@ Perform the following steps to install the needed software:
 6.	Install [Packer 1.11.2](https://packer.io/) for macOS 64-bit.  
     `$ brew install hashicorp/tap/packer`  
 
-7.	Install [Git 2.47.0](https://git-scm.com/downloads) for macOS 64-bit.  
+7.	Install [Git 2.46.1](https://git-scm.com/downloads) for macOS 64-bit.  
     `$ brew install git`  
 
 8.	Install [jq 1.7.1](https://jqlang.github.io/jq/) for macOS 64-bit.  
@@ -88,7 +88,7 @@ Perform the following steps to install the needed software:
 
     ```bash
     $ brew --version
-    Homebrew 4.4.2
+    Homebrew 4.3.23
     $ brew doctor
     Your system is ready to brew.
     ...
@@ -103,7 +103,7 @@ Perform the following steps to install the needed software:
     1.11.2
 
     $ git --version
-    git version 2.47.0
+    git version 2.46.1
 
     $ jq --version
     jq-1.7.1
@@ -127,7 +127,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 	-	vagrant-share 2.0.0
 	-	vagrant-vbguest 0.32.0
 -	Packer 1.11.2
--	Git 2.47.0
+-	Git 2.46.1
 -	jq 1.7.1
 -	Optional Add-ons for Git Bash
 	-	wget 1.9.1
@@ -154,7 +154,7 @@ Perform the following steps to install the needed software:
     Create suggested install folder and extract contents of ZIP file to:  
     `C:\HashiCorp\Packer\bin`  
 
-5.	Install [Git 2.47.0 for Windows 64-bit](https://github.com/git-for-windows/git/releases/download/v2.47.0.windows.1/Git-2.47.0-64-bit.exe) for Windows 64-bit.
+5.	Install [Git 2.46.1 for Windows 64-bit](https://github.com/git-for-windows/git/releases/download/v2.46.1.windows.1/Git-2.46.1-64-bit.exe) for Windows 64-bit.
 
 6.	Install [jq 1.7.1](https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-win64.exe) for Windows 64-bit.  
     Create suggested install folder and rename binary to:  
@@ -202,7 +202,7 @@ Perform the following steps to install the needed software:
     1.11.2
 
     $ git --version
-    git version 2.47.0.windows.1
+    git version 2.46.1.windows.1
 
     $ jq --version
     jq-1.7.1

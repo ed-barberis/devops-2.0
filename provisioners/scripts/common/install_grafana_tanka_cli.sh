@@ -26,13 +26,12 @@
 #   https://tanka.dev/install/
 #
 # NOTE: Script should be run with 'root' privilege.
-#       To generate sha256 checksum on MacOS, run: 'shasum -a 256 tk-linux-amd64'
 #---------------------------------------------------------------------------------------------------
 
 # define tanka input variables. --------------------------------------------------------------------
-###tanka_release="0.28.4"
+###tanka_release="0.28.2"
 ###tanka_binary="tk-linux-amd64"
-###tanka_sha256="89ca1d9d4a7e5acadff3b0bd85b45c23e3775a45359c66339f121c0f44ab4e17"
+###tanka_sha256="7ee8bd8def0b87d95dee6e46152659d0fa26d259f3b6b4d9579c16181d9168d5"
 
 # set default values for input environment variables if not set. -----------------------------------
 # [OPTIONAL] tanka install parameters [w/ defaults].
