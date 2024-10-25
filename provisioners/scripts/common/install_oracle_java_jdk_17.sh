@@ -1,12 +1,12 @@
-#!/bin/sh -eux
+#!/bin/bash -eux
 # install java se 17 development kit by oracle.
 
 # install java se 17 development kit. --------------------------------------------------------------
 jdk_home="jdk17"
-jdk_build="17.0.10"
+jdk_build="17.0.12"
 jdk_folder="jdk-${jdk_build}"
 jdk_binary="${jdk_folder}_linux-x64_bin.tar.gz"
-jdk_sha256="e4fb2df9a32a876afb0a6e17f54c594c2780e18badfa2e8fc99bc2656b0a57b1"
+jdk_sha256="311f1448312ecab391fe2a1b2ac140d6e1c7aea6fbf08416b466a58874f2b40f"
 
 # create java home parent folder.
 mkdir -p /usr/local/java
