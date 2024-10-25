@@ -1,4 +1,4 @@
-#!/bin/sh -eux
+#!/bin/bash -eux
 #---------------------------------------------------------------------------------------------------
 # Install Cloud9 runtime environment.
 # NOTE: AWS now supports multiple linux distributions for Cloud9 including CentOS and Ubuntu.
@@ -62,20 +62,27 @@ if [ "$user_name" = "root" ]; then
   exit 1
 fi
 
-# install cloud9 runtime enviroment. ---------------------------------------------------------------
-# add 'glibc-static' library for centos-like installations.
+# install cloud9 runtime enviroment based on host operating system. --------------------------------
+# retrieve host os.
 user_host_os=$(hostnamectl | awk '/Operating System/ {printf "%s %s %s %s %s", $3, $4, $5, $6, $7}' | xargs)
+
+# trim excess version characters from amazon linux 2023 release.
+if [ "${user_host_os:0:17}" = "Amazon Linux 2023" ]; then
+  user_host_os="${user_host_os:0:17}"
+fi
+
+# add 'glibc-static' library for centos-like installations.
 case $user_host_os in
   "CentOS Linux 7 (Core)"|"Oracle Linux Server 7.9")
     yum -y install glibc-static
     ;;
 
-  "Amazon Linux 2023.3.20240304"|"Fedora Linux 36 (Cloud Edition)"|"Fedora Linux 37 (Cloud Edition)"|"Fedora Linux 38 (Cloud Edition)"|"Fedora Linux 39 (Cloud Edition)")
+  "Amazon Linux 2023"|"Fedora Linux 37 (Cloud Edition)"|"Fedora Linux 38 (Cloud Edition)"|"Fedora Linux 39 (Cloud Edition)")
     dnf -y install glibc-static
     ;;
 
   # in centos 8 like environments, the 'glibc-static' library is found in the 'powertools' repo.
-  "AlmaLinux 8.9 (Midnight Oncilla)"|"CentOS Stream 8"|"Rocky Linux 8.9 (Green Obsidian)")
+  "AlmaLinux 8.10 (Cerulean Leopard)"|"CentOS Stream 8"|"Rocky Linux 8.10 (Green Obsidian)")
     dnf -y install dnf-plugins-core
     dnf -y install epel-release
     dnf config-manager --set-enabled powertools
@@ -91,7 +98,7 @@ case $user_host_os in
     ;;
 
   # in oracle linux 9 environments, the 'glibc-static' library is found in the 'ol9_codeready_builder' repo.
-  "Oracle Linux Server 9.3")
+  "Oracle Linux Server 9.4")
     dnf -y install dnf-plugins-core
     dnf -y install epel-release
     dnf config-manager --set-enabled ol9_codeready_builder
@@ -99,7 +106,7 @@ case $user_host_os in
     ;;
 
   # in centos 9 like environments, the 'glibc-static' library is found in the 'crb' repo.
-  "AlmaLinux 9.3 (Shamrock Pampas Cat)"|"CentOS Stream 9"|"Rocky Linux 9.3 (Blue Onyx)")
+  "AlmaLinux 9.4 (Seafoam Ocelot)"|"CentOS Stream 9"|"Rocky Linux 9.4 (Blue Onyx)")
     dnf -y install dnf-plugins-core
     dnf -y install epel-release
     dnf config-manager --set-enabled crb
@@ -112,7 +119,7 @@ esac
 
 # add 'python3-venv' environment for ubuntu 20.04 and 22.04 installations.
 case $user_host_os in
-  "Ubuntu 20.04.6 LTS"|"Ubuntu 22.04.4 LTS")
+  "Ubuntu 20.04.6 LTS"|"Ubuntu 22.04.5 LTS")
     apt-get update
     apt-get -y install python3-venv
     ;;
@@ -124,7 +131,7 @@ esac
 # install the cloud9 runtime environment in the user's home directory ('~/.c9').
 case $user_host_os in
   # for newer os environments that don't have 'python2', we need to run the new c9 v2.0.0 installer script.
-  "AlmaLinux 9.3 (Shamrock Pampas Cat)"|"Amazon Linux 2023.3.20240304"|"CentOS Stream 9"|"Fedora Linux 36 (Cloud Edition)"|"Fedora Linux 37 (Cloud Edition)"|"Fedora Linux 38 (Cloud Edition)"|"Fedora Linux 39 (Cloud Edition)"|"Oracle Linux Server 9.3"|"Rocky Linux 9.3 (Blue Onyx)"|"Ubuntu 20.04.6 LTS"|"Ubuntu 22.04.4 LTS"|"Ubuntu 23.04"|"Ubuntu 23.10")
+  "AlmaLinux 9.4 (Seafoam Ocelot)"|"Amazon Linux 2023"|"CentOS Stream 9"|"Fedora Linux 37 (Cloud Edition)"|"Fedora Linux 38 (Cloud Edition)"|"Fedora Linux 39 (Cloud Edition)"|"Oracle Linux Server 9.4"|"Rocky Linux 9.4 (Blue Onyx)"|"Ubuntu 20.04.6 LTS"|"Ubuntu 22.04.5 LTS")
     runuser -c "${devops_home}/provisioners/scripts/aws/c9-install-2.0.0.sh" - ${user_name}
     ;;
 
