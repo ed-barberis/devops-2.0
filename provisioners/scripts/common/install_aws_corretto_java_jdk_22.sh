@@ -1,6 +1,6 @@
 #!/bin/sh -eux
 #---------------------------------------------------------------------------------------------------
-# Install Amazon Corretto 17 OpenJDK by Amazon.
+# Install Amazon Corretto 22 OpenJDK by Amazon.
 #
 # Amazon Corretto is a no-cost, multiplatform, production-ready distribution of the Open Java
 # Development Kit (OpenJDK). Corretto comes with long-term support that will include performance
@@ -16,10 +16,10 @@
 # NOTE: Script should be run with 'root' privilege.
 #---------------------------------------------------------------------------------------------------
 
-# set amazon corretto 17 installation variables. ---------------------------------------------------
-jdk_home="jdk17"
-jdk_build="17.0.12.7.1"
-jdk_sha256="c165a481b23be4138d24df70dddebd35a954f83d96f3a767c0ff4dd4e60f11aa"
+# set amazon corretto 22 installation variables. ---------------------------------------------------
+jdk_home="jdk22"
+jdk_build="22.0.2.9.1"
+jdk_sha256="cb4a931f717aea0d715083411106d8aec3c916316525511bb0d20d4084ae85e0"
 jdk_folder="amazon-corretto-${jdk_build}-linux-x64"
 jdk_binary="amazon-corretto-${jdk_build}-linux-x64.tar.gz"
 #jdk_binary="amazon-corretto-${jdk_build:0:2}-x64-linux-jdk.tar.gz"
@@ -30,8 +30,8 @@ jdk_sig_file="${jdk_binary}.sig"
 mkdir -p /usr/local/java
 cd /usr/local/java
 
-# download and validate corretto 17 binary from aws. -----------------------------------------------
-# download the corretto 17 binary.
+# download and validate corretto 22 binary from aws. -----------------------------------------------
+# download the corretto 22 binary.
 rm -f ${jdk_binary}
 wget --no-verbose https://corretto.aws/downloads/resources/${jdk_build}/${jdk_binary}
 #wget --no-verbose https://corretto.aws/downloads/latest/${jdk_binary}  # permanent (latest) url.
@@ -40,7 +40,7 @@ wget --no-verbose https://corretto.aws/downloads/resources/${jdk_build}/${jdk_bi
 echo "${jdk_sha256} ${jdk_binary}" | sha256sum --check
 # amazon-corretto-${jdk_build}-linux-x64.tar.gz: OK
 
-# download the corretto 17 pgp signature.
+# download the corretto 22 pgp signature.
 rm -f ${jdk_sig_file}
 wget --no-verbose https://corretto.aws/downloads/resources/${jdk_build}/${jdk_sig_file}
 
@@ -79,7 +79,7 @@ y2VhKc09A8RwSI69vDs=
 -----END PGP PUBLIC KEY BLOCK-----
 EOF
 
-# import the corretto 17 public key.
+# import the corretto 22 public key.
 set +e  # temporarily turn 'exit pipeline on non-zero return status' OFF.
 gpg --import ${jdk_pgpkey_file}
 set -e  # turn 'exit pipeline on non-zero return status' back ON.
@@ -87,12 +87,12 @@ set -e  # turn 'exit pipeline on non-zero return status' back ON.
 # verify the downloaded binary using the pgp signature.
 gpg --verify ${jdk_sig_file} ${jdk_binary}
 
-# install amazon corretto 17. ----------------------------------------------------------------------
+# install amazon corretto 22. ----------------------------------------------------------------------
 # remove existing installation.
 rm -f ${jdk_home}
 rm -Rf ${jdk_folder}
 
-# extract corretto 17 binary and create softlink to 'jdk17'.
+# extract corretto 22 binary and create softlink to 'jdk22'.
 tar -zxvf ${jdk_binary} --no-same-owner --no-overwrite-dir
 chown -R root:root ./${jdk_folder}
 ln -s ${jdk_folder} ${jdk_home}
@@ -102,7 +102,7 @@ rm -f ${jdk_binary}
 rm -f ${jdk_sig_file}
 rm -f ${jdk_pgpkey_file}
 
-# set corretto 17 home environment variables.
+# set corretto 22 home environment variables.
 JAVA_HOME=/usr/local/java/${jdk_home}
 export JAVA_HOME
 PATH=${JAVA_HOME}/bin:$PATH
