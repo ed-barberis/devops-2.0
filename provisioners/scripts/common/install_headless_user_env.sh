@@ -7,7 +7,7 @@ user_group="${user_group:-}"
 user_home="${user_home:-}"
 user_docker_profile="${user_docker_profile:-false}"
 user_prompt_color="${user_prompt_color:-green}"
-d_completion_release="${d_completion_release:-25.0.4}"
+d_completion_release="${d_completion_release:-27.2.1}"
 
 # set default value for devops home environment variable if not set. -------------------------------
 devops_home="${devops_home:-/opt/devops}"
@@ -27,7 +27,7 @@ Usage:
                                                                 #            valid colors:
                                                                 #              'black', 'blue', 'cyan', 'green', 'magenta', 'red', 'white', 'yellow'
                                                                 #
-    [root]# export d_completion_release="25.0.4"                # [optional] docker completion for bash release (defaults to '25.0.4').
+    [root]# export d_completion_release="27.2.1"                # [optional] docker completion for bash release (defaults to '27.2.1').
     [root]# export devops_home="/opt/devops"                    # [optional] devops home (defaults to '/opt/devops').
     [root]# $0
 EOF
@@ -58,7 +58,7 @@ if [ -n "$user_prompt_color" ]; then
   esac
 fi
 
-if [ "$user_name" == "root" ]; then
+if [ "$user_name" = "root" ]; then
   echo "Error: 'user_name' should NOT be 'root'."
   usage
   exit 1
@@ -134,20 +134,51 @@ chown ${user_name}:${user_group} ${vimrc_local}
 # download and install useful vim configuration based on developer pair stations at pivotal labs.
 runuser -c "git clone https://github.com/pivotal-legacy/vim-config.git ${user_home}/.vim" - ${user_name}
 
-# use the stream editor to add the terraform plugin into the vim config. ---------------------------
-vim_config_file="vimrc"
-cd ${vimrc_home}
-cp -p ${vim_config_file} ${vim_config_file}.orig
+###### vundle plugin url bug fix. -----------------------------------------------------------------------
+###### define vundle search and replace strings for the stream editor.
+#####vundle_string_search="VundleVim"
+#####vundle_string_replace="ed-barberis"
+#####
+###### modify the installer to point to the new vundle vim repository.
+#####vundle_install_file="${vimrc_home}/bin/install"
+#####if [ -f "$vundle_install_file" ]; then
+#####  # copy the original file using the current date.
+#####  runuser -c "cp -p ${vundle_install_file} ${vundle_install_file}.${curdate}.orig1" - ${user_name}
+#####
+#####  # use the stream editor to modify the plugin repository url.
+#####  if ! grep -qF -- "${vundle_string_replace}" "${vundle_install_file}" ; then
+#####    runuser -c "sed -i -e \"s/${vundle_string_search}/${vundle_string_replace}/g\" ${vundle_install_file}" - ${user_name}
+#####  fi
+#####fi
+#####
+###### modify the vim config to point to the new vundle vim plugin.
+#####vim_config_file="${vimrc_home}/vimrc"
+#####if [ -f "$vim_config_file" ]; then
+#####  # copy the original file using the current date.
+#####  runuser -c "cp -p ${vim_config_file} ${vim_config_file}.${curdate}.orig1" - ${user_name}
+#####
+#####  # use the stream editor to modify the plugin.
+#####  if ! grep -qF -- "${vundle_string_replace}" "${vim_config_file}" ; then
+#####    runuser -c "sed -i -e \"s/${vundle_string_search}/${vundle_string_replace}/g\" ${vim_config_file}" - ${user_name}
+#####  fi
+#####fi
 
-# define stream editor search string.
+# add the terraform and copilot plugins into the vim config. ---------------------------------------
+# define vim search and replace strings for the stream editor.
 vim_config_search="  Plugin 'luan\/vim-concourse'"
+vim_config_line_01="  Plugin 'hashivim\/vim-terraform'"
+vim_config_line_02="  Plugin 'github\/copilot.vim'"
 
-# define stream editor vim config substitution strings.
-vim_config_line="  Plugin 'hashivim\/vim-terraform'"
+# modify the vim config to add the terraform plugin.
+vim_config_file="${vimrc_home}/vimrc"
+if [ -f "$vim_config_file" ]; then
+  # copy the original file using the current date.
+  runuser -c "cp -p ${vim_config_file} ${vim_config_file}.${curdate}.orig2" - ${user_name}
 
-# insert vim config lines after this line: '  Plugin 'luan/vim-concourse'.
-if ! grep -qF -- 'terraform' "${vimrc_home}/${vim_config_file}" ; then
-  runuser -c "sed -i -e \"s/^${vim_config_search}$/${vim_config_search}\n${vim_config_line}/g\" ${vimrc_home}/${vim_config_file}" - ${user_name}
+  # use the stream editor to add the plugin.
+  if ! grep -qF -- 'terraform' "${vim_config_file}" ; then
+    runuser -c "sed -i -e \"s/^${vim_config_search}$/${vim_config_search}\n${vim_config_line_01}\n${vim_config_line_02}/g\" ${vim_config_file}" - ${user_name}
+  fi
 fi
 
 ###### vundle installer bug fix. ------------------------------------------------------------------------
