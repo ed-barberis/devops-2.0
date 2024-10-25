@@ -1,6 +1,6 @@
 #!/bin/sh -eux
 #---------------------------------------------------------------------------------------------------
-# Install MySQL Shell 8.0 by Oracle on CentOS Linux 7.x.
+# Install MySQL Shell 8.0 by Oracle on CentOS Linux 8.x.
 #
 # MySQL Shell is an advanced client and code editor for MySQL. In addition to the provided SQL
 # functionality, similar to 'mysql', MySQL Shell provides scripting capabilities for JavaScript
@@ -22,7 +22,7 @@
 # set default values for input environment variables if not set. -----------------------------------
 # [OPTIONAL] mysql shell install parameters [w/ defaults].
 mysqlsh_release="${mysqlsh_release:-8.0.38-1}"                              # [optional] mysql release version (defaults to '8.0.38-1').
-mysqlsh_checksum="${mysqlsh_checksum:-9c2e5e5d9d464b80d983280ef68b5625}"    # [optional] mysql shell repository md5 checksum (defaults to published value).
+mysqlsh_checksum="${mysqlsh_checksum:-c9ea16c1871e78e52cfc3b30d362e912}"    # [optional] mysql shell repository md5 checksum (defaults to published value).
 
 # [OPTIONAL] devops home folder [w/ default].
 devops_home="${devops_home:-/opt/devops}"                                   # [optional] devops home (defaults to '/opt/devops').
@@ -32,7 +32,7 @@ mkdir -p ${devops_home}/provisioners/scripts/centos
 cd ${devops_home}/provisioners/scripts/centos
 
 # install mysql shell. -----------------------------------------------------------------------------
-mysqlsh_binary="mysql-shell-${mysqlsh_release}.el7.x86_64.rpm"
+mysqlsh_binary="mysql-shell-${mysqlsh_release}.el9.x86_64.rpm"
 
 # download mysql shell repository.
 rm -f ${mysqlsh_binary}
@@ -40,10 +40,10 @@ wget --no-verbose --no-check-certificate --no-cookies --header "Cookie: oracleli
 
 # verify the downloaded binary using the md5 checksum.
 echo "${mysqlsh_checksum} ${mysqlsh_binary}" | md5sum --check -
-# mysql-shell-${mysqlsh_release}.el7.x86_64.rpm: OK
+# mysql-shell-${mysqlsh_release}.el9.x86_64.rpm: OK
 
 # install mysql shell. -----------------------------------------------------------------------------
-yum -y install ${mysqlsh_binary}
+dnf -y install ${mysqlsh_binary}
 
 # verify mysql shell installation.
 mysqlsh --version

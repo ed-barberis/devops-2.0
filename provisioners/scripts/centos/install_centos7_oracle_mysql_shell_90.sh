@@ -1,18 +1,18 @@
 #!/bin/sh -eux
 #---------------------------------------------------------------------------------------------------
-# Install MySQL Shell 8.0 by Oracle on CentOS Linux 7.x.
+# Install MySQL Shell 9.0 by Oracle on CentOS Linux 7.x.
 #
 # MySQL Shell is an advanced client and code editor for MySQL. In addition to the provided SQL
 # functionality, similar to 'mysql', MySQL Shell provides scripting capabilities for JavaScript
 # and Python and includes APIs for working with MySQL.
 #
-# MySQL Shell 8.0 is highly recommended for use with both MySQL Server 8.0 and 5.7.
+# MySQL Shell 9.0 is highly recommended for use with MySQL Server 9.0.
 #
 # For more details, please visit:
-#   https://dev.mysql.com/doc/mysql-shell/8.0/en/
-#   https://dev.mysql.com/doc/mysql-shell/8.0/en/mysql-shell-install-linux-quick.html
+#   https://dev.mysql.com/doc/mysql-shell/9.0/en/
+#   https://dev.mysql.com/doc/mysql-shell/9.0/en/mysql-shell-install-linux-quick.html
 #   https://dev.mysql.com/downloads/shell
-#   https://dev.mysql.com/doc/relnotes/mysql-shell/8.0/en/
+#   https://dev.mysql.com/doc/relnotes/mysql-shell/9.0/en/
 #
 # NOTE: All inputs are defined by external environment variables.
 #       Optional variables have reasonable defaults, but you may override as needed.
@@ -21,8 +21,8 @@
 
 # set default values for input environment variables if not set. -----------------------------------
 # [OPTIONAL] mysql shell install parameters [w/ defaults].
-mysqlsh_release="${mysqlsh_release:-8.0.38-1}"                              # [optional] mysql release version (defaults to '8.0.38-1').
-mysqlsh_checksum="${mysqlsh_checksum:-9c2e5e5d9d464b80d983280ef68b5625}"    # [optional] mysql shell repository md5 checksum (defaults to published value).
+mysqlsh_release="${mysqlsh_release:-9.0.0-1}"                               # [optional] mysql release version (defaults to '9.0.0-1').
+mysqlsh_checksum="${mysqlsh_checksum:-99d3b7a726690109b969f7298743d8e3}"    # [optional] mysql shell repository md5 checksum (defaults to published value).
 
 # [OPTIONAL] devops home folder [w/ default].
 devops_home="${devops_home:-/opt/devops}"                                   # [optional] devops home (defaults to '/opt/devops').
@@ -50,8 +50,8 @@ mysqlsh --version
 
 # mysqlsh command-line examples. -------------------------------------------------------------------
 # MySQL Shell User Guide
-#   This is the MySQL Shell User Guide extract from the MySQL 8.0 Reference Manual.
-#   https://dev.mysql.com/doc/mysql-shell-excerpt/8.0/en/
+#   This is the MySQL Shell User Guide extract from the MySQL 9.0 Reference Manual.
+#   https://dev.mysql.com/doc/mysql-shell-excerpt/9.0/en/
 #
 #   For help with using MySQL, please visit either the MySQL Forums or MySQL Mailing Lists,
 #   where you can discuss your issues with other MySQL users.
