@@ -1,21 +1,26 @@
 #!/bin/sh -eux
-# install useful headless (command-line) developer tools on centos 9.
+# install useful headless (command-line) developer tools.
 
 # install epel repository. -------------------------------------------------------------------------
-dnf -y install epel-release
-dnf repolist
+yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
 
-# install neofetch system information tool. ---------------------------------------------------------
-dnf -y install neofetch
+# install python 2.x pip and setuptools. -----------------------------------------------------------
+#yum -y install python2-pip
+#python2 --version
+#pip2 --version
 
-# verify installation.
-set +e  # temporarily turn 'exit pipeline on non-zero return status' OFF.
-neofetch --version
-set -e  # turn 'exit pipeline on non-zero return status' back ON.
+# upgrade python 2.x pip.
+#python2 -m pip install --upgrade pip
+#pip2 --version
 
-# display system information.
-neofetch
+# install python 2.x setup tools.
+#yum -y install python2-setuptools
+#python2 -m pip install --upgrade setuptools
+#easy_install --version
 
 # install git. -------------------------------------------------------------------------------------
-dnf -y install git
+yum -y install git
 git --version
+
+# install bash completion tools. -------------------------------------------------------------------
+yum -y install bash-completion
