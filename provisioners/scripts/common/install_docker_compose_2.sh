@@ -22,11 +22,25 @@
 # NOTE: Script should be run with 'root' privilege.
 #---------------------------------------------------------------------------------------------------
 
+# retrieve the current cpu architecture. -----------------------------------------------------------
+cpu_arch=$(uname -m)
+
 # install docker compose v2 cli. -------------------------------------------------------------------
-dc_release="2.29.5"
+dc_release="2.30.1"
 dc_home="/usr/libexec/docker/cli-plugins"
-dc_binary="docker-compose-linux-x86_64"
-dc_sha256="589f98f1395936170815282d77dbcb9935210536c769778aedd09c4ff5eec33b"
+dc_binary="docker-compose-linux-${cpu_arch}"
+
+# set the docker compose sha256 value based on cpu architecture.
+if [ "$cpu_arch" = "x86_64" ]; then
+  # use the amd64 sha256 value.
+  dc_sha256="bd976a501e471c14b320876686f1628db3c37ab223405d2a815022fc711e704e"
+elif [ "$cpu_arch" = "aarch64" ]; then
+  # use the arm64 sha256 value.
+  dc_sha256="f869d0900f8744b3f295c5bf8ed68488110598891d3db1d93db7203db9fa535b"
+else
+  echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
+  exit 1
+fi
 
 # create docker cli-plugins directory (if needed).
 mkdir -p ${dc_home}

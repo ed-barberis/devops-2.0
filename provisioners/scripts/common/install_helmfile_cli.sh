@@ -22,10 +22,25 @@
 # [OPTIONAL] helmfile install parameters [w/ defaults].
 #####user_name="${user_name:-centos}"
 
+# retrieve the current cpu architecture. -----------------------------------------------------------
+cpu_arch=$(uname -m)
+
 # install helmfile cli client. ---------------------------------------------------------------------
-helmfile_release="0.168.0"
-helmfile_binary="helmfile_${helmfile_release}_linux_amd64.tar.gz"
-helmfile_sha256="6df25a7ea49d4ba4b4a192100b7cf648a89c6c99e02a440f6938f78fb89cad8d"
+helmfile_release="0.169.1"
+
+# set the helmfile cli binary and sha256 values based on cpu architecture.
+if [ "$cpu_arch" = "x86_64" ]; then
+  # set the amd64 variables.
+  helmfile_binary="helmfile_${helmfile_release}_linux_amd64.tar.gz"
+  helmfile_sha256="c3c18ad2fbc83a5440f09f79a9dfa8df2a288595766655fe79b34dd902ba8c6d"
+elif [ "$cpu_arch" = "aarch64" ]; then
+  # set the arm64 variables.
+  helmfile_binary="helmfile_${helmfile_release}_linux_arm64.tar.gz"
+  helmfile_sha256="b95a01c7233f7724ca65614163b7bbdc1958e1679c43f7a1655a6896918ef720"
+else
+  echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
+  exit 1
+fi
 
 # check if 'helm' is installed. --------------------------------------------------------------------
 if [ ! -f "/usr/local/bin/helm" ] && [ ! -f "/opt/homebrew/bin/helm" ]; then

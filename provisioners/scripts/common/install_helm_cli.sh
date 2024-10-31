@@ -18,11 +18,27 @@
 # NOTE: Script should be run with 'root' privilege.
 #---------------------------------------------------------------------------------------------------
 
+# retrieve the current cpu architecture. -----------------------------------------------------------
+cpu_arch=$(uname -m)
+
 # install helm cli client. -------------------------------------------------------------------------
-helm_release="3.16.1"
-helm_folder="linux-amd64"
-helm_binary="helm-v${helm_release}-linux-amd64.tar.gz"
-helm_sha256="e57e826410269d72be3113333dbfaac0d8dfdd1b0cc4e9cb08bdf97722731ca9"
+helm_release="3.16.2"
+
+# set the helm cli binary and sha256 values based on cpu architecture.
+if [ "$cpu_arch" = "x86_64" ]; then
+  # set the amd64 variables.
+  helm_folder="linux-amd64"
+  helm_binary="helm-v${helm_release}-linux-amd64.tar.gz"
+  helm_sha256="9318379b847e333460d33d291d4c088156299a26cd93d570a7f5d0c36e50b5bb"
+elif [ "$cpu_arch" = "aarch64" ]; then
+  # set the arm64 variables.
+  helm_folder="linux-arm64"
+  helm_binary="helm-v${helm_release}-linux-arm64.tar.gz"
+  helm_sha256="1888301aeb7d08a03b6d9f4d2b73dcd09b89c41577e80e3455c113629fc657a4"
+else
+  echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
+  exit 1
+fi
 
 # create local bin directory (if needed).
 mkdir -p /usr/local/bin

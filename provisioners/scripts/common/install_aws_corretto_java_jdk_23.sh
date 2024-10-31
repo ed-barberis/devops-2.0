@@ -1,6 +1,6 @@
 #!/bin/sh -eux
 #---------------------------------------------------------------------------------------------------
-# Install Amazon Corretto 8 OpenJDK by Amazon.
+# Install Amazon Corretto 23 OpenJDK by Amazon.
 #
 # Amazon Corretto is a no-cost, multiplatform, production-ready distribution of the Open Java
 # Development Kit (OpenJDK). Corretto comes with long-term support that will include performance
@@ -19,19 +19,19 @@
 # retrieve the current cpu architecture. -----------------------------------------------------------
 cpu_arch=$(uname -m)
 
-# set amazon corretto 8 installation variables. ----------------------------------------------------
-jdk_home="jdk180"
-jdk_build="8.432.06.1"
+# set amazon corretto 23 installation variables. ---------------------------------------------------
+jdk_home="jdk23"
+jdk_build="23.0.1.8.1"
 jdk_pgpkey_file="B04F24E3.pub"
 
 # set the jdk sha256 and arch values based on cpu architecture.
 if [ "$cpu_arch" = "x86_64" ]; then
   # set the amd64 variables.
-  jdk_sha256="eaecf5827e11fd60c3ff0a2294b4451974ebec9fcf3d62da9c0e19ada5178247"
+  jdk_sha256="eb55c6fca0a2ac7a88fec203142602736294705804fbfdbb6767135659442dfb"
   jdk_arch="x64"
 elif [ "$cpu_arch" = "aarch64" ]; then
   # set the arm64 variables.
-  jdk_sha256="0143a71fca1db3ca60730d39a1b59c22ee31f0977f5cab8236421adcd5b992a0"
+  jdk_sha256="7903bae0aeaaf4af95ef37ad7e7da1098d2523699170f96349ce93c9c31c73eb"
   jdk_arch="aarch64"
 else
   echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
@@ -40,15 +40,15 @@ fi
 
 jdk_folder="amazon-corretto-${jdk_build}-linux-${jdk_arch}"
 jdk_binary="amazon-corretto-${jdk_build}-linux-${jdk_arch}.tar.gz"
-#jdk_binary="amazon-corretto-${jdk_build:0:1}-${jdk_arch}-linux-jdk.tar.gz" # permanent (latest) binary.
+#jdk_binary="amazon-corretto-${jdk_build:0:2}-${jdk_arch}-linux-jdk.tar.gz" # permanent (latest) binary.
 jdk_sig_file="${jdk_binary}.sig"
 
 # create java home parent folder. ------------------------------------------------------------------
 mkdir -p /usr/local/java
 cd /usr/local/java
 
-# download and validate corretto 8 binary from aws. ------------------------------------------------
-# download the corretto 8 binary.
+# download and validate corretto 23 binary from aws. -----------------------------------------------
+# download the corretto 23 binary.
 rm -f ${jdk_binary}
 wget --no-verbose https://corretto.aws/downloads/resources/${jdk_build}/${jdk_binary}
 #wget --no-verbose https://corretto.aws/downloads/latest/${jdk_binary}      # permanent (latest) url.
@@ -57,7 +57,7 @@ wget --no-verbose https://corretto.aws/downloads/resources/${jdk_build}/${jdk_bi
 echo "${jdk_sha256} ${jdk_binary}" | sha256sum --check
 # amazon-corretto-${jdk_build}-linux-${jdk_arch}.tar.gz: OK
 
-# download the corretto 8 pgp signature.
+# download the corretto 23 pgp signature.
 rm -f ${jdk_sig_file}
 wget --no-verbose https://corretto.aws/downloads/resources/${jdk_build}/${jdk_sig_file}
 
@@ -96,7 +96,7 @@ y2VhKc09A8RwSI69vDs=
 -----END PGP PUBLIC KEY BLOCK-----
 EOF
 
-# import the corretto 8 public key.
+# import the corretto 23 public key.
 set +e  # temporarily turn 'exit pipeline on non-zero return status' OFF.
 gpg --import ${jdk_pgpkey_file}
 set -e  # turn 'exit pipeline on non-zero return status' back ON.
@@ -104,12 +104,12 @@ set -e  # turn 'exit pipeline on non-zero return status' back ON.
 # verify the downloaded binary using the pgp signature.
 gpg --verify ${jdk_sig_file} ${jdk_binary}
 
-# install amazon corretto 8. -----------------------------------------------------------------------
+# install amazon corretto 23. ----------------------------------------------------------------------
 # remove existing installation.
 rm -f ${jdk_home}
 rm -Rf ${jdk_folder}
 
-# extract corretto 8 binary and create softlink to 'jdk180'.
+# extract corretto 23 binary and create softlink to 'jdk23'.
 tar -zxvf ${jdk_binary} --no-same-owner --no-overwrite-dir
 chown -R root:root ./${jdk_folder}
 ln -s ${jdk_folder} ${jdk_home}
@@ -119,11 +119,11 @@ rm -f ${jdk_binary}
 rm -f ${jdk_sig_file}
 rm -f ${jdk_pgpkey_file}
 
-# set corretto 8 home environment variables.
+# set corretto 23 home environment variables.
 JAVA_HOME=/usr/local/java/${jdk_home}
 export JAVA_HOME
 PATH=${JAVA_HOME}/bin:$PATH
 export PATH
 
 # verify installation.
-java -version
+java --version

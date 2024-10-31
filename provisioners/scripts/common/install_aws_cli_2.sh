@@ -28,7 +28,7 @@ cd ${devops_home}/provisioners/scripts/centos
 # set aws cli 2 installation variables. ------------------------------------------------------------
 aws_cli_install_dir="/usr/local/aws-cli"
 aws_cli_bin_dir="/usr/local/bin"
-aws_cli_binary="awscli-exe-linux-x86_64.zip"
+aws_cli_binary="awscli-exe-linux-$(uname -m).zip"
 aws_cli_folder="aws"
 aws_cli_pgpkey_file="aws-cli-2-public-key.asc"
 aws_cli_sig_file="${aws_cli_binary}.sig"

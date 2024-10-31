@@ -20,10 +20,25 @@
 # NOTE: Script should be run with 'root' privilege.
 #---------------------------------------------------------------------------------------------------
 
+# retrieve the current cpu architecture. -----------------------------------------------------------
+cpu_arch=$(uname -m)
+
 # install hashicorp vault. -------------------------------------------------------------------------
-vault_release="1.17.5"
-vault_binary="vault_${vault_release}_linux_amd64.zip"
-vault_sha256="67eb9f95d37975e2525bbd455e19528a7759f3a56022de064bf8605fc220be47"
+vault_release="1.18.1"
+
+# set the vault tool binary and sha256 values based on cpu architecture.
+if [ "$cpu_arch" = "x86_64" ]; then
+  # set the amd64 variables.
+  vault_binary="vault_${vault_release}_linux_amd64.zip"
+  vault_sha256="d6486e4644cbeefa841ff6a41e39b68a5129c329bd2e271b29368948ff9ddfc4"
+elif [ "$cpu_arch" = "aarch64" ]; then
+  # set the arm64 variables.
+  vault_binary="vault_${vault_release}_linux_arm64.zip"
+  vault_sha256="c62ff127b9b1b6e984c0c3c88ee68d9348f8f3d5e9bbc1a639c09607827ebb0e"
+else
+  echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
+  exit 1
+fi
 
 # create local bin directory (if needed).
 mkdir -p /usr/local/bin
@@ -36,10 +51,11 @@ wget --no-verbose https://releases.hashicorp.com/vault/${vault_release}/${vault_
 # verify the downloaded binary.
 echo "${vault_sha256} ${vault_binary}" | sha256sum --check
 # vault_${vault_release}_linux_amd64.zip: OK
+# vault_${vault_release}_linux_arm64.zip: OK
 
 # extract vault binary.
-rm -f vault
-unzip ${vault_binary}
+rm -f vault LICENSE.txt
+unzip ${vault_binary} vault
 chmod 755 vault
 rm -f ${vault_binary}
 
@@ -49,4 +65,4 @@ PATH=/usr/local/bin:$PATH
 export PATH
 
 # verify vault version.
-vault --version
+vault version

@@ -16,10 +16,25 @@
 # NOTE: Script should be run with 'root' privilege.
 #---------------------------------------------------------------------------------------------------
 
+# retrieve the current cpu architecture. -----------------------------------------------------------
+cpu_arch=$(uname -m)
+
 # install k9s cli client. --------------------------------------------------------------------------
 k9s_release="0.32.5"
-k9s_binary="k9s_Linux_amd64.tar.gz"
-k9s_sha256="33c31bf5feba292b59b8dabe5547cb52ab565521ee5619b52eb4bd4bf226cea3"
+
+# set the packer cli binary and sha256 values based on cpu architecture.
+if [ "$cpu_arch" = "x86_64" ]; then
+  # set the amd64 variables.
+  k9s_binary="k9s_Linux_amd64.tar.gz"
+  k9s_sha256="33c31bf5feba292b59b8dabe5547cb52ab565521ee5619b52eb4bd4bf226cea3"
+elif [ "$cpu_arch" = "aarch64" ]; then
+  # set the arm64 variables.
+  k9s_binary="k9s_Linux_arm64.tar.gz"
+  k9s_sha256="0b6315206843de295aa0adcb172af44182cd60ba8fc34792069c993d12624a29"
+else
+  echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
+  exit 1
+fi
 
 # create local bin directory (if needed).
 mkdir -p /usr/local/bin

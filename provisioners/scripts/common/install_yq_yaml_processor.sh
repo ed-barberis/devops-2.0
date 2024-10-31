@@ -14,11 +14,27 @@
 # NOTE: Script should be run with 'root' privilege.
 #---------------------------------------------------------------------------------------------------
 
+# retrieve the current cpu architecture. -----------------------------------------------------------
+cpu_arch=$(uname -m)
+
 # install yq yaml processor. -----------------------------------------------------------------------
 yq_release="v4.44.3"
-yq_exe="yq_linux_amd64"
-yq_binary="${yq_exe}.tar.gz"
-yq_sha256="a2c097180dd884a8d50c956ee16a9cec070f30a7947cf4ebf87d5f36213e9ed7"
+
+# set the yq cli binary and sha256 values based on cpu architecture.
+if [ "$cpu_arch" = "x86_64" ]; then
+  # set the amd64 variables.
+  yq_exe="yq_linux_amd64"
+  yq_binary="${yq_exe}.tar.gz"
+  yq_sha256="a2c097180dd884a8d50c956ee16a9cec070f30a7947cf4ebf87d5f36213e9ed7"
+elif [ "$cpu_arch" = "aarch64" ]; then
+  # set the arm64 variables.
+  yq_exe="yq_linux_arm64"
+  yq_binary="${yq_exe}.tar.gz"
+  yq_sha256="0e7e1524f68d91b3ff9b089872d185940ab0fa020a5a9052046ef10547023156"
+else
+  echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
+  exit 1
+fi
 
 # create local bin directory (if needed).
 mkdir -p /usr/local/bin

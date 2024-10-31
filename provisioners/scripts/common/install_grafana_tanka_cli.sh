@@ -26,16 +26,32 @@
 #   https://tanka.dev/install/
 #
 # NOTE: Script should be run with 'root' privilege.
+#       To generate sha256 checksum on MacOS, run: 'shasum -a 256 tk-linux-amd64'
 #---------------------------------------------------------------------------------------------------
-
-# define tanka input variables. --------------------------------------------------------------------
-###tanka_release="0.28.2"
-###tanka_binary="tk-linux-amd64"
-###tanka_sha256="7ee8bd8def0b87d95dee6e46152659d0fa26d259f3b6b4d9579c16181d9168d5"
 
 # set default values for input environment variables if not set. -----------------------------------
 # [OPTIONAL] tanka install parameters [w/ defaults].
 #####user_name="${user_name:-centos}"
+
+# retrieve the current cpu architecture. -----------------------------------------------------------
+cpu_arch=$(uname -m)
+
+# define tanka input variables. --------------------------------------------------------------------
+tanka_release="0.28.4"
+
+# set the tk cli binary and sha256 values based on cpu architecture.
+if [ "$cpu_arch" = "x86_64" ]; then
+  # set the amd64 variables.
+  tanka_binary="tk-linux-amd64"
+  tanka_sha256="89ca1d9d4a7e5acadff3b0bd85b45c23e3775a45359c66339f121c0f44ab4e17"
+elif [ "$cpu_arch" = "aarch64" ]; then
+  # set the arm64 variables.
+  tanka_binary="tk-linux-arm64"
+  tanka_sha256="b4bd1838a0cb2c58eea01a25ef673943a4811190cb7fb5487f51d3616c6290e1"
+else
+  echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
+  exit 1
+fi
 
 # check for required and recommended utilities. ----------------------------------------------------
 # check if 'kubectl' is installed.
@@ -111,15 +127,15 @@ cd /usr/local/bin
 
 # download tanka from github.com.
 rm -f tk
-curl --silent --location "https://github.com/grafana/tanka/releases/latest/download/tk-linux-amd64" --output tk
-###curl --silent --location "https://github.com/grafana/tanka/releases/download/v${tanka_release}/${tanka_binary}" --output tk
+curl --silent --location "https://github.com/grafana/tanka/releases/download/v${tanka_release}/${tanka_binary}" --output tk
+###curl --silent --location "https://github.com/grafana/tanka/releases/latest/download/tk-linux-amd64" --output tk
 
 # change owner and execute permissions.
 chown root:root tk
 chmod 755 tk
 
 # verify the downloaded binary.
-###echo "${tanka_sha256} tk" | sha256sum --check
+echo "${tanka_sha256} tk" | sha256sum --check
 # tk: OK
 
 # set tk environment variables.

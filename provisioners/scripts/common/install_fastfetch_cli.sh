@@ -23,10 +23,33 @@
 # NOTE: Script should be run with 'root' privilege.
 #---------------------------------------------------------------------------------------------------
 
+# retrieve the current cpu architecture. -----------------------------------------------------------
+cpu_arch=$(uname -m)
+
 # install fastfetch cli client. --------------------------------------------------------------------
 fastfetch_release="2.28.0"
-fastfetch_binary="fastfetch-linux-amd64.tar.gz"
-fastfetch_sha256="beea71de0c918011ac8b8974e7bdf462b4347c63ed2517b75d44dfbbe8b8f320"
+
+# set the fastfetch cli binary and sha256 values based on cpu architecture.
+if [ "$cpu_arch" = "x86_64" ]; then
+  # set the amd64 variables.
+  fastfetch_binary="fastfetch-linux-amd64.tar.gz"
+  fastfetch_sha256="beea71de0c918011ac8b8974e7bdf462b4347c63ed2517b75d44dfbbe8b8f320"
+
+  # set the amd64 download path.
+  fastfetch_path="amd64"
+
+elif [ "$cpu_arch" = "aarch64" ]; then
+  # set the arm64 variables.
+  fastfetch_binary="fastfetch-linux-aarch64.tar.gz"
+  fastfetch_sha256="694e27fba98929b865e40c3e3a1e6e75ab4a7aa6428f8e1904168db1622d1afd"
+
+  # set the arm64 download path.
+  fastfetch_path="aarch64"
+
+else
+  echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
+  exit 1
+fi
 
 # create local bin directory (if needed).
 mkdir -p /usr/local/bin
@@ -40,15 +63,16 @@ chmod 755 ${fastfetch_binary}
 # verify the downloaded binary.
 echo "${fastfetch_sha256} ${fastfetch_binary}" | sha256sum --check
 # fastfetch-linux-amd64.tar.gz: OK
+# fastfetch-linux-aarch64.tar.gz: OK
 
 # extract fastfetch cli binary.
 rm -f flashfetch
 rm -f fastfetch
-tar -zxvf ${fastfetch_binary} --no-same-owner --no-overwrite-dir fastfetch-linux-amd64/usr/bin/flashfetch
-tar -zxvf ${fastfetch_binary} --no-same-owner --no-overwrite-dir fastfetch-linux-amd64/usr/bin/fastfetch
-mv fastfetch-linux-amd64/usr/bin/flashfetch ./flashfetch
-mv fastfetch-linux-amd64/usr/bin/fastfetch ./fastfetch
-rm -Rf fastfetch-linux-amd64
+tar -zxvf ${fastfetch_binary} --no-same-owner --no-overwrite-dir fastfetch-linux-${fastfetch_path}/usr/bin/flashfetch
+tar -zxvf ${fastfetch_binary} --no-same-owner --no-overwrite-dir fastfetch-linux-${fastfetch_path}/usr/bin/fastfetch
+mv fastfetch-linux-${fastfetch_path}/usr/bin/flashfetch ./flashfetch
+mv fastfetch-linux-${fastfetch_path}/usr/bin/fastfetch ./fastfetch
+rm -Rf fastfetch-linux-${fastfetch_path}
 rm -f ${fastfetch_binary}
 
 # change ownership and execute permissions.
