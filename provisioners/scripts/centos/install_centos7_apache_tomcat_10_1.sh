@@ -7,7 +7,13 @@
 # Servlet 6.0, JSP 3.1, EL 5.0, WebSocket 2.1 and Authentication 3.0 specifications (the versions
 # required by Java EE 10 platform).
 #
-# Tomcat 10.1 was designed to run on Java SE 11 or later.
+# NOTE: Users of Tomcat 10 onwards should be aware that, as a result of the move from Java EE to
+# Jakarta EE as part of the transfer of Java EE to the Eclipse Foundation, the primary package for
+# all implemented APIs has changed from javax.* to jakarta.*. This will almost certainly require
+# code changes to enable applications to migrate from Tomcat 9 and earlier to Tomcat 10 and later.
+# A migration tool is available to aid this process.
+#
+# Tomcat 10.1 was designed to run on Java SE 11 and later.
 #
 # For more details, please visit:
 #   https://tomcat.apache.org/tomcat-10.1-doc/index.html
@@ -22,9 +28,9 @@
 # set default values for input environment variables if not set. -----------------------------------
 # [OPTIONAL] tomcat web server install parameters [w/ defaults].
 tomcat_home="${tomcat_home:-apache-tomcat-10.1}"                    # [optional] tomcat home (defaults to 'apache-tomcat-10.1').
-tomcat_release="${tomcat_release:-10.1.30}"                         # [optional] tomcat release (defaults to '10.1.30').
+tomcat_release="${tomcat_release:-10.1.31}"                         # [optional] tomcat release (defaults to '10.1.31').
                                                                     # [optional] tomcat sha-512 checksum (defaults to published value).
-tomcat_sha512="${tomcat_sha512:-9e5f46fdb984d9e48f2608d78352173b7e9b72c384ca0886a9384120d96d2c9302c26d2314e646152605e5e4b044f705feaaf13146b0e72dd535a9625c7746dd}"
+tomcat_sha512="${tomcat_sha512:-0e3d423a843e2d9ba4f28a9f0a2f1073d5a1389557dfda041759f8df968bace63cd6948bd76df2727b5133ddb7c33e05dab43cea1d519ca0b6d519461152cce9}"
 tomcat_username="${tomcat_username:-vagrant}"                       # [optional] tomcat user name (defaults to 'vagrant').
 tomcat_group="${tomcat_group:-vagrant}"                             # [optional] tomcat group (defaults to 'vagrant').
 

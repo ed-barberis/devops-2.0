@@ -1,17 +1,24 @@
 #!/bin/sh -eux
 #---------------------------------------------------------------------------------------------------
-# Install Apache Tomcat 9.x Web Server by Apache on RHEL-based Linux 7.x distros.
+# Install Apache Tomcat 11.0.x Web Server by Apache on RHEL-based Linux 64-bit distros.
 #
 # Apache Tomcat is an open source software implementation of a subset of the Jakarta EE (formally
-# Java EE) technologies. Apache Tomcat 9.x builds on Tomcat 8.0.x and 8.5.x and implements the
-# Servlet 4.0, JSP 2.3, EL 3.0, WebSocket 1.1 and JASPIC 1.1 specifications (the versions required
-# by Java EE 8 platform).
+# Java EE) technologies. Apache Tomcat 11.0.x implements the Servlet 6.1, JSP 4.0, EL 6.0,
+# WebSocket 2.2 and Authentication 3.1 specifications (the versions required by Java EE 11
+# platform), and includes many additional features that make it a useful platform for developing
+# and deploying web applications and web services.
 #
-# Tomcat 9.0 was designed to run on Java SE 8 or later.
+# NOTE: Users of Tomcat 10 onwards should be aware that, as a result of the move from Java EE to
+# Jakarta EE as part of the transfer of Java EE to the Eclipse Foundation, the primary package for
+# all implemented APIs has changed from javax.* to jakarta.*. This will almost certainly require
+# code changes to enable applications to migrate from Tomcat 9 and earlier to Tomcat 10 and later.
+# A migration tool is available to aid this process.
+#
+# Tomcat 11.0 was designed to run on Java SE 17 and later.
 #
 # For more details, please visit:
-#   https://tomcat.apache.org/tomcat-9.0-doc/index.html
-#   https://tomcat.apache.org/download-90.cgi
+#   https://tomcat.apache.org/tomcat-11.0-doc/index.html
+#   https://tomcat.apache.org/download-11.cgi
 #   https://tomcat.apache.org/whichversion.html
 #
 # NOTE: All inputs are defined by external environment variables.
@@ -21,10 +28,10 @@
 
 # set default values for input environment variables if not set. -----------------------------------
 # [OPTIONAL] tomcat web server install parameters [w/ defaults].
-tomcat_home="${tomcat_home:-apache-tomcat-9}"                       # [optional] tomcat home (defaults to 'apache-tomcat-9').
-tomcat_release="${tomcat_release:-9.0.96}"                          # [optional] tomcat release (defaults to '9.0.96').
+tomcat_home="${tomcat_home:-apache-tomcat-11.0}"                    # [optional] tomcat home (defaults to 'apache-tomcat-11.0').
+tomcat_release="${tomcat_release:-11.0.0}"                          # [optional] tomcat release (defaults to '11.0.0').
                                                                     # [optional] tomcat sha-512 checksum (defaults to published value).
-tomcat_sha512="${tomcat_sha512:-ef3ac81debbc3a519c43d1fdb1c88ab26a8052af424d81bceccfbd6e663050a06d7aad7960fd5d11c17849829daebbebf33d92ac1158902283d0e534514aab93}"
+tomcat_sha512="${tomcat_sha512:-f23c533f257725cd673eb39423459799b6647e6fa9dc14a0b252cb7186935870a36a657741f72578935a4b52330e128e15372fb6bb678a7fd26ae942710a1f1e}"
 tomcat_username="${tomcat_username:-vagrant}"                       # [optional] tomcat user name (defaults to 'vagrant').
 tomcat_group="${tomcat_group:-vagrant}"                             # [optional] tomcat group (defaults to 'vagrant').
 
@@ -35,7 +42,7 @@ tomcat_admin_password="${tomcat_admin_password:-welcome1}"          # [optional]
 set -x  # turn command display back ON.
 tomcat_admin_roles="${tomcat_admin_roles:-manager-gui,admin-gui}"   # [optional] tomcat admin roles (defaults to 'manager-gui,admin-gui').
                                                                     #            NOTE: for appd java agent, add 'manager-script'.
-tomcat_jdk_home="${tomcat_jdk_home:-/usr/local/java/jdk180}"        # [optional] tomcat jdk home (defaults to '/usr/local/java/jdk180').
+tomcat_jdk_home="${tomcat_jdk_home:-/usr/local/java/jdk11}"         # [optional] tomcat jdk home (defaults to '/usr/local/java/jdk11').
                                                                     # [optional] tomcat catalina opts (defaults to '-Xms512M -Xmx1024M -server -XX:+UseParallelGC').
                                                                     #            NOTE: for appd java agent, add '-javaagent:/opt/appdynamics/appagent/javaagent.jar'.
 tomcat_catalina_opts="${tomcat_catalina_opts:--Xms512M -Xmx1024M -server -XX:+UseParallelGC}"
@@ -47,7 +54,7 @@ tomcat_manager_apps_remote_access="${tomcat_manager_apps_remote_access:-true}"
 
 # install apache tomcat. ---------------------------------------------------------------------------
 # set tomcat web server installation variables.
-tomcat_folder="${tomcat_home:0:-2}-${tomcat_release}"
+tomcat_folder="${tomcat_home:0:-5}-${tomcat_release}"
 tomcat_binary="${tomcat_folder}.tar.gz"
 
 # create apache parent folder.
@@ -55,7 +62,7 @@ mkdir -p /usr/local/apache
 cd /usr/local/apache
 
 # download tomcat binary from apache.org.
-wget --no-verbose https://archive.apache.org/dist/tomcat/${tomcat_home:7}/v${tomcat_release}/bin/${tomcat_binary}
+wget --no-verbose https://archive.apache.org/dist/tomcat/${tomcat_home:7:-2}/v${tomcat_release}/bin/${tomcat_binary}
 
 # verify the downloaded binary.
 echo "${tomcat_sha512} ${tomcat_binary}" | sha512sum --check
@@ -100,7 +107,7 @@ if [ -d "$setenv_dir" ]; then
   chown ${tomcat_username}:${tomcat_group} "${setenv_filepath}"
 
   echo "#!/bin/sh" >> "${setenv_filepath}"
-  echo "#Set environment variables for the Apache Tomcat ${tomcat_home:${#tomcat_home}-1:1} web server." >> "${setenv_filepath}"
+  echo "#Set environment variables for the Apache Tomcat ${tomcat_home:${#tomcat_home}-4:4} web server." >> "${setenv_filepath}"
   echo "JAVA_HOME=\"${JAVA_HOME}\"" >> "${setenv_filepath}"
   echo "CATALINA_PID=\"${CATALINA_HOME}/tomcat.pid\"" >> "${setenv_filepath}"
   echo "CATALINA_OPTS=\"\${CATALINA_OPTS} ${tomcat_catalina_opts}\"" >> "${setenv_filepath}"
@@ -187,7 +194,7 @@ if [ -d "$systemd_dir" ]; then
   chmod 644 "${service_filepath}"
 
   echo "[Unit]" >> "${service_filepath}"
-  echo "Description=The Apache Tomcat ${tomcat_home:${#tomcat_home}-1:1} web server." >> "${service_filepath}"
+  echo "Description=The Apache Tomcat ${tomcat_home:${#tomcat_home}-4:4} web server." >> "${service_filepath}"
   echo "After=network.target remote-fs.target nss-lookup.target" >> "${service_filepath}"
   echo "" >> "${service_filepath}"
   echo "[Service]" >> "${service_filepath}"
