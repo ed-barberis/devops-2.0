@@ -21,8 +21,8 @@
 
 # set default values for input environment variables if not set. -----------------------------------
 # [OPTIONAL] mysql shell install parameters [w/ defaults].
-mysqlsh_release="${mysqlsh_release:-8.0.38-1}"                              # [optional] mysql release version (defaults to '8.0.38-1').
-mysqlsh_checksum="${mysqlsh_checksum:-9c2e5e5d9d464b80d983280ef68b5625}"    # [optional] mysql shell repository md5 checksum (defaults to published value).
+mysqlsh_release="${mysqlsh_release:-8.0.40-1}"                              # [optional] mysql release version (defaults to '8.0.40-1').
+mysqlsh_checksum="${mysqlsh_checksum:-dd1642df330b5b22be8f1426c1a80204}"    # [optional] mysql shell repository md5 checksum (defaults to published value).
 
 # [OPTIONAL] devops home folder [w/ default].
 devops_home="${devops_home:-/opt/devops}"                                   # [optional] devops home (defaults to '/opt/devops').
