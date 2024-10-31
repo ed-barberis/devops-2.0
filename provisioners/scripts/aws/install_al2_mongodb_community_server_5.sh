@@ -18,8 +18,8 @@
 
 # set default values for input environment variables if not set. -----------------------------------
 # [OPTIONAL] mongodb community server install parameters [w/ defaults].
-user_name="${user_name:-ec2-user}"                                          # [optional] user name for testing.
-user_group="${user_group:-ec2-user}"                                        # [optional] user login group for testing.
+user_name="${user_name:-vagrant}"                                           # [optional] user name for testing.
+user_group="${user_group:-vagrant}"                                         # [optional] user login group for testing.
 mongodb_server_admin_username="${mongodb_server_admin_username:-userAdmin}" # [optional] MongoDB admin username (defaults to 'userAdmin').
 set +x  # temporarily turn command display OFF.
 mongodb_server_admin_password="${mongodb_server_admin_password:-welcome1}"  # [optional] admin password (defaults to 'welcome1').
