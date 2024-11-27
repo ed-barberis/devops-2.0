@@ -98,7 +98,7 @@ case $user_host_os in
     ;;
 
   # in oracle linux 9 environments, the 'glibc-static' library is found in the 'ol9_codeready_builder' repo.
-  "Oracle Linux Server 9.4")
+  "Oracle Linux Server 9.5")
     dnf -y install dnf-plugins-core
     dnf -y install epel-release
     dnf config-manager --set-enabled ol9_codeready_builder
@@ -106,7 +106,7 @@ case $user_host_os in
     ;;
 
   # in centos 9 like environments, the 'glibc-static' library is found in the 'crb' repo.
-  "AlmaLinux 9.4 (Seafoam Ocelot)"|"CentOS Stream 9"|"Rocky Linux 9.4 (Blue Onyx)")
+  "AlmaLinux 9.5 (Teal Serval)"|"CentOS Stream 9"|"Rocky Linux 9.5 (Blue Onyx)")
     dnf -y install dnf-plugins-core
     dnf -y install epel-release
     dnf config-manager --set-enabled crb
@@ -131,7 +131,7 @@ esac
 # install the cloud9 runtime environment in the user's home directory ('~/.c9').
 case $user_host_os in
   # for newer os environments that don't have 'python2', we need to run the new c9 v2.0.0 installer script.
-  "AlmaLinux 9.4 (Seafoam Ocelot)"|"Amazon Linux 2023"|"CentOS Stream 9"|"Fedora Linux 37 (Cloud Edition)"|"Fedora Linux 38 (Cloud Edition)"|"Fedora Linux 39 (Cloud Edition)"|"Oracle Linux Server 9.4"|"Rocky Linux 9.4 (Blue Onyx)"|"Ubuntu 20.04.6 LTS"|"Ubuntu 22.04.5 LTS")
+  "AlmaLinux 9.5 (Teal Serval)"|"Amazon Linux 2023"|"CentOS Stream 9"|"Fedora Linux 37 (Cloud Edition)"|"Fedora Linux 38 (Cloud Edition)"|"Fedora Linux 39 (Cloud Edition)"|"Oracle Linux Server 9.5"|"Rocky Linux 9.5 (Blue Onyx)"|"Ubuntu 20.04.6 LTS"|"Ubuntu 22.04.5 LTS")
     runuser -c "${devops_home}/provisioners/scripts/aws/c9-install-2.0.0.sh" - ${user_name}
     ;;
 
