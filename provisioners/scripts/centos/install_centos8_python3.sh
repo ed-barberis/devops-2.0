@@ -3,7 +3,7 @@
 
 # set default values for input environment variables if not set. -----------------------------------
 # [OPTIONAL] python 3.x install parameters [w/ defaults].
-user_name="${user_name:-centos}"
+user_name="${user_name:-vagrant}"
 
 # define usage function. ---------------------------------------------------------------------------
 usage() {
@@ -12,7 +12,7 @@ Usage:
   All inputs are defined by external environment variables.
   Script should be run with 'root' privilege.
   Example:
-    [root]# export user_name="centos"                           # user name.
+    [root]# export user_name="vagrant"                          # user name.
     [root]# $0
 EOF
 }
