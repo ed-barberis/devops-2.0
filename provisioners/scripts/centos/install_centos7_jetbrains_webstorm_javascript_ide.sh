@@ -4,14 +4,28 @@
 # set default value for devops home environment variable if not set. -------------------------------
 devops_home="${devops_home:-/opt/devops}"                   # [optional] devops home (defaults to '/opt/devops').
 
+# retrieve the current cpu architecture. -----------------------------------------------------------
+cpu_arch=$(uname -m)
+
 # install webstorm javascript ide. -----------------------------------------------------------------
 webstorm_home="webstorm"
-webstorm_release="2024.2.4"
-webstorm_build="242.23726.96"
-
+webstorm_release="2024.3"
+webstorm_build="243.21565.180"
 webstorm_folder="WebStorm-${webstorm_build}"
-webstorm_binary="WebStorm-${webstorm_release}.tar.gz"
-webstorm_sha256="c7cd4f9c5affc7f2d24e50130d5565165cc88ac3a4f7fbefd9986a03727f753e"
+
+# set the webstorm binary and sha256 values based on cpu architecture.
+if [ "$cpu_arch" = "x86_64" ]; then
+  # set the amd64 variables.
+  webstorm_binary="WebStorm-${webstorm_release}.tar.gz"
+  webstorm_sha256="23858c20f84a10f3be6ac05cdb03a47e6862fabbf4a748ecef7902f882a9e935"
+elif [ "$cpu_arch" = "aarch64" ]; then
+  # set the arm64 variables.
+  webstorm_binary="WebStorm-${webstorm_release}-aarch64.tar.gz"
+  webstorm_sha256="85541c9e8209d7b99422ea2bd1c3b3c14b680f7c5a92cd37f9476c41bfb3c0eb"
+else
+  echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
+  exit 1
+fi
 
 # create jetbrains home parent folder.
 mkdir -p /usr/local/jetbrains
@@ -23,6 +37,7 @@ wget --no-verbose https://download.jetbrains.com/webstorm/${webstorm_binary}
 # verify the downloaded binary.
 echo "${webstorm_sha256} ${webstorm_binary}" | sha256sum --check
 # WebStorm-${webstorm_release}.tar.gz: OK
+# WebStorm-${webstorm_release}-aarch64.tar.gz
 
 # extract webstorm javascript ide binary.
 rm -f ${webstorm_home}
