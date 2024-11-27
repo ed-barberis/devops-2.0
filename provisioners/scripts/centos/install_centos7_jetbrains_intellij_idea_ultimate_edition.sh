@@ -4,14 +4,28 @@
 # set default value for devops home environment variable if not set. -------------------------------
 devops_home="${devops_home:-/opt/devops}"                   # [optional] devops home (defaults to '/opt/devops').
 
+# retrieve the current cpu architecture. -----------------------------------------------------------
+cpu_arch=$(uname -m)
+
 # install intellij idea ultimate edition. ----------------------------------------------------------
 idea_home="idea-IU"
-idea_release="2024.2.4"
-idea_build="242.23726.103"
-
+idea_release="2024.3"
+idea_build="243.21565.193"
 idea_folder="idea-IU-${idea_build}"
-idea_binary="ideaIU-${idea_release}.tar.gz"
-idea_sha256="8411fda793a20356a4982e4f18f6691839d8a471e2081ab6d8cc78b3f8b02532"
+
+# set the idea binary and sha256 values based on cpu architecture.
+if [ "$cpu_arch" = "x86_64" ]; then
+  # set the amd64 variables.
+  idea_binary="ideaIU-${idea_release}.tar.gz"
+  idea_sha256="c0627c42510bdd25b82127db62997fe6b7b98cc7e30987a83fa0b419692a15c1"
+elif [ "$cpu_arch" = "aarch64" ]; then
+  # set the arm64 variables.
+  idea_binary="ideaIU-${idea_release}-aarch64.tar.gz"
+  idea_sha256="8b262ad7dc6efd2ef4b953701771ec6cf526b5e628a1b07afb6092d6e70a55a2"
+else
+  echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
+  exit 1
+fi
 
 # create jetbrains home parent folder.
 mkdir -p /usr/local/jetbrains
