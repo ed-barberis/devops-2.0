@@ -1,12 +1,44 @@
 #!/bin/bash -eux
-# install java se 21 development kit by oracle.
+#---------------------------------------------------------------------------------------------------
+# Install Java SE 21 Development Kit by Oracle.
+#
+# The Java Platform, Standard Edition Development Kit (JDK) 21 is a development environment for
+# building applications and components using the Java programming language.
+#
+# The JDK includes tools useful for developing, testing, and monitoring programs written in the
+# Java programming language and running on the Java platform.
+#
+# For more details, please visit:
+#   https://docs.oracle.com/en/java/javase/21/
+#   https://www.oracle.com/java/technologies/javase/jdk21-readme-downloads.html
+#   https://www.oracle.com/java/technologies/downloads/#java21
+#
+# NOTE: Script should be run with 'root' privilege.
+#---------------------------------------------------------------------------------------------------
+
+# retrieve the current cpu architecture. -----------------------------------------------------------
+cpu_arch=$(uname -m)
 
 # install java se 21 development kit. --------------------------------------------------------------
 jdk_home="jdk21"
-jdk_build="21.0.4"
+jdk_build="21.0.5"
 jdk_folder="jdk-${jdk_build}"
-jdk_binary="${jdk_folder}_linux-x64_bin.tar.gz"
-jdk_sha256="dc0d14d5cf1b44e02832a7e85d0d5eb1f4623dc389a2b7fb3d21089b84fc7eb1"
+
+# set the jdk sha256 and arch values based on cpu architecture.
+if [ "$cpu_arch" = "x86_64" ]; then
+  # set the amd64 variables.
+  jdk_sha256="9c2f7c39e0d5b296ce50e563740694b2ebfe4a620415d1b2b848ba47bebceb47"
+  jdk_arch="x64"
+elif [ "$cpu_arch" = "aarch64" ]; then
+  # set the arm64 variables.
+  jdk_sha256="d5569b6ac748c4f95c42f3810174a37f41e60e9130b783e0716a088b826fe14d"
+  jdk_arch="aarch64"
+else
+  echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
+  exit 1
+fi
+
+jdk_binary="${jdk_folder}_linux-${jdk_arch}_bin.tar.gz"
 
 # create java home parent folder.
 mkdir -p /usr/local/java
@@ -14,10 +46,11 @@ cd /usr/local/java
 
 # download jdk 21 binary from oracle otn.
 wget --no-verbose https://download.oracle.com/java/${jdk_build:0:2}/archive/${jdk_binary}
+#wget --no-verbose https://download.oracle.com/java/${jdk_build:0:2}/latest/${jdk_binary}   # permanent (latest) url.
 
 # verify the downloaded binary.
 echo "${jdk_sha256} ${jdk_binary}" | sha256sum --check
-# ${jdk_folder}_linux-x64_bin.tar.gz: OK
+# ${jdk_folder}_linux-${jdk_arch}_bin.tar.gz: OK
 
 # extract jdk 21 binary and create softlink to 'jdk21'.
 rm -f ${jdk_home}
