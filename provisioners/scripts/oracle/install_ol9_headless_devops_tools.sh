@@ -1,8 +1,11 @@
 #!/bin/sh -eux
-# install useful headless (command-line) developer tools on centos 9.
+# install useful headless (command-line) developer tools on oracle linux 9.
 
 # install epel repository. -------------------------------------------------------------------------
 dnf -y install epel-release
+
+# enable powertools repository. --------------------------------------------------------------------
+dnf config-manager --set-enabled ol9_codeready_builder
 dnf repolist
 
 # install neofetch system information tool. ---------------------------------------------------------
