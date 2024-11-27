@@ -17,11 +17,9 @@
 user_name="${user_name:-vagrant}"                               # user name.
 user_group="${user_group:-vagrant}"                             # user login group.
 
-# update the apt repository package indexes. -------------------------------------------------------
-apt-get update
-
 # install tools needed to build git from source. ---------------------------------------------------
-apt-get -y install libz-dev libssl-dev libcurl4-gnutls-dev libexpat1-dev gettext cmake gcc
+dnf -y install curl-devel expat-devel gettext-devel openssl-devel zlib-devel
+dnf -y install gcc perl-ExtUtils-MakeMaker
 
 # install git binaries from source. ----------------------------------------------------------------
 git_home="git"
@@ -44,8 +42,8 @@ rm -f ${git_binary}
 
 # build and install git binaries.
 cd ${git_folder}
-#CFLAGS="-DNO_UNCOMPRESS2"
-#export CFLAGS
+CFLAGS="-DNO_UNCOMPRESS2"
+export CFLAGS
 
 ./configure
 make prefix=/usr/local/git/${git_folder} all
