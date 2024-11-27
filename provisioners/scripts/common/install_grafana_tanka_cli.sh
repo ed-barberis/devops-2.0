@@ -26,7 +26,8 @@
 #   https://tanka.dev/install/
 #
 # NOTE: Script should be run with 'root' privilege.
-#       To generate sha256 checksum on MacOS, run: 'shasum -a 256 tk-linux-amd64'
+#       To generate sha256 checksum on MacOS, run: 'shasum -a 256 tk-linux-amd64' --and--
+#                                             run: 'shasum -a 256 tk-linux-arm64'
 #---------------------------------------------------------------------------------------------------
 
 # set default values for input environment variables if not set. -----------------------------------
@@ -37,17 +38,17 @@
 cpu_arch=$(uname -m)
 
 # define tanka input variables. --------------------------------------------------------------------
-tanka_release="0.28.4"
+tanka_release="0.30.1"
 
 # set the tk cli binary and sha256 values based on cpu architecture.
 if [ "$cpu_arch" = "x86_64" ]; then
   # set the amd64 variables.
   tanka_binary="tk-linux-amd64"
-  tanka_sha256="89ca1d9d4a7e5acadff3b0bd85b45c23e3775a45359c66339f121c0f44ab4e17"
+  tanka_sha256="08f2b00064194b2861eb6b3fb842b70ea2c34600d325da7113467cbd5b33745f"
 elif [ "$cpu_arch" = "aarch64" ]; then
   # set the arm64 variables.
   tanka_binary="tk-linux-arm64"
-  tanka_sha256="b4bd1838a0cb2c58eea01a25ef673943a4811190cb7fb5487f51d3616c6290e1"
+  tanka_sha256="fa1a1d49f1b818615d5e6ddf07409957ed5ea981ef011f3ab9952066a0208ba6"
 else
   echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
   exit 1
@@ -128,7 +129,7 @@ cd /usr/local/bin
 # download tanka from github.com.
 rm -f tk
 curl --silent --location "https://github.com/grafana/tanka/releases/download/v${tanka_release}/${tanka_binary}" --output tk
-###curl --silent --location "https://github.com/grafana/tanka/releases/latest/download/tk-linux-amd64" --output tk
+###curl --silent --location "https://github.com/grafana/tanka/releases/latest/download/${tanka_binary}" --output tk
 
 # change owner and execute permissions.
 chown root:root tk

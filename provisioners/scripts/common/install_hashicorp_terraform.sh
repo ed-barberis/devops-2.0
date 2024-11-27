@@ -31,17 +31,17 @@
 cpu_arch=$(uname -m)
 
 # install hashicorp terraform. ---------------------------------------------------------------------
-terraform_release="1.9.8"
+terraform_release="1.10.0"
 
 # set the terraform cli binary and sha256 values based on cpu architecture.
 if [ "$cpu_arch" = "x86_64" ]; then
   # set the amd64 variables.
   terraform_binary="terraform_${terraform_release}_linux_amd64.zip"
-  terraform_sha256="186e0145f5e5f2eb97cbd785bc78f21bae4ef15119349f6ad4fa535b83b10df8"
+  terraform_sha256="4b05f4848d365597cf7ac5b59334c62a16b3bb7b524586578ee45ba823b6758b"
 elif [ "$cpu_arch" = "aarch64" ]; then
   # set the arm64 variables.
   terraform_binary="terraform_${terraform_release}_linux_arm64.zip"
-  terraform_sha256="f85868798834558239f6148834884008f2722548f84034c9b0f62934b2d73ebb"
+  terraform_sha256="e12fad357bcff9537e904a7821529206c2c8fb48f700b670c25d6deddbb65d05"
 else
   echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
   exit 1
