@@ -6,25 +6,40 @@
 # set default value for devops home environment variable if not set. -------------------------------
 devops_home="${devops_home:-/opt/devops}"                   # [optional] devops home (defaults to '/opt/devops').
 
+# retrieve the current cpu architecture. -----------------------------------------------------------
+cpu_arch=$(uname -m)
+
 # install spring tool suite ide. -------------------------------------------------------------------
 sts_home="sts"
-sts_release="4.26.0"
+sts_release="4.27.0"
 sts_number="173685548"
-eclipse_version="2024-09"
-eclipse_release="4.33.0"
+eclipse_version="2024-12"
+eclipse_release="4.34.0"
 eclipse_dist=$(echo "e${eclipse_release}" | awk -F "." '{printf "%s.%s", $1, $2}')
 sts_family="${sts_release:0:1}"
 sts_folder="${sts_home}-${sts_release}.RELEASE"
 sts_config="SpringToolSuite${sts_family}.ini"
-sts_binary="spring-tool-suite-${sts_family}-${sts_release}.RELEASE-e${eclipse_release}-linux.gtk.x86_64.tar.gz"
-sts_sha256="6cc96ae44a3f9422932edba6940302c2c19ed94de89ba43806df6902a0db3efc"
+
+# set the go binary and sha256 values based on cpu architecture.
+if [ "$cpu_arch" = "x86_64" ]; then
+  # set the amd64 variables.
+  sts_binary="spring-tool-suite-${sts_family}-${sts_release}.RELEASE-e${eclipse_release}-linux.gtk.x86_64.tar.gz"
+  sts_sha256="e0d7200f6d0a51f5155841cd3558a76c2ff5d5150ffe39f394eeabcf084b9585"
+elif [ "$cpu_arch" = "aarch64" ]; then
+  # set the arm64 variables.
+  sts_binary="spring-tool-suite-${sts_family}-${sts_release}.RELEASE-e${eclipse_release}-linux.gtk.aarch64.tar.gz"
+  sts_sha256="a11648ab3544897a7bd3245f5b4b2de43bbb7629ebcccaa2beb5b128b5775ed7"
+else
+  echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
+  exit 1
+fi
 
 # create spring tool suite home parent folder.
 mkdir -p /usr/local/spring
 cd /usr/local/spring
 
 # download spring tool suite binary.
-wget --no-verbose https://download.springsource.com/release/STS${sts_family}/${sts_release}.RELEASE/dist/${eclipse_dist}/${sts_binary}
+wget --no-verbose https://cdn.spring.io/spring-tools/release/STS${sts_family}/${sts_release}.RELEASE/dist/${eclipse_dist}/${sts_binary}
 
 # verify the downloaded binary.
 echo "${sts_sha256} ${sts_binary}" | sha256sum --check
