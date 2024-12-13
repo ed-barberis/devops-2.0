@@ -9,19 +9,19 @@ cpu_arch=$(uname -m)
 
 # install intellij idea community edition. ---------------------------------------------------------
 idea_home="idea-IC"
-idea_release="2024.3"
-idea_build="243.21565.193"
+idea_release="2024.3.1"
+idea_build="243.22562.145"
 idea_folder="idea-IC-${idea_build}"
 
 # set the idea binary and sha256 values based on cpu architecture.
 if [ "$cpu_arch" = "x86_64" ]; then
   # set the amd64 variables.
   idea_binary="ideaIC-${idea_release}.tar.gz"
-  idea_sha256="16d4f411b62ddc7747fe11e8fff004bf8d144df4052b8111306fd4cbba8f748c"
+  idea_sha256="b3fbdba793ba9e7800ac1ee4ceedf4726f86d5320c7c0d4e155b5bd10a296777"
 elif [ "$cpu_arch" = "aarch64" ]; then
   # set the arm64 variables.
   idea_binary="ideaIC-${idea_release}-aarch64.tar.gz"
-  idea_sha256="7f21a648346c38b9e4c8c0d693b62d2383fc59a5d5228bb12f32549f3b80080a"
+  idea_sha256="dc3427884cc1b98cd79d152b9d808a72b99f751dc627063148dce862853819d4"
 else
   echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
   exit 1
