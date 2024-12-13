@@ -41,6 +41,8 @@ fi
 
 # install basic utilities needed for the install scripts. ------------------------------------------
 # update apt repository package indexes for ubuntu.
+DEBIAN_FRONTEND=noninteractive
+export DEBIAN_FRONTEND
 sudo apt-get update
 sudo apt-get -y upgrade
 
