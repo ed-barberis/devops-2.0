@@ -83,7 +83,7 @@ sudo ./install_ubuntu_vim_9.sh
 cd ${devops_home}/provisioners/scripts/common
 sudo runuser -c "touch ~/.bash_profile" - root
 sudo runuser -c "touch ~/.bashrc" - root
-sudo -E runuser -c "TERM=xterm-256color devops_home=${devops_home} ${devops_home}/provisioners/scripts/common/install_root_user_env.sh" - root
+sudo -E runuser -c "TERM=xterm-256color devops_home=${devops_home} ${devops_home}/provisioners/scripts/common/install_headless_root_user_env.sh" - root
 
 # use the stream editor to update the correct 'devops_home'.
 sudo -E runuser -c "devops_home=${devops_home} sed -i -e \"/^devops_home/c\devops_home=\"${devops_home}\"\" ~/.bashrc" - root
@@ -92,7 +92,7 @@ sudo -E runuser -c "devops_home=${devops_home} sed -i -e \"/^devops_home/c\devop
 cd ${devops_home}/provisioners/scripts/common
 touch ~/.bash_profile
 touch ~/.bashrc
-sudo -E ./install_user_env.sh
+sudo -E ./install_headless_user_env.sh
 
 # use the stream editor to update the correct 'devops_home'.
 #sed -i -e "/^devops_home/c\devops_home=\"${devops_home}\"" ~/.bashrc
