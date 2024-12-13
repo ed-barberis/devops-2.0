@@ -38,17 +38,17 @@
 cpu_arch=$(uname -m)
 
 # define tanka input variables. --------------------------------------------------------------------
-tanka_release="0.30.1"
+tanka_release="0.30.2"
 
 # set the tk cli binary and sha256 values based on cpu architecture.
 if [ "$cpu_arch" = "x86_64" ]; then
   # set the amd64 variables.
   tanka_binary="tk-linux-amd64"
-  tanka_sha256="08f2b00064194b2861eb6b3fb842b70ea2c34600d325da7113467cbd5b33745f"
+  tanka_sha256="e4dd9b9ae272ce14eca69c192a967b59da912b59f2acb60b1fa11667d15614bd"
 elif [ "$cpu_arch" = "aarch64" ]; then
   # set the arm64 variables.
   tanka_binary="tk-linux-arm64"
-  tanka_sha256="fa1a1d49f1b818615d5e6ddf07409957ed5ea981ef011f3ab9952066a0208ba6"
+  tanka_sha256="cbd0c57d44bdd29d87dd8967b5186fe6ac03b6344b6cded54bd3faa6ff1b6708"
 else
   echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
   exit 1

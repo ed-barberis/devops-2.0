@@ -24,9 +24,10 @@ cpu_arch=$(uname -m)
 
 # set default values for input environment variables if not set. -----------------------------------
 # [OPTIONAL] kubectl install parameters [w/ defaults].
-#kubectl_release="${kubectl_release:-1.31.3}"
-kubectl_release="${kubectl_release:-1.30.7}"
-#kubectl_release="${kubectl_release:-1.29.11}"
+#kubectl_release="${kubectl_release:-1.32.0}"
+#kubectl_release="${kubectl_release:-1.31.4}"
+kubectl_release="${kubectl_release:-1.30.8}"
+#kubectl_release="${kubectl_release:-1.29.12}"
 #kubectl_release="${kubectl_release:-1.28.15}"
 #kubectl_release="${kubectl_release:-1.27.16}"
 #kubectl_release="${kubectl_release:-1.26.15}"
@@ -45,9 +46,10 @@ declare -A sha256_values_array
 # set the kubectl cli binary and sha256 values based on cpu architecture.
 if [ "$cpu_arch" = "x86_64" ]; then
   # set the amd64 sha256 values.
-  sha256_values_array["1.31.3"]="981f6b49577068bc174275184d8ee7105d8e54f40733792c519cd85023984c0f"
-  sha256_values_array["1.30.7"]="3950ec7b81b9aa5a3856dd6155e42e1ad12a2fa8b050502f5a9652050f94a8ee"
-  sha256_values_array["1.29.11"]="14d7ea4ada60ff15ef3b7734a83c4d05cff164d4843b6f4c081a50b86547c17d"
+  sha256_values_array["1.32.0"]="646d58f6d98ee670a71d9cdffbf6625aeea2849d567f214bc43a35f8ccb7bf70"
+  sha256_values_array["1.31.4"]="298e19e9c6c17199011404278f0ff8168a7eca4217edad9097af577023a5620f"
+  sha256_values_array["1.30.8"]="7f39bdcf768ce4b8c1428894c70c49c8b4d2eee52f3606eb02f5f7d10f66d692"
+  sha256_values_array["1.29.12"]="35fc028853e6f5299a53f22ab58273ea2d882c0f261ead0a2eed5b844b12dbfb"
   sha256_values_array["1.28.15"]="1f7651ad0b50ef4561aa82e77f3ad06599b5e6b0b2a5fb6c4f474d95a77e41c5"
   sha256_values_array["1.27.16"]="97ea7cd771d0c6e3332614668a40d2c5996f0053ff11b44b198ea84dba0818cb"
   sha256_values_array["1.26.15"]="b75f359e6fad3cdbf05a0ee9d5872c43383683bb8527a9e078bb5b8a44350a41"
@@ -65,9 +67,10 @@ if [ "$cpu_arch" = "x86_64" ]; then
 
 elif [ "$cpu_arch" = "aarch64" ]; then
   # set the arm64 sha256 values.
-  sha256_values_array["1.31.3"]="a3953ad2b32eca0b429249a5fbdf4f8ef7d57223c45cc0401fd80fd12c7b9071"
-  sha256_values_array["1.30.7"]="5e856defeac209ff82dd473ce46f91a3118df82b863de0d2ed59bdf3558cffca"
-  sha256_values_array["1.29.11"]="d0fcb8ead20f45ffab2d680b84a93c8e459b2c7c1d6dadf566769cf59f04c506"
+  sha256_values_array["1.32.0"]="ba4004f98f3d3a7b7d2954ff0a424caa2c2b06b78c17b1dccf2acc76a311a896"
+  sha256_values_array["1.31.4"]="b97e93c20e3be4b8c8fa1235a41b4d77d4f2022ed3d899230dbbbbd43d26f872"
+  sha256_values_array["1.30.8"]="e51d6a76fade0871a9143b64dc62a5ff44f369aa6cb4b04967d93798bf39d15b"
+  sha256_values_array["1.29.12"]="1cf2c00bb4f5ee6df69678e95af8ba9a4d4b1050ddefb0ae9d84b5c6f6c0e817"
   sha256_values_array["1.28.15"]="7d45d9620e67095be41403ed80765fe47fcfbf4b4ed0bf0d1c8fe80345bda7d3"
   sha256_values_array["1.27.16"]="2f50cb29d73f696ffb57437d3e2c95b22c54f019de1dba19e2b834e0b4501eb9"
   sha256_values_array["1.26.15"]="1396313f0f8e84ab1879757797992f1af043e1050283532e0fd8469902632216"
