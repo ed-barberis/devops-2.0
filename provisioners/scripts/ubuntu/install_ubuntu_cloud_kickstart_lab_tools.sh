@@ -50,7 +50,7 @@ sudo apt-get -y install curl git tree wget unzip man
 # download the devops lab project from github.com. -------------------------------------------------
 cd ${user_home}
 rm -Rf ${devops_home}
-git clone https://github.com/CiscoDevNet/AppD-Cloud-Kickstart.git ${devops_home}
+git clone https://github.com/ed-barberis/devops-2.0.git ${devops_home}
 cd ${devops_home}
 git fetch origin
 
