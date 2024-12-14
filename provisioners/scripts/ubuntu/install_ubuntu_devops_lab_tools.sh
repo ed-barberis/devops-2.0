@@ -1,10 +1,10 @@
 #!/bin/bash -eux
 #---------------------------------------------------------------------------------------------------
-# Install Cloud Kickstart Lab tools on Ubuntu linux 64-bit.
+# Install DevOps 2.0 Lab tools on Ubuntu linux 64-bit.
 #
-# To configure the Cloud Kickstart Lab workshop environments, the first step is to set-up your
-# development environment by installing the needed software. This script simplifies that process
-# by automating the installation of all needed packages.
+# To configure the DevOps 2.0 Lab environments, the first step is to set-up your development
+# environment by installing the needed software. This script simplifies that process by automating
+# the installation of all needed packages.
 #
 # For Ubuntu, these software utilities include the following:
 #   Git:        Git is a distributed version control system.
@@ -12,6 +12,9 @@
 #   Terraform:  Terraform is an Infrastructure as Code (IaC) tool by HashiCorp.
 #   jq:         jq is a command-line json processor for linux 64-bit.
 #   AWS CLI v2: AWS CLI is an open source tool that enables you to interact with AWS services.
+#
+# To install, run:
+#   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/ed-barberis/devops-2.0/refs/heads/master/provisioners/scripts/ubuntu/install_ubuntu_devops_lab_tools.sh)"
 #
 # For more details, please visit:
 #   https://git-scm.com/
@@ -32,6 +35,8 @@ user_home="$(eval echo "~${user_name}")"                    # current user home 
 export user_home
 devops_home="${user_home}/devops-2.0"                       # devops lab home folder.
 export devops_home
+DEBIAN_FRONTEND=noninteractive                              # set non-interactive mode.
+export DEBIAN_FRONTEND
 
 # validate environment variables. ------------------------------------------------------------------
 if [ "$user_name" = "root" ]; then
@@ -41,8 +46,6 @@ fi
 
 # install basic utilities needed for the install scripts. ------------------------------------------
 # update apt repository package indexes for ubuntu.
-DEBIAN_FRONTEND=noninteractive
-export DEBIAN_FRONTEND
 sudo apt-get update
 sudo apt-get -y upgrade
 
@@ -129,6 +132,7 @@ unset user_name
 unset user_group
 unset user_home
 unset devops_home
+unset DEBIAN_FRONTEND
 
 # print completion message.
-echo "Cloud Kickstart Lab Tools installation complete."
+echo "DevOps 2.0 Lab Tools installation complete."
