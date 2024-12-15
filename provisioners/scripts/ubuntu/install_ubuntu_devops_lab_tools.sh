@@ -46,8 +46,8 @@ fi
 
 # install basic utilities needed for the install scripts. ------------------------------------------
 # update apt repository package indexes for ubuntu.
-sudo apt-get update
-sudo apt-get -y upgrade
+sudo -E apt-get update
+sudo -E apt-get -y upgrade
 
 # install core linux utilities.
 sudo apt-get -y install curl git tree wget unzip man
@@ -82,7 +82,7 @@ sudo -E ./install_aws_cli_2.sh
 
 # download, build, and install vim 9 text editor from source.
 cd ${devops_home}/provisioners/scripts/ubuntu
-sudo ./install_ubuntu_vim_9.sh
+sudo -E ./install_ubuntu_vim_9.sh
 
 # create default command-line environment profile for the 'root' user.
 cd ${devops_home}/provisioners/scripts/common
