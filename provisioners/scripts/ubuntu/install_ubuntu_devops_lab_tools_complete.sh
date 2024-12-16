@@ -37,10 +37,6 @@ devops_home="${user_home}/devops-2.0"                       # devops lab home fo
 export devops_home
 DEBIAN_FRONTEND=noninteractive                              # set non-interactive mode.
 export DEBIAN_FRONTEND
-#NEEDRESTART_SUSPEND=1                                       # suspend 'needrestart' after system update.
-#export NEEDRESTART_SUSPEND
-#NEEDRESTART_MODE=l                                          # change restart mode to list ('l').
-#export NEEDRESTART_MODE
 
 # validate environment variables. ------------------------------------------------------------------
 if [ "$user_name" = "root" ]; then
@@ -68,6 +64,37 @@ git fetch origin
 # retrieve ubuntu release version.
 ubuntu_release=$(lsb_release -rs)
 
+# download, build, and install git from source.
+cd ${devops_home}/provisioners/scripts/ubuntu
+sudo -E ./install_ubuntu_git.sh
+
+cd ${devops_home}/provisioners/scripts/common
+sudo -E ./install_git_flow.sh
+
+# download and install hashicorp tools.
+cd ${devops_home}/provisioners/scripts/common
+sudo ./install_hashicorp_consul.sh
+sudo ./install_hashicorp_packer.sh
+sudo ./install_hashicorp_terraform.sh
+sudo ./install_hashicorp_vault.sh
+
+# download and install cli processors.
+cd ${devops_home}/provisioners/scripts/common
+sudo ./install_jq_json_processor.sh
+sudo ./install_yq_yaml_processor.sh
+sudo ./install_jmespath_jp_json_processor.sh
+
+cd ${devops_home}/provisioners/scripts/ubuntu
+sudo -E ./install_ubuntu_xmlstarlet_xml_processor.sh
+
+# download and install aws command line interface (cli) 2 by amazon.
+cd ${devops_home}/provisioners/scripts/common
+sudo -E ./install_aws_cli_2.sh
+
+# download, build, and install vim 9 text editor from source.
+cd ${devops_home}/provisioners/scripts/ubuntu
+sudo -E ./install_ubuntu_vim_9.sh
+
 # install latest python and ubuntu core linux utilities.
 cd ${devops_home}/provisioners/scripts/ubuntu
 sudo -E ./install_ubuntu_devops_tools.sh
@@ -84,11 +111,11 @@ sudo ./install_aws_corretto_java_jdk_23.sh
 if [ -n "$ubuntu_release" ]; then
   case $ubuntu_release in
     20.04|22.04)
-      # install python 3.x on ubuntu linux.
+      # install python3 on ubuntu linux.
       cd ${devops_home}/provisioners/scripts/ubuntu
       sudo -E ./install_ubuntu_python3.sh
 
-      # install ansible 2.x with python3 for linux.
+      # install ansible with python3 for linux.
       cd ${devops_home}/provisioners/scripts/common
       sudo -E ./install_ansible.sh
       ;;
@@ -112,29 +139,46 @@ sudo -E ./install_ubuntu_docker.sh
 cd ${devops_home}/provisioners/scripts/common
 sudo ./install_docker_compose_2.sh
 
-# download, build, and install git from source.
+# download and install appdynamics ansible collection for agent management.
+cd ${devops_home}/provisioners/scripts/common
+sudo -E ./install_appdynamics_ansible_collection.sh
+
+# download and install system information tools.
 cd ${devops_home}/provisioners/scripts/ubuntu
-sudo -E ./install_ubuntu_git.sh
+sudo -E ./install_ubuntu_neofetch_repo.sh
 
-# download and install packer by hashicorp.
 cd ${devops_home}/provisioners/scripts/common
-sudo ./install_hashicorp_packer.sh
+sudo ./install_fastfetch_cli.sh
 
-# download and install terraform by hashicorp.
+# download and install kubernetes tools.
 cd ${devops_home}/provisioners/scripts/common
-sudo ./install_hashicorp_terraform.sh
+sudo ./install_aws_eksctl_cli.sh
+sudo ./install_aws_kubectl_cli.sh
+sudo ./install_k9s_cli.sh
+sudo ./install_helm_cli.sh
+sudo -E ./install_helmfile_cli.sh
+sudo ./install_jsonnet_bundler_package_manager.sh
+sudo -E ./install_grafana_tanka_cli.sh
 
-# download and install jq json processor.
+# download and install developer build tools.
 cd ${devops_home}/provisioners/scripts/common
-sudo ./install_jq_json_processor.sh
+sudo ./install_apache_ant.sh
+sudo ./install_apache_maven.sh
+sudo ./install_apache_groovy.sh
+sudo ./install_gradle.sh
 
-# download and install aws command line interface (cli) 2 by amazon.
+# download and install go programming language from google.
 cd ${devops_home}/provisioners/scripts/common
-sudo -E ./install_aws_cli_2.sh
+sudo ./install_google_golang.sh
 
-# download, build, and install vim 9 text editor from source.
+# download and install node.js developer tools.
+cd ${devops_home}/provisioners/scripts/common
+sudo -E ./install_nodejs_javascript_runtime.sh
+sudo -E ./install_serverless_framework_cli.sh
+
+# download and install mongodb community server 7.0 on ubuntu linux.
 cd ${devops_home}/provisioners/scripts/ubuntu
-sudo -E ./install_ubuntu_vim_9.sh
+sudo -E ./install_ubuntu_mongodb_community_server_7.sh
 
 # create default command-line environment profile for the 'root' user.
 cd ${devops_home}/provisioners/scripts/common
@@ -185,8 +229,6 @@ unset user_group
 unset user_home
 unset devops_home
 unset DEBIAN_FRONTEND
-#unset NEEDRESTART_SUSPEND
-#unset NEEDRESTART_MODE
 
 # print completion message.
 echo "DevOps 2.0 Lab Tools installation complete."
