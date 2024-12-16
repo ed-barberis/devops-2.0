@@ -100,7 +100,7 @@ touch ~/.bashrc
 sudo -E ./install_headless_user_env.sh
 
 # use the stream editor to update the correct 'devops_home'.
-#sed -i -e "/^devops_home/c\devops_home=\"${devops_home}\"" ~/.bashrc
+sed -i -e "/^devops_home/c\devops_home=\"${devops_home}\"" ~/.bashrc
 
 # change ownership of any 'root' owned files and folders.
 cd ${user_home}

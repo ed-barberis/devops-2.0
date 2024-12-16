@@ -1,4 +1,4 @@
-# @(#).bashrc       1.0 2023/04/20 SMI
+# @(#).bashrc       1.0 2024/12/16 SMI
 # bash resource configuration for devops administrators.
 
 # user 'root' specific aliases and functions.

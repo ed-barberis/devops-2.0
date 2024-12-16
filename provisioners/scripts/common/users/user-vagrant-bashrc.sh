@@ -1,4 +1,4 @@
-# @(#).bashrc       1.0 2023/12/06 SMI
+# @(#).bashrc       1.0 2024/12/16 SMI
 # bash resource configuration for devops users.
 
 # source global definitions.
@@ -120,6 +120,7 @@ export HISTCONTROL
 # define system alias commands.
 alias back='cd $OLDPWD; pwd'
 alias c=clear
+alias devopshome='cd $devops_home; pwd'
 #alias gvim='gvim -u $HOME/.vim/vimrc.vim'
 alias here='cd $here; pwd'
 alias more='less'
