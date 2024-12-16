@@ -37,6 +37,10 @@ devops_home="${user_home}/devops-2.0"                       # devops lab home fo
 export devops_home
 DEBIAN_FRONTEND=noninteractive                              # set non-interactive mode.
 export DEBIAN_FRONTEND
+#NEEDRESTART_SUSPEND=1                                       # suspend 'needrestart' after system update.
+#export NEEDRESTART_SUSPEND
+#NEEDRESTART_MODE=l                                          # change restart mode to list ('l').
+#export NEEDRESTART_MODE
 
 # validate environment variables. ------------------------------------------------------------------
 if [ "$user_name" = "root" ]; then
@@ -51,7 +55,7 @@ sudo -E apt-get -y upgrade
 sudo hostnamectl | awk '/Operating System/ {print $0}'
 
 # install core linux utilities.
-sudo apt-get -y install curl git tree wget unzip man net-tools debconf-utils
+sudo -E apt-get -y install curl git tree wget unzip man net-tools debconf-utils
 
 # download the devops lab project from github.com. -------------------------------------------------
 cd ${user_home}
@@ -181,6 +185,8 @@ unset user_group
 unset user_home
 unset devops_home
 unset DEBIAN_FRONTEND
+#unset NEEDRESTART_SUSPEND
+#unset NEEDRESTART_MODE
 
 # print completion message.
 echo "DevOps 2.0 Lab Tools installation complete."

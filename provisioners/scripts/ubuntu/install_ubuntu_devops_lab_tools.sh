@@ -51,7 +51,7 @@ sudo -E apt-get -y upgrade
 sudo hostnamectl | awk '/Operating System/ {print $0}'
 
 # install core linux utilities.
-sudo apt-get -y install curl git tree wget unzip man net-tools debconf-utils
+sudo -E apt-get -y install curl git tree wget unzip man net-tools debconf-utils
 
 # download the devops lab project from github.com. -------------------------------------------------
 cd ${user_home}
