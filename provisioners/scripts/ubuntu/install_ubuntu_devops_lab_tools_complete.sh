@@ -176,9 +176,9 @@ cd ${devops_home}/provisioners/scripts/common
 sudo -E ./install_nodejs_javascript_runtime.sh
 sudo -E ./install_serverless_framework_cli.sh
 
-# download and install mongodb community server 7.0 on ubuntu linux.
-cd ${devops_home}/provisioners/scripts/ubuntu
-sudo -E ./install_ubuntu_mongodb_community_server_7.sh
+###### download and install mongodb community server 7.0 on ubuntu linux.
+#####cd ${devops_home}/provisioners/scripts/ubuntu
+#####sudo -E ./install_ubuntu_mongodb_community_server_7.sh
 
 # create default command-line environment profile for the 'root' user.
 cd ${devops_home}/provisioners/scripts/common
