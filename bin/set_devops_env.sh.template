@@ -31,12 +31,12 @@ export devops_home
 #appd_platform_home="platform"
 #export appd_platform_home
 
-# [optional] platform release (defaults to '24.7.3.10052').
-#appd_platform_release="24.7.3.10052"
+# [optional] platform release (defaults to '24.10.0.10022').
+#appd_platform_release="24.10.0.10022"
 #export appd_platform_release
 
 # [optional] platform sha-256 checksum (defaults to published value).
-#appd_platform_sha256="e151bba901a255b5a1f52a1a5679b83ff9c5cf1489ae033ac2b61137e84efeb6"
+#appd_platform_sha256="dcd7dc4abc17d503b437026ec8c844b4218ace6ff41f6d6f08179afeafb70761"
 #export appd_platform_sha256
 
 # [optional] platform user name (defaults to 'vagrant').
