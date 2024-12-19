@@ -22,19 +22,19 @@
 cpu_arch=$(uname -m)
 
 # install helm cli client. -------------------------------------------------------------------------
-helm_release="3.16.3"
+helm_release="3.16.4"
 
 # set the helm cli binary and sha256 values based on cpu architecture.
 if [ "$cpu_arch" = "x86_64" ]; then
   # set the amd64 variables.
   helm_folder="linux-amd64"
   helm_binary="helm-v${helm_release}-linux-amd64.tar.gz"
-  helm_sha256="f5355c79190951eed23c5432a3b920e071f4c00a64f75e077de0dd4cb7b294ea"
+  helm_sha256="fc307327959aa38ed8f9f7e66d45492bb022a66c3e5da6063958254b9767d179"
 elif [ "$cpu_arch" = "aarch64" ]; then
   # set the arm64 variables.
   helm_folder="linux-arm64"
   helm_binary="helm-v${helm_release}-linux-arm64.tar.gz"
-  helm_sha256="5bd34ed774df6914b323ff84a0a156ea6ff2ba1eaf0113962fa773f3f9def798"
+  helm_sha256="d3f8f15b3d9ec8c8678fbf3280c3e5902efabe5912e2f9fcf29107efbc8ead69"
 else
   echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
   exit 1
@@ -53,6 +53,7 @@ chmod 755 ${helm_binary}
 # verify the downloaded binary.
 echo "${helm_sha256} ${helm_binary}" | sha256sum --check
 # helm-${helm_release}-linux-amd64.tar.gz: OK
+# helm-${helm_release}-linux-arm64.tar.gz: OK
 
 # extract helm binaries.
 rm -f helm
