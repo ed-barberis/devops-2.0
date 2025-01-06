@@ -271,10 +271,10 @@ Follow these instructions to build the CentOS Linux 7.9 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 2.22.20 (command-line interface) [Optional]
+-	Amazon AWS CLI 2.22.28 (command-line interface) [Optional]
 -	Ansible 2.9.27
 -	Ant 1.10.15
--	Consul 1.20.1
+-	Consul 1.20.2
 -	Cloud-Init 0.7.9 [Optional]
 -	Docker 26.1.4 CE
 	-	Docker Bash Completion
@@ -284,7 +284,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
 	-	Git-Flow 1.12.4 (AVH Edition)
 	-	Git-Flow Bash Completion
 -	Go 1.23.4
--	Gradle 8.11.1
+-	Gradle 8.12
 -	Groovy 4.0.24
 -	Java SE JDK 8 Update 432 (Amazon Corretto 8)
 -	Java SE JDK 11.0.25 (Amazon Corretto 11)
@@ -302,7 +302,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
 	-	Pip3 24.2
 -	Scala 3.6.2
 -	Scala 2.13.15
--	Scala Build Tool (SBT) 1.10.6
+-	Scala Build Tool (SBT) 1.10.7
 	-	Scala 2.12.20
 -	Terraform 1.10.3
 -	Vault 1.18.3
@@ -329,7 +329,7 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 -	Apache Tomcat 10.1.34
 -	Apache Tomcat 11.0.2
 -	AppDynamics Java Agent 24.12.0 Build 36528
--	AppDynamics Machine Agent 24.10.0 Build 4455
+-	AppDynamics Machine Agent 24.12.0 Build 4485
 	-	AppDynamics AWS EC2 Monitoring Extension 2.1.5 [Optional]
 -	Atom Editor 1.57.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
@@ -340,5 +340,5 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 -	JetBrains WebStorm 2024.3.1.1 (JavaScript IDE)
 -	Postman 11.23.3
 -	Spring Tool Suite 4 [4.27.0] IDE (Eclipse 2024-09 [4.34.0])
--	Sublime Text 4 (Build 4186)
--	Visual Studio Code 1.96.1
+-	Sublime Text 4 (Build 4189)
+-	Visual Studio Code 1.96.2
