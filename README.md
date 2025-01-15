@@ -31,7 +31,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 	-	vagrant-share 2.0.0
 	-	vagrant-vbguest 0.32.0
 -	Packer 1.11.2
--	Git 2.48.0
+-	Git 2.48.1
 -	jq 1.7.1
 -	Optional Add-ons
 	-	wget 1.25.0
@@ -72,7 +72,7 @@ Perform the following steps to install the needed software:
 6.	Install [Packer 1.11.2](https://packer.io/) for macOS 64-bit.  
     `$ brew install hashicorp/tap/packer`  
 
-7.	Install [Git 2.48.0](https://git-scm.com/downloads) for macOS 64-bit.  
+7.	Install [Git 2.48.1](https://git-scm.com/downloads) for macOS 64-bit.  
     `$ brew install git`  
 
 8.	Install [jq 1.7.1](https://jqlang.github.io/jq/) for macOS 64-bit.  
@@ -103,7 +103,7 @@ Perform the following steps to install the needed software:
     1.11.2
 
     $ git --version
-    git version 2.48.0
+    git version 2.48.1
 
     $ jq --version
     jq-1.7.1
