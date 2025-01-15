@@ -23,7 +23,7 @@ dnf -y install gcc perl-ExtUtils-MakeMaker
 
 # install git binaries from source. ----------------------------------------------------------------
 git_home="git"
-git_release="2.48.0"
+git_release="2.48.1"
 git_folder="git-${git_release}"
 git_binary="${git_folder}.tar.gz"
 
