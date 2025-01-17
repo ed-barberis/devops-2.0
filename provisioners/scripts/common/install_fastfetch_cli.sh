@@ -81,9 +81,12 @@ chown root:root fastfetch
 chmod 755 flashfetch
 chmod 755 fastfetch
 
-# set helm environment variables.
+# set fastfetch environment variables.
 PATH=/usr/local/bin:$PATH
 export PATH
 
 # verify installation. -----------------------------------------------------------------------------
 fastfetch --version
+
+# display system information.
+fastfetch

@@ -22,19 +22,19 @@
 cpu_arch=$(uname -m)
 
 # install helm cli client. -------------------------------------------------------------------------
-helm_release="3.16.4"
+helm_release="3.17.0"
 
 # set the helm cli binary and sha256 values based on cpu architecture.
 if [ "$cpu_arch" = "x86_64" ]; then
   # set the amd64 variables.
   helm_folder="linux-amd64"
   helm_binary="helm-v${helm_release}-linux-amd64.tar.gz"
-  helm_sha256="fc307327959aa38ed8f9f7e66d45492bb022a66c3e5da6063958254b9767d179"
+  helm_sha256="fb5d12662fde6eeff36ac4ccacbf3abed96b0ee2de07afdde4edb14e613aee24"
 elif [ "$cpu_arch" = "aarch64" ]; then
   # set the arm64 variables.
   helm_folder="linux-arm64"
   helm_binary="helm-v${helm_release}-linux-arm64.tar.gz"
-  helm_sha256="d3f8f15b3d9ec8c8678fbf3280c3e5902efabe5912e2f9fcf29107efbc8ead69"
+  helm_sha256="c4d4be8e80082b7eaa411e3e231d62cf05d01cddfef59b0d01006a7901e11ee4"
 else
   echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
   exit 1

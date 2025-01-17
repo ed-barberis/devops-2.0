@@ -271,19 +271,19 @@ Follow these instructions to build the CentOS Linux 7.9 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 2.22.35 (command-line interface) [Optional]
+-	Amazon AWS CLI 2.23.1 (command-line interface) [Optional]
 -	Ansible 2.9.27
 -	Ant 1.10.15
 -	Consul 1.20.2
 -	Cloud-Init 0.7.9 [Optional]
 -	Docker 26.1.4 CE
 	-	Docker Bash Completion
-	-	Docker Compose 2.32.3
+	-	Docker Compose 2.32.4
 -	Git 2.48.1
 	-	Git Bash Completion
 	-	Git-Flow 1.12.4 (AVH Edition)
 	-	Git-Flow Bash Completion
--	Go 1.23.4
+-	Go 1.23.5
 -	Gradle 8.12
 -	Groovy 4.0.24
 -	Java SE JDK 8 Update 432 (Amazon Corretto 8)
@@ -301,7 +301,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Python 3.6.8
 	-	Pip3 24.2
 -	Scala 3.6.2
--	Scala 2.13.15
+-	Scala 2.13.16
 -	Scala Build Tool (SBT) 1.10.7
 	-	Scala 2.12.20
 -	Terraform 1.10.4
@@ -335,10 +335,10 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 -	Brackets Editor 1.7 Experimental 1.7.0-0
 -	Chrome 132.0.6834.84 (64-bit)
 -	Firefox 102.10.0esr (64-bit)
--	JetBrains IntelliJ IDEA 2024.3.1.1 (Community Edition)
--	JetBrains IntelliJ IDEA 2024.3.1.1 (Ultimate Edition)
--	JetBrains WebStorm 2024.3.1.1 (JavaScript IDE)
--	Postman 11.27.3
+-	JetBrains IntelliJ IDEA 2024.3.2 (Community Edition)
+-	JetBrains IntelliJ IDEA 2024.3.2 (Ultimate Edition)
+-	JetBrains WebStorm 2024.3.2 (JavaScript IDE)
+-	Postman 11.28.4
 -	Spring Tool Suite 4 [4.27.0] IDE (Eclipse 2024-09 [4.34.0])
 -	Sublime Text 4 (Build 4189)
--	Visual Studio Code 1.96.3
+-	Visual Studio Code 1.96.4
