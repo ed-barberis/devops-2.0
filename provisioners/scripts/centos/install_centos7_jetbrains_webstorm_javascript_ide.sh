@@ -9,19 +9,19 @@ cpu_arch=$(uname -m)
 
 # install webstorm javascript ide. -----------------------------------------------------------------
 webstorm_home="webstorm"
-webstorm_release="2024.3.2"
-webstorm_build="243.23654.120"
+webstorm_release="2024.3.2.1"
+webstorm_build="243.23654.157"
 webstorm_folder="WebStorm-${webstorm_build}"
 
 # set the webstorm binary and sha256 values based on cpu architecture.
 if [ "$cpu_arch" = "x86_64" ]; then
   # set the amd64 variables.
   webstorm_binary="WebStorm-${webstorm_release}.tar.gz"
-  webstorm_sha256="2e9054ae506e578cf89e4cea017d953c416281470a4a5728b157e43ac4888d4e"
+  webstorm_sha256="9857bdcd2c05eb215e3974b4df2a5a9b0fc8c1df929d31c9c9dae4c87496de60"
 elif [ "$cpu_arch" = "aarch64" ]; then
   # set the arm64 variables.
   webstorm_binary="WebStorm-${webstorm_release}-aarch64.tar.gz"
-  webstorm_sha256="9914fe6e6b5f0a7e87c9628fdf70b5083b68ec14b8873ad6847e4ea8e8c80a96"
+  webstorm_sha256="82ba3c43848e8a16ce2b9c4df4d8b3e8717e42b46328cebdcf09a51545b6a24e"
 else
   echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
   exit 1
