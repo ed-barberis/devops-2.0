@@ -23,17 +23,17 @@
 cpu_arch=$(uname -m)
 
 # install hashicorp packer. ------------------------------------------------------------------------
-packer_release="1.11.2"
+packer_release="1.12.0"
 
 # set the packer cli binary and sha256 values based on cpu architecture.
 if [ "$cpu_arch" = "x86_64" ]; then
   # set the amd64 variables.
   packer_binary="packer_${packer_release}_linux_amd64.zip"
-  packer_sha256="ced13efc257d0255932d14b8ae8f38863265133739a007c430cae106afcfc45a"
+  packer_sha256="e859a76659570d1e29fa55396d5d908091bacacd4567c17770e616c4b58c9ace"
 elif [ "$cpu_arch" = "aarch64" ]; then
   # set the arm64 variables.
   packer_binary="packer_${packer_release}_linux_arm64.zip"
-  packer_sha256="dd296d743dd4593304307583cff5290bba9b868fc2b0b605b64566f8141ca728"
+  packer_sha256="a9ea40e7757cd000836b650bd2ed825dc3af9a7d73f4e19119df4c1aa13d0fe6"
 else
   echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
   exit 1
