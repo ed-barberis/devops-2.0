@@ -3,12 +3,12 @@
 
 # install scala3-lang. -----------------------------------------------------------------------------
 scala3_home="scala-lang"
-#scala3_release="3.3.4"                                                              # scala 3.3.4 lts release.
+#scala3_release="3.3.5"                                                              # scala 3.3.5 lts release.
 scala3_release="3.6.3"
 scala3_dir="scala3-${scala3_release}"
 scala3_folder="${scala3_home}-${scala3_release}"
 scala3_binary="scala3-${scala3_release}.tar.gz"
-#scala3_sha256="fd0eca29ef1f6c41874b6711e7b6514f1dc7c387c087742fb873f6e720963770"    # scala 3.3.4 lts release.
+#scala3_sha256="255406d7a2f4ff745b6a125cf850f3ea96b34f26f9be7c6a3f8dbbda5d136a52"    # scala 3.3.5 lts release.
 scala3_sha256="23e3d83d244b4bc434489fc1100a05c01ec4705111669379a46703e5c1b094d5"
 
 # create scala 3 parent folder.
