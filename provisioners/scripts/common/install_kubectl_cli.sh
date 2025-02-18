@@ -24,10 +24,10 @@ cpu_arch=$(uname -m)
 
 # set default values for input environment variables if not set. -----------------------------------
 # [OPTIONAL] kubectl install parameters [w/ defaults].
-#kubectl_release="${kubectl_release:-1.32.1}"
-#kubectl_release="${kubectl_release:-1.31.5}"
-kubectl_release="${kubectl_release:-1.30.9}"
-#kubectl_release="${kubectl_release:-1.29.13}"
+#kubectl_release="${kubectl_release:-1.32.2}"
+kubectl_release="${kubectl_release:-1.31.6}"
+#kubectl_release="${kubectl_release:-1.30.10}"
+#kubectl_release="${kubectl_release:-1.29.14}"
 #kubectl_release="${kubectl_release:-1.28.15}"
 #kubectl_release="${kubectl_release:-1.27.16}"
 #kubectl_release="${kubectl_release:-1.26.15}"
@@ -46,10 +46,10 @@ declare -A sha256_values_array
 # set the kubectl cli binary and sha256 values based on cpu architecture.
 if [ "$cpu_arch" = "x86_64" ]; then
   # set the amd64 sha256 values.
-  sha256_values_array["1.32.1"]="e16c80f1a9f94db31063477eb9e61a2e24c1a4eee09ba776b029048f5369db0c"
-  sha256_values_array["1.31.5"]="fbecbfd375b3686002c2e81d51c390172f5ffba3d6b47920d55342cb03f557af"
-  sha256_values_array["1.30.9"]="d77041f285d9237c4aa451370c3ec6e5c042007dbb55c894f0a179b1d149bf32"
-  sha256_values_array["1.29.13"]="9f4cba9b3e12a3fd7fa99dee651d7293281333469852a8e755a1210d5b128b8d"
+  sha256_values_array["1.32.2"]="4f6a959dcc5b702135f8354cc7109b542a2933c46b808b248a214c1f69f817ea"
+  sha256_values_array["1.31.6"]="c46b2f5b0027e919299d1eca073ebf13a4c5c0528dd854fc71a5b93396c9fa9d"
+  sha256_values_array["1.30.10"]="bc74dbeefd4b9d53f03016f6778f3ffc9a72ef4ca7b7c80fd5dc1a41d52dcab7"
+  sha256_values_array["1.29.14"]="a4902c8a454a3678d589b51d95d810ec84791c03ed6b5779969df559c9c0357e"
   sha256_values_array["1.28.15"]="1f7651ad0b50ef4561aa82e77f3ad06599b5e6b0b2a5fb6c4f474d95a77e41c5"
   sha256_values_array["1.27.16"]="97ea7cd771d0c6e3332614668a40d2c5996f0053ff11b44b198ea84dba0818cb"
   sha256_values_array["1.26.15"]="b75f359e6fad3cdbf05a0ee9d5872c43383683bb8527a9e078bb5b8a44350a41"
@@ -67,10 +67,10 @@ if [ "$cpu_arch" = "x86_64" ]; then
 
 elif [ "$cpu_arch" = "aarch64" ]; then
   # set the arm64 sha256 values.
-  sha256_values_array["1.32.1"]="98206fd83a4fd17f013f8c61c33d0ae8ec3a7c53ec59ef3d6a0a9400862dc5b2"
-  sha256_values_array["1.31.5"]="697c8b4239f9e53cba46296e114bcc02c726b5c7a45e1c464804aad56e5c7a86"
-  sha256_values_array["1.30.9"]="bab82f333f6347507a4c725bc726fefd3d862eb64a36a4fb8b99bfe9e10813d0"
-  sha256_values_array["1.29.13"]="92a08a9e74efd81be46c9138fce597ab8827e18479fe5cc9c4065659d6464cf1"
+  sha256_values_array["1.32.2"]="7381bea99c83c264100f324c2ca6e7e13738a73b8928477ac805991440a065cd"
+  sha256_values_array["1.31.6"]="fc40a8bbdba41f022aced2dec729a1b9e937ad99872b430b6c2489f1f36a61f5"
+  sha256_values_array["1.30.10"]="9d65d54f02b0b305d9f3f89d19a60d3e130e09f5407df99f6d48f8c10f31e2ae"
+  sha256_values_array["1.29.14"]="03c95785fc0325896eb8540b9a1447ccc89b1f1721b7594012e4f32a719d8e0a"
   sha256_values_array["1.28.15"]="7d45d9620e67095be41403ed80765fe47fcfbf4b4ed0bf0d1c8fe80345bda7d3"
   sha256_values_array["1.27.16"]="2f50cb29d73f696ffb57437d3e2c95b22c54f019de1dba19e2b834e0b4501eb9"
   sha256_values_array["1.26.15"]="1396313f0f8e84ab1879757797992f1af043e1050283532e0fd8469902632216"

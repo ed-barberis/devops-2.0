@@ -23,18 +23,18 @@ cpu_arch=$(uname -m)
 
 # install go programming language. -----------------------------------------------------------------
 go_home="go"
-go_release="1.23.5"
+go_release="1.24.0"
 go_folder="${go_home}-${go_release}"
 
 # set the go binary and sha256 values based on cpu architecture.
 if [ "$cpu_arch" = "x86_64" ]; then
   # set the amd64 variables.
   go_binary="${go_home}${go_release}.linux-amd64.tar.gz"
-  go_sha256="cbcad4a6482107c7c7926df1608106c189417163428200ce357695cc7e01d091"
+  go_sha256="dea9ca38a0b852a74e81c26134671af7c0fbe65d81b0dc1c5bfe22cf7d4c8858"
 elif [ "$cpu_arch" = "aarch64" ]; then
   # set the arm64 variables.
   go_binary="${go_home}${go_release}.linux-arm64.tar.gz"
-  go_sha256="47c84d332123883653b70da2db7dd57d2a865921ba4724efcdf56b5da7021db0"
+  go_sha256="c3fa6d16ffa261091a5617145553c71d21435ce547e44cc6dfb7470865527cc7"
 else
   echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
   exit 1
