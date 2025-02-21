@@ -270,14 +270,14 @@ Follow these instructions to build the Oracle Linux 7.9 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 2.24.7 (command-line interface) [Optional]
+-	Amazon AWS CLI 2.24.9 (command-line interface) [Optional]
 -	Ansible 2.9.27
 -	Ant 1.10.15
--	Consul 1.20.3
+-	Consul 1.20.4
 -	Cloud-Init 0.7.9 [Optional]
 -	Docker 19.03.11 CE
 	-	Docker Bash Completion
-	-	Docker Compose 2.33.0
+	-	Docker Compose 2.33.1
 -	Git 2.48.1
 	-	Git Bash Completion
 	-	Git-Flow 1.12.4 (AVH Edition)
@@ -339,7 +339,7 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 -	JetBrains IntelliJ IDEA 2024.3.3 (Community Edition)
 -	JetBrains IntelliJ IDEA 2024.3.3 (Ultimate Edition)
 -	JetBrains WebStorm 2024.3.3 (JavaScript IDE)
--	Postman 11.33.4
+-	Postman 11.33.5
 -	Spring Tool Suite 4 [4.28.1] IDE (Eclipse 2024-12 [4.34.0])
 -	Sublime Text 4 (Build 4192)
 -	Visual Studio Code 1.97.2
