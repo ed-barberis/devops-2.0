@@ -26,17 +26,17 @@
 cpu_arch=$(uname -m)
 
 # install docker compose v2 cli. -------------------------------------------------------------------
-dc_release="2.33.0"
+dc_release="2.33.1"
 dc_home="/usr/libexec/docker/cli-plugins"
 dc_binary="docker-compose-linux-${cpu_arch}"
 
 # set the docker compose sha256 value based on cpu architecture.
 if [ "$cpu_arch" = "x86_64" ]; then
   # use the amd64 sha256 value.
-  dc_sha256="6395dbb256db6ea28d5c6695bc9bc33866c07ad1c93792f8d85857f1c21c34ee"
+  dc_sha256="3efda1ad6caed49dedd5644cadbf7e0c9cc3d74d8844ca5237b6a43ac1ef1a46"
 elif [ "$cpu_arch" = "aarch64" ]; then
   # use the arm64 sha256 value.
-  dc_sha256="03a42a0fc0614ffc3c9ebca521cab75e02c427b68e45e3f6867d9510b9a28818"
+  dc_sha256="fa0e077510c852237b0da426d0daf6853446e7760145ce7665ec401892a4d0de"
 else
   echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
   exit 1
