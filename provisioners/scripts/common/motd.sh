@@ -2,7 +2,7 @@
 
 devops='
 This system was built with the DevOps 2.0 project by Ed Barberis.
-More information can be found at: https://github.com/ed-barberis/devops-2.0'
+More information can be found at: https://github.com/ed-barberis/devops-2.0/
 
 Use of this system is acceptance of the OS vendor EULA and License Agreements.'
 
