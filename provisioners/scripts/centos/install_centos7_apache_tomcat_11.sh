@@ -42,12 +42,12 @@ tomcat_admin_password="${tomcat_admin_password:-welcome1}"          # [optional]
 set -x  # turn command display back ON.
 tomcat_admin_roles="${tomcat_admin_roles:-manager-gui,admin-gui}"   # [optional] tomcat admin roles (defaults to 'manager-gui,admin-gui').
                                                                     #            NOTE: for appd java agent, add 'manager-script'.
-tomcat_jdk_home="${tomcat_jdk_home:-/usr/local/java/jdk11}"         # [optional] tomcat jdk home (defaults to '/usr/local/java/jdk11').
-                                                                    # [optional] tomcat catalina opts (defaults to '-Xms512M -Xmx1024M -server -XX:+UseParallelGC').
+tomcat_jdk_home="${tomcat_jdk_home:-/usr/local/java/jdk17}"         # [optional] tomcat jdk home (defaults to '/usr/local/java/jdk17').
+                                                                    # [optional] tomcat catalina opts (defaults to '-Xms1024m -Xmx2048m -server -XX:+UseParallelGC').
                                                                     #            NOTE: for appd java agent, add '-javaagent:/opt/appdynamics/appagent/javaagent.jar'.
-tomcat_catalina_opts="${tomcat_catalina_opts:--Xms512M -Xmx1024M -server -XX:+UseParallelGC}"
-                                                                    # [optional] tomcat java opts (defaults to '-Djava.awt.headless=true -Djava.security.egd=file:/dev/./urandom').
-tomcat_java_opts="${tomcat_java_opts:--Djava.awt.headless=true -Djava.security.egd=file:/dev/./urandom}"
+tomcat_catalina_opts="${tomcat_catalina_opts:--Xms1024m -Xmx2048m -server -XX:+UseParallelGC}"
+                                                                    # [optional] tomcat java opts (defaults to '-Dsecurerandom.source=file:/dev/urandom').
+tomcat_java_opts="${tomcat_java_opts:--Dsecurerandom.source=file:/dev/urandom}"
 tomcat_enable_service="${tomcat_enable_service:-true}"              # [optional] enable tomcat service (defaults to 'true').
                                                                     # [optional] allow remote access for tomcat manager apps (defaults to 'true').
 tomcat_manager_apps_remote_access="${tomcat_manager_apps_remote_access:-true}"
@@ -62,6 +62,7 @@ mkdir -p /usr/local/apache
 cd /usr/local/apache
 
 # download tomcat binary from apache.org.
+rm -f ${tomcat_binary}
 wget --no-verbose https://archive.apache.org/dist/tomcat/${tomcat_home:7:-2}/v${tomcat_release}/bin/${tomcat_binary}
 
 # verify the downloaded binary.
@@ -70,6 +71,7 @@ echo "${tomcat_sha512} ${tomcat_binary}" | sha512sum --check
 
 # extract tomcat binary.
 rm -f ${tomcat_home}
+rm -Rf ${tomcat_folder}
 tar -zxvf ${tomcat_binary} --no-same-owner --no-overwrite-dir
 chown -R ${tomcat_username}:${tomcat_group} ./${tomcat_folder}
 ln -s ${tomcat_folder} ${tomcat_home}
