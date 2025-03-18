@@ -37,6 +37,10 @@ devops_home="${user_home}/devops-2.0"                       # devops lab home fo
 export devops_home
 DEBIAN_FRONTEND=noninteractive                              # set non-interactive mode.
 export DEBIAN_FRONTEND
+tomcat_username="${user_name}"
+export tomcat_username
+tomcat_group="${user_group}"
+export tomcat_group
 
 # validate environment variables. ------------------------------------------------------------------
 if [ "$user_name" = "root" ]; then
@@ -153,7 +157,8 @@ sudo ./install_fastfetch_cli.sh
 # download and install kubernetes tools.
 cd ${devops_home}/provisioners/scripts/common
 sudo ./install_aws_eksctl_cli.sh
-sudo ./install_aws_kubectl_cli.sh
+#sudo ./install_aws_kubectl_cli.sh
+sudo ./install_kubectl_cli.sh
 sudo ./install_k9s_cli.sh
 sudo ./install_helm_cli.sh
 sudo -E ./install_helmfile_cli.sh
@@ -171,14 +176,27 @@ sudo ./install_gradle.sh
 cd ${devops_home}/provisioners/scripts/common
 sudo ./install_google_golang.sh
 
+# download and install scala programming language utilities.
+cd ${devops_home}/provisioners/scripts/common
+sudo ./install_scala3_lang.sh
+sudo ./install_scala_sbt.sh
+
 # download and install node.js developer tools.
 cd ${devops_home}/provisioners/scripts/common
 sudo -E ./install_nodejs_javascript_runtime.sh
 sudo -E ./install_serverless_framework_cli.sh
 
-###### download and install mongodb community server 7.0 on ubuntu linux.
-#####cd ${devops_home}/provisioners/scripts/ubuntu
-#####sudo -E ./install_ubuntu_mongodb_community_server_7.sh
+# download and install mongodb community server 7.0 on ubuntu linux.
+cd ${devops_home}/provisioners/scripts/ubuntu
+sudo -E ./install_ubuntu_mongodb_community_server_7.sh
+
+# download and install apache tomcat 10.1.x web server by apache on ubuntu linux.
+cd ${devops_home}/provisioners/scripts/centos
+sudo -E ./install_centos7_apache_tomcat_10_1.sh
+
+# download and install mysql community server 8.4 lts by oracle on ubuntu linux.
+cd ${devops_home}/provisioners/scripts/ubuntu
+sudo -E ./install_ubuntu_oracle_mysql_community_server_84.sh
 
 # create default command-line environment profile for the 'root' user.
 cd ${devops_home}/provisioners/scripts/common
@@ -229,6 +247,8 @@ unset user_group
 unset user_home
 unset devops_home
 unset DEBIAN_FRONTEND
+unset tomcat_username
+unset tomcat_group
 
 # print completion message.
 echo "DevOps 2.0 Lab Tools installation complete."
