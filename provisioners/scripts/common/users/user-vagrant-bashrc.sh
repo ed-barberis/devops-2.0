@@ -1,4 +1,4 @@
-# @(#).bashrc       1.0 2025/02/25 SMI
+# @(#).bashrc       1.0 2025/03/13 SMI
 # bash resource configuration for devops users.
 
 # source global definitions.
@@ -61,7 +61,7 @@ export SCALA_HOME
 # set scala-sbt home path.
 # NOTE: sbt 1.7.0 introduced an out of memory issue when '-Xms' heap size is set or the default is used.
 #       expliciting setting 'SBT_OPTS' to exclude it solved the problem.
-SBT_OPTS="-Xmx1024m -Xss4M -XX:ReservedCodeCacheSize=128m"
+SBT_OPTS="-Xmx1024m -Xss4m -XX:ReservedCodeCacheSize=128m"
 export SBT_OPTS
 SBT_HOME=/usr/local/scala/scala-sbt
 export SBT_HOME

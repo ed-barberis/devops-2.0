@@ -31,7 +31,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 	-	vagrant-share 2.0.0
 	-	vagrant-vbguest 0.32.0
 -	Packer 1.12.0
--	Git 2.48.1
+-	Git 2.49.0
 -	jq 1.7.1
 -	Optional Add-ons
 	-	wget 1.25.0
@@ -72,7 +72,7 @@ Perform the following steps to install the needed software:
 6.	Install [Packer 1.12.0](https://packer.io/) for macOS 64-bit.  
     `$ brew install hashicorp/tap/packer`  
 
-7.	Install [Git 2.48.1](https://git-scm.com/downloads) for macOS 64-bit.  
+7.	Install [Git 2.49.0](https://git-scm.com/downloads) for macOS 64-bit.  
     `$ brew install git`  
 
 8.	Install [jq 1.7.1](https://jqlang.github.io/jq/) for macOS 64-bit.  
@@ -103,7 +103,7 @@ Perform the following steps to install the needed software:
     1.12.0
 
     $ git --version
-    git version 2.48.1
+    git version 2.49.0
 
     $ jq --version
     jq-1.7.1
@@ -127,7 +127,7 @@ To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the follo
 	-	vagrant-share 2.0.0
 	-	vagrant-vbguest 0.32.0
 -	Packer 1.12.0
--	Git 2.48.1
+-	Git 2.49.0
 -	jq 1.7.1
 -	Optional Add-ons for Git Bash
 	-	wget 1.9.1
@@ -154,7 +154,7 @@ Perform the following steps to install the needed software:
     Create suggested install folder and extract contents of ZIP file to:  
     `C:\HashiCorp\Packer\bin`  
 
-5.	Install [Git 2.48.1 for Windows 64-bit](https://github.com/git-for-windows/git/releases/download/v2.48.1.windows.1/Git-2.48.1-64-bit.exe) for Windows 64-bit.
+5.	Install [Git 2.49.0 for Windows 64-bit](https://github.com/git-for-windows/git/releases/download/v2.49.0.windows.1/Git-2.49.0-64-bit.exe) for Windows 64-bit.
 
 6.	Install [jq 1.7.1](https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-win64.exe) for Windows 64-bit.  
     Create suggested install folder and rename binary to:  
@@ -202,7 +202,7 @@ Perform the following steps to install the needed software:
     1.12.0
 
     $ git --version
-    git version 2.48.1.windows.1
+    git version 2.49.0.windows.1
 
     $ jq --version
     jq-1.7.1

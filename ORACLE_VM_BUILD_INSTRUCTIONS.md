@@ -270,15 +270,15 @@ Follow these instructions to build the Oracle Linux 7.9 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 2.24.21 (command-line interface) [Optional]
+-	Amazon AWS CLI 2.24.25 (command-line interface) [Optional]
 -	Ansible 2.9.27
 -	Ant 1.10.15
--	Consul 1.20.4
+-	Consul 1.20.5
 -	Cloud-Init 0.7.9 [Optional]
 -	Docker 19.03.11 CE
 	-	Docker Bash Completion
-	-	Docker Compose 2.33.1
--	Git 2.48.1
+	-	Docker Compose 2.34.0
+-	Git 2.49.0
 	-	Git Bash Completion
 	-	Git-Flow 1.12.4 (AVH Edition)
 	-	Git-Flow Bash Completion
@@ -303,9 +303,9 @@ The following command-line tools and utilities are pre-installed in the __Develo
 	-	Pip3 24.2
 -	Scala 3.6.4
 -	Scala 2.13.16
--	Scala Build Tool (SBT) 1.10.10
+-	Scala Build Tool (SBT) 1.10.11
 	-	Scala 2.12.20
--	Terraform 1.11.1
+-	Terraform 1.11.2
 -	Vault 1.19.0
 -	VIM - Vi IMproved 9.1
 -	XMLStarlet 1.6.1 (command-line XML processor)
@@ -313,7 +313,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 17.9.1
+-	GitLab Community Edition 17.9.2
 -	Jenkins 2.492.2 LTS
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
@@ -336,10 +336,10 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 -	Brackets Editor 1.7 Experimental 1.7.0-0
 -	Chrome 134.0.6998.89 (64-bit)
 -	Firefox 102.10.0esr (64-bit)
--	JetBrains IntelliJ IDEA 2024.3.4.1 (Community Edition)
--	JetBrains IntelliJ IDEA 2024.3.4.1 (Ultimate Edition)
--	JetBrains WebStorm 2024.3.4 (JavaScript IDE)
--	Postman 11.36.1
+-	JetBrains IntelliJ IDEA 2024.3.5 (Community Edition)
+-	JetBrains IntelliJ IDEA 2024.3.5 (Ultimate Edition)
+-	JetBrains WebStorm 2024.3.5 (JavaScript IDE)
+-	Postman 11.37.1
 -	Spring Tool Suite 4 [4.28.1] IDE (Eclipse 2024-12 [4.34.0])
 -	Sublime Text 4 (Build 4192)
--	Visual Studio Code 1.98.1
+-	Visual Studio Code 1.98.2
