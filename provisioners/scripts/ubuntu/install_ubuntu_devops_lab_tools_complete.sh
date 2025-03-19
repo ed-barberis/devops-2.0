@@ -110,6 +110,7 @@ sudo ./install_aws_corretto_java_jdk_11.sh
 sudo ./install_aws_corretto_java_jdk_17.sh
 sudo ./install_aws_corretto_java_jdk_21.sh
 sudo ./install_aws_corretto_java_jdk_23.sh
+sudo ./install_aws_corretto_java_jdk_24.sh
 
 # handle ubuntu release-specific installations.
 if [ -n "$ubuntu_release" ]; then
