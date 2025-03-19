@@ -270,7 +270,7 @@ Follow these instructions to build the Oracle Linux 7.9 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 2.24.25 (command-line interface) [Optional]
+-	Amazon AWS CLI 2.24.26 (command-line interface) [Optional]
 -	Ansible 2.9.27
 -	Ant 1.10.15
 -	Consul 1.20.5
@@ -290,6 +290,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Java SE JDK 17.0.14 (Amazon Corretto 17)
 -	Java SE JDK 21.0.6 (Amazon Corretto 21)
 -	Java SE JDK 23.0.2 (Amazon Corretto 22)
+-	Java SE JDK 24.0.0 (Amazon Corretto 24)
 -	JMESPath jp 0.2.1 (command-line JSON processor)
 -	jq 1.7.1 (command-line JSON processor)
 -	Maven 3.9.9
@@ -313,7 +314,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 17.9.2
+-	GitLab Community Edition 17.10.0
 -	Jenkins 2.492.2 LTS
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
@@ -339,7 +340,7 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 -	JetBrains IntelliJ IDEA 2024.3.5 (Community Edition)
 -	JetBrains IntelliJ IDEA 2024.3.5 (Ultimate Edition)
 -	JetBrains WebStorm 2024.3.5 (JavaScript IDE)
--	Postman 11.37.1
--	Spring Tool Suite 4 [4.28.1] IDE (Eclipse 2024-12 [4.34.0])
+-	Postman 11.37.3
+-	Spring Tool Suite 4 [4.29.1] IDE (Eclipse 2025-03 [4.35.0])
 -	Sublime Text 4 (Build 4192)
 -	Visual Studio Code 1.98.2
