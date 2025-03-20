@@ -22,7 +22,7 @@ cpu_arch=$(uname -m)
 # install java se 23 development kit. --------------------------------------------------------------
 jdk_home="jdk23"
 jdk_build="23.0.2"
-jdk_folder="jdk-${jdk_build:0:2}"
+jdk_folder="jdk-${jdk_build}"
 
 # set the jdk sha256 and arch values based on cpu architecture.
 if [ "$cpu_arch" = "x86_64" ]; then
