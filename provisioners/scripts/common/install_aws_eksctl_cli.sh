@@ -17,17 +17,17 @@
 cpu_arch=$(uname -m)
 
 # install eksctl cli. ------------------------------------------------------------------------------
-eksctl_release="0.206.0"
+eksctl_release="0.207.0"
 
 # set the eksctl cli binary and sha256 values based on cpu architecture.
 if [ "$cpu_arch" = "x86_64" ]; then
   # set the amd64 variables.
   eksctl_binary="eksctl_$(uname -s)_amd64.tar.gz"
-  eksctl_sha256="06a7a46a83e250907c02a3ad07163e96498e11b63a692bb09b763809e59b3b97"
+  eksctl_sha256="f503e7d19879ded5786ccf63c68c7ca4991496d6d8e88c68324cb3d62013db14"
 elif [ "$cpu_arch" = "aarch64" ]; then
   # set the arm64 variables.
   eksctl_binary="eksctl_$(uname -s)_arm64.tar.gz"
-  eksctl_sha256="c771864a2cea189c01eee47902b69d3578b1bf3ceb8657a4ce1295113dbb29dd"
+  eksctl_sha256="b335a18cc8590a0111c889026fb65090c937fc17bebd4dc72b2d752a99d29537"
 else
   echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
   exit 1
