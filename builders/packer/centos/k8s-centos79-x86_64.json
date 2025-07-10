@@ -88,6 +88,8 @@
         "{{template_dir}}/../../../provisioners/scripts/common/install_apache_groovy.sh",
         "{{template_dir}}/../../../provisioners/scripts/common/install_gradle.sh",
         "{{template_dir}}/../../../provisioners/scripts/common/install_google_golang.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_rust.sh",
+        "{{template_dir}}/../../../provisioners/scripts/common/install_onefetch_cli.sh",
         "{{template_dir}}/../../../provisioners/scripts/common/install_scala3_lang.sh",
         "{{template_dir}}/../../../provisioners/scripts/common/install_scala_sbt.sh",
         "{{template_dir}}/../../../provisioners/scripts/centos/install_centos7_ansible.sh",
