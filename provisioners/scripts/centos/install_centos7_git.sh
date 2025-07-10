@@ -16,7 +16,7 @@
 # [OPTIONAL] git flow install parameters [w/ defaults].
 user_name="${user_name:-vagrant}"                               # user name.
 user_group="${user_group:-vagrant}"                             # user login group.
-git_release="${git_release:-2.49.0}"                            # git release version.
+git_release="${git_release:-2.50.1}"                            # git release version.
 
 # install tools needed to build git from source. ---------------------------------------------------
 yum -y install curl-devel expat-devel gettext-devel openssl-devel zlib-devel
