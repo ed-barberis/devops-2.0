@@ -1,17 +1,17 @@
 #!/bin/sh -eux
 #---------------------------------------------------------------------------------------------------
-# Install MySQL Community Server 9.0 by Oracle on CentOS Linux 9.x.
+# Install MySQL Community Server 9.3 by Oracle on CentOS Linux 7.x.
 #
 # The MySQL software delivers a very fast, multithreaded, multi-user, and robust SQL (Structured
 # Query Language) database server. MySQL Server is intended for mission-critical, heavy-load
 # production systems as well as for embedding into mass-deployed software.
 #
 # For more details, please visit:
-#   https://dev.mysql.com/doc/refman/9.0/en/
-#   https://dev.mysql.com/doc/refman/9.0/en/linux-installation-yum-repo.html
+#   https://dev.mysql.com/doc/refman/9.3/en/
+#   https://dev.mysql.com/doc/refman/9.3/en/linux-installation-yum-repo.html
 #   https://dev.mysql.com/downloads/repo/yum/
 #   https://www.mysql.com/support/supportedplatforms/database.html
-#   https://dev.mysql.com/doc/refman/9.0/en/socket-pluggable-authentication.html
+#   https://dev.mysql.com/doc/refman/9.3/en/socket-pluggable-authentication.html
 #
 # NOTE: All inputs are defined by external environment variables.
 #       Optional variables have reasonable defaults, but you may override as needed.
@@ -28,7 +28,7 @@ mysql_server_default="${mysql_server_default:-mysql-8.4-lts-community}" # [optio
                                                                         # [optional] mysql server release version (defaults to 'mysql-innovation-community').
 mysql_server_release="${mysql_server_release:-mysql-innovation-community}"
                                                                         # [optional] mysql yum repository md5 checksum (defaults to published value).
-mysql_yum_checksum="${mysql_yum_checksum:-15a20fea9018662224f354cb78b392e7}"
+mysql_yum_checksum="${mysql_yum_checksum:-a3541dff58744c344d8930518b87c289}"
 mysql_enable_secure_access="${mysql_enable_secure_access:-true}"        # [optional] enable secure access for mysql server (defaults to 'true').
 
 # [OPTIONAL] devops home folder [w/ default].
@@ -39,7 +39,7 @@ mkdir -p ${devops_home}/provisioners/scripts/centos
 cd ${devops_home}/provisioners/scripts/centos
 
 # download mysql yum repository. -------------------------------------------------------------------
-mysql_yum_binary="mysql${mysql_yum_release}-community-release-el9-1.noarch.rpm"
+mysql_yum_binary="mysql${mysql_yum_release}-community-release-el7-1.noarch.rpm"
 
 # download the mysql yum repository.
 rm -f ${mysql_yum_binary}
@@ -47,7 +47,7 @@ wget --no-verbose --no-check-certificate --no-cookies --header "Cookie: oracleli
 
 # verify the downloaded binary using the md5 checksum.
 echo "${mysql_yum_checksum} ${mysql_yum_binary}" | md5sum --check -
-# mysql${mysql_yum_release}-community-release-el9-1.noarch.rpm: OK
+# mysql${mysql_yum_release}-community-release-el7-1.noarch.rpm: OK
 
 # install the mysql public gpg key.
 rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2023
@@ -57,16 +57,16 @@ rpm --checksig ${mysql_yum_binary}
 
 # install mysql server. ----------------------------------------------------------------------------
 # install mysql yum repository.
-dnf -y localinstall ${mysql_yum_binary}
+yum -y localinstall ${mysql_yum_binary}
 
 # enable/disable mysql subrepositories.
-dnf config-manager --disable ${mysql_server_default}
-dnf config-manager --enable ${mysql_server_release}
+yum-config-manager --disable ${mysql_server_default}
+yum-config-manager --enable ${mysql_server_release}
 
 # install mysql server binaries.
-#dnf -y remove mariadb-libs                 # [optional] if running in the desktop.
-dnf -y install mysql-community-server
-#dnf -y install mysql-workbench-community   # [optional]
+#yum -y remove mariadb-libs                 # [optional] if running in the desktop.
+yum -y install mysql-community-server
+#yum -y install mysql-workbench-community   # [optional]
 
 # verify mysql server installation
 mysql --version
@@ -152,8 +152,3 @@ if [ "$mysql_enable_secure_access" = "true" ]; then
   mysql -u root -p${mysql_server_root_password} -e "SELECT user, plugin FROM mysql.user WHERE user IN ('root')\G;"
   set -x    # turn command display back ON.
 fi
-
-# display installed plugins.
-set +x  # temporarily turn command display OFF.
-mysql -u root -p${mysql_server_root_password} -e "SELECT PLUGIN_NAME, PLUGIN_STATUS FROM INFORMATION_SCHEMA.PLUGINS WHERE PLUGIN_STATUS LIKE '%ACTIVE%'\G;"
-set -x    # turn command display back ON.

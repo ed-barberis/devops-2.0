@@ -1,18 +1,18 @@
 #!/bin/bash -eux
 #---------------------------------------------------------------------------------------------------
-# Install MySQL Community Server 9.0 by Oracle on Ubuntu Linux.
+# Install MySQL Community Server 9.3 by Oracle on Ubuntu Linux.
 #
 # The MySQL software delivers a very fast, multithreaded, multi-user, and robust SQL (Structured
 # Query Language) database server. MySQL Server is intended for mission-critical, heavy-load
 # production systems as well as for embedding into mass-deployed software.
 #
 # For more details, please visit:
-#   https://dev.mysql.com/doc/refman/9.0/en/
-#   https://dev.mysql.com/doc/refman/9.0/en/linux-installation-apt-repo.html
+#   https://dev.mysql.com/doc/refman/9.3/en/
+#   https://dev.mysql.com/doc/refman/9.3/en/linux-installation-apt-repo.html
 #   https://dev.mysql.com/doc/mysql-apt-repo-quick-guide/en/
 #   https://dev.mysql.com/downloads/repo/apt/
 #   https://www.mysql.com/support/supportedplatforms/database.html
-#   https://dev.mysql.com/doc/refman/9.0/en/socket-pluggable-authentication.html
+#   https://dev.mysql.com/doc/refman/9.3/en/socket-pluggable-authentication.html
 #
 # NOTE: All inputs are defined by external environment variables.
 #       Optional variables have reasonable defaults, but you may override as needed.
@@ -24,10 +24,10 @@
 set +x  # temporarily turn command display OFF.
 mysql_server_root_password="${mysql_server_root_password:-Welcome1!}"   # [optional] root password (defaults to 'Welcome1!').
 set -x  # turn command display back ON.
-mysql_apt_repo_release="${mysql_apt_repo_release:-0.8.33-1}"            # [optional] apt repository version (defaults to '0.8.33-1').
+mysql_apt_repo_release="${mysql_apt_repo_release:-0.8.34-1}"            # [optional] apt repository version (defaults to '0.8.34-1').
 mysql_server_release="${mysql_server_release:-mysql-innovation}"        # [optional] mysql server version (defaults to 'mysql-innovation').
                                                                         # [optional] mysql apt repository md5 checksum (defaults to published value).
-mysql_apt_checksum="${mysql_apt_checksum:-e1716b19b84b92f32e94dfd34892322c}"
+mysql_apt_checksum="${mysql_apt_checksum:-ab23dec6619a7e65e8462646936ee49f}"
 mysql_enable_secure_access="${mysql_enable_secure_access:-true}"        # [optional] enable secure access for mysql server (defaults to 'true').
 
 # [OPTIONAL] devops home folder [w/ default].
@@ -39,11 +39,11 @@ ubuntu_release=$(lsb_release -rs)
 
 if [ -n "$ubuntu_release" ]; then
   case $ubuntu_release in
-      22.04|24.04|24.10)
+      22.04|24.04|24.10|25.04)
         ;;
 
       *)
-        echo "Error: MySQL Community Server 9.0 NOT supported on Ubuntu release: '$(lsb_release -ds)'."
+        echo "Error: MySQL Community Server 9.3 NOT supported on Ubuntu release: '$(lsb_release -ds)'."
         exit 1
         ;;
   esac
