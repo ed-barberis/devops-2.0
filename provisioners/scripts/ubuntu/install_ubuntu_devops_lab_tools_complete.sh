@@ -109,7 +109,6 @@ sudo ./install_aws_corretto_java_jdk_8.sh
 sudo ./install_aws_corretto_java_jdk_11.sh
 sudo ./install_aws_corretto_java_jdk_17.sh
 sudo ./install_aws_corretto_java_jdk_21.sh
-sudo ./install_aws_corretto_java_jdk_23.sh
 sudo ./install_aws_corretto_java_jdk_24.sh
 
 # handle ubuntu release-specific installations.
@@ -125,7 +124,7 @@ if [ -n "$ubuntu_release" ]; then
       sudo -E ./install_ansible.sh
       ;;
 
-    24.04|24.10)
+    24.04|24.10|25.04)
       # install ansible on ubuntu linux.
       cd ${devops_home}/provisioners/scripts/ubuntu
       sudo -E ./install_ubuntu_ansible.sh
@@ -176,6 +175,11 @@ sudo ./install_gradle.sh
 # download and install go programming language from google.
 cd ${devops_home}/provisioners/scripts/common
 sudo ./install_google_golang.sh
+
+# download and install rust programming language and onefetch cli tool.
+cd ${devops_home}/provisioners/scripts/common
+sudo ./install_rust.sh
+sudo ./install_onefetch_cli.sh
 
 # download and install scala programming language utilities.
 cd ${devops_home}/provisioners/scripts/common
