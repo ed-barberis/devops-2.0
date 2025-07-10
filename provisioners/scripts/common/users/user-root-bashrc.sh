@@ -1,4 +1,4 @@
-# @(#).bashrc       1.0 2025/03/19 SMI
+# @(#).bashrc       1.0 2025/04/16 SMI
 # bash resource configuration for devops administrators.
 
 # user 'root' specific aliases and functions.
@@ -19,7 +19,6 @@ umask 022
 #JAVA_HOME=/usr/local/java/jdk11
 JAVA_HOME=/usr/local/java/jdk17
 #JAVA_HOME=/usr/local/java/jdk21
-#JAVA_HOME=/usr/local/java/jdk23
 #JAVA_HOME=/usr/local/java/jdk24
 export JAVA_HOME
 
