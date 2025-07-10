@@ -11,25 +11,24 @@ cpu_arch=$(uname -m)
 
 # install spring tool suite ide. -------------------------------------------------------------------
 sts_home="sts"
-sts_release="4.29.1"
+sts_release="4.31.0"
 sts_number="173685548"
-eclipse_version="2025-03"
-eclipse_release="4.35.0"
+eclipse_version="2025-06"
+eclipse_release="4.36.0"
 eclipse_dist=$(echo "e${eclipse_release}" | awk -F "." '{printf "%s.%s", $1, $2}')
 sts_family="${sts_release:0:1}"
 sts_folder="${sts_home}-${sts_release}.RELEASE"
 sts_config="SpringToolSuite${sts_family}.ini"
 
-
 # set the go binary and sha256 values based on cpu architecture.
 if [ "$cpu_arch" = "x86_64" ]; then
   # set the amd64 variables.
   sts_binary="spring-tool-suite-${sts_family}-${sts_release}.RELEASE-e${eclipse_release}-linux.gtk.x86_64.tar.gz"
-  sts_sha256="3d093292f30eef08b903d264f6675c4fe8ea1f0e7f474e5894155dd23776c27f"
+  sts_sha256="c6f0022b24615e6d49eec4e447665f84c5a5af34ee3a29d7ede55d63e0e892ea"
 elif [ "$cpu_arch" = "aarch64" ]; then
   # set the arm64 variables.
   sts_binary="spring-tool-suite-${sts_family}-${sts_release}.RELEASE-e${eclipse_release}-linux.gtk.aarch64.tar.gz"
-  sts_sha256="c1541d77f54f9d89ccb781b0b588f63b0c4d87d01d43fdaf6d08a7514e91b56b"
+  sts_sha256="5111f54ce42ba4fa9d9465c933ab5e5b903dcd2472a6540ba048838dc8169383"
 else
   echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
   exit 1
