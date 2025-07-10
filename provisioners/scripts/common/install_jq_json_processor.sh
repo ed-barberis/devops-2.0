@@ -20,17 +20,17 @@
 cpu_arch=$(uname -m)
 
 # install jq yaml processor. -----------------------------------------------------------------------
-jq_release="jq-1.7.1"
+jq_release="jq-1.8.1"
 
 # set the jq cli binary and sha256 values based on cpu architecture.
 if [ "$cpu_arch" = "x86_64" ]; then
   # set the amd64 variables.
   jq_binary="jq-linux-amd64"
-  jq_sha256="5942c9b0934e510ee61eb3e30273f1b3fe2590df93933a93d7c58b81d19c8ff5"
+  jq_sha256="020468de7539ce70ef1bceaf7cde2e8c4f2ca6c3afb84642aabc5c97d9fc2a0d"
 elif [ "$cpu_arch" = "aarch64" ]; then
   # set the arm64 variables.
   jq_binary="jq-linux-arm64"
-  jq_sha256="4dd2d8a0661df0b22f1bb9a1f9830f06b6f3b8f7d91211a1ef5d7c4f06a8b4a5"
+  jq_sha256="6bc62f25981328edd3cfcfe6fe51b073f2d7e7710d7ef7fcdac28d4e384fc3d4"
 else
   echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
   exit 1

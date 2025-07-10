@@ -18,19 +18,19 @@
 cpu_arch=$(uname -m)
 
 # install yq yaml processor. -----------------------------------------------------------------------
-yq_release="v4.45.1"
+yq_release="v4.46.1"
 
 # set the yq cli binary and sha256 values based on cpu architecture.
 if [ "$cpu_arch" = "x86_64" ]; then
   # set the amd64 variables.
   yq_exe="yq_linux_amd64"
   yq_binary="${yq_exe}.tar.gz"
-  yq_sha256="654d2943ca1d3be2024089eb4f270f4070f491a0610481d128509b2834870049"
+  yq_sha256="c0eb42f6fbf928f0413422967983dcdf9806cc4dedc9394edc60c0dfb4a98529"
 elif [ "$cpu_arch" = "aarch64" ]; then
   # set the arm64 variables.
   yq_exe="yq_linux_arm64"
   yq_binary="${yq_exe}.tar.gz"
-  yq_sha256="ceea73d4c86f2e5c91926ee0639157121f5360da42beeb8357783d79c2cc6a1d"
+  yq_sha256="4ab0b301059348d671fc1833e99903c1fecc7ca287ac131f72dca0eb9a6ba87a"
 else
   echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
   exit 1

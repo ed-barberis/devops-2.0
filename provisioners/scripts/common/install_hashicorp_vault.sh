@@ -24,17 +24,17 @@
 cpu_arch=$(uname -m)
 
 # install hashicorp vault. -------------------------------------------------------------------------
-vault_release="1.19.1"
+vault_release="1.20.0"
 
 # set the vault tool binary and sha256 values based on cpu architecture.
 if [ "$cpu_arch" = "x86_64" ]; then
   # set the amd64 variables.
   vault_binary="vault_${vault_release}_linux_amd64.zip"
-  vault_sha256="a673933f5b02236b5e241e153c0d2fed15b47b48ad640ae886f8b3b567087a05"
+  vault_sha256="25e9f1f9a6dd9866219d6a37c6d1af1d26d0e73aa95a4e755188751de133dea7"
 elif [ "$cpu_arch" = "aarch64" ]; then
   # set the arm64 variables.
   vault_binary="vault_${vault_release}_linux_arm64.zip"
-  vault_sha256="27561edfbc3a59936c9a892d6a130ada5a224c91862523c1aa596bfd30cd45e3"
+  vault_sha256="b7b87fef8d10126ad69e7130fb5fe4903dd0011506c61e7fec4502af0519c2fa"
 else
   echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
   exit 1

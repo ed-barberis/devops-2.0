@@ -33,11 +33,13 @@
 
 # install scala 3. ---------------------------------------------------------------------------------
 scala3_home="scala-lang"
-scala3_release="3.6.4"
+scala3_release="3.7.1"
+#scala3_release="3.3.6"                                                              # scala 3.3.6 lts release.
 scala3_dir="scala3-${scala3_release}"
 scala3_folder="${scala3_home}-${scala3_release}"
 scala3_binary="scala3-${scala3_release}.tar.gz"
-scala3_sha256="23c269abf69e942272019cef36ae7f41b7dd0f4324e663eecd30f155d908c4a5"
+scala3_sha256="5c8786e13ed35cf54010cb5e0f40525ab02fed5d5fef1ae42e96dda4716e580c"
+#scala3_sha256="7267524240ee289976fed1b8bc08c0045d5d290d3faee07c6b7137a4252b5b97"    # scala 3.3.6 lts release.
 
 # create scala parent folder.
 mkdir -p /usr/local/scala
@@ -99,8 +101,8 @@ scala version
 #    $ scala run hello.scala
 #    Downloading compilation server 2.0.5
 #    Starting compilation server
-#    Compiling project (Scala 3.6.4, JVM (17))
-#    Compiled project (Scala 3.6.4, JVM (17))
+#    Compiling project (Scala 3.7.1, JVM (17))
+#    Compiled project (Scala 3.7.1, JVM (17))
 #    Hello, Scala 3 World!
 #
 # Congratulations, you just compiled and ran your first Scala 3 application!
