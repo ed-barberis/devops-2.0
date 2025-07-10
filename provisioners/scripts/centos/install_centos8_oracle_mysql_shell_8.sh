@@ -21,7 +21,7 @@
 
 # set default values for input environment variables if not set. -----------------------------------
 # [OPTIONAL] mysql shell install parameters [w/ defaults].
-mysqlsh_release="${mysqlsh_release:-8.0.41-1}"                              # [optional] mysql release version (defaults to '8.0.41-1').
+mysqlsh_release="${mysqlsh_release:-8.0.42-1}"                              # [optional] mysql release version (defaults to '8.0.42-1').
 
 # [OPTIONAL] devops home folder [w/ default].
 devops_home="${devops_home:-/opt/devops}"                                   # [optional] devops home (defaults to '/opt/devops').
@@ -32,10 +32,10 @@ cpu_arch=$(uname -m)
 # set the mysql shell md5 values based on cpu architecture.
 if [ "$cpu_arch" = "x86_64" ]; then
   # set the amd64 variables.
-  mysqlsh_checksum="${mysqlsh_checksum:-b010ad29dced06f6e3daf52bf1c84f81}"  # [optional] mysql shell repository amd64 md5 checksum (defaults to published value).
+  mysqlsh_checksum="${mysqlsh_checksum:-7a6709fdb4b985a79ae0380da951e020}"  # [optional] mysql shell repository amd64 md5 checksum (defaults to published value).
 elif [ "$cpu_arch" = "aarch64" ]; then
   # set the arm64 variables.
-  mysqlsh_checksum="${mysqlsh_checksum:-e64da1e7264af60d68b2aaecff108c40}"  # [optional] mysql shell repository arm64 md5 checksum (defaults to published value).
+  mysqlsh_checksum="${mysqlsh_checksum:-1ad76afce3e39c2f63f6a02b9e5db29a}"  # [optional] mysql shell repository arm64 md5 checksum (defaults to published value).
 else
   echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
   exit 1

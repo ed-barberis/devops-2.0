@@ -21,10 +21,10 @@
 
 # set default values for input environment variables if not set. -----------------------------------
 # [OPTIONAL] mysql shell install parameters [w/ defaults].
-mysql_apt_repo_release="${mysql_apt_repo_release:-0.8.33-1}"            # [optional] apt repository version (defaults to '0.8.33-1').
+mysql_apt_repo_release="${mysql_apt_repo_release:-0.8.34-1}"            # [optional] apt repository version (defaults to '0.8.34-1').
 mysql_server_release="${mysql_server_release:-mysql-8.4-lts}"           # [optional] mysql server version (defaults to 'mysql-8.4-lts').
                                                                         # [optional] mysql apt repository md5 checksum (defaults to published value).
-mysql_apt_checksum="${mysql_apt_checksum:-e1716b19b84b92f32e94dfd34892322c}"
+mysql_apt_checksum="${mysql_apt_checksum:-ab23dec6619a7e65e8462646936ee49f}"
 
 # [OPTIONAL] devops home folder [w/ default].
 devops_home="${devops_home:-/opt/devops}"                               # [optional] devops home (defaults to '/opt/devops').
@@ -35,7 +35,7 @@ ubuntu_release=$(lsb_release -rs)
 
 if [ -n "$ubuntu_release" ]; then
   case $ubuntu_release in
-      18.04|20.04|22.04|24.04|24.10)
+      18.04|20.04|22.04|24.04|24.10|25.04)
         ;;
       *)
         echo "Error: MySQL Shell 8.4 NOT supported on Ubuntu release: '$(lsb_release -ds)'."

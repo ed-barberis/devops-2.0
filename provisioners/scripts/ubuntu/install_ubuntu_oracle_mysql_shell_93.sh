@@ -1,18 +1,18 @@
 #!/bin/bash -eux
 #---------------------------------------------------------------------------------------------------
-# Install MySQL Shell 9.0 by Oracle on Ubuntu Linux.
+# Install MySQL Shell 9.3 by Oracle on Ubuntu Linux.
 #
 # MySQL Shell is an advanced client and code editor for MySQL. In addition to the provided SQL
 # functionality, similar to 'mysql', MySQL Shell provides scripting capabilities for JavaScript
 # and Python and includes APIs for working with MySQL.
 #
-# MySQL Shell 9.0 is highly recommended for use with MySQL Server 9.0.
+# MySQL Shell 9.3 is highly recommended for use with MySQL Server 9.3.
 #
 # For more details, please visit:
-#   https://dev.mysql.com/doc/mysql-shell/9.0/en/
-#   https://dev.mysql.com/doc/mysql-shell/9.0/en/mysql-shell-install-linux-quick.html
+#   https://dev.mysql.com/doc/mysql-shell/9.3/en/
+#   https://dev.mysql.com/doc/mysql-shell/9.3/en/mysql-shell-install-linux-quick.html
 #   https://dev.mysql.com/downloads/shell
-#   https://dev.mysql.com/doc/relnotes/mysql-shell/9.0/en/
+#   https://dev.mysql.com/doc/relnotes/mysql-shell/9.3/en/
 #
 # NOTE: All inputs are defined by external environment variables.
 #       Optional variables have reasonable defaults, but you may override as needed.
@@ -21,10 +21,10 @@
 
 # set default values for input environment variables if not set. -----------------------------------
 # [OPTIONAL] mysql shell install parameters [w/ defaults].
-mysql_apt_repo_release="${mysql_apt_repo_release:-0.8.33-1}"            # [optional] apt repository version (defaults to '0.8.33-1').
+mysql_apt_repo_release="${mysql_apt_repo_release:-0.8.34-1}"            # [optional] apt repository version (defaults to '0.8.34-1').
 mysql_server_release="${mysql_server_release:-mysql-innovation}"        # [optional] mysql server version (defaults to 'mysql-innovation').
                                                                         # [optional] mysql apt repository md5 checksum (defaults to published value).
-mysql_apt_checksum="${mysql_apt_checksum:-e1716b19b84b92f32e94dfd34892322c}"
+mysql_apt_checksum="${mysql_apt_checksum:-ab23dec6619a7e65e8462646936ee49f}"
 
 # [OPTIONAL] devops home folder [w/ default].
 devops_home="${devops_home:-/opt/devops}"                               # [optional] devops home (defaults to '/opt/devops').
@@ -35,10 +35,10 @@ ubuntu_release=$(lsb_release -rs)
 
 if [ -n "$ubuntu_release" ]; then
   case $ubuntu_release in
-      18.04|20.04|22.04|24.04|24.10)
+      18.04|20.04|22.04|24.04|24.10|25.04)
         ;;
       *)
-        echo "Error: MySQL Shell 9.0 NOT supported on Ubuntu release: '$(lsb_release -ds)'."
+        echo "Error: MySQL Shell 9.3 NOT supported on Ubuntu release: '$(lsb_release -ds)'."
         exit 1
         ;;
   esac
