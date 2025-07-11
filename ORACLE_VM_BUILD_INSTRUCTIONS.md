@@ -332,7 +332,7 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 -	Apache Tomcat 10.1.43
 -	Apache Tomcat 11.0.9
 -	AppDynamics Java Agent 25.6.0 Build 37159
--	AppDynamics Machine Agent 25.4.0 Build 4712
+-	AppDynamics Machine Agent 25.6.0 Build 4787
 	-	AppDynamics AWS EC2 Monitoring Extension 2.1.5 [Optional]
 -	Atom Editor 1.57.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
@@ -341,7 +341,7 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 -	JetBrains IntelliJ IDEA 2025.1.3 (Community Edition)
 -	JetBrains IntelliJ IDEA 2025.1.3 (Ultimate Edition)
 -	JetBrains WebStorm 2025.1.3 (JavaScript IDE)
--	Postman 11.53.3
+-	Postman 11.53.5
 -	Spring Tool Suite 4 [4.31.0] IDE (Eclipse 2025-06 [4.36.0])
 -	Sublime Text 4 (Build 4200)
--	Visual Studio Code 1.101.2
+-	Visual Studio Code 1.102.0
