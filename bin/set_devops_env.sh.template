@@ -245,12 +245,12 @@ export appd_controller_tenancy_mode
 #appd_machine_agent_user="vagrant"
 #export appd_machine_agent_user
 
-# [optional] machine agent release (defaults to '25.4.0.4712').
-#appd_machine_agent_release="25.4.0.4712"
+# [optional] machine agent release (defaults to '25.6.0.4787').
+#appd_machine_agent_release="25.6.0.4787"
 #export appd_machine_agent_release
 
 # [optional] machine agent sha-256 checksum (defaults to published value).
-#appd_machine_agent_sha256="77d8aab2a3759c54bf2c3d215a6806a66a6634e1a20f2451e59a0e41b06b2d40"
+#appd_machine_agent_sha256="b5973a1daaf16979195e37cb58552b607f7967ec3fd5a8a3667d06928fd07c9e"
 #export appd_machine_agent_sha256
 
 # --------------------------------------------------------------------------------------------------
