@@ -1,4 +1,4 @@
-# @(#).bashrc       1.0 2025/04/16 SMI
+# @(#).bashrc       1.0 2025/07/11 SMI
 # bash resource configuration for devops users.
 
 # source global definitions.
@@ -66,6 +66,10 @@ export SBT_OPTS
 SBT_HOME=/usr/local/scala/scala-sbt
 export SBT_HOME
 
+# set rust toolchain home path for cargo.
+CARGO_HOME=$HOME/.cargo
+export CARGO_HOME
+
 # set postman home path.
 POSTMAN_HOME=/usr/local/google/Postman
 export POSTMAN_HOME
@@ -98,7 +102,7 @@ PS1="${reset}${cyan}\h${blue}[${green}\u${blue}]${white}\$ "
 export PS1
 
 # add local applications to main PATH.
-PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$M2:$GROOVY_HOME/bin:$GRADLE_HOME/bin:$GIT_HOME/bin:$GIT_FLOW_HOME/bin:$GOROOT/bin:$SCALA_HOME/bin:$SBT_HOME/bin:$POSTMAN_HOME:$HOME/.local/bin:$PATH
+PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$M2:$GROOVY_HOME/bin:$GRADLE_HOME/bin:$GIT_HOME/bin:$GIT_FLOW_HOME/bin:$GOROOT/bin:$SCALA_HOME/bin:$SBT_HOME/bin:$CARGO_HOME/bin:$POSTMAN_HOME:$HOME/.local/bin:$PATH
 export PATH
 
 # set corporate proxy.
