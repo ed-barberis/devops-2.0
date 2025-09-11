@@ -35,7 +35,7 @@ ubuntu_release=$(lsb_release -rs)
 
 if [ -n "$ubuntu_release" ]; then
   case $ubuntu_release in
-      18.04|20.04|22.04|24.04|24.10|25.04)
+      18.04|20.04|22.04|24.04|25.04)
         ;;
       *)
         echo "Error: MySQL Shell 8.4 NOT supported on Ubuntu release: '$(lsb_release -ds)'."

@@ -1,18 +1,18 @@
 #!/bin/bash -eux
 #---------------------------------------------------------------------------------------------------
-# Install MySQL Shell 9.3 by Oracle on Ubuntu Linux.
+# Install MySQL Shell 9.4 by Oracle on Ubuntu Linux.
 #
 # MySQL Shell is an advanced client and code editor for MySQL. In addition to the provided SQL
 # functionality, similar to 'mysql', MySQL Shell provides scripting capabilities for JavaScript
 # and Python and includes APIs for working with MySQL.
 #
-# MySQL Shell 9.3 is highly recommended for use with MySQL Server 9.3.
+# MySQL Shell 9.4 is highly recommended for use with MySQL Server 9.4.
 #
 # For more details, please visit:
-#   https://dev.mysql.com/doc/mysql-shell/9.3/en/
-#   https://dev.mysql.com/doc/mysql-shell/9.3/en/mysql-shell-install-linux-quick.html
+#   https://dev.mysql.com/doc/mysql-shell/9.4/en/
+#   https://dev.mysql.com/doc/mysql-shell/9.4/en/mysql-shell-install-linux-quick.html
 #   https://dev.mysql.com/downloads/shell
-#   https://dev.mysql.com/doc/relnotes/mysql-shell/9.3/en/
+#   https://dev.mysql.com/doc/relnotes/mysql-shell/9.4/en/
 #
 # NOTE: All inputs are defined by external environment variables.
 #       Optional variables have reasonable defaults, but you may override as needed.
@@ -35,10 +35,10 @@ ubuntu_release=$(lsb_release -rs)
 
 if [ -n "$ubuntu_release" ]; then
   case $ubuntu_release in
-      18.04|20.04|22.04|24.04|24.10|25.04)
+      18.04|20.04|22.04|24.04|25.04)
         ;;
       *)
-        echo "Error: MySQL Shell 9.3 NOT supported on Ubuntu release: '$(lsb_release -ds)'."
+        echo "Error: MySQL Shell 9.4 NOT supported on Ubuntu release: '$(lsb_release -ds)'."
         exit 1
         ;;
   esac
