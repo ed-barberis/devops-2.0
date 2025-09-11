@@ -124,7 +124,7 @@ if [ -n "$ubuntu_release" ]; then
       sudo -E ./install_ansible.sh
       ;;
 
-    24.04|24.10|25.04)
+    24.04|25.04)
       # install ansible on ubuntu linux.
       cd ${devops_home}/provisioners/scripts/ubuntu
       sudo -E ./install_ubuntu_ansible.sh
