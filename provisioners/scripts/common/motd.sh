@@ -1,5 +1,12 @@
 #!/bin/sh -eux
 
+OS_NAME=$(uname -s)
+
+if [ "$OS_NAME" = "Darwin" ]; then
+  echo "Nothing to do for $OS_NAME"
+  exit 0
+fi
+
 devops='
 This system was built with the DevOps 2.0 project by Ed Barberis.
 More information can be found at: https://github.com/ed-barberis/devops-2.0/
