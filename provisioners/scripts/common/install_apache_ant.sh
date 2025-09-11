@@ -16,7 +16,7 @@ mkdir -p /usr/local/apache
 cd /usr/local/apache
 
 # download ant binary from apache.org.
-wget --no-verbose http://archive.apache.org/dist/ant/binaries/${ant_binary}
+wget --no-verbose https://dlcdn.apache.org//ant/binaries/${ant_binary}
 
 # verify the downloaded binary.
 echo "${ant_sha512} ${ant_binary}" | sha512sum --check
@@ -30,7 +30,7 @@ ln -s ${ant_folder} ${ant_home}
 rm -f ${ant_binary}
 
 # set jdk home environment variables.
-JAVA_HOME=/usr/local/java/jdk180
+JAVA_HOME=/usr/local/java/jdk17
 export JAVA_HOME
 
 # set ant home environment variables.

@@ -20,17 +20,17 @@
 cpu_arch=$(uname -m)
 
 # install k9s cli client. --------------------------------------------------------------------------
-k9s_release="0.50.7"
+k9s_release="0.50.9"
 
 # set the packer cli binary and sha256 values based on cpu architecture.
 if [ "$cpu_arch" = "x86_64" ]; then
   # set the amd64 variables.
   k9s_binary="k9s_Linux_amd64.tar.gz"
-  k9s_sha256="33c7699c6d71544c6704f78be928eca3445262cf462b2ac110a3284f67eb1c7b"
+  k9s_sha256="5e625efa26c3e14256cf29d242179b32129183b549937ec62d0ad9be1bfe2ca4"
 elif [ "$cpu_arch" = "aarch64" ]; then
   # set the arm64 variables.
   k9s_binary="k9s_Linux_arm64.tar.gz"
-  k9s_sha256="39ca43367170228017a28543c738dbc3b614fdd5e2b13b24074371314b8ca67e"
+  k9s_sha256="147e696b608da9a300b9db6b35fd6dfc0713ce8c64865e550c90452696bb779a"
 else
   echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
   exit 1

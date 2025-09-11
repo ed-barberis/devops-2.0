@@ -3,10 +3,10 @@
 
 # install apache groovy. ---------------------------------------------------------------------------
 groovy_home="groovy"
-groovy_release="4.0.27"
+groovy_release="5.0.1"
 groovy_folder="${groovy_home}-${groovy_release}"
 groovy_sdk="apache-groovy-sdk-${groovy_release}.zip"
-groovy_sha256="edcb6f4e4a84416a5b19ad3c3ba1d569dd4948666a152796a8927dbb21d841f5"
+groovy_sha256="270ac9695f35b34c6e06d4d549dddf23557ed5d336d6e403d17bf8c627249ea5"
 
 #groovy_binary="apache-groovy-binary-${groovy_release}.zip"
 #groovy_docs="apache-groovy-docs-${groovy_release}.zip"
@@ -30,7 +30,7 @@ ln -s ${groovy_folder} ${groovy_home}
 rm -f ${groovy_sdk}
 
 # set jdk home environment variables.
-JAVA_HOME=/usr/local/java/jdk180
+JAVA_HOME=/usr/local/java/jdk17
 export JAVA_HOME
 
 # set groovy home environment variables.

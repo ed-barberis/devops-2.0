@@ -7,10 +7,10 @@ rm -f gradle-release-notes.html
 curl --silent https://docs.gradle.org/current/release-notes.html --output gradle-release-notes.html
 gradle_home="gradle"
 gradle_release=$(awk '/Release Notes<\/title>/ {print $2}' gradle-release-notes.html)
-gradle_release="8.14.3"
+gradle_release="9.0.0"
 gradle_folder="gradle-${gradle_release}"
 gradle_binary="gradle-${gradle_release}-all.zip"
-gradle_sha256="ed1a8d686605fd7c23bdf62c7fc7add1c5b23b2bbc3721e661934ef4a4911d7c"
+gradle_sha256="f759b8dd5204e2e3fa4ca3e73f452f087153cf81bac9561eeb854229cc2c5365"
 
 rm -f gradle-release-notes.html
 
@@ -35,7 +35,7 @@ ln -s ${gradle_folder} ${gradle_home}
 rm -f ${gradle_binary}
 
 # set jdk home environment variables.
-JAVA_HOME=/usr/local/java/jdk180
+JAVA_HOME=/usr/local/java/jdk17
 export JAVA_HOME
 
 # set gradle environment variables.

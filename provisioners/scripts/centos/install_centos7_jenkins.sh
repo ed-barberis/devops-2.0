@@ -15,7 +15,7 @@ if [ -f "${jenkinsconfig}" ]; then
   cp -p ${jenkinsconfig} ${jenkinsconfig}.orig
 
   # modify jenkins config file.
-  sed -i -e '/^JENKINS_JAVA_CMD/s/^.*$/JENKINS_JAVA_CMD="\/usr\/local\/java\/jdk180\/bin\/java"/' ${jenkinsconfig}
+  sed -i -e '/^JENKINS_JAVA_CMD/s/^.*$/JENKINS_JAVA_CMD="\/usr\/local\/java\/jdk17\/bin\/java"/' ${jenkinsconfig}
   sed -i -e '/^JENKINS_PORT/s/^.*$/JENKINS_PORT="9080"/' ${jenkinsconfig}
 fi
 
