@@ -29,9 +29,9 @@
 # set default values for input environment variables if not set. -----------------------------------
 # [OPTIONAL] tomcat web server install parameters [w/ defaults].
 tomcat_home="${tomcat_home:-apache-tomcat-11.0}"                    # [optional] tomcat home (defaults to 'apache-tomcat-11.0').
-tomcat_release="${tomcat_release:-11.0.9}"                          # [optional] tomcat release (defaults to '11.0.9').
+tomcat_release="${tomcat_release:-11.0.11}"                         # [optional] tomcat release (defaults to '11.0.11').
                                                                     # [optional] tomcat sha-512 checksum (defaults to published value).
-tomcat_sha512="${tomcat_sha512:-480ae04b5fa77e4f3f02d8e32b0ac5701390e9e0d3b2e57827defde8c364a5a4b3f37d25bc46a2538a4268babc7b61999a22314cb046360b2eb3f8109973a034}"
+tomcat_sha512="${tomcat_sha512:-a26b2269530fd2fc834e9b1544962f6524cf87925de43b05ad050e66b5eaa76a4ad754a2c5fc4f851baf75a0ea1b0ed8f51082300393a4c35d8c2da0d7c535bd}"
 tomcat_username="${tomcat_username:-vagrant}"                       # [optional] tomcat user name (defaults to 'vagrant').
 tomcat_group="${tomcat_group:-vagrant}"                             # [optional] tomcat group (defaults to 'vagrant').
 
@@ -63,7 +63,7 @@ cd /usr/local/apache
 
 # download tomcat binary from apache.org.
 rm -f ${tomcat_binary}
-wget --no-verbose https://archive.apache.org/dist/tomcat/${tomcat_home:7:-2}/v${tomcat_release}/bin/${tomcat_binary}
+wget --no-verbose https://dlcdn.apache.org/tomcat/${tomcat_home:7:-2}/v${tomcat_release}/bin/${tomcat_binary}
 
 # verify the downloaded binary.
 echo "${tomcat_sha512} ${tomcat_binary}" | sha512sum --check
