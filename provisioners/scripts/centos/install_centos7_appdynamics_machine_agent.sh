@@ -27,8 +27,8 @@ appd_controller_root_password="${appd_controller_root_password:-welcome1}"
 set -x  # turn command display back ON.
 appd_machine_agent_home="${appd_machine_agent_home:-machine-agent}"
 appd_machine_agent_user="${appd_machine_agent_user:-vagrant}"
-appd_machine_agent_release="${appd_machine_agent_release:-25.6.0.4787}"
-appd_machine_agent_sha256="${appd_machine_agent_sha256:-b5973a1daaf16979195e37cb58552b607f7967ec3fd5a8a3667d06928fd07c9e}"
+appd_machine_agent_release="${appd_machine_agent_release:-25.7.0.4825}"
+appd_machine_agent_sha256="${appd_machine_agent_sha256:-8d7c29d64761e83eb0c32d71ead96b67375fef31572987281b145004f08211f0}"
 
 # [OPTIONAL] appdynamics machine agent config parameters [w/ defaults].
 appd_machine_agent_config="${appd_machine_agent_config:-false}"
@@ -65,9 +65,9 @@ Usage:
     [root]# export appd_controller_root_password="welcome1"             # [optional] controller root password (defaults to 'welcome1').
     [root]# export appd_machine_agent_home="machine-agent"              # [optional] machine agent home folder (defaults to 'machine-agent').
     [root]# export appd_machine_agent_user="vagrant"                    # [optional] machine agent user name (defaults to user 'vagrant').
-    [root]# export appd_machine_agent_release="25.6.0.4787"             # [optional] machine agent release (defaults to '25.6.0.4787').
+    [root]# export appd_machine_agent_release="25.7.0.4825"             # [optional] machine agent release (defaults to '25.7.0.4825').
                                                                         # [optional] machine agent sha-256 checksum (defaults to published value).
-    [root]# export appd_machine_agent_sha256="b5973a1daaf16979195e37cb58552b607f7967ec3fd5a8a3667d06928fd07c9e"
+    [root]# export appd_machine_agent_sha256="8d7c29d64761e83eb0c32d71ead96b67375fef31572987281b145004f08211f0"
 
   [OPTIONAL] appdynamics machine agent config parameters [w/ defaults].
     [root]# export appd_machine_agent_config="true"                     # [optional] configure appd machine agent? [boolean] (defaults to 'false').
