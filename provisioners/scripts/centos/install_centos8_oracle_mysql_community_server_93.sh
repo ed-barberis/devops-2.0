@@ -1,17 +1,17 @@
 #!/bin/sh -eux
 #---------------------------------------------------------------------------------------------------
-# Install MySQL Community Server 9.3 by Oracle on CentOS Linux 8.x.
+# Install MySQL Community Server 9.4 by Oracle on CentOS Linux 8.x.
 #
 # The MySQL software delivers a very fast, multithreaded, multi-user, and robust SQL (Structured
 # Query Language) database server. MySQL Server is intended for mission-critical, heavy-load
 # production systems as well as for embedding into mass-deployed software.
 #
 # For more details, please visit:
-#   https://dev.mysql.com/doc/refman/9.3/en/
-#   https://dev.mysql.com/doc/refman/9.3/en/linux-installation-yum-repo.html
+#   https://dev.mysql.com/doc/refman/9.4/en/
+#   https://dev.mysql.com/doc/refman/9.4/en/linux-installation-yum-repo.html
 #   https://dev.mysql.com/downloads/repo/yum/
 #   https://www.mysql.com/support/supportedplatforms/database.html
-#   https://dev.mysql.com/doc/refman/9.3/en/socket-pluggable-authentication.html
+#   https://dev.mysql.com/doc/refman/9.4/en/socket-pluggable-authentication.html
 #
 # NOTE: All inputs are defined by external environment variables.
 #       Optional variables have reasonable defaults, but you may override as needed.

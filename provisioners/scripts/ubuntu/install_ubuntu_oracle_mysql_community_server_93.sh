@@ -1,18 +1,18 @@
 #!/bin/bash -eux
 #---------------------------------------------------------------------------------------------------
-# Install MySQL Community Server 9.3 by Oracle on Ubuntu Linux.
+# Install MySQL Community Server 9.4 by Oracle on Ubuntu Linux.
 #
 # The MySQL software delivers a very fast, multithreaded, multi-user, and robust SQL (Structured
 # Query Language) database server. MySQL Server is intended for mission-critical, heavy-load
 # production systems as well as for embedding into mass-deployed software.
 #
 # For more details, please visit:
-#   https://dev.mysql.com/doc/refman/9.3/en/
-#   https://dev.mysql.com/doc/refman/9.3/en/linux-installation-apt-repo.html
+#   https://dev.mysql.com/doc/refman/9.4/en/
+#   https://dev.mysql.com/doc/refman/9.4/en/linux-installation-apt-repo.html
 #   https://dev.mysql.com/doc/mysql-apt-repo-quick-guide/en/
 #   https://dev.mysql.com/downloads/repo/apt/
 #   https://www.mysql.com/support/supportedplatforms/database.html
-#   https://dev.mysql.com/doc/refman/9.3/en/socket-pluggable-authentication.html
+#   https://dev.mysql.com/doc/refman/9.4/en/socket-pluggable-authentication.html
 #
 # NOTE: All inputs are defined by external environment variables.
 #       Optional variables have reasonable defaults, but you may override as needed.
@@ -39,11 +39,11 @@ ubuntu_release=$(lsb_release -rs)
 
 if [ -n "$ubuntu_release" ]; then
   case $ubuntu_release in
-      22.04|24.04|24.10|25.04)
+      22.04|24.04|25.04)
         ;;
 
       *)
-        echo "Error: MySQL Community Server 9.3 NOT supported on Ubuntu release: '$(lsb_release -ds)'."
+        echo "Error: MySQL Community Server 9.4 NOT supported on Ubuntu release: '$(lsb_release -ds)'."
         exit 1
         ;;
   esac

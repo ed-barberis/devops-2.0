@@ -39,7 +39,7 @@ ubuntu_release=$(lsb_release -rs)
 
 if [ -n "$ubuntu_release" ]; then
   case $ubuntu_release in
-      22.04|24.04|24.10|25.04)
+      22.04|24.04|25.04)
         ;;
 
       *)
