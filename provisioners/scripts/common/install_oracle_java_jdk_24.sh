@@ -21,17 +21,17 @@ cpu_arch=$(uname -m)
 
 # install java se 24 development kit. --------------------------------------------------------------
 jdk_home="jdk24"
-jdk_build="24.0.1"
+jdk_build="24.0.2"
 jdk_folder="jdk-${jdk_build}"
 
 # set the jdk sha256 and arch values based on cpu architecture.
 if [ "$cpu_arch" = "x86_64" ]; then
   # set the amd64 variables.
-  jdk_sha256="07096b29c65feb393972870347f36021be421a74c1800be468b3c19f04e8e943"
+  jdk_sha256="5f9f7c4ca2a6cef0f18a27465e1be81bddd8653218f450a329a2afc9bf2a1dd8"
   jdk_arch="x64"
 elif [ "$cpu_arch" = "aarch64" ]; then
   # set the arm64 variables.
-  jdk_sha256="4a9c23c7b6b7b343634376c45213068ce99067c23e8e7c5fa238bf2c0e2a4f54"
+  jdk_sha256="b4e4273c290c7cecdab499fb0729ce9e4bf92de54e109c4f5a942a30e63d0311"
   jdk_arch="aarch64"
 else
   echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
