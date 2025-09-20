@@ -270,26 +270,26 @@ Follow these instructions to build the Oracle Linux 7.9 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 2.29.1 (command-line interface) [Optional]
+-	Amazon AWS CLI 2.30.6 (command-line interface) [Optional]
 -	Ansible 2.9.27
 -	Ant 1.10.15
 -	Consul 1.21.4
 -	Cloud-Init 0.7.9 [Optional]
 -	Docker 19.03.11 CE
 	-	Docker Bash Completion
-	-	Docker Compose 2.39.3
+	-	Docker Compose 2.39.4
 -	Git 2.51.0
 	-	Git Bash Completion
 	-	Git-Flow 1.12.4 (AVH Edition)
 	-	Git-Flow Bash Completion
 -	Go 1.25.1
--	Gradle 9.0.0
+-	Gradle 9.1.0
 -	Groovy 5.0.1
 -	Java SE JDK 8 Update 462 (Amazon Corretto 8)
 -	Java SE JDK 11.0.28 (Amazon Corretto 11)
 -	Java SE JDK 17.0.16 (Amazon Corretto 17)
 -	Java SE JDK 21.0.8 (Amazon Corretto 21)
--	Java SE JDK 24.0.2 (Amazon Corretto 24)
+-	Java SE JDK 25.0.0 (Amazon Corretto 25)
 -	JMESPath jp 0.2.1 (command-line JSON processor)
 -	jq 1.8.1 (command-line JSON processor)
 -	Maven 3.9.11
@@ -302,12 +302,12 @@ The following command-line tools and utilities are pre-installed in the __Develo
 	-	Pip 24.0
 -	Python 3.6.8
 	-	Pip3 24.2
--	Rust 1.89.0
+-	Rust 1.90.0
 -	Scala 3.7.3
 -	Scala 2.13.16
 -	Scala Build Tool (SBT) 1.11.6
 	-	Scala 2.12.20
--	Terraform 1.13.2
+-	Terraform 1.13.3
 -	Vault 1.20.3
 -	VIM - Vi IMproved 9.1
 -	XMLStarlet 1.6.1 (command-line XML processor)
@@ -315,8 +315,8 @@ The following command-line tools and utilities are pre-installed in the __Develo
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 18.3.2
--	Jenkins 2.516.2 LTS
+-	GitLab Community Edition 18.4.0
+-	Jenkins 2.516.3 LTS
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
@@ -329,19 +329,19 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 
 -	Apache Tomcat 8.5.100
 -	Apache Tomcat 9.0.109
--	Apache Tomcat 10.1.45
+-	Apache Tomcat 10.1.46
 -	Apache Tomcat 11.0.11
--	AppDynamics Java Agent 25.7.0 Build 37207
+-	AppDynamics Java Agent 25.8.0 Build 37285
 -	AppDynamics Machine Agent 25.7.0 Build 4825
 	-	AppDynamics AWS EC2 Monitoring Extension 2.1.5 [Optional]
 -	Atom Editor 1.57.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 140.0.7339.133 (64-bit)
+-	Chrome 140.0.7339.186 (64-bit)
 -	Firefox 102.10.0esr (64-bit)
--	JetBrains IntelliJ IDEA 2025.2.1 (Community Edition)
--	JetBrains IntelliJ IDEA 2025.2.1 (Ultimate Edition)
--	JetBrains WebStorm 2025.2.1 (JavaScript IDE)
--	Postman 11.62.6
+-	JetBrains IntelliJ IDEA 2025.2.2 (Community Edition)
+-	JetBrains IntelliJ IDEA 2025.2.2 (Ultimate Edition)
+-	JetBrains WebStorm 2025.2.2 (JavaScript IDE)
+-	Postman 11.63.6
 -	Spring Tool Suite 4 [4.31.0] IDE (Eclipse 2025-06 [4.36.0])
 -	Sublime Text 4 (Build 4200)
--	Visual Studio Code 1.104.0
+-	Visual Studio Code 1.104.1
