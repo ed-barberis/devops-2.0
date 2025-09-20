@@ -190,12 +190,12 @@ export appd_controller_tenancy_mode
 #appd_java_agent_user="vagrant"
 #export appd_java_agent_user
 
-# [optional] java agent release (defaults to '25.7.0.37201').
-#appd_java_agent_release="25.7.0.37201"
+# [optional] java agent release (defaults to '25.8.0.37285').
+#appd_java_agent_release="25.8.0.37285"
 #export appd_java_agent_release
 
 # [optional] java agent sha-256 checksum (defaults to published value).
-#appd_java_agent_sha256="c11459d7e5d8d07c617195a911aa74f28465b6d51dd33c15ce28ac701ce620a1"
+#appd_java_agent_sha256="62816005cf3d107e300803c16dfc5235f05349cb84da3a19e688fca671b35629"
 #export appd_java_agent_sha256
 
 # --------------------------------------------------------------------------------------------------
@@ -212,7 +212,7 @@ export appd_controller_tenancy_mode
 #       using valid entries for your environment.
 #
 #       In either case, you will need to validate the configuration before starting the Java Agent. The
-#       configuration file can be found here: '<java_agent_home>/appagent/ver25.7.0.37201/conf/controller-info.xml'
+#       configuration file can be found here: '<java_agent_home>/appagent/ver25.8.0.37285/conf/controller-info.xml'
 
 # [optional] associate java agent with application (defaults to ''My App).
 #appd_java_agent_application_name="My App"
