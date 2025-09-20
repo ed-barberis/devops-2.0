@@ -35,8 +35,8 @@ centos_release=$(hostnamectl | awk '/^.*Operating System: / {print $0}' | sed 's
 
 if [ -n "$centos_release" ]; then
   case $centos_release in
-      "AlmaLinux 9.6 (Sage Margay)"|"AlmaLinux 10.0 (Purple Lion)"|"CentOS Stream 9"|"CentOS Stream 10 (Coughlan)")
-#     "AlmaLinux 9.6 (Sage"|"AlmaLinux 10.0 (Purple"|"CentOS Stream 9"|"CentOS Stream 10")
+      "AlmaLinux 9.6 (Sage Margay)"|"AlmaLinux 10.0 (Purple Lion)"|"CentOS Stream 9"|"CentOS Stream 10 (Coughlan)"|"Rocky Linux 9.6 (Blue Onyx)"|"Rocky Linux 10.0 (Red Quartz)")
+#     "AlmaLinux 9.6 (Sage"|"AlmaLinux 10.0 (Purple"|"CentOS Stream 9"|"CentOS Stream 10"|"Rocky Linux 9.6"|"Rocky Linux 10.0")
         ;;
       *)
         echo "Error: MongoDB NOT supported on CentOS release: '${centos_release}'."
