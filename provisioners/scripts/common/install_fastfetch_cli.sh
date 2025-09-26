@@ -27,13 +27,13 @@
 cpu_arch=$(uname -m)
 
 # install fastfetch cli client. --------------------------------------------------------------------
-fastfetch_release="2.52.0"
+fastfetch_release="2.53.0"
 
 # set the fastfetch cli binary and sha256 values based on cpu architecture.
 if [ "$cpu_arch" = "x86_64" ]; then
   # set the amd64 variables.
   fastfetch_binary="fastfetch-linux-amd64.tar.gz"
-  fastfetch_sha256="fbd16c86819c5c01f99d42bc716798271f29ca7433158bfcf77e00567bfa0008"
+  fastfetch_sha256="48fda735d071a6b5ed0319ef776f4a6f4d98b07f03e0ea841fcd0ade4da0c280"
 
   # set the amd64 download path.
   fastfetch_path="amd64"
@@ -41,7 +41,7 @@ if [ "$cpu_arch" = "x86_64" ]; then
 elif [ "$cpu_arch" = "aarch64" ]; then
   # set the arm64 variables.
   fastfetch_binary="fastfetch-linux-aarch64.tar.gz"
-  fastfetch_sha256="ea3aacceaf15ddf0f34cccfd435b3e939abd4ad68f902fef1a47c4ac2cdbae56"
+  fastfetch_sha256="b0d9434ff7a62905d089209a2f971df96ac5f50ba6f20ecae179f918bfdd940c"
 
   # set the arm64 download path.
   fastfetch_path="aarch64"

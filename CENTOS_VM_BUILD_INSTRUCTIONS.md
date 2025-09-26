@@ -270,10 +270,10 @@ Follow these instructions to build the CentOS Linux 7.9 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 2.30.6 (command-line interface) [Optional]
+-	Amazon AWS CLI 2.31.2 (command-line interface) [Optional]
 -	Ansible 2.9.27
 -	Ant 1.10.15
--	Consul 1.21.4
+-	Consul 1.21.5
 -	Cloud-Init 0.7.9 [Optional]
 -	Docker 26.1.4 CE
 	-	Docker Bash Completion
@@ -306,14 +306,14 @@ The following command-line tools and utilities are pre-installed in the __Develo
 -	Scala Build Tool (SBT) 1.11.6
 	-	Scala 2.12.20
 -	Terraform 1.13.3
--	Vault 1.20.3
+-	Vault 1.20.4
 -	VIM - Vi IMproved 9.1
 -	XMLStarlet 1.6.1 (command-line XML processor)
 -	yq 4.47.2 (command-line YAML processor)
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 18.4.0
+-	GitLab Community Edition 18.4.1
 -	Jenkins 2.516.3 LTS
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
@@ -334,12 +334,12 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 	-	AppDynamics AWS EC2 Monitoring Extension 2.1.5 [Optional]
 -	Atom Editor 1.57.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 140.0.7339.186 (64-bit)
+-	Chrome 140.0.7339.214 (64-bit)
 -	Firefox 102.10.0esr (64-bit)
 -	JetBrains IntelliJ IDEA 2025.2.2 (Community Edition)
 -	JetBrains IntelliJ IDEA 2025.2.2 (Ultimate Edition)
 -	JetBrains WebStorm 2025.2.2 (JavaScript IDE)
--	Postman 11.63.6
+-	Postman 11.64.7
 -	Spring Tool Suite 4 [4.31.0] IDE (Eclipse 2025-06 [4.36.0])
 -	Sublime Text 4 (Build 4200)
--	Visual Studio Code 1.104.1
+-	Visual Studio Code 1.104.2
