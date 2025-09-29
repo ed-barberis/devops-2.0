@@ -270,7 +270,7 @@ Follow these instructions to build the CentOS Linux 7.9 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 2.31.2 (command-line interface) [Optional]
+-	Amazon AWS CLI 2.31.3 (command-line interface) [Optional]
 -	Ansible 2.9.27
 -	Ant 1.10.15
 -	Consul 1.21.5
@@ -339,7 +339,7 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 -	JetBrains IntelliJ IDEA 2025.2.2 (Community Edition)
 -	JetBrains IntelliJ IDEA 2025.2.2 (Ultimate Edition)
 -	JetBrains WebStorm 2025.2.2 (JavaScript IDE)
--	Postman 11.64.7
+-	Postman 11.65.0
 -	Spring Tool Suite 4 [4.31.0] IDE (Eclipse 2025-06 [4.36.0])
 -	Sublime Text 4 (Build 4200)
 -	Visual Studio Code 1.104.2
