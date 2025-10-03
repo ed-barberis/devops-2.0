@@ -47,6 +47,15 @@ if [ -n "$ubuntu_release" ]; then
   esac
 fi
 
+# validate ubuntu cpu architecture. ----------------------------------------------------------------
+# check for supported ubuntu cpu architecture. (currently only 'x86_64' is supported.)
+cpu_arch=$(uname -m)
+
+if [ "$cpu_arch" = "aarch64" ]; then
+  echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
+  exit 1
+fi
+
 # update the apt repository package indexes. -------------------------------------------------------
 apt-get update
 

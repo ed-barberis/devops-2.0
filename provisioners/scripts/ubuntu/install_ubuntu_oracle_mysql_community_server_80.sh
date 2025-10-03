@@ -39,7 +39,7 @@ ubuntu_release=$(lsb_release -rs)
 
 if [ -n "$ubuntu_release" ]; then
   case $ubuntu_release in
-      20.04|22.04|24.04|25.04)
+      20.04|22.04|24.04)
         ;;
 
       *)
@@ -47,6 +47,15 @@ if [ -n "$ubuntu_release" ]; then
         exit 1
         ;;
   esac
+fi
+
+# validate ubuntu cpu architecture. ----------------------------------------------------------------
+# check for supported ubuntu cpu architecture. (currently only 'x86_64' is supported.)
+cpu_arch=$(uname -m)
+
+if [ "$cpu_arch" = "aarch64" ]; then
+  echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
+  exit 1
 fi
 
 # update the apt repository package indexes. -------------------------------------------------------
