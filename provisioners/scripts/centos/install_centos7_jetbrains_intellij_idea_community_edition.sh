@@ -8,20 +8,20 @@ devops_home="${devops_home:-/opt/devops}"                   # [optional] devops 
 cpu_arch=$(uname -m)
 
 # install intellij idea community edition. ---------------------------------------------------------
-idea_home="idea-IC"
-idea_release="2025.2.2"
-idea_build="252.26199.169"
-idea_folder="idea-IC-${idea_build}"
+idea_home="idea"
+idea_release="2025.3.1.1"
+idea_build="253.29346.240"
+idea_folder="idea-${idea_build}"
 
 # set the idea binary and sha256 values based on cpu architecture.
 if [ "$cpu_arch" = "x86_64" ]; then
   # set the amd64 variables.
-  idea_binary="ideaIC-${idea_release}.tar.gz"
-  idea_sha256="3f1adc095bf78f0949e3f62f6cf02be0c5c9e6528271f16caa3baa041e637664"
+  idea_binary="idea-${idea_release}.tar.gz"
+  idea_sha256="3a064b22961f3f39b866b64b628558e0d0f708d423a3f9565d43f0e81196997b"
 elif [ "$cpu_arch" = "aarch64" ]; then
   # set the arm64 variables.
-  idea_binary="ideaIC-${idea_release}-aarch64.tar.gz"
-  idea_sha256="3ea855820772e36be4b37dd9e503e4fee9b1877dcb614b5baa36819370fa0208"
+  idea_binary="idea-${idea_release}-aarch64.tar.gz"
+  idea_sha256="87516d2f07b8ec1ff6cfe9d14d68fc3f76f5d57b86611325b9eabac1b6043ccb"
 else
   echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
   exit 1
@@ -36,7 +36,8 @@ wget --no-verbose https://download.jetbrains.com/idea/${idea_binary}
 
 # verify the downloaded binary.
 echo "${idea_sha256} ${idea_binary}" | sha256sum --check
-# ideaIC-${idea_release}-no-jbr.tar.gz: OK
+# idea-${idea_release}.tar.gz: OK
+# idea-${idea_release}-aarch64.tar.gz: OK
 
 # extract intellij idea community edition binary.
 rm -f ${idea_home}

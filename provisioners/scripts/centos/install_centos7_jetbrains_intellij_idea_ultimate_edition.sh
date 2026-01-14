@@ -8,20 +8,20 @@ devops_home="${devops_home:-/opt/devops}"                   # [optional] devops 
 cpu_arch=$(uname -m)
 
 # install intellij idea ultimate edition. ----------------------------------------------------------
-idea_home="idea-IU"
-idea_release="2025.2.2"
-idea_build="252.26199.169"
-idea_folder="idea-IU-${idea_build}"
+idea_home="idea"
+idea_release="2025.3.1.1"
+idea_build="253.29346.240"
+idea_folder="idea-${idea_build}"
 
 # set the idea binary and sha256 values based on cpu architecture.
 if [ "$cpu_arch" = "x86_64" ]; then
   # set the amd64 variables.
-  idea_binary="ideaIU-${idea_release}.tar.gz"
-  idea_sha256="7150ece389a4bc8649f68b103018edeeb09205559671549410ded11de523da62"
+  idea_binary="idea-${idea_release}.tar.gz"
+  idea_sha256="3a064b22961f3f39b866b64b628558e0d0f708d423a3f9565d43f0e81196997b"
 elif [ "$cpu_arch" = "aarch64" ]; then
   # set the arm64 variables.
-  idea_binary="ideaIU-${idea_release}-aarch64.tar.gz"
-  idea_sha256="d40c5fa210a28a23b9e1d736057a711b41c785e32841f5a27969074feee5df4d"
+  idea_binary="idea-${idea_release}-aarch64.tar.gz"
+  idea_sha256="87516d2f07b8ec1ff6cfe9d14d68fc3f76f5d57b86611325b9eabac1b6043ccb"
 else
   echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
   exit 1
@@ -36,7 +36,8 @@ wget --no-verbose https://download.jetbrains.com/idea/${idea_binary}
 
 # verify the downloaded binary.
 echo "${idea_sha256} ${idea_binary}" | sha256sum --check
-# ideaIU-${idea_release}-no-jbr.tar.gz: OK
+# idea-${idea_release}.tar.gz: OK
+# idea-${idea_release}-aarch64.tar.gz: OK
 
 # extract intellij idea ultimate edition binary.
 rm -f ${idea_home}
