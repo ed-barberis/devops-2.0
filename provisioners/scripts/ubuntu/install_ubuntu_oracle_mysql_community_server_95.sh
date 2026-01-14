@@ -24,10 +24,10 @@
 set +x  # temporarily turn command display OFF.
 mysql_server_root_password="${mysql_server_root_password:-Welcome1!}"   # [optional] root password (defaults to 'Welcome1!').
 set -x  # turn command display back ON.
-mysql_apt_repo_release="${mysql_apt_repo_release:-0.8.34-1}"            # [optional] apt repository version (defaults to '0.8.34-1').
+mysql_apt_repo_release="${mysql_apt_repo_release:-0.8.36-1}"            # [optional] apt repository version (defaults to '0.8.36-1').
 mysql_server_release="${mysql_server_release:-mysql-innovation}"        # [optional] mysql server version (defaults to 'mysql-innovation').
                                                                         # [optional] mysql apt repository md5 checksum (defaults to published value).
-mysql_apt_checksum="${mysql_apt_checksum:-ab23dec6619a7e65e8462646936ee49f}"
+mysql_apt_checksum="${mysql_apt_checksum:-9698a5d5980c16b79673318330607993}"
 mysql_enable_secure_access="${mysql_enable_secure_access:-true}"        # [optional] enable secure access for mysql server (defaults to 'true').
 
 # [OPTIONAL] devops home folder [w/ default].
@@ -39,7 +39,7 @@ ubuntu_release=$(lsb_release -rs)
 
 if [ -n "$ubuntu_release" ]; then
   case $ubuntu_release in
-      22.04|24.04|25.04)
+      22.04|24.04|25.04|25.10)
         ;;
 
       *)
@@ -188,7 +188,7 @@ set -x  # turn command display back ON.
 
 # verify 'root' user authentication method.
 set +x  # temporarily turn command display OFF.
-mysql -u root -p${mysql_server_root_password} -e "SELECT user, plugin FROM mysql.user WHERE user IN ('root')\G;"
+mysql -u root -p${mysql_server_root_password} --commands=ON -e "SELECT user, plugin FROM mysql.user WHERE user IN ('root')\G;"
 set -x  # turn command display back ON.
 
 # improve mysql server installation security. ------------------------------------------------------
@@ -211,7 +211,7 @@ if [ "$mysql_enable_secure_access" = "true" ]; then
   # for secure access, change the 'root' user authentication method back to 'auth_socket'.
   set +x  # temporarily turn command display OFF.
   mysql -u root -p${mysql_server_root_password} -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH auth_socket;"
-  mysql -u root -p${mysql_server_root_password} -e "SELECT user, plugin FROM mysql.user WHERE user IN ('root')\G;"
+  mysql -u root -p${mysql_server_root_password} --commands=ON -e "SELECT user, plugin FROM mysql.user WHERE user IN ('root')\G;"
   set -x    # turn command display back ON.
 else
   # run the mysql secure install command with the following pre-set answers using the 'here string' (<<<) defined below:
@@ -236,5 +236,5 @@ set -x  # turn command display back ON.
 
 # display installed plugins.
 set +x  # temporarily turn command display OFF.
-mysql -u root -p${mysql_server_root_password} -e "SELECT PLUGIN_NAME, PLUGIN_STATUS FROM INFORMATION_SCHEMA.PLUGINS WHERE PLUGIN_STATUS LIKE '%ACTIVE%'\G;"
-set -x    # turn command display back ON.
+mysql -u root -p${mysql_server_root_password} --commands=ON -e "SELECT PLUGIN_NAME, PLUGIN_STATUS FROM INFORMATION_SCHEMA.PLUGINS WHERE PLUGIN_STATUS LIKE '%ACTIVE%'\G;"
+set -x  # turn command display back ON.

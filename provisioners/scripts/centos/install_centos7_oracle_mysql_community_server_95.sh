@@ -92,8 +92,8 @@ set -x  # turn command display back ON.
 
 # verify 'root' user authentication method.
 set +x  # temporarily turn command display OFF.
-mysql -u root -p${mysql_server_root_password} -e "SELECT user, plugin FROM mysql.user WHERE user IN ('root')\G;"
-set -x    # turn command display back ON.
+mysql -u root -p${mysql_server_root_password} --commands=ON -e "SELECT user, plugin FROM mysql.user WHERE user IN ('root')\G;"
+set -x  # turn command display back ON.
 
 # improve mysql server installation security. ------------------------------------------------------
 # if secure access is enabled, remove anonymous users, disallow remote 'root' logins, and remove test database.
@@ -149,6 +149,11 @@ if [ "$mysql_enable_secure_access" = "true" ]; then
   # for secure access, change the 'root' user authentication method back to 'auth_socket'.
   set +x  # temporarily turn command display OFF.
   mysql -u root -p${mysql_server_root_password} -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH auth_socket;"
-  mysql -u root -p${mysql_server_root_password} -e "SELECT user, plugin FROM mysql.user WHERE user IN ('root')\G;"
+  mysql -u root -p${mysql_server_root_password} --commands=ON -e "SELECT user, plugin FROM mysql.user WHERE user IN ('root')\G;"
   set -x    # turn command display back ON.
 fi
+
+# display installed plugins.
+set +x  # temporarily turn command display OFF.
+mysql -u root -p${mysql_server_root_password} --commands=ON -e "SELECT PLUGIN_NAME, PLUGIN_STATUS FROM INFORMATION_SCHEMA.PLUGINS WHERE PLUGIN_STATUS LIKE '%ACTIVE%'\G;"
+set -x  # turn command display back ON.

@@ -24,10 +24,10 @@
 set +x  # temporarily turn command display OFF.
 mysql_server_root_password="${mysql_server_root_password:-Welcome1!}"   # [optional] root password (defaults to 'Welcome1!').
 set -x  # turn command display back ON.
-mysql_apt_repo_release="${mysql_apt_repo_release:-0.8.34-1}"            # [optional] apt repository version (defaults to '0.8.34-1').
+mysql_apt_repo_release="${mysql_apt_repo_release:-0.8.36-1}"            # [optional] apt repository version (defaults to '0.8.36-1').
 mysql_server_release="${mysql_server_release:-mysql-8.0}"               # [optional] mysql server version (defaults to 'mysql-8.0').
                                                                         # [optional] mysql apt repository md5 checksum (defaults to published value).
-mysql_apt_checksum="${mysql_apt_checksum:-ab23dec6619a7e65e8462646936ee49f}"
+mysql_apt_checksum="${mysql_apt_checksum:-9698a5d5980c16b79673318330607993}"
 mysql_enable_secure_access="${mysql_enable_secure_access:-true}"        # [optional] enable secure access for mysql server (defaults to 'true').
 
 # [OPTIONAL] devops home folder [w/ default].
@@ -237,4 +237,4 @@ set -x  # turn command display back ON.
 # display installed plugins.
 set +x  # temporarily turn command display OFF.
 mysql -u root -p${mysql_server_root_password} -e "SELECT PLUGIN_NAME, PLUGIN_STATUS FROM INFORMATION_SCHEMA.PLUGINS WHERE PLUGIN_STATUS LIKE '%ACTIVE%'\G;"
-set -x    # turn command display back ON.
+set -x  # turn command display back ON.

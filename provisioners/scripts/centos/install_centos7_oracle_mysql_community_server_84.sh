@@ -92,7 +92,7 @@ set -x  # turn command display back ON.
 # verify 'root' user authentication method.
 set +x  # temporarily turn command display OFF.
 mysql -u root -p${mysql_server_root_password} -e "SELECT user, plugin FROM mysql.user WHERE user IN ('root')\G;"
-set -x    # turn command display back ON.
+set -x  # turn command display back ON.
 
 # improve mysql server installation security. ------------------------------------------------------
 # if secure access is enabled, remove anonymous users, disallow remote 'root' logins, and remove test database.
