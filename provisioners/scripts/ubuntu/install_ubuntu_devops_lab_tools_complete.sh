@@ -124,7 +124,7 @@ if [ -n "$ubuntu_release" ]; then
       sudo -E ./install_ansible.sh
       ;;
 
-    24.04|25.04)
+    24.04|25.04|25.10)
       # install ansible on ubuntu linux.
       cd ${devops_home}/provisioners/scripts/ubuntu
       sudo -E ./install_ubuntu_ansible.sh
@@ -141,7 +141,7 @@ sudo -E ./install_ubuntu_docker.sh
 
 # download and install docker compose v2 on linux x86 64-bit.
 cd ${devops_home}/provisioners/scripts/common
-sudo ./install_docker_compose_2.sh
+sudo ./install_docker_compose_5.sh
 
 # download and install appdynamics ansible collection for agent management.
 cd ${devops_home}/provisioners/scripts/common
