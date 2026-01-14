@@ -34,10 +34,10 @@ ubuntu_release=$(lsb_release -rs)
 
 if [ -n "$ubuntu_release" ]; then
   case $ubuntu_release in
-      20.04|22.04|24.04|25.04)
+      20.04|22.04|24.04|25.04|25.10)
         ;;
       *)
-        echo "Error: MongoDB NOT supported on Ubuntu release: '$(lsb_release -ds)'."
+        echo "Error: MariaDB 11.8 NOT supported on Ubuntu release: '$(lsb_release -ds)'."
         exit 1
         ;;
   esac
@@ -48,7 +48,7 @@ apt-get update
 
 # prepare the mariadb server package for installation. ---------------------------------------------
 # import the mariadb server repository key onto our ubuntu system.
-sudo apt-get install apt-transport-https curl
+sudo apt-get -y install apt-transport-https curl
 sudo mkdir -p /etc/apt/keyrings
 sudo curl -o /etc/apt/keyrings/mariadb-keyring.pgp 'https://mariadb.org/mariadb_release_signing_key.pgp'
 

@@ -35,11 +35,11 @@ centos_release=$(hostnamectl | awk '/^.*Operating System: / {print $0}' | sed 's
 
 if [ -n "$centos_release" ]; then
   case $centos_release in
-      "AlmaLinux 9.6 (Sage Margay)"|"AlmaLinux 10.0 (Purple Lion)"|"CentOS Stream 9"|"CentOS Stream 10 (Coughlan)"|"Rocky Linux 9.6 (Blue Onyx)"|"Rocky Linux 10.0 (Red Quartz)")
-#     "AlmaLinux 9.6 (Sage"|"AlmaLinux 10.0 (Purple"|"CentOS Stream 9"|"CentOS Stream 10"|"Rocky Linux 9.6"|"Rocky Linux 10.0")
+      "AlmaLinux 9.7 (Moss Jungle Cat)"|"AlmaLinux 10.1 (Heliotrope Lion)"|"CentOS Stream 9"|"CentOS Stream 10 (Coughlan)"|"Rocky Linux 9.7 (Blue Onyx)"|"Rocky Linux 10.1 (Red Quartz)")
+#     "AlmaLinux 9.7 (Moss"|"AlmaLinux 10.1 (Heliotrope"|"CentOS Stream 9"|"CentOS Stream 10"|"Rocky Linux 9.7"|"Rocky Linux 10.1")
         ;;
       *)
-        echo "Error: MongoDB NOT supported on CentOS release: '${centos_release}'."
+        echo "Error: MariaDB 11.8 NOT supported on CentOS release: '${centos_release}'."
         exit 1
         ;;
   esac
