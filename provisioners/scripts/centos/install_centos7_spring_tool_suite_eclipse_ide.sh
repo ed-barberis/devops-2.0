@@ -11,10 +11,10 @@ cpu_arch=$(uname -m)
 
 # install spring tool suite ide. -------------------------------------------------------------------
 sts_home="sts"
-sts_release="4.32.0"
+sts_release="5.0.1"
 sts_number="173685548"
-eclipse_version="2025-09"
-eclipse_release="4.37.0"
+eclipse_version="2025-12"
+eclipse_release="4.38.0"
 eclipse_dist=$(echo "e${eclipse_release}" | awk -F "." '{printf "%s.%s", $1, $2}')
 sts_family="${sts_release:0:1}"
 sts_folder="${sts_home}-${sts_release}.RELEASE"
@@ -23,12 +23,12 @@ sts_config="SpringToolSuite${sts_family}.ini"
 # set the go binary and sha256 values based on cpu architecture.
 if [ "$cpu_arch" = "x86_64" ]; then
   # set the amd64 variables.
-  sts_binary="spring-tool-suite-${sts_family}-${sts_release}.RELEASE-e${eclipse_release}-linux.gtk.x86_64.tar.gz"
-  sts_sha256="87816f301c11af6cd12fb277473ea7b4a80b67d2ebba04314bd7c0c1ee924d61"
+  sts_binary="spring-tools-for-eclipse-${sts_release}.RELEASE-e${eclipse_release}-linux.gtk.x86_64.tar.gz"
+  sts_sha256="c6b2d154afa4c8b304c469471220db6fdfc3fc50f0eb609f3b4646f62c591c37"
 elif [ "$cpu_arch" = "aarch64" ]; then
   # set the arm64 variables.
-  sts_binary="spring-tool-suite-${sts_family}-${sts_release}.RELEASE-e${eclipse_release}-linux.gtk.aarch64.tar.gz"
-  sts_sha256="7c32fde4686b481ef38238713b7cef01f3e10296c3169aeef56a0a7b5f03fac8"
+  sts_binary="spring-tools-for-eclipse-${sts_release}.RELEASE-e${eclipse_release}-linux.gtk.aarch64.tar.gz"
+  sts_sha256="13e452217aa4c1b5737537ad3f102a72dbb34b3fc3475f807a9d97aa84ac222b"
 else
   echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
   exit 1
@@ -39,7 +39,7 @@ mkdir -p /usr/local/spring
 cd /usr/local/spring
 
 # download spring tool suite binary.
-wget --no-verbose https://cdn.spring.io/spring-tools/release/STS${sts_family}/${sts_release}.RELEASE/dist/${eclipse_dist}/${sts_binary}
+wget --no-verbose https://cdn.spring.io/spring-tools/release/dist/${sts_release}.RELEASE/${eclipse_dist}/${sts_binary}
 
 # verify the downloaded binary.
 echo "${sts_sha256} ${sts_binary}" | sha256sum --check
