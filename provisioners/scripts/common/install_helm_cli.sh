@@ -22,19 +22,19 @@
 cpu_arch=$(uname -m)
 
 # install helm cli client. -------------------------------------------------------------------------
-helm_release="3.19.0"
+helm_release="4.0.4"
 
 # set the helm cli binary and sha256 values based on cpu architecture.
 if [ "$cpu_arch" = "x86_64" ]; then
   # set the amd64 variables.
   helm_folder="linux-amd64"
   helm_binary="helm-v${helm_release}-linux-amd64.tar.gz"
-  helm_sha256="a7f81ce08007091b86d8bd696eb4d86b8d0f2e1b9f6c714be62f82f96a594496"
+  helm_sha256="29454bc351f4433e66c00f5d37841627cbbcc02e4c70a6d796529d355237671c"
 elif [ "$cpu_arch" = "aarch64" ]; then
   # set the arm64 variables.
   helm_folder="linux-arm64"
   helm_binary="helm-v${helm_release}-linux-arm64.tar.gz"
-  helm_sha256="440cf7add0aee27ebc93fada965523c1dc2e0ab340d4348da2215737fc0d76ad"
+  helm_sha256="16b88acc6503d646b7537a298e7389bef469c5cc9ebadf727547abe9f6a35903"
 else
   echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
   exit 1
@@ -71,7 +71,7 @@ PATH=/usr/local/bin:$PATH
 export PATH
 
 # verify installation. -----------------------------------------------------------------------------
-helm version --short --client
+helm version --short
 
 # initialize a helm chart repository.
 helm repo add stable https://charts.helm.sh/stable

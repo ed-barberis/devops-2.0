@@ -30,11 +30,11 @@
 
 # install sbt. -------------------------------------------------------------------------------------
 sbt_home="scala-sbt"
-sbt_release="v1.11.6"
+sbt_release="v1.12.0"
 sbt_dir="sbt"
 sbt_folder="${sbt_home}-${sbt_release:1}"
 sbt_binary="sbt-${sbt_release:1}.tgz"
-sbt_sha256="ce4995e86acf7fdd57db78595cd6918c01781a6a741170e6409adba597e0d83d"
+sbt_sha256="e4ade3f4bdbe1e7445be9acf02cb1b3574beb460362e17287e246b7eaf9bb952"
 
 # create scala parent folder.
 mkdir -p /usr/local/scala

@@ -29,11 +29,11 @@
 
 # install scala 2. ---------------------------------------------------------------------------------
 scala_home="scala-lang"
-scala_release="v2.13.16"
+scala_release="v2.13.18"
 scala_dir="scala-${scala_release:1}"
 scala_folder="${scala_home}-${scala_release:1}"
 scala_binary="scala-${scala_release:1}.tgz"
-scala_sha256="937f743be315302caad15be99ab1ca425ff7e63f15ef5790db6c81bb49543256"
+scala_sha256="1834d09fd5c78ec77e9a933ab76c724280a8ec9595a332a6112823787a9ac3e6"
 
 # create scala parent folder.
 mkdir -p /usr/local/scala

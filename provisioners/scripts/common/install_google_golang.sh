@@ -23,18 +23,18 @@ cpu_arch=$(uname -m)
 
 # install go programming language. -----------------------------------------------------------------
 go_home="go"
-go_release="1.25.1"
+go_release="1.25.5"
 go_folder="${go_home}-${go_release}"
 
 # set the go binary and sha256 values based on cpu architecture.
 if [ "$cpu_arch" = "x86_64" ]; then
   # set the amd64 variables.
   go_binary="${go_home}${go_release}.linux-amd64.tar.gz"
-  go_sha256="7716a0d940a0f6ae8e1f3b3f4f36299dc53e31b16840dbd171254312c41ca12e"
+  go_sha256="9e9b755d63b36acf30c12a9a3fc379243714c1c6d3dd72861da637f336ebb35b"
 elif [ "$cpu_arch" = "aarch64" ]; then
   # set the arm64 variables.
   go_binary="${go_home}${go_release}.linux-arm64.tar.gz"
-  go_sha256="65a3e34fb2126f55b34e1edfc709121660e1be2dee6bdf405fc399a63a95a87d"
+  go_sha256="b00b694903d126c588c378e72d3545549935d3982635ba3f7a964c9fa23fe3b9"
 else
   echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
   exit 1
@@ -45,7 +45,7 @@ mkdir -p /usr/local/google
 cd /usr/local/google
 
 # download go binary from googleapis.com.
-wget --no-verbose https://storage.googleapis.com/golang/${go_binary}
+wget --no-verbose https://go.dev/dl/${go_binary}
 
 # verify the downloaded binary.
 echo "${go_sha256} ${go_binary}" | sha256sum --check
