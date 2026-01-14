@@ -21,10 +21,10 @@
 
 # set default values for input environment variables if not set. -----------------------------------
 # [OPTIONAL] mysql shell install parameters [w/ defaults].
-mysql_apt_repo_release="${mysql_apt_repo_release:-0.8.34-1}"            # [optional] apt repository version (defaults to '0.8.34-1').
+mysql_apt_repo_release="${mysql_apt_repo_release:-0.8.36-1}"            # [optional] apt repository version (defaults to '0.8.36-1').
 mysql_server_release="${mysql_server_release:-mysql-8.0}"               # [optional] mysql server version (defaults to 'mysql-8.0').
                                                                         # [optional] mysql apt repository md5 checksum (defaults to published value).
-mysql_apt_checksum="${mysql_apt_checksum:-ab23dec6619a7e65e8462646936ee49f}"
+mysql_apt_checksum="${mysql_apt_checksum:-9698a5d5980c16b79673318330607993}"
 
 # [OPTIONAL] devops home folder [w/ default].
 devops_home="${devops_home:-/opt/devops}"                               # [optional] devops home (defaults to '/opt/devops').
@@ -35,13 +35,22 @@ ubuntu_release=$(lsb_release -rs)
 
 if [ -n "$ubuntu_release" ]; then
   case $ubuntu_release in
-      18.04|20.04|22.04|24.04|25.04)
+      20.04|22.04|24.04)
         ;;
       *)
         echo "Error: MySQL Shell 8.0 NOT supported on Ubuntu release: '$(lsb_release -ds)'."
         exit 1
         ;;
   esac
+fi
+
+# validate ubuntu cpu architecture. ----------------------------------------------------------------
+# check for supported ubuntu cpu architecture. (currently only 'x86_64' is supported.)
+cpu_arch=$(uname -m)
+
+if [ "$cpu_arch" = "aarch64" ]; then
+  echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
+  exit 1
 fi
 
 # update the apt repository package indexes. -------------------------------------------------------
