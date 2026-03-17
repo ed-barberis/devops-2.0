@@ -1,17 +1,17 @@
 #!/bin/sh -eux
 #---------------------------------------------------------------------------------------------------
-# Install MySQL Community Server 9.4 by Oracle on CentOS Linux 9.x.
+# Install MySQL Community Server 9.6 by Oracle on CentOS Linux 9.x.
 #
 # The MySQL software delivers a very fast, multithreaded, multi-user, and robust SQL (Structured
 # Query Language) database server. MySQL Server is intended for mission-critical, heavy-load
 # production systems as well as for embedding into mass-deployed software.
 #
 # For more details, please visit:
-#   https://dev.mysql.com/doc/refman/9.4/en/
-#   https://dev.mysql.com/doc/refman/9.4/en/linux-installation-yum-repo.html
+#   https://dev.mysql.com/doc/refman/9.6/en/
+#   https://dev.mysql.com/doc/refman/9.6/en/linux-installation-yum-repo.html
 #   https://dev.mysql.com/downloads/repo/yum/
 #   https://www.mysql.com/support/supportedplatforms/database.html
-#   https://dev.mysql.com/doc/refman/9.4/en/socket-pluggable-authentication.html
+#   https://dev.mysql.com/doc/refman/9.6/en/socket-pluggable-authentication.html
 #
 # NOTE: All inputs are defined by external environment variables.
 #       Optional variables have reasonable defaults, but you may override as needed.
@@ -28,7 +28,7 @@ mysql_server_default="${mysql_server_default:-mysql-8.4-lts-community}" # [optio
                                                                         # [optional] mysql server release version (defaults to 'mysql-innovation-community').
 mysql_server_release="${mysql_server_release:-mysql-innovation-community}"
                                                                         # [optional] mysql yum repository md5 checksum (defaults to published value).
-mysql_yum_checksum="${mysql_yum_checksum:-2232a04773576cd237d6fac6e136eaf6}"
+mysql_yum_checksum="${mysql_yum_checksum:-ddecb11353ea58bfba8eedb7230cec52}"
 mysql_enable_secure_access="${mysql_enable_secure_access:-true}"        # [optional] enable secure access for mysql server (defaults to 'true').
 
 # [OPTIONAL] devops home folder [w/ default].
@@ -39,7 +39,7 @@ mkdir -p ${devops_home}/provisioners/scripts/centos
 cd ${devops_home}/provisioners/scripts/centos
 
 # download mysql yum repository. -------------------------------------------------------------------
-mysql_yum_binary="mysql${mysql_yum_release}-community-release-el9-2.noarch.rpm"
+mysql_yum_binary="mysql${mysql_yum_release}-community-release-el9-3.noarch.rpm"
 
 # download the mysql yum repository.
 rm -f ${mysql_yum_binary}
@@ -47,10 +47,10 @@ wget --no-verbose --no-check-certificate --no-cookies --header "Cookie: oracleli
 
 # verify the downloaded binary using the md5 checksum.
 echo "${mysql_yum_checksum} ${mysql_yum_binary}" | md5sum --check -
-# mysql${mysql_yum_release}-community-release-el9-2.noarch.rpm: OK
+# mysql${mysql_yum_release}-community-release-el9-3.noarch.rpm: OK
 
 # install the mysql public gpg key.
-rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2023
+rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2025
 
 # verify the downloaded binary using the built-in gpg signature.
 rpm --checksig ${mysql_yum_binary}

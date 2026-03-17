@@ -27,7 +27,7 @@ mysql_yum_release="${mysql_yum_release:-84}"                            # [optio
 mysql_server_default="${mysql_server_default:-mysql-8.4-lts-community}" # [optional] mysql server default version (defaults to 'mysql-8.4-lts-community').
 mysql_server_release="${mysql_server_release:-mysql80-community}"       # [optional] mysql server release version (defaults to 'mysql80-community').
                                                                         # [optional] mysql yum repository md5 checksum (defaults to published value).
-mysql_yum_checksum="${mysql_yum_checksum:-4d54fc0cc94480b2d2ad5a98e1bbc807}"
+mysql_yum_checksum="${mysql_yum_checksum:-8cb3c90073a3ce02d6e9f27266875bbe}"
 mysql_enable_secure_access="${mysql_enable_secure_access:-true}"        # [optional] enable secure access for mysql server (defaults to 'true').
 
 # [OPTIONAL] devops home folder [w/ default].
@@ -49,7 +49,7 @@ echo "${mysql_yum_checksum} ${mysql_yum_binary}" | md5sum --check -
 # mysql${mysql_yum_release}-community-release-el8-2.noarch.rpm: OK
 
 # install the mysql public gpg key.
-rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2023
+rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2025
 
 # verify the downloaded binary using the built-in gpg signature.
 rpm --checksig ${mysql_yum_binary}
