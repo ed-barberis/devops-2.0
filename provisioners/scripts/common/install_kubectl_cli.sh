@@ -24,24 +24,13 @@ cpu_arch=$(uname -m)
 
 # set default values for input environment variables if not set. -----------------------------------
 # [OPTIONAL] kubectl install parameters [w/ defaults].
-#kubectl_release="${kubectl_release:-1.35.0}"
-kubectl_release="${kubectl_release:-1.34.3}"
-#kubectl_release="${kubectl_release:-1.33.7}"
-#kubectl_release="${kubectl_release:-1.32.11}"
+#kubectl_release="${kubectl_release:-1.35.2}"
+kubectl_release="${kubectl_release:-1.34.5}"
+#kubectl_release="${kubectl_release:-1.33.9}"
+#kubectl_release="${kubectl_release:-1.32.13}"
 #kubectl_release="${kubectl_release:-1.31.14}"
 #kubectl_release="${kubectl_release:-1.30.14}"
 #kubectl_release="${kubectl_release:-1.29.15}"
-#kubectl_release="${kubectl_release:-1.28.15}"
-#kubectl_release="${kubectl_release:-1.27.16}"
-#kubectl_release="${kubectl_release:-1.26.15}"
-#kubectl_release="${kubectl_release:-1.25.16}"
-#kubectl_release="${kubectl_release:-1.24.17}"
-#kubectl_release="${kubectl_release:-1.23.17}"
-#kubectl_release="${kubectl_release:-1.22.17}"
-#kubectl_release="${kubectl_release:-1.21.14}"
-#kubectl_release="${kubectl_release:-1.20.15}"
-#kubectl_release="${kubectl_release:-1.19.16}"
-#kubectl_release="${kubectl_release:-1.18.19}"
 
 # declare associative array for the sha256 values.
 declare -A sha256_values_array
@@ -49,48 +38,26 @@ declare -A sha256_values_array
 # set the kubectl cli binary and sha256 values based on cpu architecture.
 if [ "$cpu_arch" = "x86_64" ]; then
   # set the amd64 sha256 values.
-  sha256_values_array["1.35.0"]="a2e984a18a0c063279d692533031c1eff93a262afcc0afdc517375432d060989"
-  sha256_values_array["1.34.3"]="ab60ca5f0fd60c1eb81b52909e67060e3ba0bd27e55a8ac147cbc2172ff14212"
-  sha256_values_array["1.33.7"]="471d94e208a89be62eb776700fc8206cbef11116a8de2dc06fc0086b0015375b"
-  sha256_values_array["1.32.11"]="48581d0e808bd8b7d3c3fc014e86b170e25a987df04c8a879b982b28a5180815"
+  sha256_values_array["1.35.2"]="924eb50779153f20cb668117d141440b95df2f325a64452d78dff9469145e277"
+  sha256_values_array["1.34.5"]="6a17dd8387783b3144a65535e38d02c351027e9718ea34a6c360476cb26d28bb"
+  sha256_values_array["1.33.9"]="9e33e3234c0842cd44a12c13e334b4ce930145ea84b855ce7cc0a7b6bc670c22"
+  sha256_values_array["1.32.13"]="db2ae479a63f3665d7f704ab18c0d4d4050144237980763221835b7305703c4c"
   sha256_values_array["1.31.14"]="8791ec7c8966b61420d55103a5fb948de9f0ca3d7306d789734975ad9704bdb0"
   sha256_values_array["1.30.14"]="7ccac981ece0098284d8961973295f5124d78eab7b89ba5023f35591baa16271"
   sha256_values_array["1.29.15"]="3473e14c7b024a6e5403c6401b273b3faff8e5b1fed022d633815eb3168e4516"
-  sha256_values_array["1.28.15"]="1f7651ad0b50ef4561aa82e77f3ad06599b5e6b0b2a5fb6c4f474d95a77e41c5"
-  sha256_values_array["1.27.16"]="97ea7cd771d0c6e3332614668a40d2c5996f0053ff11b44b198ea84dba0818cb"
-  sha256_values_array["1.26.15"]="b75f359e6fad3cdbf05a0ee9d5872c43383683bb8527a9e078bb5b8a44350a41"
-  sha256_values_array["1.25.16"]="5a9bc1d3ebfc7f6f812042d5f97b82730f2bdda47634b67bddf36ed23819ab17"
-  sha256_values_array["1.24.17"]="3e9588e3326c7110a163103fc3ea101bb0e85f4d6fd228cf928fa9a2a20594d5"
-  sha256_values_array["1.23.17"]="f09f7338b5a677f17a9443796c648d2b80feaec9d6a094ab79a77c8a01fde941"
-  sha256_values_array["1.22.17"]="7506a0ae7a59b35089853e1da2b0b9ac0258c5309ea3d165c3412904a9051d48"
-  sha256_values_array["1.21.14"]="0c1682493c2abd7bc5fe4ddcdb0b6e5d417aa7e067994ffeca964163a988c6ee"
-  sha256_values_array["1.20.15"]="d283552d3ef3b0fd47c08953414e1e73897a1b3f88c8a520bb2e7de4e37e96f3"
-  sha256_values_array["1.19.16"]="6b9d9315877c624097630ac3c9a13f1f7603be39764001da7a080162f85cbc7e"
-  sha256_values_array["1.18.19"]="332820433bc7695801bcf6e8444856fc7daae97fc9261b918d491110d67be116"
 
   # set the amd64 download path.
   kubectl_path="amd64"
 
 elif [ "$cpu_arch" = "aarch64" ]; then
   # set the arm64 sha256 values.
-  sha256_values_array["1.35.0"]="58f82f9fe796c375c5c4b8439850b0f3f4d401a52434052f2df46035a8789e25"
-  sha256_values_array["1.34.3"]="46913a7aa0327f6cc2e1cc2775d53c4a2af5e52f7fd8dacbfbfd098e757f19e9"
-  sha256_values_array["1.33.7"]="fa7ee98fdb6fba92ae05b5e0cde0abd5972b2d9a4a084f7052a1fd0dce6bc1de"
-  sha256_values_array["1.32.11"]="b1c91c106ec20e61c5dff869e9a39e6af4fb96572bddaac9cce307dfa3ed2348"
+  sha256_values_array["1.35.2"]="cd859449f54ad2cb05b491c490c13bb836cdd0886ae013c0aed3dd67ff747467"
+  sha256_values_array["1.34.5"]="2d433b53b99ea532f877df6fa5044286e3950d4933967ac3d99262760bc649fd"
+  sha256_values_array["1.33.9"]="af4dc943a6f447ecb070340efe63c7f8ee2808e6c0bc42126efe7cde0cc1e69b"
+  sha256_values_array["1.32.13"]="b1f87f196633a89208546d79bfa4e2470bda70e7bf42c4d3adb008ec208da9d1"
   sha256_values_array["1.31.14"]="3abb0c2d7121e1833831f56fd857a93de386e76d14b64baf86220d0afe495209"
   sha256_values_array["1.30.14"]="a32e46ae15fe41292dc6a7cd76beba7104282a5a3fa9e3686319000a537f4f5d"
   sha256_values_array["1.29.15"]="a41984dc0ff34ee05f1283ebd9b3121c003b3469b97214738246faa5b6788f7c"
-  sha256_values_array["1.28.15"]="7d45d9620e67095be41403ed80765fe47fcfbf4b4ed0bf0d1c8fe80345bda7d3"
-  sha256_values_array["1.27.16"]="2f50cb29d73f696ffb57437d3e2c95b22c54f019de1dba19e2b834e0b4501eb9"
-  sha256_values_array["1.26.15"]="1396313f0f8e84ab1879757797992f1af043e1050283532e0fd8469902632216"
-  sha256_values_array["1.25.16"]="d6c23c80828092f028476743638a091f2f5e8141273d5228bf06c6671ef46924"
-  sha256_values_array["1.24.17"]="66885bda3a202546778c77f0b66dcf7f576b5a49ff9456acf61329da784a602d"
-  sha256_values_array["1.23.17"]="c4a48fdc6038beacbc5de3e4cf6c23639b643e76656aabe2b7798d3898ec7f05"
-  sha256_values_array["1.22.17"]="8fc2f8d5c80a6bf60be06f8cf28679a05ce565ce0bc81e70aaac38e0f7da6259"
-  sha256_values_array["1.21.14"]="a23151bca5d918e9238546e7af416422b51cda597a22abaae5ca50369abfbbaa"
-  sha256_values_array["1.20.15"]="d479febfb2e967bd86240b5c0b841e40e39e1ef610afd6f224281a23318c13dc"
-  sha256_values_array["1.19.16"]="6ad55694db34b9ffbc3cb41761a50160eea0a962eb86899410593931b4e602d0"
-  sha256_values_array["1.18.19"]="c842438abcb099a5801be3a278f567b73250d293fb98866f9b24e234213be790"
 
   # set the arm64 download path.
   kubectl_path="arm64"
