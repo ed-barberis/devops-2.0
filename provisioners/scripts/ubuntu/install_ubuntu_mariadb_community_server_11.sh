@@ -34,7 +34,7 @@ ubuntu_release=$(lsb_release -rs)
 
 if [ -n "$ubuntu_release" ]; then
   case $ubuntu_release in
-      20.04|22.04|24.04|25.04|25.10)
+      22.04|24.04|25.10)
         ;;
       *)
         echo "Error: MariaDB 11.8 NOT supported on Ubuntu release: '$(lsb_release -ds)'."
