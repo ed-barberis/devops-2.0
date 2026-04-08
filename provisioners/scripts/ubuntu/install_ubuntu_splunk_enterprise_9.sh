@@ -23,9 +23,9 @@
 # [OPTIONAL] splunk enterprise install parameters [w/ defaults].
 # splunk enterprise install parameters.
 SPLUNK_HOME="${SPLUNK_HOME:-/opt/splunk}"
-splunk_enterprise_release="${splunk_enterprise_release:-9.4.9}"
-splunk_enterprise_hash="${splunk_enterprise_hash:-03bb451d4e07}"
-splunk_enterprise_sha512="${splunk_enterprise_sha512:-d538ac45bb2fce178ec384b10855646bc5a6559fd6530351a6652dfc54a550a82280fe5a39cb483e4a24024a649b788e408fce43264333d8c729863ee3ad24fe}"
+splunk_enterprise_release="${splunk_enterprise_release:-9.4.10}"
+splunk_enterprise_hash="${splunk_enterprise_hash:-3673ab0c12ee}"
+splunk_enterprise_sha512="${splunk_enterprise_sha512:-3f017528a0753453572b4389c2b96f30dfff59da5cfe5b04bb8969d6674e9cff5a64e4d94fd2cded74597ce1c238bb62ad0d790a2e09bb9d3007d00013d34f04}"
 splunk_enterprise_user_name="${splunk_enterprise_user_name:-splunk}"
 splunk_enterprise_user_group="${splunk_enterprise_user_group:-splunk}"
 
@@ -87,7 +87,7 @@ set -x  # turn command display back ON.
 rm -f ${SPLUNK_HOME}/etc/system/local/user-seed.conf
 
 cat <<EOF >  ${SPLUNK_HOME}/etc/system/local/user-seed.conf
-# Version 9.4.9
+# Version ${splunk_enterprise_release}
 #
 # This 'user-seed.conf' is used to create an initial login.
 #
@@ -108,23 +108,35 @@ USERNAME = ${splunk_enterprise_admin_username}
 HASHED_PASSWORD = ${splunk_enterprise_admin_hash_password}
 EOF
 
-# start splunk enterprise and enable auto-start on vm boot.
-cd ${SPLUNK_HOME}/bin
-./splunk start --accept-license 
-./splunk enable boot-start
+# update ownership properties for the splunk enterprise installation. ------------------------------
+cd ${SPLUNK_HOME}
+chown -R ${splunk_enterprise_user_name}:${splunk_enterprise_user_group} .
+
+# enable auto-start on vm boot and start splunk enterprise. ----------------------------------------
+runuser -c "sudo ${SPLUNK_HOME}/bin/splunk enable boot-start -systemd-managed 1 -user ${splunk_enterprise_user_name} -group ${splunk_enterprise_user_group} --accept-license" - ${splunk_enterprise_user_name}
+echo "Pausing 10 seconds to allow server configuration to complete..."
+sleep 10
+
+# validate that the splunk service is boot enabled.
+systemctl is-enabled Splunkd.service
+
+# start splunk enterprise.
+runuser -c "sudo ${SPLUNK_HOME}/bin/splunk start" - ${splunk_enterprise_user_name}
+echo "Pausing 60 seconds to allow server startup to complete..."
+sleep 60
 
 # verify splunk enterprise installation. -----------------------------------------------------------
 set +x  # temporarily turn command display OFF.
-./splunk login -auth "${splunk_enterprise_admin_username}:${splunk_enterprise_admin_password}"
+runuser -c "${SPLUNK_HOME}/bin/splunk login -auth ${splunk_enterprise_admin_username}:${splunk_enterprise_admin_password}" - ${splunk_enterprise_user_name}
 set -x  # turn command display back ON.
 
-./splunk status
-./splunk show web-port
-./splunk version
+runuser -c "${SPLUNK_HOME}/bin/splunk status" - ${splunk_enterprise_user_name}
+runuser -c "${SPLUNK_HOME}/bin/splunk show web-port" - ${splunk_enterprise_user_name}
+runuser -c "${SPLUNK_HOME}/bin/splunk version" - ${splunk_enterprise_user_name}
 
-# shutdown splunk enterprise.
-./splunk stop
+# shutdown splunk enterprise. ----------------------------------------------------------------------
+runuser -c "sudo ${SPLUNK_HOME}/bin/splunk stop" - ${splunk_enterprise_user_name}
 
-# update ownership properties for the splunk enterprise installation. ------------------------------
+# update ownership properties for the splunk enterprise installation one final time. ---------------
 cd ${SPLUNK_HOME}
 chown -R ${splunk_enterprise_user_name}:${splunk_enterprise_user_group} .
