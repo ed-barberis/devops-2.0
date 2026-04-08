@@ -11,7 +11,7 @@ cpu_arch=$(uname -m)
 
 # install spring tool suite ide. -------------------------------------------------------------------
 sts_home="sts"
-sts_release="5.1.0"
+sts_release="5.1.1"
 sts_number="173685548"
 eclipse_version="2026-03"
 eclipse_release="4.39.0"
@@ -24,11 +24,11 @@ sts_config="SpringToolSuite${sts_family}.ini"
 if [ "$cpu_arch" = "x86_64" ]; then
   # set the amd64 variables.
   sts_binary="spring-tools-for-eclipse-${sts_release}.RELEASE-e${eclipse_release}-linux.gtk.x86_64.tar.gz"
-  sts_sha256="68dd8fc40db8821ad4cc984a8e878fe4e701582f9ef985d6ed5ed66cded9681a"
+  sts_sha256="044b54c2100c0b92e50bc78cda39883c57f82cff341f514e16fa0f2b1705ae8a"
 elif [ "$cpu_arch" = "aarch64" ]; then
   # set the arm64 variables.
   sts_binary="spring-tools-for-eclipse-${sts_release}.RELEASE-e${eclipse_release}-linux.gtk.aarch64.tar.gz"
-  sts_sha256="a735a3d2c47c299b43dbc042239c0ab120d8b89ef6d5b296fa537becd5702fb3"
+  sts_sha256="c5006d1614e7f9a9c2e12861f58f286196aae91b306a1a378e2f65dccff9bc08"
 else
   echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
   exit 1
