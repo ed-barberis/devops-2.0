@@ -7,7 +7,8 @@ user_group="root"                                               # user login gro
 user_home="/root"                                               # user home for 'root' user.
 user_prompt_color="red"                                         # user prompt color (defaults to 'red').
                                                                 #   valid colors:
-                                                                #     'black', 'blue', 'cyan', 'green', 'magenta', 'red', 'white', 'yellow'
+                                                                #     'black', 'blue', 'cyan', 'green', 'magenta',
+                                                                #     'red', 'white', 'yellow', 'orange', 'red_orange'
 
 # set default value for devops home environment variable if not set. -------------------------------
 devops_home="${devops_home:-/opt/devops}"                       # [optional] devops home (defaults to '/opt/devops').

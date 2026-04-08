@@ -7,7 +7,7 @@ user_group="${user_group:-}"
 user_home="${user_home:-}"
 user_docker_profile="${user_docker_profile:-false}"
 user_prompt_color="${user_prompt_color:-green}"
-d_completion_release="${d_completion_release:-29.3.0}"
+d_completion_release="${d_completion_release:-29.4.0}"
 
 # set default value for devops home environment variable if not set. -------------------------------
 devops_home="${devops_home:-/opt/devops}"
@@ -25,9 +25,10 @@ Usage:
     [root]# export user_docker_profile="true"                   # [optional] user docker profile (defaults to 'false').
     [root]# export user_prompt_color="yellow"                   # [optional] user prompt color (defaults to 'green').
                                                                 #            valid colors:
-                                                                #              'black', 'blue', 'cyan', 'green', 'magenta', 'red', 'white', 'yellow'
+                                                                #              'black', 'blue', 'cyan', 'green', 'magenta',
+                                                                #              'red', 'white', 'yellow', 'orange', 'red_orange'
                                                                 #
-    [root]# export d_completion_release="29.3.0"                # [optional] docker completion for bash release (defaults to '29.3.0').
+    [root]# export d_completion_release="29.4.0"                # [optional] docker completion for bash release (defaults to '29.4.0').
     [root]# export devops_home="/opt/devops"                    # [optional] devops home (defaults to '/opt/devops').
     [root]# $0
 EOF
@@ -48,7 +49,7 @@ fi
 
 if [ -n "$user_prompt_color" ]; then
   case $user_prompt_color in
-      black|blue|cyan|green|magenta|red|white|yellow)
+      black|blue|cyan|green|magenta|red|white|yellow|orange|red_orange)
         ;;
       *)
         echo "Error: invalid 'user_prompt_color'."

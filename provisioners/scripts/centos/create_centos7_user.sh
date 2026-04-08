@@ -1,4 +1,4 @@
-#!/bin/sh -eux
+#!/bin/bash -eux
 # create new user with associated groups on centos linux 7.x.
 
 # set default values for input environment variables if not set. -----------------------------------
@@ -10,12 +10,13 @@ user_comment="${user_comment:-$user_name}"
 user_supplementary_groups="${user_supplementary_groups:-}"
 user_sudo_privileges="${user_sudo_privileges:-false}"
 user_home="${user_home:-}"
+user_login_shell="${user_login_shell:-/bin/bash}"
 user_install_headless_env="${user_install_headless_env:-false}"
 user_docker_profile="${user_docker_profile:-false}"
 user_prompt_color="${user_prompt_color:-green}"
 
 # set default value for devops home environment variable if not set. -------------------------------
-devops_home="${devops_home:-/opt/devops}"                   # [optional] devops home (defaults to '/opt/devops').
+devops_home="${devops_home:-/opt/devops}"
 
 # define usage function. ---------------------------------------------------------------------------
 usage() {
@@ -40,7 +41,8 @@ Usage:
     [root]# export user_docker_profile="true"                   # [optional] user docker profile (defaults to 'false').
     [root]# export user_prompt_color="yellow"                   # [optional] user prompt color (defaults to 'green').
                                                                 #            valid colors:
-                                                                #              'black', 'blue', 'cyan', 'green', 'magenta', 'red', 'white', 'yellow'
+                                                                #              'black', 'blue', 'cyan', 'green', 'magenta',
+                                                                #              'red', 'white', 'yellow', 'orange', 'red_orange'
 
     [root]# export devops_home="/opt/devops"                    # [optional] devops home (defaults to '/opt/devops').
     [root]# $0
@@ -62,7 +64,7 @@ fi
 
 if [ -n "$user_prompt_color" ]; then
   case $user_prompt_color in
-      black|blue|cyan|green|magenta|red|white|yellow)
+      black|blue|cyan|green|magenta|red|white|yellow|orange|red_orange)
         ;;
       *)
         echo "Error: invalid 'user_prompt_color'."
@@ -91,6 +93,11 @@ if [ -n "$user_id" ]; then
   useradd_options="${useradd_options} -u ${user_id}"
 fi
 
+# check for default user login shell.
+if [ -n "$user_login_shell" ]; then
+  useradd_options="${useradd_options} -s ${user_login_shell}"
+fi
+
 # create new user.
 useradd ${useradd_options} -g ${user_group} ${user_name}
 
@@ -110,18 +117,19 @@ if [ -n "$user_supplementary_groups" ]; then
 fi
 
 # add user to sudoers. -----------------------------------------------------------------------------
-if [ "$user_sudo_privileges" == "true" ]; then
+if [ "$user_sudo_privileges" = "true" ]; then
   echo "%${user_group} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/${user_group}
 fi
 
 # create environment profile for the user. ---------------------------------------------------------
-if [ "$user_install_headless_env" == "true" ]; then
+if [ "$user_install_headless_env" = "true" ]; then
   # NOTE: if 'user_install_headless_env' is 'true'--
   #       the following [optional] pass-thru env variables may be defined:
   #         user_docker_profile:                            # [optional] user docker profile (defaults to 'false').
   #         user_prompt_color:                              # [optional] user prompt color (defaults to 'green').
   #            valid colors are:
-  #              'black', 'blue', 'cyan', 'green', 'magenta', 'red', 'white', 'yellow'
+  #              'black', 'blue', 'cyan', 'green', 'magenta',
+  #              'red', 'white', 'yellow', 'orange', 'red_orange'
   cd ${devops_home}/provisioners/scripts/common
   chmod 755 install_headless_user_env.sh
   ./install_headless_user_env.sh

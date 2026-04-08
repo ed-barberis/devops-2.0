@@ -1,4 +1,4 @@
-# @(#).bashrc       1.0 2025/09/17 SMI
+# @(#).bashrc       1.0 2026/03/23 SMI
 # bash resource configuration for devops administrators.
 
 # user 'root' specific aliases and functions.
@@ -20,6 +20,7 @@ umask 022
 JAVA_HOME=/usr/local/java/jdk17
 #JAVA_HOME=/usr/local/java/jdk21
 #JAVA_HOME=/usr/local/java/jdk25
+#JAVA_HOME=/usr/local/java/jdk26
 export JAVA_HOME
 
 # set maven home environment variables.
@@ -42,9 +43,15 @@ export GIT_FLOW_HOME
 devops_home=/opt/devops-2.0
 export devops_home
 
+# set splunk enterprise home path.
+SPLUNK_HOME=/opt/splunk
+export SPLUNK_HOME
+
 # define prompt code and colors.
 reset='\[\e]0;\w\a\]'
+bold='\[\e[1m\]'
 
+# standard colors.
 black='\[\e[30m\]'
 red='\[\e[31m\]'
 green='\[\e[32m\]'
@@ -53,6 +60,19 @@ blue='\[\e[34m\]'
 magenta='\[\e[35m\]'
 cyan='\[\e[36m\]'
 white='\[\e[0m\]'
+
+light_gray='\[\e[37m\]'
+dark_gray='\[\e[90m\]'
+light_red='\[\e[91m\]'
+light_green='\[\e[92m\]'
+light_yellow='\[\e[93m\]'
+light_blue='\[\e[94m\]'
+light_magenta='\[\e[95m\]'
+light_cyan='\[\e[96m\]'
+
+# true colors.
+orange='\[\e[38;2;255;165;0m\]'
+red_orange='\[\e[38;2;255;83;73m\]'
 
 # define command line prompt.
 #PS1="\h[\u] # "

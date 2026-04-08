@@ -1,4 +1,4 @@
-# @(#).bashrc       1.0 2025/09/17 SMI
+# @(#).bashrc       1.0 2026/03/23 SMI
 # bash resource configuration for devops users.
 
 # source global definitions.
@@ -18,6 +18,7 @@ umask 022
 JAVA_HOME=/usr/local/java/jdk17
 #JAVA_HOME=/usr/local/java/jdk21
 #JAVA_HOME=/usr/local/java/jdk25
+#JAVA_HOME=/usr/local/java/jdk26
 export JAVA_HOME
 
 # set ant home path.
@@ -74,6 +75,22 @@ export CARGO_HOME
 POSTMAN_HOME=/usr/local/google/Postman
 export POSTMAN_HOME
 
+# trim excess version characters from amazon linux 2023 release.
+if [ "${user_host_os:0:17}" = "Amazon Linux 2023" ]; then
+  user_host_os="${user_host_os:0:17}"
+fi
+
+# if needed, apply fix for incompatible openssl.
+case $user_host_os in
+  "Amazon Linux 2023"|"Ubuntu 22.04.5 LTS")
+    OPENSSL_CONF=/dev/null
+    export OPENSSL_CONF
+    ;;
+
+  *)
+    ;;
+esac
+
 # set devops 2.0 home path.
 devops_home=/opt/devops-2.0
 export devops_home
@@ -82,9 +99,15 @@ export devops_home
 KUBECONFIG=$HOME/.kube/config
 export KUBECONFIG
 
+# set splunk enterprise home path.
+SPLUNK_HOME=/opt/splunk
+export SPLUNK_HOME
+
 # define prompt code and colors.
 reset='\[\e]0;\w\a\]'
+bold='\[\e[1m\]'
 
+# standard colors.
 black='\[\e[30m\]'
 red='\[\e[31m\]'
 green='\[\e[32m\]'
@@ -94,6 +117,19 @@ magenta='\[\e[35m\]'
 cyan='\[\e[36m\]'
 white='\[\e[0m\]'
 
+light_gray='\[\e[37m\]'
+dark_gray='\[\e[90m\]'
+light_red='\[\e[91m\]'
+light_green='\[\e[92m\]'
+light_yellow='\[\e[93m\]'
+light_blue='\[\e[94m\]'
+light_magenta='\[\e[95m\]'
+light_cyan='\[\e[96m\]'
+
+# true colors.
+orange='\[\e[38;2;255;165;0m\]'
+red_orange='\[\e[38;2;255;83;73m\]'
+
 # define command line prompt.
 #PS1="\h[\u] \$ "
 #PS1="$(uname -n)[$(whoami)] $ "
@@ -102,7 +138,7 @@ PS1="${reset}${cyan}\h${blue}[${green}\u${blue}]${white}\$ "
 export PS1
 
 # add local applications to main PATH.
-PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$M2:$GROOVY_HOME/bin:$GRADLE_HOME/bin:$GIT_HOME/bin:$GIT_FLOW_HOME/bin:$GOROOT/bin:$SCALA_HOME/bin:$SBT_HOME/bin:$CARGO_HOME/bin:$POSTMAN_HOME:$HOME/.local/bin:$PATH
+PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$M2:$GROOVY_HOME/bin:$GRADLE_HOME/bin:$GIT_HOME/bin:$GIT_FLOW_HOME/bin:$GOROOT/bin:$GOPATH/bin:$SCALA_HOME/bin:$SBT_HOME/bin:$CARGO_HOME/bin:$POSTMAN_HOME:$HOME/.local/bin:$PATH
 export PATH
 
 # set corporate proxy.
@@ -159,8 +195,4 @@ function psgrep {
 
 function netstatgrep {
   netstat -ant | grep "Active\|Proto\|$@"
-}
-
-function sclenable {
-  scl enable rh-python36 -- bash
 }
