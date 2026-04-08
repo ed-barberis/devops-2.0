@@ -6,10 +6,10 @@
 
 # install apache ant. ------------------------------------------------------------------------------
 ant_home="apache-ant"
-ant_release="1.10.15"
+ant_release="1.10.16"
 ant_folder="${ant_home}-${ant_release}"
 ant_binary="${ant_folder}-bin.tar.gz"
-ant_sha512="d78427aff207592c024ff1552dc04f7b57065a195c42d398fcffe7a0145e8d00cd46786f5aa52e77ab0fdf81334f065eb8011eecd2b48f7228e97ff4cb20d16c"
+ant_sha512="b711c0a88751efdbcc33d55b1c054b741e5e75c603c1a1b7ed39bb62f0b1fa562cd2e6232d9fb5dd8ab165169fde35a4e4be567925ab9aa84bc668ac54077be7"
 
 # create apache parent folder.
 mkdir -p /usr/local/apache

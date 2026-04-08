@@ -7,10 +7,10 @@ rm -f gradle-release-notes.html
 curl --silent https://docs.gradle.org/current/release-notes.html --output gradle-release-notes.html
 gradle_home="gradle"
 gradle_release=$(awk '/Release Notes<\/title>/ {print $2}' gradle-release-notes.html)
-gradle_release="9.4.0"
+gradle_release="9.4.1"
 gradle_folder="gradle-${gradle_release}"
 gradle_binary="gradle-${gradle_release}-all.zip"
-gradle_sha256="b21468753cb43c167738ee04f10c706c46459cf8f8ae6ea132dc9ce589a261f2"
+gradle_sha256="708d2c6ecc97ca9a11838ef64a6c2301151b8dd10387e22dc1a12c30557cab5b"
 
 rm -f gradle-release-notes.html
 
