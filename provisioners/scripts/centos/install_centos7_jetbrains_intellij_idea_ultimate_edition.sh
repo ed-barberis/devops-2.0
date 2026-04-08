@@ -1,5 +1,5 @@
 #!/bin/sh -eux
-# install intellij idea ultimate edition by jetbrains.
+# install intellij idea community edition by jetbrains.
 
 # set default value for devops home environment variable if not set. -------------------------------
 devops_home="${devops_home:-/opt/devops}"                   # [optional] devops home (defaults to '/opt/devops').
@@ -7,21 +7,21 @@ devops_home="${devops_home:-/opt/devops}"                   # [optional] devops 
 # retrieve the current cpu architecture. -----------------------------------------------------------
 cpu_arch=$(uname -m)
 
-# install intellij idea ultimate edition. ----------------------------------------------------------
+# install intellij idea community edition. ---------------------------------------------------------
 idea_home="idea"
-idea_release="2025.3.3"
-idea_build="253.31033.145"
+idea_release="2026.1"
+idea_build="261.22158.277"
 idea_folder="idea-${idea_build}"
 
 # set the idea binary and sha256 values based on cpu architecture.
 if [ "$cpu_arch" = "x86_64" ]; then
   # set the amd64 variables.
   idea_binary="idea-${idea_release}.tar.gz"
-  idea_sha256="19fdadc1dca1f76624920903c445da4ab23267c81119353ceba899736de2f118"
+  idea_sha256="f57d3dba9970c774cf377583629aea540418e677ec6365570e76dea9cb2f3f9b"
 elif [ "$cpu_arch" = "aarch64" ]; then
   # set the arm64 variables.
   idea_binary="idea-${idea_release}-aarch64.tar.gz"
-  idea_sha256="6e435b9e39dee4fd1946470ed911694c312c1b6c1fa5e345bcd48fbe13594dc8"
+  idea_sha256="c235f664c35c20422c3ab28c850b86ea4ab7a05d9df9c027581a3a8c98be401b"
 else
   echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
   exit 1
@@ -31,7 +31,7 @@ fi
 mkdir -p /usr/local/jetbrains
 cd /usr/local/jetbrains
 
-# download intellij idea ultimate edition binary.
+# download intellij idea community edition binary.
 wget --no-verbose https://download.jetbrains.com/idea/${idea_binary}
 
 # verify the downloaded binary.
@@ -39,21 +39,21 @@ echo "${idea_sha256} ${idea_binary}" | sha256sum --check
 # idea-${idea_release}.tar.gz: OK
 # idea-${idea_release}-aarch64.tar.gz: OK
 
-# extract intellij idea ultimate edition binary.
+# extract intellij idea community edition binary.
 rm -f ${idea_home}
 tar -zxvf ${idea_binary} --no-same-owner --no-overwrite-dir
 chown -R root:root ./${idea_folder}
 ln -s ${idea_folder} ${idea_home}
 rm -f ${idea_binary}
 
-# install intellij idea ultimate edition as gnome desktop app. -------------------------------------
+# install intellij idea community edition as gnome desktop app. ------------------------------------
 imgname="intellij-idea-logo"
 imgsizearray=( "16x16" "22x22" "24x24" "32x32" "48x48" "64x64" "128x128" "256x256" )
 imgfolder="/usr/share/icons/hicolor"
 
 cd ${devops_home}/provisioners/scripts/centos
 
-# install intellij idea ultimate edition icon image files.
+# install intellij idea community edition icon image files.
 for imgsize in "${imgsizearray[@]}"; do
   if [ -d "${imgfolder}/${imgsize}/apps" ]; then
     echo "Processing ${imgname}-${imgsize}.png..."
@@ -61,14 +61,14 @@ for imgsize in "${imgsizearray[@]}"; do
   fi
 done
 
-# install intellij idea ultimate edition desktop in applications menu. -----------------------------
-echo "Installing intellij-idea-ultimate.desktop in applications menu..."
-desktop-file-install --dir=/usr/share/applications/ ./desktops/intellij-idea-ultimate.desktop
+# install intellij idea community edition desktop in applications menu. ----------------------------
+echo "Installing intellij-idea-community.desktop in applications menu..."
+desktop-file-install --dir=/usr/share/applications/ ./desktops/intellij-idea-community.desktop
 update-desktop-database /usr/share/applications/
 
-# copy intellij idea ultimate edition launcher to devops applications folder. --
-echo "Copying intellij-idea-ultimate.desktop launcher to devops 'applications' folder..."
+# copy intellij idea community edition launcher to devops applications folder. -
+echo "Copying intellij-idea-community.desktop launcher to devops 'applications' folder..."
 mkdir -p ${devops_home}/provisioners/scripts/centos/applications
 cd ${devops_home}/provisioners/scripts/centos/applications
-cp -f /usr/share/applications/intellij-idea-ultimate.desktop .
-chmod 755 ./intellij-idea-ultimate.desktop
+cp -f /usr/share/applications/intellij-idea-community.desktop .
+chmod 755 ./intellij-idea-community.desktop
