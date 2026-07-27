@@ -28,6 +28,7 @@
 # set default values for input environment variables if not set. -----------------------------------
 # [OPTIONAL] rust install parameters [w/ defaults].
 user_name="${user_name:-vagrant}"
+user_home="${user_home:-}"
 
 # define usage function. ---------------------------------------------------------------------------
 usage() {
@@ -37,6 +38,7 @@ Usage:
   Script should be run with 'root' privilege.
   Example:
     [root]# export user_name="vagrant"                          # user name.
+    [root]# export user_home="/home/user1"                      # [optional] user home directory path.
     [root]# $0
 EOF
 }
@@ -48,19 +50,28 @@ if [ -z "$user_name" ]; then
   exit 1
 fi
 
-if [ "$user_name" = "root" ]; then
-  echo "Error: 'user_name' should NOT be 'root'."
-  usage
-  exit 1
+#####if [ "$user_name" = "root" ]; then
+#####  echo "Error: 'user_name' should NOT be 'root'."
+#####  usage
+#####  exit 1
+#####fi
+
+# if not set, retrieve user home directory path.
+if [ -z "$user_home" ]; then
+  user_home=$(eval echo "~${user_name}")
 fi
 
 # download and install rust programming language. --------------------------------------------------
-runuser -c "PATH=/home/${user_name}/.cargo/bin:/usr/local/bin:${PATH} curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs --output rustup.sh" - ${user_name}
-runuser -c "PATH=/home/${user_name}/.cargo/bin:/usr/local/bin:${PATH} chmod 755 ./rustup.sh" - ${user_name}
-runuser -c "PATH=/home/${user_name}/.cargo/bin:/usr/local/bin:${PATH} ./rustup.sh -y" - ${user_name}
+runuser -c "PATH=${user_home}/.cargo/bin:/usr/local/bin:${PATH} curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs --output rustup.sh" - ${user_name}
+runuser -c "PATH=${user_home}/.cargo/bin:/usr/local/bin:${PATH} chmod 755 ./rustup.sh" - ${user_name}
+runuser -c "PATH=${user_home}/.cargo/bin:/usr/local/bin:${PATH} ./rustup.sh -y" - ${user_name}
+
+# install and configure the 'stable' toolchain.
+runuser -c "PATH=${user_home}/.cargo/bin:/usr/local/bin:${PATH} rustup install stable" - ${user_name}
+runuser -c "PATH=${user_home}/.cargo/bin:/usr/local/bin:${PATH} rustup default stable" - ${user_name}
 
 # verify installation.
-runuser -c "PATH=/home/${user_name}/.cargo/bin:/usr/local/bin:${PATH} rustc --version" - ${user_name}
+runuser -c "PATH=${user_home}/.cargo/bin:/usr/local/bin:${PATH} rustc --version" - ${user_name}
 
 # cleanup 'rustup' installer. ----------------------------------------------------------------------
-runuser -c "PATH=/home/${user_name}/.cargo/bin:/usr/local/bin:${PATH} rm -f ./rustup.sh" - ${user_name}
+runuser -c "PATH=${user_home}/.cargo/bin:/usr/local/bin:${PATH} rm -f ./rustup.sh" - ${user_name}
