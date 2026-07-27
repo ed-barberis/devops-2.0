@@ -21,7 +21,7 @@
 
 # set default values for input environment variables if not set. -----------------------------------
 # [OPTIONAL] mysql shell install parameters [w/ defaults].
-mysqlsh_release="${mysqlsh_release:-8.0.45-1}"                              # [optional] mysql release version (defaults to '8.0.45-1').
+mysqlsh_release="${mysqlsh_release:-8.0.46-1}"                              # [optional] mysql release version (defaults to '8.0.46-1').
 
 # [OPTIONAL] devops home folder [w/ default].
 devops_home="${devops_home:-/opt/devops}"                                   # [optional] devops home (defaults to '/opt/devops').
@@ -32,10 +32,10 @@ cpu_arch=$(uname -m)
 # set the mysql shell md5 values based on cpu architecture.
 if [ "$cpu_arch" = "x86_64" ]; then
   # set the amd64 variables.
-  mysqlsh_checksum="${mysqlsh_checksum:-25d681b85c41aba8bd39aef414e818be}"  # [optional] mysql shell repository amd64 md5 checksum (defaults to published value).
+  mysqlsh_checksum="${mysqlsh_checksum:-d79e1356df9531046cdd506997f6a3ea}"  # [optional] mysql shell repository amd64 md5 checksum (defaults to published value).
 elif [ "$cpu_arch" = "aarch64" ]; then
   # set the arm64 variables.
-  mysqlsh_checksum="${mysqlsh_checksum:-0a8dc2f9f8dfb3586d2c56540109dd1b}"  # [optional] mysql shell repository arm64 md5 checksum (defaults to published value).
+  mysqlsh_checksum="${mysqlsh_checksum:-c18cde85cf1b8cf13e2ce56a87952f86}"  # [optional] mysql shell repository arm64 md5 checksum (defaults to published value).
 else
   echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
   exit 1
@@ -66,7 +66,7 @@ mysqlsh --version
 # mysqlsh command-line examples. -------------------------------------------------------------------
 # MySQL Shell User Guide
 #   This is the MySQL Shell User Guide extract from the MySQL 8.0 Reference Manual.
-#   https://dev.mysql.com/doc/mysql-shell-excerpt/8.0/en/
+#   https://dev.mysql.com/doc/mysql-shell/8.0/en/
 #
 #   For help with using MySQL, please visit either the MySQL Forums or MySQL Mailing Lists,
 #   where you can discuss your issues with other MySQL users.

@@ -63,7 +63,7 @@ mysqlsh --version
 # mysqlsh command-line examples. -------------------------------------------------------------------
 # MySQL Shell User Guide
 #   This is the MySQL Shell User Guide extract from the MySQL 9.6 Reference Manual.
-#   https://dev.mysql.com/doc/mysql-shell-excerpt/9.6/en/
+#   https://dev.mysql.com/doc/mysql-shell/9.6/en/
 #
 #   For help with using MySQL, please visit either the MySQL Forums or MySQL Mailing Lists,
 #   where you can discuss your issues with other MySQL users.

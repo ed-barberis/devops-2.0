@@ -21,7 +21,7 @@
 
 # set default values for input environment variables if not set. -----------------------------------
 # [OPTIONAL] mysql shell install parameters [w/ defaults].
-mysqlsh_release="${mysqlsh_release:-8.4.8-1}"                               # [optional] mysql release version (defaults to '8.4.8-1').
+mysqlsh_release="${mysqlsh_release:-8.4.10-1}"                              # [optional] mysql release version (defaults to '8.4.10-1').
 
 # [OPTIONAL] devops home folder [w/ default].
 devops_home="${devops_home:-/opt/devops}"                                   # [optional] devops home (defaults to '/opt/devops').
@@ -32,7 +32,7 @@ cpu_arch=$(uname -m)
 # set the mysql shell md5 values based on cpu architecture.
 if [ "$cpu_arch" = "x86_64" ]; then
   # set the amd64 variables.
-  mysqlsh_checksum="${mysqlsh_checksum:-bf7f026577b4c8bc04fa3c71ecb2619e}"  # [optional] mysql shell repository amd64 md5 checksum (defaults to published value).
+  mysqlsh_checksum="${mysqlsh_checksum:-6be25c82828d7000f622cee2fad32572}"  # [optional] mysql shell repository amd64 md5 checksum (defaults to published value).
 else
   echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
   exit 1
@@ -63,7 +63,7 @@ mysqlsh --version
 # mysqlsh command-line examples. -------------------------------------------------------------------
 # MySQL Shell User Guide
 #   This is the MySQL Shell User Guide extract from the MySQL 8.4 Reference Manual.
-#   https://dev.mysql.com/doc/mysql-shell-excerpt/8.4/en/
+#   https://dev.mysql.com/doc/mysql-shell/8.4/en/
 #
 #   For help with using MySQL, please visit either the MySQL Forums or MySQL Mailing Lists,
 #   where you can discuss your issues with other MySQL users.

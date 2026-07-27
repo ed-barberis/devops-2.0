@@ -1,18 +1,18 @@
 #!/bin/bash -eux
 #---------------------------------------------------------------------------------------------------
-# Install MySQL Shell 9.6 by Oracle on Ubuntu Linux.
+# Install MySQL Shell 9.7 by Oracle on Ubuntu Linux.
 #
 # MySQL Shell is an advanced client and code editor for MySQL. In addition to the provided SQL
 # functionality, similar to 'mysql', MySQL Shell provides scripting capabilities for JavaScript
 # and Python and includes APIs for working with MySQL.
 #
-# MySQL Shell 9.6 is highly recommended for use with MySQL Server 9.6.
+# MySQL Shell 9.7 is highly recommended for use with MySQL Server 9.7.
 #
 # For more details, please visit:
-#   https://dev.mysql.com/doc/mysql-shell/9.6/en/
-#   https://dev.mysql.com/doc/mysql-shell/9.6/en/mysql-shell-install-linux-quick.html
+#   https://dev.mysql.com/doc/mysql-shell/9.7/en/
+#   https://dev.mysql.com/doc/mysql-shell/9.7/en/mysql-shell-install-linux-quick.html
 #   https://dev.mysql.com/downloads/shell
-#   https://dev.mysql.com/doc/relnotes/mysql-shell/9.6/en/
+#   https://dev.mysql.com/doc/relnotes/mysql-shell/9.7/en/
 #
 # NOTE: All inputs are defined by external environment variables.
 #       Optional variables have reasonable defaults, but you may override as needed.
@@ -21,10 +21,10 @@
 
 # set default values for input environment variables if not set. -----------------------------------
 # [OPTIONAL] mysql shell install parameters [w/ defaults].
-mysql_apt_repo_release="${mysql_apt_repo_release:-0.8.36-1}"            # [optional] apt repository version (defaults to '0.8.36-1').
+mysql_apt_repo_release="${mysql_apt_repo_release:-0.8.39-1}"            # [optional] apt repository version (defaults to '0.8.39-1').
 mysql_server_release="${mysql_server_release:-mysql-innovation}"        # [optional] mysql server version (defaults to 'mysql-innovation').
                                                                         # [optional] mysql apt repository md5 checksum (defaults to published value).
-mysql_apt_checksum="${mysql_apt_checksum:-9698a5d5980c16b79673318330607993}"
+mysql_apt_checksum="${mysql_apt_checksum:-8f722bb35fc6f510a2154a9466f5e2f7}"
 
 # [OPTIONAL] devops home folder [w/ default].
 devops_home="${devops_home:-/opt/devops}"                               # [optional] devops home (defaults to '/opt/devops').
@@ -38,7 +38,7 @@ if [ -n "$ubuntu_release" ]; then
       22.04|24.04|25.10)
         ;;
       *)
-        echo "Error: MySQL Shell 9.6 NOT supported on Ubuntu release: '$(lsb_release -ds)'."
+        echo "Error: MySQL Shell 9.7 NOT supported on Ubuntu release: '$(lsb_release -ds)'."
         exit 1
         ;;
   esac
@@ -164,8 +164,8 @@ mysqlsh --version
 
 # mysqlsh command-line examples. -------------------------------------------------------------------
 # MySQL Shell User Guide
-#   This is the MySQL Shell User Guide extract from the MySQL 8.0 Reference Manual.
-#   https://dev.mysql.com/doc/mysql-shell-excerpt/8.0/en/
+#   This is the MySQL Shell User Guide extract from the MySQL 9.7 Reference Manual.
+#   https://dev.mysql.com/doc/mysql-shell/9.7/en/
 #
 #   For help with using MySQL, please visit either the MySQL Forums or MySQL Mailing Lists,
 #   where you can discuss your issues with other MySQL users.
