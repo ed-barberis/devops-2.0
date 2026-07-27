@@ -1,0 +1,12 @@
+os_name                 = "rockylinux"
+os_version              = "9.8"
+os_arch                 = "aarch64"
+iso_url                 = "https://download.rockylinux.org/pub/rocky/9.8/isos/aarch64/Rocky-9.8-aarch64-dvd.iso"
+iso_checksum            = "file:https://download.rockylinux.org/pub/rocky/9.8/isos/aarch64/CHECKSUM"
+parallels_guest_os_type = "rhel"
+vbox_guest_os_type      = "Oracle9_arm64"
+vmware_guest_os_type    = "arm-rhel9-64"
+utm_vm_icon             = "linux"
+boot_command            = ["<wait><up><wait>e<wait><down><down><end><wait> inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/rhel/ks.cfg inst.repo=https://download.rockylinux.org/pub/rocky/9/BaseOS/aarch64/os/ <leftCtrlOn>x<leftCtrlOff>"]
+user_docker_profile     = "false"
+vm_hostname             = "lpad-rockylinux98"

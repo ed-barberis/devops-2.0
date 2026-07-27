@@ -1,0 +1,12 @@
+os_name                 = "centos-stream"
+os_version              = "10"
+os_arch                 = "aarch64"
+iso_url                 = "https://mirror.stream.centos.org/10-stream/BaseOS/aarch64/iso/CentOS-Stream-10-latest-aarch64-dvd1.iso"
+iso_checksum            = "file:https://mirror.stream.centos.org/10-stream/BaseOS/aarch64/iso/CentOS-Stream-10-latest-aarch64-dvd1.iso.SHA256SUM"
+parallels_guest_os_type = "centos"
+vbox_guest_os_type      = "Oracle9_arm64"
+vmware_guest_os_type    = "arm-rhel9-64"
+utm_vm_icon             = "centos"
+boot_command            = ["<wait><up>e<wait><down><down><end><wait> inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/rhel/ks.cfg inst.repo=https://mirror.stream.centos.org/10-stream/BaseOS/aarch64/os/ <leftCtrlOn>x<leftCtrlOff><wait>"]
+user_docker_profile     = "false"
+vm_hostname             = "lpad-centos-stream-10"
