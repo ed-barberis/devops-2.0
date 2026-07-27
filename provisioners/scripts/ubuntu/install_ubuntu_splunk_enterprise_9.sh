@@ -23,9 +23,9 @@
 # [OPTIONAL] splunk enterprise install parameters [w/ defaults].
 # splunk enterprise install parameters.
 SPLUNK_HOME="${SPLUNK_HOME:-/opt/splunk}"
-splunk_enterprise_release="${splunk_enterprise_release:-9.4.10}"
-splunk_enterprise_hash="${splunk_enterprise_hash:-3673ab0c12ee}"
-splunk_enterprise_sha512="${splunk_enterprise_sha512:-3f017528a0753453572b4389c2b96f30dfff59da5cfe5b04bb8969d6674e9cff5a64e4d94fd2cded74597ce1c238bb62ad0d790a2e09bb9d3007d00013d34f04}"
+splunk_enterprise_release="${splunk_enterprise_release:-9.4.13}"
+splunk_enterprise_hash="${splunk_enterprise_hash:-1d070b2427bf}"
+splunk_enterprise_sha512="${splunk_enterprise_sha512:-1bd11d2deb81fad794dc7386d6988b2dad2390639a0c5e97471b80dd52e8cc73426a0556ddf1f755b3333151d087127c05474ff1ed4a272751debf2f2d210b9d}"
 splunk_enterprise_user_name="${splunk_enterprise_user_name:-splunk}"
 splunk_enterprise_user_group="${splunk_enterprise_user_group:-splunk}"
 
