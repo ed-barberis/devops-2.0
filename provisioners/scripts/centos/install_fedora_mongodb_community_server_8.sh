@@ -1,6 +1,6 @@
 #!/bin/bash -eux
 #---------------------------------------------------------------------------------------------------
-# Install MongoDB Community Server 8.0 on Fedora Linux.
+# Install MongoDB Community Server 8.3 on Fedora Linux.
 #
 # MongoDB is a document database designed for ease of development and scaling. It is
 # source-available, cross-platform, and classified as a NoSQL database program, MongoDB uses
@@ -34,10 +34,10 @@ cpu_arch=$(uname -m)
 
 # prepare the mongodb repository for installation. -------------------------------------------------
 # create the mongodb repository.
-cat <<EOF > /etc/yum.repos.d/mongodb-org-8.0.repo
-[mongodb-org-8.0]
+cat <<EOF > /etc/yum.repos.d/mongodb-org-8.3.repo
+[mongodb-org-8.3]
 name=MongoDB Repository
-baseurl=https://repo.mongodb.org/yum/redhat/9/mongodb-org/8.0/${cpu_arch}/
+baseurl=https://repo.mongodb.org/yum/redhat/9/mongodb-org/8.3/${cpu_arch}/
 gpgcheck=1
 enabled=1
 gpgkey=https://www.mongodb.org/static/pgp/server-8.0.asc

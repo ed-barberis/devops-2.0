@@ -1,6 +1,6 @@
 #!/bin/bash -eux
 #---------------------------------------------------------------------------------------------------
-# Install MongoDB Community Server 8.0 on Ubuntu Linux.
+# Install MongoDB Community Server 8.3 on Ubuntu Linux.
 #
 # MongoDB is a document database designed for ease of development and scaling. It is
 # source-available, cross-platform, and classified as a NoSQL database program, MongoDB uses
@@ -35,7 +35,7 @@ ubuntu_release=$(lsb_release -rs)
 
 if [ -n "$ubuntu_release" ]; then
   case $ubuntu_release in
-      20.04|22.04|24.04|25.10)
+      20.04|22.04|24.04|25.10|26.04)
         ;;
       *)
         echo "Error: MongoDB NOT supported on Ubuntu release: '$(lsb_release -ds)'."
@@ -48,17 +48,14 @@ fi
 apt-get update
 
 # install tools needed to install mongodb. ---------------------------------------------------------
-apt-get -y install gnupg
+apt-get -y install gnupg curl
 
 # prepare the mongodb package for installation. ----------------------------------------------------
-# import the gpg key.
-# NOTE: when adding the repository that is provided by mongodb, because of ubuntu security
-#       restrictions, you cannot just add a repository. you also need to include the gpg key and
-#       import it as a trusted key on the local operating system.
-wget -qO - https://www.mongodb.org/static/pgp/server-8.0.asc | sudo apt-key add -
+# import the mongodb public gpg key.
+curl -fsSL https://pgp.mongodb.com/server-8.0.asc | gpg -o /usr/share/keyrings/mongodb-server-8.0.gpg --dearmor
 
 # create a list file for mongodb.
-echo "deb [arch=amd64,arm64] https://repo.mongodb.org/apt/ubuntu $(lsb_release -cs)/mongodb-org/8.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-8.0.list
+echo "deb [arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-8.0.gpg] https://repo.mongodb.org/apt/ubuntu $(lsb_release -cs)/mongodb-org/8.3 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-8.3.list
 
 # install the mongodb database. --------------------------------------------------------------------
 apt-get update

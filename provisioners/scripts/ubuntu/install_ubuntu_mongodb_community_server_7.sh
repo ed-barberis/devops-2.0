@@ -48,17 +48,14 @@ fi
 apt-get update
 
 # install tools needed to install mongodb. ---------------------------------------------------------
-apt-get -y install gnupg
+apt-get -y install gnupg curl
 
 # prepare the mongodb package for installation. ----------------------------------------------------
-# import the gpg key.
-# NOTE: when adding the repository that is provided by mongodb, because of ubuntu security
-#       restrictions, you cannot just add a repository. you also need to include the gpg key and
-#       import it as a trusted key on the local operating system.
-wget -qO - https://www.mongodb.org/static/pgp/server-7.0.asc | sudo apt-key add -
+# import the mongodb public gpg key.
+curl -fsSL https://www.mongodb.org/static/pgp/server-7.0.asc | gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg --dearmor
 
 # create a list file for mongodb.
-echo "deb [arch=amd64,arm64] https://repo.mongodb.org/apt/ubuntu $(lsb_release -cs)/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+echo "deb [arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg] https://repo.mongodb.org/apt/ubuntu $(lsb_release -cs)/mongodb-org/7.0 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-7.0.list
 
 # install the mongodb database. --------------------------------------------------------------------
 apt-get update

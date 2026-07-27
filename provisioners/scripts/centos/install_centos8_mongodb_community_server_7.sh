@@ -40,7 +40,7 @@ name=MongoDB Repository
 baseurl=https://repo.mongodb.org/yum/redhat/\$releasever/mongodb-org/7.0/${cpu_arch}/
 gpgcheck=1
 enabled=1
-gpgkey=https://www.mongodb.org/static/pgp/server-7.0.asc
+gpgkey=https://pgp.mongodb.com/server-7.0.asc
 EOF
 
 # install the mongodb database. --------------------------------------------------------------------
