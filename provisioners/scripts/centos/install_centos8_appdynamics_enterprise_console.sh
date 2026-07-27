@@ -24,8 +24,8 @@ local_hostname="$(hostname --short)"                            # initialize sho
 # appd platform install parameters.
 appd_home="${appd_home:-/opt/appdynamics}"
 appd_platform_home="${appd_platform_home:-platform}"
-appd_platform_release="${appd_platform_release:-26.1.2.10072}"
-appd_platform_sha256="${appd_platform_sha256:-fd81a1b1ac2450c951532f8f140a882091b2d7028ee38368503f82c9a7ea368c}"
+appd_platform_release="${appd_platform_release:-26.1.5.10117}"
+appd_platform_sha256="${appd_platform_sha256:-958e703f63469d279d795e6d8ab1147c9ebfbb02ed74118748c0084e4d6262fa}"
 appd_platform_user_name="${appd_platform_user_name:-vagrant}"
 appd_platform_user_group="${appd_platform_user_group:-vagrant}"
 set +x  # temporarily turn command display OFF.
@@ -57,9 +57,9 @@ Usage:
   [OPTIONAL] appdynamics platform install parameters [w/ defaults].
     [root]# export appd_home="/opt/appdynamics"                         # [optional] appd home (defaults to '/opt/appdynamics').
     [root]# export appd_platform_home="platform"                        # [optional] platform home folder (defaults to 'platform').
-    [root]# export appd_platform_release="26.1.2.10072"                 # [optional] platform release (defaults to '26.1.2.10072').
+    [root]# export appd_platform_release="26.1.5.10117"                 # [optional] platform release (defaults to '26.1.5.10117').
                                                                         # [optional] platform sha-256 checksum (defaults to published value).
-    [root]# export appd_platform_sha256="fd81a1b1ac2450c951532f8f140a882091b2d7028ee38368503f82c9a7ea368c"
+    [root]# export appd_platform_sha256="958e703f63469d279d795e6d8ab1147c9ebfbb02ed74118748c0084e4d6262fa"
     [root]# export appd_platform_user_name="vagrant"                    # [optional] platform user name (defaults to 'vagrant').
     [root]# export appd_platform_user_group="vagrant"                   # [optional] platform group (defaults to 'vagrant').
     [root]# export appd_platform_admin_username="admin"                 # [optional] platform admin user name (defaults to user 'admin').
@@ -105,11 +105,11 @@ if ([ "$distro_name" = "Amazon" ] && [ "${version_name}" = "2" ]) || \
   ncurses_5_base_package="ncurses-base-5.9-14.20130511.el7_4.noarch.rpm"
   ncurses_5_libs_package="ncurses-libs-5.9-14.20130511.el7_4.x86_64.rpm"
   rm -f ${ncurses_5_base_package}
-  curl --silent --location "http://mirror.centos.org/centos/7/os/x86_64/Packages/${ncurses_5_base_package}" --output ${ncurses_5_base_package}
+  curl --silent --location "https://vault.centos.org/7.9.2009/os/x86_64/Packages/${ncurses_5_base_package}" --output ${ncurses_5_base_package}
   rpm -ivh --force ${ncurses_5_base_package}
 
   rm -f ${ncurses_5_libs_package}
-  curl --silent --location "http://mirror.centos.org/centos/7/os/x86_64/Packages/${ncurses_5_libs_package}" --output ${ncurses_5_libs_package}
+  curl --silent --location "https://vault.centos.org/7.9.2009/os/x86_64/Packages/${ncurses_5_libs_package}" --output ${ncurses_5_libs_package}
   rpm -ivh --force ${ncurses_5_libs_package}
 else
   # for all other distros, install standard ncurses 5 packages.

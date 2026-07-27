@@ -31,12 +31,12 @@ export devops_home
 #appd_platform_home="platform"
 #export appd_platform_home
 
-# [optional] platform release (defaults to '26.1.2.10072').
-#appd_platform_release="26.1.2.10072"
+# [optional] platform release (defaults to '26.1.5.10117').
+#appd_platform_release="26.1.5.10117"
 #export appd_platform_release
 
 # [optional] platform sha-256 checksum (defaults to published value).
-#appd_platform_sha256="fd81a1b1ac2450c951532f8f140a882091b2d7028ee38368503f82c9a7ea368c"
+#appd_platform_sha256="958e703f63469d279d795e6d8ab1147c9ebfbb02ed74118748c0084e4d6262fa"
 #export appd_platform_sha256
 
 # [optional] platform user name (defaults to 'vagrant').
@@ -190,12 +190,12 @@ export appd_controller_tenancy_mode
 #appd_java_agent_user="vagrant"
 #export appd_java_agent_user
 
-# [optional] java agent release (defaults to '26.2.1.37810').
-#appd_java_agent_release="26.2.1.37810"
+# [optional] java agent release (defaults to '26.6.0.37963').
+#appd_java_agent_release="26.6.0.37963"
 #export appd_java_agent_release
 
 # [optional] java agent sha-256 checksum (defaults to published value).
-#appd_java_agent_sha256="1f5956d24472adc0c3040ede5c3e2db6efcd8c33190b72ad1985e99f14069484"
+#appd_java_agent_sha256="a1c3b322c893a134437d2644f17fcc53879af4c64ca8abfc3ee7d9bdc31c5ac3"
 #export appd_java_agent_sha256
 
 # --------------------------------------------------------------------------------------------------
@@ -212,7 +212,7 @@ export appd_controller_tenancy_mode
 #       using valid entries for your environment.
 #
 #       In either case, you will need to validate the configuration before starting the Java Agent. The
-#       configuration file can be found here: '<java_agent_home>/appagent/ver26.2.1.37810/conf/controller-info.xml'
+#       configuration file can be found here: '<java_agent_home>/appagent/ver26.6.0.37963/conf/controller-info.xml'
 
 # [optional] associate java agent with application (defaults to ''My App).
 #appd_java_agent_application_name="My App"
@@ -245,12 +245,12 @@ export appd_controller_tenancy_mode
 #appd_machine_agent_user="vagrant"
 #export appd_machine_agent_user
 
-# [optional] machine agent release (defaults to '26.3.0.5242').
-#appd_machine_agent_release="26.3.0.5242"
+# [optional] machine agent release (defaults to '26.6.0.5418').
+#appd_machine_agent_release="26.6.0.5418"
 #export appd_machine_agent_release
 
 # [optional] machine agent sha-256 checksum (defaults to published value).
-#appd_machine_agent_sha256="def08812d6748696b634d723b94f75d7252af42ea9170003ff7e85a0900a4d72"
+#appd_machine_agent_sha256="7e6d3a0b794bdfe4998cbbfff0a5251a47f16a6c22e80d3f3d06d7329ba2a079"
 #export appd_machine_agent_sha256
 
 # --------------------------------------------------------------------------------------------------
