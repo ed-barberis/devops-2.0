@@ -21,17 +21,17 @@ cpu_arch=$(uname -m)
 
 # set amazon corretto 8 installation variables. ----------------------------------------------------
 jdk_home="jdk180"
-jdk_build="8.482.08.1"
+jdk_build="8.502.07.1"
 jdk_pgpkey_file="B04F24E3.pub"
 
 # set the jdk sha256 and arch values based on cpu architecture.
 if [ "$cpu_arch" = "x86_64" ]; then
   # set the amd64 variables.
-  jdk_sha256="60ee7f2d1c2b48255793bc05fe5849b9c68669c0fb39eb117621955a2751192c"
+  jdk_sha256="ff9b634a2a70b81b75e855be1db50ff712e4ea5f92dc224cb1c069122710b111"
   jdk_arch="x64"
 elif [ "$cpu_arch" = "aarch64" ]; then
   # set the arm64 variables.
-  jdk_sha256="4ecbc18f6f3991c4ad26c82e5dd72804474b7bac439d34c325f32ebcdbcf3a9a"
+  jdk_sha256="7aafc6a9e4c284cbe9753ffe1af5495ca12370f6ac9f02e7ab1d81ef2f1d4c50"
   jdk_arch="aarch64"
 else
   echo "Error: Unsupported CPU architecture: '${cpu_arch}'."

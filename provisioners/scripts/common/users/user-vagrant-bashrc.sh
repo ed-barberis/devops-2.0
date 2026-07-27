@@ -1,4 +1,4 @@
-# @(#).bashrc       1.0 2026/03/23 SMI
+# @(#).bashrc       1.0 2026/07/24 SMI
 # bash resource configuration for devops users.
 
 # source global definitions.
@@ -15,10 +15,10 @@ umask 022
 # set java home path.
 #JAVA_HOME=/usr/local/java/jdk180
 #JAVA_HOME=/usr/local/java/jdk11
-JAVA_HOME=/usr/local/java/jdk17
+#JAVA_HOME=/usr/local/java/jdk17
 #JAVA_HOME=/usr/local/java/jdk21
 #JAVA_HOME=/usr/local/java/jdk25
-#JAVA_HOME=/usr/local/java/jdk26
+JAVA_HOME=/usr/local/java/jdk26
 export JAVA_HOME
 
 # set ant home path.
@@ -196,3 +196,9 @@ function psgrep {
 function netstatgrep {
   netstat -ant | grep "Active\|Proto\|$@"
 }
+
+# install tab auto completion for hashicorp tools.
+complete -C /usr/local/bin/consul consul
+complete -C /usr/local/bin/packer packer
+complete -C /usr/local/bin/terraform terraform
+complete -C /usr/local/bin/vault vault
