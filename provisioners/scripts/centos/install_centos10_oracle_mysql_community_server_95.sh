@@ -1,17 +1,17 @@
 #!/bin/sh -eux
 #---------------------------------------------------------------------------------------------------
-# Install MySQL Community Server 9.6 by Oracle on CentOS Linux 10.x.
+# Install MySQL Community Server 9.7 by Oracle on CentOS Linux 10.x.
 #
 # The MySQL software delivers a very fast, multithreaded, multi-user, and robust SQL (Structured
 # Query Language) database server. MySQL Server is intended for mission-critical, heavy-load
 # production systems as well as for embedding into mass-deployed software.
 #
 # For more details, please visit:
-#   https://dev.mysql.com/doc/refman/9.6/en/
-#   https://dev.mysql.com/doc/refman/9.6/en/linux-installation-yum-repo.html
+#   https://dev.mysql.com/doc/refman/9.7/en/
+#   https://dev.mysql.com/doc/refman/9.7/en/linux-installation-yum-repo.html
 #   https://dev.mysql.com/downloads/repo/yum/
 #   https://www.mysql.com/support/supportedplatforms/database.html
-#   https://dev.mysql.com/doc/refman/9.6/en/socket-pluggable-authentication.html
+#   https://dev.mysql.com/doc/refman/9.7/en/socket-pluggable-authentication.html
 #
 # NOTE: All inputs are defined by external environment variables.
 #       Optional variables have reasonable defaults, but you may override as needed.
@@ -25,10 +25,10 @@ mysql_server_root_password="${mysql_server_root_password:-Welcome1!}"   # [optio
 set -x  # turn command display back ON.
 mysql_yum_release="${mysql_yum_release:-84}"                            # [optional] yum repository version (defaults to '84').
 mysql_server_default="${mysql_server_default:-mysql-8.4-lts-community}" # [optional] mysql server default version (defaults to 'mysql-8.4-lts-community').
-                                                                        # [optional] mysql server release version (defaults to 'mysql-innovation-community').
-mysql_server_release="${mysql_server_release:-mysql-innovation-community}"
+                                                                        # [optional] mysql server release version (defaults to 'mysql-9.7-lts-community').
+mysql_server_release="${mysql_server_release:-mysql-9.7-lts-community}"
                                                                         # [optional] mysql yum repository md5 checksum (defaults to published value).
-mysql_yum_checksum="${mysql_yum_checksum:-4b06430c70e1d8530eeaa5377141205a}"
+mysql_yum_checksum="${mysql_yum_checksum:-8f1a519b4893e7e573a874e46f8f2e78}"
 mysql_enable_secure_access="${mysql_enable_secure_access:-true}"        # [optional] enable secure access for mysql server (defaults to 'true').
 
 # [OPTIONAL] devops home folder [w/ default].
@@ -39,7 +39,7 @@ mkdir -p ${devops_home}/provisioners/scripts/centos
 cd ${devops_home}/provisioners/scripts/centos
 
 # download mysql yum repository. -------------------------------------------------------------------
-mysql_yum_binary="mysql${mysql_yum_release}-community-release-el10-2.noarch.rpm"
+mysql_yum_binary="mysql${mysql_yum_release}-community-release-el10-3.noarch.rpm"
 
 # download the mysql yum repository.
 rm -f ${mysql_yum_binary}
@@ -65,8 +65,11 @@ dnf config-manager --enable ${mysql_server_release}
 
 # install mysql server binaries.
 #dnf -y remove mariadb-libs                 # [optional] if running in the desktop.
-dnf -y install mysql-community-server
+dnf -y install mysql-community-{server,client,client-plugins,icu-data-files,common,libs}-* --excludepkgs=mysql8.4* --excludepkgs=mariadb*
+##dnf -y install mysql-community-server
 #dnf -y install mysql-workbench-community   # [optional]
+##dnf -y install mysql-community-server --excludepkgs=mysql8.4* --excludepkgs=mariadb*
+##dnf -y install mysql-community-server --allowerasing
 
 # verify mysql server installation
 mysql --version

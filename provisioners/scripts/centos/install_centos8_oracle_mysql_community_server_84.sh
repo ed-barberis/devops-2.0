@@ -27,7 +27,7 @@ mysql_yum_release="${mysql_yum_release:-84}"                            # [optio
 mysql_server_default="${mysql_server_default:-mysql-8.4-lts-community}" # [optional] mysql server default version (defaults to 'mysql-8.4-lts-community').
 mysql_server_release="${mysql_server_release:-mysql-8.4-lts-community}" # [optional] mysql server release version (defaults to 'mysql-8.4-lts-community').
                                                                         # [optional] mysql yum repository md5 checksum (defaults to published value).
-mysql_yum_checksum="${mysql_yum_checksum:-8cb3c90073a3ce02d6e9f27266875bbe}"
+mysql_yum_checksum="${mysql_yum_checksum:-d8abad83cedb2ee3e5e629037e444973}"
 mysql_enable_secure_access="${mysql_enable_secure_access:-true}"        # [optional] enable secure access for mysql server (defaults to 'true').
 
 # [OPTIONAL] devops home folder [w/ default].
@@ -38,7 +38,7 @@ mkdir -p ${devops_home}/provisioners/scripts/centos
 cd ${devops_home}/provisioners/scripts/centos
 
 # download mysql yum repository. -------------------------------------------------------------------
-mysql_yum_binary="mysql${mysql_yum_release}-community-release-el8-2.noarch.rpm"
+mysql_yum_binary="mysql${mysql_yum_release}-community-release-el8-3.noarch.rpm"
 
 # download the mysql yum repository.
 rm -f ${mysql_yum_binary}
@@ -151,3 +151,8 @@ if [ "$mysql_enable_secure_access" = "true" ]; then
   mysql -u root -p${mysql_server_root_password} -e "SELECT user, plugin FROM mysql.user WHERE user IN ('root')\G;"
   set -x    # turn command display back ON.
 fi
+
+# display installed plugins.
+set +x  # temporarily turn command display OFF.
+mysql -u root -p${mysql_server_root_password} -e "SELECT PLUGIN_NAME, PLUGIN_STATUS FROM INFORMATION_SCHEMA.PLUGINS WHERE PLUGIN_STATUS LIKE '%ACTIVE%'\G;"
+set -x  # turn command display back ON.

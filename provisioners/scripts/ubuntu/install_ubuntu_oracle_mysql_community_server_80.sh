@@ -24,10 +24,10 @@
 set +x  # temporarily turn command display OFF.
 mysql_server_root_password="${mysql_server_root_password:-Welcome1!}"   # [optional] root password (defaults to 'Welcome1!').
 set -x  # turn command display back ON.
-mysql_apt_repo_release="${mysql_apt_repo_release:-0.8.36-1}"            # [optional] apt repository version (defaults to '0.8.36-1').
+mysql_apt_repo_release="${mysql_apt_repo_release:-0.8.39-1}"            # [optional] apt repository version (defaults to '0.8.39-1').
 mysql_server_release="${mysql_server_release:-mysql-8.0}"               # [optional] mysql server version (defaults to 'mysql-8.0').
                                                                         # [optional] mysql apt repository md5 checksum (defaults to published value).
-mysql_apt_checksum="${mysql_apt_checksum:-9698a5d5980c16b79673318330607993}"
+mysql_apt_checksum="${mysql_apt_checksum:-8f722bb35fc6f510a2154a9466f5e2f7}"
 mysql_enable_secure_access="${mysql_enable_secure_access:-true}"        # [optional] enable secure access for mysql server (defaults to 'true').
 
 # [OPTIONAL] devops home folder [w/ default].

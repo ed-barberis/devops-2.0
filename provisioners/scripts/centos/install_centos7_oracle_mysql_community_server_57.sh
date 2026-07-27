@@ -27,7 +27,7 @@ mysql_yum_release="${mysql_yum_release:-80}"                            # [optio
 mysql_server_default="${mysql_server_default:-mysql80-community}"       # [optional] mysql server version (defaults to 'mysql80-community').
 mysql_server_release="${mysql_server_release:-mysql57-community}"       # [optional] mysql server version (defaults to 'mysql57-community').
                                                                         # [optional] mysql yum repository md5 checksum (defaults to published value).
-mysql_yum_checksum="${mysql_yum_checksum:-e2bd920ba15cd3d651c1547661c60c7c}"
+mysql_yum_checksum="${mysql_yum_checksum:-42048ccae58835e40e37b68a3f8b91fb}"
 mysql_enable_secure_access="${mysql_enable_secure_access:-true}"        # [optional] enable secure access for mysql server (defaults to 'true').
 
 # [OPTIONAL] devops home folder [w/ default].
@@ -38,7 +38,7 @@ mkdir -p ${devops_home}/provisioners/scripts/centos
 cd ${devops_home}/provisioners/scripts/centos
 
 # download mysql yum repository. -------------------------------------------------------------------
-mysql_yum_binary="mysql${mysql_yum_release}-community-release-el7-5.noarch.rpm"
+mysql_yum_binary="mysql${mysql_yum_release}-community-release-el7-11.noarch.rpm"
 
 # download the mysql yum repository.
 rm -f ${mysql_yum_binary}
