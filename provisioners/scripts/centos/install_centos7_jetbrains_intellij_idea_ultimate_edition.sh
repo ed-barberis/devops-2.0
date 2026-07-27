@@ -1,5 +1,5 @@
 #!/bin/sh -eux
-# install intellij idea community edition by jetbrains.
+# install intellij idea by jetbrains.
 
 # set default value for devops home environment variable if not set. -------------------------------
 devops_home="${devops_home:-/opt/devops}"                   # [optional] devops home (defaults to '/opt/devops').
@@ -7,21 +7,21 @@ devops_home="${devops_home:-/opt/devops}"                   # [optional] devops 
 # retrieve the current cpu architecture. -----------------------------------------------------------
 cpu_arch=$(uname -m)
 
-# install intellij idea community edition. ---------------------------------------------------------
+# install intellij idea. ---------------------------------------------------------------------------
 idea_home="idea"
-idea_release="2026.1"
-idea_build="261.22158.277"
+idea_release="2026.2.0.1"
+idea_build="262.8665.337"
 idea_folder="idea-${idea_build}"
 
 # set the idea binary and sha256 values based on cpu architecture.
 if [ "$cpu_arch" = "x86_64" ]; then
   # set the amd64 variables.
   idea_binary="idea-${idea_release}.tar.gz"
-  idea_sha256="f57d3dba9970c774cf377583629aea540418e677ec6365570e76dea9cb2f3f9b"
+  idea_sha256="914e31e31b4e1285d538cf3fae5b300af08bcff36bc298ac6200504bbe12f180"
 elif [ "$cpu_arch" = "aarch64" ]; then
   # set the arm64 variables.
   idea_binary="idea-${idea_release}-aarch64.tar.gz"
-  idea_sha256="c235f664c35c20422c3ab28c850b86ea4ab7a05d9df9c027581a3a8c98be401b"
+  idea_sha256="1e446106ad6f8758918ec8665fe0fd713d62491664fcd133e98913c1684a9748"
 else
   echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
   exit 1
@@ -31,7 +31,7 @@ fi
 mkdir -p /usr/local/jetbrains
 cd /usr/local/jetbrains
 
-# download intellij idea community edition binary.
+# download intellij idea binary.
 wget --no-verbose https://download.jetbrains.com/idea/${idea_binary}
 
 # verify the downloaded binary.
@@ -39,14 +39,14 @@ echo "${idea_sha256} ${idea_binary}" | sha256sum --check
 # idea-${idea_release}.tar.gz: OK
 # idea-${idea_release}-aarch64.tar.gz: OK
 
-# extract intellij idea community edition binary.
+# extract intellij idea binary.
 rm -f ${idea_home}
 tar -zxvf ${idea_binary} --no-same-owner --no-overwrite-dir
 chown -R root:root ./${idea_folder}
 ln -s ${idea_folder} ${idea_home}
 rm -f ${idea_binary}
 
-# install intellij idea community edition as gnome desktop app. ------------------------------------
+# install intellij idea as gnome desktop app. ------------------------------------------------------
 imgname="intellij-idea-logo"
 imgsizearray=( "16x16" "22x22" "24x24" "32x32" "48x48" "64x64" "128x128" "256x256" )
 imgfolder="/usr/share/icons/hicolor"
