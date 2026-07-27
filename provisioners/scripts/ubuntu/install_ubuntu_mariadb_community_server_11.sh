@@ -34,7 +34,7 @@ ubuntu_release=$(lsb_release -rs)
 
 if [ -n "$ubuntu_release" ]; then
   case $ubuntu_release in
-      22.04|24.04|25.10)
+      22.04|24.04|25.10|26.04)
         ;;
       *)
         echo "Error: MariaDB 11.8 NOT supported on Ubuntu release: '$(lsb_release -ds)'."
@@ -50,7 +50,7 @@ apt-get update
 # import the mariadb server repository key onto our ubuntu system.
 sudo apt-get -y install apt-transport-https curl
 sudo mkdir -p /etc/apt/keyrings
-sudo curl -o /etc/apt/keyrings/mariadb-keyring.pgp 'https://mariadb.org/mariadb_release_signing_key.pgp'
+sudo curl -o /etc/apt/keyrings/mariadb-keyring.asc 'https://mariadb.org/mariadb_release_signing_key.pgp'
 
 # get current date/time in utc format.
 # example: 2025-04-17 20:57 UTC
@@ -69,7 +69,7 @@ Types: deb
 URIs: https://mirrors.gigenet.com/mariadb/repo/11.8/ubuntu
 Suites: $(lsb_release -cs)
 Components: main main/debug
-Signed-By: /etc/apt/keyrings/mariadb-keyring.pgp
+Signed-By: /etc/apt/keyrings/mariadb-keyring.asc
 EOF
 
 # install mariadb server. --------------------------------------------------------------------------

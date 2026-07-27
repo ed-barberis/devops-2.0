@@ -1,6 +1,6 @@
 #!/bin/bash -eux
 #---------------------------------------------------------------------------------------------------
-# Install MariaDB Community Server 12.3 Rolling by MariaDB on Ubuntu Linux.
+# Install MariaDB Community Server 12.3 by MariaDB on CentOS Stream 9 Linux.
 #
 # MariaDB Server is one of the most popular open source relational databases. It’s made by the
 # original developers of MySQL and guaranteed to stay open source. It is part of most cloud
@@ -28,54 +28,50 @@ set +x  # temporarily turn command display OFF.
 mariadb_server_root_password="${mariadb_server_root_password:-Password1234!}"   # [optional] root password (defaults to 'Password1234!').
 set -x  # turn command display back ON.
 
-# validate ubuntu release version. -----------------------------------------------------------------
-# check for supported ubuntu release.
-ubuntu_release=$(lsb_release -rs)
+# validate centos stream release version. ----------------------------------------------------------
+# check for supported centos stream release.
+centos_release=$(hostnamectl | awk '/^.*Operating System: / {print $0}' | sed 's/^.*Operating System: //g')
+#centos_release=$(hostnamectl | awk '/^.*Operating System: / {printf "%s %s %s", $3, $4, $5}')
 
-if [ -n "$ubuntu_release" ]; then
-  case $ubuntu_release in
-      22.04|24.04|25.10|26.04)
+if [ -n "$centos_release" ]; then
+  case $centos_release in
+      "AlmaLinux 9.8 (Olive Jaguar)"|"AlmaLinux 10.2 (Lavender Lion)"|"CentOS Stream 9"|"CentOS Stream 10 (Coughlan)"|"Rocky Linux 9.8 (Blue Onyx)"|"Rocky Linux 10.2 (Red Quartz)")
+#     "AlmaLinux 9.8 (Olive"|"AlmaLinux 10.2 (Lavender"|"CentOS Stream 9"|"CentOS Stream 10"|"Rocky Linux 9.8"|"Rocky Linux 10.2")
         ;;
       *)
-        echo "Error: MariaDB 12.3 NOT supported on Ubuntu release: '$(lsb_release -ds)'."
+        echo "Error: MariaDB 12.3 NOT supported on CentOS release: '${centos_release}'."
         exit 1
         ;;
   esac
 fi
 
-# update the apt repository package indexes. -------------------------------------------------------
-apt-get update
-
-# prepare the mariadb server package for installation. ---------------------------------------------
-# import the mariadb server repository key onto our ubuntu system.
-sudo apt-get -y install apt-transport-https curl
-sudo mkdir -p /etc/apt/keyrings
-sudo curl -o /etc/apt/keyrings/mariadb-keyring.asc 'https://mariadb.org/mariadb_release_signing_key.pgp'
+# install the latest os updates. -------------------------------------------------------------------
+dnf -y update
 
 # get current date/time in utc format.
 # example: 2025-04-17 20:57 UTC
 utc_date_time=$(date -u +"%Y-%m-%d %H:%M UTC")
 
-# generate the mariadb server sources file.
-rm -f /etc/apt/sources.list.d/mariadb.sources
+# generate the mariadb server repository file.
+rm -f /etc/yum.repos.d/MariaDB.repo
 
-cat <<EOF > /etc/apt/sources.list.d/mariadb.sources
-# MariaDB 12.3 repository list - created ${utc_date_time}
+cat <<EOF > /etc/yum.repos.d/MariaDB.repo
+# MariaDB 12.3 CentOS repository list - created ${utc_date_time}
 # https://mariadb.org/download/
-X-Repolib-Name: MariaDB
-Types: deb
-# deb.mariadb.org is a dynamic mirror if your preferred mirror goes offline. See https://mariadb.org/mirrorbits/ for details.
-# URIs: https://deb.mariadb.org/12.3/ubuntu
-URIs: https://mirrors.gigenet.com/mariadb/repo/12.3/ubuntu
-Suites: $(lsb_release -cs)
-Components: main main/debug
-Signed-By: /etc/apt/keyrings/mariadb-keyring.asc
+[mariadb]
+name = MariaDB
+# rpm.mariadb.org is a dynamic mirror if your preferred mirror goes offline. See https://mariadb.org/mirrorbits/ for details.
+# baseurl = https://rpm.mariadb.org/12.3/centos/\$releasever/\$basearch
+baseurl = https://mirrors.gigenet.com/mariadb/yum/12.3/centos/\$releasever/\$basearch
+# gpgkey = https://rpm.mariadb.org/RPM-GPG-KEY-MariaDB
+gpgkey = https://mirrors.gigenet.com/mariadb/yum/RPM-GPG-KEY-MariaDB
+gpgcheck = 1
 EOF
 
 # install mariadb server. --------------------------------------------------------------------------
 # install mariadb server binaries.
-apt-get update
-apt-get -y install mariadb-server
+dnf -y update
+dnf -y install MariaDB-server MariaDB-client
 
 # configure mariadb server. ------------------------------------------------------------------------
 # start the mariadb service and configure it to start at boot time.

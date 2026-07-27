@@ -35,8 +35,8 @@ centos_release=$(hostnamectl | awk '/^.*Operating System: / {print $0}' | sed 's
 
 if [ -n "$centos_release" ]; then
   case $centos_release in
-      "AlmaLinux 9.7 (Moss Jungle Cat)"|"AlmaLinux 10.1 (Heliotrope Lion)"|"CentOS Stream 9"|"CentOS Stream 10 (Coughlan)"|"Rocky Linux 9.7 (Blue Onyx)"|"Rocky Linux 10.1 (Red Quartz)")
-#     "AlmaLinux 9.7 (Moss"|"AlmaLinux 10.1 (Heliotrope"|"CentOS Stream 9"|"CentOS Stream 10"|"Rocky Linux 9.7"|"Rocky Linux 10.1")
+      "AlmaLinux 9.8 (Olive Jaguar)"|"AlmaLinux 10.2 (Lavender Lion)"|"CentOS Stream 9"|"CentOS Stream 10 (Coughlan)"|"Rocky Linux 9.8 (Blue Onyx)"|"Rocky Linux 10.2 (Red Quartz)")
+#     "AlmaLinux 9.8 (Olive"|"AlmaLinux 10.2 (Lavender"|"CentOS Stream 9"|"CentOS Stream 10"|"Rocky Linux 9.8"|"Rocky Linux 10.2")
         ;;
       *)
         echo "Error: MariaDB 11.8 NOT supported on CentOS release: '${centos_release}'."
@@ -62,9 +62,9 @@ cat <<EOF > /etc/yum.repos.d/MariaDB.repo
 name = MariaDB
 # rpm.mariadb.org is a dynamic mirror if your preferred mirror goes offline. See https://mariadb.org/mirrorbits/ for details.
 # baseurl = https://rpm.mariadb.org/11.8/centos/\$releasever/\$basearch
-baseurl = https://mirror.its.dal.ca/mariadb/yum/11.8/centos/\$releasever/\$basearch
+baseurl = https://mirrors.gigenet.com/mariadb/yum/11.8/centos/\$releasever/\$basearch
 # gpgkey = https://rpm.mariadb.org/RPM-GPG-KEY-MariaDB
-gpgkey = https://mirror.its.dal.ca/mariadb/yum/RPM-GPG-KEY-MariaDB
+gpgkey = https://mirrors.gigenet.com/mariadb/yum/RPM-GPG-KEY-MariaDB
 gpgcheck = 1
 EOF
 
