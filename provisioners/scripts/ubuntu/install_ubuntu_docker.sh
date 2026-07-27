@@ -17,25 +17,29 @@
 
 # update the apt repository package indexes. -------------------------------------------------------
 apt-get update
-dpkg --configure -a
 
 # install tools needed to install docker. ----------------------------------------------------------
-apt-get -y install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+apt-get -y install ca-certificates curl
 
-# import the gpg key and add the docker repository. ------------------------------------------------
-# import the gpg key.
-# NOTE: when adding the repository that is provided by docker, because of ubuntu security
-#       restrictions, you cannot just add a repository. you also need to include the gpg key and
-#       import it as a trusted key on the local operating system.
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-apt-key fingerprint 0EBFCD88
+# import the official docker gpg key and add the docker repository. --------------------------------
+# import the docker gpg key.
+install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+chmod a+r /etc/apt/keyrings/docker.asc
 
-# add the docker repository.
-add-apt-repository --yes "deb [arch=amd64,arm64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+# add the docker repository to apt sources.
+tee /etc/apt/sources.list.d/docker.sources <<EOF
+Types: deb
+URIs: https://download.docker.com/linux/ubuntu
+Suites: $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}")
+Components: stable
+Architectures: $(dpkg --print-architecture)
+Signed-By: /etc/apt/keyrings/docker.asc
+EOF
 
 # install docker on ubuntu. ------------------------------------------------------------------------
 apt-get update
-apt-get -y install docker-ce docker-ce-cli containerd.io
+apt-get -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # verify the docker installation. ------------------------------------------------------------------
 # start the docker service and configure it to start at boot time.
