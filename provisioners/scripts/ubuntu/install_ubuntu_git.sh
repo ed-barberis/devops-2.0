@@ -1,4 +1,4 @@
-#!/bin/sh -eux
+#!/bin/bash -eux
 #---------------------------------------------------------------------------------------------------
 # Install Git distributed version control system.
 #
@@ -16,6 +16,13 @@
 # [OPTIONAL] git flow install parameters [w/ defaults].
 user_name="${user_name:-vagrant}"                               # user name.
 user_group="${user_group:-vagrant}"                             # user login group.
+install_user_name="${install_user_name:-root}"                  # install user name.
+install_user_home="${install_user_home:-}"                      # install user home directory path.
+
+# if not set, retrieve install user home directory path.
+if [ -z "$install_user_home" ]; then
+  install_user_home=$(eval echo "~${install_user_name}")
+fi
 
 # update the apt repository package indexes. -------------------------------------------------------
 apt-get update
@@ -25,7 +32,7 @@ apt-get -y install libz-dev libssl-dev libcurl4-gnutls-dev libexpat1-dev gettext
 
 # install git binaries from source. ----------------------------------------------------------------
 git_home="git"
-git_release="2.53.0"
+git_release="2.55.0"
 git_folder="git-${git_release}"
 git_binary="${git_folder}.tar.gz"
 
@@ -47,9 +54,17 @@ cd ${git_folder}
 #CFLAGS="-DNO_UNCOMPRESS2"
 #export CFLAGS
 
+# set rust toolchain home path for cargo.
+CARGO_HOME=${install_user_home}/.cargo
+export CARGO_HOME
+
+# add local applications to main PATH.
+PATH=$CARGO_HOME/bin:${install_user_home}/.local/bin:$PATH
+export PATH
+
 ./configure
-make prefix=/usr/local/git/${git_folder} all
-make prefix=/usr/local/git/${git_folder} install
+make prefix=/usr/local/git/${git_folder} all        # optional make flags: V=1 NO_RUST=true
+make prefix=/usr/local/git/${git_folder} install    # optional make flags: V=1 NO_RUST=true
 
 # create soft link to git binary.
 cd /usr/local/git
