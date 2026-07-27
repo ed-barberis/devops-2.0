@@ -18,20 +18,20 @@
 cpu_arch=$(uname -m)
 
 # install kubectl cli. -----------------------------------------------------------------------------
-kubectl_release="1.35.2"
-kubectl_date="2026-02-27"
-#kubectl_release="1.34.4"
-#kubectl_date="2026-02-27"
-#kubectl_release="1.33.8"
-#kubectl_date="2026-02-27"
-#kubectl_release="1.32.12"
-#kubectl_date="2026-02-27"
+kubectl_release="1.36.2"
+kubectl_date="2026-07-05"
+#kubectl_release="1.35.6"
+#kubectl_date="2026-07-05"
+#kubectl_release="1.34.9"
+#kubectl_date="2026-07-05"
+#kubectl_release="1.33.13"
+#kubectl_date="2026-07-05"
+#kubectl_release="1.32.13"
+#kubectl_date="2026-07-05"
 #kubectl_release="1.31.14"
-#kubectl_date="2026-02-27"
+#kubectl_date="2026-07-05"
 #kubectl_release="1.30.14"
-#kubectl_date="2026-02-27"
-#kubectl_release="1.29.15"
-#kubectl_date="2026-02-27"
+#kubectl_date="2026-07-05"
 
 # declare associative array for the sha256 values.
 declare -A sha256_values_array
@@ -39,26 +39,26 @@ declare -A sha256_values_array
 # set the kubectl cli binary and sha256 values based on cpu architecture.
 if [ "$cpu_arch" = "x86_64" ]; then
   # set the amd64 sha256 values.
-  sha256_values_array["1.35.2"]="5b2fc8dd946a9aca7961c5d29cc115365e0649276b7f5f47f822deb444729552"
-  sha256_values_array["1.34.4"]="2a75238f5c6bc0e1d7cae871832bdf5913407b9ff0c1d96fd49c5ba1d93c2fcf"
-  sha256_values_array["1.33.8"]="59a3f0be0d7fd5c6593fd2a4bf6edbb446c217288539995607b4069dbb19a0a1"
-  sha256_values_array["1.32.12"]="3db23d8ee29c7c31a4c0dab92073d0f04bc74197bfc42681420fb2937c557a0f"
-  sha256_values_array["1.31.14"]="378d0e8a2cd6948ea42345cd1303625139c2dbd1db4cbbbe53a2c53a9d83ab7c"
-  sha256_values_array["1.30.14"]="d86de0fff9ca591a18eddeedcc1cb418a387ba33a3827aa5ad0f50fc8e6b7020"
-  sha256_values_array["1.29.15"]="3690136ec4a1450ebc2ce94630e22806c21917c68b8a8d6905862fa528e30378"
+  sha256_values_array["1.36.2"]="485546d8b76a97f01f63c36716b6412a87a89c6eed3d4495041660ff6b6b62d4"
+  sha256_values_array["1.35.6"]="4df214687713f2edce9519c76b3dc6658ddc7503c6b29e6affc4976dbd720e32"
+  sha256_values_array["1.34.9"]="23b7520541d0302cfde462a9193ae444decbd0c7c6fc93ffe890cef8225368b6"
+  sha256_values_array["1.33.13"]="886621cc3be992e79bbe034ec73b58f0543921a4532d5a428fad0230e62e8e55"
+  sha256_values_array["1.32.13"]="552834df05bab1c6657fffa9a2bebf05b525747d3df69fd904835fa18c0b2d29"
+  sha256_values_array["1.31.14"]="32a70c0de07e185da08d8027e248b0f497bc86821f7e417c948842c7aaa3b730"
+  sha256_values_array["1.30.14"]="333226016923e070fa5a97d4f51c2b5f4ce928f8687a33a9b0d6b872299d2164"
 
   # set the amd64 download path.
   kubectl_path="amd64"
 
 elif [ "$cpu_arch" = "aarch64" ]; then
   # set the arm64 sha256 values.
-  sha256_values_array["1.35.2"]="12b5157dd7c967b56585dd2378f67ad3711ae0a9537af7874bdf1fe2206c5cca"
-  sha256_values_array["1.34.4"]="42e9b33a460133ee59764da53d1918c81c9bf7b786353d1e74b8d3864b51bd56"
-  sha256_values_array["1.33.8"]="265b8486d2d54f9113a90767bfe3979918254d971cab415be7dcc29b7be0cf99"
-  sha256_values_array["1.32.12"]="44e390cecbdb9bb6b9598671be023cecf14bbd5477208f7e059f7bf91a5dd102"
-  sha256_values_array["1.31.14"]="d06b7aad16da572be9aa36ce16efb8c5d499f1d554474872eb232b648c197c96"
-  sha256_values_array["1.30.14"]="bc7c5a89f547b9cdab22d5e9d87e366b7ffc7f8422ba45fda0b417259124a8c5"
-  sha256_values_array["1.29.15"]="c751d7b9611f57df1ca23f7b940e4ee771028712de345ab09674ec8d8a221669"
+  sha256_values_array["1.36.2"]="ad06b385142ec8aea1964ccb80ee1100b33eeeba208643ea314a8e5b886a8356"
+  sha256_values_array["1.35.6"]="2f987b81b227f9c90ab6c74d36380d67ebee02baddfc978da894f2a05960be60"
+  sha256_values_array["1.34.9"]="9e79830966e3913c3addf383aef55149160bc2a5a432175e8c12c35aa4b3d385"
+  sha256_values_array["1.33.13"]="181a6de43c20e740a979f05caf256c06172c487fa9254d6c939c703a5361a53d"
+  sha256_values_array["1.32.13"]="36b509a8da6ea847b554fd8cac2b32ed6d8c0f32faaba3846f810e7afab327a1"
+  sha256_values_array["1.31.14"]="20624dcbe1655e5233bbe9897ba9e2f9c814bdb9eccc67c22a153ab7a88746cc"
+  sha256_values_array["1.30.14"]="db44783138f61eb42422f606e970bdd87168ecfc16a19f6681dfe1428e695fbd"
 
   # set the arm64 download path.
   kubectl_path="arm64"
