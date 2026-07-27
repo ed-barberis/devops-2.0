@@ -23,18 +23,18 @@
 cpu_arch=$(uname -m)
 
 # install hashicorp consul. ------------------------------------------------------------------------
-consul_release="1.22.6"
+consul_release="2.0.2"
 consul_sha256=""
 
 # set the consul cli binary and sha256 values based on cpu architecture.
 if [ "$cpu_arch" = "x86_64" ]; then
   # set the amd64 variables.
   consul_binary="consul_${consul_release}_linux_amd64.zip"
-  consul_sha256="5c2d67c6a364512b3dd0646eaf8bb58fa2fd6b9c890e2f374475deab2a6ec648"
+  consul_sha256="96e56c9d06b4a15bfa316afa39af926c1b67d189f66388dc1eecbb7c26faeed4"
 elif [ "$cpu_arch" = "aarch64" ]; then
   # set the arm64 variables.
   consul_binary="consul_${consul_release}_linux_arm64.zip"
-  consul_sha256="a760371111ff3e1f0813672b240f833077f73c13ea37e75abc223ede534100b6"
+  consul_sha256="70c13b33f47da13c7c797b57d6ccc8a738ecf33c8e3aec4c268640dc17ba660c"
 else
   echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
   exit 1
@@ -66,3 +66,6 @@ export PATH
 
 # verify consul version.
 consul version
+
+# install tab auto completion. ---------------------------------------------------------------------
+#consul -autocomplete-install

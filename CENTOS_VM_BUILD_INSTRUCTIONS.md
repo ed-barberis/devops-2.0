@@ -270,82 +270,83 @@ Follow these instructions to build the CentOS Linux 7.9 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 2.34.26 (command-line interface) [Optional]
--	Amazon AWS EKS CLI [eksctl] 0.225.0 (command-line interface)
+-	Amazon AWS CLI 2.36.8 (command-line interface) [Optional]
+-	Amazon AWS EKS CLI [eksctl] 0.229.0 (command-line interface)
 -	Ansible 2.9.27
--	Ant 1.10.16
--	Consul 1.22.6
+-	Ant 1.10.17
+-	Consul 2.0.2
 -	Cloud-Init 0.7.9 [Optional]
 -	Docker 26.1.4 CE
 	-	Docker Bash Completion
 	-	Docker Compose 2.40.3
--	Fastfetch 2.61.0 (command-line System Information tool)
--	Git 2.53.0
+-	Fastfetch 2.66.0 (command-line System Information tool)
+-	Git 2.55.0
 	-	Git Bash Completion
 	-	Git-Flow 1.12.4 (AVH Edition)
 	-	Git-Flow Bash Completion
--	Go 1.26.2
--	Gradle 9.4.1
--	Groovy 5.0.5
--	Helm CLI 4.1.3 (Package Manager for Kubernetes)
--	Helmfile CLI 1.4.4 (Declarative Deploy Tool for Helm)
--	Java SE JDK 8 Update 482 (Amazon Corretto 8)
--	Java SE JDK 11.0.30 (Amazon Corretto 11)
--	Java SE JDK 17.0.18 (Amazon Corretto 17)
--	Java SE JDK 21.0.10 (Amazon Corretto 21)
--	Java SE JDK 25.0.2 (Amazon Corretto 25)
--	Java SE JDK 26.0.0 (Amazon Corretto 26)
+-	Go 1.26.5
+-	Gradle 9.6.1
+-	Groovy 5.0.7
+-	Helm CLI 4.2.3 (Package Manager for Kubernetes)
+-	Helmfile CLI 1.7.1 (Declarative Deploy Tool for Helm)
+-	Java SE JDK 8 Update 502 (Amazon Corretto 8)
+-	Java SE JDK 11.0.32 (Amazon Corretto 11)
+-	Java SE JDK 17.0.20 (Amazon Corretto 17)
+-	Java SE JDK 21.0.12 (Amazon Corretto 21)
+-	Java SE JDK 25.0.4 (Amazon Corretto 25)
+-	Java SE JDK 26.0.2 (Amazon Corretto 26)
 -	JMESPath jp 0.2.1 (command-line JSON processor)
--	jq 1.8.1 (command-line JSON processor)
--	Maven 3.9.14
--	3ySQL Community Server 5.7.44
+-	jq 1.8.2 (command-line JSON processor)
+-	K9s CLI 0.51.0 (Kubernetes Cluster Manager UI Tool)
+-	Maven 3.9.16
+-	MySQL Community Server 5.7.44
 -	Onefetch 2.27.1 (command-line Git information tool)
--	Packer 1.15.1
+-	Packer 1.16.0
 -	Python 2.7.5
 	-	Pip 24.0
 -	Python 3.6.8
 	-	Pip3 24.2
--	Rust 1.94.1
--	Scala 3.8.3
+-	Rust 1.97.1
+-	Scala 3.8.4
 -	Scala 2.13.18
--	Scala Build Tool (SBT) 1.12.9
-	-	Scala 2.12.21
--	Tanka CLI 0.36.4 (Grafana configuration utility for Kubernetes)
--	Terraform 1.14.8
--	Vault 1.21.4
+-	Scala Build Tool (SBT) 2.0.4
+	-	Scala 3.8.4
+-	Serverless Framework CLI 4.40.0
+-	Tanka CLI 0.38.0 (Grafana configuration utility for Kubernetes)
+-	Terraform 1.15.8
+-	Vault 2.0.3
 -	VIM - Vi IMproved 9.1
 -	XMLStarlet 1.6.1 (command-line XML processor)
--	yq 4.52.5 (command-line YAML processor)
+-	yq 4.53.3 (command-line YAML processor)
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 18.10.3
--	Jenkins 2.541.3 LTS
+-	GitLab Community Edition 19.2.0
+-	Jenkins 2.568.1 LTS
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
 
--	AppDynamics Enterprise Console 26.1.2 Build 10072
+-	AppDynamics Enterprise Console 26.1.5 Build 10117
 	-	AppDynamics Controller 25.1.1 Build 10058
 	-	AppDynamics Events Service 4.5.2 Build 20827
--	MySQL Shell 8.0.45
+-	MySQL Shell 8.0.46
 
 The following developer tools are pre-installed in the __Developer VM__ (desktop) only:
 
 -	Apache Tomcat 8.5.100
--	Apache Tomcat 9.0.117
--	Apache Tomcat 10.1.54
--	Apache Tomcat 11.0.21
--	AppDynamics Java Agent 26.2.1 Build 37810
--	AppDynamics Machine Agent 26.3.0 Build 5242
+-	Apache Tomcat 9.0.120
+-	Apache Tomcat 10.1.57
+-	Apache Tomcat 11.0.24
+-	AppDynamics Java Agent 26.6.0 Build 37963
+-	AppDynamics Machine Agent 26.6.0 Build 5418
 	-	AppDynamics AWS EC2 Monitoring Extension 2.1.5 [Optional]
 -	Atom Editor 1.57.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
--	Chrome 147.0.7727.56 (64-bit)
+-	Chrome 150.0.7871.187 (64-bit)
 -	Firefox 102.10.0esr (64-bit)
--	JetBrains IntelliJ IDEA 2026.1 (Community Edition)
--	JetBrains IntelliJ IDEA 2026.1 (Ultimate Edition)
--	JetBrains WebStorm 2026.1 (JavaScript IDE)
--	Postman 12.5.4
--	Spring Tool Suite 5 [5.1.1] IDE (Eclipse 2026-03 [4.39.0])
+-	JetBrains IntelliJ IDEA 2026.2.0.1
+-	JetBrains WebStorm 2026.2.0.1 (JavaScript IDE)
+-	Postman 12.21.0
+-	Spring Tool Suite 5 [5.2.0] IDE (Eclipse 2026-06 [4.40.0])
 -	Sublime Text 4 (Build 4200)
--	Visual Studio Code 1.115.0
+-	Visual Studio Code 1.130.0

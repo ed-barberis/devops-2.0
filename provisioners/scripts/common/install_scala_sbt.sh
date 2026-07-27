@@ -30,11 +30,11 @@
 
 # install sbt. -------------------------------------------------------------------------------------
 sbt_home="scala-sbt"
-sbt_release="v1.12.9"
+sbt_release="v2.0.4"
 sbt_dir="sbt"
 sbt_folder="${sbt_home}-${sbt_release:1}"
 sbt_binary="sbt-${sbt_release:1}.tgz"
-sbt_sha256="94d2eda5486d343aebb24c675368c2d220880bbe540457917b65a844d7cb061c"
+sbt_sha256="13253ee7a8b19f60f8c6dc100249619df19ed8869f8be783ab8d206aedfdc366"
 
 # create scala parent folder.
 mkdir -p /usr/local/scala
@@ -76,20 +76,19 @@ export SBT_HOME
 PATH=${SBT_HOME}/bin:${SCALA_HOME}/bin:${JAVA_HOME}/bin:$PATH
 export PATH
 
-# display sbt version information.
-sbt --allow-empty version
-sbt --allow-empty about
+# verify the sbt runner version.
+sbt --script-version
 
 # delete temporary sbt files.
 rm -Rf /tmp/.sbt*
 
 # sbt quick-start example. -------------------------------------------------------------------------
-# 1. Create a minimum SBT build to use Scala 3.6.4.
+# 1. Create a minimum SBT build to use Scala 3.8.4.
 #
 #    $ mkdir -p sbt/hello-world
 #    $ cd sbt/hello-world
 #    $ touch build.sbt
-#    $ echo "ThisBuild / scalaVersion := \"3.6.4\"" >> build.sbt
+#    $ echo "ThisBuild / scalaVersion := \"3.8.4\"" >> build.sbt
 #
 # 2. Set SBT environment variables.
 #
@@ -114,39 +113,39 @@ rm -Rf /tmp/.sbt*
 # 4. Start SBT shell.
 #
 #    $ sbt
-#    ...
-#    [info] [launcher] getting org.scala-sbt sbt 1.10.10  (this may take some time)...
-#    [info] [launcher] getting Scala 2.12.20 (for sbt)...
-#    [info] Updated file /home/vagrant/sbt/hello-world/project/build.properties: set sbt.version to 1.10.10
-#    [info] welcome to sbt 1.10.10 (Amazon.com Inc. Java 17.0.14)
+#    [info] server was not detected. starting an instance
+#    [info] Updated file /home/vagrant/sbt/hello-world/project/build.properties: set sbt.version to 2.0.1
+#    [info] welcome to sbt 2.0.1 (Amazon.com Inc. Java 17.0.19)
 #    [info] loading project definition from /home/vagrant/sbt/hello-world/project
-#    [info] Updating hello-world-build
-#    ...
-#    [info] loading settings for project hello-world from build.sbt...
 #    [info] set current project to hello-world (in build file:/home/vagrant/sbt/hello-world/)
-#    [info] sbt server started at local:///home/vagrant/.sbt/1.0/server/7f8775e321749d739d56/sock
+#    [info]
+#    [info] Here are some highlights of sbt 2.0.1:
+#    [info]   - Scala 3 in metabuild
+#    [info]   - Common settings
+#    [info]   - test changed to incremental test
+#    [info]   - Cache system
+#    [info] See https://www.scala-sbt.org/2.x/docs/en/changes/sbt-2.0-change-summary.html
+#    [info] Hide the banner for this release by running `skipBanner`.
+#    [info] sbt server started at local:///home/vagrant/.config/sbt/2/server/7f8775e321749d739d56/sock
 #    [info] started sbt server
-#    sbt:hello-world>
+#    [info] terminate the server with `shutdown`
 #
 # 5. Compile a project.
 #
 #    sbt:hello-world> compile
-#    ...
-#    [info] compiling 1 Scala source to /home/vagrant/sbt/hello-world/target/scala-3.6.4/classes ...
-#    [success] Total time: 4 s, completed Mar 13, 2025, 10:19:47 PM
-#    sbt:hello-world>
+#    [info] compiling 1 Scala source to /home/vagrant/sbt/hello-world/target/out/jvm/scala-3.8.4/hello-world/classes ...
+#    [success] elapsed time: 2 s, cache 66%, 8 disk cache hits, 4 onsite tasks
 #
 # 6. Run your application.
 #
 #    sbt:hello-world> run
-#    [info] running example.Hello
+#    [info] running (fork) example.Hello
 #    Hello, SBT world!
-#    [success] Total time: 0 s, completed Mar 13, 2025, 10:20:50 PM
-#    sbt:hello-world>
+#    [success] ok
 #
 # 7. Exit the SBT shell.
 #
 #    sbt:hello-world> exit
-#    [info] shutting down sbt server
+#    [info] disconnected
 #
 # Congratulations, you just compiled and ran your first SBT application!

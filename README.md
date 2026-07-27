@@ -22,18 +22,18 @@ Next, using these base VMs as a foundation, the user can build more advanced VM 
 
 To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the following open source software needs to be installed on the host macOS machine:
 
--	Homebrew 5.1.5
+-	Homebrew 6.0.13
 	-	Command Line Tools (CLT) for Xcode
--	VirtualBox 7.2.6
-	-	VirtualBox Extension Pack 7.2.6
+-	VirtualBox 7.2.12
+	-	VirtualBox Extension Pack 7.2.12
 -	Vagrant 2.4.9 with Plugins
 	-	vagrant-cachier 1.2.1
 	-	vagrant-parallels 2.4.7
 	-	vagrant-share 2.0.0
 	-	vagrant-vbguest 0.32.0
--	Packer 1.15.1
--	Git 2.53.0
--	jq 1.8.1
+-	Packer 1.16.0
+-	Git 2.55.0
+-	jq 1.8.2
 -	Optional Add-ons
 	-	wget 1.25.0
 	-	tree 2.3.2
@@ -45,10 +45,10 @@ Perform the following steps to install the needed software:
 
     > **NOTE:** Most Homebrew formulae require a compiler. A handful require a full Xcode installation. You can install [Xcode](https://itunes.apple.com/us/app/xcode/id497799835), the [CLT](https://developer.apple.com/downloads), or both; Homebrew supports all three configurations. Downloading Xcode may require an Apple Developer account on older versions of Mac OS X. Sign up for free [here](https://developer.apple.com/register/index.action).  
 
-2.	Install the [Homebrew 5.1.5](https://brew.sh/) package manager for macOS 64-bit. Paste the following into a macOS Terminal prompt:  
+2.	Install the [Homebrew 6.0.13](https://brew.sh/) package manager for macOS 64-bit. Paste the following into a macOS Terminal prompt:  
     `$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"`
 
-3.	Install [VirtualBox 7.2.6](https://www.virtualbox.org/) for macOS 64-bit.  
+3.	Install [VirtualBox 7.2.12](https://www.virtualbox.org/) for macOS 64-bit.  
     `$ brew cask install virtualbox`  
 
     > **NOTE:** With the release of macOS Mojave 10.14.5+, all new or updated kernel extensions must now be notarized by Apple. Due to this significant change, the VirtualBox installation will *fail* if you have upgraded to 10.14.5+. For a temporary work-around to this issue, perform the following prior to installing VirtualBox:
@@ -64,19 +64,19 @@ Perform the following steps to install the needed software:
     >
     > For additional details, please refer to the User Forum for VirtualBox [here](https://forums.virtualbox.org/viewtopic.php?f=8&t=93151&sid=637f4f3cf543d7ed3a47994b32ae4e93).
 
-4.	Install [VirtualBox Extension Pack 7.2.6](https://www.virtualbox.org/) for macOS 64-bit.  
+4.	Install [VirtualBox Extension Pack 7.2.12](https://www.virtualbox.org/) for macOS 64-bit.  
     `$ brew cask install virtualbox-extension-pack`  
 
 5.	Install [Vagrant 2.4.9](https://www.vagrantup.com/) for macOS 64-bit.  
     `$ brew cask install vagrant`  
 
-6.	Install [Packer 1.15.1](https://packer.io/) for macOS 64-bit.  
+6.	Install [Packer 1.16.0](https://packer.io/) for macOS 64-bit.  
     `$ brew install hashicorp/tap/packer`  
 
-7.	Install [Git 2.53.0](https://git-scm.com/downloads) for macOS 64-bit.  
+7.	Install [Git 2.55.0](https://git-scm.com/downloads) for macOS 64-bit.  
     `$ brew install git`  
 
-8.	Install [jq 1.8.1](https://jqlang.github.io/jq/) for macOS 64-bit.  
+8.	Install [jq 1.8.2](https://jqlang.github.io/jq/) for macOS 64-bit.  
     `$ brew install jq`  
 
 9.	Install optional add-ons for macOS.  
@@ -89,25 +89,25 @@ Perform the following steps to install the needed software:
 
     ```bash
     $ brew --version
-    Homebrew 5.1.5
+    Homebrew 6.0.13
     $ brew doctor
     Your system is ready to brew.
     ...
 
     $ vboxmanage --version
-    7.2.6r172322
+    7.2.12r174389
 
     $ vagrant --version
     Vagrant 2.4.9
 
     $ packer --version
-    1.15.1
+    1.16.0
 
     $ git --version
-    git version 2.53.0
+    git version 2.55.0
 
     $ jq --version
-    jq-1.8.1
+    jq-1.8.2
     ```
 
 2.	Validate optional add-ons:
@@ -121,24 +121,24 @@ Perform the following steps to install the needed software:
 
 To build the DevOps 2.0 [VirtualBox](https://www.virtualbox.org/) VMs, the following open source software needs to be installed on the host Windows 64-Bit machine:
 
--	VirtualBox 7.2.6
-	-	VirtualBox Extension Pack 7.2.6
+-	VirtualBox 7.2.12
+	-	VirtualBox Extension Pack 7.2.12
 -	Vagrant 2.4.9 with Plugins
 	-	vagrant-cachier 1.2.1
 	-	vagrant-share 2.0.0
 	-	vagrant-vbguest 0.32.0
--	Packer 1.15.1
--	Git 2.53.0
--	jq 1.8.1
+-	Packer 1.16.0
+-	Git 2.55.0
+-	jq 1.8.2
 -	Optional Add-ons for Git Bash
 	-	wget 1.9.1
 	-	tree 1.5.2.2
 
 Perform the following steps to install the needed software:
 
-1.	Install [VirtualBox 7.2.6 for Windows 64-bit](https://download.virtualbox.org/virtualbox/7.2.6/VirtualBox-7.2.6-172322-Win.exe).
+1.	Install [VirtualBox 7.2.12 for Windows 64-bit](https://download.virtualbox.org/virtualbox/7.2.12/VirtualBox-7.2.12-174389-Win.exe).
 
-2.	Install [VirtualBox Extension Pack 7.2.6](https://download.virtualbox.org/virtualbox/7.2.6/Oracle_VirtualBox_Extension_Pack-7.2.6-172322.vbox-extpack).
+2.	Install [VirtualBox Extension Pack 7.2.12](https://download.virtualbox.org/virtualbox/7.2.12/Oracle_VirtualBox_Extension_Pack-7.2.12-174389.vbox-extpack).
 
 3.	Install [Vagrant 2.4.9 for Windows 64-bit](https://releases.hashicorp.com/vagrant/2.4.9/vagrant_2.4.9_windows_amd64.msi).  
     Suggested install folder:  
@@ -151,13 +151,13 @@ Perform the following steps to install the needed software:
     >
     > If this is set, Vagrant will prefer using utility executables (like `ssh` and `rsync`) from the local system instead of those vendored within the Vagrant installation.  
 
-4.	Install [Packer 1.15.1 for Windows 64-bit](https://releases.hashicorp.com/packer/1.15.1/packer_1.15.1_windows_amd64.zip).
+4.	Install [Packer 1.16.0 for Windows 64-bit](https://releases.hashicorp.com/packer/1.16.0/packer_1.16.0_windows_amd64.zip).
     Create suggested install folder and extract contents of ZIP file to:  
     `C:\HashiCorp\Packer\bin`  
 
-5.	Install [Git 2.53.0 for Windows 64-bit](https://github.com/git-for-windows/git/releases/download/v2.53.0.windows.2/Git-2.53.0.2-64-bit.exe) for Windows 64-bit.
+5.	Install [Git 2.55.0 for Windows 64-bit](https://github.com/git-for-windows/git/releases/download/v2.55.0.windows.3/Git-2.55.0.3-64-bit.exe) for Windows 64-bit.
 
-6.	Install [jq 1.8.1](https://github.com/jqlang/jq/releases/download/jq-1.8.1/jq-win64.exe) for Windows 64-bit.  
+6.	Install [jq 1.8.2](https://github.com/jqlang/jq/releases/download/jq-1.8.2/jq-win64.exe) for Windows 64-bit.  
     Create suggested install folder and rename binary to:  
     `C:\Program Files\Git\usr\local\bin\jq.exe`
 
@@ -194,19 +194,19 @@ Perform the following steps to install the needed software:
 
     ```bash
     $ VBoxManage --version
-    7.2.6r172322
+    7.2.12r174389
 
     $ vagrant --version
     Vagrant 2.4.9
 
     $ packer --version
-    1.15.1
+    1.16.0
 
     $ git --version
-    git version 2.53.0.windows.2
+    git version 2.55.0.windows.3
 
     $ jq --version
-    jq-1.8.1
+    jq-1.8.2
     ```
 
 6.	Validate optional add-ons for Git Bash:

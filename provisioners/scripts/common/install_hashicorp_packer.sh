@@ -23,17 +23,17 @@
 cpu_arch=$(uname -m)
 
 # install hashicorp packer. ------------------------------------------------------------------------
-packer_release="1.15.1"
+packer_release="1.16.0"
 
 # set the packer cli binary and sha256 values based on cpu architecture.
 if [ "$cpu_arch" = "x86_64" ]; then
   # set the amd64 variables.
   packer_binary="packer_${packer_release}_linux_amd64.zip"
-  packer_sha256="648d704bec73805a5508ed612185a9e5858ca7d57b730b88b1a54c3af3a91f5f"
+  packer_sha256="5edcd14ab59b535040c512dbecd6ec9ef976a000b073c19d93e4c431c948581e"
 elif [ "$cpu_arch" = "aarch64" ]; then
   # set the arm64 variables.
   packer_binary="packer_${packer_release}_linux_arm64.zip"
-  packer_sha256="a8d68f1746ecacaf8fa9d364aa086249958a0a1f67c90b8a4f165ff024c0e58e"
+  packer_sha256="cf18f03460d92265d49b56befff333e80641d845822799eab04357c39f75b5d7"
 else
   echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
   exit 1
@@ -65,3 +65,6 @@ export PATH
 
 # verify packer version.
 packer version
+
+# install tab auto completion. ---------------------------------------------------------------------
+#packer -autocomplete-install
