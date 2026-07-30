@@ -23,11 +23,12 @@
 set +x  # temporarily turn command display OFF.
 mysql_server_root_password="${mysql_server_root_password:-Welcome1!}"   # [optional] root password (defaults to 'Welcome1!').
 set -x  # turn command display back ON.
-mysql_yum_release="${mysql_yum_release:-84}"                            # [optional] yum repository version (defaults to '84').
-mysql_server_default="${mysql_server_default:-mysql-8.4-lts-community}" # [optional] mysql server default version (defaults to 'mysql-8.4-lts-community').
-mysql_server_release="${mysql_server_release:-mysql-8.4-lts-community}" # [optional] mysql server release version (defaults to 'mysql-8.4-lts-community').
+mysql_yum_release="${mysql_yum_release:-97}"                            # [optional] yum repository version (defaults to '97').
+mysql_server_default="${mysql_server_default:-mysql-9.7-lts-community}" # [optional] mysql server default version (defaults to 'mysql-9.7-lts-community').
+                                                                        # [optional] mysql server release version (defaults to 'mysql-8.4-lts-community').
+mysql_server_release="${mysql_server_release:-mysql-8.4-lts-community}"
                                                                         # [optional] mysql yum repository md5 checksum (defaults to published value).
-mysql_yum_checksum="${mysql_yum_checksum:-8f1a519b4893e7e573a874e46f8f2e78}"
+mysql_yum_checksum="${mysql_yum_checksum:-cde9ac7e7239b92308b4097cb1b28943}"
 mysql_enable_secure_access="${mysql_enable_secure_access:-true}"        # [optional] enable secure access for mysql server (defaults to 'true').
 
 # [OPTIONAL] devops home folder [w/ default].
@@ -38,7 +39,7 @@ mkdir -p ${devops_home}/provisioners/scripts/centos
 cd ${devops_home}/provisioners/scripts/centos
 
 # download mysql yum repository. -------------------------------------------------------------------
-mysql_yum_binary="mysql${mysql_yum_release}-community-release-el10-3.noarch.rpm"
+mysql_yum_binary="mysql${mysql_yum_release}-community-release-el10-1.noarch.rpm"
 
 # download the mysql yum repository.
 rm -f ${mysql_yum_binary}
@@ -46,7 +47,7 @@ wget --no-verbose --no-check-certificate --no-cookies --header "Cookie: oracleli
 
 # verify the downloaded binary using the md5 checksum.
 echo "${mysql_yum_checksum} ${mysql_yum_binary}" | md5sum --check -
-# mysql${mysql_yum_release}-community-release-el10-2.noarch.rpm: OK
+# mysql${mysql_yum_release}-community-release-el10-1.noarch.rpm: OK
 
 # install the mysql public gpg key.
 rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2025
@@ -64,8 +65,11 @@ dnf config-manager --enable ${mysql_server_release}
 
 # install mysql server binaries.
 #dnf -y remove mariadb-libs                 # [optional] if running in the desktop.
-dnf -y install mysql-community-server
+dnf -y install mysql-community-{server,client,client-plugins,icu-data-files,common,libs}-* --excludepkgs=mysql8.4* --excludepkgs=mariadb*
+##dnf -y install mysql-community-server
 #dnf -y install mysql-workbench-community   # [optional]
+##dnf -y install mysql-community-server --excludepkgs=mysql8.4* --excludepkgs=mariadb*
+##dnf -y install mysql-community-server --allowerasing
 
 # verify mysql server installation
 mysql --version
@@ -91,7 +95,7 @@ set -x  # turn command display back ON.
 
 # verify 'root' user authentication method.
 set +x  # temporarily turn command display OFF.
-mysql -u root -p${mysql_server_root_password} -e "SELECT user, plugin FROM mysql.user WHERE user IN ('root')\G;"
+mysql -u root -p${mysql_server_root_password} --commands=ON -e "SELECT user, plugin FROM mysql.user WHERE user IN ('root')\G;"
 set -x  # turn command display back ON.
 
 # improve mysql server installation security. ------------------------------------------------------
@@ -148,11 +152,11 @@ if [ "$mysql_enable_secure_access" = "true" ]; then
   # for secure access, change the 'root' user authentication method back to 'auth_socket'.
   set +x  # temporarily turn command display OFF.
   mysql -u root -p${mysql_server_root_password} -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH auth_socket;"
-  mysql -u root -p${mysql_server_root_password} -e "SELECT user, plugin FROM mysql.user WHERE user IN ('root')\G;"
+  mysql -u root -p${mysql_server_root_password} --commands=ON -e "SELECT user, plugin FROM mysql.user WHERE user IN ('root')\G;"
   set -x    # turn command display back ON.
 fi
 
 # display installed plugins.
 set +x  # temporarily turn command display OFF.
-mysql -u root -p${mysql_server_root_password} -e "SELECT PLUGIN_NAME, PLUGIN_STATUS FROM INFORMATION_SCHEMA.PLUGINS WHERE PLUGIN_STATUS LIKE '%ACTIVE%'\G;"
+mysql -u root -p${mysql_server_root_password} --commands=ON -e "SELECT PLUGIN_NAME, PLUGIN_STATUS FROM INFORMATION_SCHEMA.PLUGINS WHERE PLUGIN_STATUS LIKE '%ACTIVE%'\G;"
 set -x  # turn command display back ON.
