@@ -270,7 +270,7 @@ Follow these instructions to build the Oracle Linux 7.9 VM images.
 
 The following command-line tools and utilities are pre-installed in the __Developer VM__ (desktop), __Operations VM__ (headless), and the __CICD VM__ (headless):
 
--	Amazon AWS CLI 2.36.8 (command-line interface) [Optional]
+-	Amazon AWS CLI 2.36.10 (command-line interface) [Optional]
 -	Amazon AWS EKS CLI [eksctl] 0.229.0 (command-line interface)
 -	Ansible 2.9.27
 -	Ant 1.10.17
@@ -323,7 +323,7 @@ The following command-line tools and utilities are pre-installed in the __Develo
 
 In addition, the following continuous integration and continuous delivery (CI/CD) applications are pre-installed in the __CICD VM__ (headless):
 
--	GitLab Community Edition 19.2.0
+-	GitLab Community Edition 19.2.1
 -	Jenkins 2.568.1 LTS
 
 In addition, the following application performance management applications are pre-installed in the __APM VM__ (headless):
@@ -340,7 +340,7 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 -	Apache Tomcat 10.1.57
 -	Apache Tomcat 11.0.24
 -	AppDynamics Java Agent 26.6.0 Build 37963
--	AppDynamics Machine Agent 26.6.0 Build 5418
+-	AppDynamics Machine Agent 26.6.1 Build 5452
 	-	AppDynamics AWS EC2 Monitoring Extension 2.1.5 [Optional]
 -	Atom Editor 1.57.0
 -	Brackets Editor 1.7 Experimental 1.7.0-0
@@ -348,7 +348,7 @@ The following developer tools are pre-installed in the __Developer VM__ (desktop
 -	Firefox 102.10.0esr (64-bit)
 -	JetBrains IntelliJ IDEA 2026.2.0.1
 -	JetBrains WebStorm 2026.2.0.1 (JavaScript IDE)
--	Postman 12.21.0
+-	Postman 12.21.7
 -	Spring Tool Suite 5 [5.2.0] IDE (Eclipse 2026-06 [4.40.0])
 -	Sublime Text 4 (Build 4200)
--	Visual Studio Code 1.130.0
+-	Visual Studio Code 1.131.0
