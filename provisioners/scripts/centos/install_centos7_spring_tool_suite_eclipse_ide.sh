@@ -11,7 +11,7 @@ cpu_arch=$(uname -m)
 
 # install spring tool suite ide. -------------------------------------------------------------------
 sts_home="sts"
-sts_release="5.2.0"
+sts_release="5.3.0"
 sts_number="173685548"
 eclipse_version="2026-06"
 eclipse_release="4.40.0"
@@ -24,11 +24,11 @@ sts_config="SpringToolSuite${sts_family}.ini"
 if [ "$cpu_arch" = "x86_64" ]; then
   # set the amd64 variables.
   sts_binary="spring-tools-for-eclipse-${sts_release}.RELEASE-e${eclipse_release}-linux.gtk.x86_64.tar.gz"
-  sts_sha256="3eb026de83a75c8788c7cdc6316cd789062ca901c2674dfa44cf3a9927f28ed6"
+  sts_sha256="eb1497c45f1d0009472d614bed36e30c433768f0c4aa088ff1c4d372f806c2d3"
 elif [ "$cpu_arch" = "aarch64" ]; then
   # set the arm64 variables.
   sts_binary="spring-tools-for-eclipse-${sts_release}.RELEASE-e${eclipse_release}-linux.gtk.aarch64.tar.gz"
-  sts_sha256="3b964b99284f79c25a82b3f0c5fcebf99a940ca82b8ba2b320041ebb10ec7c35"
+  sts_sha256="c588b0c9c61fff71bff9a40a2e9c959e3c43559868f34f80ebd3b15f0efa1236"
 else
   echo "Error: Unsupported CPU architecture: '${cpu_arch}'."
   exit 1
@@ -40,8 +40,6 @@ cd /usr/local/spring
 
 # download spring tool suite binary.
 wget --no-verbose https://cdn.spring.io/spring-tools/release/dist/${sts_release}.RELEASE/${eclipse_dist}/${sts_binary}
-                  https://cdn.spring.io/spring-tools/release/dist/5.2.0.RELEASE/e4.40/spring-tools-for-eclipse-5.2.0.RELEASE-e4.40.0-linux.gtk.x86_64.tar.gz
-                  https://cdn.spring.io/spring-tools/release/dist/5.2.0.RELEASE/e4.40/spring-tools-for-eclipse-5.2.0.RELEASE-e4.40.0-linux.gtk.aarch64.tar.gz
 
 # verify the downloaded binary.
 echo "${sts_sha256} ${sts_binary}" | sha256sum --check
